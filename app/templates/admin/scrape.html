@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+
+{% block title %}Парсеры и сравнение цен - Админ панель{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2><i class="fas fa-spider me-2"></i>Парсеры и сравнение цен</h2>
+        <p class="text-muted">Инструменты для анализа цен на комплектующие из интернет-магазинов</p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Админ панель</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Парсеры</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <!-- DNS Parser Section -->
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0"><i class="fas fa-robot me-2"></i>DNS Parser</h5>
+            </div>
+            <div class="card-body">
+                <p>Запуск парсера DNS для сбора информации о комплектующих.</p>
+                
+                <form method="POST" action="{{ url_for('admin.run_dns_parser') }}">
+                    <div class="mb-3">
+                        <label for="dns_category" class="form-label">Категория товаров</label>
+                        <select class="form-select" id="dns_category" name="dns_category">
+                            <option value="" selected>Все категории</option>
+                            <option value="videokarty">Видеокарты</option>
+                            <option value="processory">Процессоры</option>
+                            <option value="materinskie-platy">Материнские платы</option>
+                            <option value="operativnaya-pamyat">Оперативная память</option>
+                            <option value="bloki-pitaniya">Блоки питания</option>
+                            <option value="kulery">Кулеры</option>
+                            <option value="zhestkie-diski">Жесткие диски</option>
+                            <option value="ssd-m2">SSD M.2</option>
+                            <option value="ssd-sata">SSD SATA</option>
+                            <option value="korpusa">Корпуса</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="dns_max_items" class="form-label">Количество товаров</label>
+                        <input type="number" class="form-control" id="dns_max_items" name="dns_max_items" min="1" max="100" value="20">
+                        <div class="form-text">Максимальное количество товаров для парсинга</div>
+                    </div>
+                    
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-play me-2"></i>Запустить парсер DNS
+                        </button>
+                        
+                        {% if dns_results %}
+                        <a href="{{ url_for('admin.clear_dns_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера DNS?');">
+                            <i class="fas fa-trash me-2"></i>Очистить результаты
+                        </a>
+                        {% endif %}
+                    </div>
+                </form>
+                
+                <div class="alert alert-secondary mt-3">
+                    <i class="fas fa-info-circle me-2"></i>Парсер DNS использует категории из файла <strong>categories.json</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Citilink Parser Section -->
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-robot me-2"></i>Citilink Parser</h5>
+            </div>
+            <div class="card-body">
+                <p>Запуск парсера Citilink для сбора информации о комплектующих.</p>
+                
+                <form method="POST" action="{{ url_for('admin.run_citilink_parser') }}">
+                    <div class="mb-3">
+                        <label for="citilink_category" class="form-label">Категория товаров</label>
+                        <select class="form-select" id="citilink_category" name="citilink_category">
+                            <option value="" selected disabled>Выберите категорию</option>
+                            <option value="videokarty" {% if env_citilink_category == "videokarty" %}selected{% endif %}>Видеокарты</option>
+                            <option value="processory" {% if env_citilink_category == "processory" %}selected{% endif %}>Процессоры</option>
+                            <option value="materinskie-platy" {% if env_citilink_category == "materinskie-platy" %}selected{% endif %}>Материнские платы</option>
+                            <option value="bloki-pitaniya" {% if env_citilink_category == "bloki-pitaniya" %}selected{% endif %}>Блоки питания</option>
+                            <option value="moduli-pamyati" {% if env_citilink_category == "moduli-pamyati" %}selected{% endif %}>Модули памяти</option>
+                            <option value="korpusa" {% if env_citilink_category == "korpusa" %}selected{% endif %}>Корпуса</option>
+                            <option value="ventilyatory-dlya-korpusa" {% if env_citilink_category == "ventilyatory-dlya-korpusa" %}selected{% endif %}>Вентиляторы для корпуса</option>
+                            <option value="ssd-nakopiteli" {% if env_citilink_category == "ssd-nakopiteli" %}selected{% endif %}>SSD накопители</option>
+                            <option value="zhestkie-diski" {% if env_citilink_category == "zhestkie-diski" %}selected{% endif %}>Жесткие диски</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-play me-2"></i>Запустить парсер Citilink
+                        </button>
+                        
+                        {% if citilink_results %}
+                        <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера Citilink?');">
+                            <i class="fas fa-trash me-2"></i>Очистить результаты
+                        </a>
+                        {% endif %}
+                    </div>
+                </form>
+                
+                <div class="alert alert-secondary mt-3">
+                    <i class="fas fa-info-circle me-2"></i>Парсер Citilink использует GraphQL API для получения данных о товарах
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Price Comparison Section -->
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Сравнение цен</h5>
+            </div>
+            <div class="card-body">
+                <p>Сравнение цен на товары между магазинами DNS и Citilink.</p>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-exclamation-circle me-2"></i>Для сравнения цен необходимо предварительно запустить оба парсера
+                </div>
+                
+                <div class="mb-3 d-flex justify-content-between">
+                    <a href="{{ url_for('admin.price_comparison') }}" class="btn btn-success">
+                        <i class="fas fa-exchange-alt me-2"></i>Перейти к сравнению цен
+                    </a>
+                    
+                    <a href="{{ url_for('admin.run_all_parsers') }}" class="btn btn-outline-dark" onclick="return confirm('Запустить парсинг данных из обоих магазинов? Это может занять некоторое время.');">
+                        <i class="fas fa-play-circle me-2"></i>Запустить оба парсера
+                    </a>
+                </div>
+                
+                <hr>
+                
+                <div class="card bg-light mt-3">
+                    <div class="card-body">
+                        <h6 class="card-title"><i class="fas fa-lightbulb me-2"></i>Последние результаты</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                DNS парсер
+                                <div>
+                                    <span class="badge bg-danger rounded-pill" id="dns-parser-status">
+                                        {% if dns_results %}{{ dns_results|length }} товаров{% else %}Нет данных{% endif %}
+                                    </span>
+                                    {% if dns_results %}
+                                    <a href="#collapseDNS" data-bs-toggle="collapse" data-bs-target="#collapseDNS" class="btn btn-sm btn-outline-danger ms-2">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Citilink парсер
+                                <div>
+                                    <span class="badge bg-primary rounded-pill" id="citilink-parser-status">
+                                        {% if citilink_results %}{{ citilink_results|length }} товаров{% else %}Нет данных{% endif %}
+                                    </span>
+                                    {% if citilink_results %}
+                                    <a href="#collapseCitilink" data-bs-toggle="collapse" data-bs-target="#collapseCitilink" class="btn btn-sm btn-outline-primary ms-2">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Сравнение цен
+                                <div>
+                                    <span class="badge bg-success rounded-pill" id="comparison-status">
+                                        Нет данных
+                                    </span>
+                                    <a href="{{ url_for('admin.price_comparison') }}" class="btn btn-sm btn-outline-success ms-2">
+                                        <i class="fas fa-chart-line"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Logs Section -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Логи парсеров</h5>
+                <div>
+                    <button class="btn btn-sm btn-outline-light refresh-logs-btn">
+                        <i class="fas fa-sync-alt me-1"></i>Обновить
+                    </button>
+                    <div class="btn-group" role="group">
+                        <button id="logSelector" type="button" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            DNS Parser
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="logSelector">
+                            <li><a class="dropdown-item active" href="#" data-log-file="dns_parser.log">DNS Parser</a></li>
+                            <li><a class="dropdown-item" href="#" data-log-file="price_comparison.log">Price Comparison</a></li>
+                            <li><a class="dropdown-item" href="#" data-log-file="app/utils/Citi_parser/parser.log">Citilink Parser</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="log-container bg-dark text-light p-3 rounded" style="height: 300px; overflow-y: auto; font-family: monospace; font-size: 12px;">
+                    <pre id="logContent">Загрузка логов...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Status and Results -->
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Результаты парсинга</h5>
+            </div>
+            <div class="card-body">
+                {% if dns_results or citilink_results %}
+                <div class="list-group">
+                    {% if dns_results %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-1">DNS Parser</h6>
+                            <p class="mb-1">Собрано товаров: {{ dns_results|length }}</p>
+                        </div>
+                        <a href="{{ url_for('admin.download_parser_results', parser='dns') }}" class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-download me-1"></i>Скачать данные
+                        </a>
+                    </div>
+                    {% endif %}
+                    
+                    {% if citilink_results %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-1">Citilink Parser</h6>
+                            <p class="mb-1">Собрано товаров: {{ citilink_results|length }}</p>
+                        </div>
+                        <a href="{{ url_for('admin.download_parser_results', parser='citilink') }}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-download me-1"></i>Скачать данные
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Нет результатов парсинга. Запустите парсеры для получения данных.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<!-- Script for logs and parser status updates -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Текущий файл логов
+        let currentLogFile = 'dns_parser.log';
+        
+        // Функция для загрузки логов
+        function loadLogs(logFile) {
+            const logContent = document.getElementById('logContent');
+            logContent.textContent = 'Загрузка логов...';
+            
+            fetch(`/admin/view-logs?file=${logFile}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.content) {
+                        logContent.textContent = data.content;
+                        // Прокрутка вниз для отображения последних логов
+                        const logContainer = document.querySelector('.log-container');
+                        logContainer.scrollTop = logContainer.scrollHeight;
+                    } else {
+                        logContent.textContent = 'Лог файл пуст или не существует';
+                    }
+                })
+                .catch(error => {
+                    logContent.textContent = `Ошибка загрузки логов: ${error}`;
+                });
+        }
+        
+        // Загрузка логов при загрузке страницы
+        loadLogs(currentLogFile);
+        
+        // Автоматическое обновление логов каждые 30 секунд
+        setInterval(function() {
+            loadLogs(currentLogFile);
+        }, 30000);
+        
+        // Обработчик кнопки обновления логов
+        document.querySelector('.refresh-logs-btn').addEventListener('click', function() {
+            loadLogs(currentLogFile);
+        });
+        
+        // Обработчики выбора файла логов
+        document.querySelectorAll('[data-log-file]').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Обновление активного элемента
+                document.querySelectorAll('[data-log-file]').forEach(el => {
+                    el.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Обновление текста кнопки
+                document.getElementById('logSelector').textContent = this.textContent;
+                
+                // Загрузка выбранного лога
+                currentLogFile = this.getAttribute('data-log-file');
+                loadLogs(currentLogFile);
+            });
+        });
+        
+        // Загрузка данных по категории Citilink
+        document.getElementById('loadCategoryData').addEventListener('click', function() {
+            const category = document.getElementById('citilink_category_filter').value;
+            const resultsTableBody = document.getElementById('citilink-results-table');
+            
+            // Показываем индикатор загрузки
+            resultsTableBody.innerHTML = '<tr><td colspan="4" class="text-center py-3"><div class="spinner-border text-primary" role="status"></div><span class="ms-2">Загрузка данных...</span></td></tr>';
+            
+            // Функция для отображения данных в таблице
+            function displayResults(data) {
+                if (!data || data.length === 0) {
+                    resultsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Нет данных для выбранной категории</td></tr>';
+                    return;
+                }
+                
+                let html = '';
+                const displayLimit = 10;
+                const displayItems = data.slice(0, displayLimit);
+                
+                displayItems.forEach(item => {
+                    let categoryName = 'Не указана';
+                    if (item.categories && item.categories.length > 1) {
+                        categoryName = item.categories[1].name;
+                    } else if (item.categories && item.categories.length > 0) {
+                        categoryName = item.categories[0].name;
+                    }
+                    
+                    let priceDisplay = '';
+                    if (item.price_old) {
+                        priceDisplay = `${item.price} ₽ <small class="text-muted text-decoration-line-through">${item.price_old} ₽</small>`;
+                    } else if (item.price) {
+                        priceDisplay = `${item.price} ₽`;
+                    } else {
+                        priceDisplay = 'Нет в наличии';
+                    }
+                    
+                    html += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${categoryName}</td>
+                        <td>${priceDisplay}</td>
+                        <td>
+                            <a href="${item.url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </td>
+                    </tr>`;
+                });
+                
+                if (data.length > displayLimit) {
+                    html += `
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <em>Показаны первые ${displayLimit} из ${data.length} товаров</em>
+                        </td>
+                    </tr>`;
+                }
+                
+                resultsTableBody.innerHTML = html;
+            }
+            
+            // Запрос данных с сервера
+            if (category) {
+                // Запрос для конкретной категории
+                fetch(`/admin/api/citilink-category-data?category=${category}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        displayResults(data.products);
+                    })
+                    .catch(error => {
+                        resultsTableBody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Ошибка загрузки данных: ${error}</td></tr>`;
+                    });
+            } else {
+                // Запрос для всех категорий (загрузка из основного файла)
+                fetch('/admin/api/citilink-category-data')
+                    .then(response => response.json())
+                    .then(data => {
+                        displayResults(data.products);
+                    })
+                    .catch(error => {
+                        resultsTableBody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Ошибка загрузки данных: ${error}</td></tr>`;
+                    });
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% endblock %} 

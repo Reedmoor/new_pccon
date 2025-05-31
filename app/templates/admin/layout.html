@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block admin_title %}Админ-панель{% endblock %} - Конфигуратор ПК{% endblock %}
+
+{% block extra_css %}
+<style>
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .card-body {
+        padding: 1.25rem;
+        width: 100%;
+    }
+    
+    .table {
+        width: 100% !important;
+    }
+    
+    @media (max-width: 992px) {
+        .col-md-10 {
+            width: 100%;
+        }
+        
+        .col-md-2 {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2>{% block admin_header %}Админ-панель{% endblock %}</h2>
+        <p class="text-muted">{% block admin_description %}Управление системой{% endblock %}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 mb-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-bars me-2"></i>Навигация</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.dashboard' %}active{% endif %}">
+                        <i class="fas fa-tachometer-alt me-2"></i>Панель управления
+                    </a>
+                    <a href="{{ url_for('admin.products', type='all') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.products' %}active{% endif %}">
+                        <i class="fas fa-microchip me-2"></i>Все комплектующие
+                    </a>
+                    <a href="{{ url_for('admin.users') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.users' %}active{% endif %}">
+                        <i class="fas fa-users me-2"></i>Пользователи
+                    </a>
+                    <a href="{{ url_for('admin.scrape') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.scrape' %}active{% endif %}">
+                        <i class="fas fa-spider me-2"></i>Парсинг комплектующих
+                    </a>
+                    <a href="{{ url_for('admin.price_comparison') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.price_comparison' %}active{% endif %}">
+                        <i class="fas fa-chart-line me-2"></i>Сравнение цен
+                    </a>
+                    <a href="{{ url_for('admin.import_data') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.import_data' %}active{% endif %}">
+                        <i class="fas fa-database me-2"></i>Импорт данных
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-10">
+        {% block admin_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %} 

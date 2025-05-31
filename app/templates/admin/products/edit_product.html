@@ -1,0 +1,421 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}Редактирование продукта - Админ панель{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">Редактирование продукта</h1>
+    <p class="mb-4">
+        {% if product.product_type == 'motherboard' %}
+            Редактирование материнской платы: {{ product.product_name }}
+        {% elif product.product_type == 'processor' %}
+            Редактирование процессора: {{ product.product_name }}
+        {% elif product.product_type == 'graphics_card' %}
+            Редактирование видеокарты: {{ product.product_name }}
+        {% elif product.product_type == 'ram' %}
+            Редактирование оперативной памяти: {{ product.product_name }}
+        {% elif product.product_type == 'hard_drive' %}
+            Редактирование жесткого диска: {{ product.product_name }}
+        {% elif product.product_type == 'power_supply' %}
+            Редактирование блока питания: {{ product.product_name }}
+        {% elif product.product_type == 'cooler' %}
+            Редактирование кулера: {{ product.product_name }}
+        {% elif product.product_type == 'case' %}
+            Редактирование корпуса: {{ product.product_name }}
+        {% else %}
+            Редактирование продукта: {{ product.product_name }}
+        {% endif %}
+    </p>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-edit me-1"></i>
+            Форма редактирования
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {{ form.hidden_tag() }}
+                
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h4>Основная информация</h4>
+                        <hr>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.product_name.label(class="form-label") }}
+                            {{ form.product_name(class="form-control") }}
+                            {% for error in form.product_name.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.vendor.label(class="form-label") }}
+                            {{ form.vendor(class="form-control") }}
+                            {% for error in form.vendor.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.price_discounted.label(class="form-label") }}
+                            {{ form.price_discounted(class="form-control") }}
+                            {% for error in form.price_discounted.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.price_original.label(class="form-label") }}
+                            {{ form.price_original(class="form-control") }}
+                            {% for error in form.price_original.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.product_url.label(class="form-label") }}
+                            {{ form.product_url(class="form-control") }}
+                            {% for error in form.product_url.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.image_url.label(class="form-label") }}
+                            {{ form.image_url(class="form-control") }}
+                            {% for error in form.image_url.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.brand.label(class="form-label") }}
+                            {{ form.brand(class="form-control") }}
+                            {% for error in form.brand.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.model.label(class="form-label") }}
+                            {{ form.model(class="form-control") }}
+                            {% for error in form.model.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product type specific characteristics -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h4>Характеристики</h4>
+                        <hr>
+                    </div>
+                </div>
+                
+                {% if product.product_type == 'motherboard' %}
+                <!-- Motherboard specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.socket.label(class="form-label") }}
+                            {{ form.socket(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.chipset.label(class="form-label") }}
+                            {{ form.chipset(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.form_factor.label(class="form-label") }}
+                            {{ form.form_factor(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_type.label(class="form-label") }}
+                            {{ form.memory_type(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'processor' %}
+                <!-- Processor specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.socket.label(class="form-label") }}
+                            {{ form.socket(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.base_clock.label(class="form-label") }}
+                            {{ form.base_clock(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.boost_clock.label(class="form-label") }}
+                            {{ form.boost_clock(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.core_count.label(class="form-label") }}
+                            {{ form.core_count(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.thread_count.label(class="form-label") }}
+                            {{ form.thread_count(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.power_consumption.label(class="form-label") }}
+                            {{ form.power_consumption(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'graphics_card' %}
+                <!-- Graphics card specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.gpu_model.label(class="form-label") }}
+                            {{ form.gpu_model(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_size.label(class="form-label") }}
+                            {{ form.memory_size(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_type.label(class="form-label") }}
+                            {{ form.memory_type(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_bus.label(class="form-label") }}
+                            {{ form.memory_bus(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.base_clock.label(class="form-label") }}
+                            {{ form.base_clock(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.boost_clock.label(class="form-label") }}
+                            {{ form.boost_clock(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.power_consumption.label(class="form-label") }}
+                            {{ form.power_consumption(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.length.label(class="form-label") }}
+                            {{ form.length(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'ram' %}
+                <!-- RAM specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_type.label(class="form-label") }}
+                            {{ form.memory_type(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_size.label(class="form-label") }}
+                            {{ form.memory_size(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.memory_clock.label(class="form-label") }}
+                            {{ form.memory_clock(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.module_count.label(class="form-label") }}
+                            {{ form.module_count(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'hard_drive' %}
+                <!-- Storage specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.storage_capacity.label(class="form-label") }}
+                            {{ form.storage_capacity(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.interface.label(class="form-label") }}
+                            {{ form.interface(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.read_speed.label(class="form-label") }}
+                            {{ form.read_speed(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.write_speed.label(class="form-label") }}
+                            {{ form.write_speed(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'power_supply' %}
+                <!-- Power supply specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.wattage.label(class="form-label") }}
+                            {{ form.wattage(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.certification.label(class="form-label") }}
+                            {{ form.certification(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'cooler' %}
+                <!-- Cooler specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.cooling_type.label(class="form-label") }}
+                            {{ form.cooling_type(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.fan_count.label(class="form-label") }}
+                            {{ form.fan_count(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.power_consumption.label(class="form-label") }}
+                            {{ form.power_consumption(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                {% elif product.product_type == 'case' %}
+                <!-- Case specific fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.case_size.label(class="form-label") }}
+                            {{ form.case_size(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.supported_form_factors.label(class="form-label") }}
+                            {{ form.supported_form_factors(class="form-control", placeholder="ATX, mATX, ITX") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.max_gpu_length.label(class="form-label") }}
+                            {{ form.max_gpu_length(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            {{ form.max_cooler_height.label(class="form-label") }}
+                            {{ form.max_cooler_height(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i>Сохранить изменения
+                    </button>
+                    <a href="{{ url_for('admin.products', type=product.product_type) }}" class="btn btn-secondary">
+                        <i class="fas fa-times me-1"></i>Отмена
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

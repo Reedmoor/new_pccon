@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление жесткого диска - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-plus-circle me-2"></i>Добавление жесткого диска</h2>
+                <p class="text-muted">Заполните данные для нового жесткого диска</p>
+            </div>
+            <div>
+                <a href="{{ url_for('admin.hard_drives') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>К списку жестких дисков
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="fas fa-hdd me-2"></i>Сведения о жестком диске</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('admin.add_hard_drive') }}">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{ form.name.label(class="form-label") }}
+                                {{ form.name(class="form-control") }}
+                                {% if form.name.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                <div class="form-text">Введите полное название модели жесткого диска</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.capacity.label(class="form-label") }}
+                                <div class="input-group">
+                                    {{ form.capacity(class="form-control") }}
+                                    <span class="input-group-text">ГБ</span>
+                                </div>
+                                {% if form.capacity.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.capacity.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.reading.label(class="form-label") }}
+                                <div class="input-group">
+                                    {{ form.reading(class="form-control") }}
+                                    <span class="input-group-text">МБ/с</span>
+                                </div>
+                                {% if form.reading.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.reading.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.recording.label(class="form-label") }}
+                                <div class="input-group">
+                                    {{ form.recording(class="form-control") }}
+                                    <span class="input-group-text">МБ/с</span>
+                                </div>
+                                {% if form.recording.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.recording.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="form-group">
+                                {{ form.price.label(class="form-label") }}
+                                <div class="input-group">
+                                    {{ form.price(class="form-control") }}
+                                    <span class="input-group-text">₽</span>
+                                </div>
+                                {% if form.price.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.price.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-save me-2"></i>Сохранить жесткий диск
+                        </button>
+                        <a href="{{ url_for('admin.hard_drives') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>Отмена
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Советы по заполнению</h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info mb-0">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Рекомендации:</h6>
+                    <ul class="mb-0">
+                        <li>Указывайте точное название модели жесткого диска</li>
+                        <li>Укажите объем памяти в ГБ (например: 1000 для 1 ТБ)</li>
+                        <li>Для SSD-дисков скорость чтения и записи может составлять до 3500 МБ/с</li>
+                        <li>Для HDD-дисков скорость обычно ниже, порядка 100-200 МБ/с</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

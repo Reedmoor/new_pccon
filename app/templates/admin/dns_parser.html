@@ -1,0 +1,204 @@
+{% extends "admin/components/base.html" %}
+
+{% block title %}DNS Parser Status{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>DNS Parser Status</h1>
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="m-0">Current Status</h5>
+                        <button type="button" class="btn btn-sm btn-primary" id="refreshStatus">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="statusContainer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <p>
+                                        <strong>Running:</strong>
+                                        <span class="badge {% if status.is_running %}bg-success{% else %}bg-secondary{% endif %}">
+                                            {{ 'Yes' if status.is_running else 'No' }}
+                                        </span>
+                                    </p>
+                                    {% if status.start_time %}
+                                    <p><strong>Started at:</strong> {{ status.start_time_formatted }}</p>
+                                    {% endif %}
+                                    {% if status.last_updated %}
+                                    <p><strong>Last updated:</strong> {{ status.last_updated_formatted }} ({{ status.last_updated_human }})</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Products parsed:</strong> {{ status.products_parsed or 0 }}</p>
+                                <p><strong>Categories parsed:</strong> {{ status.categories_parsed or 0 }} / {{ status.total_categories or 0 }}</p>
+                                {% if status.last_product %}
+                                <p><strong>Last product:</strong> <a href="{{ status.last_product }}" target="_blank">{{ status.last_product }}</a></p>
+                                {% endif %}
+                                {% if status.error %}
+                                <div class="alert alert-danger">
+                                    <strong>Error:</strong> {{ status.error }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="m-0">Start Parser</h5>
+                </div>
+                <div class="card-body">
+                    <form id="parserForm">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="limit">Products per category:</label>
+                                    <input type="number" class="form-control" id="limit" name="limit" min="1" max="100" value="5">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="interval">Update interval (hours):</label>
+                                    <input type="number" class="form-control" id="interval" name="interval" min="1" max="72" value="24">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check mt-4">
+                                    <input type="checkbox" class="form-check-input" id="continuous" name="continuous">
+                                    <label class="form-check-label" for="continuous">Run continuously</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary" id="startParser" {% if status.is_running %}disabled{% endif %}>
+                                <i class="fas fa-play"></i> Start Parser
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="m-0">View Parsed Data</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('admin.scrape') }}" class="btn btn-info">
+                        <i class="fas fa-table"></i> View Parsed Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Refresh status
+        $('#refreshStatus').click(function() {
+            $.get('{{ url_for("admin.get_dns_parser_status") }}', function(data) {
+                updateStatusDisplay(data);
+            });
+        });
+
+        // Start parser
+        $('#parserForm').submit(function(e) {
+            e.preventDefault();
+            $('#startParser').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Starting...');
+            
+            $.post('{{ url_for("admin.start_dns_parser") }}', $(this).serialize(), function(data) {
+                if (data.success) {
+                    toastr.success('Parser started successfully');
+                    // Set a timer to refresh status
+                    setTimeout(refreshStatus, 2000);
+                } else {
+                    toastr.error('Error: ' + (data.error || 'Unknown error'));
+                    $('#startParser').prop('disabled', false).html('<i class="fas fa-play"></i> Start Parser');
+                }
+            }).fail(function(xhr) {
+                toastr.error('Error: ' + (xhr.responseJSON ? xhr.responseJSON.error : 'Server error'));
+                $('#startParser').prop('disabled', false).html('<i class="fas fa-play"></i> Start Parser');
+            });
+        });
+
+        // Function to update status display
+        function updateStatusDisplay(data) {
+            // Update running status
+            let runningBadge = data.is_running ? 
+                '<span class="badge bg-success">Yes</span>' : 
+                '<span class="badge bg-secondary">No</span>';
+            
+            let html = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <p><strong>Running:</strong> ${runningBadge}</p>`;
+            
+            if (data.start_time) {
+                // Format the timestamp for display
+                let startDate = new Date(data.start_time);
+                html += `<p><strong>Started at:</strong> ${startDate.toLocaleString()}</p>`;
+            }
+            
+            if (data.last_updated) {
+                html += `<p><strong>Last updated:</strong> ${data.last_updated_human || 'recently'}</p>`;
+            }
+            
+            html += `</div>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Products parsed:</strong> ${data.products_parsed || 0}</p>
+                        <p><strong>Categories parsed:</strong> ${data.categories_parsed || 0} / ${data.total_categories || 0}</p>`;
+            
+            if (data.last_product) {
+                html += `<p><strong>Last product:</strong> <a href="${data.last_product}" target="_blank">${data.last_product}</a></p>`;
+            }
+            
+            if (data.error) {
+                html += `<div class="alert alert-danger">
+                            <strong>Error:</strong> ${data.error}
+                        </div>`;
+            }
+            
+            html += `</div>
+                </div>`;
+            
+            $('#statusContainer').html(html);
+            
+            // Enable or disable start button based on running status
+            $('#startParser').prop('disabled', data.is_running);
+            if (data.is_running) {
+                $('#startParser').html('<i class="fas fa-spinner fa-spin"></i> Running...');
+            } else {
+                $('#startParser').html('<i class="fas fa-play"></i> Start Parser');
+            }
+        }
+
+        // Function to refresh status
+        function refreshStatus() {
+            $.get('{{ url_for("admin.get_dns_parser_status") }}', function(data) {
+                updateStatusDisplay(data);
+                
+                // If parser is still running, continue refreshing
+                if (data.is_running) {
+                    setTimeout(refreshStatus, 5000);  // Refresh every 5 seconds
+                }
+            });
+        }
+
+        // Initial refresh
+        refreshStatus();
+    });
+</script>
+{% endblock %} 

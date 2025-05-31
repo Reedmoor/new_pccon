@@ -1,0 +1,1172 @@
+{
+    "id": 2053094,
+    "url": "https://www.citilink.ru/product/blok-pitaniya-deepcool-atx-500w-pf500-v2-80-plus-white-20-4pin-apfc-12-2053094/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/bloki-pitaniya/",
+            "name": "Блоки питания"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/bloki-pitaniya/DEEPCOOL/",
+            "name": "DEEPCOOL"
+        }
+    ],
+    "name": "Блок питания DeepCool PF500 V2,  500Вт,  120мм,  черный, retail [r-pf500d-ha0b-wdeu]",
+    "article": "2053094",
+    "price": 3520,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/rqp0BDz0S0o7uWbTBSOtVJU8FoTl_5HDM1748r4RGTs/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/e235f7a4-5aa9-4cd8-b988-2fab3d7055f2.jpg",
+        "https://cdn.citilink.ru/L4WO0EVXJrLK1E5nZlO63jQOdW08GUs4DW9Q-rL8oww/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/85c2356c-07d4-499c-aed1-054426ea63e0.jpg",
+        "https://cdn.citilink.ru/ws39cZBxURutGWgCSYph5udagrI1kEpC5ZFBlqA30YM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/1587b77e-8f68-4ed2-a128-63e881c22d7e.jpg",
+        "https://cdn.citilink.ru/fDNfqdH30pTEpmK4RFDtpQnHIPYCVUWqOa4ydH54itQ/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/a7ac34b2-b9aa-49c9-8aa4-acef7366299e.jpg",
+        "https://cdn.citilink.ru/vF_mMB7cbQIWq93Jh1qCIOvMbYlp5v0ZwUf9J33cFGo/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/5c728d6e-8edd-4cce-99a4-a7700f4300a9.jpg",
+        "https://cdn.citilink.ru/tiRUriUKlT3-kulu4GwsnBWiSltjb6NiToPIGWjKuxk/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/cb196f14-5f8f-43b0-9345-d056544318c6.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Общие характеристики",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "DEEPCOOL"
+                },
+                {
+                    "name": "Модель",
+                    "value": "PF500 V2"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "ATX"
+                },
+                {
+                    "name": "Мощность",
+                    "value": "500"
+                },
+                {
+                    "name": "Активный PFC",
+                    "value": "есть"
+                },
+                {
+                    "name": "Производительность (КПД)",
+                    "value": "85"
+                },
+                {
+                    "name": "Сертифицирован в стандарте",
+                    "value": "80 PLUS WHITE"
+                },
+                {
+                    "name": "Наработка на отказ (MTBF)",
+                    "value": "100000"
+                },
+                {
+                    "name": "Минимальное входное напряжение",
+                    "value": "100"
+                },
+                {
+                    "name": "Максимальное входное напряжение",
+                    "value": "240"
+                },
+                {
+                    "name": "Цвет",
+                    "value": "черный"
+                }
+            ]
+        },
+        {
+            "name": "Разъемы подключения",
+            "properties": [
+                {
+                    "name": "Питание материнской платы",
+                    "value": "20+4 pin"
+                },
+                {
+                    "name": "Длина линий питания МП",
+                    "value": "550"
+                },
+                {
+                    "name": "Питание процессора",
+                    "value": "4+4 pin"
+                },
+                {
+                    "name": "Длина линий питания процессора",
+                    "value": "610"
+                },
+                {
+                    "name": "Питание видеокарты",
+                    "value": "2х(6+2) pin"
+                },
+                {
+                    "name": "Длина линий питания видеокарты",
+                    "value": "510"
+                },
+                {
+                    "name": "Разъемы SATA",
+                    "value": "6"
+                },
+                {
+                    "name": "Разъемы Peripheral (Molex)",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "name": "Защита",
+            "properties": [
+                {
+                    "name": "Защита от коротких замыканий (SCP)",
+                    "value": "есть"
+                },
+                {
+                    "name": "Защита от повышения напряжения (OVP)",
+                    "value": "есть"
+                },
+                {
+                    "name": "Другие функции защиты",
+                    "value": "OPP"
+                }
+            ]
+        },
+        {
+            "name": "Охлаждение",
+            "properties": [
+                {
+                    "name": "Размер вентилятора(ов)",
+                    "value": "120мм"
+                },
+                {
+                    "name": "Количество вентиляторов",
+                    "value": "один"
+                },
+                {
+                    "name": "Подшипник вентилятора(ов)",
+                    "value": "гидродинамический"
+                },
+                {
+                    "name": "Тип системы охлаждения",
+                    "value": "активная"
+                }
+            ]
+        },
+        {
+            "name": "Комплектация и размеры",
+            "properties": [
+                {
+                    "name": "Сетевой кабель",
+                    "value": "в комплекте"
+                },
+                {
+                    "name": "Тип поставки",
+                    "value": "Ret"
+                },
+                {
+                    "name": "Размеры (ШхВхГ)",
+                    "value": "150 х 86 х 140 мм"
+                }
+            ]
+        },
+        {
+            "name": "Сила тока",
+            "properties": [
+                {
+                    "name": "Ток по линии +3.3В",
+                    "value": "15"
+                },
+                {
+                    "name": "Ток по линии -12В",
+                    "value": "0.3"
+                },
+                {
+                    "name": "Ток по линии +5В",
+                    "value": "15"
+                },
+                {
+                    "name": "Ток по линии +12В",
+                    "value": "44"
+                },
+                {
+                    "name": "Ток по линии +5В Standby  ",
+                    "value": "2.5"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.263x0.115x0.183"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "1.81"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "36 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR097365_TS_055987763_263191171.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR097365_TS_055987769_1891399306.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR097366_TS_055987783_2125215393.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR097366_TS_055987784_1716557294.pdf",
+        "https://items-attachments.s1.citilink.ru/2053094/6729ed32ed22d.pdf"
+    ],
+    "rating": 4.3,
+    "reviews": 3
+{
+    "id": 1988981,
+    "url": "https://www.citilink.ru/product/korpus-atx-formula-air-power-g5-duo-midi-tower-bez-bp-chernyi-1988981/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/korpusa/",
+            "name": "Корпуса"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/korpusa/FORMULA/",
+            "name": "FORMULA"
+        }
+    ],
+    "name": "Корпус ATX Formula Air Power G5 DUO, Midi-Tower, без БП,  черный",
+    "article": "1988981",
+    "price": 4990,
+    "price_old": 6430,
+    "images": [
+        "https://cdn.citilink.ru/oTOaCZ-bIX697l3fjC3tbebeefWg-4i6quvNhDLBz1U/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/50a6f91a-0e43-4f36-b494-47e8bb0929c0.jpg",
+        "https://cdn.citilink.ru/HnaGUvMOf_yuEp-TCRRXxXT8J8J84UsYkGsIBxcND_w/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/8ee50369-b34b-4b9a-9ad6-b8968c1e1e03.jpg",
+        "https://cdn.citilink.ru/UwrdvQfa4r7yKjQHNHLsg-h1UeXcWJPAYnvi9TpiJGc/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/ca9e65d0-fccc-4726-aef1-5b02d2a43186.jpg",
+        "https://cdn.citilink.ru/LdAPX1_3gPhtu7dTX-LKj3L7-8bXlSx4mzjT91q8ANk/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/317d0c6b-5890-4ec7-86ee-a744674d8924.jpg",
+        "https://cdn.citilink.ru/eAJBrjUgeGm8emYUPgARA0wZnifjvkAw9mxoZQy2FiY/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/bf56bfeb-1b1e-47d8-b273-cb7ee7838d00.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Конфигурация корпуса",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "FORMULA"
+                },
+                {
+                    "name": "Модель",
+                    "value": "Air Power G5 DUO"
+                },
+                {
+                    "name": "Типоразмер",
+                    "value": "Midi-Tower"
+                },
+                {
+                    "name": "Количество слотов расширения",
+                    "value": "7"
+                },
+                {
+                    "name": "Для геймеров",
+                    "value": "да"
+                }
+            ]
+        },
+        {
+            "name": "Цвет, размеры, вес",
+            "properties": [
+                {
+                    "name": "Размеры корпуса ШхВхГ (внешние)",
+                    "value": "200 х 450 х 365 мм"
+                },
+                {
+                    "name": "Толщина стенок корпуса",
+                    "value": "0.5"
+                },
+                {
+                    "name": "Материал корпуса",
+                    "value": "сталь/стекло"
+                },
+                {
+                    "name": "Цвет корпуса",
+                    "value": "черный"
+                },
+                {
+                    "name": "Вес корпуса",
+                    "value": "4.5"
+                }
+            ]
+        },
+        {
+            "name": "Материнская плата",
+            "properties": [
+                {
+                    "name": "Форм-фактор совместимых материнских плат",
+                    "value": "ATX, mATX, mini-ITX"
+                }
+            ]
+        },
+        {
+            "name": "Накопители",
+            "properties": [
+                {
+                    "name": "Отсеки 2,5\" внутренние",
+                    "value": "2"
+                },
+                {
+                    "name": "Отсеки 3,5\" внутренние",
+                    "value": "2"
+                },
+                {
+                    "name": "Внутренняя корзина для HDD",
+                    "value": "съемная"
+                }
+            ]
+        },
+        {
+            "name": "Блок питания",
+            "properties": [
+                {
+                    "name": "Наличие блока питания",
+                    "value": "отсутствует"
+                },
+                {
+                    "name": "Расположение БП",
+                    "value": "нижнее"
+                },
+                {
+                    "name": "Форм-фактор БП",
+                    "value": "ATX"
+                }
+            ]
+        },
+        {
+            "name": "Интерфейсы и разъемы",
+            "properties": [
+                {
+                    "name": "Фронтальные разъемы USB 3.0",
+                    "value": "1"
+                },
+                {
+                    "name": "Фронтальные разъемы USB 3.1 Type-C",
+                    "value": "1"
+                },
+                {
+                    "name": "Фронтальные аудио-разъемы",
+                    "value": "есть"
+                }
+            ]
+        },
+        {
+            "name": "Система охлаждения",
+            "properties": [
+                {
+                    "name": "Вентиляторы на передней панели",
+                    "value": "2x160"
+                },
+                {
+                    "name": "Вентиляторы на задней панели",
+                    "value": "1х120 мм"
+                },
+                {
+                    "name": "Общее кол-во установленных вентиляторов",
+                    "value": "3"
+                },
+                {
+                    "name": "Возможность установки вентиляторов",
+                    "value": "3x120 мм или 2x140 мм - на передней 2x120 мм или 1х140 мм - на верхней"
+                },
+                {
+                    "name": "Максимальная высота кулера процессора",
+                    "value": "160"
+                },
+                {
+                    "name": "Возможность установки СВО 240 мм",
+                    "value": "ДА"
+                },
+                {
+                    "name": "Возможность установки СВО 280 мм",
+                    "value": "ДА"
+                },
+                {
+                    "name": "Возможность установки СВО 360 мм",
+                    "value": "ДА"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Боковая панель",
+                    "value": "прозрачная"
+                },
+                {
+                    "name": "Материал прозрачной боковой панели",
+                    "value": "закаленное стекло"
+                },
+                {
+                    "name": "Фронтальная панель",
+                    "value": "прозрачная"
+                },
+                {
+                    "name": "Материал прозрачной передней панели",
+                    "value": "металлическая сетка"
+                },
+                {
+                    "name": "Максимальная длина видеокарты",
+                    "value": "327"
+                },
+                {
+                    "name": "Пылевой фильтр",
+                    "value": "верхний, нижний"
+                },
+                {
+                    "name": "Подсветка корпуса",
+                    "value": "есть"
+                },
+                {
+                    "name": "Тип подсветки",
+                    "value": "RGB"
+                },
+                {
+                    "name": "Особенности",
+                    "value": "; передняя панель fastscrew"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.5x0.264x0.433"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "4.2"
+                }
+            ]
+        },
+        {
+            "name": "Страна производства",
+            "properties": [
+                {
+                    "name": "Страна производства",
+                    "value": "Китай"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR096443_TS_056370036_859485654.pdf"
+    ],
+    "rating": 4.7,
+    "reviews": 3
+}
+{
+    "id": 1907564,
+    "url": "https://www.citilink.ru/product/materinskaya-plata-msi-pro-z790-p-wifi-lga-1700-intel-z790-atx-ret-1907564/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/materinskie-platy/",
+            "name": "Материнские платы"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/materinskie-platy/MSI/",
+            "name": "MSI"
+        }
+    ],
+    "name": "Материнская плата MSI PRO Z790-P WIFI, LGA 1700, Intel Z790, ATX, Ret",
+    "article": "1907564",
+    "price": null,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/s4YUk2HS-Yr85FLdF2gd5jgguLDghvl-hYDT1eJ7Y0I/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/94594fda-207d-49d1-893a-50098d2cefad.jpg",
+        "https://cdn.citilink.ru/3lPtuVp3vVKpKd5IQslagK5mbFM4f7-8RhU9OqLXfHg/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/6efdbac8-d517-4b14-9a46-4ee1b22e2629.jpg",
+        "https://cdn.citilink.ru/AQXejKl-P7AQpmEt0ORSVhExqim5S0o6EnflpnK4b6M/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/dfb3a7c8-ac3a-4b59-927e-0915a09c1a79.jpg",
+        "https://cdn.citilink.ru/5oScCryiEKb01H4_nPove5vLQHW6rK21SInNtmhCqU4/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/3aaaecaa-61d0-4563-bda7-310a64f767f0.jpg",
+        "https://cdn.citilink.ru/jY_ilgNjWbIJ4u1gN6h82pAfzEdJZMfJHmxyUfTC_iA/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/83851d87-2c96-40cc-a12c-b7b7063e6736.jpg",
+        "https://cdn.citilink.ru/AnDt-vxJf7ul8gI213tRnvPfe-twBN9jRvZGrNTq4ps/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/6605631c-5b2a-4dd4-a3a0-ed55fc7ead1e.jpg",
+        "https://cdn.citilink.ru/CIB77NqvH5oB3JIsyYF24FADRldplfeW3jf-EFBpYwo/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/6ee9eee7-c47b-4650-a9af-7d007e328536.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "MSI"
+                },
+                {
+                    "name": "Модель",
+                    "value": "PRO Z790-P WIFI"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "ATX"
+                },
+                {
+                    "name": "Тип поставки",
+                    "value": "Ret"
+                },
+                {
+                    "name": "BIOS",
+                    "value": "AMI"
+                },
+                {
+                    "name": "Разъем питания материнской платы",
+                    "value": "24 pin"
+                }
+            ]
+        },
+        {
+            "name": "Процессор и чипсет",
+            "properties": [
+                {
+                    "name": "Сокет",
+                    "value": "LGA 1700"
+                },
+                {
+                    "name": "Поколение поддерживаемых процессоров",
+                    "value": "12, 13, 14"
+                },
+                {
+                    "name": "Поддерживаемые процессоры",
+                    "value": "совместимость уточняйте на сайте производителя"
+                },
+                {
+                    "name": "Чипсет",
+                    "value": "Intel Z790"
+                },
+                {
+                    "name": "Разъем питания процессора",
+                    "value": "8 pin + 8 pin"
+                }
+            ]
+        },
+        {
+            "name": "Оперативная память",
+            "properties": [
+                {
+                    "name": "Тип памяти",
+                    "value": "DDR5"
+                },
+                {
+                    "name": "Количество слотов памяти",
+                    "value": "4"
+                },
+                {
+                    "name": "Форм-фактор поддерживаемой памяти",
+                    "value": "DIMM"
+                },
+                {
+                    "name": "Частотная спецификация памяти",
+                    "value": "5600"
+                },
+                {
+                    "name": "Поддержка частот оперативной памяти",
+                    "value": "7000+(OC) / 6800(OC) / 6600(OC) / 6400(OC) / 6200(OC) / 6000(OC) / 5800(OC) / 5600 / 5400 / 5200 / 5000 / 4800 МГц"
+                },
+                {
+                    "name": "Поддерживаемые модули памяти",
+                    "value": "совместимость уточняйте на сайте производителя"
+                },
+                {
+                    "name": "Максимальный объем оперативной памяти",
+                    "value": "192"
+                },
+                {
+                    "name": "Режим работы оперативной памяти",
+                    "value": "двухканальный"
+                }
+            ]
+        },
+        {
+            "name": "Слоты расширения",
+            "properties": [
+                {
+                    "name": "Слотов PCI-E x1",
+                    "value": "1"
+                },
+                {
+                    "name": "Слотов PCI-E 3.0 x16",
+                    "value": "1"
+                },
+                {
+                    "name": "Слотов PCI-E 4.0 x16",
+                    "value": "1"
+                },
+                {
+                    "name": "Слотов PCI-E 5.0 x16",
+                    "value": "1"
+                },
+                {
+                    "name": "Всего слотов PCI-E",
+                    "value": "4"
+                }
+            ]
+        },
+        {
+            "name": "Дисковые контроллеры",
+            "properties": [
+                {
+                    "name": "Поддерживаемые диски и накопители",
+                    "value": "совместимость уточняйте на сайте производителя"
+                },
+                {
+                    "name": "Разъемов M.2",
+                    "value": "4"
+                },
+                {
+                    "name": "Поддержка NVMe",
+                    "value": "ДА"
+                },
+                {
+                    "name": "M2 2280 с интерфейсом PCI-E 4.0 х4",
+                    "value": "2"
+                },
+                {
+                    "name": "M2 2280 с интерфейсом PCI-E 4.0 х4 и SATAIII",
+                    "value": "1"
+                },
+                {
+                    "name": "M2 22110 с интерфейсом PCI-E 4.0 х4",
+                    "value": "1"
+                },
+                {
+                    "name": "Разъем SATA",
+                    "value": "SATA 3"
+                },
+                {
+                    "name": "Количество разъемов SATA",
+                    "value": "6"
+                },
+                {
+                    "name": "Режим работы SATA RAID",
+                    "value": "0, 1, 5, 10"
+                }
+            ]
+        },
+        {
+            "name": "Разъемы на задней панели",
+            "properties": [
+                {
+                    "name": "Разъем PS/2",
+                    "value": "1 шт. (клавиатура или мышь)"
+                },
+                {
+                    "name": "Кол-во внешних USB 2.0",
+                    "value": "4"
+                },
+                {
+                    "name": "Кол-во внешних USB 3.0",
+                    "value": "2"
+                },
+                {
+                    "name": "Кол-во внешних USB 3.1",
+                    "value": "1"
+                },
+                {
+                    "name": "Кол-во внешних USB 3.2 (Type-C)",
+                    "value": "1"
+                },
+                {
+                    "name": "Разъемов Display Port",
+                    "value": "1"
+                },
+                {
+                    "name": "Разъемов HDMI",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "name": "Разъемы для передней панели",
+            "properties": [
+                {
+                    "name": "Кол-во внутренних разъемов USB 2.0",
+                    "value": "4"
+                },
+                {
+                    "name": "Кол-во внутренних разъемов USB 3.0",
+                    "value": "4"
+                }
+            ]
+        },
+        {
+            "name": "Коммуникации и аудио",
+            "properties": [
+                {
+                    "name": "Сетевой интерфейс (Ethernet RJ-45)",
+                    "value": "2.5Gigabit"
+                },
+                {
+                    "name": "Сетевой контроллер",
+                    "value": "Intel"
+                },
+                {
+                    "name": "Встроенный Wi-Fi",
+                    "value": "есть"
+                },
+                {
+                    "name": "Стандарт Wi-Fi",
+                    "value": "802.11 a/b/g/n/ac/ax"
+                },
+                {
+                    "name": "Встроенный Bluetooth",
+                    "value": "есть"
+                },
+                {
+                    "name": "Стандарт Bluetooth",
+                    "value": "v5.3"
+                },
+                {
+                    "name": "Звук",
+                    "value": "8 каналов (7.1)"
+                },
+                {
+                    "name": "Аудио контроллер",
+                    "value": "Realtek ALC897"
+                }
+            ]
+        },
+        {
+            "name": "Охлаждение",
+            "properties": [
+                {
+                    "name": "Тип системы охлаждения",
+                    "value": "пассивное"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Разъем для подключения ленты RGB",
+                    "value": "ДА"
+                },
+                {
+                    "name": "Разъем для подключения ленты aRGB",
+                    "value": "ДА"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.35x0.273x0.067"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "1.65"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "36 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR090268_TS_049816069_4251201175.pdf"
+    ],
+    "rating": 5,
+    "reviews": 1
+}
+{
+    "id": 2001685,
+    "url": "https://www.citilink.ru/product/operativnaya-pamyat-kingston-fury-renegade-black-kf436c16rb2-8-ddr4-1x-2001685/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/moduli-pamyati/",
+            "name": "Оперативная память"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/moduli-pamyati/KINGSTON/",
+            "name": "KINGSTON"
+        }
+    ],
+    "name": "Оперативная память Kingston Fury Renegade Black KF436C16RB2/8 DDR4 -  1x 8ГБ 3600МГц, DIMM,  Ret",
+    "article": "2001685",
+    "price": 2390,
+    "price_old": 2590,
+    "images": [
+        "https://cdn.citilink.ru/izr1nz7t8exx6GEefMRM989-vtAwDQhX3NZdj9l5TXI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/b03d90f4-fd9f-4f32-a80c-dbf51cc0e28b.jpg",
+        "https://cdn.citilink.ru/hyXYTONdEVwtIPO9gG55Y0pWflQYeprgbsd3S9iJXPI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/97b6d5ed-2168-41cd-8591-cc4fbcafa046.jpg",
+        "https://cdn.citilink.ru/H9GWf17a-dsf4AUnVrWBO-3absaVL1Iq2XETyA2jtkg/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/4f436ca1-1b83-4dd4-a5d6-f800e93cfbe2.jpg",
+        "https://cdn.citilink.ru/pYifGZGZIRGY5ilTD8RF9nNBX8W1NB1yMC2GW9cPmg0/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/23135ce8-5ed7-44c3-ac51-f36edc8a0abc.jpg",
+        "https://cdn.citilink.ru/6RTv83p-5J9IPrVna4JcVXjNlgvRAs4Ktjs5CqGgKzs/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/2ee25070-8626-428b-bc1e-1f8c5da6afa7.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Общие характеристики",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "KINGSTON"
+                },
+                {
+                    "name": "Модель",
+                    "value": "KF436C16RB2/8"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "DIMM"
+                },
+                {
+                    "name": "Обозначение памяти",
+                    "value": "UDIMM"
+                },
+                {
+                    "name": "Тип памяти",
+                    "value": "DDR4"
+                },
+                {
+                    "name": "Объем одного модуля",
+                    "value": "8"
+                },
+                {
+                    "name": "Суммарный объем памяти всего комплекта",
+                    "value": "8"
+                },
+                {
+                    "name": "Количество контактов",
+                    "value": "288-pin"
+                },
+                {
+                    "name": "Показатель скорости",
+                    "value": "PC4-28800"
+                },
+                {
+                    "name": "Буферизация",
+                    "value": "unbuffered"
+                },
+                {
+                    "name": "Поддержка ECC",
+                    "value": "не поддерживается"
+                },
+                {
+                    "name": "Пропускная способность",
+                    "value": "28800"
+                },
+                {
+                    "name": "Технологии разгона памяти",
+                    "value": "XMP 2.0"
+                }
+            ]
+        },
+        {
+            "name": "Тестовые характеристики",
+            "properties": [
+                {
+                    "name": "Тактовая частота",
+                    "value": "3600"
+                },
+                {
+                    "name": "Напряжение",
+                    "value": "1.35В"
+                },
+                {
+                    "name": "Латентность (CAS)",
+                    "value": "CL16"
+                },
+                {
+                    "name": "Задержка",
+                    "value": "16-20-20"
+                },
+                {
+                    "name": "Row Precharge Delay (tRP)",
+                    "value": "20"
+                },
+                {
+                    "name": "RAS to CAS Delay (tRCD)",
+                    "value": "20"
+                }
+            ]
+        },
+        {
+            "name": "Характеристики SPD",
+            "properties": [
+                {
+                    "name": "Скорость (SPD)",
+                    "value": "2400МГц"
+                },
+                {
+                    "name": "Напряжение (SPD)",
+                    "value": "1.2В"
+                },
+                {
+                    "name": "Задержка (SPD)",
+                    "value": "17-17-17"
+                }
+            ]
+        },
+        {
+            "name": "Конструкция",
+            "properties": [
+                {
+                    "name": "Радиатор охлаждения",
+                    "value": "есть"
+                },
+                {
+                    "name": "Тип поставки",
+                    "value": "Ret"
+                },
+                {
+                    "name": "Подсветка",
+                    "value": "нет"
+                },
+                {
+                    "name": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.172x0.127x0.015"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.14"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "120 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR047400_TS_017552155_1596288998.jpg",
+        "https://items-certificates.s1.citilink.ru/CSR047400_TS_056421995_2832101735.jpg",
+        "https://items-certificates.s1.citilink.ru/CSR096443_TS_056370036_859485654.pdf"
+    ],
+    "rating": 0,
+    "reviews": 0
+}
+{
+    "id": 1839953,
+    "url": "https://www.citilink.ru/product/processor-amd-ryzen-5-3400ge-am4-oem-yd3400c6m4mfh-1839953/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/processory/",
+            "name": "Процессоры"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/processory/AMD/",
+            "name": "AMD"
+        }
+    ],
+    "name": "Процессор AMD Ryzen 5 3400GE, AM4,  OEM [yd3400c6m4mfh]",
+    "article": "1839953",
+    "price": null,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/jHFE7UM4p6qPCTqgDg1z59RIHT41kSfC3TMtx4aZUJw/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/66531f53-a433-44db-82af-e02e28e7430f.jpg",
+        "https://cdn.citilink.ru/LUA5VDGvCuypVot-LiCq2O878mpzu9iLjBbEPKfp_5A/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/eabaf2a3-c06d-4701-a5dd-8546e045b598.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "AMD"
+                },
+                {
+                    "name": "Модель",
+                    "value": "3400GE"
+                },
+                {
+                    "name": "Ядро",
+                    "value": "Picasso"
+                },
+                {
+                    "name": "Сокет",
+                    "value": "AM4"
+                },
+                {
+                    "name": "Количество ядер",
+                    "value": "4"
+                },
+                {
+                    "name": "Количество потоков",
+                    "value": "8"
+                },
+                {
+                    "name": "Частота",
+                    "value": "3.3 ГГц и 4 в режиме Turbo"
+                },
+                {
+                    "name": "L1 кэш",
+                    "value": "384 КБ"
+                },
+                {
+                    "name": "L2 кэш",
+                    "value": "2 МБ"
+                },
+                {
+                    "name": "L3 кэш",
+                    "value": "4"
+                },
+                {
+                    "name": "Разрядность вычислений",
+                    "value": "64 bit"
+                },
+                {
+                    "name": "Множитель",
+                    "value": "разблокированный"
+                },
+                {
+                    "name": "Техпроцесс",
+                    "value": "12"
+                },
+                {
+                    "name": "Тепловыделение",
+                    "value": "35"
+                },
+                {
+                    "name": "Максимальная температура",
+                    "value": "95"
+                },
+                {
+                    "name": "Тип поставки",
+                    "value": "OEM"
+                },
+                {
+                    "name": "Поколение процессоров",
+                    "value": "AMD Ryzen 3xxx"
+                },
+                {
+                    "name": "Год релиза",
+                    "value": "2019"
+                },
+                {
+                    "name": "Поддержка ОС",
+                    "value": "Windows 11/10, RHEL, Ubuntu"
+                }
+            ]
+        },
+        {
+            "name": "Спецификация памяти",
+            "properties": [
+                {
+                    "name": "Тип памяти",
+                    "value": "DDR4"
+                },
+                {
+                    "name": "Поддержка частот памяти",
+                    "value": "2933 МГц"
+                },
+                {
+                    "name": "Количество каналов памяти",
+                    "value": "2"
+                },
+                {
+                    "name": "Поддержка памяти ECC",
+                    "value": "не поддерживается"
+                }
+            ]
+        },
+        {
+            "name": "Спецификация PCI Express",
+            "properties": [
+                {
+                    "name": "Версия PCI Express",
+                    "value": "PCI Express 3.0"
+                }
+            ]
+        },
+        {
+            "name": "Встроенная графика",
+            "properties": [
+                {
+                    "name": "Встроенное графическое ядро",
+                    "value": "есть"
+                },
+                {
+                    "name": "Модель графического ядра",
+                    "value": "Radeon RX Vega 11"
+                },
+                {
+                    "name": "Частота графического ядра",
+                    "value": "1300 МГц"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.04x0.04x0.006"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.05"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR060450_TS_024746525_1653665626.jpg"
+    ],
+    "rating": 0,
+    "reviews": 0
+}

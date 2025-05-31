@@ -1,0 +1,443 @@
+{% extends 'base.html' %}
+
+{% block title %}Новая конфигурация - Конфигуратор ПК{% endblock %}
+
+{% block extra_css %}
+<style>
+    .component-card {
+        transition: all 0.3s ease;
+    }
+    .component-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .price-tag {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0,0,0,0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+    .filter-panel {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2><i class="fas fa-cogs me-2"></i>Создание новой конфигурации</h2>
+        <p class="text-muted">Выберите компоненты для вашего ПК</p>
+    </div>
+</div>
+
+<form method="POST" action="{{ url_for('config.new_config') }}">
+    {{ form.hidden_tag() }}
+    
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Основные настройки</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        {% if form.name.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Левая колонка с компонентами -->
+        <div class="col-lg-8">
+            <!-- Материнская плата -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Материнская плата</h5>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#motherboardFilters">
+                        <i class="fas fa-filter"></i> Фильтры
+                    </button>
+                </div>
+                
+                <div class="collapse filter-panel" id="motherboardFilters">
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Форм-фактор</label>
+                            <select class="form-select form-select-sm" id="motherboardFormFilter">
+                                <option value="">Все</option>
+                                <option value="ATX">ATX</option>
+                                <option value="Micro-ATX">Micro-ATX</option>
+                                <option value="Mini-ITX">Mini-ITX</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Тип памяти</label>
+                            <select class="form-select form-select-sm" id="motherboardMemoryFilter">
+                                <option value="">Все</option>
+                                <option value="DDR4">DDR4</option>
+                                <option value="DDR5">DDR5</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Цена до</label>
+                            <input type="range" class="form-range" id="motherboardPriceFilter" min="0" max="50000" step="1000" value="50000">
+                            <div class="text-end"><span id="motherboardPriceValue">50000</span> ₽</div>
+                        </div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button type="button" class="btn btn-primary btn-sm" id="applyMotherboardFilter">Применить</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="resetMotherboardFilter">Сбросить</button>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.motherboard_id.label(class="form-label") }}
+                        {{ form.motherboard_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Процессор -->
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Процессор</h5>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#cpuFilters">
+                        <i class="fas fa-filter"></i> Фильтры
+                    </button>
+                </div>
+                
+                <div class="collapse filter-panel" id="cpuFilters">
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Сокет</label>
+                            <select class="form-select form-select-sm" id="cpuSocketFilter">
+                                <option value="">Все</option>
+                                <option value="AM4">AM4</option>
+                                <option value="LGA1200">LGA1200</option>
+                                <option value="LGA1700">LGA1700</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Частота от</label>
+                            <input type="number" class="form-control form-control-sm" id="cpuFreqFilter" min="1" max="5" step="0.1" value="2">
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Цена до</label>
+                            <input type="range" class="form-range" id="cpuPriceFilter" min="0" max="50000" step="1000" value="50000">
+                            <div class="text-end"><span id="cpuPriceValue">50000</span> ₽</div>
+                        </div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button type="button" class="btn btn-primary btn-sm" id="applyCpuFilter">Применить</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="resetCpuFilter">Сбросить</button>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.cpu_id.label(class="form-label") }}
+                        {{ form.cpu_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Остальные компоненты (сокращённый вид для примера) -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Видеокарта</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.gpu_id.label(class="form-label") }}
+                        {{ form.gpu_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Оперативная память</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.ram_id.label(class="form-label") }}
+                        {{ form.ram_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-hdd me-2"></i>Жёсткий диск</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.hdd_id.label(class="form-label") }}
+                        {{ form.hdd_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая колонка с конфигурацией и итогами -->
+        <div class="col-lg-4">
+            <div class="card mb-4 sticky-top" style="top: 20px; z-index: 999;">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Ваша конфигурация</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <div class="mb-3">
+                            <h6>Блок питания</h6>
+                            {{ form.supply_id(class="form-select form-select-sm") }}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>Кулер</h6>
+                            {{ form.cooler_id(class="form-select form-select-sm") }}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>Корпус</h6>
+                            {{ form.frame_id(class="form-select form-select-sm") }}
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h5 class="mb-3">Проверка совместимости</h5>
+                    <div id="compatibilityCheck" class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="mb-3">
+                        <h5>Итоговая стоимость</h5>
+                        <div class="text-end">
+                            <h3 id="totalPrice">0 ₽</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Фильтры материнской платы
+        $('#motherboardPriceFilter').on('input', function() {
+            $('#motherboardPriceValue').text($(this).val());
+        });
+        
+        // Фильтры процессора
+        $('#cpuPriceFilter').on('input', function() {
+            $('#cpuPriceValue').text($(this).val());
+        });
+        
+        // Обработчик для кнопки фильтра материнских плат
+        $('#applyMotherboardFilter').on('click', function() {
+            const formFactor = $('#motherboardFormFilter').val();
+            const memoryType = $('#motherboardMemoryFilter').val();
+            const maxPrice = $('#motherboardPriceFilter').val();
+            
+            // Отправляем запрос на фильтрацию
+            filterComponents('motherboard', {
+                form_factor: formFactor,
+                memory_type: memoryType,
+                max_price: maxPrice
+            });
+        });
+        
+        // Сброс фильтров материнских плат
+        $('#resetMotherboardFilter').on('click', function() {
+            $('#motherboardFormFilter').val('');
+            $('#motherboardMemoryFilter').val('');
+            $('#motherboardPriceFilter').val(50000);
+            $('#motherboardPriceValue').text('50000');
+            
+            // Обновляем список
+            resetComponentSelect('motherboard');
+        });
+        
+        // Обработчик для кнопки фильтра процессоров
+        $('#applyCpuFilter').on('click', function() {
+            const socket = $('#cpuSocketFilter').val();
+            const minFreq = $('#cpuFreqFilter').val();
+            const maxPrice = $('#cpuPriceFilter').val();
+            
+            // Отправляем запрос на фильтрацию
+            filterComponents('processor', {
+                socket: socket,
+                min_frequency: minFreq,
+                max_price: maxPrice
+            });
+        });
+        
+        // Сброс фильтров процессоров
+        $('#resetCpuFilter').on('click', function() {
+            $('#cpuSocketFilter').val('');
+            $('#cpuFreqFilter').val(2);
+            $('#cpuPriceFilter').val(50000);
+            $('#cpuPriceValue').text('50000');
+            
+            // Обновляем список
+            resetComponentSelect('processor');
+        });
+        
+        // Функция фильтрации компонентов
+        function filterComponents(productType, filterParams) {
+            // Добавляем тип продукта к параметрам
+            filterParams.product_type = productType;
+            
+            // Отправляем AJAX-запрос на сервер
+            $.ajax({
+                url: "{{ url_for('config.filter_components') }}",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(filterParams),
+                success: function(response) {
+                    // Находим нужный select элемент
+                    let selectElement;
+                    switch (productType) {
+                        case 'motherboard':
+                            selectElement = $('#motherboard_id');
+                            break;
+                        case 'processor':
+                            selectElement = $('#cpu_id');
+                            break;
+                        // Добавьте другие типы по мере необходимости
+                    }
+                    
+                    if (selectElement) {
+                        // Сохраняем первый вариант (Выберите...)
+                        const firstOption = selectElement.find('option:first');
+                        
+                        // Очищаем текущие варианты
+                        selectElement.empty();
+                        
+                        // Возвращаем первый вариант
+                        selectElement.append(firstOption);
+                        
+                        // Добавляем отфильтрованные варианты
+                        response.components.forEach(function(component) {
+                            // Форматируем цену с разделителем тысяч
+                            const formattedPrice = new Intl.NumberFormat('ru-RU').format(component.price);
+                            
+                            selectElement.append(
+                                $('<option></option>')
+                                    .attr('value', component.id)
+                                    .text(component.name + ' (' + formattedPrice + ' ₽)')
+                            );
+                        });
+                        
+                        // Обновляем информацию о конфигурации
+                        updateConfigInfo();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Ошибка при фильтрации компонентов:", error);
+                    alert("Произошла ошибка при фильтрации компонентов. Пожалуйста, попробуйте снова.");
+                }
+            });
+        }
+        
+        // Функция сброса компонента
+        function resetComponentSelect(productType) {
+            // Отправляем запрос на получение всех компонентов данного типа
+            filterComponents(productType, {});
+        }
+        
+        // Функция обновления информации о конфигурации (цена и совместимость)
+        function updateConfigInfo() {
+            // Собираем данные о выбранных компонентах
+            const configData = {
+                motherboard_id: parseInt($('#motherboard_id').val()) || 0,
+                supply_id: parseInt($('#supply_id').val()) || 0,
+                cpu_id: parseInt($('#cpu_id').val()) || 0,
+                gpu_id: parseInt($('#gpu_id').val()) || 0,
+                cooler_id: parseInt($('#cooler_id').val()) || 0,
+                ram_id: parseInt($('#ram_id').val()) || 0,
+                hdd_id: parseInt($('#hdd_id').val()) || 0,
+                frame_id: parseInt($('#frame_id').val()) || 0
+            };
+            
+            // Отправляем AJAX-запрос на сервер
+            $.ajax({
+                url: "{{ url_for('config.get_config_info') }}",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(configData),
+                success: function(response) {
+                    // Форматируем общую цену с разделителем тысяч
+                    const formattedPrice = new Intl.NumberFormat('ru-RU').format(response.total_price);
+                    
+                    // Обновляем информацию о цене
+                    $('#totalPrice').text(formattedPrice + ' ₽');
+                    
+                    // Обновляем информацию о совместимости
+                    const compatDiv = $('#compatibilityCheck');
+                    
+                    if (response.compatible) {
+                        compatDiv.removeClass('alert-info alert-danger').addClass('alert-success');
+                        compatDiv.html('<i class="fas fa-check-circle me-2"></i>Все компоненты совместимы');
+                    } else if (response.issues && response.issues.length > 0) {
+                        compatDiv.removeClass('alert-info alert-success').addClass('alert-danger');
+                        
+                        let issuesHtml = '<i class="fas fa-exclamation-triangle me-2"></i><strong>Обнаружены проблемы совместимости:</strong><ul class="mb-0 mt-2">';
+                        response.issues.forEach(issue => {
+                            issuesHtml += `<li>${issue}</li>`;
+                        });
+                        issuesHtml += '</ul>';
+                        
+                        compatDiv.html(issuesHtml);
+                    } else {
+                        compatDiv.removeClass('alert-success alert-danger').addClass('alert-info');
+                        compatDiv.html('<i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Ошибка при обновлении информации о конфигурации:", error);
+                    $('#compatibilityCheck')
+                        .removeClass('alert-info alert-success')
+                        .addClass('alert-danger')
+                        .html('<i class="fas fa-exclamation-circle me-2"></i>Ошибка при проверке совместимости');
+                }
+            });
+        }
+        
+        // Обработчики событий для выбора компонентов
+        $('form select').change(function() {
+            updateConfigInfo();
+        });
+        
+        // Инициализация при загрузке страницы
+        updateConfigInfo();
+    });
+</script>
+{% endblock %} 

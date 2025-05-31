@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои конфигурации - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2><i class="fas fa-list me-2"></i>Мои конфигурации</h2>
+            <p class="text-muted">Список ваших сохраненных конфигураций ПК</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="badge bg-primary">Всего: {{ configs|length }}</span>
+                </div>
+                <a href="{{ url_for('config.new_config') }}" class="btn btn-success">
+                    <i class="fas fa-plus-circle me-2"></i>Создать новую конфигурацию
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if configs %}
+            {% for config in configs %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">{{ config.name }}</h5>
+                            <span class="badge bg-success">{{ config.total_price() }} ₽</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Процессор:</span>
+                                    <span class="fw-bold">{{ config.processor.name if config.processor else 'Не выбран' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Видеокарта:</span>
+                                    <span class="fw-bold">{{ config.graphics_card.name if config.graphics_card else 'Не выбрана' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Материнская плата:</span>
+                                    <span class="fw-bold">{{ config.motherboard.name if config.motherboard else 'Не выбрана' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Оперативная память:</span>
+                                    <span class="fw-bold">{{ config.ram.name if config.ram else 'Не выбрана' }}</span>
+                                </div>
+                            </div>
+                            
+                            {% set issues = config.compatibility_check() %}
+                            {% if issues %}
+                                <div class="alert alert-warning mt-3 mb-0">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>Обнаружены проблемы совместимости!
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <i class="fas fa-check-circle me-2"></i>Все компоненты совместимы
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between">
+                            <a href="{{ url_for('config.view_config', config_id=config.conf_id) }}" class="btn btn-primary">
+                                <i class="fas fa-eye me-1"></i>Просмотр
+                            </a>
+                            <div>
+                                <a href="{{ url_for('config.edit_config', config_id=config.conf_id) }}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-edit me-1"></i>Редактировать
+                                </a>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ config.conf_id }}">
+                                    <i class="fas fa-trash me-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Модальное окно удаления -->
+                    <div class="modal fade" id="deleteModal{{ config.conf_id }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Удаление конфигурации</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Вы уверены, что хотите удалить конфигурацию "<strong>{{ config.name }}</strong>"?</p>
+                                    <p class="text-danger"><small>Это действие невозможно отменить.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                    <form action="{{ url_for('config.delete_config', config_id=config.conf_id) }}" method="POST">
+                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-12">
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>У вас пока нет сохраненных конфигураций
+                    <div class="mt-3">
+                        <a href="{{ url_for('config.new_config') }}" class="btn btn-primary">
+                            <i class="fas fa-plus-circle me-2"></i>Создать первую конфигурацию
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,58 @@
+{% extends 'admin/layout.html' %}
+
+{% block admin_title %}Импорт данных{% endblock %}
+
+{% block admin_header %}Импорт данных{% endblock %}
+
+{% block admin_description %}Инструменты для импорта данных из внешних источников и управления базой данных.{% endblock %}
+
+{% block admin_content %}
+<div class="row">
+    
+    
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-file-import me-1"></i>
+                Импорт продуктов
+            </div>
+            <div class="card-body">
+                <p>Импорт продуктов из JSON файлов с данными из Citilink и DNS.</p>
+                <p>Эта операция стандартизирует характеристики продуктов и добавит их в базу данных.</p>
+                <form action="{{ url_for('admin.run_import') }}" method="post">
+                    <input type="hidden" name="import_type" value="import_products">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload me-1"></i>
+                        Импортировать продукты
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-info-circle me-1"></i>
+        Информация о процессе миграции
+    </div>
+    <div class="card-body">
+        <h5>Процесс миграции на унифицированную модель продуктов</h5>
+        <p>Мы перешли с нескольких таблиц для разных компонентов на единую модель продуктов. Вот основные преимущества:</p>
+        <ul>
+            <li><strong>Гибкость</strong> - хранение любого типа компонента в одной таблице</li>
+            <li><strong>Стандартизация</strong> - все характеристики в едином формате</li>
+            <li><strong>Расширяемость</strong> - легко добавлять новые типы продуктов</li>
+            <li><strong>Независимость от поставщиков</strong> - продукты из разных источников в одной таблице</li>
+        </ul>
+        
+        <h5 class="mt-4">Процесс импорта данных</h5>
+        <ol>
+            <li>Извлечение данных из JSON файлов от поставщиков (Citilink, DNS)</li>
+            <li>Определение типа продукта на основе категорий</li>
+            <li>Стандартизация характеристик с использованием словарей соответствия</li>
+            <li>Сохранение в базу данных в виде унифицированных продуктов</li>
+        </ol>
+    </div>
+</div>
+{% endblock %} 
