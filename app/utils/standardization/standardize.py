@@ -248,7 +248,7 @@ def standardize_characteristics(source_data, vendor):
         product_type = determine_product_type(standardized["category"])
         standardized["product_type"] = product_type
         
-        # Process characteristics
+        # Process characteristics - store ALL characteristics
         characteristics = {}
         for prop_group in source_data.get("properties", []):
             group_name = prop_group.get("name")
@@ -256,15 +256,14 @@ def standardize_characteristics(source_data, vendor):
                 prop_name = prop.get("name")
                 prop_value = prop.get("value")
                 
-                # Map to standardized field if available
+                # Check if there's a standard mapping for this property
                 std_field = CHARACTERISTIC_MAPPING.get(prop_name)
                 if std_field:
+                    # Use the standardized field name instead of the original
                     characteristics[std_field] = extract_value(prop_value, std_field)
                 else:
-                    # Store in vendor-specific section if no mapping exists
-                    if group_name not in standardized["vendor_specific"]:
-                        standardized["vendor_specific"][group_name] = {}
-                    standardized["vendor_specific"][group_name][prop_name] = prop_value
+                    # Only store properties without standard mapping with original names
+                    characteristics[prop_name] = prop_value
         
     elif vendor.lower() == 'dns':
         standardized["id"] = source_data.get("id")
@@ -281,22 +280,21 @@ def standardize_characteristics(source_data, vendor):
         product_type = determine_product_type(standardized["category"])
         standardized["product_type"] = product_type
         
-        # Process characteristics
+        # Process characteristics - store ALL characteristics
         characteristics = {}
         for group_name, props in source_data.get("characteristics", {}).items():
             for prop in props:
-                prop_name = prop.get("title")
+                prop_title = prop.get("title")
                 prop_value = prop.get("value")
                 
-                # Map to standardized field if available
-                std_field = CHARACTERISTIC_MAPPING.get(prop_name)
+                # Check if there's a standard mapping for this property
+                std_field = CHARACTERISTIC_MAPPING.get(prop_title)
                 if std_field:
+                    # Use the standardized field name instead of the original
                     characteristics[std_field] = extract_value(prop_value, std_field)
                 else:
-                    # Store in vendor-specific section if no mapping exists
-                    if group_name not in standardized["vendor_specific"]:
-                        standardized["vendor_specific"][group_name] = {}
-                    standardized["vendor_specific"][group_name][prop_name] = prop_value
+                    # Only store properties without standard mapping with original names
+                    characteristics[prop_title] = prop_value
     
     standardized["characteristics"] = characteristics
     return standardized
