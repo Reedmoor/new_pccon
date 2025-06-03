@@ -310,43 +310,67 @@ class PriceComparison:
         
         # Log sample of products for debugging
         for i in range(min(3, len(self.citilink_products))):
-            logging.info(f"Citilink product {i+1}: {self.citilink_products[i].get('name', 'No name')}")
+            if self.citilink_products[i] is not None:
+                logging.info(f"Citilink product {i+1}: {self.citilink_products[i].get('name', 'No name')}")
         for i in range(min(3, len(self.dns_products))):
-            logging.info(f"DNS product {i+1}: {self.dns_products[i].get('name', 'No name')}")
+            if self.dns_products[i] is not None:
+                logging.info(f"DNS product {i+1}: {self.dns_products[i].get('name', 'No name')}")
         
         matched_count = 0
         
         # This is a simple comparison approach based on product name
         # A more sophisticated approach would use text similarity algorithms
         for citi_product in self.citilink_products:
+            if citi_product is None:
+                continue
+                
             # Use name field from Citilink products
-            citi_name = citi_product.get('name', '').lower()
+            citi_name = citi_product.get('name')
             if not citi_name:
                 continue
+                
+            citi_name = citi_name.lower()
                 
             # Skip products with very short names
             if len(citi_name) < 5:
                 continue
             
             # Extract key product identifiers
-            citi_model = self._extract_model_number(citi_name)
-            if citi_model:
-                logging.debug(f"Extracted model number from Citilink product: {citi_model}")
+            try:
+                citi_model = self._extract_model_number(citi_name)
+                if citi_model:
+                    logging.debug(f"Extracted model number from Citilink product: {citi_model}")
+            except Exception as e:
+                logging.error(f"Error extracting model number from Citilink product: {str(e)}")
+                continue
                 
             # For each Citilink product, find the best matching DNS product
             best_match = None
             best_score = 0
             
             for dns_product in self.dns_products:
-                dns_name = dns_product.get('name', '').lower()
+                if dns_product is None:
+                    continue
+                    
+                dns_name = dns_product.get('name')
                 if not dns_name:
                     continue
+                    
+                dns_name = dns_name.lower()
                 
                 # Extract key product identifiers from DNS product
-                dns_model = self._extract_model_number(dns_name)
+                try:
+                    dns_model = self._extract_model_number(dns_name)
+                except Exception as e:
+                    logging.error(f"Error extracting model number from DNS product: {str(e)}")
+                    continue
                 
                 # Calculate similarity score
-                similarity_score = self._calculate_similarity(citi_name, dns_name, citi_model, dns_model)
+                try:
+                    similarity_score = self._calculate_similarity(citi_name, dns_name, citi_model, dns_model)
+                except Exception as e:
+                    logging.error(f"Error calculating similarity score: {str(e)}")
+                    continue
                 
                 # Keep track of the best match
                 if similarity_score > best_score:
@@ -360,8 +384,12 @@ class PriceComparison:
                 logging.info(f"Found match: {citi_name} <==> {dns_name} (score: {best_score:.2f})")
                 
                 # Extract prices
-                citi_price = float(citi_product.get('price', 0) or 0)
-                dns_price = float(best_match.get('price_discounted', 0) or best_match.get('price_original', 0) or 0)
+                try:
+                    citi_price = float(citi_product.get('price', 0) or 0)
+                    dns_price = float(best_match.get('price_discounted', 0) or best_match.get('price_original', 0) or 0)
+                except (ValueError, TypeError) as e:
+                    logging.error(f"Error converting prices: {str(e)}")
+                    continue
                 
                 # Skip if either price is 0
                 if citi_price == 0 or dns_price == 0:
@@ -391,8 +419,12 @@ class PriceComparison:
                 display_name = citi_name
                 if citi_model and citi_model.lower() in citi_name.lower():
                     # If the model number is in the name, it's usually a good identifier
-                    cleaned_name = self._clean_product_name(citi_name)
-                    display_name = cleaned_name.title()
+                    try:
+                        cleaned_name = self._clean_product_name(citi_name)
+                        display_name = cleaned_name.title()
+                    except Exception as e:
+                        logging.error(f"Error cleaning product name: {str(e)}")
+                        display_name = citi_name.title()
                 
                 self.comparison_results.append({
                     'name': display_name,

@@ -12,6 +12,7 @@ import subprocess
 import sys
 from app.utils.DNS_parsing import main as dns_parser
 import logging
+import glob
 
 # Настройка логирования
 logger = logging.getLogger('admin_panel')
@@ -485,60 +486,128 @@ def scrape():
     dns_results = []
     citilink_results = []
     env_citilink_category = os.environ.get('CATEGORY', '')
+    dns_categories = []
+    citilink_categories = []
     
     try:
-        # Пробуем найти product_data.json для результатов DNS
-        dns_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'product_data.json')
-        if os.path.exists(dns_file_path):
-            with open(dns_file_path, 'r', encoding='utf-8') as f:
-                dns_results = json.load(f)
-                # Проверяем и обрабатываем формат данных
-                for item in dns_results:
-                    # Добавляем поля, если их нет
-                    if 'price_discounted' not in item and 'price_original' not in item:
-                        if 'price' in item:
-                            item['price_original'] = item['price']
-                            item['price_discounted'] = item['price']
-                    
-                    # Проверяем наличие категории
-                    if 'categories' not in item or not item['categories']:
-                        item['categories'] = []
+        # Пробуем найти категории DNS
+        dns_categories_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories')
+        if os.path.exists(dns_categories_dir):
+            category_files = glob.glob(os.path.join(dns_categories_dir, "product_data_*.json"))
+            for cat_file in category_files:
+                cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                try:
+                    with open(cat_file, 'r', encoding='utf-8') as f:
+                        cat_products = json.load(f)
+                        dns_categories.append({
+                            'name': cat_name,
+                            'count': len(cat_products),
+                            'file': cat_file
+                        })
+                        # Add these products to the overall results
+                        dns_results.extend(cat_products)
+                except Exception as e:
+                    logger.error(f'Ошибка чтения категории DNS {cat_name}: {str(e)}')
+        
+        # Если категории не найдены, пробуем найти основной файл product_data.json
+        if not dns_categories:
+            dns_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'product_data.json')
+            if os.path.exists(dns_file_path):
+                with open(dns_file_path, 'r', encoding='utf-8') as f:
+                    dns_results = json.load(f)
+                    # Проверяем и обрабатываем формат данных
+                    for item in dns_results:
+                        # Добавляем поля, если их нет
+                        if 'price_discounted' not in item and 'price_original' not in item:
+                            if 'price' in item:
+                                item['price_original'] = item['price']
+                                item['price_discounted'] = item['price']
                         
-                    # Логгируем загруженные данные
-                    logger.info(f"Загружен продукт DNS: {item.get('name')}")
-        else:
-            logger.warning(f"Файл результатов DNS парсера не найден по пути: {dns_file_path}")
+                        # Проверяем наличие категории
+                        if 'categories' not in item or not item['categories']:
+                            item['categories'] = []
+                            
+                        # Логгируем загруженные данные
+                        logger.info(f"Загружен продукт DNS: {item.get('name')}")
+            else:
+                logger.warning(f"Файл результатов DNS парсера не найден по пути: {dns_file_path}")
     except Exception as e:
         logger.error(f'Ошибка чтения результатов DNS парсера: {str(e)}')
         flash(f'Ошибка чтения результатов DNS парсера: {str(e)}', 'warning')
     
     try:
-        citilink_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'Товары.json')
-        if os.path.exists(citilink_file_path):
-            with open(citilink_file_path, 'r', encoding='utf-8') as f:
-                try:
-                    # Try to load the file directly
-                    citilink_results = json.load(f)
-                except json.JSONDecodeError:
-                    # If that fails, read content and then load
-                    f.seek(0)  # Go back to the beginning of the file
-                    content = f.read()
-                    if content.endswith(',\n]'):
-                        content = content.replace(',\n]', '\n]')
-                    citilink_results = json.loads(content)
-                
-                # Debugging information
-                logger.info(f"Загружено {len(citilink_results)} товаров Citilink")
-                if len(citilink_results) > 0:
-                    # Process each item to ensure consistent structure
-                    for item in citilink_results:
-                        # Make sure required fields exist
-                        if 'categories' not in item or not item['categories']:
-                            item['categories'] = []
+        # Проверяем сначала категории Citilink
+        citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
+        if os.path.exists(citilink_data_dir):
+            # Получаем список категорий
+            for category_dir in os.listdir(citilink_data_dir):
+                cat_dir_path = os.path.join(citilink_data_dir, category_dir)
+                if os.path.isdir(cat_dir_path):
+                    cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
+                    if os.path.exists(cat_products_file):
+                        try:
+                            with open(cat_products_file, 'r', encoding='utf-8') as f:
+                                cat_products = json.load(f)
+                                # Отображаемое имя категории
+                                display_name = category_dir
+                                if category_dir == 'videokarty':
+                                    display_name = 'Видеокарты'
+                                elif category_dir == 'processory':
+                                    display_name = 'Процессоры'
+                                elif category_dir == 'materinskie-platy':
+                                    display_name = 'Материнские платы'
+                                elif category_dir == 'bloki-pitaniya':
+                                    display_name = 'Блоки питания'
+                                elif category_dir == 'moduli-pamyati':
+                                    display_name = 'Модули памяти'
+                                elif category_dir == 'korpusa':
+                                    display_name = 'Корпуса'
+                                elif category_dir == 'ventilyatory-dlya-korpusa':
+                                    display_name = 'Вентиляторы для корпуса'
+                                elif category_dir == 'ssd-nakopiteli':
+                                    display_name = 'SSD накопители'
+                                elif category_dir == 'zhestkie-diski':
+                                    display_name = 'Жесткие диски'
+                                
+                                citilink_categories.append({
+                                    'name': display_name,
+                                    'count': len(cat_products),
+                                    'file': cat_products_file,
+                                    'slug': category_dir
+                                })
+                                # Добавляем продукты в общий список
+                                citilink_results.extend(cat_products)
+                        except Exception as e:
+                            logger.error(f'Ошибка чтения категории Citilink {category_dir}: {str(e)}')
+        
+        # Если категории не найдены, пробуем найти основной файл Товары.json
+        if not citilink_categories:
+            citilink_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'Товары.json')
+            if os.path.exists(citilink_file_path):
+                with open(citilink_file_path, 'r', encoding='utf-8') as f:
+                    try:
+                        # Try to load the file directly
+                        citilink_results = json.load(f)
+                    except json.JSONDecodeError:
+                        # If that fails, read content and then load
+                        f.seek(0)  # Go back to the beginning of the file
+                        content = f.read()
+                        if content.endswith(',\n]'):
+                            content = content.replace(',\n]', '\n]')
+                        citilink_results = json.loads(content)
                     
-                    logger.info(f"Пример первого товара: {citilink_results[0].get('name')} - {citilink_results[0].get('price')}")
-        else:
-            logger.warning(f"Файл результатов Citilink парсера не найден по пути: {citilink_file_path}")
+                    # Debugging information
+                    logger.info(f"Загружено {len(citilink_results)} товаров Citilink")
+                    if len(citilink_results) > 0:
+                        # Process each item to ensure consistent structure
+                        for item in citilink_results:
+                            # Make sure required fields exist
+                            if 'categories' not in item or not item['categories']:
+                                item['categories'] = []
+                        
+                        logger.info(f"Пример первого товара: {citilink_results[0].get('name')} - {citilink_results[0].get('price')}")
+            else:
+                logger.warning(f"Файл результатов Citilink парсера не найден по пути: {citilink_file_path}")
     except Exception as e:
         logger.error(f'Ошибка чтения результатов Citilink парсера: {str(e)}')
         flash(f'Ошибка чтения результатов Citilink парсера: {str(e)}', 'warning')
@@ -560,7 +629,9 @@ def scrape():
     return render_template('admin/scrape.html', 
                            dns_results=dns_results, 
                            citilink_results=citilink_results,
-                           env_citilink_category=env_citilink_category)
+                           env_citilink_category=env_citilink_category,
+                           dns_categories=dns_categories,
+                           citilink_categories=citilink_categories)
 
 @admin_bp.route('/run-dns-parser', methods=['POST'])
 @login_required
@@ -603,15 +674,47 @@ def run_dns_parser():
         # Change back to original directory
         os.chdir(current_dir)
         
-        # Read results
+        # Read results - check both main file and category files
         try:
-            items_file = os.path.join(dns_parser_dir, 'product_data.json')
-            if os.path.exists(items_file):
-                with open(items_file, 'r', encoding='utf-8') as f:
-                    results = json.load(f)
-                flash(f'Парсер DNS успешно выполнен. Получено {len(results)} товаров.', 'success')
+            # Check for category-specific files first
+            categories_dir = os.path.join(dns_parser_dir, 'categories')
+            total_products = 0
+            category_files_found = False
+            
+            if os.path.exists(categories_dir):
+                category_files = glob.glob(os.path.join(categories_dir, "product_data_*.json"))
+                if category_files:
+                    category_files_found = True
+                    for cat_file in category_files:
+                        cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                        with open(cat_file, 'r', encoding='utf-8') as f:
+                            cat_results = json.load(f)
+                            total_products += len(cat_results)
+                            logger.info(f"Категория {cat_name}: {len(cat_results)} товаров")
+            
+            # Check main file if needed
+            if not category_files_found:
+                items_file = os.path.join(dns_parser_dir, 'product_data.json')
+                if os.path.exists(items_file):
+                    with open(items_file, 'r', encoding='utf-8') as f:
+                        results = json.load(f)
+                        total_products = len(results)
+            
+            if total_products > 0:
+                flash(f'Парсер DNS успешно выполнен. Получено {total_products} товаров.', 'success')
+                
+                # Ensure products are imported after parsing
+                try:
+                    logger.info("Запуск импорта товаров после парсинга DNS")
+                    from app.utils.standardization.import_products import import_products
+                    import_products()
+                    logger.info("Импорт товаров успешно завершен")
+                    flash('Товары успешно импортированы в базу данных', 'success')
+                except Exception as import_error:
+                    logger.error(f"Ошибка при импорте товаров: {import_error}")
+                    flash(f'Возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
             else:
-                flash('Файл с результатами не найден. Проверьте парсер.', 'warning')
+                flash('Файлы с результатами не найдены или пусты. Проверьте парсер.', 'warning')
         except Exception as f:
             flash(f'Не удалось прочитать результаты парсера DNS: {str(f)}', 'warning')
     except Exception as e:
@@ -637,53 +740,68 @@ def run_citilink_parser():
         env_content = f"CATEGORY={category}"
         
         # Create a command to directly run the PowerShell command to create/update .env file
-        env_setup_cmd = f'Set-Content -Path "{os.path.join(citilink_parser_dir, ".env")}" -Value "{env_content}"'
+        env_setup_cmd = f'Set-Content -Path "{os.path.join(citilink_parser_dir, ".env")}" -Value "CATEGORY={category}"'
+        
+        # Run the PowerShell command to create/update .env file
         subprocess.run(['powershell', '-Command', env_setup_cmd], check=True)
-            
-        # Set environment variable in the app environment too
+        
+        # Set environment variable for the current process
         os.environ['CATEGORY'] = category
         
-        # Run the Citilink parser directly from the main.py file
-        main_py_path = os.path.join(citilink_parser_dir, 'main.py')
+        # Change to Citilink parser directory
+        current_dir = os.getcwd()
+        os.chdir(citilink_parser_dir)
         
-        # Execute the script directly with the correct Python interpreter
-        python_executable = sys.executable
+        # Add the Citilink parser directory to Python path
+        if citilink_parser_dir not in sys.path:
+            sys.path.insert(0, citilink_parser_dir)
+        
+        # Run the Citilink parser
         try:
-            # Change to the parser directory first
-            current_dir = os.getcwd()
-            os.chdir(citilink_parser_dir)
+            # Use the system Python interpreter
+            python_executable = sys.executable
             
-            # Run the parser
-            subprocess.run([python_executable, 'main.py'], check=True)
-            
-            # Return to original directory
-            os.chdir(current_dir)
+            flash(f'Парсер Citilink будет запущен для категории "{category}"', 'info')
+            # Run the script
+            subprocess.run([python_executable, 'main.py'], check=True, cwd=citilink_parser_dir)
         except Exception as e:
             flash(f'Парсер Citilink завершился с ошибкой: {str(e)}', 'warning')
         
+        # Change back to original directory
+        os.chdir(current_dir)
+        
         # Read results
         try:
-            # First check for category-specific file
-            category_products_file = os.path.join(citilink_parser_dir, 'data', category, 'Товары.json')
-            if os.path.exists(category_products_file):
-                with open(category_products_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    # Handle potential JSON format issues
-                    if content.endswith(',\n]'):
-                        content = content.replace(',\n]', '\n]')
-                    results = json.loads(content)
-                flash(f'Парсер Citilink успешно выполнен. Получено {len(results)} товаров в категории {category}.', 'success')
-            else:
-                # Fallback to main file
-                with open(os.path.join(citilink_parser_dir, 'Товары.json'), 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    # Handle potential JSON format issues
-                    if content.endswith(',\n]'):
-                        content = content.replace(',\n]', '\n]')
-                    results = json.loads(content)
+            items_file = os.path.join(citilink_parser_dir, 'Товары.json')
+            if os.path.exists(items_file):
+                with open(items_file, 'r', encoding='utf-8') as f:
+                    try:
+                        # Try to load the file directly
+                        results = json.load(f)
+                    except json.JSONDecodeError:
+                        # If that fails, read content and then load
+                        f.seek(0)  # Go back to the beginning of the file
+                        content = f.read()
+                        if content.endswith(',\n]'):
+                            content = content.replace(',\n]', '\n]')
+                        results = json.loads(content)
+                
                 flash(f'Парсер Citilink успешно выполнен. Получено {len(results)} товаров.', 'success')
+                
+                # Ensure products are imported after parsing
+                try:
+                    logger.info("Запуск импорта товаров после парсинга Citilink")
+                    from app.utils.standardization.import_products import import_products
+                    import_products()
+                    logger.info("Импорт товаров успешно завершен")
+                    flash('Товары успешно импортированы в базу данных', 'success')
+                except Exception as import_error:
+                    logger.error(f"Ошибка при импорте товаров: {import_error}")
+                    flash(f'Возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
+            else:
+                flash('Файл с результатами не найден. Проверьте парсер.', 'warning')
         except Exception as f:
-            flash(f'Ошибка при чтении результатов: {str(f)}', 'danger')
+            flash(f'Не удалось прочитать результаты парсера Citilink: {str(f)}', 'warning')
     except Exception as e:
         flash(f'Ошибка при запуске парсера Citilink: {str(e)}', 'danger')
     
@@ -758,6 +876,65 @@ def price_comparison():
             flash('Необходимо указать категорию товаров', 'danger')
     
     return render_template('admin/price_comparison.html', results=results, sort_by=sort_by)
+
+@admin_bp.route('/ram-comparison', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def ram_comparison():
+    """Сравнение оперативной памяти с использованием GigaChat"""
+    
+    mode = request.args.get('mode', 'interactive')
+    results = None
+    analysis = None
+    
+    if request.method == 'POST':
+        mode = request.form.get('mode', 'interactive')
+        
+        try:
+            from app.utils.ram_price_comparison import auto_mode, interactive_mode, compare_all_ram_mode
+            
+            # Запускаем соответствующий режим сравнения
+            if mode == 'auto':
+                # В автоматическом режиме находим похожие модели и сравниваем их
+                auto_mode()
+                flash('Автоматическое сравнение RAM выполнено успешно', 'success')
+            elif mode == 'compare_all':
+                # Сравниваем все данные о RAM
+                compare_all_ram_mode()
+                flash('Полное сравнение данных о RAM выполнено успешно', 'success')
+            else:
+                # Интерактивный режим (по умолчанию) - перенаправляем на терминал
+                flash('Для интерактивного режима запустите скрипт в терминале: python -m app.utils.ram_price_comparison --mode interactive', 'info')
+                
+            # Загружаем результаты анализа, если они есть
+            if mode == 'auto' or mode == 'interactive':
+                result_file = 'ram_comparison_result.json'
+                if os.path.exists(result_file):
+                    with open(result_file, 'r', encoding='utf-8') as f:
+                        results = json.load(f)
+                        analysis = results.get('analysis')
+                        if analysis:
+                            # Преобразуем текст анализа в HTML
+                            analysis = analysis.replace('\n', '<br>')
+                            analysis = analysis.replace('**', '<strong>').replace('**', '</strong>')
+                            results['analysis'] = analysis
+            elif mode == 'compare_all':
+                result_file = 'ram_comparison_all.json'
+                if os.path.exists(result_file):
+                    with open(result_file, 'r', encoding='utf-8') as f:
+                        results = json.load(f)
+                        analysis = results.get('analysis')
+                        if analysis:
+                            # Преобразуем текст анализа в HTML
+                            analysis = analysis.replace('\n', '<br>')
+                            analysis = analysis.replace('**', '<strong>').replace('**', '</strong>')
+                            results['analysis'] = analysis
+                
+        except Exception as e:
+            logger.error(f'Ошибка при сравнении RAM: {str(e)}')
+            flash(f'Ошибка при сравнении RAM: {str(e)}', 'danger')
+    
+    return render_template('admin/ram_comparison.html', mode=mode, results=results, analysis=analysis)
 
 @admin_bp.route('/dns-parser')
 @login_required
@@ -932,6 +1109,16 @@ def clear_dns_parser_results():
             with open(urls_file, 'w', encoding='utf-8') as f:
                 f.write("")
             logger.info("Файл с URL-адресами DNS парсера очищен")
+        
+        # Очищаем файлы категорий
+        categories_dir = os.path.join(dns_parser_dir, 'categories')
+        if os.path.exists(categories_dir):
+            category_files = glob.glob(os.path.join(categories_dir, "product_data_*.json"))
+            for cat_file in category_files:
+                cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                with open(cat_file, 'w', encoding='utf-8') as f:
+                    json.dump([], f, ensure_ascii=False, indent=4)
+                logger.info(f"Файл категории {cat_name} очищен")
             
         flash('Результаты DNS парсера успешно очищены', 'success')
     except Exception as e:
@@ -996,6 +1183,12 @@ def run_all_parsers():
         dns_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing')
         python_executable = sys.executable
         
+        # Создаем директорию для категорий DNS, если её нет
+        dns_categories_dir = os.path.join(dns_parser_dir, "categories")
+        if not os.path.exists(dns_categories_dir):
+            os.makedirs(dns_categories_dir)
+            logger.info(f"Создана директория для категорий DNS: {dns_categories_dir}")
+        
         # Устанавливаем переменные окружения
         os.environ['MAX_ITEMS'] = '20'  # По умолчанию парсим 20 товаров
         
@@ -1031,7 +1224,16 @@ def run_all_parsers():
             # Возвращаемся в исходную директорию между запусками
             os.chdir(current_dir)
         
-        flash('Все парсеры успешно выполнены', 'success')
+        # Убедимся, что товары импортированы после завершения всех парсеров
+        try:
+            logger.info("Запуск импорта товаров после завершения всех парсеров")
+            from app.utils.standardization.import_products import import_products
+            import_products()
+            logger.info("Импорт товаров успешно завершен")
+            flash('Все парсеры успешно выполнены и товары импортированы в базу данных', 'success')
+        except Exception as import_error:
+            logger.error(f"Ошибка при импорте товаров: {import_error}")
+            flash(f'Парсеры выполнены, но возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
     except Exception as e:
         logger.error(f"Ошибка при запуске парсеров: {e}")
         flash(f'Ошибка при запуске парсеров: {str(e)}', 'danger')

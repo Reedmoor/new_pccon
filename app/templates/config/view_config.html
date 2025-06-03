@@ -64,7 +64,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.motherboard %}
-                        <h5 class="mb-3">{{ config.motherboard.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.motherboard.product_name }}
+                            {% if config.motherboard.product_url %}
+                                <a href="{{ config.motherboard.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.motherboard.vendor }}">
+                                    {% if config.motherboard.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.motherboard.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.motherboard.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -110,7 +123,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.processor %}
-                        <h5 class="mb-3">{{ config.processor.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.processor.product_name }}
+                            {% if config.processor.product_url %}
+                                <a href="{{ config.processor.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.processor.vendor }}">
+                                    {% if config.processor.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.processor.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.processor.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -156,14 +182,27 @@
                 </div>
                 <div class="card-body">
                     {% if config.graphics_card %}
-                        <h5 class="mb-3">{{ config.graphics_card.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.graphics_card.product_name }}
+                            {% if config.graphics_card.product_url %}
+                                <a href="{{ config.graphics_card.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.graphics_card.vendor }}">
+                                    {% if config.graphics_card.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.graphics_card.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.graphics_card.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="text-muted">Объем памяти:</span>
-                                        <span class="fw-bold">{{ chars.get('memory', 'Н/Д') }} ГБ</span>
+                                        <span class="fw-bold">{{ chars.get('memory_type', 'Н/Д') }} ГБ</span>
                                     </li>
                                     <li>
                                         <span class="text-muted">Интерфейс:</span>
@@ -202,7 +241,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.ram %}
-                        <h5 class="mb-3">{{ config.ram.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.ram.product_name }}
+                            {% if config.ram.product_url %}
+                                <a href="{{ config.ram.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.ram.vendor }}">
+                                    {% if config.ram.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.ram.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.ram.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -248,7 +300,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.power_supply %}
-                        <h5 class="mb-3">{{ config.power_supply.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.power_supply.product_name }}
+                            {% if config.power_supply.product_url %}
+                                <a href="{{ config.power_supply.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.power_supply.vendor }}">
+                                    {% if config.power_supply.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.power_supply.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.power_supply.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -294,7 +359,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.hard_drive %}
-                        <h5 class="mb-3">{{ config.hard_drive.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.hard_drive.product_name }}
+                            {% if config.hard_drive.product_url %}
+                                <a href="{{ config.hard_drive.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.hard_drive.vendor }}">
+                                    {% if config.hard_drive.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.hard_drive.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.hard_drive.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -340,7 +418,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.case %}
-                        <h5 class="mb-3">{{ config.case.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.case.product_name }}
+                            {% if config.case.product_url %}
+                                <a href="{{ config.case.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.case.vendor }}">
+                                    {% if config.case.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.case.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.case.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">
@@ -386,7 +477,20 @@
                 </div>
                 <div class="card-body">
                     {% if config.cooler %}
-                        <h5 class="mb-3">{{ config.cooler.product_name }}</h5>
+                        <h5 class="mb-3">
+                            {{ config.cooler.product_name }}
+                            {% if config.cooler.product_url %}
+                                <a href="{{ config.cooler.product_url }}" target="_blank" class="ms-2" title="Перейти к товару в {{ config.cooler.vendor }}">
+                                    {% if config.cooler.vendor|lower == 'dns' %}
+                                        <img src="/static/img/dns_logo.png" alt="DNS" style="height: 20px; width: auto;">
+                                    {% elif config.cooler.vendor|lower == 'citilink' %}
+                                        <img src="/static/img/citilink_logo.png" alt="Citilink" style="height: 20px; width: auto;">
+                                    {% else %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </h5>
                         {% set chars = config.cooler.get_characteristics() %}
                         <div class="row">
                             <div class="col-md-6">

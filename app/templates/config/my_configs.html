@@ -37,19 +37,35 @@
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between">
                                     <span class="text-muted">Процессор:</span>
-                                    <span class="fw-bold">{{ config.processor.name if config.processor else 'Не выбран' }}</span>
+                                    <span class="fw-bold">{{ config.processor.product_name if config.processor else 'Не выбран' }}</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span class="text-muted">Видеокарта:</span>
-                                    <span class="fw-bold">{{ config.graphics_card.name if config.graphics_card else 'Не выбрана' }}</span>
+                                    <span class="fw-bold">{{ config.graphics_card.product_name if config.graphics_card else 'Не выбрана' }}</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span class="text-muted">Материнская плата:</span>
-                                    <span class="fw-bold">{{ config.motherboard.name if config.motherboard else 'Не выбрана' }}</span>
+                                    <span class="fw-bold">{{ config.motherboard.product_name if config.motherboard else 'Не выбрана' }}</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <span class="text-muted">Оперативная память:</span>
-                                    <span class="fw-bold">{{ config.ram.name if config.ram else 'Не выбрана' }}</span>
+                                    <span class="fw-bold">{{ config.ram.product_name if config.ram else 'Не выбрана' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Блок питания:</span>
+                                    <span class="fw-bold">{{ config.power_supply.product_name if config.power_supply else 'Не выбран' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Накопитель:</span>
+                                    <span class="fw-bold">{{ config.hard_drive.product_name if config.hard_drive else 'Не выбран' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Охлаждение:</span>
+                                    <span class="fw-bold">{{ config.cooler.product_name if config.cooler else 'Не выбрано' }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Корпус:</span>
+                                    <span class="fw-bold">{{ config.case.product_name if config.case else 'Не выбран' }}</span>
                                 </div>
                             </div>
                             
