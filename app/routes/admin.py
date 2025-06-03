@@ -178,84 +178,39 @@ def add_product():
             product_type=product_type
         )
         
-        # Set characteristics based on product type
-        characteristics = {}
+        # Process characteristics from the form
+        try:
+            additional_chars = request.form.get('additional_characteristics', '{}')
+            characteristics = json.loads(additional_chars)
+            
+            # Add brand and model if provided
+            if form.brand.data:
+                characteristics['brand'] = form.brand.data
+            if form.model.data:
+                characteristics['model'] = form.model.data
+                
+        except json.JSONDecodeError:
+            flash('Ошибка при обработке характеристик', 'danger')
+            characteristics = {}
+            if form.brand.data:
+                characteristics['brand'] = form.brand.data
+            if form.model.data:
+                characteristics['model'] = form.model.data
         
-        # Common characteristics for all products
-        if form.brand.data:
-            characteristics['brand'] = form.brand.data
-        if form.model.data:
-            characteristics['model'] = form.model.data
+        # Set images
+        if form.image_url.data:
+            product.set_images([form.image_url.data])
             
-        # Motherboard specific
-        if product_type == 'motherboard':
-            characteristics['socket'] = form.socket.data
-            characteristics['chipset'] = form.chipset.data
-            characteristics['form_factor'] = form.form_factor.data
-            characteristics['memory_type'] = form.memory_type.data
-            
-        # Processor specific
-        elif product_type == 'processor':
-            characteristics['socket'] = form.socket.data
-            characteristics['base_clock'] = form.base_clock.data
-            characteristics['boost_clock'] = form.boost_clock.data
-            characteristics['core_count'] = form.core_count.data
-            characteristics['thread_count'] = form.thread_count.data
-            characteristics['power_consumption'] = form.power_consumption.data
-            
-        # Graphics card specific
-        elif product_type == 'graphics_card':
-            characteristics['gpu_model'] = form.gpu_model.data
-            characteristics['memory_size'] = form.memory_size.data
-            characteristics['memory_type'] = form.memory_type.data
-            characteristics['base_clock'] = form.base_clock.data
-            characteristics['boost_clock'] = form.boost_clock.data
-            characteristics['power_consumption'] = form.power_consumption.data
-            characteristics['length'] = form.length.data
-            
-        # RAM specific
-        elif product_type == 'ram':
-            characteristics['memory_type'] = form.memory_type.data
-            characteristics['memory_size'] = form.memory_size.data
-            characteristics['memory_clock'] = form.memory_clock.data
-            characteristics['module_count'] = form.module_count.data
-            
-        # Storage specific
-        elif product_type == 'hard_drive':
-            characteristics['storage_capacity'] = form.storage_capacity.data
-            characteristics['interface'] = form.interface.data
-            characteristics['read_speed'] = form.read_speed.data
-            characteristics['write_speed'] = form.write_speed.data
-            
-        # Power supply specific
-        elif product_type == 'power_supply':
-            characteristics['wattage'] = form.wattage.data
-            characteristics['certification'] = form.certification.data
-            
-        # Cooler specific
-        elif product_type == 'cooler':
-            characteristics['cooling_type'] = form.cooling_type.data
-            characteristics['fan_count'] = form.fan_count.data
-            characteristics['power_consumption'] = form.power_consumption.data
-            
-        # Case specific
-        elif product_type == 'case':
-            characteristics['case_size'] = form.case_size.data
-            characteristics['supported_form_factors'] = form.supported_form_factors.data.split(',')
-            characteristics['max_gpu_length'] = form.max_gpu_length.data
-            characteristics['max_cooler_height'] = form.max_cooler_height.data
-            
-        # Set characteristics and other JSON fields
+        # Set characteristics
         product.set_characteristics(characteristics)
-        product.set_images([form.image_url.data] if form.image_url.data else [])
-        product.set_category([product_type])
         
+        # Add to database
         db.session.add(product)
         db.session.commit()
         
-        flash(f'Продукт успешно добавлен', 'success')
+        flash(f'Продукт "{product.product_name}" успешно добавлен!', 'success')
         return redirect(url_for('admin.products', type=product_type))
-        
+    
     return render_template('admin/products/add_product.html', form=form, product_type=product_type)
 
 @admin_bp.route('/products/edit/<int:product_id>', methods=['GET', 'POST'])
@@ -274,164 +229,38 @@ def edit_product(product_id):
         product.vendor = form.vendor.data
         product.product_url = form.product_url.data
         
-        # Update characteristics based on product type
-        updated_characteristics = {}
+        # Process characteristics from the form
+        try:
+            additional_chars = request.form.get('additional_characteristics', '{}')
+            updated_characteristics = json.loads(additional_chars)
+        except json.JSONDecodeError:
+            flash('Ошибка при обработке характеристик', 'danger')
+            updated_characteristics = {}
         
-        # Common characteristics for all products
-        if form.brand.data:
-            updated_characteristics['brand'] = form.brand.data
-        if form.model.data:
-            updated_characteristics['model'] = form.model.data
-            
-        # Motherboard specific
-        if product.product_type == 'motherboard':
-            updated_characteristics['socket'] = form.socket.data
-            updated_characteristics['chipset'] = form.chipset.data
-            updated_characteristics['form_factor'] = form.form_factor.data
-            updated_characteristics['memory_type'] = form.memory_type.data
-            
-        # Processor specific
-        elif product.product_type == 'processor':
-            updated_characteristics['socket'] = form.socket.data
-            updated_characteristics['base_clock'] = form.base_clock.data
-            updated_characteristics['boost_clock'] = form.boost_clock.data
-            updated_characteristics['core_count'] = form.core_count.data
-            updated_characteristics['thread_count'] = form.thread_count.data
-            updated_characteristics['power_consumption'] = form.power_consumption.data
-            
-        # Graphics card specific
-        elif product.product_type == 'graphics_card':
-            updated_characteristics['gpu_model'] = form.gpu_model.data
-            updated_characteristics['memory_size'] = form.memory_size.data
-            updated_characteristics['memory_type'] = form.memory_type.data
-            updated_characteristics['base_clock'] = form.base_clock.data
-            updated_characteristics['boost_clock'] = form.boost_clock.data
-            updated_characteristics['power_consumption'] = form.power_consumption.data
-            updated_characteristics['length'] = form.length.data
-            
-        # RAM specific
-        elif product.product_type == 'ram':
-            updated_characteristics['memory_type'] = form.memory_type.data
-            updated_characteristics['memory_size'] = form.memory_size.data
-            updated_characteristics['memory_clock'] = form.memory_clock.data
-            updated_characteristics['module_count'] = form.module_count.data
-            
-        # Storage specific
-        elif product.product_type == 'hard_drive':
-            updated_characteristics['storage_capacity'] = form.storage_capacity.data
-            updated_characteristics['interface'] = form.interface.data
-            updated_characteristics['read_speed'] = form.read_speed.data
-            updated_characteristics['write_speed'] = form.write_speed.data
-            
-        # Power supply specific
-        elif product.product_type == 'power_supply':
-            updated_characteristics['wattage'] = form.wattage.data
-            updated_characteristics['certification'] = form.certification.data
-            
-        # Cooler specific
-        elif product.product_type == 'cooler':
-            updated_characteristics['cooling_type'] = form.cooling_type.data
-            updated_characteristics['fan_count'] = form.fan_count.data
-            updated_characteristics['power_consumption'] = form.power_consumption.data
-            
-        # Case specific
-        elif product.product_type == 'case':
-            updated_characteristics['case_size'] = form.case_size.data
-            supported_form_factors = characteristics.get('supported_form_factors', [])
-            if isinstance(supported_form_factors, list):
-                updated_characteristics['supported_form_factors'] = ','.join(supported_form_factors)
-            else:
-                updated_characteristics['supported_form_factors'] = supported_form_factors
-            updated_characteristics['max_gpu_length'] = form.max_gpu_length.data
-            updated_characteristics['max_cooler_height'] = form.max_cooler_height.data
-        
-        # Update JSON fields
-        product.set_characteristics(updated_characteristics)
+        # Update images
         if form.image_url.data:
             product.set_images([form.image_url.data])
+            
+        # Update characteristics
+        product.set_characteristics(updated_characteristics)
         
+        # Update database
         db.session.commit()
-        flash('Продукт успешно обновлен', 'success')
+        
+        flash(f'Продукт "{product.product_name}" успешно обновлен!', 'success')
         return redirect(url_for('admin.products', type=product.product_type))
     
-    elif request.method == 'GET':
-        # Populate form with existing data
-        form.product_name.data = product.product_name
-        form.price_discounted.data = product.price_discounted
-        form.price_original.data = product.price_original
-        form.vendor.data = product.vendor
-        form.product_url.data = product.product_url
-        
-        # Set images
-        images = product.get_images()
-        if images:
-            form.image_url.data = images[0]
-        
-        # Set characteristics based on product type
-        form.brand.data = characteristics.get('brand', '')
-        form.model.data = characteristics.get('model', '')
-        
-        # Motherboard specific
-        if product.product_type == 'motherboard':
-            form.socket.data = characteristics.get('socket', '')
-            form.chipset.data = characteristics.get('chipset', '')
-            form.form_factor.data = characteristics.get('form_factor', '')
-            form.memory_type.data = characteristics.get('memory_type', '')
-            
-        # Processor specific
-        elif product.product_type == 'processor':
-            form.socket.data = characteristics.get('socket', '')
-            form.base_clock.data = characteristics.get('base_clock', '')
-            form.boost_clock.data = characteristics.get('boost_clock', '')
-            form.core_count.data = characteristics.get('core_count', '')
-            form.thread_count.data = characteristics.get('thread_count', '')
-            form.power_consumption.data = characteristics.get('power_consumption', '')
-            
-        # Graphics card specific
-        elif product.product_type == 'graphics_card':
-            form.gpu_model.data = characteristics.get('gpu_model', '')
-            form.memory_size.data = characteristics.get('memory_size', '')
-            form.memory_type.data = characteristics.get('memory_type', '')
-            form.base_clock.data = characteristics.get('base_clock', '')
-            form.boost_clock.data = characteristics.get('boost_clock', '')
-            form.power_consumption.data = characteristics.get('power_consumption', '')
-            form.length.data = characteristics.get('length', '')
-            
-        # RAM specific
-        elif product.product_type == 'ram':
-            form.memory_type.data = characteristics.get('memory_type', '')
-            form.memory_size.data = characteristics.get('memory_size', '')
-            form.memory_clock.data = characteristics.get('memory_clock', '')
-            form.module_count.data = characteristics.get('module_count', '')
-            
-        # Storage specific
-        elif product.product_type == 'hard_drive':
-            form.storage_capacity.data = characteristics.get('storage_capacity', '')
-            form.interface.data = characteristics.get('interface', '')
-            form.read_speed.data = characteristics.get('read_speed', '')
-            form.write_speed.data = characteristics.get('write_speed', '')
-            
-        # Power supply specific
-        elif product.product_type == 'power_supply':
-            form.wattage.data = characteristics.get('wattage', '')
-            form.certification.data = characteristics.get('certification', '')
-            
-        # Cooler specific
-        elif product.product_type == 'cooler':
-            form.cooling_type.data = characteristics.get('cooling_type', '')
-            form.fan_count.data = characteristics.get('fan_count', '')
-            form.power_consumption.data = characteristics.get('power_consumption', '')
-            
-        # Case specific
-        elif product.product_type == 'case':
-            form.case_size.data = characteristics.get('case_size', '')
-            supported_form_factors = characteristics.get('supported_form_factors', [])
-            if isinstance(supported_form_factors, list):
-                form.supported_form_factors.data = ','.join(supported_form_factors)
-            else:
-                form.supported_form_factors.data = supported_form_factors
-            form.max_gpu_length.data = characteristics.get('max_gpu_length', '')
-            form.max_cooler_height.data = characteristics.get('max_cooler_height', '')
+    # Pre-populate form with existing data
+    form.product_name.data = product.product_name
+    form.price_discounted.data = product.price_discounted
+    form.price_original.data = product.price_original
+    form.vendor.data = product.vendor
+    form.product_url.data = product.product_url
+    
+    # Pre-populate image URL (first one if there are multiple)
+    images = product.get_images()
+    if images and len(images) > 0:
+        form.image_url.data = images[0]
     
     return render_template('admin/products/edit_product.html', form=form, product=product)
 

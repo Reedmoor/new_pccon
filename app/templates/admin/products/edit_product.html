@@ -33,7 +33,7 @@
             Форма редактирования
         </div>
         <div class="card-body">
-            <form method="post">
+            <form method="post" id="productForm">
                 {{ form.hidden_tag() }}
                 
                 <div class="row mb-3">
@@ -127,284 +127,35 @@
                     </div>
                 </div>
                 
-                <!-- Product type specific characteristics -->
+                <!-- Характеристики -->
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <h4>Характеристики</h4>
                         <hr>
+                        <div id="additionalCharacteristics">
+                            <!-- Здесь будут динамически добавляемые поля характеристик -->
+                            {% set chars = product.get_characteristics() %}
+                            {% for key, value in chars.items() %}
+                            <div class="row mb-3 characteristic-row" data-id="characteristic_{{ loop.index }}">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control characteristic-key" placeholder="Название характеристики" data-id="characteristic_{{ loop.index }}" value="{{ key }}">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control characteristic-value" placeholder="Значение" data-id="characteristic_{{ loop.index }}" value="{{ value }}">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-outline-danger remove-characteristic" data-id="characteristic_{{ loop.index }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button type="button" class="btn btn-outline-primary mt-2" id="addCharacteristicBtn">
+                            <i class="fas fa-plus me-1"></i>Добавить характеристику
+                        </button>
                     </div>
                 </div>
-                
-                {% if product.product_type == 'motherboard' %}
-                <!-- Motherboard specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.socket.label(class="form-label") }}
-                            {{ form.socket(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.chipset.label(class="form-label") }}
-                            {{ form.chipset(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.form_factor.label(class="form-label") }}
-                            {{ form.form_factor(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_type.label(class="form-label") }}
-                            {{ form.memory_type(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'processor' %}
-                <!-- Processor specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.socket.label(class="form-label") }}
-                            {{ form.socket(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.base_clock.label(class="form-label") }}
-                            {{ form.base_clock(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.boost_clock.label(class="form-label") }}
-                            {{ form.boost_clock(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.core_count.label(class="form-label") }}
-                            {{ form.core_count(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.thread_count.label(class="form-label") }}
-                            {{ form.thread_count(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.power_consumption.label(class="form-label") }}
-                            {{ form.power_consumption(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'graphics_card' %}
-                <!-- Graphics card specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.gpu_model.label(class="form-label") }}
-                            {{ form.gpu_model(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_size.label(class="form-label") }}
-                            {{ form.memory_size(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_type.label(class="form-label") }}
-                            {{ form.memory_type(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_bus.label(class="form-label") }}
-                            {{ form.memory_bus(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.base_clock.label(class="form-label") }}
-                            {{ form.base_clock(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.boost_clock.label(class="form-label") }}
-                            {{ form.boost_clock(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.power_consumption.label(class="form-label") }}
-                            {{ form.power_consumption(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.length.label(class="form-label") }}
-                            {{ form.length(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'ram' %}
-                <!-- RAM specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_type.label(class="form-label") }}
-                            {{ form.memory_type(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_size.label(class="form-label") }}
-                            {{ form.memory_size(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.memory_clock.label(class="form-label") }}
-                            {{ form.memory_clock(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.module_count.label(class="form-label") }}
-                            {{ form.module_count(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'hard_drive' %}
-                <!-- Storage specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.storage_capacity.label(class="form-label") }}
-                            {{ form.storage_capacity(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.interface.label(class="form-label") }}
-                            {{ form.interface(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.read_speed.label(class="form-label") }}
-                            {{ form.read_speed(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.write_speed.label(class="form-label") }}
-                            {{ form.write_speed(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'power_supply' %}
-                <!-- Power supply specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.wattage.label(class="form-label") }}
-                            {{ form.wattage(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.certification.label(class="form-label") }}
-                            {{ form.certification(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'cooler' %}
-                <!-- Cooler specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.cooling_type.label(class="form-label") }}
-                            {{ form.cooling_type(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.fan_count.label(class="form-label") }}
-                            {{ form.fan_count(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.power_consumption.label(class="form-label") }}
-                            {{ form.power_consumption(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                
-                {% elif product.product_type == 'case' %}
-                <!-- Case specific fields -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.case_size.label(class="form-label") }}
-                            {{ form.case_size(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.supported_form_factors.label(class="form-label") }}
-                            {{ form.supported_form_factors(class="form-control", placeholder="ATX, mATX, ITX") }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.max_gpu_length.label(class="form-label") }}
-                            {{ form.max_gpu_length(class="form-control") }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            {{ form.max_cooler_height.label(class="form-label") }}
-                            {{ form.max_cooler_height(class="form-control") }}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
                 
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary">
@@ -414,8 +165,115 @@
                         <i class="fas fa-times me-1"></i>Отмена
                     </a>
                 </div>
+                
+                <!-- Hidden input to store additional characteristics as JSON -->
+                <input type="hidden" name="additional_characteristics" id="additionalCharacteristicsJson" value="{{ chars|tojson }}">
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addCharacteristicBtn = document.getElementById('addCharacteristicBtn');
+        const additionalCharacteristics = document.getElementById('additionalCharacteristics');
+        const additionalCharacteristicsJson = document.getElementById('additionalCharacteristicsJson');
+        
+        // Инициализируем счетчик на основе количества существующих строк
+        let characteristicCount = document.querySelectorAll('.characteristic-row').length + 1;
+        
+        // Функция для добавления новой пары ключ-значение
+        function addCharacteristicField(key = '', value = '') {
+            const fieldId = 'characteristic_' + characteristicCount;
+            const row = document.createElement('div');
+            row.className = 'row mb-3 characteristic-row';
+            row.dataset.id = fieldId;
+            
+            row.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control characteristic-key" placeholder="Название характеристики" data-id="${fieldId}" value="${key}">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control characteristic-value" placeholder="Значение" data-id="${fieldId}" value="${value}">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-outline-danger remove-characteristic" data-id="${fieldId}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            additionalCharacteristics.appendChild(row);
+            
+            // Добавляем обработчик для кнопки удаления
+            const removeBtn = row.querySelector('.remove-characteristic');
+            removeBtn.addEventListener('click', function() {
+                const fieldId = this.dataset.id;
+                const rowToRemove = document.querySelector(`.characteristic-row[data-id="${fieldId}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                    updateCharacteristicsJson();
+                }
+            });
+            
+            // Добавляем обработчики изменения для полей
+            const keyInput = row.querySelector('.characteristic-key');
+            const valueInput = row.querySelector('.characteristic-value');
+            
+            keyInput.addEventListener('input', updateCharacteristicsJson);
+            valueInput.addEventListener('input', updateCharacteristicsJson);
+            
+            characteristicCount++;
+            updateCharacteristicsJson();
+        }
+        
+        // Функция для обновления JSON с характеристиками
+        function updateCharacteristicsJson() {
+            const characteristics = {};
+            const rows = document.querySelectorAll('.characteristic-row');
+            
+            rows.forEach(row => {
+                const fieldId = row.dataset.id;
+                const keyInput = row.querySelector(`.characteristic-key[data-id="${fieldId}"]`);
+                const valueInput = row.querySelector(`.characteristic-value[data-id="${fieldId}"]`);
+                
+                if (keyInput && valueInput && keyInput.value.trim() !== '') {
+                    characteristics[keyInput.value.trim()] = valueInput.value.trim();
+                }
+            });
+            
+            additionalCharacteristicsJson.value = JSON.stringify(characteristics);
+        }
+        
+        // Обработчик кнопки добавления характеристики
+        addCharacteristicBtn.addEventListener('click', function() {
+            addCharacteristicField();
+        });
+        
+        // Обработчик отправки формы
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            updateCharacteristicsJson();
+        });
+        
+        // Добавляем обработчики для существующих кнопок удаления
+        document.querySelectorAll('.remove-characteristic').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const fieldId = this.dataset.id;
+                const rowToRemove = document.querySelector(`.characteristic-row[data-id="${fieldId}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                    updateCharacteristicsJson();
+                }
+            });
+        });
+        
+        // Добавляем обработчики для существующих полей ввода
+        document.querySelectorAll('.characteristic-key, .characteristic-value').forEach(input => {
+            input.addEventListener('input', updateCharacteristicsJson);
+        });
+        
+        // Инициализируем JSON с характеристиками
+        updateCharacteristicsJson();
+    });
+</script>
 {% endblock %} 
