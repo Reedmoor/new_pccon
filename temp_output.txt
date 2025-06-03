@@ -1,0 +1,100 @@
+﻿[
+{
+    "id": 2092142,
+    "url": "https://www.citilink.ru/product/videokarta-palit-pci-e-rtx5060ti-infinity-3-nv-geforce-rtx-5060ti-16gb-2092142/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/videokarty/",
+            "name": "Видеокарты"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/videokarty/PALIT/",
+            "name": "PALIT"
+        }
+    ],
+    "name": "Видеокарта Palit NVIDIA  GeForce RTX 5060TI PA-RTX5060Ti INFINITY 3 16ГБ Infinity 3, GDDR7, Ret [ne7506t019t1-gb2061s]",
+    "article": "2092142",
+    "price": 51350,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/qz3CL7qJq3C6Kk6hefJWeuNCTiGzPdviw4broFP7se0/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/aa0b7951-59e4-43b6-b8f2-15124d67e757.jpg",
+        "https://cdn.citilink.ru/zUjR_cHPaEPxgi4IlD_ZDtwVUjHDvreJcB-HLxAqXsY/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/9af810dd-0e78-46c0-b460-f6a6ae4ba92b.jpg",
+        "https://cdn.citilink.ru/NegLj9j1moYsfEmPW4R8afEOheQhII2hX_F_GQh8ag8/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/fd456098-9808-41ff-b435-5aa53aaf32d3.jpg",
+        "https://cdn.citilink.ru/W37oO4thXMaWHcPMClpe_g3q6wluin1eJ-7BqSzzYOE/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/a0cf95c5-29f2-4d68-9e4b-60d8501a854c.jpg",
+        "https://cdn.citilink.ru/H3UfFiNc0RCya6UFG3ABIc_SBIYK7Pw74dKevlb8QH4/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/e7b7a2c0-b9a0-4249-b8fe-b3401154588f.jpg",
+        "https://cdn.citilink.ru/oG3Y-y_HPiASki4qanmTOopkc2wqGQDLKqIZmZpwKiU/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/53556244-ed6c-473c-a869-dd4d358345b9.jpg",
+        "https://cdn.citilink.ru/stcusseeLCJRB8f9kTaBMy9NgQiSUquov8tE4kVDqNA/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/1b5c5932-6ae9-44cc-9075-9675ce42f244.jpg",
+        "https://cdn.citilink.ru/-4y0nNxqFKjot468eO_lTXB7El-99juXOflhWNWLCLo/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/8f170008-4b87-4a49-9313-ad7177d235d1.jpg",
+        "https://cdn.citilink.ru/4UIoetSPWbLsKu4KG0eUlBtpfaTq2PtJEyxU9ruMoAI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/1093b8fe-4a30-4498-b30b-0c596eb2d871.jpg",
+        "https://cdn.citilink.ru/cp_Bk7H8qQ2WUluqgKYJ56Ce6xxkxElP1uYdxd73DDU/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/12630454-9207-4cad-8b00-1e3f669ea030.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Бренд",
+                    "value": "PALIT"
+                },
+                {
+                    "name": "Модель",
+                    "value": "PA-RTX5060Ti INFINITY 3"
+                },
+                {
+                    "name": "Видеочипсет",
+                    "value": "NVIDIA  GeForce RTX 5060TI"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "PCI-E 5.0"
+                },
+                {
+                    "name": "Частота графического процессора",
+                    "value": "2407 МГц (2572 МГц, в режиме Boost)"
+                },
+                {
+                    "name": "Техпроцесс",
+                    "value": "5"
+                },
+                {
+                    "name": "Максимальное разрешение",
+                    "value": "7680 х 4320"
+                },
+                {
+                    "name": "Число процессоров (ядер) CUDA",
+                    "value": "4608"
+                },
+                {
+                    "name": "Архитектура графического процессора",
+                    "value": "Blackwell"
+                }
+            ]
+        },
+        {
+            "name": "Память",
+            "properties": [
+                {
+                    "name": "Объем видеопамяти",
+                    "value": "16"
+                },
+                {
+                    "name": "Тип видеопамяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "name": "Частота видеопамяти",
+                    "value": "28000"
+                },
+                {
+                    "name": "Разрядность шины видеопамяти",
+                    "value": "128 bit"
+                },
+                {
+                    "name": "Пропускная способность памяти",
+                    "value": "448"
+                }
+            ]

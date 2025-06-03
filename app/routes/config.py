@@ -345,9 +345,53 @@ def filter_components():
             'id': product.id,
             'name': product.product_name,
             'price': price,
-            'characteristics': chars
+            'characteristics': chars,
+            'vendor': product.vendor,
+            'product_url': product.product_url
         })
     
     return jsonify({
         'components': filtered_results
+    })
+
+@config_bp.route('/api/search-components', methods=['POST'])
+@login_required
+def search_components():
+    """Endpoint для поиска компонентов по запросу"""
+    data = request.json
+    
+    # Получаем тип продукта и поисковый запрос
+    product_type = data.get('product_type')
+    query = data.get('query', '').strip()
+    
+    # Проверяем наличие обязательных параметров
+    if not product_type:
+        return jsonify({'error': 'Тип продукта не указан'}), 400
+    
+    # Выполняем поиск компонентов
+    components_query = UnifiedProduct.query.filter_by(product_type=product_type)
+    
+    # Если есть поисковый запрос, фильтруем по нему
+    if query:
+        components_query = components_query.filter(UnifiedProduct.product_name.ilike(f'%{query}%'))
+    
+    # Получаем результаты
+    components = components_query.all()
+    
+    # Формируем ответ
+    result = []
+    for component in components:
+        # Используем discounted цену, если доступна, иначе original
+        price = component.price_discounted if component.price_discounted is not None else component.price_original
+        
+        result.append({
+            'id': component.id,
+            'name': component.product_name,
+            'price': price or 0,
+            'vendor': component.vendor,
+            'product_url': component.product_url
+        })
+    
+    return jsonify({
+        'components': result
     }) 

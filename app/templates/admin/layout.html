@@ -52,14 +52,14 @@
                     <a href="{{ url_for('admin.products', type='all') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.products' %}active{% endif %}">
                         <i class="fas fa-microchip me-2"></i>Все комплектующие
                     </a>
-                    <a href="{{ url_for('admin.users') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.users' %}active{% endif %}">
-                        <i class="fas fa-users me-2"></i>Пользователи
-                    </a>
                     <a href="{{ url_for('admin.scrape') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.scrape' %}active{% endif %}">
                         <i class="fas fa-spider me-2"></i>Парсинг комплектующих
                     </a>
                     <a href="{{ url_for('admin.price_comparison') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.price_comparison' %}active{% endif %}">
                         <i class="fas fa-chart-line me-2"></i>Сравнение цен
+                    </a>
+                    <a href="{{ url_for('admin.ram_comparison') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.ram_comparison' %}active{% endif %}">
+                        <i class="fas fa-memory me-2"></i>Сравнение RAM (GigaChat)
                     </a>
                     <a href="{{ url_for('admin.import_data') }}" class="list-group-item list-group-item-action {% if request.endpoint == 'admin.import_data' %}active{% endif %}">
                         <i class="fas fa-database me-2"></i>Импорт данных

@@ -113,26 +113,36 @@ class UnifiedProduct(db.Model):
         # CPU and Motherboard compatibility
         if (self.product_type == 'processor' and other_product.product_type == 'motherboard') or \
            (self.product_type == 'motherboard' and other_product.product_type == 'processor'):
-            return self.check_socket_compatibility(other_product)
+            result = self.check_socket_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
             
         # RAM and Motherboard compatibility
         if (self.product_type == 'ram' and other_product.product_type == 'motherboard') or \
            (self.product_type == 'motherboard' and other_product.product_type == 'ram'):
-            return self.check_memory_compatibility(other_product)
+            result = self.check_memory_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
             
         # Case and Motherboard compatibility
         if (self.product_type == 'case' and other_product.product_type == 'motherboard') or \
            (self.product_type == 'motherboard' and other_product.product_type == 'case'):
-            return self.check_form_factor_compatibility(other_product)
+            result = self.check_form_factor_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
             
         # GPU and Case compatibility (length check)
         if (self.product_type == 'graphics_card' and other_product.product_type == 'case') or \
            (self.product_type == 'case' and other_product.product_type == 'graphics_card'):
-            return self.check_gpu_case_compatibility(other_product)
+            result = self.check_gpu_case_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
             
         # Power supply compatibility with all components
         if self.product_type == 'power_supply' or other_product.product_type == 'power_supply':
-            return self.check_power_compatibility(other_product)
+            result = self.check_power_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
             
         return True  # Default to compatible if no specific check
     
@@ -143,9 +153,45 @@ class UnifiedProduct(db.Model):
         
         if not my_socket or not other_socket:
             return True  # No socket info, assume compatible
+        
+        # Normalize socket names to handle common variations
+        def normalize_socket(socket_name):
+            if not socket_name:
+                return ""
             
-        # Simple exact match for now, could be expanded with socket compatibility rules
-        return my_socket.lower() == other_socket.lower()
+            # Convert to lowercase for case-insensitive comparison
+            socket_name = socket_name.lower()
+            
+            # Remove "socket" prefix if present
+            if socket_name.startswith("socket"):
+                socket_name = socket_name[6:].strip()
+                
+            # Handle other common variations
+            replacements = {
+                "lga ": "lga",
+                "am ": "am",
+                "fm ": "fm",
+                "tr ": "tr"
+            }
+            
+            for prefix, replacement in replacements.items():
+                if socket_name.startswith(prefix):
+                    socket_name = socket_name.replace(prefix, replacement)
+                    
+            return socket_name
+        
+        # Normalize both socket names
+        normalized_my_socket = normalize_socket(my_socket)
+        normalized_other_socket = normalize_socket(other_socket)
+            
+        # Compare normalized socket names
+        if normalized_my_socket != normalized_other_socket:
+            # Return detailed error message instead of just True/False
+            if self.product_type == 'motherboard':
+                return f"Несовместимые сокеты: материнская плата имеет сокет {my_socket}, а процессор — {other_socket}"
+            else:
+                return f"Несовместимые сокеты: процессор имеет сокет {my_socket}, а материнская плата — {other_socket}"
+        return True
     
     def check_memory_compatibility(self, other_product):
         """Check if RAM is compatible with motherboard"""
@@ -156,7 +202,13 @@ class UnifiedProduct(db.Model):
             return True  # No memory type info, assume compatible
             
         # Simple exact match for now
-        return my_memory_type.lower() == other_memory_type.lower()
+        if my_memory_type.lower() != other_memory_type.lower():
+            # Return detailed error message
+            if self.product_type == 'motherboard':
+                return f"Несовместимые типы памяти: материнская плата поддерживает {my_memory_type}, а оперативная память — {other_memory_type}"
+            else:
+                return f"Несовместимые типы памяти: оперативная память типа {my_memory_type}, а материнская плата поддерживает {other_memory_type}"
+        return True
     
     def check_form_factor_compatibility(self, other_product):
         """Check if motherboard form factor is compatible with case"""
@@ -172,9 +224,13 @@ class UnifiedProduct(db.Model):
             
         # Check if motherboard form factor is in case's supported form factors
         if isinstance(case_supported_form_factors, list):
-            return mobo_form_factor.lower() in [ff.lower() for ff in case_supported_form_factors]
+            if mobo_form_factor.lower() not in [ff.lower() for ff in case_supported_form_factors]:
+                return f"Несовместимый форм-фактор: материнская плата {mobo_form_factor}, а корпус поддерживает {', '.join(case_supported_form_factors)}"
+            return True
         else:
-            return mobo_form_factor.lower() == case_supported_form_factors.lower()
+            if mobo_form_factor.lower() != case_supported_form_factors.lower():
+                return f"Несовместимый форм-фактор: материнская плата {mobo_form_factor}, а корпус поддерживает {case_supported_form_factors}"
+            return True
     
     def check_gpu_case_compatibility(self, other_product):
         """Check if GPU length is compatible with case"""
@@ -195,7 +251,10 @@ class UnifiedProduct(db.Model):
         try:
             gpu_length = int(gpu_length) if isinstance(gpu_length, str) else gpu_length
             max_gpu_length = int(max_gpu_length) if isinstance(max_gpu_length, str) else max_gpu_length
-            return gpu_length <= max_gpu_length
+            
+            if gpu_length > max_gpu_length:
+                return f"Видеокарта слишком длинная: длина видеокарты {gpu_length} мм, максимальная поддерживаемая длина корпуса {max_gpu_length} мм"
+            return True
         except (ValueError, TypeError):
             return True  # Conversion error, assume compatible
     
@@ -207,9 +266,11 @@ class UnifiedProduct(db.Model):
         if self.product_type == 'power_supply':
             psu_wattage = chars.get('wattage', 0)
             component_power = other_product.get_power_use()
+            component_type = other_product.product_type
         else:
             psu_wattage = other_chars.get('wattage', 0)
             component_power = self.get_power_use()
+            component_type = self.product_type
             
         if not psu_wattage or not component_power:
             return True  # No power info, assume compatible
@@ -218,7 +279,17 @@ class UnifiedProduct(db.Model):
         try:
             psu_wattage = int(psu_wattage) if isinstance(psu_wattage, str) else psu_wattage
             component_power = int(component_power) if isinstance(component_power, str) else component_power
-            return psu_wattage >= component_power
+            
+            if psu_wattage < component_power:
+                component_type_ru = {
+                    'processor': 'процессора',
+                    'graphics_card': 'видеокарты',
+                    'cooler': 'кулера',
+                    'ram': 'оперативной памяти'
+                }.get(component_type, component_type)
+                
+                return f"Недостаточная мощность блока питания: требуется {component_power}Вт для {component_type_ru}, а блок питания обеспечивает только {psu_wattage}Вт"
+            return True
         except (ValueError, TypeError):
             return True  # Conversion error, assume compatible
 
@@ -271,9 +342,10 @@ class Configuration(db.Model):
         # Check each component against every other component
         for i, comp1 in enumerate(components):
             for comp2 in components[i+1:]:
-                if not comp1.is_compatible_with(comp2):
-                    issues.append(f"{comp1.product_type.capitalize()} ({comp1.product_name}) is not compatible with "
-                                 f"{comp2.product_type.capitalize()} ({comp2.product_name})")
+                compatibility_result = comp1.is_compatible_with(comp2)
+                if compatibility_result is not True:
+                    # If compatibility_result is a string, it's an error message
+                    issues.append(compatibility_result)
         
         return issues if issues else None
         

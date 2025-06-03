@@ -1,0 +1,36 @@
+2025-06-02 21:08:13,865 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:08:13,866 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:08:13,866 - __main__ - ERROR - Не удалось загрузить данные из одного или обоих источников
+2025-06-02 21:08:13,866 - __main__ - WARNING - Не найдено похожих моделей оперативной памяти
+2025-06-02 21:09:06,162 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:09:06,163 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:09:06,163 - __main__ - ERROR - Не удалось загрузить данные из одного или обоих источников
+2025-06-02 21:09:06,163 - __main__ - WARNING - Не найдено похожих моделей оперативной памяти
+2025-06-02 21:09:12,455 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:09:12,455 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:09:12,455 - __main__ - ERROR - Не удалось загрузить данные из одного или обоих источников
+2025-06-02 21:09:12,455 - __main__ - WARNING - Не найдено похожих моделей оперативной памяти
+2025-06-02 21:09:37,402 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:09:37,402 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:09:37,402 - __main__ - ERROR - Не удалось загрузить данные из одного или обоих источников
+2025-06-02 21:09:37,402 - __main__ - WARNING - Не найдено похожих моделей оперативной памяти
+2025-06-02 21:10:16,993 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:10:16,994 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:10:16,994 - __main__ - ERROR - Не удалось загрузить данные из одного или обоих источников
+2025-06-02 21:10:16,994 - __main__ - WARNING - Не найдено похожих моделей оперативной памяти
+2025-06-02 21:18:02,369 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:18:02,370 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:18:10,123 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:18:10,124 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:19:42,010 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:19:42,010 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:20:17,207 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:20:17,207 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:28:31,387 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:28:31,387 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:28:39,448 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:28:39,448 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-02 21:46:01,134 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-02 21:46:01,134 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'
+2025-06-03 10:19:15,038 - __main__ - ERROR - Ошибка загрузки данных DNS: [Errno 2] No such file or directory: 'app\\utils\\DNS_parsing\\categories\\product_data_Оперативная память DIMM.json'
+2025-06-03 10:19:15,039 - __main__ - ERROR - Ошибка загрузки данных Citilink: [Errno 2] No such file or directory: 'app\\utils\\Citi_parser\\data\\moduli-pamyati\\Товары.json'

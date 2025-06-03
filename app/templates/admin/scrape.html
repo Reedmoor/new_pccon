@@ -1,21 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'admin/layout.html' %}
 
-{% block title %}Парсеры и сравнение цен - Админ панель{% endblock %}
+{% block admin_title %}Парсеры и сравнение цен{% endblock %}
 
-{% block content %}
-<div class="row mb-4">
-    <div class="col-md-12">
-        <h2><i class="fas fa-spider me-2"></i>Парсеры и сравнение цен</h2>
-        <p class="text-muted">Инструменты для анализа цен на комплектующие из интернет-магазинов</p>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Админ панель</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Парсеры</li>
-            </ol>
-        </nav>
-    </div>
-</div>
+{% block admin_header %}Парсеры и сравнение цен{% endblock %}
 
+{% block admin_description %}Инструменты для анализа цен на комплектующие из интернет-магазинов{% endblock %}
+
+{% block admin_content %}
 <div class="row">
     <!-- DNS Parser Section -->
     <div class="col-md-4 mb-4">
@@ -236,6 +227,26 @@
                         <div>
                             <h6 class="mb-1">DNS Parser</h6>
                             <p class="mb-1">Собрано товаров: {{ dns_results|length }}</p>
+                            
+                            {% if dns_categories %}
+                            <div class="mt-2">
+                                <h6>Категории товаров:</h6>
+                                <div class="row">
+                                    {% for category in dns_categories %}
+                                    <div class="col-md-6 col-lg-4 mb-2">
+                                        <div class="card">
+                                            <div class="card-body p-2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span>{{ category.name }}</span>
+                                                    <span class="badge bg-danger">{{ category.count }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                         <a href="{{ url_for('admin.download_parser_results', parser='dns') }}" class="btn btn-sm btn-outline-danger">
                             <i class="fas fa-download me-1"></i>Скачать данные
@@ -248,6 +259,26 @@
                         <div>
                             <h6 class="mb-1">Citilink Parser</h6>
                             <p class="mb-1">Собрано товаров: {{ citilink_results|length }}</p>
+                            
+                            {% if citilink_categories %}
+                            <div class="mt-2">
+                                <h6>Категории товаров:</h6>
+                                <div class="row">
+                                    {% for category in citilink_categories %}
+                                    <div class="col-md-6 col-lg-4 mb-2">
+                                        <div class="card">
+                                            <div class="card-body p-2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span>{{ category.name }}</span>
+                                                    <span class="badge bg-primary">{{ category.count }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                         <a href="{{ url_for('admin.download_parser_results', parser='citilink') }}" class="btn btn-sm btn-outline-primary">
                             <i class="fas fa-download me-1"></i>Скачать данные
@@ -256,163 +287,68 @@
                     {% endif %}
                 </div>
                 {% else %}
-                <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle me-2"></i>Нет результатов парсинга. Запустите парсеры для получения данных.
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>Нет результатов парсинга. Запустите парсеры для сбора данных.
                 </div>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
 
 {% block extra_js %}
-<!-- Script for logs and parser status updates -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Текущий файл логов
+    $(document).ready(function() {
+        // Текущий выбранный лог-файл
         let currentLogFile = 'dns_parser.log';
         
-        // Функция для загрузки логов
-        function loadLogs(logFile) {
-            const logContent = document.getElementById('logContent');
-            logContent.textContent = 'Загрузка логов...';
+        // Функция для загрузки содержимого лог-файла
+        function loadLogContent(logFile) {
+            $('#logContent').text('Загрузка логов...');
             
-            fetch(`/admin/view-logs?file=${logFile}`)
+            fetch(`{{ url_for('admin.view_logs') }}?file=${logFile}`)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.content) {
-                        logContent.textContent = data.content;
-                        // Прокрутка вниз для отображения последних логов
+                    if (data.error) {
+                        $('#logContent').text(`Ошибка: ${data.error}`);
+                    } else {
+                        $('#logContent').text(data.content || 'Лог пуст');
+                        // Прокручиваем к последней записи
                         const logContainer = document.querySelector('.log-container');
                         logContainer.scrollTop = logContainer.scrollHeight;
-                    } else {
-                        logContent.textContent = 'Лог файл пуст или не существует';
                     }
                 })
                 .catch(error => {
-                    logContent.textContent = `Ошибка загрузки логов: ${error}`;
+                    $('#logContent').text(`Ошибка загрузки логов: ${error}`);
                 });
         }
         
-        // Загрузка логов при загрузке страницы
-        loadLogs(currentLogFile);
-        
-        // Автоматическое обновление логов каждые 30 секунд
-        setInterval(function() {
-            loadLogs(currentLogFile);
-        }, 30000);
-        
-        // Обработчик кнопки обновления логов
-        document.querySelector('.refresh-logs-btn').addEventListener('click', function() {
-            loadLogs(currentLogFile);
+        // Обработчик клика по кнопке обновления логов
+        $('.refresh-logs-btn').on('click', function() {
+            loadLogContent(currentLogFile);
         });
         
-        // Обработчики выбора файла логов
-        document.querySelectorAll('[data-log-file]').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Обновление активного элемента
-                document.querySelectorAll('[data-log-file]').forEach(el => {
-                    el.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Обновление текста кнопки
-                document.getElementById('logSelector').textContent = this.textContent;
-                
-                // Загрузка выбранного лога
-                currentLogFile = this.getAttribute('data-log-file');
-                loadLogs(currentLogFile);
-            });
+        // Обработчик выбора лог-файла из выпадающего списка
+        $('.dropdown-item[data-log-file]').on('click', function(e) {
+            e.preventDefault();
+            
+            // Обновляем активный элемент
+            $('.dropdown-item').removeClass('active');
+            $(this).addClass('active');
+            
+            // Получаем имя файла лога
+            currentLogFile = $(this).data('log-file');
+            
+            // Обновляем текст кнопки
+            $('#logSelector').text($(this).text());
+            
+            // Загружаем содержимое лога
+            loadLogContent(currentLogFile);
         });
         
-        // Загрузка данных по категории Citilink
-        document.getElementById('loadCategoryData').addEventListener('click', function() {
-            const category = document.getElementById('citilink_category_filter').value;
-            const resultsTableBody = document.getElementById('citilink-results-table');
-            
-            // Показываем индикатор загрузки
-            resultsTableBody.innerHTML = '<tr><td colspan="4" class="text-center py-3"><div class="spinner-border text-primary" role="status"></div><span class="ms-2">Загрузка данных...</span></td></tr>';
-            
-            // Функция для отображения данных в таблице
-            function displayResults(data) {
-                if (!data || data.length === 0) {
-                    resultsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Нет данных для выбранной категории</td></tr>';
-                    return;
-                }
-                
-                let html = '';
-                const displayLimit = 10;
-                const displayItems = data.slice(0, displayLimit);
-                
-                displayItems.forEach(item => {
-                    let categoryName = 'Не указана';
-                    if (item.categories && item.categories.length > 1) {
-                        categoryName = item.categories[1].name;
-                    } else if (item.categories && item.categories.length > 0) {
-                        categoryName = item.categories[0].name;
-                    }
-                    
-                    let priceDisplay = '';
-                    if (item.price_old) {
-                        priceDisplay = `${item.price} ₽ <small class="text-muted text-decoration-line-through">${item.price_old} ₽</small>`;
-                    } else if (item.price) {
-                        priceDisplay = `${item.price} ₽`;
-                    } else {
-                        priceDisplay = 'Нет в наличии';
-                    }
-                    
-                    html += `
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>${categoryName}</td>
-                        <td>${priceDisplay}</td>
-                        <td>
-                            <a href="${item.url}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </td>
-                    </tr>`;
-                });
-                
-                if (data.length > displayLimit) {
-                    html += `
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <em>Показаны первые ${displayLimit} из ${data.length} товаров</em>
-                        </td>
-                    </tr>`;
-                }
-                
-                resultsTableBody.innerHTML = html;
-            }
-            
-            // Запрос данных с сервера
-            if (category) {
-                // Запрос для конкретной категории
-                fetch(`/admin/api/citilink-category-data?category=${category}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        displayResults(data.products);
-                    })
-                    .catch(error => {
-                        resultsTableBody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Ошибка загрузки данных: ${error}</td></tr>`;
-                    });
-            } else {
-                // Запрос для всех категорий (загрузка из основного файла)
-                fetch('/admin/api/citilink-category-data')
-                    .then(response => response.json())
-                    .then(data => {
-                        displayResults(data.products);
-                    })
-                    .catch(error => {
-                        resultsTableBody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Ошибка загрузки данных: ${error}</td></tr>`;
-                    });
-            }
-        });
+        // Загружаем логи при загрузке страницы
+        loadLogContent(currentLogFile);
     });
 </script>
-{% endblock %}
-
 {% endblock %} 

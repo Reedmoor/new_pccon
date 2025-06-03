@@ -25,7 +25,7 @@ def create_app():
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-secret-key')
     
     # Прямое указание параметров базы данных
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost:5432/uipc'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:12345@localhost:5432/uipc'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     # Отладочный вывод для проверки подключения к БД
