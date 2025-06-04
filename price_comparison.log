@@ -35709,3 +35709,199 @@ ModuleNotFoundError: No module named 'scrapy'
 2025-06-03 15:37:42,251 - INFO - 127.0.0.1 - - [03/Jun/2025 15:37:42] "GET /admin/ HTTP/1.1" 200 -
 2025-06-03 15:37:42,360 - INFO - 127.0.0.1 - - [03/Jun/2025 15:37:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-06-03 15:37:42,363 - INFO - 127.0.0.1 - - [03/Jun/2025 15:37:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:17,530 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-03 15:44:17,530 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-03 15:44:17,534 - INFO -  * Restarting with stat
+2025-06-03 15:44:20,787 - WARNING -  * Debugger is active!
+2025-06-03 15:44:20,795 - INFO -  * Debugger PIN: 142-583-531
+2025-06-03 15:44:21,165 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:21] "GET /admin/ HTTP/1.1" 200 -
+2025-06-03 15:44:21,175 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:21] "GET /admin/ HTTP/1.1" 200 -
+2025-06-03 15:44:21,326 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:44:21,328 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:23,167 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:23] "GET /config/new HTTP/1.1" 200 -
+2025-06-03 15:44:23,284 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:44:23,287 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:23,440 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:23] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:44:24,098 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:24] "GET /config/ HTTP/1.1" 200 -
+2025-06-03 15:44:24,221 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:44:24,223 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:25,718 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:25] "GET /config/1 HTTP/1.1" 200 -
+2025-06-03 15:44:25,832 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:44:25,838 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:39,039 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:39] "GET /config/1/edit HTTP/1.1" 200 -
+2025-06-03 15:44:39,110 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:44:39,112 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:44:39,233 - INFO - 127.0.0.1 - - [03/Jun/2025 15:44:39] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:46:35,614 - INFO - 127.0.0.1 - - [03/Jun/2025 15:46:35] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:46:38,997 - INFO - 127.0.0.1 - - [03/Jun/2025 15:46:38] "GET /config/new HTTP/1.1" 200 -
+2025-06-03 15:46:39,108 - INFO - 127.0.0.1 - - [03/Jun/2025 15:46:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:46:39,110 - INFO - 127.0.0.1 - - [03/Jun/2025 15:46:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:46:39,270 - INFO - 127.0.0.1 - - [03/Jun/2025 15:46:39] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:13,738 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:13] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:15,572 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:15] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:18,631 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:18] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:23,929 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:23] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:26,278 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:26] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:47:49,410 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:47:49,459 - INFO - 127.0.0.1 - - [03/Jun/2025 15:47:49] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:12,141 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:12] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:49:20,632 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:20] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:49:28,103 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:28] "GET /config/ HTTP/1.1" 200 -
+2025-06-03 15:49:28,182 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:28] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:28,216 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:49:28,216 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:36,438 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:36] "GET /config/new HTTP/1.1" 200 -
+2025-06-03 15:49:36,500 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:36,550 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:49:36,553 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:37,019 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:37] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-03 15:49:39,997 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:39] "GET /config/ HTTP/1.1" 200 -
+2025-06-03 15:49:40,066 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:40,110 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:49:40,112 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:42,789 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:42] "GET /config/3 HTTP/1.1" 200 -
+2025-06-03 15:49:42,860 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:42] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:42,906 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:49:42,912 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:48,580 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:48] "GET /config/ HTTP/1.1" 200 -
+2025-06-03 15:49:48,652 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:48] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:48,701 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:49:48,703 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:53,846 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:53] "GET /admin/ HTTP/1.1" 200 -
+2025-06-03 15:49:53,934 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:49:53,989 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:49:53,989 - INFO - 127.0.0.1 - - [03/Jun/2025 15:49:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:50:04,486 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:04] "GET /admin/products?type=case HTTP/1.1" 200 -
+2025-06-03 15:50:04,574 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:50:04,643 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:50:05,052 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:50:30,488 - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2025-06-03 15:50:30,598 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:30] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-03 15:50:30,705 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:30] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:50:30,766 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:50:30,768 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:50:31,020 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:31] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-03 15:50:57,779 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:57] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-03 15:50:57,862 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:57] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:50:57,932 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:50:57,938 - INFO - 127.0.0.1 - - [03/Jun/2025 15:50:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:51:03,465 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:03] "GET /admin/ram-comparison HTTP/1.1" 200 -
+2025-06-03 15:51:03,533 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:03] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:51:03,579 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:51:03,581 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:51:05,113 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:05] "GET /admin/import HTTP/1.1" 200 -
+2025-06-03 15:51:05,186 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:05] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:51:05,234 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:51:05,234 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:51:17,222 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:17] "GET /admin/ HTTP/1.1" 200 -
+2025-06-03 15:51:17,293 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:17] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:51:17,335 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:51:17,335 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-03 15:51:23,898 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:23] "GET /admin/products?type=case HTTP/1.1" 200 -
+2025-06-03 15:51:23,978 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:23] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-06-03 15:51:24,040 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-03 15:51:24,326 - INFO - 127.0.0.1 - - [03/Jun/2025 15:51:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:14:51,174 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-04 15:14:51,175 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:14:51,179 - INFO -  * Restarting with stat
+2025-06-04 15:14:53,577 - WARNING -  * Debugger is active!
+2025-06-04 15:14:53,583 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:14:57,557 - INFO - 127.0.0.1 - - [04/Jun/2025 15:14:57] "GET / HTTP/1.1" 200 -
+2025-06-04 15:14:57,726 - INFO - 127.0.0.1 - - [04/Jun/2025 15:14:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:14:57,726 - INFO - 127.0.0.1 - - [04/Jun/2025 15:14:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:14:57,851 - INFO - 127.0.0.1 - - [04/Jun/2025 15:14:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-04 15:15:01,369 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:01] "GET /profile HTTP/1.1" 200 -
+2025-06-04 15:15:01,429 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:01,429 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:21,707 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:21] "GET /config/new HTTP/1.1" 200 -
+2025-06-04 15:15:21,757 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:21,764 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:21,981 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:21] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-04 15:15:22,825 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:22] "GET /config/ HTTP/1.1" 200 -
+2025-06-04 15:15:22,889 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:22,892 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:25,291 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:25] "GET /admin/ HTTP/1.1" 200 -
+2025-06-04 15:15:25,349 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:25,351 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:27,992 - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2025-06-04 15:15:28,143 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:28] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:15:28,200 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:28,204 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:28,249 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:28] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:15:30,778 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:30] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-04 15:15:30,834 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:37,963 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:37] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-04 15:15:38,657 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:38] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-04 15:15:39,208 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:39] "GET /admin/products?type=all&sort=vendor&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:15:39,274 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:45,204 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:15:49,025 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:49] "GET /admin/products?type=all&sort=vendor&dir=desc HTTP/1.1" 200 -
+2025-06-04 15:15:49,075 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:52,673 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:52] "GET /admin/products?type=all&sort=vendor&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:15:52,744 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:15:56,477 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:56] "GET /admin/products?type=all&sort=vendor&dir=desc HTTP/1.1" 200 -
+2025-06-04 15:15:56,535 - INFO - 127.0.0.1 - - [04/Jun/2025 15:15:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:00,036 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:00] "GET /admin/products?type=motherboard&sort=vendor&dir=desc HTTP/1.1" 200 -
+2025-06-04 15:16:00,105 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:00,481 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:16:02,425 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:02] "GET /admin/products?type=motherboard&sort=vendor&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:16:02,488 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:03,096 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:16:05,810 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:05] "GET /admin/products?type=motherboard&sort=brand&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:16:05,875 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:06,467 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:16:51,676 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:51] "GET /admin/products?type=motherboard&sort=price_low HTTP/1.1" 200 -
+2025-06-04 15:16:51,745 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:52,422 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:16:58,160 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:58] "GET /admin/products?type=motherboard&sort=price_high HTTP/1.1" 200 -
+2025-06-04 15:16:58,230 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:16:58,769 - INFO - 127.0.0.1 - - [04/Jun/2025 15:16:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:12,491 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:12] "GET /admin/products?type=motherboard&sort=name&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:17:12,554 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:13,121 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:23,181 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:23] "GET /admin/products?type=hard_drive&sort=name&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:17:23,251 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:23,252 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:27,905 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:27] "GET /admin/products?type=hard_drive HTTP/1.1" 200 -
+2025-06-04 15:17:27,959 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:27,962 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:30,757 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:30] "GET /admin/products?type=hard_drive&sort=brand&dir=desc HTTP/1.1" 200 -
+2025-06-04 15:17:30,830 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:30,831 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:32,817 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:32] "GET /admin/products?type=hard_drive HTTP/1.1" 200 -
+2025-06-04 15:17:32,879 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:32,880 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:35,093 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:35] "GET /admin/products?type=case&dir=asc HTTP/1.1" 200 -
+2025-06-04 15:17:35,164 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:35,243 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:17:42,044 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:42] "GET /admin/ram-comparison HTTP/1.1" 200 -
+2025-06-04 15:17:42,100 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:17:42,103 - INFO - 127.0.0.1 - - [04/Jun/2025 15:17:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:18:37,324 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:37] "GET /admin/ HTTP/1.1" 200 -
+2025-06-04 15:18:37,388 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:18:37,388 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:18:44,988 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:44] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-04 15:18:45,043 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:18:45,044 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:18:47,806 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:47] "GET /admin/ HTTP/1.1" 200 -
+2025-06-04 15:18:47,868 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:18:47,871 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:18:58,926 - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2025-06-04 15:18:59,009 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:59] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:18:59,061 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:18:59,065 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:18:59,114 - INFO - 127.0.0.1 - - [04/Jun/2025 15:18:59] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:20:01,291 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-04 15:20:01,302 - INFO - Категория Видеокарты: 100 товаров
+2025-06-04 15:20:01,311 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-04 15:20:01,323 - INFO - Категория Процессоры: 100 товаров
+2025-06-04 15:20:01,324 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-04 15:20:02,812 - INFO - Импорт товаров успешно завершен
+2025-06-04 15:20:02,816 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:02] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-04 15:20:03,007 - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2025-06-04 15:20:03,055 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:20:03,098 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:20:03,101 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:20:03,157 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -

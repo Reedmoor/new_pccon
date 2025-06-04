@@ -7,6 +7,10 @@
 {% block admin_description %}Просмотр, добавление, редактирование и удаление продуктов в каталоге.{% endblock %}
 
 {% block admin_content %}
+<!-- Set default sorting parameters if not provided -->
+{% set sort_by = sort_by or None %}
+{% set sort_dir = sort_dir or 'asc' %}
+
 <!-- Component Type Filter -->
 <div class="card mb-4">
     <div class="card-header">
@@ -17,15 +21,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn-group mb-3">
-                    <a href="{{ url_for('admin.products', type='all') }}" class="btn {% if current_type == 'all' %}btn-primary{% else %}btn-outline-primary{% endif %}">Все</a>
-                    <a href="{{ url_for('admin.products', type='motherboard') }}" class="btn {% if current_type == 'motherboard' %}btn-primary{% else %}btn-outline-primary{% endif %}">Материнские платы</a>
-                    <a href="{{ url_for('admin.products', type='processor') }}" class="btn {% if current_type == 'processor' %}btn-primary{% else %}btn-outline-primary{% endif %}">Процессоры</a>
-                    <a href="{{ url_for('admin.products', type='graphics_card') }}" class="btn {% if current_type == 'graphics_card' %}btn-primary{% else %}btn-outline-primary{% endif %}">Видеокарты</a>
-                    <a href="{{ url_for('admin.products', type='ram') }}" class="btn {% if current_type == 'ram' %}btn-primary{% else %}btn-outline-primary{% endif %}">Оперативная память</a>
-                    <a href="{{ url_for('admin.products', type='hard_drive') }}" class="btn {% if current_type == 'hard_drive' %}btn-primary{% else %}btn-outline-primary{% endif %}">Жесткие диски</a>
-                    <a href="{{ url_for('admin.products', type='power_supply') }}" class="btn {% if current_type == 'power_supply' %}btn-primary{% else %}btn-outline-primary{% endif %}">Блоки питания</a>
-                    <a href="{{ url_for('admin.products', type='cooler') }}" class="btn {% if current_type == 'cooler' %}btn-primary{% else %}btn-outline-primary{% endif %}">Кулеры</a>
-                    <a href="{{ url_for('admin.products', type='case') }}" class="btn {% if current_type == 'case' %}btn-primary{% else %}btn-outline-primary{% endif %}">Корпуса</a>
+                    <a href="{{ url_for('admin.products', type='all', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'all' %}btn-primary{% else %}btn-outline-primary{% endif %}">Все</a>
+                    <a href="{{ url_for('admin.products', type='motherboard', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'motherboard' %}btn-primary{% else %}btn-outline-primary{% endif %}">Материнские платы</a>
+                    <a href="{{ url_for('admin.products', type='processor', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'processor' %}btn-primary{% else %}btn-outline-primary{% endif %}">Процессоры</a>
+                    <a href="{{ url_for('admin.products', type='graphics_card', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'graphics_card' %}btn-primary{% else %}btn-outline-primary{% endif %}">Видеокарты</a>
+                    <a href="{{ url_for('admin.products', type='ram', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'ram' %}btn-primary{% else %}btn-outline-primary{% endif %}">Оперативная память</a>
+                    <a href="{{ url_for('admin.products', type='hard_drive', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'hard_drive' %}btn-primary{% else %}btn-outline-primary{% endif %}">Жесткие диски</a>
+                    <a href="{{ url_for('admin.products', type='power_supply', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'power_supply' %}btn-primary{% else %}btn-outline-primary{% endif %}">Блоки питания</a>
+                    <a href="{{ url_for('admin.products', type='cooler', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'cooler' %}btn-primary{% else %}btn-outline-primary{% endif %}">Кулеры</a>
+                    <a href="{{ url_for('admin.products', type='case', sort=sort_by, dir=sort_dir) }}" class="btn {% if current_type == 'case' %}btn-primary{% else %}btn-outline-primary{% endif %}">Корпуса</a>
                 </div>
             </div>
         </div>
@@ -37,6 +41,58 @@
     <a href="{{ url_for('admin.add_product', type=current_type) }}" class="btn btn-success">
         <i class="fas fa-plus-circle me-1"></i>Добавить продукт
     </a>
+</div>
+
+<!-- Sorting Options -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-sort me-1"></i>
+        Сортировка
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group mb-3">
+                    <a href="{{ url_for('admin.products', type=current_type) }}" 
+                       class="btn {% if not sort_by %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-times-circle me-1"></i>Сбросить сортировку
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='vendor', dir='asc') }}" 
+                       class="btn {% if sort_by == 'vendor' and sort_dir == 'asc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-industry me-1"></i>По производителю (А-Я)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='vendor', dir='desc') }}" 
+                       class="btn {% if sort_by == 'vendor' and sort_dir == 'desc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-industry me-1"></i>По производителю (Я-А)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='brand', dir='asc') }}" 
+                       class="btn {% if sort_by == 'brand' and sort_dir == 'asc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-tag me-1"></i>По бренду (А-Я)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='brand', dir='desc') }}" 
+                       class="btn {% if sort_by == 'brand' and sort_dir == 'desc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-tag me-1"></i>По бренду (Я-А)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='price_low') }}" 
+                       class="btn {% if sort_by == 'price_low' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-sort-numeric-down me-1"></i>По цене (возрастание)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='price_high') }}" 
+                       class="btn {% if sort_by == 'price_high' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-sort-numeric-up me-1"></i>По цене (убывание)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='name', dir='asc') }}" 
+                       class="btn {% if sort_by == 'name' and sort_dir == 'asc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-font me-1"></i>По названию (А-Я)
+                    </a>
+                    <a href="{{ url_for('admin.products', type=current_type, sort='name', dir='desc') }}" 
+                       class="btn {% if sort_by == 'name' and sort_dir == 'desc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                       <i class="fas fa-font me-1"></i>По названию (Я-А)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Products Table -->

@@ -104,61 +104,110 @@ def delete_user(user_id):
 @admin_required
 def products():
     product_type = request.args.get('type', 'all')
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
     
-    if product_type == 'all':
-        products = UnifiedProduct.query.all()
-    else:
-        products = UnifiedProduct.query.filter_by(product_type=product_type).all()
+    # Start with base query
+    query = UnifiedProduct.query
     
-    return render_template('admin/products/index.html', products=products, current_type=product_type)
+    # Filter by product type if specified
+    if product_type != 'all':
+        query = query.filter_by(product_type=product_type)
+    
+    # Apply sorting
+    if sort_by == 'vendor':
+        if sort_dir == 'desc':
+            query = query.order_by(UnifiedProduct.vendor.desc())
+        else:
+            query = query.order_by(UnifiedProduct.vendor)
+    elif sort_by == 'price_low':
+        query = query.order_by(UnifiedProduct.price_discounted)
+    elif sort_by == 'price_high':
+        query = query.order_by(UnifiedProduct.price_discounted.desc())
+    elif sort_by == 'name':
+        if sort_dir == 'desc':
+            query = query.order_by(UnifiedProduct.product_name.desc())
+        else:
+            query = query.order_by(UnifiedProduct.product_name)
+    
+    # Execute query
+    products = query.all()
+    
+    # For brand sorting (since brand is in JSON characteristics), we need to sort after query
+    if sort_by == 'brand':
+        products = sorted(products, 
+                         key=lambda p: p.get_characteristics().get('brand', '').lower() if p.get_characteristics().get('brand') else '',
+                         reverse=(sort_dir == 'desc'))
+    
+    return render_template('admin/products/index.html', 
+                          products=products, 
+                          current_type=product_type,
+                          sort_by=sort_by,
+                          sort_dir=sort_dir)
 
 @admin_bp.route('/products/motherboards')
 @login_required
 @admin_required
 def motherboards():
-    return redirect(url_for('admin.products', type='motherboard'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='motherboard', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/processors')
 @login_required
 @admin_required
 def processors():
-    return redirect(url_for('admin.products', type='processor'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='processor', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/graphics_cards')
 @login_required
 @admin_required
 def graphics_cards():
-    return redirect(url_for('admin.products', type='graphics_card'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='graphics_card', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/rams')
 @login_required
 @admin_required
 def rams():
-    return redirect(url_for('admin.products', type='ram'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='ram', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/hard_drives')
 @login_required
 @admin_required
 def hard_drives():
-    return redirect(url_for('admin.products', type='hard_drive'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='hard_drive', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/power_supplies')
 @login_required
 @admin_required
 def power_supplies():
-    return redirect(url_for('admin.products', type='power_supply'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='power_supply', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/coolers')
 @login_required
 @admin_required
 def coolers():
-    return redirect(url_for('admin.products', type='cooler'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='cooler', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/cases')
 @login_required
 @admin_required
 def cases():
-    return redirect(url_for('admin.products', type='case'))
+    sort_by = request.args.get('sort', None)
+    sort_dir = request.args.get('dir', 'asc')
+    return redirect(url_for('admin.products', type='case', sort=sort_by, dir=sort_dir))
 
 @admin_bp.route('/products/add', methods=['GET', 'POST'])
 @login_required
