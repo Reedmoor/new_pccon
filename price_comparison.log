@@ -35905,3 +35905,552 @@ ModuleNotFoundError: No module named 'scrapy'
 2025-06-04 15:20:03,098 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-06-04 15:20:03,101 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
 2025-06-04 15:20:03,157 - INFO - 127.0.0.1 - - [04/Jun/2025 15:20:03] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:27:44,823 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-04 15:27:44,836 - INFO - Категория Видеокарты: 100 товаров
+2025-06-04 15:27:44,836 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-04 15:27:44,857 - INFO - Категория Процессоры: 100 товаров
+2025-06-04 15:27:44,858 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-04 15:27:46,380 - INFO - Импорт товаров успешно завершен
+2025-06-04 15:27:46,384 - INFO - 127.0.0.1 - - [04/Jun/2025 15:27:46] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-04 15:27:46,567 - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2025-06-04 15:27:46,601 - INFO - 127.0.0.1 - - [04/Jun/2025 15:27:46] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:27:46,651 - INFO - 127.0.0.1 - - [04/Jun/2025 15:27:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:27:46,653 - INFO - 127.0.0.1 - - [04/Jun/2025 15:27:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:27:46,709 - INFO - 127.0.0.1 - - [04/Jun/2025 15:27:46] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:29:11,638 - INFO - 127.0.0.1 - - [04/Jun/2025 15:29:11] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:29:14,930 - INFO - 127.0.0.1 - - [04/Jun/2025 15:29:14] "GET /admin/view-logs?file=price_comparison.log HTTP/1.1" 200 -
+2025-06-04 15:33:22,497 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-04 15:33:22,512 - INFO - Категория Видеокарты: 100 товаров
+2025-06-04 15:33:22,519 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-04 15:33:22,534 - INFO - Категория Процессоры: 100 товаров
+2025-06-04 15:33:22,534 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-04 15:33:24,171 - INFO - Импорт товаров успешно завершен
+2025-06-04 15:33:24,176 - INFO - 127.0.0.1 - - [04/Jun/2025 15:33:24] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-04 15:33:24,424 - INFO - 127.0.0.1 - - [04/Jun/2025 15:33:24] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:33:24,471 - INFO - 127.0.0.1 - - [04/Jun/2025 15:33:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:33:24,472 - INFO - 127.0.0.1 - - [04/Jun/2025 15:33:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:33:24,525 - INFO - 127.0.0.1 - - [04/Jun/2025 15:33:24] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:35:19,637 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\linksParser.py', reloading
+2025-06-04 15:35:20,047 - INFO -  * Restarting with stat
+2025-06-04 15:35:22,186 - WARNING -  * Debugger is active!
+2025-06-04 15:35:22,186 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:37:18,816 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\linksParser.py', reloading
+2025-06-04 15:37:19,101 - INFO -  * Restarting with stat
+2025-06-04 15:37:21,071 - WARNING -  * Debugger is active!
+2025-06-04 15:37:21,075 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:37:49,273 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\productDetailsParser.py', reloading
+2025-06-04 15:37:49,651 - INFO -  * Restarting with stat
+2025-06-04 15:37:51,608 - WARNING -  * Debugger is active!
+2025-06-04 15:37:51,612 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:37:52,797 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\productDetailsParser.py', reloading
+2025-06-04 15:37:53,055 - INFO -  * Restarting with stat
+2025-06-04 15:37:54,938 - WARNING -  * Debugger is active!
+2025-06-04 15:37:54,938 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:38:19,913 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\linksParser.py', reloading
+2025-06-04 15:38:20,381 - INFO -  * Restarting with stat
+2025-06-04 15:38:22,713 - WARNING -  * Debugger is active!
+2025-06-04 15:38:22,718 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:40:05,119 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-04 15:40:05,128 - INFO - Категория Видеокарты: 100 товаров
+2025-06-04 15:40:05,135 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-04 15:40:05,153 - INFO - Категория Процессоры: 100 товаров
+2025-06-04 15:40:05,153 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-04 15:40:06,605 - INFO - Импорт товаров успешно завершен
+2025-06-04 15:40:06,614 - INFO - 127.0.0.1 - - [04/Jun/2025 15:40:06] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-04 15:40:06,884 - INFO - 127.0.0.1 - - [04/Jun/2025 15:40:06] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:40:06,993 - INFO - 127.0.0.1 - - [04/Jun/2025 15:40:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:40:06,993 - INFO - 127.0.0.1 - - [04/Jun/2025 15:40:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:40:07,072 - INFO - 127.0.0.1 - - [04/Jun/2025 15:40:07] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:42:06,011 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\productDetailsParser.py', reloading
+2025-06-04 15:42:06,626 - INFO -  * Restarting with stat
+2025-06-04 15:42:09,046 - WARNING -  * Debugger is active!
+2025-06-04 15:42:09,049 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 15:48:23,081 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-04 15:48:23,081 - INFO - Категория Видеокарты: 100 товаров
+2025-06-04 15:48:23,116 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-04 15:48:23,116 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-04 15:48:23,136 - INFO - Категория Процессоры: 100 товаров
+2025-06-04 15:48:23,136 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-04 15:48:24,640 - INFO - Импорт товаров успешно завершен
+2025-06-04 15:48:24,646 - INFO - 127.0.0.1 - - [04/Jun/2025 15:48:24] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-04 15:48:24,925 - INFO - 127.0.0.1 - - [04/Jun/2025 15:48:24] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-04 15:48:25,045 - INFO - 127.0.0.1 - - [04/Jun/2025 15:48:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-04 15:48:25,050 - INFO - 127.0.0.1 - - [04/Jun/2025 15:48:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-04 15:48:25,110 - INFO - 127.0.0.1 - - [04/Jun/2025 15:48:25] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-04 15:52:00,699 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\DNS_parsing\\productDetailsParser.py', reloading
+2025-06-04 15:52:01,211 - INFO -  * Restarting with stat
+2025-06-04 15:52:03,524 - WARNING -  * Debugger is active!
+2025-06-04 15:52:03,524 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 20:36:52,949 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 20:36:53,546 - INFO -  * Restarting with stat
+2025-06-04 20:36:57,245 - WARNING -  * Debugger is active!
+2025-06-04 20:36:57,254 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 20:41:16,107 - INFO -  * Detected change in 'c:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\.venv\\Lib\\site-packages\\packaging\\_structures.py', reloading
+2025-06-04 20:41:16,436 - INFO -  * Restarting with stat
+2025-06-04 20:41:19,551 - WARNING -  * Debugger is active!
+2025-06-04 20:41:19,559 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 20:59:23,420 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 20:59:23,884 - INFO -  * Restarting with stat
+2025-06-04 20:59:27,164 - WARNING -  * Debugger is active!
+2025-06-04 20:59:27,168 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:05:17,003 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:05:17,349 - INFO -  * Restarting with stat
+2025-06-04 21:05:20,424 - WARNING -  * Debugger is active!
+2025-06-04 21:05:20,434 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:09:59,317 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:09:59,657 - INFO -  * Restarting with stat
+2025-06-04 21:10:02,837 - WARNING -  * Debugger is active!
+2025-06-04 21:10:02,856 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:10:32,494 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:10:32,828 - INFO -  * Restarting with stat
+2025-06-04 21:10:35,780 - WARNING -  * Debugger is active!
+2025-06-04 21:10:35,786 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:10:58,519 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:10:58,904 - INFO -  * Restarting with stat
+2025-06-04 21:11:02,079 - WARNING -  * Debugger is active!
+2025-06-04 21:11:02,083 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:11:43,626 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:11:43,981 - INFO -  * Restarting with stat
+2025-06-04 21:11:47,118 - WARNING -  * Debugger is active!
+2025-06-04 21:11:47,124 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:12:05,078 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:12:05,539 - INFO -  * Restarting with stat
+2025-06-04 21:12:08,775 - WARNING -  * Debugger is active!
+2025-06-04 21:12:08,782 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:17:18,618 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:17:18,952 - INFO -  * Restarting with stat
+2025-06-04 21:17:21,977 - WARNING -  * Debugger is active!
+2025-06-04 21:17:21,983 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:20:56,913 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:20:57,498 - INFO -  * Restarting with stat
+2025-06-04 21:21:00,634 - WARNING -  * Debugger is active!
+2025-06-04 21:21:00,642 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:27:55,638 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:27:56,020 - INFO -  * Restarting with stat
+2025-06-04 21:27:59,024 - WARNING -  * Debugger is active!
+2025-06-04 21:27:59,035 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:28:35,695 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:28:36,201 - INFO -  * Restarting with stat
+2025-06-04 21:28:39,388 - WARNING -  * Debugger is active!
+2025-06-04 21:28:39,395 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:30:42,604 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:30:43,157 - INFO -  * Restarting with stat
+2025-06-04 21:30:46,296 - WARNING -  * Debugger is active!
+2025-06-04 21:30:46,303 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 21:34:24,691 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 21:34:25,286 - INFO -  * Restarting with stat
+2025-06-04 21:34:28,487 - WARNING -  * Debugger is active!
+2025-06-04 21:34:28,489 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:18:31,248 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:18:31,898 - INFO -  * Restarting with stat
+2025-06-04 22:18:34,982 - WARNING -  * Debugger is active!
+2025-06-04 22:18:34,986 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:20:00,898 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:20:01,346 - INFO -  * Restarting with stat
+2025-06-04 22:20:04,299 - WARNING -  * Debugger is active!
+2025-06-04 22:20:04,305 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:20:38,414 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:20:38,857 - INFO -  * Restarting with stat
+2025-06-04 22:20:42,067 - WARNING -  * Debugger is active!
+2025-06-04 22:20:42,071 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:21:16,376 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:21:16,841 - INFO -  * Restarting with stat
+2025-06-04 22:21:19,949 - WARNING -  * Debugger is active!
+2025-06-04 22:21:19,956 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:22:28,373 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:22:29,001 - INFO -  * Restarting with stat
+2025-06-04 22:22:32,112 - WARNING -  * Debugger is active!
+2025-06-04 22:22:32,118 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:24:38,896 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:24:39,207 - INFO -  * Restarting with stat
+2025-06-04 22:24:42,429 - WARNING -  * Debugger is active!
+2025-06-04 22:24:42,435 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:27:12,454 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:27:12,780 - INFO -  * Restarting with stat
+2025-06-04 22:27:16,018 - WARNING -  * Debugger is active!
+2025-06-04 22:27:16,026 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:34:20,882 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:34:21,214 - INFO -  * Restarting with stat
+2025-06-04 22:34:25,484 - WARNING -  * Debugger is active!
+2025-06-04 22:34:25,485 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:35:23,434 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:35:24,164 - INFO -  * Restarting with stat
+2025-06-04 22:35:27,160 - WARNING -  * Debugger is active!
+2025-06-04 22:35:27,164 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:36:57,144 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:36:57,790 - INFO -  * Restarting with stat
+2025-06-04 22:37:00,913 - WARNING -  * Debugger is active!
+2025-06-04 22:37:00,923 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:41:43,610 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:41:44,284 - INFO -  * Restarting with stat
+2025-06-04 22:41:47,456 - WARNING -  * Debugger is active!
+2025-06-04 22:41:47,458 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:42:09,126 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:42:09,652 - INFO -  * Restarting with stat
+2025-06-04 22:42:12,743 - WARNING -  * Debugger is active!
+2025-06-04 22:42:12,745 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:42:26,162 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:42:26,532 - INFO -  * Restarting with stat
+2025-06-04 22:42:29,502 - WARNING -  * Debugger is active!
+2025-06-04 22:42:29,502 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:42:59,378 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:42:59,709 - INFO -  * Restarting with stat
+2025-06-04 22:43:02,579 - WARNING -  * Debugger is active!
+2025-06-04 22:43:02,585 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:43:15,730 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:43:16,095 - INFO -  * Restarting with stat
+2025-06-04 22:43:18,998 - WARNING -  * Debugger is active!
+2025-06-04 22:43:19,004 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:43:48,560 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:43:49,092 - INFO -  * Restarting with stat
+2025-06-04 22:43:52,268 - WARNING -  * Debugger is active!
+2025-06-04 22:43:52,273 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:44:59,606 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:44:59,992 - INFO -  * Restarting with stat
+2025-06-04 22:45:02,977 - WARNING -  * Debugger is active!
+2025-06-04 22:45:02,981 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:46:18,493 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:46:19,191 - INFO -  * Restarting with stat
+2025-06-04 22:46:22,465 - WARNING -  * Debugger is active!
+2025-06-04 22:46:22,472 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:46:58,056 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:46:58,506 - INFO -  * Restarting with stat
+2025-06-04 22:47:01,379 - WARNING -  * Debugger is active!
+2025-06-04 22:47:01,383 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:47:21,660 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:47:22,217 - INFO -  * Restarting with stat
+2025-06-04 22:47:25,242 - WARNING -  * Debugger is active!
+2025-06-04 22:47:25,250 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:47:38,495 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:47:38,832 - INFO -  * Restarting with stat
+2025-06-04 22:47:41,701 - WARNING -  * Debugger is active!
+2025-06-04 22:47:41,709 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:48:06,611 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:48:07,203 - INFO -  * Restarting with stat
+2025-06-04 22:48:10,279 - WARNING -  * Debugger is active!
+2025-06-04 22:48:10,289 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:48:50,452 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:48:50,842 - INFO -  * Restarting with stat
+2025-06-04 22:48:53,759 - WARNING -  * Debugger is active!
+2025-06-04 22:48:53,762 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:49:32,793 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\embedding.py', reloading
+2025-06-04 22:49:33,498 - INFO -  * Restarting with stat
+2025-06-04 22:49:36,625 - WARNING -  * Debugger is active!
+2025-06-04 22:49:36,630 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:50:31,080 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:50:31,498 - INFO -  * Restarting with stat
+2025-06-04 22:50:34,573 - WARNING -  * Debugger is active!
+2025-06-04 22:50:34,579 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:51:00,869 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:51:01,288 - INFO -  * Restarting with stat
+2025-06-04 22:51:04,376 - WARNING -  * Debugger is active!
+2025-06-04 22:51:04,386 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:51:24,729 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:51:25,063 - INFO -  * Restarting with stat
+2025-06-04 22:51:27,998 - WARNING -  * Debugger is active!
+2025-06-04 22:51:28,008 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:52:10,684 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:52:11,220 - INFO -  * Restarting with stat
+2025-06-04 22:52:14,249 - WARNING -  * Debugger is active!
+2025-06-04 22:52:14,255 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:54:29,509 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:54:29,830 - INFO -  * Restarting with stat
+2025-06-04 22:54:32,756 - WARNING -  * Debugger is active!
+2025-06-04 22:54:32,768 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:54:37,805 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:54:38,273 - INFO -  * Restarting with stat
+2025-06-04 22:54:41,474 - WARNING -  * Debugger is active!
+2025-06-04 22:54:41,477 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:56:18,236 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:56:18,561 - INFO -  * Restarting with stat
+2025-06-04 22:56:21,427 - WARNING -  * Debugger is active!
+2025-06-04 22:56:21,432 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:57:22,789 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:57:23,426 - INFO -  * Restarting with stat
+2025-06-04 22:57:26,656 - WARNING -  * Debugger is active!
+2025-06-04 22:57:26,664 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:57:57,833 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:57:58,197 - INFO -  * Restarting with stat
+2025-06-04 22:58:01,132 - WARNING -  * Debugger is active!
+2025-06-04 22:58:01,135 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:58:53,355 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:58:53,707 - INFO -  * Restarting with stat
+2025-06-04 22:58:56,584 - WARNING -  * Debugger is active!
+2025-06-04 22:58:56,596 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 22:59:20,317 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 22:59:20,842 - INFO -  * Restarting with stat
+2025-06-04 22:59:23,942 - WARNING -  * Debugger is active!
+2025-06-04 22:59:23,948 - INFO -  * Debugger PIN: 142-583-531
+2025-06-04 23:37:28,141 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-04 23:37:28,813 - INFO -  * Restarting with stat
+2025-06-04 23:37:32,426 - WARNING -  * Debugger is active!
+2025-06-04 23:37:32,432 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 00:22:41,079 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison.py', reloading
+2025-06-05 00:22:41,574 - INFO -  * Restarting with stat
+2025-06-05 00:22:44,859 - WARNING -  * Debugger is active!
+2025-06-05 00:22:44,867 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:43:03,444 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 14:43:03,444 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 14:43:03,448 - INFO -  * Restarting with stat
+2025-06-05 14:43:06,770 - WARNING -  * Debugger is active!
+2025-06-05 14:43:06,770 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:43:09,358 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:09] "GET / HTTP/1.1" 200 -
+2025-06-05 14:43:09,542 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:43:09,542 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:43:09,727 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-05 14:43:15,223 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:15] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 14:43:15,332 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:43:15,335 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:43:15,456 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:15] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 14:43:20,175 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:20] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 14:43:20,238 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:43:20,238 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:43:53,079 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:53] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 14:43:53,195 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:43:53,199 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:43:53,300 - INFO - 127.0.0.1 - - [05/Jun/2025 14:43:53] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 14:45:27,956 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-05 14:45:27,978 - INFO - Категория Видеокарты: 100 товаров
+2025-06-05 14:45:27,980 - INFO - Категория Жесткие диски 3_5_: 1 товаров
+2025-06-05 14:45:27,983 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-05 14:45:28,000 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-05 14:45:28,020 - INFO - Категория Процессоры: 100 товаров
+2025-06-05 14:45:28,021 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-05 14:45:30,283 - INFO - Импорт товаров успешно завершен
+2025-06-05 14:45:30,291 - INFO - 127.0.0.1 - - [05/Jun/2025 14:45:30] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-05 14:45:30,636 - INFO - 127.0.0.1 - - [05/Jun/2025 14:45:30] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 14:45:30,708 - INFO - 127.0.0.1 - - [05/Jun/2025 14:45:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:45:30,737 - INFO - 127.0.0.1 - - [05/Jun/2025 14:45:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:45:30,819 - INFO - 127.0.0.1 - - [05/Jun/2025 14:45:30] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 14:46:33,448 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-05 14:46:33,448 - INFO - Категория SSD накопители: 1 товаров
+2025-06-05 14:46:33,461 - INFO - Категория Видеокарты: 100 товаров
+2025-06-05 14:46:33,469 - INFO - Категория Жесткие диски 3_5_: 1 товаров
+2025-06-05 14:46:33,473 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-05 14:46:33,484 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-05 14:46:33,500 - INFO - Категория Процессоры: 100 товаров
+2025-06-05 14:46:33,500 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-05 14:46:35,757 - INFO - Импорт товаров успешно завершен
+2025-06-05 14:46:35,762 - INFO - 127.0.0.1 - - [05/Jun/2025 14:46:35] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-05 14:46:36,151 - INFO - 127.0.0.1 - - [05/Jun/2025 14:46:36] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 14:46:36,204 - INFO - 127.0.0.1 - - [05/Jun/2025 14:46:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 14:46:36,206 - INFO - 127.0.0.1 - - [05/Jun/2025 14:46:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 14:46:36,282 - INFO - 127.0.0.1 - - [05/Jun/2025 14:46:36] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 14:47:56,054 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 14:47:56,526 - INFO -  * Restarting with stat
+2025-06-05 14:48:00,133 - WARNING -  * Debugger is active!
+2025-06-05 14:48:00,139 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:51:48,319 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 14:51:48,950 - INFO -  * Restarting with stat
+2025-06-05 14:51:52,723 - WARNING -  * Debugger is active!
+2025-06-05 14:51:52,729 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:53:50,574 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 14:53:51,227 - INFO -  * Restarting with stat
+2025-06-05 14:53:54,924 - WARNING -  * Debugger is active!
+2025-06-05 14:53:54,928 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:55:05,543 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 14:55:06,032 - INFO -  * Restarting with stat
+2025-06-05 14:55:09,311 - WARNING -  * Debugger is active!
+2025-06-05 14:55:09,319 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 14:57:52,440 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 14:57:53,102 - INFO -  * Restarting with stat
+2025-06-05 14:57:56,745 - WARNING -  * Debugger is active!
+2025-06-05 14:57:56,754 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 15:00:01,492 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 15:00:02,047 - INFO -  * Restarting with stat
+2025-06-05 15:00:05,822 - WARNING -  * Debugger is active!
+2025-06-05 15:00:05,830 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 15:02:22,669 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 15:02:23,301 - INFO -  * Restarting with stat
+2025-06-05 15:02:26,715 - WARNING -  * Debugger is active!
+2025-06-05 15:02:26,720 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 15:04:28,484 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\test.py', reloading
+2025-06-05 15:04:28,960 - INFO -  * Restarting with stat
+2025-06-05 15:04:32,464 - WARNING -  * Debugger is active!
+2025-06-05 15:04:32,466 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 15:05:43,120 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-05 15:05:43,120 - INFO - Категория SSD накопители: 1 товаров
+2025-06-05 15:05:43,139 - INFO - Категория Видеокарты: 100 товаров
+2025-06-05 15:05:43,151 - INFO - Категория Жесткие диски 3_5_: 1 товаров
+2025-06-05 15:05:43,151 - INFO - Категория Корпуса: 1 товаров
+2025-06-05 15:05:43,151 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-05 15:05:43,169 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-05 15:05:43,184 - INFO - Категория Процессоры: 100 товаров
+2025-06-05 15:05:43,184 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-05 15:05:45,361 - INFO - Импорт товаров успешно завершен
+2025-06-05 15:05:45,365 - INFO - 127.0.0.1 - - [05/Jun/2025 15:05:45] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-05 15:05:45,832 - INFO - 127.0.0.1 - - [05/Jun/2025 15:05:45] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:05:46,002 - INFO - 127.0.0.1 - - [05/Jun/2025 15:05:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:05:46,003 - INFO - 127.0.0.1 - - [05/Jun/2025 15:05:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:05:46,104 - INFO - 127.0.0.1 - - [05/Jun/2025 15:05:46] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:06:49,798 - INFO - 127.0.0.1 - - [05/Jun/2025 15:06:49] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:06:51,053 - INFO - 127.0.0.1 - - [05/Jun/2025 15:06:51] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:06:52,789 - INFO - 127.0.0.1 - - [05/Jun/2025 15:06:52] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:06:53,881 - INFO - 127.0.0.1 - - [05/Jun/2025 15:06:53] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:02,786 - INFO - Запуск импорта товаров после парсинга Citilink
+2025-06-05 15:07:05,154 - INFO - Импорт товаров успешно завершен
+2025-06-05 15:07:05,161 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:05] "[32mPOST /admin/run-citilink-parser HTTP/1.1[0m" 302 -
+2025-06-05 15:07:05,563 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:05] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:07:05,620 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:07:05,620 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:07:05,691 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:05] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:16,082 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:16] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:17,148 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:17] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:18,312 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:18] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:19,157 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:19] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:07:20,067 - INFO - 127.0.0.1 - - [05/Jun/2025 15:07:20] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:25,717 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:25] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:26,613 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:26] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:27,315 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:27] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:28,037 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:28] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:28,669 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:28] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:29,555 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:29] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:35,123 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:35] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:08:36,453 - INFO - 127.0.0.1 - - [05/Jun/2025 15:08:36] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:40,521 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:40] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:51,627 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:51] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:55,073 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:55] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:55,898 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:55] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:56,724 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:56] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:57,473 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:57] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:09:58,249 - INFO - 127.0.0.1 - - [05/Jun/2025 15:09:58] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 15:10:55,985 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 15:10:55,985 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 15:10:55,991 - INFO -  * Restarting with stat
+2025-06-05 15:10:59,081 - WARNING -  * Debugger is active!
+2025-06-05 15:10:59,086 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 15:11:05,482 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:05] "GET / HTTP/1.1" 200 -
+2025-06-05 15:11:05,662 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:05,677 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:09,056 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:09] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:11:09,125 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:09,132 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:09,267 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:09] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:11:10,883 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:10] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:11:10,949 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:10,949 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:16,177 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:16] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:11:16,249 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:16,250 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:22,214 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:22] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:11:22,275 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:22,277 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:27,165 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:27] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:11:27,225 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:27,226 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:29,848 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:29] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:11:29,916 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:29,925 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:30,002 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:30] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:11:38,632 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:38] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:11:38,700 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:38,701 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:42,961 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:42] "[32mPOST /admin/run_import HTTP/1.1[0m" 302 -
+2025-06-05 15:11:44,845 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:44] "[32mPOST /admin/run_import HTTP/1.1[0m" 302 -
+2025-06-05 15:11:44,859 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:44] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:11:44,903 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:44,903 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:11:46,780 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:46] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:11:46,845 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:11:46,848 - INFO - 127.0.0.1 - - [05/Jun/2025 15:11:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:12:51,389 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:51] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 15:12:51,457 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:12:51,467 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:12:54,864 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:54] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:12:54,942 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:12:54,945 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:12:57,546 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:57] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:12:57,604 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:12:57,612 - INFO - 127.0.0.1 - - [05/Jun/2025 15:12:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:13:00,088 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:00] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:13:00,159 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:13:00,160 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:13:54,181 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:54] "GET /admin/products?type=hard_drive HTTP/1.1" 200 -
+2025-06-05 15:13:54,264 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:13:54,276 - INFO - 127.0.0.1 - - [05/Jun/2025 15:13:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:14:03,661 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:03] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:14:03,753 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:14:03,754 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:14:16,452 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:16] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:14:16,535 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:14:16,540 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:14:16,622 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:16] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:14:48,994 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:48] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:14:49,039 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:14:49,043 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:14:52,286 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:52] "GET /admin/products?type=hard_drive HTTP/1.1" 200 -
+2025-06-05 15:14:52,344 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:14:52,344 - INFO - 127.0.0.1 - - [05/Jun/2025 15:14:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:15:53,520 - INFO - 127.0.0.1 - - [05/Jun/2025 15:15:53] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:15:53,612 - INFO - 127.0.0.1 - - [05/Jun/2025 15:15:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:15:53,641 - INFO - 127.0.0.1 - - [05/Jun/2025 15:15:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:16:13,164 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:13] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 15:16:13,236 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:16:13,238 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:16:20,433 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:20] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:16:20,524 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:16:20,530 - INFO - 127.0.0.1 - - [05/Jun/2025 15:16:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:17:54,307 - INFO - 127.0.0.1 - - [05/Jun/2025 15:17:54] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:17:54,412 - INFO - 127.0.0.1 - - [05/Jun/2025 15:17:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:17:54,412 - INFO - 127.0.0.1 - - [05/Jun/2025 15:17:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:17:54,507 - INFO - 127.0.0.1 - - [05/Jun/2025 15:17:54] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:20:40,083 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-05 15:20:40,083 - INFO - Категория SSD накопители: 1 товаров
+2025-06-05 15:20:40,083 - INFO - Категория Блоки питания: 3 товаров
+2025-06-05 15:20:40,105 - INFO - Категория Видеокарты: 100 товаров
+2025-06-05 15:20:40,111 - INFO - Категория Жесткие диски 3_5_: 1 товаров
+2025-06-05 15:20:40,114 - INFO - Категория Корпуса: 1 товаров
+2025-06-05 15:20:40,117 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-05 15:20:40,135 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-05 15:20:40,153 - INFO - Категория Процессоры: 100 товаров
+2025-06-05 15:20:40,153 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-05 15:20:43,097 - INFO - Импорт товаров успешно завершен
+2025-06-05 15:20:43,105 - INFO - 127.0.0.1 - - [05/Jun/2025 15:20:43] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-05 15:20:43,573 - INFO - 127.0.0.1 - - [05/Jun/2025 15:20:43] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:20:43,656 - INFO - 127.0.0.1 - - [05/Jun/2025 15:20:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:20:43,660 - INFO - 127.0.0.1 - - [05/Jun/2025 15:20:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:20:43,773 - INFO - 127.0.0.1 - - [05/Jun/2025 15:20:43] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:22:51,910 - INFO - Категория SSD M_2 накопители: 20 товаров
+2025-06-05 15:22:51,911 - INFO - Категория SSD накопители: 1 товаров
+2025-06-05 15:22:51,914 - INFO - Категория Блоки питания: 3 товаров
+2025-06-05 15:22:51,939 - INFO - Категория Видеокарты: 100 товаров
+2025-06-05 15:22:51,940 - INFO - Категория Жесткие диски 3_5_: 1 товаров
+2025-06-05 15:22:51,943 - INFO - Категория Корпуса: 1 товаров
+2025-06-05 15:22:51,949 - INFO - Категория Кулеры для процессоров: 20 товаров
+2025-06-05 15:22:51,952 - INFO - Категория Материнские платы: 1 товаров
+2025-06-05 15:22:51,965 - INFO - Категория Оперативная память DIMM: 100 товаров
+2025-06-05 15:22:51,984 - INFO - Категория Процессоры: 100 товаров
+2025-06-05 15:22:51,984 - INFO - Запуск импорта товаров после парсинга DNS
+2025-06-05 15:22:54,998 - INFO - Импорт товаров успешно завершен
+2025-06-05 15:22:55,003 - INFO - 127.0.0.1 - - [05/Jun/2025 15:22:55] "[32mPOST /admin/run-dns-parser HTTP/1.1[0m" 302 -
+2025-06-05 15:22:55,418 - INFO - 127.0.0.1 - - [05/Jun/2025 15:22:55] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:22:55,522 - INFO - 127.0.0.1 - - [05/Jun/2025 15:22:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:22:55,522 - INFO - 127.0.0.1 - - [05/Jun/2025 15:22:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:22:55,617 - INFO - 127.0.0.1 - - [05/Jun/2025 15:22:55] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:24:51,581 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:51] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:24:51,681 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:24:51,681 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:24:53,590 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:53] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 15:24:53,661 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:24:53,661 - INFO - 127.0.0.1 - - [05/Jun/2025 15:24:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:26:00,112 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:00] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:26:00,192 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:26:00,192 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:26:04,432 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:04] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:26:04,517 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:26:04,517 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:26:04,608 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:04] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 15:26:08,222 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:08] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 15:26:08,302 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:26:08,302 - INFO - 127.0.0.1 - - [05/Jun/2025 15:26:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:30:06,335 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:06] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-05 15:30:06,417 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:30:07,025 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:07] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 15:30:07,121 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:30:07,123 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:30:14,522 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 15:30:14,624 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 15:30:14,629 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 15:30:14,730 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
