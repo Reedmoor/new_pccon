@@ -36454,3 +36454,1047 @@ ModuleNotFoundError: No module named 'scrapy'
 2025-06-05 15:30:14,624 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-06-05 15:30:14,629 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
 2025-06-05 15:30:14,730 - INFO - 127.0.0.1 - - [05/Jun/2025 15:30:14] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 17:37:46,946 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 17:37:46,946 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 17:37:46,949 - INFO -  * Restarting with stat
+2025-06-05 17:37:50,302 - WARNING -  * Debugger is active!
+2025-06-05 17:37:50,305 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:37:59,291 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\ram_price_comparison_improved.py', reloading
+2025-06-05 17:37:59,723 - INFO -  * Restarting with stat
+2025-06-05 17:38:03,072 - WARNING -  * Debugger is active!
+2025-06-05 17:38:03,077 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:39:53,811 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:53] "[32mGET /admin HTTP/1.1[0m" 308 -
+2025-06-05 17:39:54,088 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:54] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 17:39:54,254 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:39:54,254 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:39:59,701 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:59] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 17:39:59,764 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:39:59,767 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:39:59,838 - INFO - 127.0.0.1 - - [05/Jun/2025 17:39:59] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 17:40:01,542 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:01] "GET /admin/ram-comparison HTTP/1.1" 200 -
+2025-06-05 17:40:01,589 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:40:01,589 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:40:03,335 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:03] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 17:40:03,386 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:40:03,387 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:40:05,219 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:05] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 17:40:05,268 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:40:05,270 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:40:34,093 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 17:40:35,038 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:40:36,530 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:40:37,500 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:40:39,450 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:40:40,862 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:40] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 17:40:40,918 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:40:40,918 - INFO - 127.0.0.1 - - [05/Jun/2025 17:40:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:42:35,445 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 17:42:36,172 - INFO -  * Restarting with stat
+2025-06-05 17:42:39,885 - WARNING -  * Debugger is active!
+2025-06-05 17:42:39,888 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:44:55,951 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 17:44:56,539 - INFO -  * Restarting with stat
+2025-06-05 17:45:00,259 - WARNING -  * Debugger is active!
+2025-06-05 17:45:00,263 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:46:27,186 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 17:46:28,117 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:29,982 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:30,631 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:30] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 17:46:30,762 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:46:30,765 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:46:30,962 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:33,813 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:34,974 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:34] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 17:46:40,253 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:43,434 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:44,496 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:46,448 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:48,067 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:46:48,534 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:48] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 17:46:48,580 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:46:48,580 - INFO - 127.0.0.1 - - [05/Jun/2025 17:46:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:50:58,637 - INFO - 127.0.0.1 - - [05/Jun/2025 17:50:58] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 17:50:58,685 - INFO - 127.0.0.1 - - [05/Jun/2025 17:50:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:50:58,688 - INFO - 127.0.0.1 - - [05/Jun/2025 17:50:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:51:16,081 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:51:20,871 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:51:22,082 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:51:25,840 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:51:28,792 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 17:51:29,447 - INFO - 127.0.0.1 - - [05/Jun/2025 17:51:29] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 17:51:29,512 - INFO - 127.0.0.1 - - [05/Jun/2025 17:51:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 17:51:29,513 - INFO - 127.0.0.1 - - [05/Jun/2025 17:51:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 17:57:01,207 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\enhanced_comparator.py', reloading
+2025-06-05 17:57:01,722 - INFO -  * Restarting with stat
+2025-06-05 17:57:05,461 - WARNING -  * Debugger is active!
+2025-06-05 17:57:05,464 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:57:47,632 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_enhanced_comparator.py', reloading
+2025-06-05 17:57:48,057 - INFO -  * Restarting with stat
+2025-06-05 17:57:51,262 - WARNING -  * Debugger is active!
+2025-06-05 17:57:51,266 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 17:59:56,160 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 17:59:56,539 - INFO -  * Restarting with stat
+2025-06-05 17:59:59,800 - WARNING -  * Debugger is active!
+2025-06-05 17:59:59,802 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:03:09,407 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\simple_comparator.py', reloading
+2025-06-05 18:03:09,900 - INFO -  * Restarting with stat
+2025-06-05 18:03:13,403 - WARNING -  * Debugger is active!
+2025-06-05 18:03:13,403 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:04:49,812 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_simple_comparator.py', reloading
+2025-06-05 18:04:50,291 - INFO -  * Restarting with stat
+2025-06-05 18:04:53,989 - WARNING -  * Debugger is active!
+2025-06-05 18:04:53,992 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:20:42,850 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 18:20:43,470 - INFO -  * Restarting with stat
+2025-06-05 18:20:47,469 - WARNING -  * Debugger is active!
+2025-06-05 18:20:47,474 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:23:40,371 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 18:23:40,756 - INFO -  * Restarting with stat
+2025-06-05 18:23:44,372 - WARNING -  * Debugger is active!
+2025-06-05 18:23:44,376 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:24:37,522 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 18:24:38,195 - INFO -  * Restarting with stat
+2025-06-05 18:24:41,657 - WARNING -  * Debugger is active!
+2025-06-05 18:24:41,663 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:24:47,271 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_hybrid_comparator.py', reloading
+2025-06-05 18:24:47,723 - INFO -  * Restarting with stat
+2025-06-05 18:24:50,781 - WARNING -  * Debugger is active!
+2025-06-05 18:24:50,785 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:25:17,427 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_simple_comparator.py', reloading
+2025-06-05 18:25:18,122 - INFO -  * Restarting with stat
+2025-06-05 18:25:21,896 - WARNING -  * Debugger is active!
+2025-06-05 18:25:21,896 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:25:23,156 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_hybrid_comparator.py', reloading
+2025-06-05 18:25:23,862 - INFO -  * Restarting with stat
+2025-06-05 18:25:27,563 - WARNING -  * Debugger is active!
+2025-06-05 18:25:27,563 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:27:16,126 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:27:16,805 - INFO -  * Restarting with stat
+2025-06-05 18:27:20,128 - WARNING -  * Debugger is active!
+2025-06-05 18:27:20,128 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:27:32,434 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:27:33,106 - INFO -  * Restarting with stat
+2025-06-05 18:27:36,759 - WARNING -  * Debugger is active!
+2025-06-05 18:27:36,759 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:28:02,207 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:28:02,786 - INFO -  * Restarting with stat
+2025-06-05 18:28:06,428 - WARNING -  * Debugger is active!
+2025-06-05 18:28:06,433 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:29:13,951 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 18:29:14,394 - INFO -  * Restarting with stat
+2025-06-05 18:29:17,717 - WARNING -  * Debugger is active!
+2025-06-05 18:29:17,721 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:29:48,737 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:29:49,088 - INFO -  * Restarting with stat
+2025-06-05 18:29:52,434 - WARNING -  * Debugger is active!
+2025-06-05 18:29:52,434 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:35:34,209 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:35:34,920 - INFO -  * Restarting with stat
+2025-06-05 18:35:38,793 - WARNING -  * Debugger is active!
+2025-06-05 18:35:38,795 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:36:01,023 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 18:36:01,691 - INFO -  * Restarting with stat
+2025-06-05 18:36:05,380 - WARNING -  * Debugger is active!
+2025-06-05 18:36:05,386 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:36:12,723 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:12] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 18:36:12,873 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:36:12,875 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:36:12,932 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:12] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 18:36:39,959 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:39] "[32mGET /comparison/quick-compare/gpu HTTP/1.1[0m" 302 -
+2025-06-05 18:36:39,971 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:39] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 18:36:40,007 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:36:40,007 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:36:40,061 - INFO - 127.0.0.1 - - [05/Jun/2025 18:36:40] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 18:40:08,349 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:40:08,748 - INFO -  * Restarting with stat
+2025-06-05 18:40:12,384 - WARNING -  * Debugger is active!
+2025-06-05 18:40:12,386 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:42:04,299 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:42:04,890 - INFO -  * Restarting with stat
+2025-06-05 18:42:08,501 - WARNING -  * Debugger is active!
+2025-06-05 18:42:08,505 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:42:19,739 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 18:42:20,480 - INFO -  * Restarting with stat
+2025-06-05 18:42:24,055 - WARNING -  * Debugger is active!
+2025-06-05 18:42:24,055 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:42:50,808 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_real_data_hybrid.py', reloading
+2025-06-05 18:42:51,249 - INFO -  * Restarting with stat
+2025-06-05 18:42:54,787 - WARNING -  * Debugger is active!
+2025-06-05 18:42:54,803 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:43:00,480 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\test_real_data_hybrid.py', reloading
+2025-06-05 18:43:01,210 - INFO -  * Restarting with stat
+2025-06-05 18:43:04,772 - WARNING -  * Debugger is active!
+2025-06-05 18:43:04,777 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:43:41,592 - INFO - 127.0.0.1 - - [05/Jun/2025 18:43:41] "GET /profile HTTP/1.1" 200 -
+2025-06-05 18:45:20,279 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:20] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 18:45:20,426 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:45:20,428 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:45:20,475 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:20] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 18:45:25,650 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:25] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 18:45:25,697 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:45:25,697 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:45:25,733 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:25] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 18:45:28,396 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:28] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 18:45:28,448 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:45:28,449 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:45:28,508 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:28] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 18:45:31,038 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:31] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 18:45:31,092 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:45:31,093 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:45:35,223 - INFO - Trying to load existing Citilink data for category: operativnaya-pamyat
+2025-06-05 18:45:35,232 - INFO - Loaded 0 existing products from Citilink
+2025-06-05 18:45:35,232 - INFO - Running Citilink parser for category: operativnaya-pamyat
+2025-06-05 18:45:35,373 - ERROR - Citilink parser error: Traceback (most recent call last):
+  File "C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\main.py", line 7, in <module>
+    from lxml import html
+ModuleNotFoundError: No module named 'lxml'
+
+2025-06-05 18:45:35,373 - INFO - Loaded 0 products from Citilink
+2025-06-05 18:45:35,387 - INFO - Loaded 0 products from Citilink in category 'operativnaya-pamyat'
+2025-06-05 18:45:35,388 - INFO - Trying to load existing DNS data for category: Оперативная память
+2025-06-05 18:45:35,422 - INFO - Loaded 415 existing products from DNS
+2025-06-05 18:45:35,422 - WARNING - No products found for category Оперативная память after filtering
+2025-06-05 18:45:35,422 - INFO - Loaded 415 products from DNS in category 'Оперативная память'
+2025-06-05 18:45:35,422 - WARNING - Not enough products to compare: Citilink: 0, DNS: 415
+2025-06-05 18:45:35,442 - WARNING - No matching products found for category: operativnaya-pamyat
+2025-06-05 18:45:35,448 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:35] "POST /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 18:45:35,483 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:45:35,484 - INFO - 127.0.0.1 - - [05/Jun/2025 18:45:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:53:01,704 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\admin.py', reloading
+2025-06-05 18:53:02,152 - INFO -  * Restarting with stat
+2025-06-05 18:56:41,047 - INFO -  * Restarting with stat
+2025-06-05 18:59:52,956 - INFO -  * Restarting with stat
+2025-06-05 18:59:56,709 - WARNING -  * Debugger is active!
+2025-06-05 18:59:56,714 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 18:59:56,969 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:56] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 18:59:57,067 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 18:59:57,075 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:59:58,406 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:58] "GET /admin/products?type=motherboard HTTP/1.1" 200 -
+2025-06-05 18:59:58,473 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 18:59:58,969 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:01,140 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:01] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:00:01,219 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:01,222 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:01,346 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:01] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:00:02,097 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:02] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 19:00:02,144 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:02,144 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:04,581 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:04] "GET /admin/view-logs HTTP/1.1" 200 -
+2025-06-05 19:00:19,104 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:19] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 19:00:19,155 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:19,157 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:21,102 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:21] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:00:21,163 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:21,165 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:21,207 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:21] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:00:29,098 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:29] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 19:00:29,147 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:29,148 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:54,702 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:54] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 19:00:54,738 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:54,739 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:56,510 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:56] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:00:56,585 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:00:56,586 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:00:56,625 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:56] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:00:58,925 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:58] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-05 19:00:59,014 - INFO - 127.0.0.1 - - [05/Jun/2025 19:00:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:01,563 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:01] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:01:01,762 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:01,763 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:01:07,806 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:07] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 19:01:07,860 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:07,860 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:01:11,015 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:11] "GET /admin/products?type=all HTTP/1.1" 200 -
+2025-06-05 19:01:11,087 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:12,214 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:12] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:01:12,309 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:12,325 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:01:16,650 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:16] "GET /admin/price-comparison HTTP/1.1" 200 -
+2025-06-05 19:01:16,706 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:16,707 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:01:23,161 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:23] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:01:23,212 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:01:23,214 - INFO - 127.0.0.1 - - [05/Jun/2025 19:01:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:02:11,096 - INFO - 127.0.0.1 - - [05/Jun/2025 19:02:11] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:02:11,157 - INFO - 127.0.0.1 - - [05/Jun/2025 19:02:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:02:11,159 - INFO - 127.0.0.1 - - [05/Jun/2025 19:02:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:02:11,187 - INFO - 127.0.0.1 - - [05/Jun/2025 19:02:11] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:06:55,216 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 19:06:55,786 - INFO -  * Restarting with stat
+2025-06-05 19:06:59,430 - WARNING -  * Debugger is active!
+2025-06-05 19:06:59,434 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:14:25,284 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:25] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:14:25,426 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:14:25,428 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:14:25,474 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:25] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:14:27,150 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:27] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 19:14:27,195 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:14:27,198 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:14:27,387 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:27] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 19:14:30,357 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:30] "GET /config/ HTTP/1.1" 200 -
+2025-06-05 19:14:30,415 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:14:30,421 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:14:33,357 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:33] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:14:33,417 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:14:33,418 - INFO - 127.0.0.1 - - [05/Jun/2025 19:14:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:16:22,046 - INFO - 127.0.0.1 - - [05/Jun/2025 19:16:22] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:16:22,109 - INFO - 127.0.0.1 - - [05/Jun/2025 19:16:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:16:22,109 - INFO - 127.0.0.1 - - [05/Jun/2025 19:16:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:16:22,128 - INFO - 127.0.0.1 - - [05/Jun/2025 19:16:22] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:19:04,181 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 19:19:05,072 - INFO -  * Restarting with stat
+2025-06-05 19:19:09,165 - WARNING -  * Debugger is active!
+2025-06-05 19:19:09,170 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:19:09,437 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:19:09,456 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:19:09,549 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 19:19:09,587 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:19:09,590 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:19:09,625 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:09] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:19:50,913 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:50] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:19:50,943 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:19:50,943 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:19:50,981 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:50] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:19:54,816 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:54] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 19:19:54,878 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:19:54,879 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:19:55,075 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:55] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 19:19:57,008 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:57] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:19:57,066 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:19:57,067 - INFO - 127.0.0.1 - - [05/Jun/2025 19:19:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:20:23,891 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:23] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:20:23,947 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:20:23,949 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:20:23,976 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:23] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:20:25,939 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:25] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 19:20:25,997 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:20:25,999 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:20:26,179 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:26] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 19:20:58,639 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:58] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 19:20:58,694 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:20:58,695 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:20:58,711 - INFO - 127.0.0.1 - - [05/Jun/2025 19:20:58] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 19:21:08,472 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:08] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:21:08,538 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:21:08,539 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:21:21,005 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:21] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:21:21,066 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:21:21,071 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:21:21,113 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:21] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:34,970 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:34] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:36,211 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:36] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:36,986 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:36] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:37,539 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:37] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:38,082 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:38] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:38,344 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:38] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:38,520 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:38] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:38,853 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:38] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:39,131 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:39] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:39,359 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:39] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:39,603 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:39] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:39,866 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:39] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:40,076 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:40] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:40,387 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:40] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:40,639 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:40] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:40,848 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:40] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:41,132 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:41] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:41,441 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:41] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:41,714 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:41] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:41,987 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:41] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:42,213 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:42] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:42,467 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:42] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:42,732 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:42] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:42,931 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:42] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:43,259 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:43] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:43,622 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:43] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:43,828 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:43] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:21:44,034 - INFO - 127.0.0.1 - - [05/Jun/2025 19:21:44] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:33:05,206 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 19:33:05,206 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 19:33:05,206 - INFO -  * Restarting with stat
+2025-06-05 19:33:08,488 - WARNING -  * Debugger is active!
+2025-06-05 19:33:08,490 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:33:09,299 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:09] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:33:09,468 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:33:09,472 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:33:16,344 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:16] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:33:16,401 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:33:16,402 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:33:16,475 - INFO - 127.0.0.1 - - [05/Jun/2025 19:33:16] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:36:10,293 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 19:36:10,743 - INFO -  * Restarting with stat
+2025-06-05 19:36:13,388 - WARNING -  * Debugger is active!
+2025-06-05 19:36:13,392 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:36:24,645 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 19:36:25,353 - INFO -  * Restarting with stat
+2025-06-05 19:36:28,017 - WARNING -  * Debugger is active!
+2025-06-05 19:36:28,020 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:37:23,717 - INFO - 127.0.0.1 - - [05/Jun/2025 19:37:23] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:37:23,823 - INFO - 127.0.0.1 - - [05/Jun/2025 19:37:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:37:23,824 - INFO - 127.0.0.1 - - [05/Jun/2025 19:37:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:37:23,865 - INFO - 127.0.0.1 - - [05/Jun/2025 19:37:23] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:37:31,608 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\admin.py', reloading
+2025-06-05 19:37:32,022 - INFO -  * Restarting with stat
+2025-06-05 19:37:34,880 - WARNING -  * Debugger is active!
+2025-06-05 19:37:34,884 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:38:11,972 - INFO - Запуск импорта товаров после парсинга Citilink
+2025-06-05 19:38:13,670 - INFO - Импорт товаров успешно завершен
+2025-06-05 19:38:13,674 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:13] "[32mPOST /admin/run-citilink-parser HTTP/1.1[0m" 302 -
+2025-06-05 19:38:13,969 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:13] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:38:14,096 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:38:14,111 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:38:14,158 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:14] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:38:35,179 - INFO - Запуск импорта товаров после парсинга Citilink
+2025-06-05 19:38:36,841 - INFO - Импорт товаров успешно завершен
+2025-06-05 19:38:36,841 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:36] "[32mPOST /admin/run-citilink-parser HTTP/1.1[0m" 302 -
+2025-06-05 19:38:37,098 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:37] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:38:37,125 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:38:37,129 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:38:37,172 - INFO - 127.0.0.1 - - [05/Jun/2025 19:38:37] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:39:47,958 - INFO - Запуск импорта товаров после парсинга Citilink
+2025-06-05 19:39:48,005 - INFO - Импорт товаров успешно завершен
+2025-06-05 19:39:48,007 - INFO - 127.0.0.1 - - [05/Jun/2025 19:39:48] "[32mPOST /admin/run-citilink-parser HTTP/1.1[0m" 302 -
+2025-06-05 19:39:48,256 - ERROR - Ошибка чтения категории Citilink zhestkie-diski: Expecting ',' delimiter: line 345 column 2 (char 12376)
+2025-06-05 19:39:48,282 - INFO - 127.0.0.1 - - [05/Jun/2025 19:39:48] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:39:48,331 - INFO - 127.0.0.1 - - [05/Jun/2025 19:39:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:39:48,333 - INFO - 127.0.0.1 - - [05/Jun/2025 19:39:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:39:48,373 - INFO - 127.0.0.1 - - [05/Jun/2025 19:39:48] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:40:15,828 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 19:40:15,828 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 19:40:15,828 - INFO -  * Restarting with stat
+2025-06-05 19:40:18,458 - WARNING -  * Debugger is active!
+2025-06-05 19:40:18,460 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:40:22,225 - INFO - Запуск импорта товаров после парсинга Citilink
+2025-06-05 19:40:23,756 - INFO - Импорт товаров успешно завершен
+2025-06-05 19:40:23,759 - INFO - 127.0.0.1 - - [05/Jun/2025 19:40:23] "[32mPOST /admin/run-citilink-parser HTTP/1.1[0m" 302 -
+2025-06-05 19:40:23,979 - ERROR - Ошибка чтения категории Citilink zhestkie-diski: Expecting ',' delimiter: line 687 column 2 (char 23631)
+2025-06-05 19:40:24,035 - INFO - 127.0.0.1 - - [05/Jun/2025 19:40:24] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:40:24,154 - INFO - 127.0.0.1 - - [05/Jun/2025 19:40:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:40:24,155 - INFO - 127.0.0.1 - - [05/Jun/2025 19:40:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:40:24,261 - INFO - 127.0.0.1 - - [05/Jun/2025 19:40:24] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:44:46,993 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\admin.py', reloading
+2025-06-05 19:44:47,754 - INFO -  * Restarting with stat
+2025-06-05 19:44:50,757 - WARNING -  * Debugger is active!
+2025-06-05 19:44:50,761 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:45:33,175 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 19:45:33,834 - INFO -  * Restarting with stat
+2025-06-05 19:45:36,691 - WARNING -  * Debugger is active!
+2025-06-05 19:45:36,691 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:45:54,037 - INFO - 127.0.0.1 - - [05/Jun/2025 19:45:54] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:45:54,181 - INFO - 127.0.0.1 - - [05/Jun/2025 19:45:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:45:54,191 - INFO - 127.0.0.1 - - [05/Jun/2025 19:45:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:45:54,255 - INFO - 127.0.0.1 - - [05/Jun/2025 19:45:54] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:08,278 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:08] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:09,472 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:09] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:10,309 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:10] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:11,212 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:11] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:12,710 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:12] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:17,260 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:17] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:46:18,135 - INFO - 127.0.0.1 - - [05/Jun/2025 19:46:18] "GET /admin/view-logs?file=app/utils/Citi_parser/parser.log HTTP/1.1" 200 -
+2025-06-05 19:47:01,969 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-05 19:47:01,969 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-05 19:47:01,975 - INFO -  * Restarting with stat
+2025-06-05 19:47:04,524 - WARNING -  * Debugger is active!
+2025-06-05 19:47:04,524 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 19:47:32,084 - INFO - 127.0.0.1 - - [05/Jun/2025 19:47:32] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:47:32,205 - INFO - 127.0.0.1 - - [05/Jun/2025 19:47:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:47:32,242 - INFO - 127.0.0.1 - - [05/Jun/2025 19:47:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:48:59,391 - INFO - 127.0.0.1 - - [05/Jun/2025 19:48:59] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:48:59,435 - INFO - 127.0.0.1 - - [05/Jun/2025 19:48:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:48:59,437 - INFO - 127.0.0.1 - - [05/Jun/2025 19:48:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:49:02,040 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:02] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 19:49:02,088 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:49:02,093 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:49:38,891 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:38] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 19:49:38,952 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:49:38,953 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:49:41,831 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:41] "[32mPOST /admin/run_import HTTP/1.1[0m" 302 -
+2025-06-05 19:49:41,843 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:41] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 19:49:41,872 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:49:41,876 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:49:43,686 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:43] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:49:43,745 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:49:43,747 - INFO - 127.0.0.1 - - [05/Jun/2025 19:49:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:51:12,497 - ERROR - Ошибка чтения категории Citilink sistemy-ohlazhdeniya-processora: Expecting ',' delimiter: line 2011 column 2 (char 71176)
+2025-06-05 19:51:12,592 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:12] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 19:51:12,651 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:51:12,651 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:51:12,718 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:12] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 19:51:34,774 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:34] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:51:34,831 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:51:34,833 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:51:37,206 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:37] "GET /admin/products?type=motherboard HTTP/1.1" 200 -
+2025-06-05 19:51:37,295 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:51:38,448 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:51:42,421 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:42] "GET /admin/products?type=motherboard&sort=vendor&dir=asc HTTP/1.1" 200 -
+2025-06-05 19:51:42,495 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:51:43,076 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:51:44,073 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:44] "GET /admin/products?type=motherboard&sort=vendor&dir=desc HTTP/1.1" 200 -
+2025-06-05 19:51:44,137 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:51:44,761 - INFO - 127.0.0.1 - - [05/Jun/2025 19:51:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 19:52:48,188 - INFO - 127.0.0.1 - - [05/Jun/2025 19:52:48] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 19:52:48,256 - INFO - 127.0.0.1 - - [05/Jun/2025 19:52:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 19:52:48,258 - INFO - 127.0.0.1 - - [05/Jun/2025 19:52:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:00:48,526 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:00:49,237 - INFO -  * Restarting with stat
+2025-06-05 20:00:52,140 - WARNING -  * Debugger is active!
+2025-06-05 20:00:52,145 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:00:57,866 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:00:58,571 - INFO -  * Restarting with stat
+2025-06-05 20:01:01,381 - WARNING -  * Debugger is active!
+2025-06-05 20:01:01,381 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:01:19,379 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:01:20,040 - INFO -  * Restarting with stat
+2025-06-05 20:01:22,603 - WARNING -  * Debugger is active!
+2025-06-05 20:01:22,603 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:03:07,332 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:03:08,036 - INFO -  * Restarting with stat
+2025-06-05 20:03:10,718 - WARNING -  * Debugger is active!
+2025-06-05 20:03:10,720 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:13:19,140 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:13:19,557 - INFO -  * Restarting with stat
+2025-06-05 20:13:22,293 - WARNING -  * Debugger is active!
+2025-06-05 20:13:22,297 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:13:45,833 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\import_products.py', reloading
+2025-06-05 20:13:46,250 - INFO -  * Restarting with stat
+2025-06-05 20:13:48,882 - WARNING -  * Debugger is active!
+2025-06-05 20:13:48,887 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:14:11,249 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:14:11,921 - INFO -  * Restarting with stat
+2025-06-05 20:14:14,552 - WARNING -  * Debugger is active!
+2025-06-05 20:14:14,552 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:14:39,249 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\import_products.py', reloading
+2025-06-05 20:14:39,967 - INFO -  * Restarting with stat
+2025-06-05 20:14:42,690 - WARNING -  * Debugger is active!
+2025-06-05 20:14:42,694 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:16:04,224 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:04] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:16:04,315 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:16:04,324 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:16:06,395 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:06] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:16:06,433 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:16:06,433 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:16:08,086 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:08] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:16:08,131 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:16:08,132 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:16:18,275 - ERROR - Ошибка чтения категории Citilink sistemy-ohlazhdeniya-processora: Expecting ',' delimiter: line 2011 column 2 (char 71176)
+2025-06-05 20:16:18,365 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:18] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 20:16:18,416 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:16:18,417 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:16:18,460 - INFO - 127.0.0.1 - - [05/Jun/2025 20:16:18] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 20:17:32,135 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:32] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:17:32,198 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:17:32,199 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:17:34,132 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:34] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 20:17:34,182 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:17:34,184 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:17:38,393 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:38] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:17:38,446 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:17:38,446 - INFO - 127.0.0.1 - - [05/Jun/2025 20:17:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:18:57,394 - INFO - 127.0.0.1 - - [05/Jun/2025 20:18:57] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 20:18:57,458 - INFO - 127.0.0.1 - - [05/Jun/2025 20:18:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:18:57,459 - INFO - 127.0.0.1 - - [05/Jun/2025 20:18:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:18:57,505 - INFO - 127.0.0.1 - - [05/Jun/2025 20:18:57] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 20:22:34,969 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:34] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 20:22:35,015 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:22:35,016 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:22:35,226 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:35] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 20:22:38,366 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:38] "GET /config/ HTTP/1.1" 200 -
+2025-06-05 20:22:38,408 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:22:38,419 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:22:46,841 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:46] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 20:22:46,911 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:22:46,912 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:22:47,077 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:47] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 20:22:49,676 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:49] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:22:49,736 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:22:49,738 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:22:53,176 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:53] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 20:22:53,239 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:22:53,240 - INFO - 127.0.0.1 - - [05/Jun/2025 20:22:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:23:39,219 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:23:39,589 - INFO -  * Restarting with stat
+2025-06-05 20:23:42,209 - WARNING -  * Debugger is active!
+2025-06-05 20:23:42,209 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:24:17,909 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:24:18,579 - INFO -  * Restarting with stat
+2025-06-05 20:24:21,341 - WARNING -  * Debugger is active!
+2025-06-05 20:24:21,346 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:25:01,797 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:01] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:25:01,947 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:25:01,947 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:25:03,706 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:03] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 20:25:03,771 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:25:03,775 - INFO - 127.0.0.1 - - [05/Jun/2025 20:25:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:26:30,551 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:26:31,283 - INFO -  * Restarting with stat
+2025-06-05 20:26:33,998 - WARNING -  * Debugger is active!
+2025-06-05 20:26:34,002 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:31:47,462 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\direct_import.py', reloading
+2025-06-05 20:31:47,879 - INFO -  * Restarting with stat
+2025-06-05 20:31:50,774 - WARNING -  * Debugger is active!
+2025-06-05 20:31:50,774 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:32:07,614 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\direct_import.py', reloading
+2025-06-05 20:32:08,307 - INFO -  * Restarting with stat
+2025-06-05 20:32:10,842 - WARNING -  * Debugger is active!
+2025-06-05 20:32:10,846 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:32:40,887 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\direct_import.py', reloading
+2025-06-05 20:32:41,565 - INFO -  * Restarting with stat
+2025-06-05 20:32:44,324 - WARNING -  * Debugger is active!
+2025-06-05 20:32:44,328 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:33:02,212 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\standardize.py', reloading
+2025-06-05 20:33:02,960 - INFO -  * Restarting with stat
+2025-06-05 20:33:05,857 - WARNING -  * Debugger is active!
+2025-06-05 20:33:05,861 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:33:35,538 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:35] "GET /admin/products?type=cooler HTTP/1.1" 200 -
+2025-06-05 20:33:35,658 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:33:35,663 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:33:44,741 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:44] "GET /admin/products?type=all&dir=asc HTTP/1.1" 200 -
+2025-06-05 20:33:44,812 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:33:46,949 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:46] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:33:47,055 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:33:47,056 - INFO - 127.0.0.1 - - [05/Jun/2025 20:33:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:34:06,519 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:06] "GET /admin/scrape HTTP/1.1" 200 -
+2025-06-05 20:34:06,572 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:34:06,572 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:34:06,613 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:06] "GET /admin/view-logs?file=dns_parser.log HTTP/1.1" 200 -
+2025-06-05 20:34:48,201 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:48] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:34:48,262 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:34:48,264 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:34:50,577 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:50] "GET /admin/products?type=ram HTTP/1.1" 200 -
+2025-06-05 20:34:50,651 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:34:51,268 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:34:54,385 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:54] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:34:54,442 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:34:54,445 - INFO - 127.0.0.1 - - [05/Jun/2025 20:34:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:35:55,256 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\import_products.py', reloading
+2025-06-05 20:35:55,910 - INFO -  * Restarting with stat
+2025-06-05 20:35:58,579 - WARNING -  * Debugger is active!
+2025-06-05 20:35:58,580 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:36:28,579 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\standardization\\import_products.py', reloading
+2025-06-05 20:36:29,236 - INFO -  * Restarting with stat
+2025-06-05 20:36:31,953 - WARNING -  * Debugger is active!
+2025-06-05 20:36:31,959 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:37:30,163 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:30] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 20:37:30,331 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:37:30,332 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:37:33,609 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:33] "[32mPOST /admin/run_import HTTP/1.1[0m" 302 -
+2025-06-05 20:37:33,629 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:33] "GET /admin/import HTTP/1.1" 200 -
+2025-06-05 20:37:33,680 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:37:33,682 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:37:35,072 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:35] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:37:35,126 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:37:35,127 - INFO - 127.0.0.1 - - [05/Jun/2025 20:37:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:39:25,468 - INFO - 127.0.0.1 - - [05/Jun/2025 20:39:25] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:39:25,530 - INFO - 127.0.0.1 - - [05/Jun/2025 20:39:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:39:25,532 - INFO - 127.0.0.1 - - [05/Jun/2025 20:39:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:39:25,572 - INFO - 127.0.0.1 - - [05/Jun/2025 20:39:25] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:42:00,819 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 20:42:01,305 - INFO -  * Restarting with stat
+2025-06-05 20:42:04,128 - WARNING -  * Debugger is active!
+2025-06-05 20:42:04,131 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:42:23,050 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 20:42:23,438 - INFO -  * Restarting with stat
+2025-06-05 20:42:26,035 - WARNING -  * Debugger is active!
+2025-06-05 20:42:26,041 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:43:04,946 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 20:43:05,620 - INFO -  * Restarting with stat
+2025-06-05 20:43:08,446 - WARNING -  * Debugger is active!
+2025-06-05 20:43:08,446 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:43:28,568 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:28] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:43:28,686 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:43:28,689 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:43:28,713 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:28] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:43:34,679 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 20:43:35,667 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:35,680 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:35] "[32mGET /comparison/quick-compare/ssd HTTP/1.1[0m" 302 -
+2025-06-05 20:43:35,687 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:35] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:43:35,735 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:43:35,737 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:43:35,769 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:35] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:43:36,843 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:37,661 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2025-06-05 20:43:37,661 - ERROR - Ошибка получения эмбеддингов: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:43:37 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': 'bac0a98f-032b-401f-bcd2-6a3f7bac14e2', 'x-session-id': 'cd5c7197-22ac-4f05-8fd8-e361f24a9b58', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:43:37,663 - ERROR - Ошибка при поиске совпадений: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:43:37 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': 'bac0a98f-032b-401f-bcd2-6a3f7bac14e2', 'x-session-id': 'cd5c7197-22ac-4f05-8fd8-e361f24a9b58', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:43:37,711 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:37] "GET /comparison/quick-compare/gpu HTTP/1.1" 200 -
+2025-06-05 20:43:37,735 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:37,768 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:43:37,775 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:43:38,921 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:40,660 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:41,868 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:42,904 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:43,167 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:43] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:43:43,242 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:43:43,250 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:43:43,492 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:43] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:43:46,907 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:49,074 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:50,158 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:51,307 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2025-06-05 20:43:51,346 - ERROR - Ошибка получения эмбеддингов: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:43:51 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': '895bf9ec-9904-4fad-9606-34c239433fe2', 'x-session-id': '545f74a0-9bf2-4cd4-b090-12c38693fcbc', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:43:51,347 - ERROR - Ошибка при поиске совпадений: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:43:51 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': '895bf9ec-9904-4fad-9606-34c239433fe2', 'x-session-id': '545f74a0-9bf2-4cd4-b090-12c38693fcbc', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:43:51,353 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:51] "GET /comparison/quick-compare/cpu HTTP/1.1" 200 -
+2025-06-05 20:43:51,730 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:52,236 - INFO - 127.0.0.1 - - [05/Jun/2025 20:43:52] "GET /comparison/quick-compare/ram HTTP/1.1" 200 -
+2025-06-05 20:43:52,974 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:53,892 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:43:58,785 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:01,042 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2025-06-05 20:44:01,042 - ERROR - Ошибка получения эмбеддингов: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:44:01 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': '55170366-6a82-4140-b6f2-ec29ba3e7c06', 'x-session-id': 'd11da6a9-06bf-4b55-98f5-a62b52b4b829', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:44:01,044 - ERROR - Ошибка при поиске совпадений: (URL('https://gigachat.devices.sberbank.ru/api/v1/embeddings'), 429, b'{"status":429,"message":"Too Many Requests"}\n', Headers({'server': 'SynGX', 'date': 'Thu, 05 Jun 2025 17:44:01 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '45', 'connection': 'keep-alive', 'x-request-id': '55170366-6a82-4140-b6f2-ec29ba3e7c06', 'x-session-id': 'd11da6a9-06bf-4b55-98f5-a62b52b4b829', 'allow': 'GET, POST', 'strict-transport-security': 'max-age=31536000; includeSubDomains'}))
+2025-06-05 20:44:01,052 - INFO - 127.0.0.1 - - [05/Jun/2025 20:44:01] "GET /comparison/quick-compare/ram HTTP/1.1" 200 -
+2025-06-05 20:44:01,664 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:03,756 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:04,871 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:07,110 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:08,844 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:10,350 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:11,611 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:44:20,862 - INFO - 127.0.0.1 - - [05/Jun/2025 20:44:20] "GET /comparison/quick-compare/ram HTTP/1.1" 200 -
+2025-06-05 20:44:20,914 - INFO - 127.0.0.1 - - [05/Jun/2025 20:44:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:44:20,915 - INFO - 127.0.0.1 - - [05/Jun/2025 20:44:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:48:46,515 - INFO - 127.0.0.1 - - [05/Jun/2025 20:48:46] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:48:46,574 - INFO - 127.0.0.1 - - [05/Jun/2025 20:48:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:48:46,574 - INFO - 127.0.0.1 - - [05/Jun/2025 20:48:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:48:46,602 - INFO - 127.0.0.1 - - [05/Jun/2025 20:48:46] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:50:28,624 - INFO - 127.0.0.1 - - [05/Jun/2025 20:50:28] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:50:41,935 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 20:50:42,793 - INFO -  * Restarting with stat
+2025-06-05 20:50:45,794 - WARNING -  * Debugger is active!
+2025-06-05 20:50:45,799 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:50:58,135 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 20:50:58,818 - INFO -  * Restarting with stat
+2025-06-05 20:51:01,544 - WARNING -  * Debugger is active!
+2025-06-05 20:51:01,546 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:51:01,988 - INFO - 127.0.0.1 - - [05/Jun/2025 20:51:01] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:52:56,948 - INFO - 127.0.0.1 - - [05/Jun/2025 20:52:56] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 20:52:57,117 - INFO - 127.0.0.1 - - [05/Jun/2025 20:52:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:52:57,117 - INFO - 127.0.0.1 - - [05/Jun/2025 20:52:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:53:02,119 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:02] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:53:02,168 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:53:02,170 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:53:02,197 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:02] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:53:33,580 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:33] "[32mPOST /comparison/compare HTTP/1.1[0m" 302 -
+2025-06-05 20:53:33,595 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:33] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:53:33,635 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:53:33,637 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:53:33,662 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:33] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:53:42,963 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:42] "[32mPOST /comparison/compare HTTP/1.1[0m" 302 -
+2025-06-05 20:53:42,981 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:42] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:53:43,028 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:53:43,030 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:53:43,058 - INFO - 127.0.0.1 - - [05/Jun/2025 20:53:43] "GET /comparison/api/categories HTTP/1.1" 200 -
+2025-06-05 20:54:18,795 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 20:54:19,492 - INFO -  * Restarting with stat
+2025-06-05 20:54:22,180 - WARNING -  * Debugger is active!
+2025-06-05 20:54:22,184 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:55:16,683 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 20:55:17,374 - INFO -  * Restarting with stat
+2025-06-05 20:55:20,230 - WARNING -  * Debugger is active!
+2025-06-05 20:55:20,250 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 20:55:51,661 - INFO - 127.0.0.1 - - [05/Jun/2025 20:55:51] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 20:55:51,777 - INFO - 127.0.0.1 - - [05/Jun/2025 20:55:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:55:51,777 - INFO - 127.0.0.1 - - [05/Jun/2025 20:55:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 20:55:57,798 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 20:55:58,844 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:02,108 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:03,307 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:07,442 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:10,217 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:13,004 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:15,895 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 20:56:25,689 - INFO - 127.0.0.1 - - [05/Jun/2025 20:56:25] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 20:56:25,742 - INFO - 127.0.0.1 - - [05/Jun/2025 20:56:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 20:56:25,742 - INFO - 127.0.0.1 - - [05/Jun/2025 20:56:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:02:25,299 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:25] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:02:25,352 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:02:25,354 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:02:35,611 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:35] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 21:02:35,667 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:02:35,668 - INFO - 127.0.0.1 - - [05/Jun/2025 21:02:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:03:43,663 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:43] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 21:03:43,707 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:03:43,709 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:03:50,867 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:50] "GET /admin/products/add?type=motherboard HTTP/1.1" 200 -
+2025-06-05 21:03:50,922 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:03:50,926 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:03:56,421 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:56] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 21:03:56,470 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:03:56,471 - INFO - 127.0.0.1 - - [05/Jun/2025 21:03:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:04:26,261 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:26] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:04:26,312 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:04:26,312 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:04:54,492 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:54] "[32mPOST /comparison/compare HTTP/1.1[0m" 302 -
+2025-06-05 21:04:54,502 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:54] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:04:54,545 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:04:54,547 - INFO - 127.0.0.1 - - [05/Jun/2025 21:04:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:05:32,157 - INFO - 127.0.0.1 - - [05/Jun/2025 21:05:32] "[32mPOST /comparison/compare HTTP/1.1[0m" 302 -
+2025-06-05 21:05:32,169 - INFO - 127.0.0.1 - - [05/Jun/2025 21:05:32] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:05:32,217 - INFO - 127.0.0.1 - - [05/Jun/2025 21:05:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:05:32,221 - INFO - 127.0.0.1 - - [05/Jun/2025 21:05:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:09:59,655 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 21:10:00,465 - INFO -  * Restarting with stat
+2025-06-05 21:10:03,164 - WARNING -  * Debugger is active!
+2025-06-05 21:10:03,168 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:10:08,867 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 21:10:09,293 - INFO -  * Restarting with stat
+2025-06-05 21:10:11,961 - WARNING -  * Debugger is active!
+2025-06-05 21:10:11,961 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:11:42,950 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\comparison.py', reloading
+2025-06-05 21:11:43,621 - INFO -  * Restarting with stat
+2025-06-05 21:11:46,565 - WARNING -  * Debugger is active!
+2025-06-05 21:11:46,570 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:11:50,056 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\forms\\comparison.py', reloading
+2025-06-05 21:11:50,754 - INFO -  * Restarting with stat
+2025-06-05 21:11:53,819 - WARNING -  * Debugger is active!
+2025-06-05 21:11:53,819 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:12:09,669 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:09] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:12:09,823 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:12:09,828 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:12:16,423 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 21:12:17,260 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:12:17,954 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:12:18,021 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:18] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 21:12:18,074 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:12:18,076 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:12:31,225 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:31] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:12:31,279 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:12:31,280 - INFO - 127.0.0.1 - - [05/Jun/2025 21:12:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:15:12,095 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 21:15:12,621 - INFO -  * Restarting with stat
+2025-06-05 21:15:15,309 - WARNING -  * Debugger is active!
+2025-06-05 21:15:15,309 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:15:26,492 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 21:15:26,879 - INFO -  * Restarting with stat
+2025-06-05 21:15:29,455 - WARNING -  * Debugger is active!
+2025-06-05 21:15:29,458 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:15:42,836 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 21:15:43,248 - INFO -  * Restarting with stat
+2025-06-05 21:15:45,913 - WARNING -  * Debugger is active!
+2025-06-05 21:15:45,918 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:15:51,540 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 21:15:51,955 - INFO -  * Restarting with stat
+2025-06-05 21:15:54,810 - WARNING -  * Debugger is active!
+2025-06-05 21:15:54,816 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:17:03,698 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\utils\\product_comparator.py', reloading
+2025-06-05 21:17:04,407 - INFO -  * Restarting with stat
+2025-06-05 21:17:07,290 - WARNING -  * Debugger is active!
+2025-06-05 21:17:07,295 - INFO -  * Debugger PIN: 142-583-531
+2025-06-05 21:18:00,234 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:00] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:18:00,399 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:18:00,401 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:18:06,283 - INFO - Найдено в кэше: 0 из 3 текстов
+2025-06-05 21:18:06,283 - INFO - Обработка батча 1: 3 новых текстов
+2025-06-05 21:18:06,764 - INFO - HTTP Request: POST https://ngw.devices.sberbank.ru:9443/api/v2/oauth "HTTP/1.1 200 OK"
+2025-06-05 21:18:07,522 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:07,556 - INFO - Получено 3 эмбеддингов для 3 текстов
+2025-06-05 21:18:07,556 - INFO - Размер кэша: 3 текстов
+2025-06-05 21:18:07,556 - INFO - Найдено в кэше: 0 из 480 текстов
+2025-06-05 21:18:07,556 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:18:08,439 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:09,447 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:09,479 - INFO - Обработка батча 2: 100 новых текстов
+2025-06-05 21:18:10,332 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:11,258 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:11,306 - INFO - Обработка батча 3: 100 новых текстов
+2025-06-05 21:18:12,145 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:13,073 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:13,118 - INFO - Обработка батча 4: 100 новых текстов
+2025-06-05 21:18:13,957 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:15,284 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:15,380 - INFO - Обработка батча 5: 80 новых текстов
+2025-06-05 21:18:16,248 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:18:19,208 - INFO - Получено 480 эмбеддингов для 480 текстов
+2025-06-05 21:18:19,208 - INFO - Размер кэша: 481 текстов
+2025-06-05 21:18:19,622 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:19] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 21:18:19,672 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:18:19,672 - INFO - 127.0.0.1 - - [05/Jun/2025 21:18:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:19:07,371 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:07] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:19:07,426 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:19:07,428 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:19:25,503 - INFO - Найдено в кэше: 0 из 100 текстов
+2025-06-05 21:19:25,503 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:19:26,455 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:27,450 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:27,515 - INFO - Получено 100 эмбеддингов для 100 текстов
+2025-06-05 21:19:27,515 - INFO - Размер кэша: 581 текстов
+2025-06-05 21:19:27,520 - INFO - Найдено в кэше: 0 из 205 текстов
+2025-06-05 21:19:27,520 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:19:28,368 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:29,365 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:29,435 - INFO - Обработка батча 2: 100 новых текстов
+2025-06-05 21:19:30,282 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:31,322 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:31,402 - INFO - Обработка батча 3: 5 новых текстов
+2025-06-05 21:19:31,999 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:19:32,043 - INFO - Получено 205 эмбеддингов для 205 текстов
+2025-06-05 21:19:32,043 - INFO - Размер кэша: 785 текстов
+2025-06-05 21:19:37,614 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:37] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 21:19:37,672 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:19:37,673 - INFO - 127.0.0.1 - - [05/Jun/2025 21:19:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:20:46,507 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:46] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:20:46,567 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:20:46,567 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:20:52,447 - INFO - Найдено в кэше: 3 из 3 текстов
+2025-06-05 21:20:52,447 - INFO - Получено 3 эмбеддингов для 3 текстов
+2025-06-05 21:20:52,447 - INFO - Размер кэша: 785 текстов
+2025-06-05 21:20:52,450 - INFO - Найдено в кэше: 480 из 480 текстов
+2025-06-05 21:20:52,451 - INFO - Получено 480 эмбеддингов для 480 текстов
+2025-06-05 21:20:52,451 - INFO - Размер кэша: 785 текстов
+2025-06-05 21:20:52,763 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:52] "GET /comparison/quick-compare/psu HTTP/1.1" 200 -
+2025-06-05 21:20:52,809 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:20:52,809 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:20:55,021 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:55] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:20:55,082 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:20:55,087 - INFO - 127.0.0.1 - - [05/Jun/2025 21:20:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:20:56,606 - INFO - Найдено в кэше: 0 из 100 текстов
+2025-06-05 21:20:56,608 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:20:57,590 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:20:58,700 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:20:58,795 - INFO - Получено 100 эмбеддингов для 100 текстов
+2025-06-05 21:20:58,811 - INFO - Размер кэша: 880 текстов
+2025-06-05 21:20:58,811 - INFO - Найдено в кэше: 0 из 134 текстов
+2025-06-05 21:20:58,811 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:20:59,663 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:21:00,813 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:21:00,892 - INFO - Обработка батча 2: 34 новых текстов
+2025-06-05 21:21:01,644 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:21:02,380 - INFO - Получено 134 эмбеддингов для 134 текстов
+2025-06-05 21:21:02,380 - INFO - Размер кэша: 1013 текстов
+2025-06-05 21:21:04,963 - INFO - 127.0.0.1 - - [05/Jun/2025 21:21:04] "GET /comparison/quick-compare/cpu HTTP/1.1" 200 -
+2025-06-05 21:21:05,015 - INFO - 127.0.0.1 - - [05/Jun/2025 21:21:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:21:05,015 - INFO - 127.0.0.1 - - [05/Jun/2025 21:21:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:23:55,147 - INFO - 127.0.0.1 - - [05/Jun/2025 21:23:55] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:23:55,207 - INFO - 127.0.0.1 - - [05/Jun/2025 21:23:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:23:55,209 - INFO - 127.0.0.1 - - [05/Jun/2025 21:23:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:05,526 - INFO - Найдено в кэше: 0 из 1 текстов
+2025-06-05 21:24:05,526 - INFO - Обработка батча 1: 1 новых текстов
+2025-06-05 21:24:06,252 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:06,257 - INFO - Получено 1 эмбеддингов для 1 текстов
+2025-06-05 21:24:06,257 - INFO - Размер кэша: 1014 текстов
+2025-06-05 21:24:06,257 - INFO - Найдено в кэше: 0 из 71 текстов
+2025-06-05 21:24:06,257 - INFO - Обработка батча 1: 71 новых текстов
+2025-06-05 21:24:07,114 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:07,929 - INFO - Получено 71 эмбеддингов для 71 текстов
+2025-06-05 21:24:07,929 - INFO - Размер кэша: 1085 текстов
+2025-06-05 21:24:07,955 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:07] "GET /comparison/quick-compare/case HTTP/1.1" 200 -
+2025-06-05 21:24:08,004 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:08,008 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:13,288 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:13] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:24:13,332 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:13,334 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:22,557 - INFO - Найдено в кэше: 1 из 1 текстов
+2025-06-05 21:24:22,557 - INFO - Получено 1 эмбеддингов для 1 текстов
+2025-06-05 21:24:22,557 - INFO - Размер кэша: 1085 текстов
+2025-06-05 21:24:22,557 - INFO - Найдено в кэше: 71 из 71 текстов
+2025-06-05 21:24:22,557 - INFO - Получено 71 эмбеддингов для 71 текстов
+2025-06-05 21:24:22,562 - INFO - Размер кэша: 1085 текстов
+2025-06-05 21:24:22,585 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:22] "POST /comparison/compare HTTP/1.1" 200 -
+2025-06-05 21:24:22,639 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:22,639 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:32,208 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:32] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:24:32,263 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:32,264 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:51,487 - INFO - Найдено в кэше: 0 из 20 текстов
+2025-06-05 21:24:51,489 - INFO - Обработка батча 1: 20 новых текстов
+2025-06-05 21:24:52,276 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:52,402 - INFO - Получено 20 эмбеддингов для 20 текстов
+2025-06-05 21:24:52,403 - INFO - Размер кэша: 1105 текстов
+2025-06-05 21:24:52,405 - INFO - Найдено в кэше: 0 из 8 текстов
+2025-06-05 21:24:52,405 - INFO - Обработка батча 1: 8 новых текстов
+2025-06-05 21:24:53,013 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:53,048 - INFO - Получено 8 эмбеддингов для 8 текстов
+2025-06-05 21:24:53,048 - INFO - Размер кэша: 1113 текстов
+2025-06-05 21:24:53,082 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:53] "GET /comparison/quick-compare/cooler HTTP/1.1" 200 -
+2025-06-05 21:24:53,134 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:53,136 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:55,945 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:55] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:24:56,000 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:56,001 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:24:57,439 - INFO - Найдено в кэше: 0 из 22 текстов
+2025-06-05 21:24:57,446 - INFO - Обработка батча 1: 22 новых текстов
+2025-06-05 21:24:58,142 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:58,256 - INFO - Получено 22 эмбеддингов для 22 текстов
+2025-06-05 21:24:58,258 - INFO - Размер кэша: 1135 текстов
+2025-06-05 21:24:58,258 - INFO - Найдено в кэше: 0 из 4 текстов
+2025-06-05 21:24:58,258 - INFO - Обработка батча 1: 4 новых текстов
+2025-06-05 21:24:58,857 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:24:58,893 - INFO - Получено 4 эмбеддингов для 4 текстов
+2025-06-05 21:24:58,893 - INFO - Размер кэша: 1139 текстов
+2025-06-05 21:24:58,920 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:58] "GET /comparison/quick-compare/storage HTTP/1.1" 200 -
+2025-06-05 21:24:58,968 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:24:58,968 - INFO - 127.0.0.1 - - [05/Jun/2025 21:24:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:25:00,796 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:00] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:25:00,851 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:25:00,852 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:25:02,450 - INFO - Найдено в кэше: 0 из 100 текстов
+2025-06-05 21:25:02,450 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:25:03,344 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:04,440 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:04,487 - INFO - Получено 100 эмбеддингов для 100 текстов
+2025-06-05 21:25:04,487 - INFO - Размер кэша: 1239 текстов
+2025-06-05 21:25:04,503 - INFO - Найдено в кэше: 0 из 386 текстов
+2025-06-05 21:25:04,503 - INFO - Обработка батча 1: 100 новых текстов
+2025-06-05 21:25:05,333 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:06,387 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:06,450 - INFO - Обработка батча 2: 100 новых текстов
+2025-06-05 21:25:07,331 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:08,591 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:08,799 - INFO - Обработка батча 3: 100 новых текстов
+2025-06-05 21:25:09,700 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:13,046 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:13,319 - INFO - Обработка батча 4: 86 новых текстов
+2025-06-05 21:25:14,169 - INFO - HTTP Request: POST https://gigachat.devices.sberbank.ru/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-05 21:25:15,946 - INFO - Получено 386 эмбеддингов для 386 текстов
+2025-06-05 21:25:15,955 - INFO - Размер кэша: 1625 текстов
+2025-06-05 21:25:25,134 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:25] "GET /comparison/quick-compare/ram HTTP/1.1" 200 -
+2025-06-05 21:25:25,199 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:25:25,200 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:25:29,970 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:29] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:25:30,038 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:25:30,038 - INFO - 127.0.0.1 - - [05/Jun/2025 21:25:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:28:51,581 - INFO - 127.0.0.1 - - [05/Jun/2025 21:28:51] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 21:28:51,603 - INFO - 127.0.0.1 - - [05/Jun/2025 21:28:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:28:51,629 - INFO - 127.0.0.1 - - [05/Jun/2025 21:28:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:00,134 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:00] "GET /admin/ HTTP/1.1" 200 -
+2025-06-05 21:29:00,152 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:00,182 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:02,963 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:02] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:29:02,993 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:03,009 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:06,390 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:06] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2025-06-05 21:29:06,411 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:06] "GET / HTTP/1.1" 200 -
+2025-06-05 21:29:06,467 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:06,468 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:07,729 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:07] "GET /auth/login HTTP/1.1" 200 -
+2025-06-05 21:29:07,785 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:07,786 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:11,773 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:11] "GET /auth/register HTTP/1.1" 200 -
+2025-06-05 21:29:11,828 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:11,829 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:35,201 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:35] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+2025-06-05 21:29:35,209 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:35] "GET /auth/login HTTP/1.1" 200 -
+2025-06-05 21:29:35,267 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:35,268 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:46,053 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:46] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-06-05 21:29:46,059 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:46] "GET / HTTP/1.1" 200 -
+2025-06-05 21:29:46,129 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:46,131 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:49,999 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:49] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:29:50,053 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:50,058 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:53,561 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:53] "GET /config/new HTTP/1.1" 200 -
+2025-06-05 21:29:53,614 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:53,614 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:53,852 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:53] "POST /config/api/config-info HTTP/1.1" 200 -
+2025-06-05 21:29:55,952 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:55] "GET /config/ HTTP/1.1" 200 -
+2025-06-05 21:29:56,004 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:56,006 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-05 21:29:57,997 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:57] "GET /comparison/ HTTP/1.1" 200 -
+2025-06-05 21:29:58,069 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-05 21:29:58,069 - INFO - 127.0.0.1 - - [05/Jun/2025 21:29:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -

@@ -42,11 +42,13 @@ def create_app():
     from app.routes.auth import auth_bp
     from app.routes.admin import admin_bp
     from app.routes.config import config_bp
+    from app.routes.comparison import comparison_bp
     
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(admin_bp, url_prefix='/admin')
     app.register_blueprint(config_bp, url_prefix='/config')
+    app.register_blueprint(comparison_bp, url_prefix='/comparison')
     
     # Register functions for Jinja templates
     app.jinja_env.globals.update(abs=abs)
