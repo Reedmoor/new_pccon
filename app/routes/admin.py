@@ -440,8 +440,8 @@ def scrape():
                                     display_name = 'Модули памяти'
                                 elif category_dir == 'korpusa':
                                     display_name = 'Корпуса'
-                                elif category_dir == 'ventilyatory-dlya-korpusa':
-                                    display_name = 'Вентиляторы для корпуса'
+                                elif category_dir == 'sistemy-ohlazhdeniya-processora':
+                                    display_name = 'Кулеры для процессора'
                                 elif category_dir == 'ssd-nakopiteli':
                                     display_name = 'SSD накопители'
                                 elif category_dir == 'zhestkie-diski':
@@ -709,7 +709,7 @@ def price_comparison():
                     'bloki-pitaniya': 'Блоки питания',
                     'moduli-pamyati': 'Модули памяти',
                     'korpusa': 'Корпуса',
-                    'ventilyatory-dlya-korpusa': 'Вентиляторы',
+                    'sistemy-ohlazhdeniya-processora': 'Кулеры для процессора',
                     'ssd-nakopiteli': 'SSD накопители',
                     'zhestkie-diski': 'Жесткие диски',
                     'kulery': 'Кулеры'

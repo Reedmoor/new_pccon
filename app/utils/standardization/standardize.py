@@ -313,18 +313,25 @@ def determine_product_type(categories):
     
     if any(term in category_str for term in ['материнская плата', 'материнские платы', 'motherboard']):
         return 'motherboard'
+    # Проверяем блоки питания ПЕРЕД кулерами, чтобы "Cooler Master" не попал в кулеры
+    elif any(term in category_str for term in ['блок питания', 'блоки питания', 'power supply']):
+        return 'power_supply'
+    # Проверяем кулеры ПЕРЕД процессорами, чтобы "охлаждения процессора" распознавалось как кулер
+    elif any(term in category_str for term in ['кулер', 'охлаждение', 'cooler', 'cooling', 'охлаждения процессора', 'системы охлаждения процессора', 'устройство охлаждения', 'кулеры для процессоров']):
+        return 'cooler'
     elif any(term in category_str for term in ['процессор', 'процессоры', 'cpu', 'processor']):
         return 'processor'
     elif any(term in category_str for term in ['видеокарта', 'видеокарты', 'gpu', 'graphics card']):
         return 'graphics_card'
-    elif any(term in category_str for term in ['блок питания', 'блоки питания', 'power supply']):
-        return 'power_supply'
-    elif any(term in category_str for term in ['оперативная память', 'память', 'ram', 'memory']):
+    elif any(term in category_str for term in ['оперативная память', 'память dimm', 'ram', 'memory', 'модули памяти']):
         return 'ram'
-    elif any(term in category_str for term in ['жесткий диск', 'ssd', 'hdd', 'накопитель', 'storage']):
+    # Объединяем все типы накопителей в одну категорию "жесткие диски"
+    elif any(term in category_str for term in [
+        'жесткий диск', 'жесткие диски', 'ssd', 'hdd', 'накопитель', 'storage',
+        'ssd накопители', 'ssd m.2 накопители', 'ssd m_2 накопители',
+        'твердотельный накопитель', 'накопители ssd'
+    ]):
         return 'hard_drive'
-    elif any(term in category_str for term in ['кулер', 'охлаждение', 'cooler', 'cooling']):
-        return 'cooler'
     elif any(term in category_str for term in ['корпус', 'case', 'корпуса']):
         return 'case'
     else:
