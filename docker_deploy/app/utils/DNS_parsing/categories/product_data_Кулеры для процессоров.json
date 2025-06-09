@@ -1,0 +1,3922 @@
+[
+    {
+        "id": "4892096",
+        "url": "https://www.dns-shop.ru/product/af5b3bfe4cbaed20/kuler-dla-processora-id-cooling-se-226-xt-black/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/210dccd666f5b6ba4e27699c2fc581c5/e2cd592ba9926384823bbb9861e266832faf8e99b6d73938ece1fecd139a47f2.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/82c8228a4603fc94ffd20811ad82dd86/37cf4048f59d2d44fefd17c1f049b3c135974cf58f0651b77d21282107641d55.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7c8c4402ede53a7e62593bc0ef83350d/aaaba1161dfb3f58af7b457625eefe9337d372249cd62358433a75781a11e01e.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/4a5c4df558178884fc21eb325bbfd1f2/9e2563745c693a111c8f18292d36991973c733a5dac43bb58dba4e54cfef16c0.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/a88b7da737d2cd62049821abb3eaca47/f0593b10947351b652eff5936dadd4f174ed8ade709b21bde52f2808f73bc19d.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-226-XT Black",
+        "price_discounted": 0,
+        "price_original": 3199,
+        "rating": 4.83,
+        "number_of_reviews": 2074,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-226-XT Black"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "250 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1800 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "700 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "56.5 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "19.5 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "31.5 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.2 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "154 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "106 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "910 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:42:50.130296"
+    },
+    {
+        "id": "5064837",
+        "url": "https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/c118881c6ed81e7dc24996e882573bc0/bc8d07d95ba2f722392987ea793830e1570f84f5242420db16bd6c9b3e04e33b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/147d5a5cae857d0451d57698ddb10e2f/b46ca68c2935b2845ea7f97e06467b0d6b082fa8f46ce33c57edf1e8fa12efc2.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/9111db9cdba36bb451c4dd1a5e996e5f/0d4391db8ea473538199f1a3735a0a35fb4142bdd172a26160dff76ed30f2688.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/dc6fb3ad96578363460cb4cceef2a59c/2e048bc823296906829691995e79d6a6453ecd11297a6f84d9c2d2de200485ec.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/6e5c7f7ffbd2d36faf64bcb458927306/26be444fa3f193e1c272fb3fcaef08163d9edfb44399e430abfaf44fd9c21b06.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG300 [R-AG300-BKNNMN-G]",
+        "price_discounted": 0,
+        "price_original": 1199,
+        "rating": 4.64,
+        "number_of_reviews": 3454,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG300"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG300-BKNNMN-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "150 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "3"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "92 x 92 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "3050 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "36.75 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "28.3 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "30.5 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.13 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "нанесена на основание"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "133 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "99 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "71 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "350 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:43:07.812182"
+    },
+    {
+        "id": "4892104",
+        "url": "https://www.dns-shop.ru/product/8a8dcede4cc0ed20/kuler-dla-processora-id-cooling-se-214-xt-lga1700/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/cf0d2a1512e0ac964f0907a1f384ee48/51804a17ddd9514d71203bd6347d4fea6fd91b3b5efad50800d5fb86d8166788.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/0e88f6a2723b59bcdd4c638dece4f5f5/829a110da56a1aa5748ce4c566e0386d054477767dc5737ab6f9458941d66183.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8c3590881c8d431a02d5e66f3788a4a4/a05c8f0cc22f517dc3a560bdc8a523ee849249b7ac6ce0d04cdf38150a251e33.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ae555e44e448ae1fd6f43b743eebac0f/09d89b5a7710e83025cd2dab9380672fa2ff1d426f38c70354c32ea8fdfe68e8.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/f209ba7ef7e7c5e7416c9cdbc4800a8f/2c016f8708bb1f073c360c5d13aa6a5a360657f3e5a972303a81a5be5a8ea599.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-214-XT [LGA1700]",
+        "price_discounted": 0,
+        "price_original": 1250,
+        "rating": 4.84,
+        "number_of_reviews": 824,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-214-XT [LGA1700]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "180 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "белый, черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1500 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "64.8 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "18.3 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "26.6 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.28 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "FRGB"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "крыльчатка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "150 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "124 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "72 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "500 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:43:34.294693"
+    },
+    {
+        "id": "5431333",
+        "url": "https://www.dns-shop.ru/product/a4ed23b64d53ed20/kuler-dla-processora-id-cooling-se-903-sd-v3/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/be0815577ccce98315b9ce1e3ee742b6/fe2d368f2c335588de65821ba9a8ee056c3c10f28aac68197172c42823edf7db.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/3e89bcb2030609b11929482e87f92f09/c7d3354cba009f2e1e4ca8cf4219f20b37f6402bb8b19d6d14afe8d532b094a3.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a146836bb689271e2a85599161ec9dc1/77cc1636f240d37419980313f90607d17ff5caf2aefd976b758772dcaaa068ee.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e8a2d0e4671b7ea1714001a4100198ef/13191507b8478cf2eaa1034e56dd8ed38b4540883d106f2c2bc10de53bacec3c.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/2e89b83501b97da4f693e6970e46dcbd/8a79090bd803bbe517a75141102a9c54cc0308e0828e61976642f37ee29b504c.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-903-SD V3",
+        "price_discounted": 0,
+        "price_original": 799,
+        "rating": 4.65,
+        "number_of_reviews": 795,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-903-SD V3"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM2, AM2+, AM3, AM3+, AM4, AM5, FM1, FM2, FM2+, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "130 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "3"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "92 x 92 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "3 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "2000 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "2000 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "нет"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "37.44 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "18.4 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "23.1 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.25 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "123 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "104 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "75 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "370 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:43:49.586787"
+    },
+    {
+        "id": "5075453",
+        "url": "https://www.dns-shop.ru/product/6cfa52dc3b02ed20/kuler-dla-processora-deepcool-ag500-wh-argb-r-ag500-whanmn-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/37cc2436d614ed5f0664f3c915158e82/1c7249fd86f111b6944edcf2b8d418b2e9b39291b06e215d0816fb0e74d46b09.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/7a6d7a4ff6c73b2540ce873857efa7da/df3b5fe2962451fe7562b4b649f30fa489de6898ca0a35a164cf5a476a52afdc.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/084bb66afb9da3a007eb5b7a42f6a9fb/2739338c67f3d9287af966ad800bd6c09fe4ee69c793e28ab5d81416a0872b5f.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e66753308c2a26ccb6128502f52c95d8/d6b2e9d49e8c8eb50070b553c099d673217a104a6e3eee7cb0660eeeb8e4dbb2.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e3d2a23b5d1624baf11efdfc34dbddd9/567a6f21c940ca128acd287c41f4b7c5f8f6c213760a7954e6dbf0a60ab50839.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG500 WH ARGB [R-AG500-WHANMN-G]",
+        "price_discounted": 0,
+        "price_original": 2850,
+        "rating": 4.91,
+        "number_of_reviews": 811,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG500 WH ARGB"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG500-WHANMN-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "240 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "5"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "нет"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "белый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "белый"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "300 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "67.88 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "20 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "29.4 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.14 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "ARGB"
+                },
+                {
+                    "title": "Тип разъема питания подсветки",
+                    "value": "3-pin 5V-D-G (ARGB)"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "крыльчатка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "155 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "125 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "84 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "861 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:44:06.037597"
+    },
+    {
+        "id": "5073908",
+        "url": "https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1d5aab41159f656fb576f6b0289408e1/8649b9b82407d2baf1324291867f372d8895fe2ca89e9610a08f6b1b6598d4c5.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/86f2a54aaaa3ac4a406d15fcd34022fb/a97d9600f1d32c64d72e25ac4ea13c55e7813712bc2fa4a2f669953d84c763ea.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/39dd363a205be88b1e0c94be648400df/831d7a775b7ed2d8b4e4529967eeecf71e79b9e09bee01ddfaffce6035a19834.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/21e456804d4f3041a78da8b300fd3065/765945d88c9ee31b0cf3f2e092608255a8a0b9f8067556a79c64e44011e911a9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e0a3f79bad352b752617bfb2b96f817f/faa40664364324131c64879a7540076a1124b8a6fb1891dee4d93f4a14eabaa0.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-224-XTS ARGB",
+        "price_discounted": 0,
+        "price_original": 1699,
+        "rating": 4.91,
+        "number_of_reviews": 6183,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-224-XTS ARGB"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1500 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "600 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "70 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.2 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28.9 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.2 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "ARGB"
+                },
+                {
+                    "title": "Тип разъема питания подсветки",
+                    "value": "3-pin 5V-D-G (ARGB)"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "крыльчатка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "151 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "120 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "75 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "650 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:44:24.302954"
+    },
+    {
+        "id": "5400960",
+        "url": "https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/eb1a9b930e120c915fab3da9f7657482/1ae9e34b131a61bd5cd6c772e09073dcf198c1b7f289e3eac4a0278b2227760e.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/db422abe3b00b8d6b5e90d0e30d2b7e4/66973acfc38a2731be73132a8cf5b289bcec46d02766e2d9d0331eb3691162fd.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/7bbb3143355b64b6a06ab3c450905fe0/772507035db52a1764086a0db4adecba31640cd484cc177fdd32538683f1a3ed.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/df018adeb5d840b95e56f775a8792850/1cbf006ca3aef115d1f147854ed514932b26a5bdb3cc8c0baa32f524ff4f35ec.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/db56076a945ab07226a76fd1f5c5cc79/f12fe3079497f742ba777f1390efab58d6faae42e93ce164acbdb42b212cf972.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-903-XT BLACK [SE-903-XT BLACK]",
+        "price_discounted": 0,
+        "price_original": 999,
+        "rating": 4.81,
+        "number_of_reviews": 5120,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-903-XT BLACK"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SE-903-XT BLACK]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "130 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "3"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "нет"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "92 x 92 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "2200 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "45.8 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "19 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "25.8 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.25 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "123 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "65 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "350 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:44:43.974059"
+    },
+    {
+        "id": "5414760",
+        "url": "https://www.dns-shop.ru/product/f33330bbefa4ed20/kuler-dla-processora-deepcool-assasin-iv-r-asn4-bknnmt-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/93fc3df049d74fc13757cdc41e32a905/efb5cd11006df410cce3d2e7931dbb836f207c9f63ad1ac53a4faa713f6c1a14.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/8bd36e23b7a9bff136fc88a4152826ae/87709058747e20d3a6198bf4d541ee9952750210ab2241cc99342ef57e943ae3.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/17a0119c000d5204067226fe39ee469c/b004aa40411da6a1e938ead54a08b775eec8ce472603d24f7938350c66801265.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/2205799cbb7d0aa47e7e4b1c5b00433a/9cd49a48351b7c618e008126e9f270915df139d76e903b45e6685f449b5d2d4e.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/462fede320d1af259503312168583896/6adf0ee6d7ee1fb695a1ad2b275f092681ea82fa63c2288df7b11ddbacd35d1e.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL ASSASIN IV [R-ASN4-BKNNMT-G]",
+        "price_discounted": 0,
+        "price_original": 8499,
+        "rating": 4.81,
+        "number_of_reviews": 294,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "60 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL ASSASIN IV"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-ASN4-BKNNMT-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2011-3, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "280 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "7"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм, 140 x 140 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1700 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "79.1 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "23.9 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "29.3 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.1 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "световая индикация режима повышенной производительности"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "164 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "147 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "144 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1575 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:45:00.436471"
+    },
+    {
+        "id": "5045658",
+        "url": "https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/f2b10d5ac5007de13d1db29e5f9ac60e/7edfbc2719992fcd5d681036375c012fdfdb37b8800b7e2f21507961a92ea4b9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8349e8ba479dc1b970784bdc1ae064ee/555aeeaa2cccc92a5afe497154ec7be698222da3212a4fe077b338e9c5edb1e6.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/f5c90f0eb30098940899001637279b1c/aa1904a153dd1be5c6ccd8c89171cb9b630c70521c73a86d1a31a904b4bb0ab3.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f55d2c4e9862f5195ce8638def2bb66c/b99f5a050fa1478efd9d855ef2c7e8dfda6014fbf56514c7c21c607845ba6a9e.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/572871ebfb3fd3951bd95bbc86ed09b7/3010dc3fc23f1b99c9e7c733756ac42ffa3433aa04aaf3e7c21c3af1d8045c9d.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG400 [R-AG400-BKNNMN-G-1]",
+        "price_discounted": 0,
+        "price_original": 1250,
+        "rating": 4.85,
+        "number_of_reviews": 1279,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG400"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG400-BKNNMN-G-1]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "2000 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "75.89 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "24.8 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "31.6 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.17 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "150 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "125 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "72 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "614 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:45:16.673836"
+    },
+    {
+        "id": "5056022",
+        "url": "https://www.dns-shop.ru/product/74b6921001aced20/kuler-dla-processora-deepcool-ak620-zero-dark-r-ak620-bknnmt-g-1/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/569314b0d92310e391bb49cd14947d50/12fcc573bd36a1cf5e8b347f156ae29c9598105d17c5bbfb3fc33ddc7ac827a9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/2798368c5b16bc7bdf7f6efe8425bbe9/fff1b95a03a10bfda27e6876073dff055dde628d5142b0b61050ab6d08d75e70.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/fbab4b9bb746ec101bf0e24195d86d53/e4ddd24ccfe04cd2fd209a2e7acbd050f2619bb4e46d38e82a5a79de02d18ffa.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/711ce943921d21f492613290b313d547/9f119cbf8b17e40ba2b9eeb08e3f1f5a8f4ff6efed402155b7ea13c887bf4353.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e39c7b2000a8c387aebffeb52ed3737d/2493b512f3cb36b06a8cebcd1d1dcb294ea6df7e900f8d380112bd800d614253.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AK620 ZERO DARK [R-AK620-BKNNMT-G-1]",
+        "price_discounted": 0,
+        "price_original": 7099,
+        "rating": 4.84,
+        "number_of_reviews": 2550,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AK620 ZERO DARK"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AK620-BKNNMT-G-1]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2011-3, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "260 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "68.99 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.4 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.12 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "160 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "138 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1456 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:45:33.968429"
+    },
+    {
+        "id": "4898015",
+        "url": "https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/ec90dcec1e41e48d8d6e90b3df92c104/756062b998aed224f2899191f2b9ba5d9da4b25c865a17b1a9f87cd169882402.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/6dd5817ac16b09ca928cb5e94a346b3a/735a02064fcebdc99d2061b1c1b7cbc5224bd0d8a58a5eacc50c5af09795cfac.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/01344d10e9950cec0f1d817f276ee400/300fd79fe30981a9f7918c26d78985043ae21ee5582d3bd5cf81794c410d2204.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/ec3cacea5447b1d39ea9a4f3aef4fc55/f47bd1ca17d519dfd44c430477521e85b6f72c9b8ba86e7570053cf28e2f5973.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/ba79e08d4971c72d81661790b6e93624/5937bcb1c53a9cac03006c50d7de3381a0e369f76b0e13c543f5e1d4924d9601.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AK620 [LGA1700] [R-AK620-BKNNMT-G]",
+        "price_discounted": 0,
+        "price_original": 5999,
+        "rating": 4.84,
+        "number_of_reviews": 2550,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AK620 [LGA1700]"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AK620-BKNNMT-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM2, AM2+, AM3, AM3+, AM4, AM5, FM1, FM2, FM2+, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2011-3, LGA 2066ещё"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "260 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание, радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "68.99 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.5 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.12 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "160 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "138 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1456 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:45:51.519361"
+    },
+    {
+        "id": "5414801",
+        "url": "https://www.dns-shop.ru/product/c48a5501efb4ed20/kuler-dla-processora-deepcool-ak400-digital-r-ak400-bkadmn-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/2d121fd0172de7a630ad2e2c40bf4c41/05495a0deecb1bec8b2c510bce2df8e65a33573e8264672e95d2d1fb3c8eeafb.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/be3ef2cd88bb54ded35b15648c3aadb9/3306458fe1697cfa73efc660c785702cbeb81f4498c9a63586929fbe650fd6e9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/eefbd1af813b1f56c9ea8507e12ae85f/c4b929437f12a9f155141b34ec8dfb9bc18f6be730aa465048ada56b591dc50e.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/73718748927e2e3821c41ed73828772c/62cb915e821569795a48c866d590a76bad5f304026aeb8af92415e8899c2c7e1.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e31237a2a739b0f7f1486c65cdc3c3ea/b619dd39608b242ed759666abbd98894d9abf4b3b4c4d647d6a2dcf473821636.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AK400 DIGITAL [R-AK400-BKADMN-G]",
+        "price_discounted": 0,
+        "price_original": 3599,
+        "rating": 4.89,
+        "number_of_reviews": 691,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AK400 DIGITAL"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AK400-BKADMN-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "нет"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "68.99 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.5 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.12 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "нанесена на основание"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "ARGB"
+                },
+                {
+                    "title": "Тип разъема питания подсветки",
+                    "value": "3-pin 5V-D-G (ARGB)"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "декоративная накладка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "9 pin USB 2.0, LCD дисплей, прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "156 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "126 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "97 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "695 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:46:08.959482"
+    },
+    {
+        "id": "5453823",
+        "url": "https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f45f04ce7e43535cc659945c4be436af/bb35692bfce22ed015adc3d5d2ae1d069400f7568928c9932a48c348b0023449.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/cfc651f5f63b95254f2dfd5b941c07e5/fd7e73b8b8d9e1c6a790947a46c391a09c9de5ad34032985df665ad1d647365d.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b8110c5a40c3011cffca9dc8a66ed358/a58870b8445b3bebb7fda7105b19dd1e112e17f4d274510fe06739622bfbda29.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/0cae0b7504b97035b57004016973481b/afcd7866998168ca3818ff31eb774ec87652a13dc00bc0f97cfdeff53a0ff67c.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4b2791d238b09cb325e1a9f4684885b9/b36f02c8c1ba9a066561104fb8fb303dddfd7153e88fe5df727ada669d7c2342.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]",
+        "price_discounted": 0,
+        "price_original": 5199,
+        "rating": 4.88,
+        "number_of_reviews": 372,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG620"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG620-BKNNMN-G-1]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2011-3, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "260 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание, радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "300 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "67.88 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "20.6 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "29.4 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.14 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "комплект крепления, разветвитель"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "157 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "136 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1300 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:46:24.888443"
+    },
+    {
+        "id": "5073919",
+        "url": "https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/d428fa5a20990db44e00e2f73270c90a/cd144776137936ebce9c3de7451b3b2b1b9b3f348c9aa44d2f68e2aeac448164.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b4d4d4323337ae33305a03799e16a279/7ed911070911e479644cd4f061fa6ecd5faec86cb3e76dcdf8a36d43e5d24bef.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/34b6fe7e44b438c01e1653b2c9a91b58/98c81f10ca80fa7a7c85a0a55b0d0647256336bb11f03e0fe2363df307e1a2c5.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/6cad2f1d4cac447cb5aa7dbcc781a8bb/e4e469050db5fe510cdd62657a9d388d888ac4d0d96dea88054996e61c13ff1a.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/16f768b9a85fd586f97429b43c4e4505/b6f359f76ee0a9f8bcce99c6d4618bc8492a1b2baf0e684e5c65f11bdbb50e0f.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]",
+        "price_discounted": 0,
+        "price_original": 1499,
+        "rating": 4.91,
+        "number_of_reviews": 6183,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-224-XTS"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SE-224-XTS]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1500 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "600 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "70 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.1 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28.9 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.2 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "151 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "120 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "75 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "650 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:46:42.926235"
+    },
+    {
+        "id": "5056013",
+        "url": "https://www.dns-shop.ru/product/f770c41601aaed20/kuler-dla-processora-deepcool-ag400-bk-argb-r-ag400-bkanmc-g-2/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/044f652672066e22551a9e2de3b53e01/f38bf583bd5635fa8cca1025805e2fba7f7a5dc9b3c62582ec4bee3a5a715cf6.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/dbee3354d2da8cf8a4ebb98ece2e6ae9/0e26ce5bc2f7f9071c077d73df874929d23cfefa76e3cfb61569949a53e3b0dd.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/9e680a087b67ed15959c1bde90c1e5fe/98f4f0a9c1379cb081b3f054cd395dbe6ce104fa0796ece7eee005d3826f698c.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/219ac5014ff1bc83cff89a346eddebbf/0062a1b9cd5379ec7e7040125df23c671877ae7e149c2b06674aef1cb07cfabe.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7dc9469b3ad93be44759c095bd221f54/ed693ff7b7328cbb6cb674fea7eba7802c9ddeed0453c70c7b4c35bff28d97af.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG400 BK ARGB [R-AG400-BKANMC-G-2]",
+        "price_discounted": 0,
+        "price_original": 1950,
+        "rating": 4.88,
+        "number_of_reviews": 1018,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG400 BK ARGB"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG400-BKANMC-G-2]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "нет"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "1"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "белый, черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "2000 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "75.89 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "24.8 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "31.6 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.17 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "ARGB"
+                },
+                {
+                    "title": "Тип разъема питания подсветки",
+                    "value": "3-pin 5V-D-G (ARGB)"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "крыльчатка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "150 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "125 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "72 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "614 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:47:00.020217"
+    },
+    {
+        "id": "4892097",
+        "url": "https://www.dns-shop.ru/product/dab64ee34cbaed20/kuler-dla-processora-id-cooling-se-225-xt-black-v2-lga1700-se-225-xt-black/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/aa698ca004af622b66d5d7c7d1022c2c/8a193cfe0c21870e6253c1a76c17b15c4ed2cec5fd12cff96dfec20e8280d65b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/cc789e9eb161e58c4506c3014fa8d07a/f0b3ee199a4918ee20cfe6fbcf48eb7f5ca95952262bcbb046fe8f173dd1d493.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/fe7eda46afcb90923de24c92e7144d50/0252fb5dcb72c0d3c7366f0ab0dba128512264d97570a4cb23107374ef7a003b.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/28ea8c9b9f249c71df99c8b8ddfbd655/085177c5f019751957b3f25b31764f2036117f7b3a2364d0ef47a75324626eb2.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/05b96d38a135bf709d549ea141d16552/048319773259bd5dff09221205dd98d00df13c2309de9da305c9e493d8468db7.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-225-XT BLACK V2 [LGA1700] [SE-225-XT BLACK]",
+        "price_discounted": 0,
+        "price_original": 2599,
+        "rating": 4.8,
+        "number_of_reviews": 678,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-225-XT BLACK V2 [LGA1700]"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SE-225-XT BLACK]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "5"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "нет"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1800 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "700 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "76.16 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.2 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "35.2 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.2 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, кабели, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "150 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "128 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "108 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "960 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:47:16.268662"
+    },
+    {
+        "id": "5003843",
+        "url": "https://www.dns-shop.ru/product/ef120e526912ed20/kuler-dla-processora-deepcool-ak400-r-ak400-bknnmn-g-1/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/5148d4b66abede48ccd08e20675da6a0/61c6cc5fac4e24f5bba2b71938a40992e6452874caef72d02cf26a4df6ba8683.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d0241dde9ea42dd4ffc2c3a71b8e2db4/b10ce290894ba494ac1b672291529c2fbc1418311f3df2a81ad0e234b5e463f8.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/0c4c0f5aeb076ff865fa42b3f6ad1730/422d5b41a994924a29f1676f56aa601cfdc1a3bdcf7285c79eb7819fdb6fa6f0.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/29dc754d221fe3a6ea8027a9f572da71/920bbd93181b92aa70b0640c129f180ed0932560d5d74bde24c9e9a1525fa8c9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b7d1b6f792fd448f25a63a1826a5e5da/e49023be1f40816b97f6dac959a8cbe4cf5844c1c8fd82f8f13dd64cd17d2c65.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AK400 [R-AK400-BKNNMN-G-1]",
+        "price_discounted": 0,
+        "price_original": 2499,
+        "rating": 4.91,
+        "number_of_reviews": 2087,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AK400"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AK400-BKNNMN-G-1]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "220 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "алюминий\\медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "4"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "1"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "66.47 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "20 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "29 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.13 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "нанесена на основание"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "прямой контакт тепловых трубок"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "155 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "127 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "73 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "661 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:47:33.412541"
+    },
+    {
+        "id": "5080983",
+        "url": "https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e47a4a9d42347706afd33110de769eb6/f62d89884faf659fba491d2e2932bfc9cf9eee488fc4a995027d9e8d3a4d7ed6.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b290e579246f18774212647765dc8860/736cf87bf51c4e7020000c29f725971d0c93253bbdce217be13d170cc7695f6b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/44b72ce2ac74cc129763f00b84cca3af/59b80a9afb10d1525fb00ff6730d9f764232a6ec57aaa4ec20571abe3fdae9d8.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b27df64a7d5c0104d3f52c568dbd8323/5a609c701c36ed60483b13608cd22f72a337556e45ebcff4dc22c2d16222fe26.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/95acb0ecef6b0fba61adcb9936206795/cb7385514bb20843c85053640efc6b2928c513a5bb3d3a2c2301f1afdb402abe.jpg"
+        ],
+        "name": "Кулер для процессора ID-COOLING SE-206-XT",
+        "price_discounted": 0,
+        "price_original": 2599,
+        "rating": 4.78,
+        "number_of_reviews": 691,
+        "brand_name": "ID-Cooling",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "24 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ID-COOLING SE-206-XT"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "250 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание, радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1800 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "700 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "76.16 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.2 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "35.2 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.2 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "156 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "120 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "136 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1100 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:47:50.566318"
+    },
+    {
+        "id": "5414804",
+        "url": "https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/0/0/cb3b79cd659524dda122c07e089ae49f/85b084d1fda404e45f962e7383b768910a065f77a91c8a112ad6a4a90e384124.png",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d4c5c1ced1d6f0d1613683d07752c886/2ef60124e34576863aa8afb474b025f0ea4e652b62ceaa78644c7b6be600ec36.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e53544bf221a1028eb990fa0fdd0f3e7/5ce6b6a876014287e4de775f14380cb25d6d7e8d4eb5c2d140fc057f52e93ec0.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/fbadcc2782d75b421defaee933e2f960/30f0ba41dbc4e3bce30eb5b0e8902c0cd59adde8c44d38b60aaf1e5d61eb4091.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/d15412238784d931edf325dac3239576/0e7695d5c238c7a4a13808329f8ae2366c888f7642ebde62543226558f56ea9e.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AK620 DIGITAL [R-AK620-BKADMN-G]",
+        "price_discounted": 0,
+        "price_original": 6299,
+        "rating": 4.84,
+        "number_of_reviews": 485,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AK620 DIGITAL"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AK620-BKADMN-G]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851, LGA 2011, LGA 2011-3, LGA 2066"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "260 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "черный"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1850 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "500 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "68.99 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "21.5 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "28 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.12 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "ARGB"
+                },
+                {
+                    "title": "Тип разъема питания подсветки",
+                    "value": "3-pin 5V-D-G (ARGB)"
+                },
+                {
+                    "title": "Источник подсветки",
+                    "value": "декоративная накладка"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "9 pin USB 2.0, LCD дисплей"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "162 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "138 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1486 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:48:05.193187"
+    },
+    {
+        "id": "5435927",
+        "url": "https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9bdaf16404e77/ohlazhdenie-kompyutera/",
+                "name": "Охлаждение компьютера"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/",
+                "name": "Кулеры для процессоров"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/41a0116b2e8e9831b3249f06df1cbc64/455ba741b0fc91e22432d616ccd3f07e1f82841fa491d0a32f11b74ddc19a118.png",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/3e2a3e5f54a4324a2858e251d96ccf76/ac7ff77b38fec6dc1ec8b98695fd484f1676ac42e91de68c1dc80b93ff9ab2e7.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/0681de7eb59d9be79ba6e30ca5f755cd/3194dec96696c8b8844ca10166033329f1b124b7064d4f60211f1061735f35a7.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/074be47a07f8ed26c4b87a490b257e7d/74d51514da7db0a4685ed4ccec8e0f8eff126e415ad9d083c99f84344ecd621e.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/15fc91fc740393a747ba407194906c19/c7ecc30f4749a4049eeed835f4130e4bb4904ad25b371f486ef1cabb03bb3b91.jpg"
+        ],
+        "name": "Кулер для процессора DEEPCOOL AG620 DIGITAL [R-AG620-BKNDMN-G-1]",
+        "price_discounted": 0,
+        "price_original": 4999,
+        "rating": 4.82,
+        "number_of_reviews": 213,
+        "brand_name": "DEEPCOOL",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "кулер для процессора"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEEPCOOL AG620 DIGITAL"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[R-AG620-BKNDMN-G-1]"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1151-v2, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+                },
+                {
+                    "title": "Рассеиваемая мощность",
+                    "value": "260 Вт"
+                },
+                {
+                    "title": "Тип конструкции",
+                    "value": "башенный"
+                }
+            ],
+            "Радиатор": [
+                {
+                    "title": "Материал основания",
+                    "value": "медь"
+                },
+                {
+                    "title": "Материал радиатора",
+                    "value": "алюминий"
+                },
+                {
+                    "title": "Количество тепловых трубок",
+                    "value": "6"
+                },
+                {
+                    "title": "Диаметр тепловых трубок",
+                    "value": "6 мм"
+                },
+                {
+                    "title": "Никелированное покрытие",
+                    "value": "основание, радиатор, тепловые трубки"
+                },
+                {
+                    "title": "Цвет радиатора",
+                    "value": "серебристый"
+                }
+            ],
+            "Вентилятор": [
+                {
+                    "title": "Количество вентиляторов в комплекте",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальное число устанавливаемых вентиляторов",
+                    "value": "2"
+                },
+                {
+                    "title": "Размеры комплектных вентиляторов",
+                    "value": "120 x 120 мм"
+                },
+                {
+                    "title": "Цвет вентилятора",
+                    "value": "черный"
+                },
+                {
+                    "title": "Разъем для подключения вентиляторов",
+                    "value": "4 pin"
+                },
+                {
+                    "title": "Максимальная скорость вращения",
+                    "value": "1950 об/мин"
+                },
+                {
+                    "title": "Минимальная скорость вращения",
+                    "value": "300 об/мин"
+                },
+                {
+                    "title": "Регулировка скорости вращения",
+                    "value": "автоматическая (PWM)"
+                },
+                {
+                    "title": "Максимальный воздушный поток",
+                    "value": "67.88 CFM"
+                },
+                {
+                    "title": "Максимальное статическое давление",
+                    "value": "20.6 Па"
+                },
+                {
+                    "title": "Максимальный уровень шума",
+                    "value": "29.4 дБ"
+                },
+                {
+                    "title": "Номинальный ток",
+                    "value": "0.14 А"
+                },
+                {
+                    "title": "Номинальное напряжение",
+                    "value": "12 В"
+                },
+                {
+                    "title": "Тип подшипника",
+                    "value": "скольжения (гидродинамический)"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Термопаста в комплекте",
+                    "value": "в отдельной емкости"
+                },
+                {
+                    "title": "Тип подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "Дополнительная информация",
+                    "value": "9 pin USB 2.0, LCD дисплей"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, кабели, комплект крепления"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Высота",
+                    "value": "161 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "136 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "129 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1370 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-04T15:48:20.982244"
+    }
+]

@@ -1,0 +1,547 @@
+дополни  сравнение и стандартизацию для процессоров и остальных комплектующих (материнские платы, оперативная память, блоки питания, кулер, корпуса,жесткие диски)
+{
+        "id": "5412485",
+        "url": "https://www.dns-shop.ru/product/414e9c60e254ed20/materinskaa-plata-msi-b650-gaming-plus-wifi/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89a0416404e77/materinskie-platy/",
+                "name": "Материнские платы"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/b02cea8a09b6109a598c6cdca852534f/f3465b1dd9af53fe73dc06da168b9d1a42ea0530c467065cb097a541a07d152e.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a25654159b85cf31d50e5d0ed841da87/0b37925844bea2c4af04e81bac052f628a7d24e5208d523a993312ec02b697fc.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/33dfed72041f55e14aaea045278ea822/02b8c3a452fa83a4d2de2984210be1bb96070af4ace0d8e47c5a573e1288a13f.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/0a5949039bc542c9d135faf926ad44eb/5399a9b4d173d72283ea16a245cd00c4d210341dfadc9c47ac5f3397e9c234ff.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/2867250f06b30d1301375cc5d3bf449c/db29d000395567a53d6eed426090c1a62a8ec65b1961b34b54a58daaa4fbce92.jpg"
+        ],
+        "name": "Материнская плата MSI B650 GAMING PLUS WIFI",
+        "price_discounted": 0,
+        "price_original": 17999,
+        "rating": 4.62,
+        "number_of_reviews": 432,
+        "brand_name": "MSI",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "материнская плата"
+                },
+                {
+                    "title": "Модель",
+                    "value": "MSI B650 GAMING PLUS WIFI"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Год релиза",
+                    "value": "2022"
+                }
+            ],
+            "Форм-фактор и размеры": [
+                {
+                    "title": "Форм-фактор",
+                    "value": "Standard-ATX"
+                },
+                {
+                    "title": "Высота",
+                    "value": "305 мм"
+                },
+                {
+                    "title": "Ширина",
+                    "value": "244 мм"
+                }
+            ],
+            "Процессор и чипсет": [
+                {
+                    "title": "Сокет",
+                    "value": "AM5"
+                },
+                {
+                    "title": "Чипсет AMD",
+                    "value": "AMD B650"
+                },
+                {
+                    "title": "Совместимые ядра процессоров AMD",
+                    "value": "Raphael"
+                }
+            ],
+            "Память": [
+                {
+                    "title": "Тип поддерживаемой памяти",
+                    "value": "DDR5"
+                },
+                {
+                    "title": "Форм-фактор поддерживаемой памяти",
+                    "value": "DIMM"
+                },
+                {
+                    "title": "Количество слотов памяти",
+                    "value": "4"
+                },
+                {
+                    "title": "Количество каналов памяти",
+                    "value": "2"
+                },
+                {
+                    "title": "Максимальный объем памяти",
+                    "value": "256 ГБ"
+                },
+                {
+                    "title": "Максимальная частота памяти (JEDEC / без разгона)",
+                    "value": "4800 МГц"
+                },
+                {
+                    "title": "Частота оперативной памяти в разгоне",
+                    "value": "5000 МГц, 5200 МГц, 5400 МГц, 5600 МГц, 5800 МГц, 6000 МГц, 6200 МГц, 6400 МГц, 6600 МГц, 6800 МГц, 7000 МГц, 7200 МГц"
+                }
+            ],
+            "Слоты расширения": [
+                {
+                    "title": "Версия PCI Express",
+                    "value": "4.0"
+                },
+                {
+                    "title": "Слоты PCIe x16",
+                    "value": "1 x PCIe 4.0 (в режиме x4), 1 x PCIe 4.0 (в режиме x16)"
+                },
+                {
+                    "title": "Поддержка SLI / CrossFire",
+                    "value": "CrossFire X"
+                },
+                {
+                    "title": "Количество карт в SLI / Crossfire",
+                    "value": "2 шт"
+                },
+                {
+                    "title": "Количество слотов PCI-E x1",
+                    "value": "1"
+                }
+            ],
+            "Контроллеры накопителей": [
+                {
+                    "title": "Поддержка NVMe",
+                    "value": "есть"
+                },
+                {
+                    "title": "Версия PCI Express накопителей",
+                    "value": "4.0"
+                },
+                {
+                    "title": "Количество разъемов M.2",
+                    "value": "2"
+                },
+                {
+                    "title": "Разъемы M.2 (M), PCIe линии процессора",
+                    "value": "1 x 2260/2280 (PCIe 4.0 x4), 1 x 2280/22110 (PCIe 4.0 x4)"
+                },
+                {
+                    "title": "Разъемы M.2 (M), PCIe линии чипсета",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество портов SATA",
+                    "value": "4"
+                },
+                {
+                    "title": "Режим работы SATA RAID",
+                    "value": "0, 1"
+                },
+                {
+                    "title": "Режим работы NVMe RAID",
+                    "value": "0, 1"
+                },
+                {
+                    "title": "Другие разъемы накопителей",
+                    "value": "нет"
+                }
+            ],
+            "Порты на задней панели": [
+                {
+                    "title": "Порты USB Type-A",
+                    "value": "3 x USB 3.2 Gen 2, 4 x USB 3.2 Gen 1"
+                },
+                {
+                    "title": "Порты USB Type-C",
+                    "value": "1 x USB 3.2 Gen 2x2"
+                },
+                {
+                    "title": "Видеовыходы",
+                    "value": "1 x DisplayPort, 1 x HDMI"
+                },
+                {
+                    "title": "Количество сетевых портов (RJ-45)",
+                    "value": "1"
+                },
+                {
+                    "title": "Количество аналоговых аудиоразъемов",
+                    "value": "6"
+                },
+                {
+                    "title": "Цифровые аудиопорты (S / PDIF)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъемы SMA (для антенны Wi-Fi)",
+                    "value": "есть"
+                },
+                {
+                    "title": "Порты PS / 2",
+                    "value": "нет"
+                }
+            ],
+            "Разъемы на плате": [
+                {
+                    "title": "Внутренние USB Type-A разъемы",
+                    "value": "1 x USB 3.2 Gen 1 (19 pin), 2 x USB 2.0 (9 pin)"
+                },
+                {
+                    "title": "Внутренние USB Type-C разъемы",
+                    "value": "1 x USB 3.2 Gen 2"
+                },
+                {
+                    "title": "Разъемы питания процессорного охлаждения",
+                    "value": "1 x 4 pin (кулер)"
+                },
+                {
+                    "title": "Разъемы для помпы СЖО (4 pin)",
+                    "value": "1"
+                },
+                {
+                    "title": "Разъемы для корпусных вентиляторов (4 pin)",
+                    "value": "4"
+                },
+                {
+                    "title": "Разъемы для корпусных вентиляторов (3 pin)",
+                    "value": "0"
+                },
+                {
+                    "title": "Разъемы 5V-D-G (3 pin) для ARGB подсветки",
+                    "value": "2"
+                },
+                {
+                    "title": "Разъемы 12V-G-R-B (4 pin) для RGB подсветки",
+                    "value": "2"
+                },
+                {
+                    "title": "Разъем M.2 (E) для модулей беспроводной связи",
+                    "value": "есть"
+                },
+                {
+                    "title": "Разъем RS-232 (COM)",
+                    "value": "есть"
+                },
+                {
+                    "title": "Интерфейс LPT",
+                    "value": "нет"
+                }
+            ],
+            "Аудио": [
+                {
+                    "title": "Звуковая схема",
+                    "value": "7.1"
+                },
+                {
+                    "title": "Чипсет звукового адаптера",
+                    "value": "Realtek ALC897"
+                }
+            ],
+            "Сеть": [
+                {
+                    "title": "Скорость сетевого адаптера",
+                    "value": "2.5 Гбит/с"
+                },
+                {
+                    "title": "Сетевой адаптер",
+                    "value": "Realtek RTL8125BG"
+                },
+                {
+                    "title": "Стандарт Wi-Fi",
+                    "value": "6E (802.11ax)"
+                },
+                {
+                    "title": "Версия Bluetooth",
+                    "value": "5.3"
+                }
+            ],
+            "Питание и охлаждение": [
+                {
+                    "title": "Основной разъем питания",
+                    "value": "24 pin"
+                },
+                {
+                    "title": "Разъем питания процессора",
+                    "value": "2 x 8 pin"
+                },
+                {
+                    "title": "Количество фаз питания",
+                    "value": "12+2+1"
+                },
+                {
+                    "title": "Пассивное охлаждение",
+                    "value": "1 x M.2 слот, зона VRM, чипсет"
+                },
+                {
+                    "title": "Активное охлаждение",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Кнопки на плате",
+                    "value": "кнопка Flash BIOS"
+                },
+                {
+                    "title": "Подсветка элементов платы",
+                    "value": "нет"
+                },
+                {
+                    "title": "ПО для синхронизации подсветки",
+                    "value": "MSI Mystic Light"
+                },
+                {
+                    "title": "Количество слоев печатной платы",
+                    "value": "6"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "поддержка AMD EXPO, поддержка TPM 2.0"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "антенна Wi-Fi, документация, кабель SATA, комплект наклеек, крепеж для разъема M.2"
+                }
+            ],
+            "Габариты и вес в упаковке": [
+                {
+                    "title": "Длина коробки",
+                    "value": "34.5 см"
+                },
+                {
+                    "title": "Ширина коробки",
+                    "value": "27 см"
+                },
+                {
+                    "title": "Высота коробки",
+                    "value": "6.5 см"
+                },
+                {
+                    "title": "Вес с коробкой",
+                    "value": "1.5 кг"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-05-04T18:03:30.939692"
+
+{
+        "id": "5054112",
+        "url": "https://www.dns-shop.ru/product/81a893f2fb7ced20/processor-intel-core-i9-12900kf-oem/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a899cd16404e77/processory/",
+                "name": "Процессоры"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/84fb1ec60710668bcc52f38ff0db76e8/701dc64ac6d87f82ec9f6b3df52b4bcd8bef93d2e548c1cbe30a09cddf4bc2e2.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/66998e0bea6709623465ca7a66dc90a5/e6b806acbc8af431d3b986479383059c152e46dfed6fd252ad76c26f78987967.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/cac8476cac6f814ecd3d356b5dc3dccd/5543b6448a80702d09970665b1fe48b816ee90f6dc7469e2b58fbe6ec2ecd726.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/bbe3017f76217106e27501c782d4842c/7cfccd5e61b8968f57b9a67fa52e0dff5cec985489fa69dfabfd7a7282170ce1.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/6e1c0a77787b698b5147b6c96a561438/64eb7983dad926d1f730cc6865512b20da63de9a487a3871f7e918f032980ef4.jpeg"
+        ],
+        "name": "Процессор Intel Core i9-12900KF OEM",
+        "price_discounted": 0,
+        "price_original": 30799,
+        "rating": 4.94,
+        "number_of_reviews": 452,
+        "brand_name": "Intel",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Вьетнам"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Модель",
+                    "value": "Intel Core i9-12900KF"
+                },
+                {
+                    "title": "Сокет",
+                    "value": "LGA 1700"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[CM8071504549231-SRL4J]"
+                },
+                {
+                    "title": "Год релиза",
+                    "value": "2021"
+                },
+                {
+                    "title": "Система охлаждения в комплекте",
+                    "value": "нет"
+                },
+                {
+                    "title": "Термоинтерфейс в комплекте",
+                    "value": "нет"
+                }
+            ],
+            "Ядро и архитектура": [
+                {
+                    "title": "Общее количество ядер",
+                    "value": "16"
+                },
+                {
+                    "title": "Количество производительных ядер",
+                    "value": "8"
+                },
+                {
+                    "title": "Количество энергоэффективных ядер",
+                    "value": "8"
+                },
+                {
+                    "title": "Максимальное число потоков",
+                    "value": "24"
+                },
+                {
+                    "title": "Объем кэша L2",
+                    "value": "14 МБ"
+                },
+                {
+                    "title": "Объем кэша L3",
+                    "value": "30 МБ"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "Intel 7"
+                },
+                {
+                    "title": "Ядро",
+                    "value": "Intel Alder Lake-S"
+                }
+            ],
+            "Частота и возможность разгона": [
+                {
+                    "title": "Базовая частота процессора",
+                    "value": "3.2 ГГц"
+                },
+                {
+                    "title": "Максимальная частота в турбо режиме",
+                    "value": "5.2 ГГц"
+                },
+                {
+                    "title": "Базовая частота энергоэффективных ядер",
+                    "value": "2.4 ГГц"
+                },
+                {
+                    "title": "Частота в турбо режиме энергоэффективных ядер",
+                    "value": "3.9 ГГц"
+                },
+                {
+                    "title": "Свободный множитель",
+                    "value": "есть"
+                }
+            ],
+            "Параметры оперативной памяти": [
+                {
+                    "title": "Тип памяти",
+                    "value": "DDR4, DDR5"
+                },
+                {
+                    "title": "Максимально поддерживаемый объем памяти",
+                    "value": "128 ГБ"
+                },
+                {
+                    "title": "Количество каналов",
+                    "value": "2"
+                },
+                {
+                    "title": "Частота оперативной памяти",
+                    "value": "DDR4-3200, DDR5-4800"
+                },
+                {
+                    "title": "Поддержка режима ECC",
+                    "value": "нет"
+                }
+            ],
+            "Тепловые характеристики": [
+                {
+                    "title": "Тепловыделение (TDP)",
+                    "value": "241 Вт"
+                },
+                {
+                    "title": "Базовое тепловыделение",
+                    "value": "125 Вт"
+                },
+                {
+                    "title": "Максимальная температура процессора",
+                    "value": "100 °C"
+                }
+            ],
+            "Графическое ядро": [
+                {
+                    "title": "Интегрированное графическое ядро",
+                    "value": "нет"
+                }
+            ],
+            "Шина и контроллеры": [
+                {
+                    "title": "Встроенный контроллер PCI Express",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Число линий PCI Express",
+                    "value": "20 шт"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Технология виртуализации",
+                    "value": "есть"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "поддержка Intel Optane, технология Intel GNA"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-05-12T21:51:55.766944"
+

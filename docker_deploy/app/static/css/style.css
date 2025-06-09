@@ -1,0 +1,147 @@
+/* Основные стили для приложения */
+body {
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Стили для навигационной панели */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+/* Стили для карточек */
+.card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+/* Стили для компонентов конфигуратора */
+.component-item {
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.component-item:hover {
+    border-left-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.component-item.selected {
+    border-left-color: #28a745;
+    background-color: #f0f9f0;
+}
+
+.price-badge {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Стили для фильтров */
+.filter-section {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Стили для форм */
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* Стили для кнопок */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Стили для подвала */
+.footer {
+    margin-top: 50px;
+}
+
+/* Стили для страницы конфигурации */
+.config-summary {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+.compatibility-check {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.compatibility-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.compatibility-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.compatibility-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Стили для страниц авторизации */
+.auth-container {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .config-summary {
+        position: static;
+    }
+} 

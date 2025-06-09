@@ -1,0 +1,246 @@
+{% extends 'admin/layout.html' %}
+
+{% block admin_title %}Добавление продукта{% endblock %}
+
+{% block admin_header %}
+    {% if product_type == 'motherboard' %}
+        Добавление материнской платы
+    {% elif product_type == 'processor' %}
+        Добавление процессора
+    {% elif product_type == 'graphics_card' %}
+        Добавление видеокарты
+    {% elif product_type == 'ram' %}
+        Добавление оперативной памяти
+    {% elif product_type == 'hard_drive' %}
+        Добавление жесткого диска
+    {% elif product_type == 'power_supply' %}
+        Добавление блока питания
+    {% elif product_type == 'cooler' %}
+        Добавление кулера
+    {% elif product_type == 'case' %}
+        Добавление корпуса
+    {% else %}
+        Добавление продукта
+    {% endif %}
+{% endblock %}
+
+{% block admin_description %}
+    Заполните форму для добавления нового продукта в каталог
+{% endblock %}
+
+{% block admin_content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-plus-circle me-1"></i>
+        Форма добавления продукта
+    </div>
+    <div class="card-body">
+        <form method="post" id="productForm">
+            {{ form.hidden_tag() }}
+            
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Основная информация</h4>
+                    <hr>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.product_name.label(class="form-label") }}
+                        {{ form.product_name(class="form-control") }}
+                        {% for error in form.product_name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.vendor.label(class="form-label") }}
+                        {{ form.vendor(class="form-control") }}
+                        {% for error in form.vendor.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.price_discounted.label(class="form-label") }}
+                        {{ form.price_discounted(class="form-control") }}
+                        {% for error in form.price_discounted.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.price_original.label(class="form-label") }}
+                        {{ form.price_original(class="form-control") }}
+                        {% for error in form.price_original.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.product_url.label(class="form-label") }}
+                        {{ form.product_url(class="form-control") }}
+                        {% for error in form.product_url.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.image_url.label(class="form-label") }}
+                        {{ form.image_url(class="form-control") }}
+                        {% for error in form.image_url.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.brand.label(class="form-label") }}
+                        {{ form.brand(class="form-control") }}
+                        {% for error in form.brand.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        {{ form.model.label(class="form-label") }}
+                        {{ form.model(class="form-control") }}
+                        {% for error in form.model.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- Характеристики -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h4>Характеристики</h4>
+                    <hr>
+                    <div id="additionalCharacteristics">
+                        <!-- Здесь будут динамически добавляемые поля характеристик -->
+                    </div>
+                    <button type="button" class="btn btn-outline-primary mt-2" id="addCharacteristicBtn">
+                        <i class="fas fa-plus me-1"></i>Добавить характеристику
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save me-1"></i>Сохранить
+                </button>
+                <a href="{{ url_for('admin.products', type=product_type) }}" class="btn btn-secondary">
+                    <i class="fas fa-times me-1"></i>Отмена
+                </a>
+            </div>
+            
+            <!-- Hidden input to store additional characteristics as JSON -->
+            <input type="hidden" name="additional_characteristics" id="additionalCharacteristicsJson" value="{}">
+        </form>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addCharacteristicBtn = document.getElementById('addCharacteristicBtn');
+        const additionalCharacteristics = document.getElementById('additionalCharacteristics');
+        const additionalCharacteristicsJson = document.getElementById('additionalCharacteristicsJson');
+        let characteristicCount = 0;
+        
+        // Функция для добавления новой пары ключ-значение
+        function addCharacteristicField(key = '', value = '') {
+            const fieldId = 'characteristic_' + characteristicCount;
+            const row = document.createElement('div');
+            row.className = 'row mb-3 characteristic-row';
+            row.dataset.id = fieldId;
+            
+            row.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control characteristic-key" placeholder="Название характеристики" data-id="${fieldId}" value="${key}">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control characteristic-value" placeholder="Значение" data-id="${fieldId}" value="${value}">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-outline-danger remove-characteristic" data-id="${fieldId}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            additionalCharacteristics.appendChild(row);
+            
+            // Добавляем обработчик для кнопки удаления
+            const removeBtn = row.querySelector('.remove-characteristic');
+            removeBtn.addEventListener('click', function() {
+                const fieldId = this.dataset.id;
+                const rowToRemove = document.querySelector(`.characteristic-row[data-id="${fieldId}"]`);
+                if (rowToRemove) {
+                    rowToRemove.remove();
+                    updateCharacteristicsJson();
+                }
+            });
+            
+            // Добавляем обработчики изменения для полей
+            const keyInput = row.querySelector('.characteristic-key');
+            const valueInput = row.querySelector('.characteristic-value');
+            
+            keyInput.addEventListener('input', updateCharacteristicsJson);
+            valueInput.addEventListener('input', updateCharacteristicsJson);
+            
+            characteristicCount++;
+            updateCharacteristicsJson();
+        }
+        
+        // Функция для обновления JSON с дополнительными характеристиками
+        function updateCharacteristicsJson() {
+            const characteristics = {};
+            const rows = document.querySelectorAll('.characteristic-row');
+            
+            rows.forEach(row => {
+                const fieldId = row.dataset.id;
+                const keyInput = row.querySelector(`.characteristic-key[data-id="${fieldId}"]`);
+                const valueInput = row.querySelector(`.characteristic-value[data-id="${fieldId}"]`);
+                
+                if (keyInput && valueInput && keyInput.value.trim() !== '') {
+                    characteristics[keyInput.value.trim()] = valueInput.value.trim();
+                }
+            });
+            
+            additionalCharacteristicsJson.value = JSON.stringify(characteristics);
+        }
+        
+        // Обработчик кнопки добавления характеристики
+        addCharacteristicBtn.addEventListener('click', function() {
+            addCharacteristicField();
+        });
+        
+        // Обработчик отправки формы
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            updateCharacteristicsJson();
+        });
+        addCharacteristicField();
+    });
+</script>
+{% endblock %}
+{% endblock %} 

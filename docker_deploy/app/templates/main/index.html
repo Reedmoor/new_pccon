@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-md-12">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold mb-4">Добро пожаловать в Конфигуратор ПК</h1>
+                <p class="fs-4 mb-4">Соберите свой идеальный компьютер, выбрав комплектующие из нашего каталога</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('config.new_config') }}" class="btn btn-primary btn-lg px-4 gap-3">
+                        <i class="fas fa-plus-circle me-2"></i>Создать конфигурацию
+                    </a>
+                    <a href="{{ url_for('config.my_configs') }}" class="btn btn-outline-secondary btn-lg px-4">
+                        <i class="fas fa-list me-2"></i>Мои конфигурации
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg px-4 gap-3">
+                        <i class="fas fa-sign-in-alt me-2"></i>Войти
+                    </a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-outline-secondary btn-lg px-4">
+                        <i class="fas fa-user-plus me-2"></i>Зарегистрироваться
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-lg-4 mb-3">
+        <div class="card h-100 border-primary">
+            <div class="card-body text-center">
+                <i class="fas fa-tools fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Простой подбор компонентов</h5>
+                <p class="card-text">Интуитивно понятный интерфейс для создания сборки ПК с проверкой совместимости деталей.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-3">
+        <div class="card h-100 border-success">
+            <div class="card-body text-center">
+                <i class="fas fa-filter fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Удобные фильтры</h5>
+                <p class="card-text">Используйте фильтры для подбора комплектующих по цене, бренду и характеристикам.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-3">
+        <div class="card h-100 border-info">
+            <div class="card-body text-center">
+                <i class="fas fa-save fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Сохранение конфигураций</h5>
+                <p class="card-text">Создавайте, сохраняйте и редактируйте свои конфигурации в личном кабинете.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">Как это работает</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold text-primary">1</span>
+                        </div>
+                        <h5>Регистрация</h5>
+                        <p>Создайте аккаунт для доступа ко всем функциям</p>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold text-primary">2</span>
+                        </div>
+                        <h5>Выбор компонентов</h5>
+                        <p>Подберите комплектующие для ПК</p>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold text-primary">3</span>
+                        </div>
+                        <h5>Проверка совместимости</h5>
+                        <p>Система проверит совместимость всех компонентов</p>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold text-primary">4</span>
+                        </div>
+                        <h5>Сохранение</h5>
+                        <p>Сохраните готовую конфигурацию в личном кабинете</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
