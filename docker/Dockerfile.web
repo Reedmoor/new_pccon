@@ -1,0 +1,54 @@
+# Используем официальный Python образ
+FROM python:3.11-slim
+
+# Устанавливаем переменные окружения
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV FLASK_APP=run.py
+ENV DISPLAY=:99
+
+# Создаем рабочую директорию
+WORKDIR /app
+
+# Устанавливаем системные зависимости включая Chrome для DNS парсера
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libpq-dev \
+    wget \
+    gnupg \
+    unzip \
+    curl \
+    xvfb \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+# Копируем requirements и устанавливаем Python зависимости
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Создаем пользователя для приложения с домашней директорией
+RUN groupadd -r appuser && useradd -r -g appuser -m -d /home/appuser appuser
+
+# Копируем код приложения
+COPY . .
+
+# Создаем необходимые директории и устанавливаем права
+RUN mkdir -p /app/uploads /app/data /app/logs /home/appuser/.cache && \
+    chown -R appuser:appuser /app /home/appuser
+
+# Переключаемся на пользователя приложения
+USER appuser
+
+# Открываем порт
+EXPOSE 5000
+
+# Проверка здоровья контейнера
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5000/health || exit 1
+
+# Команда запуска
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x24 & gunicorn --bind 0.0.0.0:5000 --workers 2 --timeout 120 run:app"]

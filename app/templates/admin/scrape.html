@@ -42,15 +42,25 @@
                     </div>
                     
                     <div class="mb-3 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-play me-2"></i>Запустить парсер DNS
-                        </button>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-play me-2"></i>Запустить парсер DNS
+                            </button>
+                        </div>
                         
-                        {% if dns_results %}
-                        <a href="{{ url_for('admin.clear_dns_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера DNS?');">
-                            <i class="fas fa-trash me-2"></i>Очистить результаты
-                        </a>
-                        {% endif %}
+                        <div class="btn-group" role="group">
+                            <form method="POST" action="{{ url_for('admin.stop_dns_parser') }}" class="d-inline">
+                                <button type="submit" class="btn btn-warning" onclick="return confirm('Остановить парсер DNS?');">
+                                    <i class="fas fa-stop me-2"></i>Остановить
+                                </button>
+                            </form>
+                            
+                            {% if dns_results %}
+                            <a href="{{ url_for('admin.clear_dns_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера DNS?');">
+                                <i class="fas fa-trash me-2"></i>Очистить результаты
+                            </a>
+                            {% endif %}
+                        </div>
                     </div>
                 </form>
                 
@@ -88,15 +98,31 @@
                     </div>
                     
                     <div class="mb-3 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-play me-2"></i>Запустить парсер Citilink
-                        </button>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-play me-2"></i>Запустить парсер Citilink
+                            </button>
+                        </div>
                         
-                        {% if citilink_results %}
-                        <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера Citilink?');">
-                            <i class="fas fa-trash me-2"></i>Очистить результаты
-                        </a>
-                        {% endif %}
+                        <div class="btn-group" role="group">
+                            <form method="POST" action="{{ url_for('admin.stop_citilink_parser') }}" class="d-inline">
+                                <button type="submit" class="btn btn-warning" onclick="return confirm('Остановить парсер Citilink?');">
+                                    <i class="fas fa-stop me-2"></i>Остановить
+                                </button>
+                            </form>
+                            
+                            {% if citilink_results %}
+                            <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера Citilink?');">
+                                <i class="fas fa-trash me-2"></i>Очистить результаты
+                            </a>
+                            {% endif %}
+                            
+                            <form method="POST" action="{{ url_for('admin.fix_citilink_json') }}" class="d-inline">
+                                <button type="submit" class="btn btn-outline-info" onclick="return confirm('Исправить проблемные JSON файлы Citilink?');">
+                                    <i class="fas fa-wrench me-2"></i>Исправить JSON
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </form>
                 

@@ -1,0 +1,714 @@
+{% extends "base.html" %}
+
+{% block title %}Local Parser Status{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2><i class="fas fa-desktop"></i> Local Parser Status</h2>
+            <p class="text-muted">Monitoring local DNS parser uploads and status</p>
+        </div>
+    </div>
+
+    <!-- Connection Status -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-network-wired"></i> API Status</h5>
+                </div>
+                <div class="card-body">
+                    <div id="apiStatus" class="mb-3">
+                        <button class="btn btn-primary" onclick="testConnection()">
+                            <i class="fas fa-sync"></i> Test Connection
+                        </button>
+                    </div>
+                    <div id="connectionResult"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-play-circle"></i> Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" onclick="runParser('test')">
+                            <i class="fas fa-vial"></i> Test Parser
+                        </button>
+                        <button class="btn btn-warning" onclick="testVisibleBrowser()">
+                            <i class="fas fa-eye"></i> Test Visible Browser
+                        </button>
+                        <button class="btn btn-info" onclick="showParsingOptions()">
+                            <i class="fas fa-cogs"></i> Start Parsing
+                        </button>
+                        <button class="btn btn-primary" onclick="importToDockerServer()">
+                            <i class="fas fa-upload"></i> Import to Docker Server
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local Data Management -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-folder-open"></i> Local Data Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted">Управление файлами локального парсера в папке <code>data/</code></p>
+                            <div class="row" id="localDataStats">
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                        <h6 class="text-primary" id="rawFilesCount">-</h6>
+                                        <small>Raw Files</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                        <h6 class="text-success" id="organizedFilesCount">-</h6>
+                                        <small>Organized</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                        <h6 class="text-info" id="localProductsCount">-</h6>
+                                        <small>Products</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="refreshLocalDataStats()">
+                                            <i class="fas fa-sync"></i> Refresh
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-primary" onclick="manageLocalData('organize')">
+                                    <i class="fas fa-sort"></i> Organize Files
+                                </button>
+                                <button class="btn btn-outline-success" onclick="manageLocalData('upload')">
+                                    <i class="fas fa-cloud-upload-alt"></i> Upload Organized
+                                </button>
+                                <button class="btn btn-warning" onclick="manageLocalData('all')">
+                                    <i class="fas fa-magic"></i> Organize & Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parsing Options Modal -->
+    <div class="modal fade" id="parsingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Choose Parsing Mode</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Single Product <span class="badge bg-warning">Not Supported</span></h6>
+                                    <div class="input-group mb-2">
+                                        <input type="url" class="form-control" id="productUrl" placeholder="https://www.dns-shop.ru/product/..." disabled>
+                                        <button class="btn btn-primary" onclick="runSingleProduct()" disabled>Parse</button>
+                                    </div>
+                                    <small class="text-muted">Single product parsing is not supported with old DNS parser. Use category parsing instead.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Category Parsing</h6>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <select class="form-select" id="categorySelect">
+                                                <option value="videokarty">Видеокарты</option>
+                                                <option value="processory">Процессоры</option>
+                                                <option value="materinskie-platy">Материнские платы</option>
+                                                <option value="operativnaya-pamyat">Оперативная память</option>
+                                                <option value="bloki-pitaniya">Блоки питания</option>
+                                                <option value="kulery">Кулеры для процессоров</option>
+                                                <option value="zhestkie-diski">Жесткие диски 3.5"</option>
+                                                <option value="ssd-m2">SSD M.2 накопители</option>
+                                                <option value="ssd-sata">SSD SATA накопители</option>
+                                                <option value="korpusa">Корпуса</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="number" class="form-control" id="limitInput" value="5" min="1" max="50" placeholder="Limit">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success mt-2 w-100" onclick="runCategoryParsing()">
+                                        <i class="fas fa-play"></i> Start Category Parsing
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Browser Options</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="showBrowserWindow" checked disabled>
+                                        <label class="form-check-label" for="showBrowserWindow">
+                                            <i class="fas fa-window-maximize"></i> Show browser window (see DNS pages)
+                                        </label>
+                                        <small class="form-text text-muted">Browser is always visible with old DNS parser - shows real parsing process!</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parser Output -->
+    <div class="row mb-4" id="parserOutputSection" style="display: none;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-terminal"></i> Parser Output</h5>
+                </div>
+                <div class="card-body">
+                    <div id="parserOutput" class="bg-dark text-light p-3 rounded" style="font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow-y: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Uploads -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5><i class="fas fa-upload"></i> Recent Uploads</h5>
+                    <button class="btn btn-sm btn-outline-primary" onclick="refreshUploads()">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="uploadsLoading" class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div id="uploadsContent" style="display: none;">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="uploadsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Filename</th>
+                                        <th>Upload Time</th>
+                                        <th>Products</th>
+                                        <th>File Size</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="uploadsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="noUploads" class="text-center text-muted" style="display: none;">
+                            <i class="fas fa-inbox fa-3x mb-3"></i>
+                            <p>No uploads found. Start the local parser to see data here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Uploads</h5>
+                    <h3 class="text-primary" id="totalUploads">-</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Products</h5>
+                    <h3 class="text-success" id="totalProducts">-</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Last Upload</h5>
+                    <h6 class="text-info" id="lastUpload">-</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Status</h5>
+                    <span class="badge badge-secondary" id="statusBadge">Unknown</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Test API connection
+function testConnection() {
+    const resultDiv = document.getElementById('connectionResult');
+    resultDiv.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div> Testing...';
+    
+    fetch('/api/test-connection')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'ok') {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> Connection successful!<br>
+                        <small>Server time: ${data.server_time}</small>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Connection failed
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            resultDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i> Error: ${error.message}
+                </div>
+            `;
+        });
+}
+
+// Test visible browser
+function testVisibleBrowser() {
+    const outputSection = document.getElementById('parserOutputSection');
+    const output = document.getElementById('parserOutput');
+    
+    // Show output section
+    outputSection.style.display = 'block';
+    output.textContent = 'Starting visible browser test...\n';
+    
+    // Scroll to output
+    outputSection.scrollIntoView({ behavior: 'smooth' });
+    
+    fetch('/api/test-visible-browser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'started') {
+            output.textContent += `✅ ${data.message}\n`;
+            output.textContent += `PID: ${data.pid}\n`;
+            output.textContent += `Command: ${data.command}\n`;
+            output.textContent += '🎯 A browser window should open now!\n';
+            output.textContent += 'Check if you can see DNS-shop videokarty page.\n';
+        } else if (data.status === 'completed') {
+            output.textContent += `✅ ${data.message}\n`;
+            if (data.output) {
+                output.textContent += '\nOutput:\n' + data.output;
+            }
+        } else {
+            output.textContent += `❌ Test failed\n`;
+            if (data.error) {
+                output.textContent += 'Error:\n' + data.error;
+            }
+        }
+    })
+    .catch(error => {
+        output.textContent += `❌ Request failed: ${error.message}\n`;
+    });
+}
+
+// Load uploads data
+function loadUploads() {
+    fetch('/api/parser-status')
+        .then(response => response.json())
+        .then(data => {
+            displayUploads(data);
+            updateStatistics(data);
+        })
+        .catch(error => {
+            console.error('Error loading uploads:', error);
+            document.getElementById('uploadsLoading').style.display = 'none';
+            document.getElementById('uploadsContent').style.display = 'block';
+            document.getElementById('noUploads').style.display = 'block';
+        });
+}
+
+function displayUploads(data) {
+    const tbody = document.getElementById('uploadsTableBody');
+    const uploads = data.recent_uploads || [];
+    
+    document.getElementById('uploadsLoading').style.display = 'none';
+    document.getElementById('uploadsContent').style.display = 'block';
+    
+    if (uploads.length === 0) {
+        document.getElementById('noUploads').style.display = 'block';
+        return;
+    }
+    
+    tbody.innerHTML = '';
+    uploads.forEach(upload => {
+        const row = tbody.insertRow();
+        
+        // Format upload time
+        const uploadTime = new Date(upload.upload_time);
+        const timeString = uploadTime.toLocaleString();
+        
+        // Format file size
+        const fileSize = (upload.file_size / 1024).toFixed(1) + ' KB';
+        
+        row.innerHTML = `
+            <td><code>${upload.filename}</code></td>
+            <td>${timeString}</td>
+            <td><span class="badge badge-primary">${upload.product_count}</span></td>
+            <td>${fileSize}</td>
+            <td><span class="badge badge-success">Uploaded</span></td>
+        `;
+    });
+}
+
+function updateStatistics(data) {
+    const uploads = data.recent_uploads || [];
+    const totalUploads = uploads.length;
+    const totalProducts = uploads.reduce((sum, upload) => sum + upload.product_count, 0);
+    
+    document.getElementById('totalUploads').textContent = totalUploads;
+    document.getElementById('totalProducts').textContent = totalProducts;
+    
+    if (uploads.length > 0) {
+        const lastUpload = new Date(uploads[0].upload_time);
+        document.getElementById('lastUpload').textContent = lastUpload.toLocaleString();
+        document.getElementById('statusBadge').className = 'badge badge-success';
+        document.getElementById('statusBadge').textContent = 'Active';
+    } else {
+        document.getElementById('lastUpload').textContent = 'Never';
+        document.getElementById('statusBadge').className = 'badge badge-secondary';
+        document.getElementById('statusBadge').textContent = 'No Data';
+    }
+}
+
+function refreshUploads() {
+    document.getElementById('uploadsLoading').style.display = 'block';
+    document.getElementById('uploadsContent').style.display = 'none';
+    loadUploads();
+}
+
+// Auto-refresh every 30 seconds
+setInterval(loadUploads, 30000);
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadUploads();
+    refreshLocalDataStats();
+});
+
+// Parser control functions
+function showParsingOptions() {
+    const modal = new bootstrap.Modal(document.getElementById('parsingModal'));
+    modal.show();
+}
+
+function runParser(mode, options = {}) {
+    const outputSection = document.getElementById('parserOutputSection');
+    const output = document.getElementById('parserOutput');
+    
+    // Show output section
+    outputSection.style.display = 'block';
+    output.textContent = 'Starting parser...\n';
+    
+    // Scroll to output
+    outputSection.scrollIntoView({ behavior: 'smooth' });
+    
+    const payload = {
+        mode: mode,
+        ...options
+    };
+    
+    fetch('/api/run-parser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'started') {
+            output.textContent += `✅ ${data.message}\n`;
+            output.textContent += `Command: ${data.command}\n`;
+            output.textContent += 'Parser is running in background...\n';
+            output.textContent += 'Check uploads section for results.\n';
+            
+            // Refresh uploads after a delay
+            setTimeout(() => {
+                refreshUploads();
+            }, 5000);
+        } else if (data.status === 'completed') {
+            output.textContent += `✅ ${data.message}\n`;
+            if (data.output) {
+                output.textContent += '\nOutput:\n' + data.output;
+            }
+            refreshUploads();
+        } else if (data.status === 'error') {
+            output.textContent += `❌ ${data.message}\n`;
+            if (data.error) {
+                output.textContent += 'Error:\n' + data.error;
+            }
+            if (data.output) {
+                output.textContent += '\nOutput:\n' + data.output;
+            }
+        }
+    })
+    .catch(error => {
+        output.textContent += `❌ Request failed: ${error.message}\n`;
+    });
+}
+
+function runSingleProduct() {
+    const productUrl = document.getElementById('productUrl').value.trim();
+    if (!productUrl) {
+        alert('Please enter a product URL');
+        return;
+    }
+    
+    if (!productUrl.includes('dns-shop.ru')) {
+        alert('Please enter a valid DNS-shop URL');
+        return;
+    }
+    
+    const showBrowser = document.getElementById('showBrowserWindow').checked;
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('parsingModal'));
+    modal.hide();
+    
+    runParser('single_product', { 
+        product_url: productUrl,
+        show_browser: showBrowser
+    });
+}
+
+function runCategoryParsing() {
+    const category = document.getElementById('categorySelect').value;
+    const limit = parseInt(document.getElementById('limitInput').value) || 5;
+    const showBrowser = document.getElementById('showBrowserWindow').checked;
+    
+    if (limit < 1 || limit > 50) {
+        alert('Limit must be between 1 and 50');
+        return;
+    }
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('parsingModal'));
+    modal.hide();
+    
+    runParser('category', { 
+        category: category, 
+        limit: limit,
+        show_browser: showBrowser
+    });
+}
+
+// Import data to Docker server
+function importToDockerServer() {
+    const outputSection = document.getElementById('parserOutputSection');
+    const output = document.getElementById('parserOutput');
+    
+    // Show output section
+    outputSection.style.display = 'block';
+    output.textContent = 'Starting data import to Docker server...\n';
+    
+    // Scroll to output
+    outputSection.scrollIntoView({ behavior: 'smooth' });
+    
+    fetch('/api/import-to-docker', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            output.textContent += `✅ ${data.message}\n`;
+            if (data.imported_count) {
+                output.textContent += `📦 Imported products: ${data.imported_count}\n`;
+            }
+            if (data.success_files) {
+                output.textContent += `📁 Files processed: ${data.success_files}\n`;
+            }
+            if (data.categories && data.categories.length > 0) {
+                output.textContent += `📂 Categories imported:\n`;
+                data.categories.forEach(category => {
+                    output.textContent += `   • ${category}\n`;
+                });
+            }
+            output.textContent += '🎯 Check Docker server for imported data.\n';
+            output.textContent += `🔗 Server: http://127.0.0.1:5000/api/parser-status\n`;
+            
+            // Refresh uploads after import
+            setTimeout(() => {
+                refreshUploads();
+            }, 2000);
+        } else if (data.status === 'started') {
+            output.textContent += `🚀 ${data.message}\n`;
+            output.textContent += 'Import process started in background...\n';
+            
+            // Refresh uploads after a delay
+            setTimeout(() => {
+                refreshUploads();
+            }, 5000);
+        } else {
+            output.textContent += `❌ Import failed: ${data.message}\n`;
+            if (data.error) {
+                output.textContent += `Error details: ${data.error}\n`;
+            }
+            if (data.output) {
+                output.textContent += `\nFull output:\n${data.output}\n`;
+            }
+        }
+    })
+    .catch(error => {
+        output.textContent += `❌ Import request failed: ${error.message}\n`;
+    });
+}
+
+// Local Data Management Functions
+function refreshLocalDataStats() {
+    manageLocalData('stats', false);
+}
+
+function manageLocalData(action, showOutput = true) {
+    const outputSection = document.getElementById('parserOutputSection');
+    const output = document.getElementById('parserOutput');
+    
+    if (showOutput) {
+        // Show output section
+        outputSection.style.display = 'block';
+        output.textContent = `Starting local data ${action}...\n`;
+        
+        // Scroll to output
+        outputSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    fetch('/api/local-data-manager', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ action: action })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            if (showOutput) {
+                output.textContent += `✅ ${data.message}\n`;
+                
+                if (data.stats) {
+                    if (data.stats.raw_files !== undefined) {
+                        output.textContent += `📁 Raw files: ${data.stats.raw_files}\n`;
+                    }
+                    if (data.stats.organized_files !== undefined) {
+                        output.textContent += `🗂️ Organized files: ${data.stats.organized_files}\n`;
+                    }
+                    if (data.stats.total_products !== undefined) {
+                        output.textContent += `📦 Total products: ${data.stats.total_products}\n`;
+                    }
+                }
+                
+                if (data.categories && data.categories.length > 0) {
+                    output.textContent += `📂 Processed files:\n`;
+                    data.categories.forEach(category => {
+                        output.textContent += `   • ${category}\n`;
+                    });
+                }
+                
+                output.textContent += '🎯 Operation completed successfully.\n';
+            }
+            
+            // Update stats display
+            if (data.stats) {
+                updateLocalDataStats(data.stats);
+            }
+            
+            // Refresh uploads if we uploaded data
+            if (action === 'upload' || action === 'all') {
+                setTimeout(() => {
+                    refreshUploads();
+                }, 2000);
+            }
+            
+        } else if (data.status === 'error') {
+            if (showOutput) {
+                output.textContent += `❌ ${data.message}\n`;
+                if (data.error) {
+                    output.textContent += `Error: ${data.error}\n`;
+                }
+            }
+        } else if (data.status === 'timeout') {
+            if (showOutput) {
+                output.textContent += `⏱️ ${data.message}\n`;
+                output.textContent += `${data.note}\n`;
+            }
+        }
+    })
+    .catch(error => {
+        if (showOutput) {
+            output.textContent += `❌ Request failed: ${error.message}\n`;
+        }
+        console.error('Local data management error:', error);
+    });
+}
+
+function updateLocalDataStats(stats) {
+    const rawFilesCount = document.getElementById('rawFilesCount');
+    const organizedFilesCount = document.getElementById('organizedFilesCount');
+    const localProductsCount = document.getElementById('localProductsCount');
+    
+    if (stats.raw_files !== undefined) {
+        rawFilesCount.textContent = stats.raw_files;
+    }
+    if (stats.organized_files !== undefined) {
+        organizedFilesCount.textContent = stats.organized_files;
+    }
+    if (stats.total_products !== undefined) {
+        localProductsCount.textContent = stats.total_products.toLocaleString();
+    }
+}
+</script>
+{% endblock %} 

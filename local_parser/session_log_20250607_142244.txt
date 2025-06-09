@@ -1,0 +1,15 @@
+DNS Parser Session Log
+Session Start: 2025-06-07T14:22:44.118874
+Session End: 2025-06-07T14:22:47.394840
+Server URL: http://127.0.0.1:5001
+Total Messages: 7
+Parsed Products: 0
+==================================================
+
+[2025-06-07 14:22:44] INFO: Parser session started: 2025-06-07T14:22:44.118874
+[2025-06-07 14:22:44] INFO: Docker Server URL: http://127.0.0.1:5001
+[2025-06-07 14:22:44] INFO: Testing connection to server: http://127.0.0.1:5001
+[2025-06-07 14:22:44] INFO: ✅ Server connection successful: Local parser API is working
+[2025-06-07 14:22:47] INFO: Closing parser session
+[2025-06-07 14:22:47] INFO: Total products parsed: 0
+[2025-06-07 14:22:47] INFO: Session duration: 0:00:03.273919

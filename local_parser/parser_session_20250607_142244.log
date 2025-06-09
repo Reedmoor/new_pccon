@@ -1,0 +1,8 @@
+2025-06-07 14:22:44,118 - INFO - Parser session started: 2025-06-07T14:22:44.118874
+2025-06-07 14:22:44,119 - INFO - Docker Server URL: http://127.0.0.1:5001
+2025-06-07 14:22:44,121 - INFO - Testing connection to server: http://127.0.0.1:5001
+2025-06-07 14:22:44,130 - INFO - ✅ Server connection successful: Local parser API is working
+2025-06-07 14:22:47,391 - INFO - Closing parser session
+2025-06-07 14:22:47,392 - INFO - Total products parsed: 0
+2025-06-07 14:22:47,392 - INFO - Session duration: 0:00:03.273919
+2025-06-07 14:22:47,558 - INFO - Chrome driver closed successfully
