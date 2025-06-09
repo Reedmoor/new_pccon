@@ -1,0 +1,44 @@
+# Используем официальный образ Python
+FROM python:3.11-slim
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Устанавливаем системные зависимости включая Chrome
+RUN apt-get update && apt-get install -y \
+    gcc \
+    git \
+    libpq-dev \
+    curl \
+    wget \
+    gnupg \
+    unzip \
+    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+# Копируем файлы зависимостей
+COPY requirements-parser.txt .
+
+# Устанавливаем Python зависимости
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements-parser.txt && \
+    pip install --no-cache-dir selenium webdriver-manager
+
+# Копируем весь код приложения
+COPY . .
+
+# Создаем необходимые директории
+RUN mkdir -p /app/data /app/logs
+
+# Устанавливаем переменные окружения
+ENV PYTHONPATH=/app
+ENV CHROME_BIN=/usr/bin/google-chrome
+
+# Экспонируем порт
+EXPOSE 5001
+
+# Команда запуска парсера
+CMD ["python", "app/parser_worker.py"] 
