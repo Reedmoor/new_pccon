@@ -1,15 +1,38 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import current_user, login_required
 from app.forms.auth import UpdateProfileForm, ChangePasswordForm
 from app.models.models import User
 from werkzeug.security import check_password_hash
 from app import db
+import os
 
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
     return render_template('main/index.html')
+
+@main_bp.route('/health')
+def health():
+    """Health check endpoint для мониторинга"""
+    try:
+        # Проверяем подключение к базе данных
+        db.engine.execute('SELECT 1')
+        
+        return jsonify({
+            'status': 'healthy',
+            'service': 'pcconf-web',
+            'version': '1.0.0',
+            'database': 'connected',
+            'environment': os.getenv('FLASK_ENV', 'development')
+        }), 200
+    except Exception as e:
+        return jsonify({
+            'status': 'unhealthy',
+            'service': 'pcconf-web',
+            'error': str(e),
+            'database': 'disconnected'
+        }), 503
 
 @main_bp.route('/about')
 def about():
