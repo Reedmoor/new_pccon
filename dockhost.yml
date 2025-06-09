@@ -75,7 +75,9 @@ environment:
 containers:
     # Основное веб-приложение
     web:
-        image: python:3.11-slim
+        build:
+            context: .
+            dockerfile: Dockerfile
         replicas: 1
         resources:
             memory: 1GiB
@@ -88,15 +90,12 @@ containers:
               mountPath: /app/data
             - name: app-logs
               mountPath: /app/logs
-        command: |
-            apt-get update && apt-get install -y gcc git && \
-            pip install -r requirements.txt && \
-            python run.py
-        workingDir: /app
         
     # Парсер
     parser:
-        image: python:3.11-slim
+        build:
+            context: .
+            dockerfile: Dockerfile.parser
         replicas: 1
         resources:
             memory: 2GiB
@@ -109,12 +108,6 @@ containers:
               mountPath: /app/data
             - name: app-logs
               mountPath: /app/logs
-        command: |
-            apt-get update && apt-get install -y gcc curl wget chromium chromium-driver git && \
-            pip install -r requirements-parser.txt && \
-            pip install selenium webdriver-manager && \
-            python app/parser_worker.py
-        workingDir: /app
 
     # База данных PostgreSQL
     db:
