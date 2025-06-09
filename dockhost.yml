@@ -73,7 +73,42 @@ environment:
 
 # Containers configuration
 containers:
-    # Основное веб-приложение
+    # База данных PostgreSQL (запускается первой)
+    db:
+        image: postgres:15-alpine
+        replicas: 1
+        resources:
+            memory: 2GiB  # Увеличиваем память для более быстрой инициализации
+            cpu: 2
+            cpuFraction: 50
+        ports:
+            - '5432'
+        volumes:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: pccon_db
+            POSTGRES_USER: pccon_user
+            POSTGRES_PASSWORD: "12345"
+            # Настройки для более быстрой инициализации
+            POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+
+    # Redis для кэширования (запускается второй)
+    redis:
+        image: redis:7-alpine
+        replicas: 1
+        resources:
+            memory: 512MiB
+            cpu: 1
+            cpuFraction: 20
+        ports:
+            - '6379'
+        volumes:
+            - name: redis-data
+              mountPath: /data
+        command: redis-server --requirepass 12345
+
+    # Основное веб-приложение (зависит от db и redis)
     web:
         build:
             context: .
@@ -90,8 +125,11 @@ containers:
               mountPath: /app/data
             - name: app-logs
               mountPath: /app/logs
+        depends_on:
+            - db
+            - redis
         
-    # Парсер
+    # Парсер (зависит от db, redis и web)
     parser:
         build:
             context: .
@@ -108,41 +146,12 @@ containers:
               mountPath: /app/data
             - name: app-logs
               mountPath: /app/logs
+        depends_on:
+            - db
+            - redis
+            - web
 
-    # База данных PostgreSQL
-    db:
-        image: postgres:15-alpine
-        replicas: 1
-        resources:
-            memory: 1GiB
-            cpu: 1
-            cpuFraction: 30
-        ports:
-            - '5432'
-        volumes:
-            - name: postgres-data
-              mountPath: /var/lib/postgresql/data
-        environment:
-            POSTGRES_DB: pccon_db
-            POSTGRES_USER: pccon_user
-            POSTGRES_PASSWORD: "12345"
-
-    # Redis для кэширования
-    redis:
-        image: redis:7-alpine
-        replicas: 1
-        resources:
-            memory: 512MiB
-            cpu: 1
-            cpuFraction: 20
-        ports:
-            - '6379'
-        volumes:
-            - name: redis-data
-              mountPath: /data
-        command: redis-server --requirepass 12345
-
-    # Nginx reverse proxy
+    # Nginx reverse proxy (зависит от всех сервисов)
     nginx:
         image: nginx:alpine
         replicas: 1
@@ -158,6 +167,9 @@ containers:
         configs:
             - name: nginx.conf
               mountPath: /etc/nginx/nginx.conf
+        depends_on:
+            - web
+            - parser
 
 # Volumes configuration
 volumes:

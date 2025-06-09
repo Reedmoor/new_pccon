@@ -59,6 +59,7 @@ docker-compose.yml
 docker-compose.override.yml
 Dockerfile.dev
 
-# Документация
+# Документация и деплой инструкции
 README.md
-WEB_PARSER_GUIDE.md 
+WEB_PARSER_GUIDE.md
+DEPLOY.md 
