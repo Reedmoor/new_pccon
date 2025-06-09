@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление блока питания - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-plus-circle me-2"></i>Добавление блока питания</h2>
+                <p class="text-muted">Добавление нового блока питания в систему</p>
+            </div>
+            <div>
+                <a href="{{ url_for('admin.power_supplies') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Назад к списку
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Основные данные</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        <small class="form-text text-muted">Например: Corsair RM850x</small>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.power.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.power(class="form-control") }}
+                                <span class="input-group-text">Вт</span>
+                            </div>
+                            <small class="form-text text-muted">Мощность блока питания (например, 850)</small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.certificate.label(class="form-label") }}
+                            {{ form.certificate(class="form-select") }}
+                            <small class="form-text text-muted">Сертификат энергоэффективности</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.type.label(class="form-label") }}
+                            {{ form.type(class="form-select") }}
+                            <small class="form-text text-muted">Форм-фактор блока питания</small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.price.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.price(class="form-control") }}
+                                <span class="input-group-text">₽</span>
+                            </div>
+                            <small class="form-text text-muted">Цена блока питания</small>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-success") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

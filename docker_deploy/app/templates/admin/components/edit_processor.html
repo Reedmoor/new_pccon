@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование процессора - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-edit me-2"></i>Редактирование процессора</h2>
+                <p class="text-muted">Редактирование данных процессора: {{ processor.name }}</p>
+            </div>
+            <div>
+                <a href="{{ url_for('admin.processors') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Назад к списку
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Основные данные</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        <small class="form-text text-muted">Например: Intel Core i7-12700K</small>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.soket.label(class="form-label") }}
+                            {{ form.soket(class="form-select") }}
+                            <small class="form-text text-muted">Тип сокета процессора</small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.cores.label(class="form-label") }}
+                            {{ form.cores(class="form-control") }}
+                            <small class="form-text text-muted">Количество ядер</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.threads.label(class="form-label") }}
+                            {{ form.threads(class="form-control") }}
+                            <small class="form-text text-muted">Количество потоков</small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.base_clock.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.base_clock(class="form-control") }}
+                                <span class="input-group-text">ГГц</span>
+                            </div>
+                            <small class="form-text text-muted">Базовая частота</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form.turbo_clock.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.turbo_clock(class="form-control") }}
+                                <span class="input-group-text">ГГц</span>
+                            </div>
+                            <small class="form-text text-muted">Максимальная частота</small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.price.label(class="form-label") }}
+                            <div class="input-group">
+                                {{ form.price(class="form-control") }}
+                                <span class="input-group-text">₽</span>
+                            </div>
+                            <small class="form-text text-muted">Цена процессора</small>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

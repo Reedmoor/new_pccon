@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление материнской платы - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-plus-circle me-2"></i>Добавление материнской платы</h2>
+                <p class="text-muted">Заполните данные для новой материнской платы</p>
+            </div>
+            <div>
+                <a href="{{ url_for('admin.motherboards') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>К списку материнских плат
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Сведения о материнской плате</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('admin.add_motherboard') }}">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{ form.name.label(class="form-label") }}
+                                {{ form.name(class="form-control") }}
+                                {% if form.name.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                <div class="form-text">Введите полное название модели</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.form.label(class="form-label") }}
+                                {{ form.form(class="form-select") }}
+                                {% if form.form.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.form.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.soket.label(class="form-label") }}
+                                {{ form.soket(class="form-select") }}
+                                {% if form.soket.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.soket.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.memory_type.label(class="form-label") }}
+                                {{ form.memory_type(class="form-select") }}
+                                {% if form.memory_type.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.memory_type.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.price.label(class="form-label") }}
+                                <div class="input-group">
+                                    {{ form.price(class="form-control") }}
+                                    <span class="input-group-text">₽</span>
+                                </div>
+                                {% if form.price.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.price.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{ form.interface.label(class="form-label") }}
+                                {{ form.interface(class="form-control") }}
+                                {% if form.interface.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.interface.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                <div class="form-text">Укажите доступные интерфейсы через запятую</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Сохранить материнскую плату
+                        </button>
+                        <a href="{{ url_for('admin.motherboards') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>Отмена
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Советы по заполнению</h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info mb-0">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Рекомендации:</h6>
+                    <ul class="mb-0">
+                        <li>Указывайте точное название модели материнской платы</li>
+                        <li>Выбирайте правильный сокет для совместимости с процессорами</li>
+                        <li>Проверяйте тип памяти, поддерживаемый материнской платой</li>
+                        <li>В поле "Интерфейсы" укажите все доступные слоты расширения</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

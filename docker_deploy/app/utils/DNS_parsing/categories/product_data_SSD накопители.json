@@ -1,0 +1,154 @@
+[
+    {
+        "id": "5052366",
+        "url": "https://www.dns-shop.ru/product/cd3ad695f76bed20/500-gb-25-sata-nakopitel-samsung-870-evo-mz-77e500bw/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8cdeff621e1b9bf1256fc0e9d5524455/6b19146bd0e09c516231f0d26ef1d8883b39d2bbda0199ca96b11252ad27f365.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/32a42a0cdc2078d6dcaa20fc3248b07f/fb3bd252fa81aa6e18c0818f854ca5a7383fdfaedc21fa9541c9c12aa28db599.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/813987becfc8731202fb30027bc60b0d/60382abc5cdad118b5c6e4663efefc39b09de4075147209f4574a89cbed19a77.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/9218661d8516c7f1ed76fda7524fcd12/31fbef9c7110c90fb33da076eb4b1db45c2ff019614f5679476699ccdf37d199.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/7c123028d711cafeedc8e825b2c08bb0/1e0ae0c6eb7cec3ed560b215e35f15ede5867b62ab125c5136430b1e819dcb22.jpg"
+        ],
+        "name": "500 ГБ 2.5\" SATA накопитель Samsung 870 EVO [MZ-77E500BW]",
+        "price_discounted": 0,
+        "price_original": 4999,
+        "rating": 4.92,
+        "number_of_reviews": 9056,
+        "brand_name": "Samsung",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Корея, Республика"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Samsung 870 EVO"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[MZ-77E500BW]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "500 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Samsung MKX"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит MLC (TLC)"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "есть"
+                },
+                {
+                    "title": "Объем DRAM буфера",
+                    "value": "512 МБ"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "530 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "98000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "88000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "300 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.33"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "3.5 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.8 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-05T14:46:30.876481"
+    }
+]

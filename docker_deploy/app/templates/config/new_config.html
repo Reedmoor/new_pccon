@@ -1,0 +1,444 @@
+{% extends 'base.html' %}
+
+{% block title %}Новая конфигурация - Конфигуратор ПК{% endblock %}
+
+{% block extra_css %}
+<style>
+    .component-card {
+        transition: all 0.3s ease;
+    }
+    .component-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .price-tag {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0,0,0,0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+    .filter-panel {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2><i class="fas fa-cogs me-2"></i>Создание новой конфигурации</h2>
+        <p class="text-muted">Выберите компоненты для вашего ПК</p>
+    </div>
+</div>
+
+<form method="POST" action="{{ url_for('config.new_config') }}">
+    {{ form.hidden_tag() }}
+    
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Основные настройки</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        {% if form.name.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Левая колонка с компонентами -->
+        <div class="col-lg-8">
+            <!-- Материнская плата -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Материнская плата</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="motherboardSearch" placeholder="Поиск материнской платы...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchMotherboard">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.motherboard_id.label(class="form-label") }}
+                        {{ form.motherboard_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Процессор -->
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Процессор</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="cpuSearch" placeholder="Поиск процессора...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchCpu">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.cpu_id.label(class="form-label") }}
+                        {{ form.cpu_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Остальные компоненты (сокращённый вид для примера) -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Видеокарта</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="gpuSearch" placeholder="Поиск видеокарты...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchGpu">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.gpu_id.label(class="form-label") }}
+                        {{ form.gpu_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Оперативная память -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Оперативная память</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="ramSearch" placeholder="Поиск оперативной памяти...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchRam">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.ram_id.label(class="form-label") }}
+                        {{ form.ram_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Жёсткий диск -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-hdd me-2"></i>Жёсткий диск</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="hddSearch" placeholder="Поиск жёсткого диска...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchHdd">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.hdd_id.label(class="form-label") }}
+                        {{ form.hdd_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Блок питания -->
+            <div class="card mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-plug me-2"></i>Блок питания</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="supplySearch" placeholder="Поиск блока питания...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchSupply">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.supply_id.label(class="form-label") }}
+                        {{ form.supply_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Кулер -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-fan me-2"></i>Кулер</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="coolerSearch" placeholder="Поиск кулера...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchCooler">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.cooler_id.label(class="form-label") }}
+                        {{ form.cooler_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Корпус -->
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-desktop me-2"></i>Корпус</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="frameSearch" placeholder="Поиск корпуса...">
+                            <button class="btn btn-outline-secondary" type="button" id="searchFrame">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        {{ form.frame_id.label(class="form-label") }}
+                        {{ form.frame_id(class="form-select") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая колонка с конфигурацией и итогами -->
+        <div class="col-lg-4">
+            <div class="card mb-4 sticky-top" style="top: 20px; z-index: 999;">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Ваша конфигурация</h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="mb-3">Проверка совместимости</h5>
+                    <div id="compatibilityCheck" class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="mb-3">
+                        <h5>Итоговая стоимость</h5>
+                        <div class="text-end">
+                            <h3 id="totalPrice">0 ₽</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-primary btn-lg") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Функция поиска компонентов
+        function searchComponents(productType, searchQuery) {
+            // Отправляем AJAX-запрос на сервер
+            $.ajax({
+                url: "{{ url_for('config.search_components') }}",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    product_type: productType,
+                    query: searchQuery
+                }),
+                success: function(response) {
+                    // Находим нужный select элемент
+                    let selectElement;
+                    switch (productType) {
+                        case 'motherboard':
+                            selectElement = $('#motherboard_id');
+                            break;
+                        case 'processor':
+                            selectElement = $('#cpu_id');
+                            break;
+                        case 'graphics_card':
+                            selectElement = $('#gpu_id');
+                            break;
+                        case 'ram':
+                            selectElement = $('#ram_id');
+                            break;
+                        case 'hard_drive':
+                            selectElement = $('#hdd_id');
+                            break;
+                        case 'power_supply':
+                            selectElement = $('#supply_id');
+                            break;
+                        case 'cooler':
+                            selectElement = $('#cooler_id');
+                            break;
+                        case 'case':
+                            selectElement = $('#frame_id');
+                            break;
+                    }
+                    
+                    if (selectElement) {
+                        // Сохраняем первый вариант (Выберите...)
+                        const firstOption = selectElement.find('option:first');
+                        
+                        // Очищаем текущие варианты
+                        selectElement.empty();
+                        
+                        // Возвращаем первый вариант
+                        selectElement.append(firstOption);
+                        
+                        // Добавляем найденные варианты
+                        response.components.forEach(function(component) {
+                            // Форматируем цену с разделителем тысяч
+                            const formattedPrice = new Intl.NumberFormat('ru-RU').format(component.price);
+                            
+                            // Создаем опцию с иконкой магазина
+                            const option = $('<option></option>')
+                                .attr('value', component.id)
+                                .text(component.name + ' (' + formattedPrice + ' ₽)');
+                            
+                            // Добавляем атрибуты с данными о магазине для использования при отображении
+                            option.attr('data-vendor', component.vendor);
+                            option.attr('data-url', component.product_url);
+                            
+                            selectElement.append(option);
+                        });
+                        
+                        // Обновляем информацию о конфигурации
+                        updateConfigInfo();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Ошибка при поиске компонентов:", error);
+                    alert("Произошла ошибка при поиске компонентов. Пожалуйста, попробуйте снова.");
+                }
+            });
+        }
+        
+        // Обработчики событий для поиска компонентов
+        $('#searchMotherboard').on('click', function() {
+            searchComponents('motherboard', $('#motherboardSearch').val());
+        });
+        
+        $('#searchCpu').on('click', function() {
+            searchComponents('processor', $('#cpuSearch').val());
+        });
+        
+        $('#searchGpu').on('click', function() {
+            searchComponents('graphics_card', $('#gpuSearch').val());
+        });
+        
+        $('#searchRam').on('click', function() {
+            searchComponents('ram', $('#ramSearch').val());
+        });
+        
+        $('#searchHdd').on('click', function() {
+            searchComponents('hard_drive', $('#hddSearch').val());
+        });
+        
+        $('#searchSupply').on('click', function() {
+            searchComponents('power_supply', $('#supplySearch').val());
+        });
+        
+        $('#searchCooler').on('click', function() {
+            searchComponents('cooler', $('#coolerSearch').val());
+        });
+        
+        $('#searchFrame').on('click', function() {
+            searchComponents('case', $('#frameSearch').val());
+        });
+        
+        // Обработка нажатия Enter в полях поиска
+        $('#motherboardSearch, #cpuSearch, #gpuSearch, #ramSearch, #hddSearch, #supplySearch, #coolerSearch, #frameSearch').keypress(function(e) {
+            if (e.which === 13) { // Код клавиши Enter
+                e.preventDefault();
+                $(this).next().click(); // Нажимаем на кнопку поиска
+            }
+        });
+        
+        // Функция обновления информации о конфигурации (цена и совместимость)
+        function updateConfigInfo() {
+            // Собираем данные о выбранных компонентах
+            const configData = {
+                motherboard_id: parseInt($('#motherboard_id').val()) || 0,
+                supply_id: parseInt($('#supply_id').val()) || 0,
+                cpu_id: parseInt($('#cpu_id').val()) || 0,
+                gpu_id: parseInt($('#gpu_id').val()) || 0,
+                cooler_id: parseInt($('#cooler_id').val()) || 0,
+                ram_id: parseInt($('#ram_id').val()) || 0,
+                hdd_id: parseInt($('#hdd_id').val()) || 0,
+                frame_id: parseInt($('#frame_id').val()) || 0
+            };
+            
+            // Отправляем AJAX-запрос на сервер
+            $.ajax({
+                url: "{{ url_for('config.get_config_info') }}",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(configData),
+                success: function(response) {
+                    // Форматируем общую цену с разделителем тысяч
+                    const formattedPrice = new Intl.NumberFormat('ru-RU').format(response.total_price);
+                    
+                    // Обновляем информацию о цене
+                    $('#totalPrice').text(formattedPrice + ' ₽');
+                    
+                    // Обновляем информацию о совместимости
+                    const compatDiv = $('#compatibilityCheck');
+                    
+                    if (response.compatible) {
+                        compatDiv.removeClass('alert-info alert-danger').addClass('alert-success');
+                        compatDiv.html('<i class="fas fa-check-circle me-2"></i>Все компоненты совместимы');
+                    } else if (response.issues && response.issues.length > 0) {
+                        compatDiv.removeClass('alert-info alert-success').addClass('alert-danger');
+                        
+                        let issuesHtml = '<i class="fas fa-exclamation-triangle me-2"></i><strong>Проблемы совместимости:</strong><ul class="mb-0 mt-2">';
+                        response.issues.forEach(issue => {
+                            issuesHtml += `<li>${issue}</li>`;
+                        });
+                        issuesHtml += '</ul>';
+                        
+                        compatDiv.html(issuesHtml);
+                    } else {
+                        compatDiv.removeClass('alert-success alert-danger').addClass('alert-info');
+                        compatDiv.html('<i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Ошибка при обновлении информации о конфигурации:", error);
+                    $('#compatibilityCheck')
+                        .removeClass('alert-info alert-success')
+                        .addClass('alert-danger')
+                        .html('<i class="fas fa-exclamation-circle me-2"></i>Ошибка при проверке совместимости');
+                }
+            });
+        }
+        
+        // Обработчики событий для выбора компонентов
+        $('form select').change(function() {
+            updateConfigInfo();
+        });
+        
+        // Инициализация при загрузке страницы
+        updateConfigInfo();
+    });
+</script>
+{% endblock %} 

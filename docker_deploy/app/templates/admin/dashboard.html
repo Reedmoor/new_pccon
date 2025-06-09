@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель администратора - Конфигуратор ПК{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2><i class="fas fa-tachometer-alt me-2"></i>Панель администратора</h2>
+        <p class="text-muted">Управление комплектующими и системой</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Статистика комплектующих</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-primary">{{ counts.motherboards }}</h1>
+                                <h5>Материнские платы</h5>
+                                <a href="{{ url_for('admin.products', type='motherboard') }}" class="btn btn-sm btn-outline-primary mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-danger">{{ counts.processors }}</h1>
+                                <h5>Процессоры</h5>
+                                <a href="{{ url_for('admin.products', type='processor') }}" class="btn btn-sm btn-outline-danger mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-success">{{ counts.gpus }}</h1>
+                                <h5>Видеокарты</h5>
+                                <a href="{{ url_for('admin.products', type='graphics_card') }}" class="btn btn-sm btn-outline-success mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-info">{{ counts.rams }}</h1>
+                                <h5>Оперативная память</h5>
+                                <a href="{{ url_for('admin.products', type='ram') }}" class="btn btn-sm btn-outline-info mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-warning">{{ counts.hdds }}</h1>
+                                <h5>Жесткие диски</h5>
+                                <a href="{{ url_for('admin.products', type='hard_drive') }}" class="btn btn-sm btn-outline-warning mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-secondary">{{ counts.power_supplies }}</h1>
+                                <h5>Блоки питания</h5>
+                                <a href="{{ url_for('admin.products', type='power_supply') }}" class="btn btn-sm btn-outline-secondary mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-dark">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-dark">{{ counts.coolers }}</h1>
+                                <h5>Кулеры</h5>
+                                <a href="{{ url_for('admin.products', type='cooler') }}" class="btn btn-sm btn-outline-dark mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body text-center">
+                                <h1 class="display-4 text-secondary">{{ counts.cases }}</h1>
+                                <h5>Корпуса</h5>
+                                <a href="{{ url_for('admin.products', type='case') }}" class="btn btn-sm btn-outline-secondary mt-2">Управление</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-tools me-2"></i>Инструменты администратора</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="{{ url_for('admin.scrape') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-spider me-2"></i>
+                            <strong>Парсинг комплектующих</strong>
+                            <p class="mb-0 text-muted small">Импорт данных о комплектующих с внешних сайтов</p>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                    
+                    <a href="{{ url_for('admin.import_data') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-database me-2"></i>
+                            <strong>Импорт данных</strong>
+                            <p class="mb-0 text-muted small">Импорт и стандартизация данных о продуктах</p>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Быстрое добавление</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="{{ url_for('admin.add_product', type='motherboard') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-microchip me-2"></i>
+                            <strong>Добавить материнскую плату</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='processor') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-microchip me-2"></i>
+                            <strong>Добавить процессор</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='graphics_card') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-tv me-2"></i>
+                            <strong>Добавить видеокарту</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='ram') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-memory me-2"></i>
+                            <strong>Добавить оперативную память</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='hard_drive') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-hdd me-2"></i>
+                            <strong>Добавить жесткий диск</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='power_supply') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-plug me-2"></i>
+                            <strong>Добавить блок питания</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='cooler') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-fan me-2"></i>
+                            <strong>Добавить кулер</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url_for('admin.add_product', type='case') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-desktop me-2"></i>
+                            <strong>Добавить корпус</strong>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
