@@ -19,15 +19,15 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Создаем пользователя для безопасности
-RUN useradd --create-home --shell /bin/bash app
-
-# Копируем entrypoint скрипт
+# Копируем entrypoint скрипт и делаем его исполняемым
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Копируем весь код приложения
 COPY . .
+
+# Создаем пользователя для безопасности
+RUN useradd --create-home --shell /bin/bash app
 
 # Создаем необходимые директории и устанавливаем права
 RUN mkdir -p /app/data /app/logs /app/instance && \
