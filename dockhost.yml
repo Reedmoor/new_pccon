@@ -1,0 +1,201 @@
+version: 1
+project: pcconf
+
+# Environments configuration
+environment:
+    variables:
+        SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+        FLASK_ENV: production
+        DEBUG: "False"
+        DATABASE_URL: postgresql://pccon_user:12345@db:5432/pccon_db
+        REDIS_URL: redis://:12345@redis:6379
+        GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+        PARSER_API_URL: http://parser:5001
+        MAIN_SERVER_URL: http://web:5000
+        PYTHONPATH: /app
+    configs:
+        nginx.conf: |
+            events {
+                worker_connections 1024;
+            }
+
+            http {
+                upstream web_backend {
+                    server web:5000;
+                }
+                
+                upstream parser_backend {
+                    server parser:5001;
+                }
+
+                server {
+                    listen 80;
+                    server_name pcconf.ru www.pcconf.ru;
+                    
+                    location / {
+                        proxy_pass http://web_backend;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                        proxy_connect_timeout 30s;
+                        proxy_send_timeout 30s;
+                        proxy_read_timeout 30s;
+                    }
+                    
+                    location /parser/ {
+                        proxy_pass http://parser_backend/;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                        proxy_connect_timeout 60s;
+                        proxy_send_timeout 300s;
+                        proxy_read_timeout 300s;
+                    }
+                    
+                    location /static/ {
+                        proxy_pass http://web_backend;
+                        expires 1y;
+                        add_header Cache-Control "public, immutable";
+                    }
+                }
+
+                add_header X-Frame-Options DENY;
+                add_header X-Content-Type-Options nosniff;
+                add_header X-XSS-Protection "1; mode=block";
+                
+                gzip on;
+                gzip_vary on;
+                gzip_min_length 1024;
+                gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+            }
+
+# Containers configuration
+containers:
+    # Основное веб-приложение
+    web:
+        image: python:3.11-slim
+        replicas: 1
+        resources:
+            memory: 1GiB
+            cpu: 2
+            cpuFraction: 50
+        ports:
+            - '5000'
+        volumes:
+            - name: app-data
+              mountPath: /app/data
+            - name: app-logs
+              mountPath: /app/logs
+        command: |
+            apt-get update && apt-get install -y gcc git && \
+            pip install -r requirements.txt && \
+            python run.py
+        workingDir: /app
+        
+    # Парсер
+    parser:
+        image: python:3.11-slim
+        replicas: 1
+        resources:
+            memory: 2GiB
+            cpu: 2
+            cpuFraction: 40
+        ports:
+            - '5001'
+        volumes:
+            - name: app-data
+              mountPath: /app/data
+            - name: app-logs
+              mountPath: /app/logs
+        command: |
+            apt-get update && apt-get install -y gcc curl wget chromium chromium-driver git && \
+            pip install -r requirements-parser.txt && \
+            pip install selenium webdriver-manager && \
+            python app/parser_worker.py
+        workingDir: /app
+
+    # База данных PostgreSQL
+    db:
+        image: postgres:15-alpine
+        replicas: 1
+        resources:
+            memory: 1GiB
+            cpu: 1
+            cpuFraction: 30
+        ports:
+            - '5432'
+        volumes:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: pccon_db
+            POSTGRES_USER: pccon_user
+            POSTGRES_PASSWORD: "12345"
+
+    # Redis для кэширования
+    redis:
+        image: redis:7-alpine
+        replicas: 1
+        resources:
+            memory: 512MiB
+            cpu: 1
+            cpuFraction: 20
+        ports:
+            - '6379'
+        volumes:
+            - name: redis-data
+              mountPath: /data
+        command: redis-server --requirepass 12345
+
+    # Nginx reverse proxy
+    nginx:
+        image: nginx:alpine
+        replicas: 1
+        resources:
+            memory: 256MiB
+            cpu: 1
+            cpuFraction: 20
+        ports:
+            - '80'
+        volumes:
+            - name: nginx-logs
+              mountPath: /var/log/nginx
+        configs:
+            - name: nginx.conf
+              mountPath: /etc/nginx/nginx.conf
+
+# Volumes configuration
+volumes:
+    app-data:
+        type: ssd
+        size: 5GiB
+    app-logs:
+        type: ssd
+        size: 2GiB
+    postgres-data:
+        type: ssd
+        size: 10GiB
+    redis-data:
+        type: ssd
+        size: 1GiB
+    nginx-logs:
+        type: ssd
+        size: 1GiB
+
+# Network configuration
+network:
+    domains:
+        nginx: pcconf.ru
+        web: ~
+        parser: ~
+        db: ~
+        redis: ~
+
+    routes:
+        http:
+            domain: nginx
+            path: /
+            service: nginx
+            port: '80' 
