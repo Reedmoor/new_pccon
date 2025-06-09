@@ -1,0 +1,104 @@
+# Используем образ с поддержкой Chrome для Selenium
+FROM python:3.11-slim
+
+# Устанавливаем переменные окружения
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV DISPLAY=:99
+ENV CHROME_BIN=/usr/bin/google-chrome-stable
+ENV CHROME_DRIVER=/usr/local/bin/chromedriver
+
+# Создаем рабочую директорию
+WORKDIR /app
+
+# Устанавливаем системные зависимости для Selenium и Chrome
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    unzip \
+    curl \
+    xvfb \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libatspi2.0-0 \
+    libcups2 \
+    libdbus-1-3 \
+    libdrm2 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libxss1 \
+    libxtst6 \
+    lsb-release \
+    xdg-utils \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем ChromeDriver используя новый API Google
+RUN CHROME_VERSION=$(google-chrome --version | grep -oE "[0-9]+\.[0-9]+\.[0-9]+" | head -n1) && \
+    echo "Chrome version: $CHROME_VERSION" && \
+    CHROME_MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d'.' -f1) && \
+    echo "Chrome major version: $CHROME_MAJOR_VERSION" && \
+    # Для Chrome 115+ используем новый API
+    if [ "$CHROME_MAJOR_VERSION" -ge 115 ]; then \
+        CHROME_DRIVER_URL=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json" | \
+        python3 -c "import sys, json; data=json.load(sys.stdin); versions=[v for v in data['versions'] if v['version'].startswith('$CHROME_MAJOR_VERSION.')]; print(versions[-1]['downloads']['chromedriver'][0]['url'] if versions else '')"); \
+        if [ -n "$CHROME_DRIVER_URL" ]; then \
+            wget -O /tmp/chromedriver.zip "$CHROME_DRIVER_URL"; \
+        else \
+            # Fallback для старых версий
+            CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR_VERSION" 2>/dev/null || echo "114.0.5735.90"); \
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"; \
+        fi; \
+    else \
+        # Для старых версий Chrome используем старый API
+        CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR_VERSION"); \
+        wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"; \
+    fi && \
+    unzip /tmp/chromedriver.zip -d /tmp/ && \
+    # Найти исполняемый файл chromedriver в распакованной папке
+    find /tmp -name "chromedriver" -type f -executable -exec cp {} /usr/local/bin/chromedriver \; && \
+    rm -rf /tmp/chromedriver* && \
+    chmod +x /usr/local/bin/chromedriver
+
+# Копируем requirements для парсера
+COPY requirements-parser.txt .
+RUN pip install --no-cache-dir -r requirements-parser.txt
+
+# Создаем пользователя для приложения с домашней директорией
+RUN groupadd -r parser && useradd -r -g parser -m -d /home/parser parser
+
+# Копируем код парсеров
+COPY app/utils/ /app/parsers/
+COPY docker/parser_server.py /app/
+
+# Создаем необходимые директории и устанавливаем права
+RUN mkdir -p /app/data /app/logs /app/downloads /home/parser/.cache /home/parser/.local/share && \
+    chown -R parser:parser /app /home/parser && \
+    # Устанавливаем права доступа к ChromeDriver для пользователя parser
+    chmod 755 /usr/local/bin/chromedriver && \
+    # Создаем копию ChromeDriver в домашней директории пользователя
+    cp /usr/local/bin/chromedriver /home/parser/chromedriver && \
+    chmod +x /home/parser/chromedriver && \
+    chown parser:parser /home/parser/chromedriver
+
+# Переключаемся на пользователя парсера
+USER parser
+
+# Создаем директорию для Chrome cache
+RUN mkdir -p /home/parser/.cache/google-chrome
+
+# Открываем порт для API парсера
+EXPOSE 5001
+
+# Запуск X virtual framebuffer и парсер-сервера
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x24 & python parser_server.py"] 

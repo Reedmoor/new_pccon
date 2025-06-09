@@ -1,0 +1,154 @@
+services:
+  # Веб-приложение Flask
+  pccon_web:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.web
+    container_name: pccon_web
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://pccon_user:${DB_PASSWORD}@pccon_db:5432/pccon_db
+      - GIGACHAT_CREDENTIALS=${GIGACHAT_CREDENTIALS}
+      - REDIS_URL=redis://pccon_redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - pccon_uploads:/app/uploads
+      - pccon_data:/app/data
+      - pccon_logs:/app/logs
+    depends_on:
+      - pccon_db
+      - pccon_redis
+    networks:
+      - pccon_network
+    ports:
+      - "5000:5000"
+
+  # База данных PostgreSQL
+  pccon_db:
+    image: postgres:15-alpine
+    container_name: pccon_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=pccon_db
+      - POSTGRES_USER=pccon_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=md5
+    volumes:
+      - pccon_postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - pccon_network
+    ports:
+      - "5432:5432"
+
+  # Redis для кэширования embeddings и очередей
+  pccon_redis:
+    image: redis:7-alpine
+    container_name: pccon_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - pccon_redis_data:/data
+    networks:
+      - pccon_network
+    ports:
+      - "6379:6379"
+
+  # Nginx reverse proxy
+  pccon_nginx:
+    image: nginx:alpine
+    container_name: pccon_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/sites:/etc/nginx/conf.d
+      - pccon_uploads:/var/www/uploads
+      - pccon_ssl:/etc/nginx/ssl
+    depends_on:
+      - pccon_web
+    networks:
+      - pccon_network
+
+  # Парсер-сервис (работает локально и по API)
+  pccon_parser:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.parser
+    container_name: pccon_parser
+    restart: unless-stopped
+    environment:
+      - PARSER_API_TOKEN=${PARSER_API_TOKEN}
+      - MAIN_SERVER_URL=${MAIN_SERVER_URL}
+      - REDIS_URL=redis://pccon_redis:6379/1
+      - DISPLAY=:99
+      - CHROME_BIN=/usr/bin/google-chrome-stable
+      - CHROME_DRIVER=/usr/local/bin/chromedriver
+      - MAX_ITEMS=20
+    volumes:
+      - pccon_data:/app/data
+      - pccon_parser_logs:/app/logs
+      - ./app/utils/DNS_parsing:/app/parsers/dns
+      - ./app/utils/Citi_parser:/app/parsers/citilink
+    networks:
+      - pccon_network
+    ports:
+      - "5001:5001"
+    # Добавляем настройки для Chrome в Docker
+    shm_size: '2g'
+    security_opt:
+      - seccomp:unconfined
+
+  # Планировщик задач
+  pccon_scheduler:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.scheduler
+    container_name: pccon_scheduler
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://pccon_user:${DB_PASSWORD}@pccon_db:5432/pccon_db
+      - REDIS_URL=redis://pccon_redis:6379/2
+    volumes:
+      - pccon_logs:/app/logs
+    depends_on:
+      - pccon_db
+      - pccon_redis
+    networks:
+      - pccon_network
+
+volumes:
+  # Общий том для загруженных файлов и парсинга
+  pccon_uploads:
+    driver: local
+  
+  # Том для данных парсеров
+  pccon_data:
+    driver: local
+  
+  # Том для базы данных PostgreSQL
+  pccon_postgres_data:
+    driver: local
+  
+  # Том для данных Redis
+  pccon_redis_data:
+    driver: local
+  
+  # Том для логов
+  pccon_logs:
+    driver: local
+  
+  # Том для логов парсера
+  pccon_parser_logs:
+    driver: local
+  
+  # Том для SSL сертификатов
+  pccon_ssl:
+    driver: local
+
+networks:
+  pccon_network:
+    driver: bridge 

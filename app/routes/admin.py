@@ -614,14 +614,19 @@ def run_citilink_parser():
         # Get path to Citilink parser directory
         citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
         
-        # Create the .env file with only the selected category
+        # Create the .env file with only the selected category (cross-platform way)
+        env_file_path = os.path.join(citilink_parser_dir, ".env")
         env_content = f"CATEGORY={category}"
         
-        # Create a command to directly run the PowerShell command to create/update .env file
-        env_setup_cmd = f'Set-Content -Path "{os.path.join(citilink_parser_dir, ".env")}" -Value "CATEGORY={category}"'
-        
-        # Run the PowerShell command to create/update .env file
-        subprocess.run(['powershell', '-Command', env_setup_cmd], check=True)
+        # Write .env file using Python (cross-platform)
+        try:
+            with open(env_file_path, 'w', encoding='utf-8') as env_file:
+                env_file.write(env_content)
+            logger.info(f"Created .env file with category: {category}")
+        except Exception as env_error:
+            logger.error(f"Failed to create .env file: {env_error}")
+            flash(f'Ошибка создания .env файла: {str(env_error)}', 'danger')
+            return redirect(url_for('admin.scrape'))
         
         # Set environment variable for the current process
         os.environ['CATEGORY'] = category
@@ -648,39 +653,66 @@ def run_citilink_parser():
         # Change back to original directory
         os.chdir(current_dir)
         
-        # Read results
+        # Read results with improved error handling
         try:
-            items_file = os.path.join(citilink_parser_dir, 'Товары.json')
+            items_file = os.path.join(citilink_parser_dir, 'data', category, 'Товары.json')
             if os.path.exists(items_file):
                 with open(items_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    
+                    # Handle empty or malformed JSON files
+                    if not content:
+                        logger.warning(f"Empty JSON file: {items_file}")
+                        flash('Файл с результатами пуст. Возможно, парсер не смог получить данные.', 'warning')
+                        return redirect(url_for('admin.scrape'))
+                    
+                    # Fix common JSON issues
+                    if content.endswith(','):
+                        content = content[:-1]  # Remove trailing comma
+                    
+                    if content.endswith(',\n]'):
+                        content = content.replace(',\n]', '\n]')
+                    
+                    if content.endswith(',]'):
+                        content = content.replace(',]', ']')
+                    
+                    # Try to parse JSON
                     try:
-                        # Try to load the file directly
-                        results = json.load(f)
-                    except json.JSONDecodeError:
-                        # If that fails, read content and then load
-                        f.seek(0)  # Go back to the beginning of the file
-                        content = f.read()
-                        if content.endswith(',\n]'):
-                            content = content.replace(',\n]', '\n]')
                         results = json.loads(content)
+                    except json.JSONDecodeError as json_error:
+                        logger.error(f"JSON decode error in {items_file}: {json_error}")
+                        logger.error(f"File content preview: {content[:200]}...")
+                        flash(f'Ошибка парсинга JSON файла: {str(json_error)}. Проверьте корректность данных.', 'warning')
+                        return redirect(url_for('admin.scrape'))
                 
-                flash(f'Парсер Citilink успешно выполнен. Получено {len(results)} товаров.', 'success')
-                
-                # Ensure products are imported after parsing
-                try:
-                    logger.info("Запуск импорта товаров после парсинга Citilink")
-                    from app.utils.standardization.import_products import import_products
-                    import_products()
-                    logger.info("Импорт товаров успешно завершен")
-                    flash('Товары успешно импортированы в базу данных', 'success')
-                except Exception as import_error:
-                    logger.error(f"Ошибка при импорте товаров: {import_error}")
-                    flash(f'Возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
+                if results:
+                    flash(f'Парсер Citilink успешно выполнен. Получено {len(results)} товаров.', 'success')
+                    
+                    # Ensure products are imported after parsing
+                    try:
+                        logger.info("Запуск импорта товаров после парсинга Citilink")
+                        from app.utils.standardization.import_products import import_products
+                        import_products()
+                        logger.info("Импорт товаров успешно завершен")
+                        flash('Товары успешно импортированы в базу данных', 'success')
+                    except Exception as import_error:
+                        logger.error(f"Ошибка при импорте товаров: {import_error}")
+                        flash(f'Возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
+                else:
+                    flash('Парсер выполнен, но не получено товаров. Проверьте настройки парсера.', 'warning')
             else:
-                flash('Файл с результатами не найден. Проверьте парсер.', 'warning')
+                # Try alternative file location
+                alt_items_file = os.path.join(citilink_parser_dir, 'Товары.json')
+                if os.path.exists(alt_items_file):
+                    flash('Файл с результатами найден в альтернативном расположении', 'info')
+                    # Process alternative file with same logic...
+                else:
+                    flash('Файл с результатами не найден. Проверьте парсер.', 'warning')
         except Exception as f:
+            logger.error(f"Error reading Citilink parser results: {f}")
             flash(f'Не удалось прочитать результаты парсера Citilink: {str(f)}', 'warning')
     except Exception as e:
+        logger.error(f"Error running Citilink parser: {e}")
         flash(f'Ошибка при запуске парсера Citilink: {str(e)}', 'danger')
     
     return redirect(url_for('admin.scrape'))
@@ -1190,4 +1222,168 @@ def download_parser_results(parser):
         )
     except Exception as e:
         flash(f'Ошибка при скачивании файла: {str(e)}', 'error')
-        return redirect(url_for('admin.scrape')) 
+        return redirect(url_for('admin.scrape'))
+
+@admin_bp.route('/stop-citilink-parser', methods=['POST'])
+@login_required
+@admin_required
+def stop_citilink_parser():
+    """Остановка парсера Citilink"""
+    try:
+        import psutil
+        import signal
+        
+        # Найти процессы парсера Citilink
+        stopped_processes = 0
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                # Проверяем командную строку процесса
+                cmdline = proc.info['cmdline']
+                if cmdline and any('Citi_parser' in str(cmd) or 'main.py' in str(cmd) for cmd in cmdline):
+                    if any('python' in str(cmd).lower() for cmd in cmdline):
+                        logger.info(f"Останавливаю процесс парсера Citilink: PID {proc.info['pid']}")
+                        proc.terminate()  # Мягкая остановка
+                        stopped_processes += 1
+                        
+                        # Если процесс не остановился через 5 секунд, принудительно завершаем
+                        try:
+                            proc.wait(timeout=5)
+                        except psutil.TimeoutExpired:
+                            proc.kill()  # Принудительная остановка
+                            
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        
+        if stopped_processes > 0:
+            flash(f'Остановлено {stopped_processes} процессов парсера Citilink', 'success')
+        else:
+            flash('Активные процессы парсера Citilink не найдены', 'info')
+            
+    except ImportError:
+        flash('Библиотека psutil не установлена. Невозможно остановить процессы.', 'warning')
+    except Exception as e:
+        logger.error(f"Ошибка при остановке парсера Citilink: {e}")
+        flash(f'Ошибка при остановке парсера: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin.scrape'))
+
+@admin_bp.route('/stop-dns-parser', methods=['POST'])
+@login_required
+@admin_required
+def stop_dns_parser():
+    """Остановка парсера DNS"""
+    try:
+        import psutil
+        
+        # Найти процессы парсера DNS
+        stopped_processes = 0
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                cmdline = proc.info['cmdline']
+                if cmdline and any('DNS_parsing' in str(cmd) or 'dns_parser' in str(cmd) for cmd in cmdline):
+                    if any('python' in str(cmd).lower() for cmd in cmdline):
+                        logger.info(f"Останавливаю процесс парсера DNS: PID {proc.info['pid']}")
+                        proc.terminate()
+                        stopped_processes += 1
+                        
+                        try:
+                            proc.wait(timeout=5)
+                        except psutil.TimeoutExpired:
+                            proc.kill()
+                            
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        
+        if stopped_processes > 0:
+            flash(f'Остановлено {stopped_processes} процессов парсера DNS', 'success')
+        else:
+            flash('Активные процессы парсера DNS не найдены', 'info')
+            
+    except ImportError:
+        flash('Библиотека psutil не установлена. Невозможно остановить процессы.', 'warning')
+    except Exception as e:
+        logger.error(f"Ошибка при остановке парсера DNS: {e}")
+        flash(f'Ошибка при остановке парсера: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin.scrape'))
+
+@admin_bp.route('/fix-citilink-json', methods=['POST'])
+@login_required
+@admin_required
+def fix_citilink_json():
+    """Исправление проблемных JSON файлов Citilink"""
+    try:
+        import glob
+        
+        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
+        data_dir = os.path.join(citilink_parser_dir, 'data')
+        
+        if not os.path.exists(data_dir):
+            flash('Папка с данными Citilink не найдена', 'warning')
+            return redirect(url_for('admin.scrape'))
+        
+        fixed_files = 0
+        removed_files = 0
+        
+        # Найти все JSON файлы
+        json_pattern = os.path.join(data_dir, '**', '*.json')
+        json_files = glob.glob(json_pattern, recursive=True)
+        
+        for json_file in json_files:
+            try:
+                with open(json_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                
+                # Если файл пустой или содержит только пробелы
+                if not content or content.isspace():
+                    logger.info(f"Удаляю пустой файл: {json_file}")
+                    os.remove(json_file)
+                    removed_files += 1
+                    continue
+                
+                # Попытка парсинга JSON
+                try:
+                    json.loads(content)
+                    # Файл корректный, пропускаем
+                    continue
+                except json.JSONDecodeError:
+                    # Файл некорректный, пытаемся исправить
+                    logger.info(f"Исправляю файл: {json_file}")
+                    
+                    # Убираем висячие запятые
+                    if content.endswith(','):
+                        content = content[:-1]
+                    
+                    if content.endswith(',\n]'):
+                        content = content.replace(',\n]', '\n]')
+                    
+                    if content.endswith(',]'):
+                        content = content.replace(',]', ']')
+                    
+                    # Пытаемся снова распарсить
+                    try:
+                        json.loads(content)
+                        # Записываем исправленный файл
+                        with open(json_file, 'w', encoding='utf-8') as f:
+                            f.write(content)
+                        fixed_files += 1
+                        logger.info(f"Файл исправлен: {json_file}")
+                    except json.JSONDecodeError:
+                        # Если всё ещё не удается, удаляем файл
+                        logger.warning(f"Не удалось исправить файл, удаляю: {json_file}")
+                        os.remove(json_file)
+                        removed_files += 1
+                        
+            except Exception as file_error:
+                logger.error(f"Ошибка обработки файла {json_file}: {file_error}")
+        
+        if fixed_files > 0 or removed_files > 0:
+            flash(f'Обработка завершена: исправлено {fixed_files} файлов, удалено {removed_files} файлов', 'success')
+        else:
+            flash('Проблемные файлы не найдены', 'info')
+            
+    except Exception as e:
+        logger.error(f"Ошибка при исправлении JSON файлов: {e}")
+        flash(f'Ошибка при исправлении файлов: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin.scrape')) 

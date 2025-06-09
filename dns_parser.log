@@ -11838,3 +11838,93 @@ Stacktrace:
 2025-06-05 18:59:29,256 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:29] "[36mGET /admin/scrape?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
 2025-06-05 18:59:29,269 - INFO - 127.0.0.1 - - [05/Jun/2025 18:59:29] "[36mGET /admin/scrape?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
 2025-06-05 18:59:51,041 - INFO -  * Detected change in 'C:\\Users\\lime_\\Desktop\\DIP\\new_pccon\\app\\routes\\admin.py', reloading
+2025-06-07 19:55:49,293 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 19:56:03,330 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 19:56:05,240 - INFO - Reading URLs from urls.txt
+2025-06-07 19:56:05,251 - INFO - Found 3 URLs to process
+2025-06-07 19:56:05,251 - INFO - Processing URL 1/3: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 19:56:05,251 - INFO - Processing URL: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 19:56:22,750 - INFO - Parsed product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 19:56:22,787 - INFO - Updated existing product data for https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 19:56:22,852 - INFO - Saved data for product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 19:56:22,853 - INFO - Processing URL 2/3: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 19:56:22,853 - INFO - Processing URL: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 19:56:39,972 - INFO - Parsed product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 19:56:40,003 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 19:56:40,095 - INFO - Saved data for product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 19:56:40,096 - INFO - Processing URL 3/3: https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 19:56:40,096 - INFO - Processing URL: https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 19:56:58,512 - INFO - Parsed product: Корпус ARDOR GAMING Rare M2 ARGB  черный
+2025-06-07 19:56:58,533 - INFO - Updated existing product data for https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 19:56:58,618 - INFO - Saved data for product: Корпус ARDOR GAMING Rare M2 ARGB  черный
+2025-06-07 19:56:59,390 - INFO - Product details parsing complete!
+2025-06-07 20:14:11,627 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 20:14:21,959 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 20:14:23,684 - INFO - Reading URLs from urls.txt
+2025-06-07 20:14:23,697 - INFO - Found 2 URLs to process
+2025-06-07 20:14:23,697 - INFO - Processing URL 1/2: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:14:23,697 - INFO - Processing URL: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:14:39,701 - INFO - Parsed product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 20:14:39,720 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:14:39,782 - INFO - Saved data for product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 20:14:39,782 - INFO - Processing URL 2/2: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:14:39,783 - INFO - Processing URL: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:14:58,509 - INFO - Parsed product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 20:14:58,540 - INFO - Updated existing product data for https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:14:58,601 - INFO - Saved data for product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 20:14:58,971 - INFO - Product details parsing complete!
+2025-06-07 20:51:00,662 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 20:51:08,667 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-07 20:51:10,639 - INFO - Reading URLs from urls.txt
+2025-06-07 20:51:10,650 - INFO - Found 8 URLs to process
+2025-06-07 20:51:10,650 - INFO - Processing URL 1/8: https://www.dns-shop.ru/product/d84f485d521bed20/korpus-montech-king-95-pro--cernyj/
+2025-06-07 20:51:10,650 - INFO - Processing URL: https://www.dns-shop.ru/product/d84f485d521bed20/korpus-montech-king-95-pro--cernyj/
+2025-06-07 20:51:29,005 - INFO - Parsed product: Корпус MONTECH KING 95 PRO  черный
+2025-06-07 20:51:29,023 - INFO - Updated existing product data for https://www.dns-shop.ru/product/d84f485d521bed20/korpus-montech-king-95-pro--cernyj/
+2025-06-07 20:51:29,086 - INFO - Saved data for product: Корпус MONTECH KING 95 PRO  черный
+2025-06-07 20:51:29,086 - INFO - Processing URL 2/8: https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 20:51:29,087 - INFO - Processing URL: https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 20:51:45,508 - INFO - Parsed product: Корпус ARDOR GAMING Rare M2 ARGB  черный
+2025-06-07 20:51:45,538 - INFO - Updated existing product data for https://www.dns-shop.ru/product/7b9277cb5ffeed20/korpus-ardor-gaming-rare-m2-argb--cernyj/
+2025-06-07 20:51:45,606 - INFO - Saved data for product: Корпус ARDOR GAMING Rare M2 ARGB  черный
+2025-06-07 20:51:45,606 - INFO - Processing URL 3/8: https://www.dns-shop.ru/product/0d5faefd5ffaed20/korpus-ardor-gaming-rare-minicase-ms1--cernyj/
+2025-06-07 20:51:45,607 - INFO - Processing URL: https://www.dns-shop.ru/product/0d5faefd5ffaed20/korpus-ardor-gaming-rare-minicase-ms1--cernyj/
+2025-06-07 20:52:01,752 - INFO - Parsed product: Корпус ARDOR GAMING Rare Minicase MS1  черный
+2025-06-07 20:52:01,768 - INFO - Updated existing product data for https://www.dns-shop.ru/product/0d5faefd5ffaed20/korpus-ardor-gaming-rare-minicase-ms1--cernyj/
+2025-06-07 20:52:01,830 - INFO - Saved data for product: Корпус ARDOR GAMING Rare Minicase MS1  черный
+2025-06-07 20:52:01,830 - INFO - Processing URL 4/8: https://www.dns-shop.ru/product/8093f2344bc6ed20/korpus-cougar-mx600-rgb-3857c900017-cernyj/
+2025-06-07 20:52:01,830 - INFO - Processing URL: https://www.dns-shop.ru/product/8093f2344bc6ed20/korpus-cougar-mx600-rgb-3857c900017-cernyj/
+2025-06-07 20:52:17,895 - INFO - Parsed product: Корпус Cougar MX600 RGB [3857C90.0017] черный
+2025-06-07 20:52:17,930 - INFO - Updated existing product data for https://www.dns-shop.ru/product/8093f2344bc6ed20/korpus-cougar-mx600-rgb-3857c900017-cernyj/
+2025-06-07 20:52:18,005 - INFO - Saved data for product: Корпус Cougar MX600 RGB [3857C90.0017] черный
+2025-06-07 20:52:18,005 - INFO - Processing URL 5/8: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:52:18,005 - INFO - Processing URL: https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:52:34,560 - INFO - Parsed product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 20:52:34,602 - INFO - Updated existing product data for https://www.dns-shop.ru/product/d1a3848c5f26ed20/korpus-cougar-duoface-pro-rgb-cgr-5ad1b-rgb-cernyj/
+2025-06-07 20:52:34,675 - INFO - Saved data for product: Корпус Cougar Duoface Pro RGB [CGR-5AD1B-RGB] черный
+2025-06-07 20:52:34,676 - INFO - Processing URL 6/8: https://www.dns-shop.ru/product/8949cc170922d582/korpus-cougar-fv150-rgb-fv150-rgb-black-cernyj/
+2025-06-07 20:52:34,676 - INFO - Processing URL: https://www.dns-shop.ru/product/8949cc170922d582/korpus-cougar-fv150-rgb-fv150-rgb-black-cernyj/
+2025-06-07 20:52:50,762 - INFO - Parsed product: Корпус Cougar FV150 RGB [FV150 RGB black] черный
+2025-06-07 20:52:50,788 - INFO - Added new product data for https://www.dns-shop.ru/product/8949cc170922d582/korpus-cougar-fv150-rgb-fv150-rgb-black-cernyj/
+2025-06-07 20:52:50,851 - INFO - Saved data for product: Корпус Cougar FV150 RGB [FV150 RGB black] черный
+2025-06-07 20:52:50,852 - INFO - Processing URL 7/8: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:52:50,852 - INFO - Processing URL: https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:53:07,096 - INFO - Parsed product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 20:53:07,129 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f1707d8a00b9ed20/korpus-zalman-n4-rev1--cernyj/
+2025-06-07 20:53:07,204 - INFO - Saved data for product: Корпус ZALMAN N4 Rev.1  черный
+2025-06-07 20:53:07,204 - INFO - Processing URL 8/8: https://www.dns-shop.ru/product/4cc7bf0f7716ed20/korpus-ardor-gaming-rare-m6--cernyj/
+2025-06-07 20:53:07,204 - INFO - Processing URL: https://www.dns-shop.ru/product/4cc7bf0f7716ed20/korpus-ardor-gaming-rare-m6--cernyj/
+2025-06-07 20:53:22,371 - INFO - Parsed product: Корпус ARDOR GAMING Rare M6  черный
+2025-06-07 20:53:22,399 - INFO - Updated existing product data for https://www.dns-shop.ru/product/4cc7bf0f7716ed20/korpus-ardor-gaming-rare-m6--cernyj/
+2025-06-07 20:53:22,461 - INFO - Saved data for product: Корпус ARDOR GAMING Rare M6  черный
+2025-06-07 20:53:22,904 - INFO - Product details parsing complete!
+2025-06-08 23:00:13,682 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-08 23:00:30,442 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-08 23:00:33,402 - INFO - Reading URLs from urls.txt
+2025-06-08 23:00:33,422 - INFO - Found 1 URLs to process
+2025-06-08 23:00:33,422 - INFO - Processing URL 1/1: https://www.dns-shop.ru/product/c455f512e73aed20/videokarta-palit-geforce-rtx-4060-infinity-2-ne64060019p1-1070l/
+2025-06-08 23:00:33,422 - INFO - Processing URL: https://www.dns-shop.ru/product/c455f512e73aed20/videokarta-palit-geforce-rtx-4060-infinity-2-ne64060019p1-1070l/
+2025-06-08 23:00:53,745 - INFO - Parsed product: Видеокарта Palit GeForce RTX 4060 Infinity 2 [NE64060019P1-1070L]
+2025-06-08 23:00:53,807 - INFO - Updated existing product data for https://www.dns-shop.ru/product/c455f512e73aed20/videokarta-palit-geforce-rtx-4060-infinity-2-ne64060019p1-1070l/
+2025-06-08 23:00:53,957 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 4060 Infinity 2 [NE64060019P1-1070L]
+2025-06-08 23:00:54,467 - INFO - Product details parsing complete!

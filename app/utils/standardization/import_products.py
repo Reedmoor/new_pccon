@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import os
 import traceback
+import re
 
 # Add the project root directory to the Python path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
@@ -83,6 +84,145 @@ def ensure_compatibility_characteristics(product_data):
             
     # Update the product data with the ensured characteristics
     product_data["characteristics"] = characteristics
+
+def detect_vendor_from_url(url):
+    """Detect vendor from product URL"""
+    if not url:
+        return 'unknown'
+    
+    url_lower = url.lower()
+    if 'citilink.ru' in url_lower:
+        return 'citilink'
+    elif 'dns-shop.ru' in url_lower:
+        return 'dns'
+    else:
+        return 'unknown'
+
+def detect_product_type(product_name):
+    """Detect product type from product name"""
+    if not product_name:
+        return 'case'  # Default to case for korpusa category
+    
+    name_lower = product_name.lower()
+    
+    # More specific keyword matching
+    if any(keyword in name_lower for keyword in ['корпус', 'case', 'tower', 'chassis']):
+        return 'case'
+    elif any(keyword in name_lower for keyword in ['процессор', 'cpu', 'processor', 'intel', 'amd ryzen']):
+        return 'processor'
+    elif any(keyword in name_lower for keyword in ['видеокарта', 'gpu', 'graphics', 'geforce', 'radeon']):
+        return 'graphics_card'
+    elif any(keyword in name_lower for keyword in ['материнская плата', 'motherboard', 'mainboard']):
+        return 'motherboard'
+    elif any(keyword in name_lower for keyword in ['блок питания', 'power supply', 'psu', 'вт']):
+        return 'power_supply'
+    elif any(keyword in name_lower for keyword in ['оперативная память', 'ram', 'memory', 'ddr']):
+        return 'ram'
+    elif any(keyword in name_lower for keyword in ['кулер', 'cooler', 'охлаждение']):
+        return 'cooler'
+    elif any(keyword in name_lower for keyword in ['ssd', 'hdd', 'накопитель', 'диск']):
+        return 'hard_drive'
+    else:
+        return 'case'  # Default to case for korpusa
+
+def import_products_from_data(products_data, source='local_parser'):
+    """
+    Import products from data list (for API usage)
+    
+    Args:
+        products_data (list): List of product dictionaries
+        source (str): Source identifier for logging
+    
+    Returns:
+        dict: Import results
+    """
+    app = create_app()
+    with app.app_context():
+        print(f"🔄 Начинаем импорт {len(products_data)} товаров из {source}")
+        
+        added_count = 0
+        error_count = 0
+        results = []
+        
+        for idx, product in enumerate(products_data):
+            try:
+                # Detect vendor from URL
+                vendor = detect_vendor_from_url(product.get('url', ''))
+                print(f"📦 Обрабатываем товар {idx+1}: {product.get('name', 'Безымянный товар')} от {vendor}")
+                
+                # Detect product type
+                product_type = detect_product_type(product.get('name', ''))
+                
+                # Standardize product data
+                std_product = standardize_characteristics(product, vendor)
+                std_product["vendor"] = vendor
+                std_product["product_type"] = product_type
+                
+                # Ensure compatibility characteristics
+                ensure_compatibility_characteristics(std_product)
+                
+                # Convert to UnifiedProduct
+                unified_product = convert_to_unified_product(std_product)
+                
+                # Add to database
+                db.session.add(unified_product)
+                
+                # Commit every 50 products
+                if idx % 50 == 0 and idx > 0:
+                    db.session.commit()
+                    print(f"✅ Сохранено {idx} товаров...")
+                
+                added_count += 1
+                results.append({
+                    'name': product.get('name', 'Unknown'),
+                    'type': product_type,
+                    'vendor': vendor,
+                    'status': 'success'
+                })
+                
+            except Exception as e:
+                error_count += 1
+                error_msg = f"Ошибка при обработке товара {idx+1}: {str(e)}"
+                print(f"❌ {error_msg}")
+                
+                results.append({
+                    'name': product.get('name', 'Unknown'),
+                    'status': 'error',
+                    'error': str(e)
+                })
+                
+                # Rollback this product and continue
+                db.session.rollback()
+        
+        # Final commit
+        try:
+            db.session.commit()
+            print(f"🎉 Импорт завершен! Добавлено: {added_count}, Ошибок: {error_count}")
+            
+            # Print statistics by product type
+            print("\n📊 Статистика по типам товаров:")
+            for product_type in ["case", "processor", "graphics_card", "motherboard", "power_supply", "ram", "cooler", "hard_drive"]:
+                count = db.session.query(UnifiedProduct).filter(UnifiedProduct.product_type == product_type).count()
+                if count > 0:
+                    print(f"   {product_type}: {count} товаров")
+            
+            return {
+                'success': True,
+                'added_count': added_count,
+                'error_count': error_count,
+                'results': results
+            }
+            
+        except Exception as e:
+            db.session.rollback()
+            error_msg = f"Ошибка при финальном сохранении: {str(e)}"
+            print(f"❌ {error_msg}")
+            return {
+                'success': False,
+                'error': error_msg,
+                'added_count': 0,
+                'error_count': len(products_data)
+            }
 
 def import_products():
     """Import products using manual file mapping to product types"""

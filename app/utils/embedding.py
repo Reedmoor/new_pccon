@@ -40,7 +40,7 @@ def main():
         print("Инициализация GigaChat клиента...")
         
         # Настройка переменных окружения для GigaChat с новым ключом
-        os.environ["GIGACHAT_CREDENTIALS"] = "MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjc2OTg3Y2IzLTFkZGYtNDI3NC05ZTNiLTc0ZjQ0OGM3MDQxZQ=="
+        os.environ["GIGACHAT_CREDENTIALS"] = "MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng=="
         os.environ["GIGACHAT_SCOPE"] = "GIGACHAT_API_PERS"
         
         # Создаем экземпляр модели эмбеддингов для LangChain
