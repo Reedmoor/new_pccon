@@ -26,15 +26,8 @@ RUN chmod +x /entrypoint.sh
 # Копируем весь код приложения
 COPY . .
 
-# Создаем пользователя для безопасности
-RUN useradd --create-home --shell /bin/bash app
-
-# Создаем необходимые директории и устанавливаем права
-RUN mkdir -p /app/data /app/logs /app/instance && \
-    chown -R app:app /app
-
-# Переключаемся на пользователя app
-USER app
+# Создаем необходимые директории
+RUN mkdir -p /app/data /app/logs /app/instance
 
 # Устанавливаем переменные окружения
 ENV FLASK_APP=run.py

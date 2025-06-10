@@ -8,6 +8,10 @@ wait_for_db() {
     echo "Ожидание готовности PostgreSQL..."
     echo "DATABASE_URL: $DATABASE_URL"
     
+    # Даем PostgreSQL время на запуск (30 секунд)
+    echo "Даем PostgreSQL время на инициализацию (30 секунд)..."
+    sleep 30
+    
     # Увеличиваем время ожидания до 120 секунд (60 попыток по 2 секунды)
     for i in {1..60}; do
         echo "Попытка $i/60: Проверяем подключение к PostgreSQL..."
@@ -20,6 +24,10 @@ try:
     # Парсим DATABASE_URL для отладки
     db_url = os.environ.get('DATABASE_URL', '')
     print(f'Пытаемся подключиться к: {db_url}')
+    
+    if not db_url:
+        print('ОШИБКА: DATABASE_URL пустая!')
+        sys.exit(1)
     
     conn = psycopg2.connect(db_url)
     cursor = conn.cursor()
@@ -73,7 +81,8 @@ try:
         print('Таблицы базы данных созданы успешно!')
         
         # Проверяем созданные таблицы
-        result = db.engine.execute('SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = %s', ('public',))
+        from sqlalchemy import text
+        result = db.session.execute(text('SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = :schema'), {'schema': 'public'})
         table_count = result.fetchone()[0]
         print(f'Создано таблиц: {table_count}')
         
@@ -97,6 +106,12 @@ main() {
     echo "FLASK_ENV: $FLASK_ENV"
     echo "DATABASE_URL: ${DATABASE_URL:0:50}..."
     echo "PYTHONPATH: $PYTHONPATH"
+    
+    # Проверяем обязательные переменные
+    if [ -z "$DATABASE_URL" ]; then
+        echo "КРИТИЧЕСКАЯ ОШИБКА: DATABASE_URL не установлена!"
+        exit 1
+    fi
     
     # Ожидаем готовности БД
     wait_for_db

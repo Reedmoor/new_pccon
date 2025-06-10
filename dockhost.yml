@@ -73,12 +73,12 @@ environment:
 
 # Containers configuration
 containers:
-    # База данных PostgreSQL (запускается первой)
+    # База данных PostgreSQL
     db:
         image: postgres:15-alpine
         replicas: 1
         resources:
-            memory: 2GiB  # Увеличиваем память для более быстрой инициализации
+            memory: 2GiB
             cpu: 2
             cpuFraction: 50
         ports:
@@ -90,10 +90,9 @@ containers:
             POSTGRES_DB: pccon_db
             POSTGRES_USER: pccon_user
             POSTGRES_PASSWORD: "12345"
-            # Настройки для более быстрой инициализации
             POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
 
-    # Redis для кэширования (запускается второй)
+    # Redis для кэширования
     redis:
         image: redis:7-alpine
         replicas: 1
@@ -108,11 +107,11 @@ containers:
               mountPath: /data
         command: redis-server --requirepass 12345
 
-    # Основное веб-приложение (зависит от db и redis)
+    # Основное веб-приложение (используем простую версию)
     web:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.simple
         replicas: 1
         resources:
             memory: 1GiB
@@ -125,33 +124,18 @@ containers:
               mountPath: /app/data
             - name: app-logs
               mountPath: /app/logs
-        depends_on:
-            - db
-            - redis
-        
-    # Парсер (зависит от db, redis и web)
-    parser:
-        build:
-            context: .
-            dockerfile: Dockerfile.parser
-        replicas: 1
-        resources:
-            memory: 2GiB
-            cpu: 2
-            cpuFraction: 40
-        ports:
-            - '5001'
-        volumes:
-            - name: app-data
-              mountPath: /app/data
-            - name: app-logs
-              mountPath: /app/logs
-        depends_on:
-            - db
-            - redis
-            - web
+        environment:
+            SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+            FLASK_ENV: production
+            DEBUG: "False"
+            DATABASE_URL: postgresql://pccon_user:12345@db:5432/pccon_db
+            REDIS_URL: redis://:12345@redis:6379
+            GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+            PARSER_API_URL: http://parser:5001
+            MAIN_SERVER_URL: http://web:5000
+            PYTHONPATH: /app
 
-    # Nginx reverse proxy (зависит от всех сервисов)
+    # Nginx reverse proxy
     nginx:
         image: nginx:alpine
         replicas: 1
@@ -167,9 +151,6 @@ containers:
         configs:
             - name: nginx.conf
               mountPath: /etc/nginx/nginx.conf
-        depends_on:
-            - web
-            - parser
 
 # Volumes configuration
 volumes:
