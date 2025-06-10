@@ -10,8 +10,6 @@ environment:
         DATABASE_URL: postgresql://pccon_user:12345@db:5432/pccon_db
         REDIS_URL: redis://:12345@redis:6379
         GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
-        PARSER_API_URL: http://parser:5001
-        MAIN_SERVER_URL: http://web:5000
         PYTHONPATH: /app
     configs:
         nginx.conf: |
@@ -158,7 +156,6 @@ network:
     domains:
         nginx: pcconf.ru
         web: ~
-        parser: ~
         db: ~
         redis: ~
 
