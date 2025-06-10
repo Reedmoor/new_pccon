@@ -23,10 +23,6 @@ environment:
                 upstream web_backend {
                     server web:5000;
                 }
-                
-                upstream parser_backend {
-                    server parser:5001;
-                }
 
                 server {
                     listen 80;
@@ -41,17 +37,6 @@ environment:
                         proxy_connect_timeout 30s;
                         proxy_send_timeout 30s;
                         proxy_read_timeout 30s;
-                    }
-                    
-                    location /parser/ {
-                        proxy_pass http://parser_backend/;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto $scheme;
-                        proxy_connect_timeout 60s;
-                        proxy_send_timeout 300s;
-                        proxy_read_timeout 300s;
                     }
                     
                     location /static/ {
@@ -131,8 +116,6 @@ containers:
             DATABASE_URL: postgresql://pccon_user:12345@db:5432/pccon_db
             REDIS_URL: redis://:12345@redis:6379
             GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
-            PARSER_API_URL: http://parser:5001
-            MAIN_SERVER_URL: http://web:5000
             PYTHONPATH: /app
 
     # Nginx reverse proxy
