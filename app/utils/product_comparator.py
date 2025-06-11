@@ -781,6 +781,8 @@ class ProductComparator:
     
     def _extract_price(self, item: Dict) -> float:
         """Извлечение цены из товара"""
+        price = None
+        
         # Для DNS
         if 'price_original' in item:
             price = item['price_original']
@@ -790,6 +792,29 @@ class ProductComparator:
         else:
             return None
         
+        # Если цена - это словарь, пытаемся извлечь значение
+        if isinstance(price, dict):
+            # Попробуем различные ключи для цены
+            for key in ['value', 'amount', 'price', 'original', 'current']:
+                if key in price:
+                    price = price[key]
+                    break
+            else:
+                # Если не нашли подходящий ключ, возвращаем None
+                return None
+        
+        # Если цена - это список, берем первый элемент
+        if isinstance(price, list) and len(price) > 0:
+            price = price[0]
+            # Если элемент списка - словарь, повторяем логику
+            if isinstance(price, dict):
+                for key in ['value', 'amount', 'price', 'original', 'current']:
+                    if key in price:
+                        price = price[key]
+                        break
+                else:
+                    return None
+        
         # Конвертируем в число если это строка
         if isinstance(price, str):
             try:
@@ -797,10 +822,14 @@ class ProductComparator:
                 price_clean = ''.join(c for c in price if c.isdigit() or c in '.,')
                 price_clean = price_clean.replace(',', '.')
                 return float(price_clean) if price_clean else None
-            except:
+            except (ValueError, TypeError):
                 return None
         
-        return float(price) if price else None
+        # Проверяем что это число
+        if isinstance(price, (int, float)):
+            return float(price)
+        
+        return None
     
     def _calculate_price_statistics(self, price_differences: List[float]) -> Dict:
         """Вычисление статистики по ценам"""
