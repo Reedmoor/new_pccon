@@ -35,25 +35,25 @@ def compare_products():
         category_mapping = {
             'ram': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
-                        'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Оперативная память DIMM.json')],
                 'citi': ['/app/data/Citi_parser/data/moduli-pamyati/Товары.json',
-                         'app/utils/Citi_parser/data/moduli-pamyati/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'moduli-pamyati', 'Товары.json')],
                 'dns_label': 'Оперативная память DIMM',
                 'citi_label': 'Модули памяти'
             },
             'gpu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Видеокарты.json',
-                        'app/utils/DNS_parsing/categories/product_data_Видеокарты.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Видеокарты.json')],
                 'citi': ['/app/data/Citi_parser/data/videokarty/Товары.json',
-                         'app/utils/Citi_parser/data/videokarty/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'videokarty', 'Товары.json')],
                 'dns_label': 'Видеокарты',
                 'citi_label': 'Видеокарты'
             },
             'cpu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
-                        'app/utils/DNS_parsing/categories/product_data_Процессоры.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Процессоры.json')],
                 'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
-                         'app/utils/Citi_parser/data/processory/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'processory', 'Товары.json')],
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
             },
@@ -62,48 +62,48 @@ def compare_products():
                     ['/app/data/DNS_parsing/categories/product_data_SSD накопители.json',
                      '/app/data/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
                      '/app/data/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'],
-                    ['app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
-                     'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
-                     'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json']
+                    [os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_SSD накопители.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_SSD M_2 накопители.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Жесткие диски 3_5_.json')]
                 ],
                 'citi': [
                     ['/app/data/Citi_parser/data/ssd-nakopiteli/Товары.json',
                      '/app/data/Citi_parser/data/zhestkie-diski/Товары.json'],
-                    ['app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
-                     'app/utils/Citi_parser/data/zhestkie-diski/Товары.json']
+                    [os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'ssd-nakopiteli', 'Товары.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'zhestkie-diski', 'Товары.json')]
                 ],
                 'dns_label': 'Накопители (SSD, HDD)',
                 'citi_label': 'Накопители (SSD, HDD)'
             },
             'motherboard': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Материнские платы.json',
-                        'app/utils/DNS_parsing/categories/product_data_Материнские платы.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Материнские платы.json')],
                 'citi': ['/app/data/Citi_parser/data/materinskie-platy/Товары.json',
-                         'app/utils/Citi_parser/data/materinskie-platy/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'materinskie-platy', 'Товары.json')],
                 'dns_label': 'Материнские платы',
                 'citi_label': 'Материнские платы'
             },
             'psu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Блоки питания.json',
-                        'app/utils/DNS_parsing/categories/product_data_Блоки питания.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Блоки питания.json')],
                 'citi': ['/app/data/Citi_parser/data/bloki-pitaniya/Товары.json',
-                         'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'bloki-pitaniya', 'Товары.json')],
                 'dns_label': 'Блоки питания',
                 'citi_label': 'Блоки питания'
             },
             'cooler': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
-                        'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Кулеры для процессоров.json')],
                 'citi': ['/app/data/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
-                         'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'sistemy-ohlazhdeniya-processora', 'Товары.json')],
                 'dns_label': 'Кулеры для процессоров',
                 'citi_label': 'Системы охлаждения процессора'
             },
             'case': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Корпуса.json',
-                        'app/utils/DNS_parsing/categories/product_data_Корпуса.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Корпуса.json')],
                 'citi': ['/app/data/Citi_parser/data/korpusa/Товары.json',
-                         'app/utils/Citi_parser/data/korpusa/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'korpusa', 'Товары.json')],
                 'dns_label': 'Корпуса',
                 'citi_label': 'Корпуса'
             }
@@ -327,25 +327,25 @@ def quick_compare(category):
         category_mapping = {
             'ram': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
-                        'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Оперативная память DIMM.json')],
                 'citi': ['/app/data/Citi_parser/data/moduli-pamyati/Товары.json',
-                         'app/utils/Citi_parser/data/moduli-pamyati/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'moduli-pamyati', 'Товары.json')],
                 'dns_label': 'Оперативная память DIMM',
                 'citi_label': 'Модули памяти'
             },
             'gpu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Видеокарты.json',
-                        'app/utils/DNS_parsing/categories/product_data_Видеокарты.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Видеокарты.json')],
                 'citi': ['/app/data/Citi_parser/data/videokarty/Товары.json',
-                         'app/utils/Citi_parser/data/videokarty/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'videokarty', 'Товары.json')],
                 'dns_label': 'Видеокарты',
                 'citi_label': 'Видеокарты'
             },
             'cpu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
-                        'app/utils/DNS_parsing/categories/product_data_Процессоры.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Процессоры.json')],
                 'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
-                         'app/utils/Citi_parser/data/processory/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'processory', 'Товары.json')],
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
             },
@@ -354,48 +354,48 @@ def quick_compare(category):
                     ['/app/data/DNS_parsing/categories/product_data_SSD накопители.json',
                      '/app/data/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
                      '/app/data/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'],
-                    ['app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
-                     'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
-                     'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json']
+                    [os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_SSD накопители.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_SSD M_2 накопители.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Жесткие диски 3_5_.json')]
                 ],
                 'citi': [
                     ['/app/data/Citi_parser/data/ssd-nakopiteli/Товары.json',
                      '/app/data/Citi_parser/data/zhestkie-diski/Товары.json'],
-                    ['app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
-                     'app/utils/Citi_parser/data/zhestkie-diski/Товары.json']
+                    [os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'ssd-nakopiteli', 'Товары.json'),
+                     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'zhestkie-diski', 'Товары.json')]
                 ],
                 'dns_label': 'Накопители (SSD, HDD)',
                 'citi_label': 'Накопители (SSD, HDD)'
             },
             'motherboard': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Материнские платы.json',
-                        'app/utils/DNS_parsing/categories/product_data_Материнские платы.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Материнские платы.json')],
                 'citi': ['/app/data/Citi_parser/data/materinskie-platy/Товары.json',
-                         'app/utils/Citi_parser/data/materinskie-platy/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'materinskie-platy', 'Товары.json')],
                 'dns_label': 'Материнские платы',
                 'citi_label': 'Материнские платы'
             },
             'psu': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Блоки питания.json',
-                        'app/utils/DNS_parsing/categories/product_data_Блоки питания.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Блоки питания.json')],
                 'citi': ['/app/data/Citi_parser/data/bloki-pitaniya/Товары.json',
-                         'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'bloki-pitaniya', 'Товары.json')],
                 'dns_label': 'Блоки питания',
                 'citi_label': 'Блоки питания'
             },
             'cooler': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
-                        'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Кулеры для процессоров.json')],
                 'citi': ['/app/data/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
-                         'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'sistemy-ohlazhdeniya-processora', 'Товары.json')],
                 'dns_label': 'Кулеры для процессоров',
                 'citi_label': 'Системы охлаждения процессора'
             },
             'case': {
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Корпуса.json',
-                        'app/utils/DNS_parsing/categories/product_data_Корпуса.json'],
+                        os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories', 'product_data_Корпуса.json')],
                 'citi': ['/app/data/Citi_parser/data/korpusa/Товары.json',
-                         'app/utils/Citi_parser/data/korpusa/Товары.json'],
+                         os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data', 'korpusa', 'Товары.json')],
                 'dns_label': 'Корпуса',
                 'citi_label': 'Корпуса'
             }
