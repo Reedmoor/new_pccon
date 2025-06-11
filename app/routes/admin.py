@@ -7,7 +7,8 @@ from datetime import datetime
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, send_file
 from werkzeug.utils import secure_filename
 from app import db
-from app.models import UnifiedProduct, User
+from app.models.models import UnifiedProduct, User
+from app.forms.admin import UnifiedProductForm
 from app.auth import login_required, admin_required
 from app.logger import get_logger
 
