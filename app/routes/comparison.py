@@ -36,7 +36,6 @@ def compare_products():
         # Функция для поиска последнего файла DNS данных
         def get_latest_dns_data_file():
             """Находит самый последний файл local_parser_data_*.json"""
-            # Возможные папки для поиска
             search_paths = [
                 'data/local_parser_data_*.json',
                 '/app/data/local_parser_data_*.json'
@@ -49,7 +48,6 @@ def compare_products():
                 files = glob.glob(pattern)
                 for file_path in files:
                     try:
-                        # Получаем время модификации файла
                         file_time = os.path.getmtime(file_path)
                         if file_time > latest_time:
                             latest_time = file_time
@@ -62,7 +60,6 @@ def compare_products():
         # Функция для поиска последнего файла Citilink данных
         def get_latest_citilink_data_file():
             """Находит самый последний файл citilink_data_*.json или общий файл"""
-            # Возможные папки для поиска
             search_paths = [
                 'data/citilink_data_*.json',
                 '/app/data/citilink_data_*.json',
@@ -201,6 +198,8 @@ def compare_products():
             if not data:
                 return []
             
+            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
+            
             category_filters = {
                 'gpu': ['Видеокарты', 'videokarty'],
                 'cpu': ['Процессоры', 'processory'],
@@ -213,23 +212,37 @@ def compare_products():
             }
             
             if category not in category_filters:
+                logger.warning(f"Категория {category} не найдена в DNS фильтрах")
                 return data
             
             filters = category_filters[category]
+            logger.info(f"Используемые DNS фильтры для {category}: {filters}")
             filtered_data = []
             
             for item in data:
+                found_match = False
+                
+                # Проверяем категории товара
                 if 'categories' in item:
                     for cat in item['categories']:
                         cat_name = cat.get('name', '').lower()
                         if any(f.lower() in cat_name for f in filters):
                             filtered_data.append(item)
+                            found_match = True
                             break
-                elif 'name' in item:
-                    # Если нет категорий, фильтруем по названию товара
+                
+                # Если нет категорий, фильтруем по названию товара
+                if not found_match and 'name' in item:
                     item_name = item['name'].lower()
                     if any(f.lower() in item_name for f in filters):
                         filtered_data.append(item)
+            
+            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
+            
+            # Покажем несколько примеров отфильтрованных товаров
+            if filtered_data:
+                sample_names = [item.get('name', 'Без названия') for item in filtered_data[:3]]
+                logger.info(f"Примеры отфильтрованных DNS товаров: {sample_names}")
             
             return filtered_data
         
@@ -239,9 +252,9 @@ def compare_products():
             if not data:
                 return []
             
-            # Если данные уже отфильтрованы по категории (из специфичных файлов), возвращаем как есть
-            if len(data) < 1000:  # Небольшие файлы уже отфильтрованы
-                return data
+            # Убираем неправильную логику с проверкой размера файла
+            # Фильтруем всегда, если получили общий файл
+            logger.info(f"Фильтрация Citilink для категории {category}, исходных товаров: {len(data)}")
             
             category_filters = {
                 'gpu': ['видеокарт', 'videocard', 'graphics'],
@@ -255,20 +268,29 @@ def compare_products():
             }
             
             if category not in category_filters:
+                logger.warning(f"Категория {category} не найдена в фильтрах")
                 return data
             
             filters = category_filters[category]
+            logger.info(f"Используемые фильтры для {category}: {filters}")
             filtered_data = []
             
             for item in data:
+                item_name = ""
                 if 'name' in item:
                     item_name = item['name'].lower()
-                    if any(f.lower() in item_name for f in filters):
-                        filtered_data.append(item)
                 elif 'title' in item:
                     item_name = item['title'].lower()
-                    if any(f.lower() in item_name for f in filters):
-                        filtered_data.append(item)
+                
+                if item_name and any(f.lower() in item_name for f in filters):
+                    filtered_data.append(item)
+            
+            logger.info(f"После фильтрации Citilink {category}: {len(filtered_data)} товаров из {len(data)}")
+            
+            # Покажем несколько примеров отфильтрованных товаров
+            if filtered_data:
+                sample_names = [item.get('name', item.get('title', 'Без названия')) for item in filtered_data[:3]]
+                logger.info(f"Примеры отфильтрованных товаров: {sample_names}")
             
             return filtered_data
         
@@ -527,6 +549,170 @@ def get_categories():
 def quick_compare(category):
     """Быстрое сравнение с предустановленными параметрами"""
     try:
+        # Функции для поиска последних файлов (копия из основной функции)
+        def get_latest_dns_data_file():
+            """Находит самый последний файл local_parser_data_*.json"""
+            search_paths = [
+                'data/local_parser_data_*.json',
+                '/app/data/local_parser_data_*.json'
+            ]
+            
+            latest_file = None
+            latest_time = 0
+            
+            for pattern in search_paths:
+                files = glob.glob(pattern)
+                for file_path in files:
+                    try:
+                        file_time = os.path.getmtime(file_path)
+                        if file_time > latest_time:
+                            latest_time = file_time
+                            latest_file = file_path
+                    except OSError:
+                        continue
+            
+            return latest_file
+
+        def get_latest_citilink_data_file():
+            """Находит самый последний файл citilink_data_*.json или общий файл"""
+            search_paths = [
+                'data/citilink_data_*.json',
+                '/app/data/citilink_data_*.json',
+                'app/utils/Citi_parser/Товары.json',
+                '/app/utils/Citi_parser/Товары.json'
+            ]
+            
+            latest_file = None
+            latest_time = 0
+            
+            for path_pattern in search_paths:
+                if '*' in path_pattern:
+                    files = glob.glob(path_pattern)
+                    for file_path in files:
+                        try:
+                            file_time = os.path.getmtime(file_path)
+                            if file_time > latest_time:
+                                latest_time = file_time
+                                latest_file = file_path
+                        except OSError:
+                            continue
+                else:
+                    if os.path.exists(path_pattern):
+                        try:
+                            file_time = os.path.getmtime(path_pattern)
+                            if file_time > latest_time:
+                                latest_time = file_time
+                                latest_file = path_pattern
+                        except OSError:
+                            continue
+            
+            return latest_file
+
+        # Получаем последние файлы
+        latest_dns_file = get_latest_dns_data_file()
+        latest_citilink_file = get_latest_citilink_data_file()
+        
+        # Функции фильтрации (копии из основной функции)
+        def filter_dns_by_category(data, category):
+            """Фильтрует данные DNS по категории"""
+            if not data:
+                return []
+            
+            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
+            
+            category_filters = {
+                'gpu': ['Видеокарты', 'videokarty'],
+                'cpu': ['Процессоры', 'processory'],
+                'ram': ['Оперативная память', 'moduli-pamyati'],
+                'storage': ['SSD', 'ssd', 'Жесткие диски', 'zhestkie-diski', 'накопители'],
+                'motherboard': ['Материнские платы', 'materinskie-platy'],
+                'psu': ['Блоки питания', 'bloki-pitaniya'],
+                'cooler': ['Кулеры', 'sistemy-ohlazhdeniya'],
+                'case': ['Корпуса', 'korpusa']
+            }
+            
+            if category not in category_filters:
+                logger.warning(f"Категория {category} не найдена в DNS фильтрах")
+                return data
+            
+            filters = category_filters[category]
+            logger.info(f"Используемые DNS фильтры для {category}: {filters}")
+            filtered_data = []
+            
+            for item in data:
+                found_match = False
+                
+                # Проверяем категории товара
+                if 'categories' in item:
+                    for cat in item['categories']:
+                        cat_name = cat.get('name', '').lower()
+                        if any(f.lower() in cat_name for f in filters):
+                            filtered_data.append(item)
+                            found_match = True
+                            break
+                
+                # Если нет категорий, фильтруем по названию товара
+                if not found_match and 'name' in item:
+                    item_name = item['name'].lower()
+                    if any(f.lower() in item_name for f in filters):
+                        filtered_data.append(item)
+            
+            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
+            
+            # Покажем несколько примеров отфильтрованных товаров
+            if filtered_data:
+                sample_names = [item.get('name', 'Без названия') for item in filtered_data[:3]]
+                logger.info(f"Примеры отфильтрованных DNS товаров: {sample_names}")
+            
+            return filtered_data
+
+        def filter_citilink_by_category(data, category):
+            """Фильтрует данные Citilink по категории"""
+            if not data:
+                return []
+            
+            # Убираем неправильную логику с проверкой размера файла
+            # Фильтруем всегда, если получили общий файл
+            logger.info(f"Фильтрация Citilink для категории {category}, исходных товаров: {len(data)}")
+            
+            category_filters = {
+                'gpu': ['видеокарт', 'videocard', 'graphics'],
+                'cpu': ['процессор', 'processor', 'cpu'],
+                'ram': ['память', 'memory', 'dimm', 'оперативн'],
+                'storage': ['ssd', 'диск', 'накопител', 'disk', 'storage'],
+                'motherboard': ['материнск', 'motherboard', 'мат. плат'],
+                'psu': ['блок питания', 'power supply', 'psu'],
+                'cooler': ['кулер', 'cooler', 'охлажден'],
+                'case': ['корпус', 'case']
+            }
+            
+            if category not in category_filters:
+                logger.warning(f"Категория {category} не найдена в фильтрах")
+                return data
+            
+            filters = category_filters[category]
+            logger.info(f"Используемые фильтры для {category}: {filters}")
+            filtered_data = []
+            
+            for item in data:
+                item_name = ""
+                if 'name' in item:
+                    item_name = item['name'].lower()
+                elif 'title' in item:
+                    item_name = item['title'].lower()
+                
+                if item_name and any(f.lower() in item_name for f in filters):
+                    filtered_data.append(item)
+            
+            logger.info(f"После фильтрации Citilink {category}: {len(filtered_data)} товаров из {len(data)}")
+            
+            # Покажем несколько примеров отфильтрованных товаров
+            if filtered_data:
+                sample_names = [item.get('name', item.get('title', 'Без названия')) for item in filtered_data[:3]]
+                logger.info(f"Примеры отфильтрованных товаров: {sample_names}")
+            
+            return filtered_data
+        
         # Используем ту же карта категорий что и в основной функции
         category_mapping = {
             'ram': {
@@ -838,4 +1024,33 @@ def quick_compare(category):
     except Exception as e:
         logger.error(f"Ошибка при быстром сравнении: {str(e)}")
         flash(f'Произошла ошибка: {str(e)}', 'error')
-        return redirect(url_for('comparison.index')) 
+        return redirect(url_for('comparison.index'))
+
+@comparison_bp.route('/clear-cache', methods=['POST'])
+@login_required
+def clear_cache():
+    """Очистка кэша эмбеддингов"""
+    try:
+        comparator = get_comparator()
+        cache_size_before = comparator.get_cache_size()
+        comparator.clear_embeddings_cache()
+        cache_size_after = comparator.get_cache_size()
+        
+        flash(f'Кэш очищен! Удалено {cache_size_before} записей.', 'success')
+        logger.info(f"Кэш эмбеддингов очищен. Размер до очистки: {cache_size_before}, после: {cache_size_after}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'Кэш очищен! Удалено {cache_size_before} записей.',
+            'cache_size_before': cache_size_before,
+            'cache_size_after': cache_size_after
+        })
+    
+    except Exception as e:
+        logger.error(f"Ошибка при очистке кэша: {str(e)}")
+        flash(f'Ошибка при очистке кэша: {str(e)}', 'error')
+        
+        return jsonify({
+            'success': False,
+            'message': f'Ошибка при очистке кэша: {str(e)}'
+        }), 500 
