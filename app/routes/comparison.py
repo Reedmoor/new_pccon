@@ -31,64 +31,105 @@ def compare_products():
         category = form.category.data
         threshold = form.threshold.data
         
-        # Карта категорий для JSON файлов
+        # Карта категорий для JSON файлов (с fallback для локальной разработки)
         category_mapping = {
             'ram': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
-                'citi': 'app/utils/Citi_parser/data/moduli-pamyati/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
+                        'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json'],
+                'citi': ['/app/data/Citi_parser/data/moduli-pamyati/Товары.json',
+                         'app/utils/Citi_parser/data/moduli-pamyati/Товары.json'],
                 'dns_label': 'Оперативная память DIMM',
                 'citi_label': 'Модули памяти'
             },
             'gpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Видеокарты.json',
-                'citi': 'app/utils/Citi_parser/data/videokarty/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Видеокарты.json',
+                        'app/utils/DNS_parsing/categories/product_data_Видеокарты.json'],
+                'citi': ['/app/data/Citi_parser/data/videokarty/Товары.json',
+                         'app/utils/Citi_parser/data/videokarty/Товары.json'],
                 'dns_label': 'Видеокарты',
                 'citi_label': 'Видеокарты'
             },
             'cpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Процессоры.json',
-                'citi': 'app/utils/Citi_parser/data/processory/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
+                        'app/utils/DNS_parsing/categories/product_data_Процессоры.json'],
+                'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
+                         'app/utils/Citi_parser/data/processory/Товары.json'],
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
             },
             'storage': {
                 'dns': [
-                    'app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'
+                    ['/app/data/DNS_parsing/categories/product_data_SSD накопители.json',
+                     '/app/data/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
+                     '/app/data/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'],
+                    ['app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
+                     'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
+                     'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json']
                 ],
                 'citi': [
-                    'app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
-                    'app/utils/Citi_parser/data/zhestkie-diski/Товары.json'
+                    ['/app/data/Citi_parser/data/ssd-nakopiteli/Товары.json',
+                     '/app/data/Citi_parser/data/zhestkie-diski/Товары.json'],
+                    ['app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
+                     'app/utils/Citi_parser/data/zhestkie-diski/Товары.json']
                 ],
                 'dns_label': 'Накопители (SSD, HDD)',
                 'citi_label': 'Накопители (SSD, HDD)'
             },
             'motherboard': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Материнские платы.json',
-                'citi': 'app/utils/Citi_parser/data/materinskie-platy/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Материнские платы.json',
+                        'app/utils/DNS_parsing/categories/product_data_Материнские платы.json'],
+                'citi': ['/app/data/Citi_parser/data/materinskie-platy/Товары.json',
+                         'app/utils/Citi_parser/data/materinskie-platy/Товары.json'],
                 'dns_label': 'Материнские платы',
                 'citi_label': 'Материнские платы'
             },
             'psu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Блоки питания.json',
-                'citi': 'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Блоки питания.json',
+                        'app/utils/DNS_parsing/categories/product_data_Блоки питания.json'],
+                'citi': ['/app/data/Citi_parser/data/bloki-pitaniya/Товары.json',
+                         'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json'],
                 'dns_label': 'Блоки питания',
                 'citi_label': 'Блоки питания'
             },
             'cooler': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
-                'citi': 'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
+                        'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json'],
+                'citi': ['/app/data/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
+                         'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json'],
                 'dns_label': 'Кулеры для процессоров',
                 'citi_label': 'Системы охлаждения процессора'
             },
             'case': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Корпуса.json',
-                'citi': 'app/utils/Citi_parser/data/korpusa/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Корпуса.json',
+                        'app/utils/DNS_parsing/categories/product_data_Корпуса.json'],
+                'citi': ['/app/data/Citi_parser/data/korpusa/Товары.json',
+                         'app/utils/Citi_parser/data/korpusa/Товары.json'],
                 'dns_label': 'Корпуса',
                 'citi_label': 'Корпуса'
             }
         }
+        
+        # Функция для поиска существующего файла из списка путей
+        def find_existing_file(paths):
+            """Возвращает первый существующий файл из списка путей"""
+            if isinstance(paths, str):
+                return paths if os.path.exists(paths) else None
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+            return None
+        
+        # Функция для поиска существующих файлов для storage (список списков)
+        def find_existing_files(paths_list):
+            """Для storage - возвращает первый набор путей где все файлы существуют"""
+            if not isinstance(paths_list[0], list):
+                # Обычная категория, не storage
+                return find_existing_file(paths_list)
+            
+            for path_set in paths_list:
+                if all(os.path.exists(path) for path in path_set):
+                    return path_set
+            return None
         
         # Проверяем существование категории
         if category not in category_mapping:
@@ -106,9 +147,10 @@ def compare_products():
             dns_data = []
             citi_data = []
             
-            # Загружаем DNS файлы
-            for dns_path in cat_info['dns']:
-                if os.path.exists(dns_path):
+            # Находим существующие DNS файлы
+            dns_paths = find_existing_files(cat_info['dns'])
+            if dns_paths:
+                for dns_path in dns_paths:
                     file_data = comparator.load_json_data(dns_path)
                     if file_data:
                         if isinstance(file_data, list):
@@ -116,9 +158,10 @@ def compare_products():
                         else:
                             dns_data.append(file_data)
             
-            # Загружаем Citilink файлы  
-            for citi_path in cat_info['citi']:
-                if os.path.exists(citi_path):
+            # Находим существующие Citilink файлы  
+            citi_paths = find_existing_files(cat_info['citi'])
+            if citi_paths:
+                for citi_path in citi_paths:
                     file_data = comparator.load_json_data(citi_path)
                     if file_data:
                         if isinstance(file_data, list):
@@ -126,12 +169,12 @@ def compare_products():
                         else:
                             citi_data.append(file_data)
         else:
-            # Определяем пути к файлам для обычных категорий
-            dns_path = cat_info['dns']
-            citi_path = cat_info['citi']
+            # Находим существующие файлы для обычных категорий
+            dns_path = find_existing_file(cat_info['dns'])
+            citi_path = find_existing_file(cat_info['citi'])
             
             # Проверяем существование файлов
-            if not os.path.exists(dns_path) or not os.path.exists(citi_path):
+            if not dns_path or not citi_path:
                 flash(f'Файлы данных для категории "{category}" не найдены', 'error')
                 return redirect(url_for('comparison.index'))
             
@@ -265,68 +308,110 @@ def get_categories():
 def quick_compare(category):
     """Быстрое сравнение с предустановленными параметрами"""
     try:
-        # Карта категорий
+        # Используем ту же карта категорий что и в основной функции
         category_mapping = {
             'ram': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
-                'citi': 'app/utils/Citi_parser/data/moduli-pamyati/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
+                        'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json'],
+                'citi': ['/app/data/Citi_parser/data/moduli-pamyati/Товары.json',
+                         'app/utils/Citi_parser/data/moduli-pamyati/Товары.json'],
                 'dns_label': 'Оперативная память DIMM',
                 'citi_label': 'Модули памяти'
             },
             'gpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Видеокарты.json',
-                'citi': 'app/utils/Citi_parser/data/videokarty/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Видеокарты.json',
+                        'app/utils/DNS_parsing/categories/product_data_Видеокарты.json'],
+                'citi': ['/app/data/Citi_parser/data/videokarty/Товары.json',
+                         'app/utils/Citi_parser/data/videokarty/Товары.json'],
                 'dns_label': 'Видеокарты',
                 'citi_label': 'Видеокарты'
             },
             'cpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Процессоры.json',
-                'citi': 'app/utils/Citi_parser/data/processory/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
+                        'app/utils/DNS_parsing/categories/product_data_Процессоры.json'],
+                'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
+                         'app/utils/Citi_parser/data/processory/Товары.json'],
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
             },
             'storage': {
                 'dns': [
-                    'app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'
+                    ['/app/data/DNS_parsing/categories/product_data_SSD накопители.json',
+                     '/app/data/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
+                     '/app/data/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'],
+                    ['app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
+                     'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
+                     'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json']
                 ],
                 'citi': [
-                    'app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
-                    'app/utils/Citi_parser/data/zhestkie-diski/Товары.json'
+                    ['/app/data/Citi_parser/data/ssd-nakopiteli/Товары.json',
+                     '/app/data/Citi_parser/data/zhestkie-diski/Товары.json'],
+                    ['app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
+                     'app/utils/Citi_parser/data/zhestkie-diski/Товары.json']
                 ],
                 'dns_label': 'Накопители (SSD, HDD)',
                 'citi_label': 'Накопители (SSD, HDD)'
             },
             'motherboard': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Материнские платы.json',
-                'citi': 'app/utils/Citi_parser/data/materinskie-platy/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Материнские платы.json',
+                        'app/utils/DNS_parsing/categories/product_data_Материнские платы.json'],
+                'citi': ['/app/data/Citi_parser/data/materinskie-platy/Товары.json',
+                         'app/utils/Citi_parser/data/materinskie-platy/Товары.json'],
                 'dns_label': 'Материнские платы',
                 'citi_label': 'Материнские платы'
             },
             'psu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Блоки питания.json',
-                'citi': 'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Блоки питания.json',
+                        'app/utils/DNS_parsing/categories/product_data_Блоки питания.json'],
+                'citi': ['/app/data/Citi_parser/data/bloki-pitaniya/Товары.json',
+                         'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json'],
                 'dns_label': 'Блоки питания',
                 'citi_label': 'Блоки питания'
             },
             'cooler': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
-                'citi': 'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
+                        'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json'],
+                'citi': ['/app/data/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
+                         'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json'],
                 'dns_label': 'Кулеры для процессоров',
                 'citi_label': 'Системы охлаждения процессора'
             },
             'case': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Корпуса.json',
-                'citi': 'app/utils/Citi_parser/data/korpusa/Товары.json',
+                'dns': ['/app/data/DNS_parsing/categories/product_data_Корпуса.json',
+                        'app/utils/DNS_parsing/categories/product_data_Корпуса.json'],
+                'citi': ['/app/data/Citi_parser/data/korpusa/Товары.json',
+                         'app/utils/Citi_parser/data/korpusa/Товары.json'],
                 'dns_label': 'Корпуса',
                 'citi_label': 'Корпуса'
             }
         }
         
+        # Функции поиска файлов (те же что и в основной функции)
+        def find_existing_file(paths):
+            """Возвращает первый существующий файл из списка путей"""
+            if isinstance(paths, str):
+                return paths if os.path.exists(paths) else None
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+            return None
+        
+        def find_existing_files(paths_list):
+            """Для storage - возвращает первый набор путей где все файлы существуют"""
+            if not isinstance(paths_list[0], list):
+                # Обычная категория, не storage
+                return find_existing_file(paths_list)
+            
+            for path_set in paths_list:
+                if all(os.path.exists(path) for path in path_set):
+                    return path_set
+            return None
+        
         if category not in category_mapping:
             flash(f'Категория "{category}" не поддерживается', 'error')
             return redirect(url_for('comparison.index'))
+        
+        cat_info = category_mapping[category]
         
         # Создаем компаратор
         comparator = get_comparator()
@@ -337,9 +422,10 @@ def quick_compare(category):
             dns_data = []
             citi_data = []
             
-            # Загружаем DNS файлы
-            for dns_path in category_mapping[category]['dns']:
-                if os.path.exists(dns_path):
+            # Находим существующие DNS файлы
+            dns_paths = find_existing_files(cat_info['dns'])
+            if dns_paths:
+                for dns_path in dns_paths:
                     file_data = comparator.load_json_data(dns_path)
                     if file_data:
                         if isinstance(file_data, list):
@@ -347,9 +433,10 @@ def quick_compare(category):
                         else:
                             dns_data.append(file_data)
             
-            # Загружаем Citilink файлы  
-            for citi_path in category_mapping[category]['citi']:
-                if os.path.exists(citi_path):
+            # Находим существующие Citilink файлы  
+            citi_paths = find_existing_files(cat_info['citi'])
+            if citi_paths:
+                for citi_path in citi_paths:
                     file_data = comparator.load_json_data(citi_path)
                     if file_data:
                         if isinstance(file_data, list):
@@ -357,12 +444,12 @@ def quick_compare(category):
                         else:
                             citi_data.append(file_data)
         else:
-            # Определяем пути к файлам для обычных категорий
-            dns_path = category_mapping[category]['dns']
-            citi_path = category_mapping[category]['citi']
+            # Находим существующие файлы для обычных категорий
+            dns_path = find_existing_file(cat_info['dns'])
+            citi_path = find_existing_file(cat_info['citi'])
             
             # Проверяем существование файлов
-            if not os.path.exists(dns_path) or not os.path.exists(citi_path):
+            if not dns_path or not citi_path:
                 flash(f'Файлы данных для категории "{category}" не найдены', 'error')
                 return redirect(url_for('comparison.index'))
             

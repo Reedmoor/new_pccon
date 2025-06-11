@@ -678,19 +678,38 @@ class ProductComparator:
         if citi_category not in citi_categories_map:
             return {"error": f"Категория Citilink '{citi_category}' не найдена"}
         
-        # Формируем пути к файлам
-        dns_file_path = os.path.join(
-            os.path.dirname(__file__), 
-            'DNS_parsing', 'categories', 
-            dns_categories_map[dns_category]
-        )
+        # Формируем пути к файлам с fallback логикой
+        dns_filename = dns_categories_map[dns_category]
+        citi_dirname = citi_categories_map[citi_category]
         
-        citi_file_path = os.path.join(
-            os.path.dirname(__file__), 
-            'Citi_parser', 'data', 
-            citi_categories_map[citi_category], 
-            'Товары.json'
-        )
+        # Возможные пути для DNS файлов (контейнер и локальная разработка)
+        dns_paths = [
+            f"/app/data/DNS_parsing/categories/{dns_filename}",
+            os.path.join(os.path.dirname(__file__), 'DNS_parsing', 'categories', dns_filename)
+        ]
+        
+        # Возможные пути для Citilink файлов (контейнер и локальная разработка)
+        citi_paths = [
+            f"/app/data/Citi_parser/data/{citi_dirname}/Товары.json",
+            os.path.join(os.path.dirname(__file__), 'Citi_parser', 'data', citi_dirname, 'Товары.json')
+        ]
+        
+        # Функция для поиска существующего файла
+        def find_existing_file(paths):
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+            return None
+        
+        # Ищем существующие файлы
+        dns_file_path = find_existing_file(dns_paths)
+        citi_file_path = find_existing_file(citi_paths)
+        
+        if not dns_file_path:
+            return {"error": f"Файл данных DNS для категории '{dns_category}' не найден"}
+        
+        if not citi_file_path:
+            return {"error": f"Файл данных Citilink для категории '{citi_category}' не найден"}
         
         try:
             # Загружаем данные
