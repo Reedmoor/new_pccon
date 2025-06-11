@@ -232,6 +232,9 @@ def standardize_characteristics(source_data, vendor):
         "vendor_specific": {},  # Store any vendor-specific data that doesn't map to standard fields
     }
     
+    # Initialize characteristics to prevent NameError
+    characteristics = {}
+    
     # Extract basic product information
     if vendor.lower() == 'citilink':
         standardized["id"] = source_data.get("id")
@@ -295,6 +298,37 @@ def standardize_characteristics(source_data, vendor):
                 else:
                     # Only store properties without standard mapping with original names
                     characteristics[prop_title] = prop_value
+    
+    else:
+        # Handle unknown vendors or generic data format
+        standardized["id"] = source_data.get("id")
+        standardized["product_name"] = source_data.get("name", source_data.get("product_name", ""))
+        standardized["price_discounted"] = source_data.get("price_discounted", source_data.get("price"))
+        standardized["price_original"] = source_data.get("price_original", source_data.get("price_old"))
+        standardized["rating"] = source_data.get("rating")
+        standardized["number_of_reviews"] = source_data.get("number_of_reviews", source_data.get("reviews"))
+        standardized["images"] = source_data.get("images", [])
+        standardized["product_url"] = source_data.get("url", source_data.get("product_url", ""))
+        standardized["category"] = source_data.get("categories", source_data.get("category", []))
+        
+        # Ensure category is a list
+        if isinstance(standardized["category"], str):
+            standardized["category"] = [standardized["category"]]
+        elif isinstance(standardized["category"], dict):
+            standardized["category"] = [standardized["category"].get("name", "")]
+        
+        # Determine product type based on category
+        product_type = determine_product_type(standardized["category"])
+        standardized["product_type"] = product_type
+        
+        # Process characteristics from generic format
+        characteristics = source_data.get("characteristics", {})
+        if not isinstance(characteristics, dict):
+            characteristics = {}
+    
+    # Ensure characteristics is always set
+    if not isinstance(characteristics, dict):
+        characteristics = {}
     
     standardized["characteristics"] = characteristics
     return standardized
@@ -378,10 +412,14 @@ def convert_to_unified_product(standardized_data):
     if isinstance(category, list):
         category = json.dumps(category)
     
-    # Ensure characteristics is a JSON string
+    # Ensure characteristics is a JSON string - FIX: proper initialization
     characteristics = standardized_data.get("characteristics", {})
-    if isinstance(characteristics, dict):
-        characteristics = json.dumps(characteristics)
+    if not isinstance(characteristics, dict):
+        # If characteristics is not a dict, make it an empty dict
+        characteristics = {}
+    
+    # Convert characteristics dict to JSON string
+    characteristics_json = json.dumps(characteristics)
     
     # Create UnifiedProduct instance
     unified_product = UnifiedProduct(
@@ -392,7 +430,7 @@ def convert_to_unified_product(standardized_data):
         number_of_reviews=standardized_data.get("number_of_reviews"),
         vendor=standardized_data.get("vendor", ""),
         images=images,
-        characteristics=characteristics,
+        characteristics=characteristics_json,
         availability=True,  # Default to available
         product_url=standardized_data.get("product_url", ""),
         category=category,
