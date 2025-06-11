@@ -781,55 +781,48 @@ class ProductComparator:
     
     def _extract_price(self, item: Dict) -> float:
         """Извлечение цены из товара"""
-        price = None
-        
-        # Для DNS
-        if 'price_original' in item:
-            price = item['price_original']
-        # Для Citilink
-        elif 'price' in item:
-            price = item['price']
-        else:
-            return None
-        
-        # Если цена - это словарь, пытаемся извлечь значение
-        if isinstance(price, dict):
-            # Попробуем различные ключи для цены
-            for key in ['value', 'amount', 'price', 'original', 'current']:
-                if key in price:
-                    price = price[key]
-                    break
+        try:
+            # Для DNS
+            if 'price_original' in item:
+                price = item['price_original']
+            # Для Citilink
+            elif 'price' in item:
+                price = item['price']
             else:
-                # Если не нашли подходящий ключ, возвращаем None
                 return None
-        
-        # Если цена - это список, берем первый элемент
-        if isinstance(price, list) and len(price) > 0:
-            price = price[0]
-            # Если элемент списка - словарь, повторяем логику
+            
+            # Если цена - это словарь (может прийти из стандартизации)
             if isinstance(price, dict):
-                for key in ['value', 'amount', 'price', 'original', 'current']:
-                    if key in price:
-                        price = price[key]
-                        break
+                # Проверяем ключи из стандартизации
+                if 'current' in price:
+                    price = price['current']
+                elif 'old' in price:
+                    price = price['old']
+                elif 'value' in price:
+                    price = price['value']
+                elif 'amount' in price:
+                    price = price['amount']
                 else:
+                    logger.warning(f"Неизвестная структура цены-словаря: {price}")
                     return None
-        
-        # Конвертируем в число если это строка
-        if isinstance(price, str):
-            try:
-                # Убираем все нечисловые символы кроме точки и запятой
-                price_clean = ''.join(c for c in price if c.isdigit() or c in '.,')
-                price_clean = price_clean.replace(',', '.')
-                return float(price_clean) if price_clean else None
-            except (ValueError, TypeError):
+            
+            # Проверяем что это число или строка
+            if isinstance(price, (int, float)):
+                return float(price)
+            elif isinstance(price, str):
+                try:
+                    # Убираем все нечисловые символы кроме точки и запятой
+                    price_clean = ''.join(c for c in price if c.isdigit() or c in '.,')
+                    price_clean = price_clean.replace(',', '.')
+                    return float(price_clean) if price_clean else None
+                except (ValueError, TypeError):
+                    return None
+            else:
+                logger.warning(f"Неожиданный тип цены: {type(price)}, значение: {price}")
                 return None
-        
-        # Проверяем что это число
-        if isinstance(price, (int, float)):
-            return float(price)
-        
-        return None
+        except Exception as e:
+            logger.error(f"Ошибка извлечения цены из товара: {e}, товар: {item.get('name', 'Неизвестно')}")
+            return None
     
     def _calculate_price_statistics(self, price_differences: List[float]) -> Dict:
         """Вычисление статистики по ценам"""
