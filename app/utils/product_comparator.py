@@ -513,51 +513,58 @@ class ProductComparator:
             return np.array([])
         
         try:
-            all_embeddings = []
-            texts_to_process = []
-            cached_embeddings = {}
+            # ВРЕМЕННО ОТКЛЮЧЕНО КЭШИРОВАНИЕ ДЛЯ ОТЛАДКИ
+            # all_embeddings = []
+            # texts_to_process = []
+            # cached_embeddings = {}
             
-            # Проверяем кэш для каждого текста
-            for i, text in enumerate(texts):
-                if text in self.embeddings_cache:
-                    cached_embeddings[i] = self.embeddings_cache[text]
-                else:
-                    texts_to_process.append((i, text))
+            # # Проверяем кэш для каждого текста
+            # for i, text in enumerate(texts):
+            #     if text in self.embeddings_cache:
+            #         cached_embeddings[i] = self.embeddings_cache[text]
+            #     else:
+            #         texts_to_process.append((i, text))
             
-            logger.info(f"Найдено в кэше: {len(cached_embeddings)} из {len(texts)} текстов")
+            # logger.info(f"Найдено в кэше: {len(cached_embeddings)} из {len(texts)} текстов")
             
-            # Обрабатываем только новые тексты батчами
-            if texts_to_process:
-                new_embeddings = {}
-                texts_only = [text for _, text in texts_to_process]
+            # # Обрабатываем только новые тексты батчами
+            # if texts_to_process:
+            #     new_embeddings = {}
+            #     texts_only = [text for _, text in texts_to_process]
                 
-                for i in range(0, len(texts_only), batch_size):
-                    batch = texts_only[i:i + batch_size]
-                    batch_indices = [idx for idx, _ in texts_to_process[i:i + batch_size]]
+            #     for i in range(0, len(texts_only), batch_size):
+            #         batch = texts_only[i:i + batch_size]
+            #         batch_indices = [idx for idx, _ in texts_to_process[i:i + batch_size]]
                     
-                    logger.info(f"Обработка батча {i//batch_size + 1}: {len(batch)} новых текстов")
+            #         logger.info(f"Обработка батча {i//batch_size + 1}: {len(batch)} новых текстов")
                     
-                    batch_embeddings = self.embeddings.embed_documents(batch)
+            #         batch_embeddings = self.embeddings.embed_documents(batch)
                     
-                    # Сохраняем в кэш и в результат
-                    for j, (idx, text) in enumerate(texts_to_process[i:i + batch_size]):
-                        embedding = batch_embeddings[j]
-                        self.embeddings_cache[text] = embedding
-                        new_embeddings[idx] = embedding
+            #         # Сохраняем в кэш и в результат
+            #         for j, (idx, text) in enumerate(texts_to_process[i:i + batch_size]):
+            #             embedding = batch_embeddings[j]
+            #             self.embeddings_cache[text] = embedding
+            #             new_embeddings[idx] = embedding
                 
-                # Объединяем кэшированные и новые embeddings
-                for i in range(len(texts)):
-                    if i in cached_embeddings:
-                        all_embeddings.append(cached_embeddings[i])
-                    elif i in new_embeddings:
-                        all_embeddings.append(new_embeddings[i])
-            else:
-                # Все embeddings найдены в кэше
-                for i in range(len(texts)):
-                    all_embeddings.append(cached_embeddings[i])
+            #     # Объединяем кэшированные и новые embeddings
+            #     for i in range(len(texts)):
+            #         if i in cached_embeddings:
+            #             all_embeddings.append(cached_embeddings[i])
+            #         elif i in new_embeddings:
+            #             all_embeddings.append(new_embeddings[i])
+            # else:
+            #     # Все embeddings найдены в кэше
+            #     for i in range(len(texts)):
+            #         all_embeddings.append(cached_embeddings[i])
             
-            logger.info(f"Получено {len(all_embeddings)} эмбеддингов для {len(texts)} текстов")
-            logger.info(f"Размер кэша: {len(self.embeddings_cache)} текстов")
+            # logger.info(f"Получено {len(all_embeddings)} эмбеддингов для {len(texts)} текстов")
+            # logger.info(f"Размер кэша: {len(self.embeddings_cache)} текстов")
+            # return np.array(all_embeddings)
+            
+            # ПРОСТАЯ ВЕРСИЯ БЕЗ КЭШИРОВАНИЯ
+            logger.info(f"Получение эмбеддингов для {len(texts)} текстов (кэширование отключено)")
+            all_embeddings = self.embeddings.embed_documents(texts)
+            logger.info(f"Получено {len(all_embeddings)} эмбеддингов")
             return np.array(all_embeddings)
             
         except Exception as e:
@@ -879,13 +886,18 @@ class ProductComparator:
         }
     
     def clear_embeddings_cache(self):
-        """Очистка кэша embeddings"""
-        self.embeddings_cache.clear()
-        logger.info("Кэш embeddings очищен")
+        """Очистка кэша эмбеддингов"""
+        # cache_size = len(self.embeddings_cache)
+        # self.embeddings_cache.clear()
+        # logger.info(f"Кэш очищен: удалено {cache_size} записей")
+        # return cache_size
+        logger.info("Кэширование отключено - нечего очищать")
+        return 0
     
-    def get_cache_size(self) -> int:
-        """Получение размера кэша embeddings"""
-        return len(self.embeddings_cache)
+    def get_cache_size(self):
+        """Получение размера кэша"""
+        # return len(self.embeddings_cache)
+        return 0
 
 # Глобальный экземпляр компаратора
 _comparator_instance = None
