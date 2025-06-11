@@ -279,6 +279,32 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Управление кэшем -->
+            <div class="card shadow mt-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fas fa-database me-2"></i>
+                        Управление кэшем
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        Кэш хранит векторные представления товаров для ускорения повторных сравнений.
+                        Очистите кэш, если получаете некорректные результаты или после обновления данных.
+                    </p>
+                    <button type="button" class="btn btn-warning" id="clearCacheBtn">
+                        <i class="fas fa-trash me-2"></i>
+                        Очистить кэш эмбеддингов
+                    </button>
+                    <div id="cacheStatus" class="mt-2 d-none">
+                        <div class="alert alert-info mb-0" role="alert">
+                            <i class="fas fa-info-circle me-1"></i>
+                            <span id="cacheMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -394,6 +420,62 @@ window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
         hideLoadingScreen();
     }
+});
+
+// Обработка очистки кэша
+document.getElementById('clearCacheBtn').addEventListener('click', function() {
+    const btn = this;
+    const cacheStatus = document.getElementById('cacheStatus');
+    const cacheMessage = document.getElementById('cacheMessage');
+    
+    // Блокируем кнопку
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Очищаем кэш...';
+    
+    // Отправляем запрос на очистку кэша
+    fetch('{{ url_for("comparison.clear_cache") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Показываем результат
+        cacheStatus.classList.remove('d-none');
+        
+        if (data.success) {
+            cacheMessage.textContent = data.message;
+            cacheStatus.querySelector('.alert').className = 'alert alert-success mb-0';
+            cacheStatus.querySelector('i').className = 'fas fa-check-circle me-1';
+        } else {
+            cacheMessage.textContent = data.message;
+            cacheStatus.querySelector('.alert').className = 'alert alert-danger mb-0';
+            cacheStatus.querySelector('i').className = 'fas fa-exclamation-circle me-1';
+        }
+        
+        // Скрываем сообщение через 5 секунд
+        setTimeout(() => {
+            cacheStatus.classList.add('d-none');
+        }, 5000);
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        cacheStatus.classList.remove('d-none');
+        cacheMessage.textContent = 'Произошла ошибка при очистке кэша';
+        cacheStatus.querySelector('.alert').className = 'alert alert-danger mb-0';
+        cacheStatus.querySelector('i').className = 'fas fa-exclamation-circle me-1';
+        
+        setTimeout(() => {
+            cacheStatus.classList.add('d-none');
+        }, 5000);
+    })
+    .finally(() => {
+        // Восстанавливаем кнопку
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-trash me-2"></i>Очистить кэш эмбеддингов';
+    });
 });
 </script>
 {% endblock %} 
