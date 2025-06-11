@@ -223,16 +223,17 @@ def compare_products():
                 found_match = False
                 
                 # Проверяем категории товара
-                if 'categories' in item:
+                if 'categories' in item and item['categories']:
                     for cat in item['categories']:
-                        cat_name = cat.get('name', '').lower()
-                        if any(f.lower() in cat_name for f in filters):
-                            filtered_data.append(item)
-                            found_match = True
-                            break
+                        if cat and 'name' in cat and cat['name']:  # Проверяем что cat не None и name существует
+                            cat_name = cat['name'].lower()
+                            if any(f.lower() in cat_name for f in filters):
+                                filtered_data.append(item)
+                                found_match = True
+                                break
                 
                 # Если нет категорий, фильтруем по названию товара
-                if not found_match and 'name' in item:
+                if not found_match and 'name' in item and item['name']:
                     item_name = item['name'].lower()
                     if any(f.lower() in item_name for f in filters):
                         filtered_data.append(item)
@@ -277,9 +278,9 @@ def compare_products():
             
             for item in data:
                 item_name = ""
-                if 'name' in item:
+                if 'name' in item and item['name']:
                     item_name = item['name'].lower()
-                elif 'title' in item:
+                elif 'title' in item and item['title']:
                     item_name = item['title'].lower()
                 
                 if item_name and any(f.lower() in item_name for f in filters):
@@ -643,16 +644,17 @@ def quick_compare(category):
                 found_match = False
                 
                 # Проверяем категории товара
-                if 'categories' in item:
+                if 'categories' in item and item['categories']:
                     for cat in item['categories']:
-                        cat_name = cat.get('name', '').lower()
-                        if any(f.lower() in cat_name for f in filters):
-                            filtered_data.append(item)
-                            found_match = True
-                            break
+                        if cat and 'name' in cat and cat['name']:  # Проверяем что cat не None и name существует
+                            cat_name = cat['name'].lower()
+                            if any(f.lower() in cat_name for f in filters):
+                                filtered_data.append(item)
+                                found_match = True
+                                break
                 
                 # Если нет категорий, фильтруем по названию товара
-                if not found_match and 'name' in item:
+                if not found_match and 'name' in item and item['name']:
                     item_name = item['name'].lower()
                     if any(f.lower() in item_name for f in filters):
                         filtered_data.append(item)
@@ -696,9 +698,9 @@ def quick_compare(category):
             
             for item in data:
                 item_name = ""
-                if 'name' in item:
+                if 'name' in item and item['name']:
                     item_name = item['name'].lower()
-                elif 'title' in item:
+                elif 'title' in item and item['title']:
                     item_name = item['title'].lower()
                 
                 if item_name and any(f.lower() in item_name for f in filters):
