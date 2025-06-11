@@ -113,21 +113,33 @@ def compare_products():
         def find_existing_file(paths):
             """Возвращает первый существующий файл из списка путей"""
             if isinstance(paths, str):
-                return paths if os.path.exists(paths) else None
+                logger.info(f"Проверяем путь: {paths}")
+                exists = os.path.exists(paths)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
+                return paths if exists else None
             for path in paths:
-                if os.path.exists(path):
+                logger.info(f"Проверяем путь: {path}")
+                exists = os.path.exists(path)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
+                if exists:
                     return path
             return None
         
         # Функция для поиска существующих файлов для storage (список списков)
         def find_existing_files(paths_list):
             """Для storage - возвращает первый набор путей где все файлы существуют"""
+            logger.info(f"find_existing_files вызвана с: {paths_list}")
             if not isinstance(paths_list[0], list):
                 # Обычная категория, не storage
+                logger.info("Обычная категория, используем find_existing_file")
                 return find_existing_file(paths_list)
             
-            for path_set in paths_list:
-                if all(os.path.exists(path) for path in path_set):
+            logger.info("Storage категория, проверяем наборы путей")
+            for i, path_set in enumerate(paths_list):
+                logger.info(f"Проверяем набор {i}: {path_set}")
+                all_exist = all(os.path.exists(path) for path in path_set)
+                logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
+                if all_exist:
                     return path_set
             return None
         
@@ -137,6 +149,9 @@ def compare_products():
             return redirect(url_for('comparison.index'))
         
         cat_info = category_mapping[category]
+        logger.info(f"Сравнение категории: {category}")
+        logger.info(f"DNS пути: {cat_info['dns']}")
+        logger.info(f"Citi пути: {cat_info['citi']}")
         
         # Создаем компаратор
         comparator = get_comparator()
@@ -390,20 +405,32 @@ def quick_compare(category):
         def find_existing_file(paths):
             """Возвращает первый существующий файл из списка путей"""
             if isinstance(paths, str):
-                return paths if os.path.exists(paths) else None
+                logger.info(f"Проверяем путь: {paths}")
+                exists = os.path.exists(paths)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
+                return paths if exists else None
             for path in paths:
-                if os.path.exists(path):
+                logger.info(f"Проверяем путь: {path}")
+                exists = os.path.exists(path)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
+                if exists:
                     return path
             return None
         
         def find_existing_files(paths_list):
             """Для storage - возвращает первый набор путей где все файлы существуют"""
+            logger.info(f"find_existing_files вызвана с: {paths_list}")
             if not isinstance(paths_list[0], list):
                 # Обычная категория, не storage
+                logger.info("Обычная категория, используем find_existing_file")
                 return find_existing_file(paths_list)
             
-            for path_set in paths_list:
-                if all(os.path.exists(path) for path in path_set):
+            logger.info("Storage категория, проверяем наборы путей")
+            for i, path_set in enumerate(paths_list):
+                logger.info(f"Проверяем набор {i}: {path_set}")
+                all_exist = all(os.path.exists(path) for path in path_set)
+                logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
+                if all_exist:
                     return path_set
             return None
         
