@@ -7,7 +7,6 @@ import os
 import glob
 from app.models.models import UnifiedProduct
 import json
-from flask_wtf.csrf import exempt
 
 logger = logging.getLogger(__name__)
 
@@ -1029,7 +1028,6 @@ def quick_compare(category):
 
 @comparison_bp.route('/clear-cache', methods=['POST'])
 @login_required
-@exempt
 def clear_cache():
     """Очистка кэша эмбеддингов"""
     try:
