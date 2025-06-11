@@ -1,21 +1,17 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify, current_app, send_file
-from flask_login import login_required, current_user
-from app import db
-from app.models.models import User, UnifiedProduct
-from app.forms.admin import UnifiedProductForm
-from app.utils.price_comparison import run_price_comparison
-from functools import wraps
-from datetime import datetime
 import os
-import json
-import subprocess
 import sys
-from app.utils.DNS_parsing import main as dns_parser
-import logging
+import subprocess
+import json
 import glob
+from datetime import datetime
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, send_file
+from werkzeug.utils import secure_filename
+from app import db
+from app.models import UnifiedProduct, User
+from app.auth import login_required, admin_required
+from app.logger import get_logger
 
-# Настройка логирования
-logger = logging.getLogger('admin_panel')
+logger = get_logger(__name__)
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -23,17 +19,6 @@ admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 @admin_bp.app_template_filter('now')
 def _jinja2_filter_now():
     return datetime.now()
-
-
-# Декоратор для проверки прав администратора
-def admin_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if not current_user.is_authenticated or not current_user.is_admin():
-            flash('У вас нет прав администратора для доступа к этой странице', 'danger')
-            return redirect(url_for('main.index'))
-        return f(*args, **kwargs)
-    return decorated_function
 
 @admin_bp.route('/')
 @login_required
@@ -355,6 +340,81 @@ def run_import():
             flash(f'Ошибка при импорте продуктов: {str(e)}', 'danger')
     
     return redirect(url_for('admin.import_data'))
+
+@admin_bp.route('/run-import-products', methods=['POST'])
+@login_required
+@admin_required
+def run_import_products():
+    """Быстрый импорт всех собранных данных парсеров"""
+    try:
+        from app.utils.standardization.import_products import import_products_from_data
+        
+        total_imported = 0
+        categories_imported = []
+        
+        # Импорт данных DNS
+        try:
+            dns_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing')
+            
+            # Проверяем основной файл
+            dns_main_file = os.path.join(dns_parser_dir, 'product_data.json')
+            if os.path.exists(dns_main_file):
+                with open(dns_main_file, 'r', encoding='utf-8') as f:
+                    dns_products = json.load(f)
+                    if dns_products:
+                        result = import_products_from_data(dns_products, source='dns_main')
+                        total_imported += result.get('added_count', 0)
+                        categories_imported.append(f"DNS основной файл ({result.get('added_count', 0)} товаров)")
+            
+            # Проверяем категории DNS
+            categories_dir = os.path.join(dns_parser_dir, 'categories')
+            if os.path.exists(categories_dir):
+                category_files = glob.glob(os.path.join(categories_dir, "product_data_*.json"))
+                for cat_file in category_files:
+                    cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                    with open(cat_file, 'r', encoding='utf-8') as f:
+                        cat_products = json.load(f)
+                        if cat_products:
+                            result = import_products_from_data(cat_products, source=f'dns_{cat_name}')
+                            total_imported += result.get('added_count', 0)
+                            categories_imported.append(f"DNS {cat_name} ({result.get('added_count', 0)} товаров)")
+                            
+        except Exception as e:
+            logger.error(f"Ошибка импорта DNS данных: {e}")
+        
+        # Импорт данных Citilink
+        try:
+            citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
+            if os.path.exists(citilink_data_dir):
+                for category_dir in os.listdir(citilink_data_dir):
+                    cat_dir_path = os.path.join(citilink_data_dir, category_dir)
+                    if os.path.isdir(cat_dir_path):
+                        cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
+                        if os.path.exists(cat_products_file):
+                            try:
+                                with open(cat_products_file, 'r', encoding='utf-8') as f:
+                                    products = json.load(f)
+                                    if products:
+                                        result = import_products_from_data(products, source=f'citilink_{category_dir}')
+                                        total_imported += result.get('added_count', 0)
+                                        categories_imported.append(f"Citilink {category_dir} ({result.get('added_count', 0)} товаров)")
+                            except Exception as e:
+                                logger.error(f"Ошибка импорта Citilink категории {category_dir}: {e}")
+                                
+        except Exception as e:
+            logger.error(f"Ошибка импорта Citilink данных: {e}")
+        
+        if total_imported > 0:
+            categories_text = ", ".join(categories_imported)
+            flash(f'Успешно импортировано {total_imported} товаров из категорий: {categories_text}', 'success')
+        else:
+            flash('Данные для импорта не найдены. Сначала запустите парсеры.', 'warning')
+            
+    except Exception as e:
+        logger.error(f"Ошибка при быстром импорте: {e}")
+        flash(f'Ошибка при импорте данных: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/scrape', methods=['GET', 'POST'])
 @login_required
@@ -717,285 +777,40 @@ def run_citilink_parser():
     
     return redirect(url_for('admin.scrape'))
 
-@admin_bp.route('/price-comparison', methods=['GET', 'POST'])
-@login_required
-@admin_required
-def price_comparison():
-    results = []
-    sort_by = request.args.get('sort_by', 'price_diff')  # Default sorting by price difference
-    
-    if request.method == 'POST':
-        category = request.form.get('category')
-        sort_by = request.form.get('sort_by', sort_by)
-        
-        if category:
-            try:
-                from app.utils.price_comparison import run_price_comparison
-                
-                # Map category values to DNS category names
-                dns_category_mapping = {
-                    'videokarty': 'Видеокарты',
-                    'processory': 'Процессоры',
-                    'materinskie-platy': 'Материнские платы',
-                    'operativnaya-pamyat': 'Оперативная память',
-                    'bloki-pitaniya': 'Блоки питания',
-                    'moduli-pamyati': 'Модули памяти',
-                    'korpusa': 'Корпуса',
-                    'sistemy-ohlazhdeniya-processora': 'Кулеры для процессора',
-                    'ssd-nakopiteli': 'SSD накопители',
-                    'zhestkie-diski': 'Жесткие диски',
-                    'kulery': 'Кулеры'
-                }
-                
-                # Get the corresponding DNS category name
-                dns_category = dns_category_mapping.get(category)
-                
-                # Run price comparison with selected category for both stores
-                results = run_price_comparison(category, dns_category)
-                
-                # Sort results based on user selection
-                if results:
-                    if sort_by == 'price_diff':
-                        # Sort by absolute price difference (default)
-                        results.sort(key=lambda x: abs(x['price_difference']), reverse=True)
-                    elif sort_by == 'price_diff_percent':
-                        # Sort by percentage price difference
-                        results.sort(key=lambda x: abs(x['price_difference_percent']), reverse=True)
-                    elif sort_by == 'lowest_price':
-                        # Sort by lowest price (from either store)
-                        results.sort(key=lambda x: min(x['citilink_price'], x['dns_price']))
-                    elif sort_by == 'highest_price':
-                        # Sort by highest price (from either store)
-                        results.sort(key=lambda x: max(x['citilink_price'], x['dns_price']), reverse=True)
-                    elif sort_by == 'rating':
-                        # Sort by average rating if available
-                        results.sort(key=lambda x: (x['citilink_rating'] + x['dns_rating'])/2 if x['citilink_rating'] and x['dns_rating'] else 0, reverse=True)
-                    elif sort_by == 'similarity':
-                        # Sort by match confidence/similarity score
-                        results.sort(key=lambda x: x['similarity_score'], reverse=True)
-                    
-                    logger.info(f"Found {len(results)} matching products between Citilink and DNS. Sorted by: {sort_by}")
-                    flash(f'Найдено {len(results)} товаров с разницей в цене', 'success')
-                else:
-                    logger.warning(f"No matching products found for category: {category}")
-                    flash('Не найдено товаров с сопоставимыми ценами. Попробуйте другие категории или запустите парсеры заново.', 'warning')
-            except Exception as e:
-                logger.error(f'Ошибка при сравнении цен: {str(e)}')
-                flash(f'Ошибка при сравнении цен: {str(e)}', 'danger')
-        else:
-            flash('Необходимо указать категорию товаров', 'danger')
-    
-    return render_template('admin/price_comparison.html', results=results, sort_by=sort_by)
-
-@admin_bp.route('/ram-comparison', methods=['GET', 'POST'])
-@login_required
-@admin_required
-def ram_comparison():
-    """Сравнение оперативной памяти с использованием GigaChat"""
-    
-    mode = request.args.get('mode', 'interactive')
-    results = None
-    analysis = None
-    
-    if request.method == 'POST':
-        mode = request.form.get('mode', 'interactive')
-        
-        try:
-            from app.utils.ram_price_comparison import auto_mode, interactive_mode, compare_all_ram_mode
-            
-            # Запускаем соответствующий режим сравнения
-            if mode == 'auto':
-                # В автоматическом режиме находим похожие модели и сравниваем их
-                auto_mode()
-                flash('Автоматическое сравнение RAM выполнено успешно', 'success')
-            elif mode == 'compare_all':
-                # Сравниваем все данные о RAM
-                compare_all_ram_mode()
-                flash('Полное сравнение данных о RAM выполнено успешно', 'success')
-            else:
-                # Интерактивный режим (по умолчанию) - перенаправляем на терминал
-                flash('Для интерактивного режима запустите скрипт в терминале: python -m app.utils.ram_price_comparison --mode interactive', 'info')
-                
-            # Загружаем результаты анализа, если они есть
-            if mode == 'auto' or mode == 'interactive':
-                result_file = 'ram_comparison_result.json'
-                if os.path.exists(result_file):
-                    with open(result_file, 'r', encoding='utf-8') as f:
-                        results = json.load(f)
-                        analysis = results.get('analysis')
-                        if analysis:
-                            # Преобразуем текст анализа в HTML
-                            analysis = analysis.replace('\n', '<br>')
-                            analysis = analysis.replace('**', '<strong>').replace('**', '</strong>')
-                            results['analysis'] = analysis
-            elif mode == 'compare_all':
-                result_file = 'ram_comparison_all.json'
-                if os.path.exists(result_file):
-                    with open(result_file, 'r', encoding='utf-8') as f:
-                        results = json.load(f)
-                        analysis = results.get('analysis')
-                        if analysis:
-                            # Преобразуем текст анализа в HTML
-                            analysis = analysis.replace('\n', '<br>')
-                            analysis = analysis.replace('**', '<strong>').replace('**', '</strong>')
-                            results['analysis'] = analysis
-                
-        except Exception as e:
-            logger.error(f'Ошибка при сравнении RAM: {str(e)}')
-            flash(f'Ошибка при сравнении RAM: {str(e)}', 'danger')
-    
-    return render_template('admin/ram_comparison.html', mode=mode, results=results, analysis=analysis)
-
-@admin_bp.route('/dns-parser')
-@login_required
-@admin_required
-def dns_parser_status():
-    """Страница статуса парсера DNS"""
-    # Проверяем, является ли пользователь админом
-    if not current_user.is_admin():
-        flash('У вас нет доступа к этой странице', 'danger')
-        return redirect(url_for('main.index'))
-    
-    # Получаем статус парсера
-    status = {}
-    status_file = os.path.join(current_app.root_path, 'utils/DNS_parsing/parsing_status.json')
-    
-    if os.path.exists(status_file):
-        with open(status_file, 'r', encoding='utf-8') as f:
-            try:
-                status = json.load(f)
-            except json.JSONDecodeError:
-                status = {"error": "Invalid status file"}
-    else:
-        status = {"status": "Парсер еще не запускался"}
-    
-    # Форматируем даты для отображения
-    if 'start_time' in status and status['start_time']:
-        try:
-            start_time = datetime.fromisoformat(status['start_time'])
-            status['start_time_formatted'] = start_time.strftime('%d.%m.%Y %H:%M:%S')
-        except:
-            status['start_time_formatted'] = status['start_time']
-    
-    if 'last_updated' in status and status['last_updated']:
-        try:
-            last_updated = datetime.fromisoformat(status['last_updated'])
-            status['last_updated_formatted'] = last_updated.strftime('%d.%m.%Y %H:%M:%S')
-            
-            # Вычисляем, сколько времени прошло с последнего обновления
-            seconds_ago = (datetime.now() - last_updated).total_seconds()
-            if seconds_ago < 60:
-                status['last_updated_human'] = f"{int(seconds_ago)} сек. назад"
-            elif seconds_ago < 3600:
-                status['last_updated_human'] = f"{int(seconds_ago / 60)} мин. назад"
-            else:
-                status['last_updated_human'] = f"{int(seconds_ago / 3600)} ч. назад"
-        except:
-            status['last_updated_formatted'] = status['last_updated']
-    
-    return render_template('admin/dns_parser.html', status=status)
-
-@admin_bp.route('/dns-parser/start', methods=['POST'])
-@login_required
-@admin_required
-def start_dns_parser():
-    """Запустить парсер DNS"""
-    # Проверяем, является ли пользователь админом
-    if not current_user.is_admin():
-        return jsonify({"error": "У вас нет доступа к этой функции"}), 403
-    
-    try:
-        # Получаем параметры из формы
-        limit = int(request.form.get('limit', 5))
-        continuous = request.form.get('continuous') == 'on'
-        interval = int(request.form.get('interval', 24))
-        
-        # Добавляем путь к директории с парсером в sys.path
-        parser_path = os.path.join(current_app.root_path, 'utils/DNS_parsing')
-        if parser_path not in sys.path:
-            sys.path.append(parser_path)
-        
-        # Запускаем парсер асинхронно
-        result = dns_parser.start_parsing_async(
-            limit_per_category=limit,
-            continuous=continuous,
-            interval_hours=interval
-        )
-        
-        return jsonify({"success": True, "message": result})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@admin_bp.route('/dns-parser/status', methods=['GET'])
-@login_required
-@admin_required
-def get_dns_parser_status():
-    """Получить текущий статус парсера DNS в формате JSON"""
-    # Проверяем, является ли пользователь админом
-    if not current_user.is_admin():
-        return jsonify({"error": "У вас нет доступа к этой функции"}), 403
-    
-    status_file = os.path.join(current_app.root_path, 'utils/DNS_parsing/parsing_status.json')
-    
-    if os.path.exists(status_file):
-        with open(status_file, 'r', encoding='utf-8') as f:
-            try:
-                status = json.load(f)
-                
-                # Добавляем время последнего обновления в формате для человека
-                if 'last_updated' in status and status['last_updated']:
-                    try:
-                        last_updated = datetime.fromisoformat(status['last_updated'])
-                        seconds_ago = (datetime.now() - last_updated).total_seconds()
-                        if seconds_ago < 60:
-                            status['last_updated_human'] = f"{int(seconds_ago)} сек. назад"
-                        elif seconds_ago < 3600:
-                            status['last_updated_human'] = f"{int(seconds_ago / 60)} мин. назад"
-                        else:
-                            status['last_updated_human'] = f"{int(seconds_ago / 3600)} ч. назад"
-                    except:
-                        pass
-                
-                return jsonify(status)
-            except json.JSONDecodeError:
-                return jsonify({"error": "Invalid status file"}), 500
-    else:
-        return jsonify({"status": "Парсер еще не запускался"}), 404
-
 @admin_bp.route('/view-logs')
 @login_required
 @admin_required
 def view_logs():
-    """API endpoint to retrieve log files content"""
+    """Просмотр логов парсеров"""
     log_file = request.args.get('file', 'dns_parser.log')
     
-    # Validate the log file name to prevent directory traversal
-    allowed_logs = ['dns_parser.log', 'price_comparison.log', 'app/utils/Citi_parser/parser.log']
+    # Список разрешенных файлов логов
+    allowed_logs = ['dns_parser.log', 'app/utils/Citi_parser/parser.log']
+    
     if log_file not in allowed_logs:
-        return jsonify({"error": "Invalid log file requested"}), 400
-    
-    # Получаем абсолютный путь к корневой директории проекта
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    
-    # For app-relative paths
-    if log_file.startswith('app/'):
-        log_path = os.path.join(project_root, log_file)
-    else:
-        log_path = os.path.join(project_root, log_file)
+        return jsonify({"error": "File not allowed"}), 403
     
     try:
+        # Определяем полный путь к файлу лога
+        if log_file.startswith('app/'):
+            log_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', log_file)
+        else:
+            log_path = log_file
+        
         if os.path.exists(log_path):
-            # Read last 100 lines to avoid massive responses
             with open(log_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                last_lines = lines[-100:] if len(lines) > 100 else lines
-                content = ''.join(last_lines)
-                
+                content = f.read()
+            
+            # Возвращаем последние 500 строк, если файл очень большой
+            lines = content.split('\n')
+            if len(lines) > 500:
+                content = '\n'.join(lines[-500:])
+            
             return jsonify({"content": content})
         else:
-            return jsonify({"content": f"Лог файл {log_file} не найден. Путь: {log_path}"})
+            return jsonify({"error": "Log file not found"})
     except Exception as e:
-        return jsonify({"error": f"Ошибка чтения лог файла: {str(e)}"}), 500
+        return jsonify({"error": str(e)})
 
 @admin_bp.route('/clear-dns-parser-results')
 @login_required
@@ -1228,10 +1043,11 @@ def download_parser_results(parser):
 @login_required
 @admin_required
 def stop_citilink_parser():
-    """Остановка парсера Citilink"""
+    """Остановка парсера Citilink с сохранением данных"""
     try:
         import psutil
         import signal
+        from app.utils.standardization.import_products import import_products_from_data
         
         # Найти процессы парсера Citilink
         stopped_processes = 0
@@ -1254,17 +1070,48 @@ def stop_citilink_parser():
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 pass
         
+        # Импортируем собранные данные после остановки
+        imported_count = 0
+        try:
+            # Ищем все файлы данных Citilink
+            citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
+            if os.path.exists(citilink_data_dir):
+                for category_dir in os.listdir(citilink_data_dir):
+                    cat_dir_path = os.path.join(citilink_data_dir, category_dir)
+                    if os.path.isdir(cat_dir_path):
+                        cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
+                        if os.path.exists(cat_products_file):
+                            try:
+                                with open(cat_products_file, 'r', encoding='utf-8') as f:
+                                    products = json.load(f)
+                                    if products:
+                                        # Импортируем продукты
+                                        result = import_products_from_data(products, source=f'citilink_{category_dir}')
+                                        imported_count += result.get('added_count', 0)
+                                        logger.info(f"Импортировано {result.get('added_count', 0)} товаров из категории {category_dir}")
+                            except Exception as e:
+                                logger.error(f"Ошибка импорта категории {category_dir}: {e}")
+                                
+        except Exception as import_error:
+            logger.error(f"Ошибка при импорте данных: {import_error}")
+        
         if stopped_processes > 0:
-            flash(f'Остановлено {stopped_processes} процессов парсера Citilink', 'success')
+            if imported_count > 0:
+                flash(f'Остановлено {stopped_processes} процессов парсера Citilink. Импортировано {imported_count} товаров в базу данных.', 'success')
+            else:
+                flash(f'Остановлено {stopped_processes} процессов парсера Citilink. Данные для импорта не найдены.', 'warning')
         else:
-            flash('Активные процессы парсера Citilink не найдены', 'info')
+            if imported_count > 0:
+                flash(f'Активные процессы парсера Citilink не найдены. Импортировано {imported_count} товаров в базу данных.', 'info')
+            else:
+                flash('Активные процессы парсера Citilink не найдены. Данные для импорта отсутствуют.', 'info')
             
     except ImportError:
         flash('Библиотека psutil не установлена. Невозможно остановить процессы.', 'warning')
     except Exception as e:
         logger.error(f"Ошибка при остановке парсера Citilink: {e}")
-        flash(f'Ошибка при остановке парсера: {str(e)}', 'danger')
-    
+        flash(f'Ошибка при остановке парсера Citilink: {str(e)}', 'danger')
+        
     return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/stop-dns-parser', methods=['POST'])
