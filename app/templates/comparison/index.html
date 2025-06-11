@@ -436,8 +436,7 @@ document.getElementById('clearCacheBtn').addEventListener('click', function() {
     fetch('{{ url_for("comparison.clear_cache") }}', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token() }}'
+            'Content-Type': 'application/json'
         }
     })
     .then(response => response.json())
