@@ -1,1 +1,1 @@
-venv\Scripts\python.exe 
+C:\Users\lime_\Desktop\DIP\new_pccon\local_parser\venv\Scripts\python.exe 
