@@ -15,7 +15,7 @@
                 <h5 class="mb-0"><i class="fas fa-robot me-2"></i>DNS Parser</h5>
             </div>
             <div class="card-body">
-                <p>Запуск парсера DNS для сбора информации о комплектующих.</p>
+                <p>Для парсинга DNS используйте локальные BAT файлы.</p>
                 
                 <!-- Описание с батниками -->
                 <div class="alert alert-info">
@@ -35,45 +35,13 @@
                     <p class="mb-0"><strong>Совет:</strong> Запускайте <code>parse_category.bat</code> и выбирайте нужную категорию из списка.</p>
                 </div>
                 
-                <form method="POST" action="{{ url_for('admin.run_dns_parser') }}">
-                    <div class="mb-3">
-                        <label for="dns_category" class="form-label">Категория товаров</label>
-                        <select class="form-select" id="dns_category" name="dns_category">
-                            <option value="" selected>Все категории</option>
-                            <option value="videokarty">Видеокарты</option>
-                            <option value="processory">Процессоры</option>
-                            <option value="materinskie-platy">Материнские платы</option>
-                            <option value="operativnaya-pamyat">Оперативная память</option>
-                            <option value="bloki-pitaniya">Блоки питания</option>
-                            <option value="kulery">Кулеры</option>
-                            <option value="zhestkie-diski">Жесткие диски</option>
-                            <option value="ssd-m2">SSD M.2</option>
-                            <option value="ssd-sata">SSD SATA</option>
-                            <option value="korpusa">Корпуса</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="dns_max_items" class="form-label">Количество товаров</label>
-                        <input type="number" class="form-control" id="dns_max_items" name="dns_max_items" min="1" max="100" value="20">
-                        <div class="form-text">Максимальное количество товаров для парсинга</div>
-                    </div>
-                    
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-play me-2"></i>Запустить DNS Parser
-                        </button>
-                        {% if dns_results %}
-                        <a href="{{ url_for('admin.clear_dns_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты DNS парсера?');">
-                            <i class="fas fa-trash me-2"></i>Очистить результаты
-                        </a>
-                        {% endif %}
-                    </div>
-                </form>
-                
-                <div class="alert alert-secondary mt-3">
-                    <i class="fas fa-info-circle me-2"></i>DNS парсер собирает данные через веб-скрапинг страниц товаров
+                {% if dns_results %}
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('admin.clear_dns_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты DNS парсера?');">
+                        <i class="fas fa-trash me-2"></i>Очистить результаты
+                    </a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
