@@ -3,8 +3,7 @@ from flask_login import login_required
 from app.forms.comparison import ProductComparisonForm
 from app.utils.product_comparator import ProductComparator, get_comparator
 import logging
-import os
-import glob
+from app.models.models import UnifiedProduct
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +19,7 @@ def index():
 @comparison_bp.route('/compare', methods=['POST'])
 @login_required
 def compare_products():
-    """Сравнение товаров"""
+    """Сравнение товаров из базы данных"""
     try:
         form = ProductComparisonForm()
         
@@ -31,62 +30,55 @@ def compare_products():
         category = form.category.data
         threshold = form.threshold.data
         
-        # Карта категорий для определения правильных путей
+        # Карта категорий для определения типов товаров в БД
         category_mapping = {
             'ram': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Оперативная память DIMM.json',
-                'citi': 'app/utils/Citi_parser/data/moduli-pamyati/Товары.json',
-                'dns_label': 'Оперативная память DIMM',
-                'citi_label': 'Модули памяти'
+                'product_type': 'ram',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Оперативная память'
             },
             'gpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Видеокарты.json',
-                'citi': 'app/utils/Citi_parser/data/videokarty/Товары.json',
-                'dns_label': 'Видеокарты',
-                'citi_label': 'Видеокарты'
+                'product_type': 'graphics_card',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink', 
+                'label': 'Видеокарты'
             },
             'cpu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Процессоры.json',
-                'citi': 'app/utils/Citi_parser/data/processory/Товары.json',
-                'dns_label': 'Процессоры',
-                'citi_label': 'Процессоры'
+                'product_type': 'processor',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Процессоры'
             },
             'storage': {
-                'dns': [
-                    'app/utils/DNS_parsing/categories/product_data_SSD накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_SSD M_2 накопители.json',
-                    'app/utils/DNS_parsing/categories/product_data_Жесткие диски 3_5_.json'
-                ],
-                'citi': [
-                    'app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json',
-                    'app/utils/Citi_parser/data/zhestkie-diski/Товары.json'
-                ],
-                'dns_label': 'Накопители (SSD, HDD)',
-                'citi_label': 'Накопители (SSD, HDD)'
+                'product_type': ['hard_drive', 'ssd'],  # Несколько типов
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Накопители (SSD, HDD)'
             },
             'motherboard': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Материнские платы.json',
-                'citi': 'app/utils/Citi_parser/data/materinskie-platy/Товары.json',
-                'dns_label': 'Материнские платы',
-                'citi_label': 'Материнские платы'
+                'product_type': 'motherboard',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Материнские платы'
             },
             'psu': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Блоки питания.json',
-                'citi': 'app/utils/Citi_parser/data/bloki-pitaniya/Товары.json',
-                'dns_label': 'Блоки питания',
-                'citi_label': 'Блоки питания'
+                'product_type': 'power_supply',
+                'dns_vendor': 'DNS', 
+                'citi_vendor': 'Citilink',
+                'label': 'Блоки питания'
             },
             'cooler': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Кулеры для процессоров.json',
-                'citi': 'app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json',
-                'dns_label': 'Кулеры для процессоров',
-                'citi_label': 'Системы охлаждения процессора'
+                'product_type': 'cooler',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Кулеры для процессоров'
             },
             'case': {
-                'dns': 'app/utils/DNS_parsing/categories/product_data_Корпуса.json',
-                'citi': 'app/utils/Citi_parser/data/korpusa/Товары.json',
-                'dns_label': 'Корпуса',
-                'citi_label': 'Корпуса'
+                'product_type': 'case',
+                'dns_vendor': 'DNS',
+                'citi_vendor': 'Citilink',
+                'label': 'Корпуса'
             }
         }
         
@@ -95,61 +87,49 @@ def compare_products():
             flash(f'Категория "{category}" не поддерживается', 'error')
             return redirect(url_for('comparison.index'))
         
+        cat_info = category_mapping[category]
+        
+        # Загружаем данные из БД
+        if isinstance(cat_info['product_type'], list):
+            # Для storage - несколько типов
+            dns_products = []
+            citi_products = []
+            for product_type in cat_info['product_type']:
+                dns_products.extend(UnifiedProduct.query.filter_by(
+                    product_type=product_type, 
+                    vendor=cat_info['dns_vendor']
+                ).all())
+                citi_products.extend(UnifiedProduct.query.filter_by(
+                    product_type=product_type,
+                    vendor=cat_info['citi_vendor']
+                ).all())
+        else:
+            # Обычные категории
+            dns_products = UnifiedProduct.query.filter_by(
+                product_type=cat_info['product_type'],
+                vendor=cat_info['dns_vendor']
+            ).all()
+            citi_products = UnifiedProduct.query.filter_by(
+                product_type=cat_info['product_type'],
+                vendor=cat_info['citi_vendor']
+            ).all()
+        
+        if not dns_products or not citi_products:
+            flash(f'Недостаточно данных для сравнения категории "{cat_info["label"]}". DNS: {len(dns_products) if dns_products else 0}, Citilink: {len(citi_products) if citi_products else 0}', 'error')
+            return redirect(url_for('comparison.index'))
+        
         # Создаем компаратор
         comparator = get_comparator()
         
-        # Загружаем данные (специальная обработка для storage)
-        if category == 'storage':
-            # Объединяем данные из нескольких файлов
-            dns_data = []
-            citi_data = []
-            
-            # Загружаем DNS файлы
-            for dns_path in category_mapping[category]['dns']:
-                if os.path.exists(dns_path):
-                    file_data = comparator.load_json_data(dns_path)
-                    if file_data:
-                        if isinstance(file_data, list):
-                            dns_data.extend(file_data)
-                        else:
-                            dns_data.append(file_data)
-            
-            # Загружаем Citilink файлы  
-            for citi_path in category_mapping[category]['citi']:
-                if os.path.exists(citi_path):
-                    file_data = comparator.load_json_data(citi_path)
-                    if file_data:
-                        if isinstance(file_data, list):
-                            citi_data.extend(file_data)
-                        else:
-                            citi_data.append(file_data)
-        else:
-            # Определяем пути к файлам для обычных категорий
-            dns_path = category_mapping[category]['dns']
-            citi_path = category_mapping[category]['citi']
-            
-            # Проверяем существование файлов
-            if not os.path.exists(dns_path) or not os.path.exists(citi_path):
-                flash(f'Файлы данных для категории "{category}" не найдены. DNS: {dns_path}, Citi: {citi_path}', 'error')
-                return redirect(url_for('comparison.index'))
-            
-            # Загружаем данные
-            dns_data = comparator.load_json_data(dns_path)
-            citi_data = comparator.load_json_data(citi_path)
-        
-        if not dns_data or not citi_data:
-            flash('Не удалось загрузить данные для сравнения', 'error')
-            return redirect(url_for('comparison.index'))
-        
-        # Извлекаем названия
-        dns_names = comparator.extract_names(dns_data, "name")
-        citi_names = comparator.extract_names(citi_data, "name")
+        # Извлекаем названия товаров
+        dns_names = [product.product_name for product in dns_products]
+        citi_names = [product.product_name for product in citi_products]
         
         # Ищем совпадения с использованием гибридного алгоритма
         matches = comparator.find_best_matches(
             dns_names, citi_names, 
             threshold=threshold,
-            use_enhanced=True  # Используем гибридный алгоритм!
+            use_enhanced=True
         )
         
         # Создаем детальные результаты с ценами
@@ -159,18 +139,18 @@ def compare_products():
         price_differences = []
         
         for dns_name, citi_name, similarity in matches:
-            # Находим соответствующие товары в исходных данных
-            dns_item = next((item for item in dns_data if item["name"] == dns_name), None)
-            citi_item = next((item for item in citi_data if item["name"] == citi_name), None)
+            # Находим соответствующие товары в данных БД
+            dns_item = next((item for item in dns_products if item.product_name == dns_name), None)
+            citi_item = next((item for item in citi_products if item.product_name == citi_name), None)
             
             if dns_item and citi_item:
                 # Извлекаем цены
-                dns_price = comparator._extract_price(dns_item)
-                citi_price = comparator._extract_price(citi_item)
+                dns_price = dns_item.price_discounted or dns_item.price_original
+                citi_price = citi_item.price_discounted or citi_item.price_original
                 
-                # Создаем ссылки на товары
-                dns_link = dns_item.get('url', '#')
-                citi_link = citi_item.get('url', '#')
+                # Получаем характеристики
+                dns_chars = dns_item.get_characteristics()
+                citi_chars = citi_item.get_characteristics()
                 
                 match_data = {
                     'dns_name': dns_name,
@@ -178,10 +158,10 @@ def compare_products():
                     'similarity': similarity,
                     'dns_price': dns_price,
                     'citi_price': citi_price,
-                    'dns_url': dns_link,
-                    'citi_url': citi_link,
-                    'dns_brand': dns_item.get('brand_name', ''),
-                    'citi_brand': citi_item.get('brand', '')
+                    'dns_url': dns_item.product_url,
+                    'citi_url': citi_item.product_url,
+                    'dns_brand': dns_chars.get('brand', ''),
+                    'citi_brand': citi_chars.get('brand', '')
                 }
                 
                 # Рассчитываем разность цен
@@ -220,10 +200,10 @@ def compare_products():
         
         # Формируем результат
         result = {
-            'dns_category': category_mapping[category]['dns_label'],
-            'citi_category': category_mapping[category]['citi_label'],
-            'dns_count': len(dns_data),
-            'citi_count': len(citi_data),
+            'dns_category': f'{cat_info["label"]} (DNS)',
+            'citi_category': f'{cat_info["label"]} (Citilink)',
+            'dns_count': len(dns_products),
+            'citi_count': len(citi_products),
             'matches_count': len(detailed_matches),
             'matches': detailed_matches,
             'threshold': threshold,
