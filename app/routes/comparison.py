@@ -126,8 +126,9 @@ def compare_products():
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
                         '/app/utils/DNS_parsing/categories/product_data_Процессоры.json'] + 
                        ([latest_dns_file] if latest_dns_file else []),
-                'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
-                         '/app/utils/Citi_parser/data/processory/Товары.json'] +
+                'citi': ['/app/utils/Citi_parser/data/processory/Товары.json',
+                         'app/utils/Citi_parser/data/processory/Товары.json',
+                         '/app/data/Citi_parser/data/processory/Товары.json'] +
                         ([latest_citilink_file] if latest_citilink_file else []),
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
@@ -372,7 +373,7 @@ def compare_products():
                                 if 'local_parser_data_' in dns_file:
                                     general_data = json.load(f)
                                     dns_data.extend(filter_dns_by_category(general_data, category))
-                                else:
+                        else:
                                     dns_data.extend(json.load(f))
             
             # Находим существующие Citilink файлы  
@@ -741,8 +742,9 @@ def quick_compare(category):
                 'dns': ['/app/data/DNS_parsing/categories/product_data_Процессоры.json',
                         '/app/utils/DNS_parsing/categories/product_data_Процессоры.json'] + 
                        ([latest_dns_file] if latest_dns_file else []),
-                'citi': ['/app/data/Citi_parser/data/processory/Товары.json',
-                         '/app/utils/Citi_parser/data/processory/Товары.json'] +
+                'citi': ['/app/utils/Citi_parser/data/processory/Товары.json',
+                         'app/utils/Citi_parser/data/processory/Товары.json',
+                         '/app/data/Citi_parser/data/processory/Товары.json'] +
                         ([latest_citilink_file] if latest_citilink_file else []),
                 'dns_label': 'Процессоры',
                 'citi_label': 'Процессоры'
@@ -879,7 +881,7 @@ def quick_compare(category):
                                 if 'local_parser_data_' in dns_file:
                                     general_data = json.load(f)
                                     dns_data.extend(filter_dns_by_category(general_data, category))
-                                else:
+                        else:
                                     dns_data.extend(json.load(f))
             
             # Находим существующие Citilink файлы  
@@ -1026,7 +1028,7 @@ def quick_compare(category):
     except Exception as e:
         logger.error(f"Ошибка при быстром сравнении: {str(e)}")
         flash(f'Произошла ошибка: {str(e)}', 'error')
-        return redirect(url_for('comparison.index'))
+        return redirect(url_for('comparison.index')) 
 
 @comparison_bp.route('/clear-cache', methods=['POST'])
 @login_required
