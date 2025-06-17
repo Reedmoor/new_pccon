@@ -197,6 +197,48 @@
             </div>
             <div class="card-body">
                 <p>Управление данными в базе и импорт собранных данных.</p>
+                
+                <!-- Статистика товаров -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h6><i class="fas fa-chart-bar me-2"></i>Статистика товаров в базе данных:</h6>
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <div class="card border-primary">
+                                    <div class="card-body p-2">
+                                        <h5 class="text-primary mb-1" id="totalProducts">Загрузка...</h5>
+                                        <small class="text-muted">Всего товаров</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-success">
+                                    <div class="card-body p-2">
+                                        <h5 class="text-success mb-1" id="processorCount">Загрузка...</h5>
+                                        <small class="text-muted">Процессоры</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-warning">
+                                    <div class="card-body p-2">
+                                        <h5 class="text-warning mb-1" id="gpuCount">Загрузка...</h5>
+                                        <small class="text-muted">Видеокарты</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-info">
+                                    <div class="card-body p-2">
+                                        <h5 class="text-info mb-1" id="motherboardCount">Загрузка...</h5>
+                                        <small class="text-muted">Материнские платы</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <a href="{{ url_for('admin.import_data') }}" class="btn btn-info">
                         <i class="fas fa-database me-2"></i>Перейти к импорту данных
@@ -204,20 +246,20 @@
                     <button type="button" class="btn btn-danger" onclick="confirmClearDatabase()">
                         <i class="fas fa-trash me-2"></i>Очистить базу данных
                     </button>
-                    <a href="{{ url_for('admin.product_arrivals') }}" class="btn btn-success">
-                        <i class="fas fa-box me-2"></i>Поступления товаров
-                    </a>
+                    <button type="button" class="btn btn-success" onclick="loadProductStats()">
+                        <i class="fas fa-refresh me-2"></i>Обновить статистику
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- JavaScript для подтверждения удаления -->
+<!-- JavaScript для подтверждения удаления и статистики -->
 <script>
 function confirmClearDatabase() {
     if (confirm('Вы уверены, что хотите очистить всю базу данных? Это действие нельзя отменить!')) {
-        if (confirm('Это действие удалит ВСЕ данные о продуктах. Подтвердите еще раз.')) {
+        if (confirm('Это действие удалит ВСЕ данные о продуктах и конфигурациях. Подтвердите еще раз.')) {
             // Отправляем запрос на очистку
             fetch('{{ url_for("admin.clear_database") }}', {
                 method: 'POST',
@@ -229,7 +271,7 @@ function confirmClearDatabase() {
             .then(data => {
                 if (data.success) {
                     alert('База данных успешно очищена');
-                    location.reload();
+                    loadProductStats(); // Обновляем статистику
                 } else {
                     alert('Ошибка при очистке базы данных: ' + data.message);
                 }
@@ -240,6 +282,34 @@ function confirmClearDatabase() {
         }
     }
 }
+
+function loadProductStats() {
+    // Загружаем статистику товаров
+    fetch('/admin/api/product-stats')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('totalProducts').textContent = data.total || 0;
+            document.getElementById('processorCount').textContent = data.processors || 0;
+            document.getElementById('gpuCount').textContent = data.graphics_cards || 0;
+            document.getElementById('motherboardCount').textContent = data.motherboards || 0;
+        } else {
+            console.error('Ошибка загрузки статистики:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        document.getElementById('totalProducts').textContent = 'Ошибка';
+        document.getElementById('processorCount').textContent = 'Ошибка';
+        document.getElementById('gpuCount').textContent = 'Ошибка';
+        document.getElementById('motherboardCount').textContent = 'Ошибка';
+    });
+}
+
+// Загружаем статистику при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    loadProductStats();
+});
 </script>
 
 {% endblock %} 
