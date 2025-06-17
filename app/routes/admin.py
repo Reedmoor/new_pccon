@@ -711,10 +711,15 @@ def run_citilink_parser():
         # Run the script in background WITHOUT blocking the web server
         def run_parser_async():
             try:
+                logger.info(f"=== ЗАПУСК ПАРСЕРА CITILINK ===")
+                logger.info(f"Категория: {category}")
+                logger.info(f"Время запуска: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                
                 current_dir = os.getcwd()
                 os.chdir(citilink_parser_dir)
                 
                 # Run parser in background
+                logger.info("Запуск процесса парсинга...")
                 result = subprocess.run(
                     [python_executable, 'main.py'], 
                     cwd=citilink_parser_dir,
@@ -722,6 +727,12 @@ def run_citilink_parser():
                     text=True,
                     timeout=1800  # 30 minutes timeout
                 )
+                
+                logger.info(f"Парсер завершился с кодом: {result.returncode}")
+                if result.stdout:
+                    logger.info(f"Вывод парсера:\n{result.stdout}")
+                if result.stderr:
+                    logger.error(f"Ошибки парсера:\n{result.stderr}")
                 
                 os.chdir(current_dir)
                 
@@ -744,15 +755,20 @@ def run_citilink_parser():
                     try:
                         items_file = os.path.join(citilink_parser_dir, 'data', category, 'Товары.json')
                         if os.path.exists(items_file):
-                            logger.info("Auto-importing products after successful parsing")
+                            logger.info("Начинаем автоматический импорт товаров...")
                             from app.utils.standardization.import_products import import_products
                             import_products()
-                            logger.info("Auto-import completed")
+                            logger.info("Автоматический импорт товаров завершен успешно")
+                        else:
+                            logger.warning(f"Файл с товарами не найден: {items_file}")
                     except Exception as import_error:
-                        logger.error(f"Auto-import failed: {import_error}")
+                        logger.error(f"Ошибка автоматического импорта: {import_error}")
+                else:
+                    logger.error(f"Парсер завершился с ошибкой, код: {result.returncode}")
                         
             except subprocess.TimeoutExpired:
-                logger.error(f"Citilink parser timed out after 30 minutes")
+                error_msg = f"Парсер Citilink превысил время ожидания (30 минут) для категории {category}"
+                logger.error(error_msg)
                 status_data = {
                     'category': category,
                     'status': 'timeout',
@@ -763,7 +779,8 @@ def run_citilink_parser():
                 with open(status_file, 'w', encoding='utf-8') as f:
                     json.dump(status_data, f, ensure_ascii=False, indent=2)
             except Exception as e:
-                logger.error(f"Error in async parser: {e}")
+                error_msg = f"Критическая ошибка в асинхронном парсере: {str(e)}"
+                logger.error(error_msg)
                 status_data = {
                     'category': category,
                     'status': 'error',
@@ -1466,6 +1483,87 @@ def clear_parser_status():
         return jsonify({
             'success': True,
             'message': 'Parser status cleared'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': str(e)
+        }), 500
+
+@admin_bp.route('/api/citilink-parser-logs')
+@login_required
+@admin_required
+def get_citilink_parser_logs():
+    """Получение логов парсера Citilink"""
+    try:
+        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
+        
+        # Ищем файлы логов
+        log_files = []
+        
+        # Проверяем основной лог файл
+        main_log = os.path.join(citilink_parser_dir, 'parser.log')
+        if os.path.exists(main_log):
+            log_files.append(('parser.log', main_log))
+        
+        # Проверяем другие возможные файлы логов
+        for log_name in ['citilink.log', 'main.log', 'output.log']:
+            log_path = os.path.join(citilink_parser_dir, log_name)
+            if os.path.exists(log_path):
+                log_files.append((log_name, log_path))
+        
+        # Если есть статус файл, добавляем его содержимое
+        status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
+        status_content = ""
+        if os.path.exists(status_file):
+            try:
+                with open(status_file, 'r', encoding='utf-8') as f:
+                    status_data = json.load(f)
+                    status_content = f"=== СТАТУС ПАРСЕРА ===\n"
+                    status_content += f"Категория: {status_data.get('category', 'Не указана')}\n"
+                    status_content += f"Статус: {status_data.get('status', 'Неизвестен')}\n"
+                    status_content += f"Время: {status_data.get('timestamp', 'Не указано')}\n"
+                    if status_data.get('error'):
+                        status_content += f"Ошибка: {status_data.get('error')}\n"
+                    if status_data.get('stdout'):
+                        status_content += f"Вывод:\n{status_data.get('stdout')}\n"
+                    if status_data.get('stderr'):
+                        status_content += f"Ошибки:\n{status_data.get('stderr')}\n"
+                    status_content += "=" * 50 + "\n\n"
+            except Exception as e:
+                status_content = f"Ошибка чтения статуса: {str(e)}\n\n"
+        
+        # Собираем все логи
+        all_logs = status_content
+        
+        if log_files:
+            for log_name, log_path in log_files:
+                try:
+                    with open(log_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    all_logs += f"=== {log_name.upper()} ===\n"
+                    
+                    # Показываем последние 1000 строк
+                    lines = content.split('\n')
+                    if len(lines) > 1000:
+                        all_logs += f"[Показаны последние 1000 строк из {len(lines)}]\n"
+                        content = '\n'.join(lines[-1000:])
+                    
+                    all_logs += content + "\n"
+                    all_logs += "=" * 50 + "\n\n"
+                    
+                except Exception as e:
+                    all_logs += f"Ошибка чтения {log_name}: {str(e)}\n\n"
+        else:
+            all_logs += "Файлы логов не найдены.\n"
+            all_logs += f"Проверялись: parser.log, citilink.log, main.log, output.log в папке {citilink_parser_dir}\n"
+        
+        return jsonify({
+            'success': True,
+            'logs': all_logs,
+            'log_files_found': len(log_files)
         })
         
     except Exception as e:
