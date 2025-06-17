@@ -4,13 +4,14 @@ import subprocess
 import json
 import glob
 from datetime import datetime
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, send_file
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, send_file, current_app
 from werkzeug.utils import secure_filename
 from app import db
 from app.models.models import UnifiedProduct, User
 from app.forms.admin import UnifiedProductForm
 from app.auth import login_required, admin_required
 from app.logger import get_logger
+from flask_login import current_user
 
 logger = get_logger(__name__)
 
@@ -341,81 +342,6 @@ def run_import():
             flash(f'Ошибка при импорте продуктов: {str(e)}', 'danger')
     
     return redirect(url_for('admin.import_data'))
-
-@admin_bp.route('/run-import-products', methods=['POST'])
-@login_required
-@admin_required
-def run_import_products():
-    """Быстрый импорт всех собранных данных парсеров"""
-    try:
-        from app.utils.standardization.import_products import import_products_from_data
-        
-        total_imported = 0
-        categories_imported = []
-        
-        # Импорт данных DNS
-        try:
-            dns_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing')
-            
-            # Проверяем основной файл
-            dns_main_file = os.path.join(dns_parser_dir, 'product_data.json')
-            if os.path.exists(dns_main_file):
-                with open(dns_main_file, 'r', encoding='utf-8') as f:
-                    dns_products = json.load(f)
-                    if dns_products:
-                        result = import_products_from_data(dns_products, source='dns_main')
-                        total_imported += result.get('added_count', 0)
-                        categories_imported.append(f"DNS основной файл ({result.get('added_count', 0)} товаров)")
-            
-            # Проверяем категории DNS
-            categories_dir = os.path.join(dns_parser_dir, 'categories')
-            if os.path.exists(categories_dir):
-                category_files = glob.glob(os.path.join(categories_dir, "product_data_*.json"))
-                for cat_file in category_files:
-                    cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
-                    with open(cat_file, 'r', encoding='utf-8') as f:
-                        cat_products = json.load(f)
-                        if cat_products:
-                            result = import_products_from_data(cat_products, source=f'dns_{cat_name}')
-                            total_imported += result.get('added_count', 0)
-                            categories_imported.append(f"DNS {cat_name} ({result.get('added_count', 0)} товаров)")
-                            
-        except Exception as e:
-            logger.error(f"Ошибка импорта DNS данных: {e}")
-        
-        # Импорт данных Citilink
-        try:
-            citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
-            if os.path.exists(citilink_data_dir):
-                for category_dir in os.listdir(citilink_data_dir):
-                    cat_dir_path = os.path.join(citilink_data_dir, category_dir)
-                    if os.path.isdir(cat_dir_path):
-                        cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
-                        if os.path.exists(cat_products_file):
-                            try:
-                                with open(cat_products_file, 'r', encoding='utf-8') as f:
-                                    products = json.load(f)
-                                    if products:
-                                        result = import_products_from_data(products, source=f'citilink_{category_dir}')
-                                        total_imported += result.get('added_count', 0)
-                                        categories_imported.append(f"Citilink {category_dir} ({result.get('added_count', 0)} товаров)")
-                            except Exception as e:
-                                logger.error(f"Ошибка импорта Citilink категории {category_dir}: {e}")
-                                
-        except Exception as e:
-            logger.error(f"Ошибка импорта Citilink данных: {e}")
-        
-        if total_imported > 0:
-            categories_text = ", ".join(categories_imported)
-            flash(f'Успешно импортировано {total_imported} товаров из категорий: {categories_text}', 'success')
-        else:
-            flash('Данные для импорта не найдены. Сначала запустите парсеры.', 'warning')
-            
-    except Exception as e:
-        logger.error(f"Ошибка при быстром импорте: {e}")
-        flash(f'Ошибка при импорте данных: {str(e)}', 'danger')
-    
-    return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/scrape', methods=['GET', 'POST'])
 @login_required
@@ -1234,4 +1160,51 @@ def fix_citilink_json():
         logger.error(f"Ошибка при исправлении JSON файлов: {e}")
         flash(f'Ошибка при исправлении файлов: {str(e)}', 'danger')
     
-    return redirect(url_for('admin.scrape')) 
+    return redirect(url_for('admin.scrape'))
+
+@admin_bp.route('/clear-database', methods=['POST'])
+@login_required
+@admin_required
+def clear_database():
+    """Очистка всех данных о продуктах из базы данных"""
+    try:
+        # Удаляем все продукты
+        UnifiedProduct.query.delete()
+        db.session.commit()
+        
+        return jsonify({
+            'success': True,
+            'message': 'База данных успешно очищена'
+        })
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Ошибка при очистке базы данных: {e}")
+        return jsonify({
+            'success': False,
+            'message': f'Ошибка при очистке базы данных: {str(e)}'
+        }), 500
+
+@admin_bp.route('/product-arrivals')
+@login_required
+@admin_required
+def product_arrivals():
+    """Страница со списком поступления товаров"""
+    # Получаем товары, отсортированные по дате создания (последние добавленные)
+    # Поскольку у нас нет поля created_at, используем id как приблизительный индикатор
+    recent_products = UnifiedProduct.query.order_by(UnifiedProduct.id.desc()).limit(100).all()
+    
+    # Группируем по типу продукта
+    products_by_type = {}
+    for product in recent_products:
+        product_type = product.product_type
+        if product_type not in products_by_type:
+            products_by_type[product_type] = []
+        products_by_type[product_type].append(product)
+    
+    # Статистика по поступлениям
+    total_products = UnifiedProduct.query.count()
+    
+    return render_template('admin/product_arrivals.html', 
+                         products_by_type=products_by_type,
+                         total_products=total_products,
+                         recent_count=len(recent_products)) 

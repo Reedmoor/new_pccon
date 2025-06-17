@@ -193,25 +193,53 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-info text-white">
-                <h5 class="mb-0"><i class="fas fa-database me-2"></i>Импорт данных в базу</h5>
+                <h5 class="mb-0"><i class="fas fa-database me-2"></i>Управление данными</h5>
             </div>
             <div class="card-body">
-                <p>После завершения парсинга необходимо импортировать собранные данные в базу данных.</p>
+                <p>Управление данными в базе и импорт собранных данных.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <a href="{{ url_for('admin.import_data') }}" class="btn btn-info">
                         <i class="fas fa-database me-2"></i>Перейти к импорту данных
                     </a>
-                    {% if dns_results or citilink_results %}
-                    <form method="POST" action="{{ url_for('admin.run_import_products') }}" class="d-inline">
-                        <button type="submit" class="btn btn-success" onclick="return confirm('Импортировать все собранные данные в базу?');">
-                            <i class="fas fa-upload me-2"></i>Быстрый импорт
-                        </button>
-                    </form>
-                    {% endif %}
+                    <button type="button" class="btn btn-danger" onclick="confirmClearDatabase()">
+                        <i class="fas fa-trash me-2"></i>Очистить базу данных
+                    </button>
+                    <a href="{{ url_for('admin.product_arrivals') }}" class="btn btn-success">
+                        <i class="fas fa-box me-2"></i>Поступления товаров
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- JavaScript для подтверждения удаления -->
+<script>
+function confirmClearDatabase() {
+    if (confirm('Вы уверены, что хотите очистить всю базу данных? Это действие нельзя отменить!')) {
+        if (confirm('Это действие удалит ВСЕ данные о продуктах. Подтвердите еще раз.')) {
+            // Отправляем запрос на очистку
+            fetch('{{ url_for("admin.clear_database") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('База данных успешно очищена');
+                    location.reload();
+                } else {
+                    alert('Ошибка при очистке базы данных: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Ошибка: ' + error);
+            });
+        }
+    }
+}
+</script>
 
 {% endblock %} 
