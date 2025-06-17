@@ -344,15 +344,11 @@ def filter_components():
         elif product.price_original is not None and product.price_original > 0:
             price = product.price_original
         
-        # Пропускаем продукты без цены
-        if price is None:
-            continue
-        
-        # Добавляем продукт в результаты
+        # Добавляем продукт в результаты (даже если цена None)
         filtered_results.append({
             'id': product.id,
             'name': product.product_name,
-            'price': price,
+            'price': price,  # Может быть None
             'characteristics': chars,
             'vendor': product.vendor,
             'product_url': product.product_url
