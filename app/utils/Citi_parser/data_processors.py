@@ -2,7 +2,7 @@ import requests
 import logging
 import json
 from lxml import html
-from request_handler import request
+from request_handler import request, check_stop_flag, ParserStoppedException
 from queries import (url, PROPERTIES_QUERY, DOCUMENTS_QUERY, RATING_QUERY, REVIEW_QUERY, 
                      PROPERTIES_OR_DOCUMENTS_VARIABLE, RATING_VARIABLE, REVIEW_VARIABLE)
 
@@ -15,6 +15,8 @@ def find_key_by_prefix(data, prefix):
 
 # Функция для собирание данных об товаре в массив для будущего JSON
 def product_answer(product, first_product, products_file='Товары.json'):
+    # Проверяем флаг остановки в начале обработки продукта
+    check_stop_flag()
 
     logging.info(f"Обработка продукта ID: {product['id']}")
     product_id = int(product['id'])
@@ -53,6 +55,8 @@ def product_answer(product, first_product, products_file='Товары.json'):
         if images['sources']:
             product_images.append(images['sources'][-1]['url'])
 
+    # Проверяем флаг остановки перед запросом характеристик
+    check_stop_flag()
     properties_request_data = request(url, PROPERTIES_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"характеристик товара ID: {product['id']}")
     product_properties_data = []
 
@@ -73,6 +77,8 @@ def product_answer(product, first_product, products_file='Товары.json'):
         }
         product_properties_data.append(properties_info)
 
+    # Проверяем флаг остановки перед запросом документов
+    check_stop_flag()
     document_request_data = request(url, DOCUMENTS_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"документов товара ID: {product['id']}")
     documents_data = []
     for certificates in document_request_data['data']['product']['documentation']['certificates']:
@@ -80,6 +86,8 @@ def product_answer(product, first_product, products_file='Товары.json'):
     for attachments in document_request_data['data']['product']['documentation']['attachments']:
         documents_data.append(attachments['url'])
 
+    # Проверяем флаг остановки перед запросом рейтинга
+    check_stop_flag()
     rating_request_data = request(url, RATING_QUERY, RATING_VARIABLE(product['id'], 1), f"рейтинга товара ID: {product['id']}")
 
     product_key = find_key_by_prefix(rating_request_data['data'], 'product_')
@@ -119,6 +127,8 @@ def rating_answer(product_id, first_rating, reviews_file='Отзывы.json'):
     current_page_rating = 1
     has_next_page_rating = True
     while has_next_page_rating: 
+        # Проверяем флаг остановки перед каждой страницей рейтингов
+        check_stop_flag()
 
         logging.info(f"Обработка страницы с обзорами продукта ID: {product_id} №{current_page_rating}")
 
@@ -159,6 +169,8 @@ def review_answer(product_id, first_review, articles_file='Обзоры.json'):
     has_next_page_review = True
 
     while has_next_page_review:
+        # Проверяем флаг остановки перед каждой страницей обзоров
+        check_stop_flag()
 
         logging.info(f"Обработка страницы с обзорами продукта ID: {product_id} №{current_page_review}")
 

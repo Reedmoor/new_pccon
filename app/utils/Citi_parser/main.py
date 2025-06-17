@@ -4,7 +4,7 @@ import os
 import json
 from lxml import html
 from dotenv import load_dotenv
-from request_handler import request
+from request_handler import request, ParserStoppedException, check_stop_flag
 from queries import (url, PRODUCTS_QUERY, PRODUCT_VARIABLE)
 from data_processors import product_answer, rating_answer, review_answer
 
@@ -61,82 +61,116 @@ def fetch_products_for_category(category_name):
     # Список для хранения всех товаров данной категории
     all_products = []
 
-    while has_next_page_products:
-        logging.info(f"Обработка страницы продукта №{current_page_products}")
+    try:
+        while has_next_page_products:
+            # Проверяем флаг остановки перед каждой страницей
+            check_stop_flag()
+            
+            logging.info(f"Обработка страницы продукта №{current_page_products}")
 
-        try:
-            # Получаем данные из API
-            product_request_data = request(url, PRODUCTS_QUERY, PRODUCT_VARIABLE(category_name, current_page_products), "всех продуктов")
-            
-            # Проверяем наличие необходимых полей в ответе
-            if not product_request_data:
-                logging.error(f"Получен пустой ответ от API для страницы {current_page_products}")
-                break
+            try:
+                # Получаем данные из API
+                product_request_data = request(url, PRODUCTS_QUERY, PRODUCT_VARIABLE(category_name, current_page_products), "всех продуктов")
                 
-            if 'data' not in product_request_data:
-                logging.error(f"Поле 'data' отсутствует в ответе API для страницы {current_page_products}")
-                logging.error(f"Получен ответ: {product_request_data}")
-                break
-                
-            if 'productsFilter' not in product_request_data['data']:
-                logging.error(f"Поле 'productsFilter' отсутствует в ответе API для страницы {current_page_products}")
-                logging.error(f"Структура data: {product_request_data['data'].keys()}")
-                break
-                
-            if 'record' not in product_request_data['data']['productsFilter']:
-                logging.error(f"Поле 'record' отсутствует в productsFilter для страницы {current_page_products}")
-                logging.error(f"Структура productsFilter: {product_request_data['data']['productsFilter'].keys()}")
-                break
-                
-            record = product_request_data['data']['productsFilter']['record']
-            
-            if 'pageInfo' not in record:
-                logging.error(f"Поле 'pageInfo' отсутствует в record для страницы {current_page_products}")
-                logging.error(f"Структура record: {record.keys()}")
-                break
-                
-            if 'hasNextPage' not in record['pageInfo']:
-                logging.error(f"Поле 'hasNextPage' отсутствует в pageInfo для страницы {current_page_products}")
-                logging.error(f"Структура pageInfo: {record['pageInfo'].keys()}")
-                break
-                
-            # Проверка на наличие следующей страницы
-            has_next_page_products = record['pageInfo']['hasNextPage']
-            
-            # Проверяем наличие продуктов в ответе
-            if 'products' not in record:
-                logging.error(f"Поле 'products' отсутствует в record для страницы {current_page_products}")
-                logging.error(f"Структура record: {record.keys()}")
-                break
-                
-            # Обрабатываем каждый продукт
-            for product in record['products']:
-                try:
-                    # Сохраняем продукт в файл категории
-                    first_product = product_answer(product, first_product, products_file)
+                # Проверяем наличие необходимых полей в ответе
+                if not product_request_data:
+                    logging.error(f"Получен пустой ответ от API для страницы {current_page_products}")
+                    break
                     
-                    # Сохраняем продукт в списке для совместимости
-                    all_products.append(product)
+                if 'data' not in product_request_data:
+                    logging.error(f"Поле 'data' отсутствует в ответе API для страницы {current_page_products}")
+                    logging.error(f"Получен ответ: {product_request_data}")
+                    break
                     
-                    # first_rating = rating_answer(product['id'], first_rating, reviews_file)
-                    # first_review = review_answer(product['id'], first_review, articles_file)
+                if 'productsFilter' not in product_request_data['data']:
+                    logging.error(f"Поле 'productsFilter' отсутствует в ответе API для страницы {current_page_products}")
+                    logging.error(f"Структура data: {product_request_data['data'].keys()}")
+                    break
                     
-                    logging.info(f"Продукт {int(product['id'])} успешно обработан")
-                    time.sleep(2)
-                except Exception as product_error:
-                    logging.error(f"Ошибка при обработке продукта: {str(product_error)}")
-                    logging.error(f"Структура продукта: {product}")
-                    continue
-        except Exception as page_error:
-            logging.error(f"Ошибка при обработке страницы {current_page_products}: {str(page_error)}")
-            break
+                if 'record' not in product_request_data['data']['productsFilter']:
+                    logging.error(f"Поле 'record' отсутствует в productsFilter для страницы {current_page_products}")
+                    logging.error(f"Структура productsFilter: {product_request_data['data']['productsFilter'].keys()}")
+                    break
+                    
+                record = product_request_data['data']['productsFilter']['record']
+                
+                if 'pageInfo' not in record:
+                    logging.error(f"Поле 'pageInfo' отсутствует в record для страницы {current_page_products}")
+                    logging.error(f"Структура record: {record.keys()}")
+                    break
+                    
+                if 'hasNextPage' not in record['pageInfo']:
+                    logging.error(f"Поле 'hasNextPage' отсутствует в pageInfo для страницы {current_page_products}")
+                    logging.error(f"Структура pageInfo: {record['pageInfo'].keys()}")
+                    break
+                    
+                # Проверка на наличие следующей страницы
+                has_next_page_products = record['pageInfo']['hasNextPage']
+                
+                # Проверяем наличие продуктов в ответе
+                if 'products' not in record:
+                    logging.error(f"Поле 'products' отсутствует в record для страницы {current_page_products}")
+                    logging.error(f"Структура record: {record.keys()}")
+                    break
+                    
+                # Обрабатываем каждый продукт
+                for product in record['products']:
+                    try:
+                        # Проверяем флаг остановки перед каждым продуктом
+                        check_stop_flag()
+                        
+                        # Сохраняем продукт в файл категории
+                        first_product = product_answer(product, first_product, products_file)
+                        
+                        # Сохраняем продукт в списке для совместимости
+                        all_products.append(product)
+                        
+                        # first_rating = rating_answer(product['id'], first_rating, reviews_file)
+                        # first_review = review_answer(product['id'], first_review, articles_file)
+                        
+                        logging.info(f"Продукт {int(product['id'])} успешно обработан")
+                        time.sleep(2)
+                    except ParserStoppedException:
+                        raise  # Пробрасываем исключение остановки
+                    except Exception as product_error:
+                        logging.error(f"Ошибка при обработке продукта: {str(product_error)}")
+                        logging.error(f"Структура продукта: {product}")
+                        continue
+            except ParserStoppedException:
+                raise  # Пробрасываем исключение остановки
+            except Exception as page_error:
+                logging.error(f"Ошибка при обработке страницы {current_page_products}: {str(page_error)}")
+                break
+                
+            current_page_products += 1
             
-        current_page_products += 1
+            # Ограничение на количество страниц для тестирования
+            if current_page_products > 10:
+                logging.warning("Достигнуто ограничение на количество страниц (10). Завершение парсинга.")
+                break
+                
+    except ParserStoppedException:
+        logging.info("🛑 ПАРСЕР ОСТАНОВЛЕН ПОЛЬЗОВАТЕЛЕМ!")
+        logging.info(f"✅ На момент остановки обработано {len(all_products)} товаров")
         
-        # Ограничение на количество страниц для тестирования
-        if current_page_products > 10:
-            logging.warning("Достигнуто ограничение на количество страниц (10). Завершение парсинга.")
-            break
+        # Закрываем файлы даже при остановке
+        for filename in [products_file, reviews_file, articles_file]:
+            try:
+                with open(filename, 'a', encoding='utf-8') as f:
+                    f.write('\n]')
+            except Exception as e:
+                logging.error(f"Ошибка при закрытии файла {filename}: {e}")
+        
+        # Сохраняем собранные до остановки товары
+        if all_products:
+            try:
+                with open('Товары.json', 'w', encoding='utf-8') as f:
+                    json.dump(all_products, f, ensure_ascii=False, indent=2)
+                logging.info(f"💾 Сохранено {len(all_products)} товаров до остановки")
+            except Exception as e:
+                logging.error(f"Ошибка при сохранении товаров: {e}")
+        
+        return all_products
 
     # Закрываем файлы категории
     for filename in [products_file, reviews_file, articles_file]:
@@ -166,21 +200,31 @@ def main():
         logging.error("Ошибка: категория не указана в .env файле")
         return
     
-    # Обрабатываем категорию
-    products = fetch_products_for_category(category)
-    
-    # Для обратной совместимости, сохраним общий файл в стандартном формате
-    with open('Товары.json', 'w', encoding='utf-8') as f:
-        f.write('[\n')
-        for i, product in enumerate(products):
-            json_str = json.dumps(product, ensure_ascii=False)
-            if i < len(products) - 1:
-                f.write(json_str + ',\n')
-            else:
-                f.write(json_str + '\n')
-        f.write(']')
-    
-    logging.info(f"Также создан объединенный файл 'Товары.json' для совместимости")
+    try:
+        # Обрабатываем категорию
+        products = fetch_products_for_category(category)
+        
+        # Для обратной совместимости, сохраним общий файл в стандартном формате
+        with open('Товары.json', 'w', encoding='utf-8') as f:
+            f.write('[\n')
+            for i, product in enumerate(products):
+                json_str = json.dumps(product, ensure_ascii=False)
+                if i < len(products) - 1:
+                    f.write(json_str + ',\n')
+                else:
+                    f.write(json_str + '\n')
+            f.write(']')
+        
+        logging.info(f"Также создан объединенный файл 'Товары.json' для совместимости")
+        
+    except ParserStoppedException:
+        logging.info("🏁 ПАРСИНГ ЗАВЕРШЕН ПО ТРЕБОВАНИЮ ПОЛЬЗОВАТЕЛЯ")
+        # При остановке пользователем возвращаем код 0 (успешное завершение)
+        return 0
+    except Exception as e:
+        logging.error(f"Критическая ошибка парсера: {e}")
+        return 1
 
 if __name__ == "__main__":
-    main()
+    exit_code = main()
+    exit(exit_code if exit_code is not None else 0)
