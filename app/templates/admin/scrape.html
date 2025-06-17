@@ -58,6 +58,27 @@
             <div class="card-body">
                 <p>Запуск парсера Citilink для сбора информации о комплектующих.</p>
                 
+                <!-- Статус парсера -->
+                <div id="parser-status" class="mb-3" style="display: none;">
+                    <div class="alert alert-info">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fas fa-info-circle me-2"></i>
+                                <span id="status-text">Проверка статуса...</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="clearParserStatus()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div id="status-details" class="mt-2" style="display: none;">
+                            <small class="text-muted">
+                                <div id="status-category"></div>
+                                <div id="status-timestamp"></div>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                
                 <form method="POST" action="{{ url_for('admin.run_citilink_parser') }}">
                     <div class="mb-3">
                         <label for="citilink_category" class="form-label">Категория товаров</label>
@@ -76,7 +97,7 @@
                     </div>
                     
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="start-parser-btn">
                             <i class="fas fa-play me-2"></i>Запустить Citilink Parser
                         </button>
                         
@@ -104,7 +125,7 @@
                 </form>
                 
                 <div class="alert alert-secondary mt-3">
-                    <i class="fas fa-info-circle me-2"></i>Парсер Citilink использует GraphQL API для получения данных о товарах. При остановке все собранные данные автоматически импортируются в базу данных.
+                    <i class="fas fa-info-circle me-2"></i>Парсер работает в фоновом режиме и не блокирует сайт. Парсер Citilink использует GraphQL API для получения данных о товарах. При остановке все собранные данные автоматически импортируются в базу данных.
                 </div>
             </div>
         </div>
@@ -419,7 +440,122 @@ function showErrorState() {
 // Загружаем информацию о поступлениях при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     loadProductStats();
+    checkParserStatus(); // Проверяем статус парсера при загрузке
+    
+    // Проверяем статус каждые 10 секунд
+    setInterval(checkParserStatus, 10000);
 });
+
+// Функции для мониторинга статуса парсера
+function checkParserStatus() {
+    fetch('/admin/api/citilink-parser-status')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.status && data.status.status !== 'idle') {
+            showParserStatus(data.status);
+        } else {
+            hideParserStatus();
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка проверки статуса парсера:', error);
+    });
+}
+
+function showParserStatus(status) {
+    const statusDiv = document.getElementById('parser-status');
+    const statusText = document.getElementById('status-text');
+    const statusDetails = document.getElementById('status-details');
+    const categorySpan = document.getElementById('status-category');
+    const timestampSpan = document.getElementById('status-timestamp');
+    const alertDiv = statusDiv.querySelector('.alert');
+    const startBtn = document.getElementById('start-parser-btn');
+    
+    // Показываем блок статуса
+    statusDiv.style.display = 'block';
+    
+    // Обновляем текст статуса
+    let statusMessage = '';
+    let alertClass = 'alert-info';
+    
+    switch(status.status) {
+        case 'running':
+            statusMessage = 'Парсер работает в фоновом режиме...';
+            alertClass = 'alert-primary';
+            startBtn.disabled = true;
+            break;
+        case 'completed':
+            statusMessage = 'Парсинг завершен успешно!';
+            alertClass = 'alert-success';
+            startBtn.disabled = false;
+            break;
+        case 'failed':
+            statusMessage = 'Парсинг завершился с ошибкой';
+            alertClass = 'alert-danger';
+            startBtn.disabled = false;
+            break;
+        case 'timeout':
+            statusMessage = 'Парсинг превысил время ожидания';
+            alertClass = 'alert-warning';
+            startBtn.disabled = false;
+            break;
+        case 'error':
+            statusMessage = 'Ошибка при выполнении парсинга';
+            alertClass = 'alert-danger';
+            startBtn.disabled = false;
+            break;
+        default:
+            statusMessage = 'Неизвестный статус: ' + status.status;
+            alertClass = 'alert-secondary';
+            startBtn.disabled = false;
+    }
+    
+    statusText.textContent = statusMessage;
+    
+    // Обновляем класс alert
+    alertDiv.className = 'alert ' + alertClass;
+    
+    // Показываем детали если есть
+    if (status.category || status.timestamp) {
+        statusDetails.style.display = 'block';
+        
+        if (status.category) {
+            categorySpan.textContent = 'Категория: ' + status.category;
+        }
+        
+        if (status.timestamp) {
+            const date = new Date(status.timestamp);
+            timestampSpan.textContent = 'Время: ' + date.toLocaleString();
+        }
+    } else {
+        statusDetails.style.display = 'none';
+    }
+}
+
+function hideParserStatus() {
+    document.getElementById('parser-status').style.display = 'none';
+    document.getElementById('start-parser-btn').disabled = false;
+}
+
+function clearParserStatus() {
+    fetch('/admin/api/clear-parser-status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            hideParserStatus();
+        } else {
+            alert('Ошибка очистки статуса: ' + data.message);
+        }
+    })
+    .catch(error => {
+        alert('Ошибка: ' + error);
+    });
+}
 </script>
 
 {% endblock %} 
