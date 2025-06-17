@@ -109,6 +109,10 @@
                                 </button>
                             </form>
                             
+                            <button type="button" class="btn btn-info" onclick="showParserLogs()">
+                                <i class="fas fa-file-alt me-2"></i>Логи парсера
+                            </button>
+                            
                             {% if citilink_results %}
                             <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера Citilink?');">
                                 <i class="fas fa-trash me-2"></i>Очистить результаты
@@ -302,6 +306,47 @@
                         <i class="fas fa-refresh me-2"></i>Обновить информацию
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для логов парсера -->
+<div class="modal fade" id="logsModal" tabindex="-1" aria-labelledby="logsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logsModalLabel">
+                    <i class="fas fa-file-alt me-2"></i>Логи парсера Citilink
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="logs-loading" class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Загрузка логов...</span>
+                    </div>
+                    <p class="mt-2">Загрузка логов...</p>
+                </div>
+                <div id="logs-content" style="display: none;">
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Показаны последние логи парсера. Обновляется автоматически каждые 30 секунд.
+                        </small>
+                    </div>
+                    <pre id="logs-text" class="bg-dark text-light p-3 rounded" style="max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.2;"></pre>
+                </div>
+                <div id="logs-error" class="alert alert-danger" style="display: none;">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <span id="logs-error-text">Ошибка загрузки логов</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="refreshLogs()">
+                    <i class="fas fa-refresh me-2"></i>Обновить
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>
     </div>
@@ -555,6 +600,75 @@ function clearParserStatus() {
     .catch(error => {
         alert('Ошибка: ' + error);
     });
+}
+
+function showParserLogs() {
+    // Показываем модальное окно
+    const modal = new bootstrap.Modal(document.getElementById('logsModal'));
+    modal.show();
+    
+    // Загружаем логи
+    loadLogs();
+    
+    // Автообновление каждые 30 секунд при открытом модальном окне
+    const logsModal = document.getElementById('logsModal');
+    let autoRefreshInterval;
+    
+    logsModal.addEventListener('shown.bs.modal', function () {
+        autoRefreshInterval = setInterval(loadLogs, 30000);
+    });
+    
+    logsModal.addEventListener('hidden.bs.modal', function () {
+        if (autoRefreshInterval) {
+            clearInterval(autoRefreshInterval);
+        }
+    });
+}
+
+function loadLogs() {
+    const loadingDiv = document.getElementById('logs-loading');
+    const contentDiv = document.getElementById('logs-content');
+    const errorDiv = document.getElementById('logs-error');
+    const logsText = document.getElementById('logs-text');
+    
+    // Показываем индикатор загрузки
+    loadingDiv.style.display = 'block';
+    contentDiv.style.display = 'none';
+    errorDiv.style.display = 'none';
+    
+    fetch('/admin/api/citilink-parser-logs')
+    .then(response => response.json())
+    .then(data => {
+        loadingDiv.style.display = 'none';
+        
+        if (data.success) {
+            contentDiv.style.display = 'block';
+            
+            // Добавляем информацию о найденных файлах
+            let logsContent = data.logs;
+            if (data.log_files_found > 0) {
+                logsContent = `[Найдено файлов логов: ${data.log_files_found}]\n\n` + logsContent;
+            }
+            
+            logsText.textContent = logsContent;
+            
+            // Прокручиваем вниз, чтобы показать последние логи
+            logsText.scrollTop = logsText.scrollHeight;
+        } else {
+            errorDiv.style.display = 'block';
+            document.getElementById('logs-error-text').textContent = 'Ошибка загрузки логов: ' + data.message;
+        }
+    })
+    .catch(error => {
+        loadingDiv.style.display = 'none';
+        errorDiv.style.display = 'block';
+        document.getElementById('logs-error-text').textContent = 'Ошибка сети: ' + error.message;
+        console.error('Ошибка загрузки логов:', error);
+    });
+}
+
+function refreshLogs() {
+    loadLogs();
 }
 </script>
 
