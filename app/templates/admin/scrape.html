@@ -19,20 +19,23 @@
                 
                 <!-- Описание с батниками -->
                 <div class="alert alert-info">
-                    <h6><i class="fas fa-info-circle me-2"></i>Инструкция по запуску:</h6>
-                    <p class="mb-2">Для парсинга DNS используйте BAT файлы в папке <code>local_parser/</code>:</p>
+                    <h6><i class="fas fa-info-circle me-2"></i>Инструкция по DNS парсингу:</h6>
+                    <p class="mb-2">DNS товары парсятся <strong>локально</strong> и автоматически отправляются на сервер:</p>
                     <ul class="mb-2">
-                        <li><code>parse_category.bat</code> - основной файл для парсинга категорий DNS</li>
-                        <li><code>run_old_dns_parser.bat</code> - запуск старого DNS парсера</li>
-                        <li><code>run_visible_parser.bat</code> - запуск парсера с видимым браузером</li>
-                        <li><code>local_dns_parser.py</code> - локальный Python скрипт парсера</li>
+                        <li><code>parse_category.bat</code> - парсинг конкретной категории DNS</li>
+                        <li><code>run_local_parse_and_upload.bat</code> - парсинг + автозагрузка в Docker</li>
+                        <li><code>upload_from_old_parser.bat</code> - загрузка готовых данных</li>
+                        <li><code>main_menu.bat</code> - главное меню всех операций</li>
                     </ul>
-                    <p class="mb-2"><strong>Для быстрого парсинга и загрузки:</strong></p>
-                    <ul class="mb-2">
-                        <li><code>run_local_parse_and_upload.bat</code> - парсинг + автозагрузка в базу</li>
-                        <li><code>upload_to_docker.py</code> - загрузка готовых данных в Docker</li>
-                    </ul>
-                    <p class="mb-0"><strong>Совет:</strong> Запускайте <code>parse_category.bat</code> и выбирайте нужную категорию из списка.</p>
+                    <p class="mb-2"><strong>Как это работает:</strong></p>
+                    <ol class="mb-2">
+                        <li>Запускаете bat-файл локально на вашем ПК</li>
+                        <li>Парсер собирает данные с DNS сайта</li>
+                        <li>Данные автоматически отправляются на этот Docker сервер</li>
+                        <li>Товары появляются в базе данных сайта</li>
+                    </ol>
+                    <p class="mb-0"><strong>Расположение:</strong> Bat-файлы находятся в папке <code>local_parser/</code></p>
+                    <p class="mb-0"><strong>API endpoint:</strong> Данные загружаются на <code>/api/upload-products</code></p>
                 </div>
                 
                 {% if dns_results %}

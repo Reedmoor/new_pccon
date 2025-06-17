@@ -12,6 +12,7 @@ from app.forms.admin import UnifiedProductForm
 from app.auth import login_required, admin_required
 from app.logger import get_logger
 from flask_login import current_user
+from pathlib import Path
 
 logger = get_logger(__name__)
 
@@ -355,52 +356,109 @@ def scrape():
     citilink_categories = []
     
     try:
-        # Пробуем найти категории DNS
-        dns_categories_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories')
-        if os.path.exists(dns_categories_dir):
-            category_files = glob.glob(os.path.join(dns_categories_dir, "product_data_*.json"))
-            for cat_file in category_files:
-                cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
-                try:
-                    with open(cat_file, 'r', encoding='utf-8') as f:
-                        cat_products = json.load(f)
-                        
-                        # Отображаемое имя категории DNS
-                        display_name = cat_name
-                        if 'videokarty' in cat_name.lower() or 'gpu' in cat_name.lower():
-                            display_name = 'Видеокарты'
-                        elif 'processor' in cat_name.lower() or 'cpu' in cat_name.lower():
-                            display_name = 'Процессоры'
-                        elif 'motherboard' in cat_name.lower() or 'materinskie' in cat_name.lower():
-                            display_name = 'Материнские платы'
-                        elif 'power' in cat_name.lower() or 'pitaniya' in cat_name.lower():
-                            display_name = 'Блоки питания'
-                        elif 'memory' in cat_name.lower() or 'pamyati' in cat_name.lower() or 'ram' in cat_name.lower():
-                            display_name = 'Модули памяти'
-                        elif 'case' in cat_name.lower() or 'korpus' in cat_name.lower():
-                            display_name = 'Корпуса'
-                        elif 'cooler' in cat_name.lower() or 'cooling' in cat_name.lower():
-                            display_name = 'Кулеры для процессора'
-                        elif 'ssd' in cat_name.lower():
-                            display_name = 'SSD накопители'
-                        elif 'hdd' in cat_name.lower() or 'hard' in cat_name.lower():
-                            display_name = 'Жесткие диски'
-                        else:
-                            # Делаем первую букву заглавной
-                            display_name = cat_name.replace('_', ' ').replace('-', ' ').title()
-                        
-                        dns_categories.append({
-                            'name': display_name,
-                            'count': len(cat_products),
-                            'file': cat_file,
-                            'slug': cat_name
-                        })
-                        # Add these products to the overall results
-                        dns_results.extend(cat_products)
-                except Exception as e:
-                    logger.error(f'Ошибка чтения категории DNS {cat_name}: {str(e)}')
+        # Проверяем локальные данные DNS в папке data/
+        project_root = Path(__file__).resolve().parent.parent.parent
+        data_dir = project_root / "data"
         
-        # Если категории не найдены, пробуем найти основной файл product_data.json
+        if data_dir.exists():
+            # Ищем самый свежий файл локального парсера
+            local_files = list(data_dir.glob("local_parser_data_*.json"))
+            if local_files:
+                latest_local_file = max(local_files, key=lambda f: f.stat().st_mtime)
+                try:
+                    with open(latest_local_file, 'r', encoding='utf-8') as f:
+                        local_data = json.load(f)
+                    
+                    if isinstance(local_data, list) and local_data:
+                        dns_results = local_data
+                        
+                        # Группируем по категориям
+                        categories_count = {}
+                        for product in local_data:
+                            categories = product.get('categories', [])
+                            for cat in categories:
+                                cat_name = cat.get('name', '')
+                                if cat_name and cat_name not in ['Комплектующие для ПК', 'Основные комплектующие для ПК']:
+                                    if cat_name not in categories_count:
+                                        categories_count[cat_name] = 0
+                                    categories_count[cat_name] += 1
+                        
+                        # Создаем dns_categories для отображения
+                        for cat_name, count in categories_count.items():
+                            dns_categories.append({
+                                'name': cat_name,
+                                'count': count,
+                                'file': str(latest_local_file),
+                                'slug': cat_name.lower().replace(' ', '_')
+                            })
+                        
+                        logger.info(f"Загружены локальные данные DNS: {len(local_data)} товаров из {len(categories_count)} категорий")
+                        
+                except Exception as e:
+                    logger.error(f"Ошибка чтения локального файла DNS {latest_local_file}: {str(e)}")
+            
+            # Также проверяем основной файл product_data.json
+            main_file = data_dir / "product_data.json"
+            if main_file.exists() and not dns_results:
+                try:
+                    with open(main_file, 'r', encoding='utf-8') as f:
+                        main_data = json.load(f)
+                    
+                    if isinstance(main_data, list) and main_data:
+                        dns_results = main_data
+                        logger.info(f"Загружены данные DNS из основного файла: {len(main_data)} товаров")
+                        
+                except Exception as e:
+                    logger.error(f"Ошибка чтения основного файла DNS: {str(e)}")
+        
+        # Если локальные данные не найдены, проверяем старую структуру категорий
+        if not dns_results:
+            # Пробуем найти категории DNS в старой структуре
+            dns_categories_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'categories')
+            if os.path.exists(dns_categories_dir):
+                category_files = glob.glob(os.path.join(dns_categories_dir, "product_data_*.json"))
+                for cat_file in category_files:
+                    cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                    try:
+                        with open(cat_file, 'r', encoding='utf-8') as f:
+                            cat_products = json.load(f)
+                            
+                            # Отображаемое имя категории DNS
+                            display_name = cat_name
+                            if 'videokarty' in cat_name.lower() or 'gpu' in cat_name.lower():
+                                display_name = 'Видеокарты'
+                            elif 'processor' in cat_name.lower() or 'cpu' in cat_name.lower():
+                                display_name = 'Процессоры'
+                            elif 'motherboard' in cat_name.lower() or 'materinskie' in cat_name.lower():
+                                display_name = 'Материнские платы'
+                            elif 'power' in cat_name.lower() or 'pitaniya' in cat_name.lower():
+                                display_name = 'Блоки питания'
+                            elif 'memory' in cat_name.lower() or 'pamyati' in cat_name.lower() or 'ram' in cat_name.lower():
+                                display_name = 'Модули памяти'
+                            elif 'case' in cat_name.lower() or 'korpus' in cat_name.lower():
+                                display_name = 'Корпуса'
+                            elif 'cooler' in cat_name.lower() or 'cooling' in cat_name.lower():
+                                display_name = 'Кулеры для процессора'
+                            elif 'ssd' in cat_name.lower():
+                                display_name = 'SSD накопители'
+                            elif 'hdd' in cat_name.lower() or 'hard' in cat_name.lower():
+                                display_name = 'Жесткие диски'
+                            else:
+                                # Делаем первую букву заглавной
+                                display_name = cat_name.replace('_', ' ').replace('-', ' ').title()
+                            
+                            dns_categories.append({
+                                'name': display_name,
+                                'count': len(cat_products),
+                                'file': cat_file,
+                                'slug': cat_name
+                            })
+                            # Add these products to the overall results
+                            dns_results.extend(cat_products)
+                    except Exception as e:
+                        logger.error(f'Ошибка чтения категории DNS {cat_name}: {str(e)}')
+        
+        # Если все еще нет результатов, пробуем найти основной файл product_data.json из старой структуры
         if not dns_categories:
             dns_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'product_data.json')
             if os.path.exists(dns_file_path):
@@ -421,7 +479,8 @@ def scrape():
                         # Логгируем загруженные данные
                         logger.info(f"Загружен продукт DNS: {item.get('name')}")
             else:
-                logger.warning(f"Файл результатов DNS парсера не найден по пути: {dns_file_path}")
+                logger.warning(f"Файл результатов DNS парсера не найден ни в локальных данных, ни в старой структуре")
+                
     except Exception as e:
         logger.error(f'Ошибка чтения результатов DNS парсера: {str(e)}')
         flash(f'Ошибка чтения результатов DNS парсера: {str(e)}', 'warning')
