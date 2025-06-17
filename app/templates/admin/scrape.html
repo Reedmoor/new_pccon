@@ -198,11 +198,13 @@
             <div class="card-body">
                 <p>Управление данными в базе и импорт собранных данных.</p>
                 
-                <!-- Статистика товаров -->
+                <!-- Информация о поступлениях товаров -->
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <h6><i class="fas fa-chart-bar me-2"></i>Статистика товаров в базе данных:</h6>
-                        <div class="row text-center">
+                        <h6><i class="fas fa-box me-2"></i>Информация о поступлениях товаров:</h6>
+                        
+                        <!-- Общая статистика -->
+                        <div class="row text-center mb-3">
                             <div class="col-md-3">
                                 <div class="card border-primary">
                                     <div class="card-body p-2">
@@ -214,25 +216,51 @@
                             <div class="col-md-3">
                                 <div class="card border-success">
                                     <div class="card-body p-2">
-                                        <h5 class="text-success mb-1" id="processorCount">Загрузка...</h5>
-                                        <small class="text-muted">Процессоры</small>
+                                        <h5 class="text-success mb-1" id="lastImportDate">Загрузка...</h5>
+                                        <small class="text-muted">Последний импорт</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card border-warning">
                                     <div class="card-body p-2">
-                                        <h5 class="text-warning mb-1" id="gpuCount">Загрузка...</h5>
-                                        <small class="text-muted">Видеокарты</small>
+                                        <h5 class="text-warning mb-1" id="categoriesCount">Загрузка...</h5>
+                                        <small class="text-muted">Категорий</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card border-info">
                                     <div class="card-body p-2">
-                                        <h5 class="text-info mb-1" id="motherboardCount">Загрузка...</h5>
-                                        <small class="text-muted">Материнские платы</small>
+                                        <h5 class="text-info mb-1" id="totalImports">Загрузка...</h5>
+                                        <small class="text-muted">Всего импортов</small>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Статистика по категориям -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <h6>Товары по категориям:</h6>
+                                <div id="categoriesStats" class="small">
+                                    <div class="text-muted">Загрузка...</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>История импортов:</h6>
+                                <div id="importHistory" class="small" style="max-height: 200px; overflow-y: auto;">
+                                    <div class="text-muted">Загрузка...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Последние добавленные товары -->
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <h6>Последние добавленные товары:</h6>
+                                <div id="recentProducts" class="small" style="max-height: 150px; overflow-y: auto;">
+                                    <div class="text-muted">Загрузка...</div>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +275,7 @@
                         <i class="fas fa-trash me-2"></i>Очистить базу данных
                     </button>
                     <button type="button" class="btn btn-success" onclick="loadProductStats()">
-                        <i class="fas fa-refresh me-2"></i>Обновить статистику
+                        <i class="fas fa-refresh me-2"></i>Обновить информацию
                     </button>
                 </div>
             </div>
@@ -284,29 +312,108 @@ function confirmClearDatabase() {
 }
 
 function loadProductStats() {
-    // Загружаем статистику товаров
-    fetch('/admin/api/product-stats')
+    // Загружаем информацию о поступлениях товаров
+    fetch('/admin/api/product-arrivals')
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            document.getElementById('totalProducts').textContent = data.total || 0;
-            document.getElementById('processorCount').textContent = data.processors || 0;
-            document.getElementById('gpuCount').textContent = data.graphics_cards || 0;
-            document.getElementById('motherboardCount').textContent = data.motherboards || 0;
+            // Обновляем общую статистику
+            document.getElementById('totalProducts').textContent = data.total_products || 0;
+            document.getElementById('categoriesCount').textContent = data.categories_stats.length || 0;
+            document.getElementById('totalImports').textContent = data.import_history.length || 0;
+            
+            // Определяем дату последнего импорта
+            if (data.import_history.length > 0) {
+                document.getElementById('lastImportDate').textContent = data.import_history[0].last_update;
+            } else {
+                document.getElementById('lastImportDate').textContent = 'Нет данных';
+            }
+            
+            // Статистика по категориям
+            let categoriesHtml = '';
+            if (data.categories_stats.length > 0) {
+                data.categories_stats.forEach(cat => {
+                    categoriesHtml += `
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span>${cat.name}</span>
+                            <span class="badge bg-primary">${cat.count}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                categoriesHtml = '<div class="text-muted">Нет данных</div>';
+            }
+            document.getElementById('categoriesStats').innerHTML = categoriesHtml;
+            
+            // История импортов
+            let historyHtml = '';
+            if (data.import_history.length > 0) {
+                data.import_history.forEach(imp => {
+                    historyHtml += `
+                        <div class="border-bottom py-1 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>${imp.source}</strong> - ${imp.category}
+                                    <div class="text-muted" style="font-size: 0.8em;">${imp.last_update}</div>
+                                </div>
+                                <span class="badge bg-secondary">${imp.count}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                historyHtml = '<div class="text-muted">Нет данных об импортах</div>';
+            }
+            document.getElementById('importHistory').innerHTML = historyHtml;
+            
+            // Последние товары
+            let recentHtml = '';
+            if (data.recent_products.length > 0) {
+                data.recent_products.forEach(product => {
+                    let priceText = product.price > 0 ? `${product.price} ₽` : 'Нет цены';
+                    recentHtml += `
+                        <div class="border-bottom py-1 mb-1">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div style="flex: 1;">
+                                    <div><strong>${product.name}</strong></div>
+                                    <div class="text-muted" style="font-size: 0.8em;">
+                                        ${product.vendor} | ${product.type}
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-success">${priceText}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                recentHtml = '<div class="text-muted">Нет товаров</div>';
+            }
+            document.getElementById('recentProducts').innerHTML = recentHtml;
+            
         } else {
-            console.error('Ошибка загрузки статистики:', data.message);
+            console.error('Ошибка загрузки информации:', data.message);
+            showErrorState();
         }
     })
     .catch(error => {
         console.error('Ошибка:', error);
-        document.getElementById('totalProducts').textContent = 'Ошибка';
-        document.getElementById('processorCount').textContent = 'Ошибка';
-        document.getElementById('gpuCount').textContent = 'Ошибка';
-        document.getElementById('motherboardCount').textContent = 'Ошибка';
+        showErrorState();
     });
 }
 
-// Загружаем статистику при загрузке страницы
+function showErrorState() {
+    document.getElementById('totalProducts').textContent = 'Ошибка';
+    document.getElementById('lastImportDate').textContent = 'Ошибка';
+    document.getElementById('categoriesCount').textContent = 'Ошибка';
+    document.getElementById('totalImports').textContent = 'Ошибка';
+    document.getElementById('categoriesStats').innerHTML = '<div class="text-danger">Ошибка загрузки</div>';
+    document.getElementById('importHistory').innerHTML = '<div class="text-danger">Ошибка загрузки</div>';
+    document.getElementById('recentProducts').innerHTML = '<div class="text-danger">Ошибка загрузки</div>';
+}
+
+// Загружаем информацию о поступлениях при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     loadProductStats();
 });

@@ -364,10 +364,36 @@ def scrape():
                 try:
                     with open(cat_file, 'r', encoding='utf-8') as f:
                         cat_products = json.load(f)
+                        
+                        # Отображаемое имя категории DNS
+                        display_name = cat_name
+                        if 'videokarty' in cat_name.lower() or 'gpu' in cat_name.lower():
+                            display_name = 'Видеокарты'
+                        elif 'processor' in cat_name.lower() or 'cpu' in cat_name.lower():
+                            display_name = 'Процессоры'
+                        elif 'motherboard' in cat_name.lower() or 'materinskie' in cat_name.lower():
+                            display_name = 'Материнские платы'
+                        elif 'power' in cat_name.lower() or 'pitaniya' in cat_name.lower():
+                            display_name = 'Блоки питания'
+                        elif 'memory' in cat_name.lower() or 'pamyati' in cat_name.lower() or 'ram' in cat_name.lower():
+                            display_name = 'Модули памяти'
+                        elif 'case' in cat_name.lower() or 'korpus' in cat_name.lower():
+                            display_name = 'Корпуса'
+                        elif 'cooler' in cat_name.lower() or 'cooling' in cat_name.lower():
+                            display_name = 'Кулеры для процессора'
+                        elif 'ssd' in cat_name.lower():
+                            display_name = 'SSD накопители'
+                        elif 'hdd' in cat_name.lower() or 'hard' in cat_name.lower():
+                            display_name = 'Жесткие диски'
+                        else:
+                            # Делаем первую букву заглавной
+                            display_name = cat_name.replace('_', ' ').replace('-', ' ').title()
+                        
                         dns_categories.append({
-                            'name': cat_name,
+                            'name': display_name,
                             'count': len(cat_products),
-                            'file': cat_file
+                            'file': cat_file,
+                            'slug': cat_name
                         })
                         # Add these products to the overall results
                         dns_results.extend(cat_products)
@@ -1192,60 +1218,134 @@ def clear_database():
             'message': f'Ошибка при очистке базы данных: {str(e)}'
         }), 500
 
-@admin_bp.route('/product-arrivals')
+@admin_bp.route('/api/product-arrivals')
 @login_required
 @admin_required
-def product_arrivals():
-    """Страница со списком поступления товаров"""
+def get_product_arrivals():
+    """API endpoint для получения информации о поступлениях товаров"""
     try:
-        # Получаем товары, отсортированные по дате создания (последние добавленные)
-        # Поскольку у нас нет поля created_at, используем id как приблизительный индикатор
-        recent_products = UnifiedProduct.query.order_by(UnifiedProduct.id.desc()).limit(100).all()
+        # Получаем статистику по типам товаров
+        total_products = UnifiedProduct.query.count()
         
-        # Группируем по типу продукта
-        products_by_type = {}
+        # Статистика по категориям
+        categories_stats = []
+        product_types = ['processor', 'graphics_card', 'motherboard', 'ram', 'hard_drive', 'power_supply', 'cooler', 'case']
+        
+        for product_type in product_types:
+            count = UnifiedProduct.query.filter_by(product_type=product_type).count()
+            if count > 0:
+                # Получаем последний добавленный товар этого типа
+                last_product = UnifiedProduct.query.filter_by(product_type=product_type).order_by(UnifiedProduct.id.desc()).first()
+                
+                # Определяем русское название
+                type_names = {
+                    'processor': 'Процессоры',
+                    'graphics_card': 'Видеокарты', 
+                    'motherboard': 'Материнские платы',
+                    'ram': 'Оперативная память',
+                    'hard_drive': 'Жесткие диски',
+                    'power_supply': 'Блоки питания',
+                    'cooler': 'Кулеры',
+                    'case': 'Корпуса'
+                }
+                
+                categories_stats.append({
+                    'type': product_type,
+                    'name': type_names.get(product_type, product_type.title()),
+                    'count': count,
+                    'last_id': last_product.id if last_product else None,
+                    'last_name': last_product.product_name if last_product else None
+                })
+        
+        # Получаем последние 10 добавленных товаров
+        recent_products = UnifiedProduct.query.order_by(UnifiedProduct.id.desc()).limit(10).all()
+        recent_list = []
         for product in recent_products:
-            try:
-                product_type = product.product_type or 'unknown'
-                if product_type not in products_by_type:
-                    products_by_type[product_type] = []
-                products_by_type[product_type].append(product)
-            except Exception as e:
-                logger.error(f"Ошибка обработки продукта {product.id}: {e}")
-                continue
+            recent_list.append({
+                'id': product.id,
+                'name': product.product_name[:50] + '...' if len(product.product_name) > 50 else product.product_name,
+                'type': product.product_type,
+                'vendor': product.vendor,
+                'price': product.price_discounted or product.price_original or 0
+            })
         
-        # Статистика по поступлениям
-        total_products = UnifiedProduct.query.count()
+        # Проверяем наличие файлов парсеров для определения последних импортов
+        import_info = []
         
-        return render_template('admin/product_arrivals.html', 
-                             products_by_type=products_by_type,
-                             total_products=total_products,
-                             recent_count=len(recent_products))
-    except Exception as e:
-        logger.error(f"Ошибка в product_arrivals: {e}")
-        flash(f'Ошибка при загрузке страницы поступлений: {str(e)}', 'danger')
-        return redirect(url_for('admin.dashboard'))
-
-@admin_bp.route('/api/product-stats')
-@login_required
-@admin_required
-def get_product_stats():
-    """API endpoint для получения статистики товаров"""
-    try:
-        total_products = UnifiedProduct.query.count()
-        processors = UnifiedProduct.query.filter_by(product_type='processor').count()
-        graphics_cards = UnifiedProduct.query.filter_by(product_type='graphics_card').count()
-        motherboards = UnifiedProduct.query.filter_by(product_type='motherboard').count()
+        # Проверяем DNS файлы
+        dns_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing')
+        dns_categories_dir = os.path.join(dns_parser_dir, 'categories')
+        if os.path.exists(dns_categories_dir):
+            category_files = glob.glob(os.path.join(dns_categories_dir, "product_data_*.json"))
+            for cat_file in category_files:
+                try:
+                    file_stat = os.stat(cat_file)
+                    import_time = datetime.fromtimestamp(file_stat.st_mtime)
+                    cat_name = os.path.basename(cat_file).replace('product_data_', '').replace('.json', '')
+                    
+                    with open(cat_file, 'r', encoding='utf-8') as f:
+                        cat_products = json.load(f)
+                    
+                    import_info.append({
+                        'source': 'DNS',
+                        'category': cat_name.replace('_', ' ').title(),
+                        'count': len(cat_products),
+                        'last_update': import_time.strftime('%d.%m.%Y %H:%M'),
+                        'timestamp': import_time.timestamp()
+                    })
+                except Exception as e:
+                    logger.error(f"Ошибка чтения файла {cat_file}: {e}")
+        
+        # Проверяем Citilink файлы
+        citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
+        if os.path.exists(citilink_data_dir):
+            for category_dir in os.listdir(citilink_data_dir):
+                cat_dir_path = os.path.join(citilink_data_dir, category_dir)
+                if os.path.isdir(cat_dir_path):
+                    cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
+                    if os.path.exists(cat_products_file):
+                        try:
+                            file_stat = os.stat(cat_products_file)
+                            import_time = datetime.fromtimestamp(file_stat.st_mtime)
+                            
+                            with open(cat_products_file, 'r', encoding='utf-8') as f:
+                                cat_products = json.load(f)
+                            
+                            # Определяем читаемое имя категории
+                            display_names = {
+                                'videokarty': 'Видеокарты',
+                                'processory': 'Процессоры',
+                                'materinskie-platy': 'Материнские платы',
+                                'bloki-pitaniya': 'Блоки питания',
+                                'moduli-pamyati': 'Модули памяти',
+                                'korpusa': 'Корпуса',
+                                'sistemy-ohlazhdeniya-processora': 'Кулеры',
+                                'ssd-nakopiteli': 'SSD накопители',
+                                'zhestkie-diski': 'Жесткие диски'
+                            }
+                            
+                            import_info.append({
+                                'source': 'Citilink',
+                                'category': display_names.get(category_dir, category_dir.title()),
+                                'count': len(cat_products),
+                                'last_update': import_time.strftime('%d.%m.%Y %H:%M'),
+                                'timestamp': import_time.timestamp()
+                            })
+                        except Exception as e:
+                            logger.error(f"Ошибка чтения файла Citilink {cat_products_file}: {e}")
+        
+        # Сортируем импорты по времени (новые сначала)
+        import_info.sort(key=lambda x: x['timestamp'], reverse=True)
         
         return jsonify({
             'success': True,
-            'total': total_products,
-            'processors': processors,
-            'graphics_cards': graphics_cards,
-            'motherboards': motherboards
+            'total_products': total_products,
+            'categories_stats': categories_stats,
+            'recent_products': recent_list,
+            'import_history': import_info[:20]  # Последние 20 импортов
         })
     except Exception as e:
-        logger.error(f"Ошибка получения статистики товаров: {e}")
+        logger.error(f"Ошибка получения информации о поступлениях: {e}")
         return jsonify({
             'success': False,
             'message': str(e)
