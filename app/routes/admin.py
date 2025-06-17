@@ -7,7 +7,7 @@ from datetime import datetime
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, send_file, current_app
 from werkzeug.utils import secure_filename
 from app import db
-from app.models.models import UnifiedProduct, User
+from app.models.models import UnifiedProduct, User, Configuration
 from app.forms.admin import UnifiedProductForm
 from app.auth import login_required, admin_required
 from app.logger import get_logger
@@ -1168,8 +1168,16 @@ def fix_citilink_json():
 def clear_database():
     """Очистка всех данных о продуктах из базы данных"""
     try:
-        # Удаляем все продукты
+        # Импортируем модель Configuration
+        from app.models.models import Configuration
+        
+        # Сначала удаляем все конфигурации (чтобы избежать ошибок внешних ключей)
+        Configuration.query.delete()
+        
+        # Затем удаляем все продукты
         UnifiedProduct.query.delete()
+        
+        # Подтверждаем изменения
         db.session.commit()
         
         return jsonify({
@@ -1189,22 +1197,56 @@ def clear_database():
 @admin_required
 def product_arrivals():
     """Страница со списком поступления товаров"""
-    # Получаем товары, отсортированные по дате создания (последние добавленные)
-    # Поскольку у нас нет поля created_at, используем id как приблизительный индикатор
-    recent_products = UnifiedProduct.query.order_by(UnifiedProduct.id.desc()).limit(100).all()
-    
-    # Группируем по типу продукта
-    products_by_type = {}
-    for product in recent_products:
-        product_type = product.product_type
-        if product_type not in products_by_type:
-            products_by_type[product_type] = []
-        products_by_type[product_type].append(product)
-    
-    # Статистика по поступлениям
-    total_products = UnifiedProduct.query.count()
-    
-    return render_template('admin/product_arrivals.html', 
-                         products_by_type=products_by_type,
-                         total_products=total_products,
-                         recent_count=len(recent_products)) 
+    try:
+        # Получаем товары, отсортированные по дате создания (последние добавленные)
+        # Поскольку у нас нет поля created_at, используем id как приблизительный индикатор
+        recent_products = UnifiedProduct.query.order_by(UnifiedProduct.id.desc()).limit(100).all()
+        
+        # Группируем по типу продукта
+        products_by_type = {}
+        for product in recent_products:
+            try:
+                product_type = product.product_type or 'unknown'
+                if product_type not in products_by_type:
+                    products_by_type[product_type] = []
+                products_by_type[product_type].append(product)
+            except Exception as e:
+                logger.error(f"Ошибка обработки продукта {product.id}: {e}")
+                continue
+        
+        # Статистика по поступлениям
+        total_products = UnifiedProduct.query.count()
+        
+        return render_template('admin/product_arrivals.html', 
+                             products_by_type=products_by_type,
+                             total_products=total_products,
+                             recent_count=len(recent_products))
+    except Exception as e:
+        logger.error(f"Ошибка в product_arrivals: {e}")
+        flash(f'Ошибка при загрузке страницы поступлений: {str(e)}', 'danger')
+        return redirect(url_for('admin.dashboard'))
+
+@admin_bp.route('/api/product-stats')
+@login_required
+@admin_required
+def get_product_stats():
+    """API endpoint для получения статистики товаров"""
+    try:
+        total_products = UnifiedProduct.query.count()
+        processors = UnifiedProduct.query.filter_by(product_type='processor').count()
+        graphics_cards = UnifiedProduct.query.filter_by(product_type='graphics_card').count()
+        motherboards = UnifiedProduct.query.filter_by(product_type='motherboard').count()
+        
+        return jsonify({
+            'success': True,
+            'total': total_products,
+            'processors': processors,
+            'graphics_cards': graphics_cards,
+            'motherboards': motherboards
+        })
+    except Exception as e:
+        logger.error(f"Ошибка получения статистики товаров: {e}")
+        return jsonify({
+            'success': False,
+            'message': str(e)
+        }), 500 
