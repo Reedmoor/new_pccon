@@ -103,8 +103,8 @@
                         
                         <!-- Улучшенная остановка -->
                         <div class="btn-group" role="group">
-                            <form method="POST" action="{{ url_for('admin.stop_citilink_parser') }}" class="d-inline" style="flex: 1;">
-                                <button type="submit" class="btn btn-warning w-100" onclick="return confirm('Остановить парсер Citilink? Все данные будут сохранены и импортированы в БД.');">
+                            <form method="POST" action="{{ url_for('admin.stop_citilink_parser') }}" class="d-inline" style="flex: 1;" onsubmit="return handleStopParser(this)">
+                                <button type="submit" class="btn btn-warning w-100" id="stop-parser-btn">
                                     <i class="fas fa-stop me-2"></i>Остановить с сохранением
                                 </button>
                             </form>
@@ -534,6 +534,11 @@ function showParserStatus(status) {
             alertClass = 'alert-success';
             startBtn.disabled = false;
             break;
+        case 'stopped':
+            statusMessage = 'Парсер остановлен пользователем';
+            alertClass = 'alert-warning';
+            startBtn.disabled = false;
+            break;
         case 'failed':
             statusMessage = 'Парсинг завершился с ошибкой';
             alertClass = 'alert-danger';
@@ -669,6 +674,23 @@ function loadLogs() {
 
 function refreshLogs() {
     loadLogs();
+}
+
+function handleStopParser(form) {
+    // Подтверждение остановки
+    if (!confirm('Остановить парсер Citilink? Все собранные данные будут сохранены и импортированы в БД.')) {
+        return false;
+    }
+    
+    // Блокируем кнопку и показываем процесс
+    const stopBtn = document.getElementById('stop-parser-btn');
+    const originalContent = stopBtn.innerHTML;
+    
+    stopBtn.disabled = true;
+    stopBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Остановка парсера...';
+    
+    // Возвращаем true для отправки формы
+    return true;
 }
 </script>
 
