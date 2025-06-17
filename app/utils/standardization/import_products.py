@@ -98,32 +98,57 @@ def detect_vendor_from_url(url):
     else:
         return 'unknown'
 
-def detect_product_type(product_name):
-    """Detect product type from product name"""
+def detect_product_type(product_name, product_categories=None):
+    """Detect product type from product name and categories"""
     if not product_name:
-        return 'case'  # Default to case for korpusa category
+        return 'other'
     
     name_lower = product_name.lower()
     
-    # More specific keyword matching
-    if any(keyword in name_lower for keyword in ['корпус', 'case', 'tower', 'chassis']):
-        return 'case'
-    elif any(keyword in name_lower for keyword in ['процессор', 'cpu', 'processor', 'intel', 'amd ryzen']):
-        return 'processor'
-    elif any(keyword in name_lower for keyword in ['видеокарта', 'gpu', 'graphics', 'geforce', 'radeon']):
+    # Сначала проверяем категории, если они есть
+    if product_categories:
+        for category in product_categories:
+            cat_name = category.get('name', '').lower()
+            if 'видеокарт' in cat_name or 'gpu' in cat_name or 'graphics' in cat_name:
+                return 'graphics_card'
+            elif 'процессор' in cat_name or 'cpu' in cat_name or 'processor' in cat_name:
+                return 'processor'
+            elif 'материнск' in cat_name or 'motherboard' in cat_name or 'mainboard' in cat_name:
+                return 'motherboard'
+            elif 'оперативн' in cat_name and 'памят' in cat_name:
+                return 'ram'
+            elif 'память' in cat_name and 'dimm' in cat_name:
+                return 'ram'
+            elif 'корпус' in cat_name or 'case' in cat_name:
+                return 'case'
+            elif 'блок' in cat_name and 'питан' in cat_name:
+                return 'power_supply'
+            elif 'кулер' in cat_name or 'охлажден' in cat_name or 'cooler' in cat_name:
+                return 'cooler'
+            elif 'ssd' in cat_name or ('диск' in cat_name) or 'накопител' in cat_name:
+                return 'hard_drive'
+    
+    # Если категории не помогли, анализируем название товара
+    if any(keyword in name_lower for keyword in ['видеокарта', 'gpu', 'graphics', 'geforce', 'radeon', 'gtx', 'rtx']):
         return 'graphics_card'
-    elif any(keyword in name_lower for keyword in ['материнская плата', 'motherboard', 'mainboard']):
+    elif any(keyword in name_lower for keyword in ['процессор', 'cpu', 'processor']):
+        return 'processor'
+    elif any(keyword in name_lower for keyword in ['intel core', 'amd ryzen', 'intel pentium', 'amd fx']):
+        return 'processor'
+    elif any(keyword in name_lower for keyword in ['материнская плата', 'motherboard', 'mainboard', 'мат. плата']):
         return 'motherboard'
-    elif any(keyword in name_lower for keyword in ['блок питания', 'power supply', 'psu', 'вт']):
+    elif any(keyword in name_lower for keyword in ['блок питания', 'power supply', 'psu']) or (name_lower.endswith(' вт') or ' вт ' in name_lower):
         return 'power_supply'
-    elif any(keyword in name_lower for keyword in ['оперативная память', 'ram', 'memory', 'ddr']):
+    elif any(keyword in name_lower for keyword in ['оперативная память', 'ram', 'memory', 'ddr4', 'ddr5', 'dimm']):
         return 'ram'
-    elif any(keyword in name_lower for keyword in ['кулер', 'cooler', 'охлаждение']):
+    elif any(keyword in name_lower for keyword in ['кулер', 'cooler', 'охлаждение', 'вентилятор']):
         return 'cooler'
-    elif any(keyword in name_lower for keyword in ['ssd', 'hdd', 'накопитель', 'диск']):
+    elif any(keyword in name_lower for keyword in ['ssd', 'hdd', 'накопитель', 'диск', 'жесткий']):
         return 'hard_drive'
+    elif any(keyword in name_lower for keyword in ['корпус', 'case', 'tower', 'chassis']):
+        return 'case'
     else:
-        return 'case'  # Default to case for korpusa
+        return 'other'
 
 def import_products_from_data(products_data, source='local_parser'):
     """
@@ -151,7 +176,8 @@ def import_products_from_data(products_data, source='local_parser'):
                 print(f"📦 Обрабатываем товар {idx+1}: {product.get('name', 'Безымянный товар')} от {vendor}")
                 
                 # Detect product type
-                product_type = product.get('detected_product_type') or detect_product_type(product.get('name', ''))
+                product_categories = product.get('categories', [])
+                product_type = product.get('detected_product_type') or detect_product_type(product.get('name', ''), product_categories)
                 
                 # Standardize product data
                 std_product = standardize_characteristics(product, vendor)
