@@ -337,8 +337,16 @@ def filter_components():
                 # В случае ошибки преобразования пропускаем этот компонент
                 continue
         
-        # Определяем цену для отображения (скидочная или оригинальная)
-        price = product.price_discounted if product.price_discounted is not None else product.price_original
+        # Определяем цену для отображения
+        price = None
+        if product.price_discounted is not None and product.price_discounted > 0:
+            price = product.price_discounted
+        elif product.price_original is not None and product.price_original > 0:
+            price = product.price_original
+        
+        # Пропускаем продукты без цены
+        if price is None:
+            continue
         
         # Добавляем продукт в результаты
         filtered_results.append({
@@ -381,13 +389,21 @@ def search_components():
     # Формируем ответ
     result = []
     for component in components:
-        # Используем discounted цену, если доступна, иначе original
-        price = component.price_discounted if component.price_discounted is not None else component.price_original
+        # Определяем цену для отображения
+        price = None
+        if component.price_discounted is not None and component.price_discounted > 0:
+            price = component.price_discounted
+        elif component.price_original is not None and component.price_original > 0:
+            price = component.price_original
+            
+        # Пропускаем компоненты без цены
+        if price is None:
+            continue
         
         result.append({
             'id': component.id,
             'name': component.product_name,
-            'price': price or 0,
+            'price': price,
             'vendor': component.vendor,
             'product_url': component.product_url
         })

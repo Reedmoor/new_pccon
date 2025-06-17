@@ -342,12 +342,15 @@
                         // Добавляем найденные варианты
                         response.components.forEach(function(component) {
                             // Форматируем цену с разделителем тысяч
-                            const formattedPrice = new Intl.NumberFormat('ru-RU').format(component.price);
+                            let priceText = 'Цена не указана';
+                            if (component.price !== null && component.price > 0) {
+                                priceText = new Intl.NumberFormat('ru-RU').format(component.price) + ' ₽';
+                            }
                             
                             // Создаем опцию с иконкой магазина
                             const option = $('<option></option>')
                                 .attr('value', component.id)
-                                .text(component.name + ' (' + formattedPrice + ' ₽)');
+                                .text(component.name + ' (' + priceText + ')');
                             
                             // Добавляем атрибуты с данными о магазине для использования при отображении
                             option.attr('data-vendor', component.vendor);
