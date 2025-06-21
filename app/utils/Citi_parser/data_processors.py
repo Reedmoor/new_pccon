@@ -14,7 +14,7 @@ def find_key_by_prefix(data, prefix):
     return None
 
 # Функция для собирание данных об товаре в массив для будущего JSON
-def product_answer(product, first_product, products_file='Товары.json'):
+def product_answer(product, first_product, products_file='Товары.json', fetch_detailed_data=True):
     # Проверяем флаг остановки в начале обработки продукта
     check_stop_flag()
 
@@ -23,19 +23,27 @@ def product_answer(product, first_product, products_file='Товары.json'):
     product_url = f"https://www.citilink.ru/product/{product['slug']}-{product['id']}/"
 
     product_categories = []
-    response = requests.get(product_url)
-    if response.status_code == 200:
-        tree = html.fromstring(response.content)
-        breadcrumbs = tree.xpath("//div[contains(@itemtype, 'BreadcrumbList')]/div/a")
+    
+    # Быстрая проверка остановки перед парсингом страницы
+    try:
+        check_stop_flag()
+        response = requests.get(product_url, timeout=10)
+        if response.status_code == 200:
+            tree = html.fromstring(response.content)
+            breadcrumbs = tree.xpath("//div[contains(@itemtype, 'BreadcrumbList')]/div/a")
 
-        for breadcrumb in breadcrumbs:
-            breadcrumb_url = f"https://www.citilink.ru{breadcrumb.get('href')}"
-            breadcrumb_name = breadcrumb.xpath("./span/text()")[0]  # Получаем текст из <span>
+            for breadcrumb in breadcrumbs:
+                breadcrumb_url = f"https://www.citilink.ru{breadcrumb.get('href')}"
+                breadcrumb_name = breadcrumb.xpath("./span/text()")[0]  # Получаем текст из <span>
 
-            product_categories.append({
-                "url": breadcrumb_url,
-                "name": breadcrumb_name
-            })
+                product_categories.append({
+                    "url": breadcrumb_url,
+                    "name": breadcrumb_name
+                })
+    except ParserStoppedException:
+        raise
+    except Exception as e:
+        logging.warning(f"Не удалось получить категории для продукта {product_id}: {e}")
 
     product_name = product['name']
     product_articul = product['id']
@@ -55,48 +63,74 @@ def product_answer(product, first_product, products_file='Товары.json'):
         if images['sources']:
             product_images.append(images['sources'][-1]['url'])
 
-    # Проверяем флаг остановки перед запросом характеристик
-    check_stop_flag()
-    properties_request_data = request(url, PROPERTIES_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"характеристик товара ID: {product['id']}")
+    # Инициализируем данные по умолчанию
     product_properties_data = []
-
-    for properties_grop in properties_request_data['data']['product']['propertiesGroup']:
-        properties_group_data = []
-        properties_group_name = properties_grop['name']
-
-        for properties in properties_grop['properties']:
-            properties_grop_info = {
-                'name': properties['name'],
-                'value': properties['value']
-            }
-            properties_group_data.append(properties_grop_info)
-
-        properties_info = {
-            'name': properties_group_name,
-            'properties': properties_group_data
-        }
-        product_properties_data.append(properties_info)
-
-    # Проверяем флаг остановки перед запросом документов
-    check_stop_flag()
-    document_request_data = request(url, DOCUMENTS_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"документов товара ID: {product['id']}")
     documents_data = []
-    for certificates in document_request_data['data']['product']['documentation']['certificates']:
-        documents_data.append(certificates['url'])
-    for attachments in document_request_data['data']['product']['documentation']['attachments']:
-        documents_data.append(attachments['url'])
-
-    # Проверяем флаг остановки перед запросом рейтинга
-    check_stop_flag()
-    rating_request_data = request(url, RATING_QUERY, RATING_VARIABLE(product['id'], 1), f"рейтинга товара ID: {product['id']}")
-
-    product_key = find_key_by_prefix(rating_request_data['data'], 'product_')
-    opinions_key = find_key_by_prefix(rating_request_data['data'][product_key], 'opinions_')
-    
-    product_rating = rating_request_data['data'][product_key][opinions_key]['payload']['summary']['rating']
+    product_rating = 0
     product_rating_count = 0
-    for rating in rating_request_data['data'][product_key][opinions_key]['payload']['summary']['ratingCounters']:
-        product_rating_count += rating['count']
+
+    # Если включен режим детальных данных и парсер не остановлен
+    if fetch_detailed_data:
+        try:
+            # Проверяем флаг остановки перед запросом характеристик
+            check_stop_flag()
+            properties_request_data = request(url, PROPERTIES_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"характеристик товара ID: {product['id']}", max_retries=2)
+            
+            for properties_grop in properties_request_data['data']['product']['propertiesGroup']:
+                properties_group_data = []
+                properties_group_name = properties_grop['name']
+
+                for properties in properties_grop['properties']:
+                    properties_grop_info = {
+                        'name': properties['name'],
+                        'value': properties['value']
+                    }
+                    properties_group_data.append(properties_grop_info)
+
+                properties_info = {
+                    'name': properties_group_name,
+                    'properties': properties_group_data
+                }
+                product_properties_data.append(properties_info)
+        except ParserStoppedException:
+            logging.info(f"⏹️ Остановка при получении характеристик продукта {product_id}")
+            raise
+        except Exception as e:
+            logging.warning(f"Не удалось получить характеристики для продукта {product_id}: {e}")
+
+        try:
+            # Проверяем флаг остановки перед запросом документов
+            check_stop_flag()
+            document_request_data = request(url, DOCUMENTS_QUERY, PROPERTIES_OR_DOCUMENTS_VARIABLE(product['id']), f"документов товара ID: {product['id']}", max_retries=2)
+            
+            for certificates in document_request_data['data']['product']['documentation']['certificates']:
+                documents_data.append(certificates['url'])
+            for attachments in document_request_data['data']['product']['documentation']['attachments']:
+                documents_data.append(attachments['url'])
+        except ParserStoppedException:
+            logging.info(f"⏹️ Остановка при получении документов продукта {product_id}")
+            raise
+        except Exception as e:
+            logging.warning(f"Не удалось получить документы для продукта {product_id}: {e}")
+
+        try:
+            # Проверяем флаг остановки перед запросом рейтинга
+            check_stop_flag()
+            rating_request_data = request(url, RATING_QUERY, RATING_VARIABLE(product['id'], 1), f"рейтинга товара ID: {product['id']}", max_retries=2)
+
+            product_key = find_key_by_prefix(rating_request_data['data'], 'product_')
+            if product_key:
+                opinions_key = find_key_by_prefix(rating_request_data['data'][product_key], 'opinions_')
+                if opinions_key:
+                    product_rating = rating_request_data['data'][product_key][opinions_key]['payload']['summary']['rating']
+                    product_rating_count = 0
+                    for rating in rating_request_data['data'][product_key][opinions_key]['payload']['summary']['ratingCounters']:
+                        product_rating_count += rating['count']
+        except ParserStoppedException:
+            logging.info(f"⏹️ Остановка при получении рейтинга продукта {product_id}")
+            raise
+        except Exception as e:
+            logging.warning(f"Не удалось получить рейтинг для продукта {product_id}: {e}")
 
     product_info = {
         'id': product_id,
@@ -112,6 +146,9 @@ def product_answer(product, first_product, products_file='Товары.json'):
         'rating': product_rating,
         'reviews': product_rating_count
     }
+
+    # Финальная проверка остановки перед записью
+    check_stop_flag()
 
     # Записываем информацию о продукте в указанный файл
     with open(products_file, 'a', encoding='utf-8') as f:

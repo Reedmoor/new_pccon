@@ -304,7 +304,7 @@
                     </button>
                     <button type="button" class="btn btn-success" onclick="loadProductStats()">
                         <i class="fas fa-refresh me-2"></i>Обновить информацию
-                    </button>
+                        </button>
                 </div>
             </div>
         </div>
@@ -688,6 +688,26 @@ function handleStopParser(form) {
     
     stopBtn.disabled = true;
     stopBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Остановка парсера...';
+    
+    // Показываем уведомление об отправке запроса
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-info mt-2';
+    alertDiv.innerHTML = '<i class="fas fa-info-circle me-2"></i>Запрос на остановку отправлен. Парсер остановится в течение нескольких секунд...';
+    form.parentNode.appendChild(alertDiv);
+    
+    // Убираем уведомление через 10 секунд
+    setTimeout(() => {
+        if (alertDiv.parentNode) {
+            alertDiv.parentNode.removeChild(alertDiv);
+        }
+        // Восстанавливаем кнопку, если страница не обновилась
+        if (stopBtn.disabled) {
+            stopBtn.disabled = false;
+            stopBtn.innerHTML = originalContent;
+        }
+    }, 10000);
+    
+    console.log('Отправляется запрос на остановку парсера Citilink');
     
     // Возвращаем true для отправки формы
     return true;

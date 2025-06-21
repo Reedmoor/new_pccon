@@ -35,6 +35,8 @@ def ensure_compatibility_characteristics(product_data):
             characteristics['form_factor'] = ''
         if 'memory_type' not in characteristics:
             characteristics['memory_type'] = ''
+        if 'memory_form_factor' not in characteristics:
+            characteristics['memory_form_factor'] = ''
             
     elif product_type == 'processor':
         if 'socket' not in characteristics:
@@ -59,6 +61,8 @@ def ensure_compatibility_characteristics(product_data):
             characteristics['memory_type'] = ''
         if 'memory_size' not in characteristics:
             characteristics['memory_size'] = 0
+        if 'memory_form_factor' not in characteristics:
+            characteristics['memory_form_factor'] = ''
             
     elif product_type == 'power_supply':
         if 'wattage' not in characteristics:

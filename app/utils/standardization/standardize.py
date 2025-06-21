@@ -69,6 +69,7 @@ CHARACTERISTIC_MAPPING = {
     "Форм-фактор": "form_factor",
     "Поддерживаемые процессоры": "supported_cpus",
     "Поддерживаемые типы памяти": "memory_type",
+    "Форм-фактор поддерживаемой памяти": "memory_form_factor",
     
     # CPU specific mappings
     "Сокет процессора": "socket",
@@ -84,6 +85,7 @@ CHARACTERISTIC_MAPPING = {
     "Тип оперативной памяти": "memory_type",
     "Частота памяти": "memory_clock",
     "Количество модулей в комплекте": "module_count",
+    "Тип модуля памяти": "memory_form_factor",
     
     # Case specific mappings
     "Форм-фактор материнской платы": "supported_form_factors",
@@ -202,6 +204,18 @@ VALUE_MAPPING = {
         r"(\d+)\s*ТБ": lambda x: int(x) * 1000,
         r"(\d+)\s*TB": lambda x: int(x) * 1000,
         r"(\d+)": lambda x: int(x)
+    },
+    # Normalize memory form factors
+    "memory_form_factor": {
+        r"DIMM": lambda x: "DIMM",
+        r"UDIMM": lambda x: "DIMM", 
+        r"Unbuffered DIMM": lambda x: "DIMM",
+        r"SO-DIMM": lambda x: "SO-DIMM",
+        r"SODIMM": lambda x: "SO-DIMM",
+        r"SO DIMM": lambda x: "SO-DIMM",
+        r"RDIMM": lambda x: "RDIMM",
+        r"Registered DIMM": lambda x: "RDIMM",
+        r"ECC": lambda x: "ECC"
     }
 }
 

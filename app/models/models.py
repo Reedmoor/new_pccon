@@ -90,6 +90,15 @@ class UnifiedProduct(db.Model):
             return chars.get('memory_type', '')
         return None
     
+    def get_memory_form_factor(self):
+        """Get memory form factor (DIMM, SO-DIMM, etc.)"""
+        chars = self.get_characteristics()
+        if self.product_type == 'motherboard':
+            return chars.get('memory_form_factor', '')
+        elif self.product_type == 'ram':
+            return chars.get('memory_form_factor', '')
+        return None
+    
     def get_power_use(self):
         chars = self.get_characteristics()
         if self.product_type in ['processor', 'graphics_card', 'cooler', 'ram']:
@@ -121,6 +130,11 @@ class UnifiedProduct(db.Model):
         if (self.product_type == 'ram' and other_product.product_type == 'motherboard') or \
            (self.product_type == 'motherboard' and other_product.product_type == 'ram'):
             result = self.check_memory_compatibility(other_product)
+            if result is not True:  # If result is an error message
+                return result
+            
+            # Check memory form factor compatibility (DIMM vs SO-DIMM)
+            result = self.check_memory_form_factor_compatibility(other_product)
             if result is not True:  # If result is an error message
                 return result
             
@@ -208,6 +222,41 @@ class UnifiedProduct(db.Model):
                 return f"Несовместимые типы памяти: материнская плата поддерживает {my_memory_type}, а оперативная память — {other_memory_type}"
             else:
                 return f"Несовместимые типы памяти: оперативная память типа {my_memory_type}, а материнская плата поддерживает {other_memory_type}"
+        return True
+    
+    def check_memory_form_factor_compatibility(self, other_product):
+        """Check if RAM form factor is compatible with motherboard"""
+        my_memory_form_factor = self.get_memory_form_factor()
+        other_memory_form_factor = other_product.get_memory_form_factor()
+        
+        if not my_memory_form_factor or not other_memory_form_factor:
+            return True  # No form factor info, assume compatible
+        
+        # Normalize form factor names for comparison
+        def normalize_form_factor(form_factor):
+            if not form_factor:
+                return ""
+            form_factor = form_factor.lower().strip()
+            # Handle common variations
+            if form_factor in ['dimm', 'udimm', 'unbuffered dimm']:
+                return 'dimm'
+            elif form_factor in ['so-dimm', 'sodimm', 'so dimm']:
+                return 'so-dimm'
+            elif form_factor in ['ecc', 'registered', 'rdimm']:
+                return 'rdimm'
+            return form_factor
+        
+        # Normalize both form factors
+        normalized_my_ff = normalize_form_factor(my_memory_form_factor)
+        normalized_other_ff = normalize_form_factor(other_memory_form_factor)
+        
+        # Check compatibility
+        if normalized_my_ff != normalized_other_ff:
+            # Return detailed error message
+            if self.product_type == 'motherboard':
+                return f"Несовместимый форм-фактор памяти: материнская плата поддерживает {my_memory_form_factor}, а оперативная память — {other_memory_form_factor}"
+            else:
+                return f"Несовместимый форм-фактор памяти: оперативная память типа {my_memory_form_factor}, а материнская плата поддерживает {other_memory_form_factor}"
         return True
     
     def check_form_factor_compatibility(self, other_product):
