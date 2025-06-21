@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, jsonify, redirect,
 from flask_login import login_required
 from app.forms.comparison import ProductComparisonForm
 from app.utils.product_comparator import ProductComparator, get_comparator
+from app.utils.standardization.import_products import detect_product_type
 import logging
 import os
 import glob
@@ -188,58 +189,57 @@ def compare_products():
         
         # Функция для фильтрации DNS данных по категории
         def filter_dns_by_category(data, category):
-            """Фильтрует данные DNS по категории"""
+            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
             if not data:
                 return []
             
             logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
             
-            # Маппинг категорий из парсеров в унифицированные типы продуктов
-            category_mapping = {
-                # DNS категории
-                'gpu': ['Видеокарты'],
-                'cpu': ['Процессоры'],
-                'ram': ['Оперативная память'],
-                'storage': ['Жесткие диски', 'SSD M.2', 'SSD SATA'],
-                'motherboard': ['Материнские платы'],
-                'psu': ['Блоки питания'],
-                'cooler': ['Кулеры'],
-                'case': ['Корпуса']
+            # Маппинг категорий из системы сравнения в типы продуктов из import_products
+            category_to_product_type = {
+                'gpu': 'graphics_card',
+                'cpu': 'processor', 
+                'ram': 'ram',
+                'storage': 'hard_drive',
+                'motherboard': 'motherboard',
+                'psu': 'power_supply',
+                'cooler': 'cooler',
+                'case': 'case'
             }
             
-            if category not in category_mapping:
-                logger.warning(f"Категория {category} не найдена в DNS фильтрах")
+            target_product_type = category_to_product_type.get(category)
+            if not target_product_type:
+                logger.warning(f"Категория {category} не найдена в маппинге")
                 return data
             
-            filters = category_mapping[category]
-            logger.info(f"Используемые DNS фильтры для {category}: {filters}")
+            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
             filtered_data = []
             
             for item in data:
-                # Проверяем категорию товара напрямую
-                if 'category' in item and item['category'] in filters:
-                    filtered_data.append(item)
+                if not item.get('name'):
                     continue
                 
-                # Если нет категории, фильтруем по названию товара
-                if 'name' in item and item['name']:
-                    item_name = item['name'].lower()
-                    if category == 'gpu' and any(keyword in item_name for keyword in ['видеокарт', 'geforce', 'radeon', 'rtx', 'gtx']):
+                # Используем ту же функцию определения типа продукта что и при импорте
+                try:
+                    # Извлекаем категории товара для передачи в detect_product_type
+                    product_categories = []
+                    if 'categories' in item:
+                        categories = item.get('categories', [])
+                        if isinstance(categories, list):
+                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
+                        elif isinstance(categories, str):
+                            product_categories = [categories]
+                    
+                    # Определяем тип продукта используя ту же логику что и при импорте
+                    detected_type = detect_product_type(item['name'], product_categories)
+                    
+                    if detected_type == target_product_type:
                         filtered_data.append(item)
-                    elif category == 'cpu' and any(keyword in item_name for keyword in ['процессор', 'intel core', 'amd ryzen']):
-                        filtered_data.append(item)
-                    elif category == 'motherboard' and any(keyword in item_name for keyword in ['материнск', 'motherboard']):
-                        filtered_data.append(item)
-                    elif category == 'ram' and any(keyword in item_name for keyword in ['память', 'dimm', 'ddr']):
-                        filtered_data.append(item)
-                    elif category == 'storage' and any(keyword in item_name for keyword in ['ssd', 'диск', 'накопитель', 'hdd']):
-                        filtered_data.append(item)
-                    elif category == 'psu' and any(keyword in item_name for keyword in ['блок питания', 'бп']):
-                        filtered_data.append(item)
-                    elif category == 'cooler' and any(keyword in item_name for keyword in ['кулер', 'охлаждение']):
-                        filtered_data.append(item)
-                    elif category == 'case' and any(keyword in item_name for keyword in ['корпус']):
-                        filtered_data.append(item)
+                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
+                    
+                except Exception as e:
+                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
+                    continue
             
             logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
             
@@ -622,58 +622,57 @@ def quick_compare(category):
         
         # Функции фильтрации (копии из основной функции)
         def filter_dns_by_category(data, category):
-            """Фильтрует данные DNS по категории"""
+            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
             if not data:
                 return []
             
             logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
             
-            # Маппинг категорий из парсеров в унифицированные типы продуктов
-            category_mapping = {
-                # DNS категории
-                'gpu': ['Видеокарты'],
-                'cpu': ['Процессоры'],
-                'ram': ['Оперативная память'],
-                'storage': ['Жесткие диски', 'SSD M.2', 'SSD SATA'],
-                'motherboard': ['Материнские платы'],
-                'psu': ['Блоки питания'],
-                'cooler': ['Кулеры'],
-                'case': ['Корпуса']
+            # Маппинг категорий из системы сравнения в типы продуктов из import_products
+            category_to_product_type = {
+                'gpu': 'graphics_card',
+                'cpu': 'processor', 
+                'ram': 'ram',
+                'storage': 'hard_drive',
+                'motherboard': 'motherboard',
+                'psu': 'power_supply',
+                'cooler': 'cooler',
+                'case': 'case'
             }
             
-            if category not in category_mapping:
-                logger.warning(f"Категория {category} не найдена в DNS фильтрах")
+            target_product_type = category_to_product_type.get(category)
+            if not target_product_type:
+                logger.warning(f"Категория {category} не найдена в маппинге")
                 return data
             
-            filters = category_mapping[category]
-            logger.info(f"Используемые DNS фильтры для {category}: {filters}")
+            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
             filtered_data = []
             
             for item in data:
-                # Проверяем категорию товара напрямую
-                if 'category' in item and item['category'] in filters:
-                    filtered_data.append(item)
+                if not item.get('name'):
                     continue
                 
-                # Если нет категории, фильтруем по названию товара
-                if 'name' in item and item['name']:
-                    item_name = item['name'].lower()
-                    if category == 'gpu' and any(keyword in item_name for keyword in ['видеокарт', 'geforce', 'radeon', 'rtx', 'gtx']):
+                # Используем ту же функцию определения типа продукта что и при импорте
+                try:
+                    # Извлекаем категории товара для передачи в detect_product_type
+                    product_categories = []
+                    if 'categories' in item:
+                        categories = item.get('categories', [])
+                        if isinstance(categories, list):
+                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
+                        elif isinstance(categories, str):
+                            product_categories = [categories]
+                    
+                    # Определяем тип продукта используя ту же логику что и при импорте
+                    detected_type = detect_product_type(item['name'], product_categories)
+                    
+                    if detected_type == target_product_type:
                         filtered_data.append(item)
-                    elif category == 'cpu' and any(keyword in item_name for keyword in ['процессор', 'intel core', 'amd ryzen']):
-                        filtered_data.append(item)
-                    elif category == 'motherboard' and any(keyword in item_name for keyword in ['материнск', 'motherboard']):
-                        filtered_data.append(item)
-                    elif category == 'ram' and any(keyword in item_name for keyword in ['память', 'dimm', 'ddr']):
-                        filtered_data.append(item)
-                    elif category == 'storage' and any(keyword in item_name for keyword in ['ssd', 'диск', 'накопитель', 'hdd']):
-                        filtered_data.append(item)
-                    elif category == 'psu' and any(keyword in item_name for keyword in ['блок питания', 'бп']):
-                        filtered_data.append(item)
-                    elif category == 'cooler' and any(keyword in item_name for keyword in ['кулер', 'охлаждение']):
-                        filtered_data.append(item)
-                    elif category == 'case' and any(keyword in item_name for keyword in ['корпус']):
-                        filtered_data.append(item)
+                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
+                    
+                except Exception as e:
+                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
+                    continue
             
             logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
             
@@ -1020,7 +1019,7 @@ def quick_compare(category):
     except Exception as e:
         logger.error(f"Ошибка при быстром сравнении: {str(e)}")
         flash(f'Произошла ошибка: {str(e)}', 'error')
-        return redirect(url_for('comparison.index')) 
+        return redirect(url_for('comparison.index'))
 
 @comparison_bp.route('/clear-cache', methods=['POST'])
 @login_required
@@ -1049,4 +1048,243 @@ def clear_cache():
         return jsonify({
             'success': False,
             'message': f'Ошибка при очистке кэша: {str(e)}'
+        }), 500
+
+@comparison_bp.route('/api/compare/<category>')
+def api_compare(category):
+    """API endpoint для сравнения товаров по категории"""
+    try:
+        threshold = float(request.args.get('threshold', 0.6))
+        
+        # Используем ту же логику что и в quick_compare
+        logger.info(f"API сравнение категории: {category}")
+        
+        # Функция для поиска последнего файла DNS данных
+        def get_latest_dns_data_file():
+            """Находит самый последний файл local_parser_data_*.json"""
+            search_paths = [
+                'data/local_parser_data_*.json',
+                '/app/data/local_parser_data_*.json'
+            ]
+            
+            latest_file = None
+            latest_time = 0
+            
+            for path_pattern in search_paths:
+                if '*' in path_pattern:
+                    files = glob.glob(path_pattern)
+                    for file_path in files:
+                        try:
+                            file_time = os.path.getmtime(file_path)
+                            if file_time > latest_time:
+                                latest_time = file_time
+                                latest_file = file_path
+                        except Exception as e:
+                            logger.error(f"Ошибка при проверке файла {file_path}: {str(e)}")
+                else:
+                    if os.path.exists(path_pattern):
+                        try:
+                            file_time = os.path.getmtime(path_pattern)
+                            if file_time > latest_time:
+                                latest_time = file_time
+                                latest_file = path_pattern
+                        except Exception as e:
+                            logger.error(f"Ошибка при проверке файла {path_pattern}: {str(e)}")
+            
+            logger.info(f"Найден последний файл DNS данных: {latest_file}")
+            return latest_file
+
+        latest_dns_file = get_latest_dns_data_file()
+        
+        # Функция для фильтрации DNS данных по категории
+        def filter_dns_by_category(data, category):
+            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
+            if not data:
+                return []
+            
+            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
+            
+            # Маппинг категорий из системы сравнения в типы продуктов из import_products
+            category_to_product_type = {
+                'gpu': 'graphics_card',
+                'cpu': 'processor', 
+                'ram': 'ram',
+                'storage': 'hard_drive',
+                'motherboard': 'motherboard',
+                'psu': 'power_supply',
+                'cooler': 'cooler',
+                'case': 'case'
+            }
+            
+            target_product_type = category_to_product_type.get(category)
+            if not target_product_type:
+                logger.warning(f"Категория {category} не найдена в маппинге")
+                return data
+            
+            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
+            filtered_data = []
+            
+            for item in data:
+                if not item.get('name'):
+                    continue
+                
+                # Используем ту же функцию определения типа продукта что и при импорте
+                try:
+                    # Извлекаем категории товара для передачи в detect_product_type
+                    product_categories = []
+                    if 'categories' in item:
+                        categories = item.get('categories', [])
+                        if isinstance(categories, list):
+                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
+                        elif isinstance(categories, str):
+                            product_categories = [categories]
+                    
+                    # Определяем тип продукта используя ту же логику что и при импорте
+                    detected_type = detect_product_type(item['name'], product_categories)
+                    
+                    if detected_type == target_product_type:
+                        filtered_data.append(item)
+                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
+                    
+                except Exception as e:
+                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
+                    continue
+            
+            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
+            
+            return filtered_data
+
+        # Маппинг категорий
+        category_mapping = {
+            'cpu': {
+                'dns': ['/app/utils/old_dns_parser/product_data.json',
+                        'app/utils/old_dns_parser/product_data.json'] + 
+                       ([latest_dns_file] if latest_dns_file else []),
+                'citi': ['app/utils/Citi_parser/data/processory/Товары.json',
+                         '/app/utils/Citi_parser/data/processory/Товары.json'],
+                'dns_label': 'Процессоры',
+                'citi_label': 'Процессоры',
+            },
+            'gpu': {
+                'dns': ['/app/utils/old_dns_parser/product_data.json',
+                        'app/utils/old_dns_parser/product_data.json'] + 
+                       ([latest_dns_file] if latest_dns_file else []),
+                'citi': ['app/utils/Citi_parser/data/videokarty/Товары.json',
+                         '/app/utils/Citi_parser/data/videokarty/Товары.json'],
+                'dns_label': 'Видеокарты',
+                'citi_label': 'Видеокарты',
+            },
+            'ram': {
+                'dns': ['/app/utils/old_dns_parser/product_data.json',
+                        'app/utils/old_dns_parser/product_data.json'] + 
+                       ([latest_dns_file] if latest_dns_file else []),
+                'citi': ['app/utils/Citi_parser/data/moduli-pamyati/Товары.json',
+                         '/app/utils/Citi_parser/data/moduli-pamyati/Товары.json'],
+                'dns_label': 'Оперативная память DIMM',
+                'citi_label': 'Модули памяти',
+            }
+        }
+        
+        # Проверяем существование категории
+        if category not in category_mapping:
+            return jsonify({
+                'status': 'error',
+                'message': f'Категория "{category}" не поддерживается'
+            }), 400
+        
+        cat_info = category_mapping[category]
+        logger.info(f"API сравнение категории: {category}")
+        logger.info(f"DNS пути: {cat_info['dns']}")
+        logger.info(f"Citi пути: {cat_info['citi']}")
+        
+        # Функция для поиска существующего файла
+        def find_existing_file(paths):
+            """Возвращает первый существующий файл из списка путей"""
+            if isinstance(paths, str):
+                logger.info(f"Проверяем путь: {paths}")
+                exists = os.path.exists(paths)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
+                return paths if exists else None
+            for path in paths:
+                logger.info(f"Проверяем путь: {path}")
+                exists = os.path.exists(path)
+                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
+                if exists:
+                    return path
+            return None
+        
+        # Загружаем данные DNS
+        dns_path = find_existing_file(cat_info['dns'])
+        dns_data = []
+        
+        if dns_path:
+            try:
+                with open(dns_path, 'r', encoding='utf-8') as f:
+                    if 'local_parser_data_' in dns_path:
+                        general_data = json.load(f)
+                        dns_data = filter_dns_by_category(general_data, category)
+                    else:
+                        dns_data = json.load(f)
+                logger.info(f"Загружено {len(dns_data)} товаров DNS из {dns_path}")
+            except Exception as e:
+                logger.error(f"Ошибка при загрузке DNS файла {dns_path}: {e}")
+        
+        # Загружаем данные Citilink
+        citi_path = find_existing_file(cat_info['citi'])
+        citi_data = []
+        
+        if citi_path:
+            try:
+                with open(citi_path, 'r', encoding='utf-8') as f:
+                    citi_data = json.load(f)
+                logger.info(f"Загружено {len(citi_data)} товаров Citilink из {citi_path}")
+            except Exception as e:
+                logger.error(f"Ошибка при загрузке Citilink файла {citi_path}: {e}")
+        
+        # Создаем компаратор
+        comparator = get_comparator()
+        
+        # Извлекаем названия товаров
+        dns_names = comparator.extract_names(dns_data, "name")
+        citi_names = comparator.extract_names(citi_data, "name")
+        
+        # Выполняем сравнение
+        matches = comparator.find_best_matches(
+            dns_names, citi_names, 
+            threshold=threshold,
+            use_enhanced=True
+        )
+        
+        # Создаем детальные результаты
+        detailed_matches = []
+        for dns_name, citi_name, similarity in matches:
+            dns_item = next((item for item in dns_data if item["name"] == dns_name), None)
+            citi_item = next((item for item in citi_data if item["name"] == citi_name), None)
+            
+            if dns_item and citi_item:
+                detailed_matches.append({
+                    'dns_name': dns_name,
+                    'citi_name': citi_name,
+                    'similarity': round(similarity, 3),
+                    'dns_price': comparator._extract_price(dns_item),
+                    'citi_price': comparator._extract_price(citi_item),
+                    'dns_url': dns_item.get('url', '#'),
+                    'citi_url': citi_item.get('url', '#')
+                })
+        
+        return jsonify({
+            'status': 'success',
+            'category': category,
+            'dns_count': len(dns_data),
+            'citilink_count': len(citi_data),
+            'matches_count': len(detailed_matches),
+            'threshold': threshold,
+            'matches': detailed_matches[:10]  # Возвращаем только первые 10 для API
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка в API сравнения: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'Произошла ошибка: {str(e)}'
         }), 500 
