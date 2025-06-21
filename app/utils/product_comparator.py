@@ -97,7 +97,12 @@ class ProductComparator:
         names = []
         for item in data:
             if name_key in item:
-                names.append(item[name_key])
+                name = item[name_key]
+                # Проверяем, что название не None и не пустое
+                if name is not None and str(name).strip():
+                    names.append(str(name).strip())
+                else:
+                    logger.warning(f"Пропущен товар с пустым названием: {item}")
         return names
     
     def extract_detailed_features(self, name: str) -> Dict[str, any]:
@@ -110,7 +115,16 @@ class ProductComparator:
         Returns:
             словарь с характеристиками
         """
-        name_lower = name.lower()
+        # Проверяем, что название не None и не пустое
+        if name is None:
+            logger.warning("Получено None вместо названия товара")
+            return {}
+        
+        if not str(name).strip():
+            logger.warning("Получено пустое название товара")
+            return {}
+        
+        name_lower = str(name).lower().strip()
         features = {}
         
         # Извлекаем бренд (расширенный список)
@@ -261,8 +275,15 @@ class ProductComparator:
         Returns:
             множество N-грамм
         """
+        # Проверяем, что текст не None и не пустой
+        if text is None:
+            return set()
+        
+        if not str(text).strip():
+            return set()
+        
         # Очищаем и нормализуем текст
-        text = re.sub(r'[^\w\s]', ' ', text.lower())
+        text = re.sub(r'[^\w\s]', ' ', str(text).lower())
         words = text.split()
         
         ngrams = set()
@@ -396,6 +417,10 @@ class ProductComparator:
         Returns:
             оценка сходства от 0 до 1
         """
+        # Проверяем, что тексты не None
+        if text1 is None or text2 is None:
+            return 0.0
+        
         ngrams1 = self.generate_ngrams(text1, n)
         ngrams2 = self.generate_ngrams(text2, n)
         
@@ -473,6 +498,15 @@ class ProductComparator:
         Returns:
             итоговая оценка сходства
         """
+        # Проверяем, что названия не None
+        if name1 is None or name2 is None:
+            logger.warning(f"Получено None в названиях: name1={name1}, name2={name2}")
+            return 0.0
+        
+        if not str(name1).strip() or not str(name2).strip():
+            logger.warning(f"Получены пустые названия: name1='{name1}', name2='{name2}'")
+            return 0.0
+        
         # Извлекаем характеристики
         features1 = self.extract_detailed_features(name1)
         features2 = self.extract_detailed_features(name2)
@@ -485,8 +519,8 @@ class ProductComparator:
         ngram5_sim = self.calculate_ngram_similarity(name1, name2, 5)
         
         # Простое слово-в-слово сходство
-        words1 = set(re.findall(r'\w+', name1.lower()))
-        words2 = set(re.findall(r'\w+', name2.lower()))
+        words1 = set(re.findall(r'\w+', str(name1).lower()))
+        words2 = set(re.findall(r'\w+', str(name2).lower()))
         word_sim = len(words1.intersection(words2)) / len(words1.union(words2)) if words1.union(words2) else 0
         
         # Комбинируем метрики с весами - характеристики получают больший вес
