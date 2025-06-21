@@ -264,7 +264,10 @@ def standardize_characteristics(source_data, vendor):
         standardized["number_of_reviews"] = source_data.get("reviews")
         standardized["images"] = source_data.get("images", [])
         standardized["product_url"] = source_data.get("url")
-        standardized["category"] = [cat.get("name") for cat in source_data.get("categories", [])]
+        
+        # Безопасное извлечение категорий
+        categories = source_data.get("categories", []) or []
+        standardized["category"] = [cat.get("name") for cat in categories if isinstance(cat, dict)]
         
         # Determine product type based on category
         product_type = determine_product_type(standardized["category"])
@@ -296,7 +299,10 @@ def standardize_characteristics(source_data, vendor):
         standardized["number_of_reviews"] = source_data.get("number_of_reviews")
         standardized["images"] = source_data.get("images", [])
         standardized["product_url"] = source_data.get("url")
-        standardized["category"] = [cat.get("name") for cat in source_data.get("categories", [])]
+        
+        # Безопасное извлечение категорий
+        categories = source_data.get("categories", []) or []
+        standardized["category"] = [cat.get("name") for cat in categories if isinstance(cat, dict)]
         
         # Determine product type based on category
         product_type = determine_product_type(standardized["category"])

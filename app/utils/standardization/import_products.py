@@ -114,7 +114,7 @@ def detect_product_type(product_name, product_categories=None):
     # Сначала проверяем категории, если они есть
     if product_categories:
         for category in product_categories:
-            cat_name = category.get('name', '').lower()
+            cat_name = category.get('name', '').lower() if isinstance(category, dict) else ''
             if 'видеокарт' in cat_name or 'gpu' in cat_name or 'graphics' in cat_name:
                 return 'graphics_card'
             elif 'процессор' in cat_name or 'cpu' in cat_name or 'processor' in cat_name:
@@ -354,6 +354,11 @@ def import_products():
                 
                 if isinstance(local_data, list):
                     for product in local_data:
+                        # Проверяем, что у продукта есть имя
+                        if not product.get('name'):
+                            print(f"Пропускаем товар без имени: {product.get('id', 'ID неизвестен')}")
+                            continue
+                            
                         # Определяем категорию по данным товара
                         categories = product.get('categories', [])
                         category_name = None
@@ -485,6 +490,11 @@ def import_products():
                     products_by_category = {}
                     
                     for product in data:
+                        # Проверяем, что у продукта есть имя
+                        if not product.get('name'):
+                            print(f"Пропускаем товар DNS без имени: {product.get('id', 'ID неизвестен')}")
+                            continue
+                            
                         # Определяем категорию по данным товара
                         category_name = None
                         
