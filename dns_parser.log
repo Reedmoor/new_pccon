@@ -12249,3 +12249,84 @@ Stacktrace:
 2025-06-19 18:38:20,997 - INFO - Updated existing product data for https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
 2025-06-19 18:38:21,161 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS ARGB
 2025-06-19 18:38:22,102 - INFO - Product details parsing complete!
+2025-06-21 18:16:58,975 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-21 18:17:06,549 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-21 18:17:07,424 - INFO - Reading URLs from urls.txt
+2025-06-21 18:17:07,425 - INFO - Found 10 URLs to process
+2025-06-21 18:17:07,426 - INFO - Processing URL 1/10: https://www.dns-shop.ru/product/cd3ad695f76bed20/500-gb-25-sata-nakopitel-samsung-870-evo-mz-77e500bw/
+2025-06-21 18:17:07,426 - INFO - Processing URL: https://www.dns-shop.ru/product/cd3ad695f76bed20/500-gb-25-sata-nakopitel-samsung-870-evo-mz-77e500bw/
+2025-06-21 18:17:23,524 - INFO - Parsed product: 500 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E500BW]
+2025-06-21 18:17:23,542 - INFO - Added new product data for https://www.dns-shop.ru/product/cd3ad695f76bed20/500-gb-25-sata-nakopitel-samsung-870-evo-mz-77e500bw/
+2025-06-21 18:17:23,607 - INFO - Saved data for product: 500 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E500BW]
+2025-06-21 18:17:23,607 - INFO - Processing URL 2/10: https://www.dns-shop.ru/product/02d939ff43d23332/1000-gb-25-sata-nakopitel-apacer-as350-panther-95db2g0p100c/
+2025-06-21 18:17:23,607 - INFO - Processing URL: https://www.dns-shop.ru/product/02d939ff43d23332/1000-gb-25-sata-nakopitel-apacer-as350-panther-95db2g0p100c/
+2025-06-21 18:17:42,246 - INFO - Parsed product: 1000 ГБ 2.5" SATA накопитель Apacer AS350 PANTHER [95.DB2G0.P100C]
+2025-06-21 18:17:42,265 - INFO - Added new product data for https://www.dns-shop.ru/product/02d939ff43d23332/1000-gb-25-sata-nakopitel-apacer-as350-panther-95db2g0p100c/
+2025-06-21 18:17:42,328 - INFO - Saved data for product: 1000 ГБ 2.5" SATA накопитель Apacer AS350 PANTHER [95.DB2G0.P100C]
+2025-06-21 18:17:42,329 - INFO - Processing URL 3/10: https://www.dns-shop.ru/product/22190260a055ed20/512-gb-25-sata-nakopitel-dexp-c100-c100smym512/
+2025-06-21 18:17:42,329 - INFO - Processing URL: https://www.dns-shop.ru/product/22190260a055ed20/512-gb-25-sata-nakopitel-dexp-c100-c100smym512/
+2025-06-21 18:17:59,041 - INFO - Parsed product: 512 ГБ 2.5" SATA накопитель DEXP C100 [C100SMYM512]
+2025-06-21 18:17:59,060 - INFO - Added new product data for https://www.dns-shop.ru/product/22190260a055ed20/512-gb-25-sata-nakopitel-dexp-c100-c100smym512/
+2025-06-21 18:17:59,129 - INFO - Saved data for product: 512 ГБ 2.5" SATA накопитель DEXP C100 [C100SMYM512]
+2025-06-21 18:17:59,129 - INFO - Processing URL 4/10: https://www.dns-shop.ru/product/b39a8d59e7a1ed20/960-gb-25-sata-nakopitel-kingston-a400-sa400s37960g/
+2025-06-21 18:17:59,130 - INFO - Processing URL: https://www.dns-shop.ru/product/b39a8d59e7a1ed20/960-gb-25-sata-nakopitel-kingston-a400-sa400s37960g/
+2025-06-21 18:18:14,848 - INFO - Parsed product: 960 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/960G]
+2025-06-21 18:18:14,865 - INFO - Added new product data for https://www.dns-shop.ru/product/b39a8d59e7a1ed20/960-gb-25-sata-nakopitel-kingston-a400-sa400s37960g/
+2025-06-21 18:18:14,947 - INFO - Saved data for product: 960 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/960G]
+2025-06-21 18:18:14,947 - INFO - Processing URL 5/10: https://www.dns-shop.ru/product/778d8c5201153332/512-gb-25-sata-nakopitel-apacer-as350-panther/
+2025-06-21 18:18:14,947 - INFO - Processing URL: https://www.dns-shop.ru/product/778d8c5201153332/512-gb-25-sata-nakopitel-apacer-as350-panther/
+2025-06-21 18:18:33,619 - INFO - Parsed product: 512 ГБ 2.5" SATA накопитель Apacer AS350 PANTHER
+2025-06-21 18:18:33,635 - INFO - Added new product data for https://www.dns-shop.ru/product/778d8c5201153332/512-gb-25-sata-nakopitel-apacer-as350-panther/
+2025-06-21 18:18:33,701 - INFO - Saved data for product: 512 ГБ 2.5" SATA накопитель Apacer AS350 PANTHER
+2025-06-21 18:18:33,701 - INFO - Processing URL 6/10: https://www.dns-shop.ru/product/49172afd28f9ed20/1000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e1t0bw/
+2025-06-21 18:18:33,702 - INFO - Processing URL: https://www.dns-shop.ru/product/49172afd28f9ed20/1000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e1t0bw/
+2025-06-21 18:18:49,483 - INFO - Parsed product: 1000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E1T0BW]
+2025-06-21 18:18:49,500 - INFO - Added new product data for https://www.dns-shop.ru/product/49172afd28f9ed20/1000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e1t0bw/
+2025-06-21 18:18:49,563 - INFO - Saved data for product: 1000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E1T0BW]
+2025-06-21 18:18:49,564 - INFO - Processing URL 7/10: https://www.dns-shop.ru/product/d74ecd0b00cded20/480-gb-25-sata-nakopitel-kingston-a400-sa400s37480g/
+2025-06-21 18:18:49,564 - INFO - Processing URL: https://www.dns-shop.ru/product/d74ecd0b00cded20/480-gb-25-sata-nakopitel-kingston-a400-sa400s37480g/
+2025-06-21 18:19:05,771 - INFO - Parsed product: 480 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/480G]
+2025-06-21 18:19:05,789 - INFO - Added new product data for https://www.dns-shop.ru/product/d74ecd0b00cded20/480-gb-25-sata-nakopitel-kingston-a400-sa400s37480g/
+2025-06-21 18:19:05,856 - INFO - Saved data for product: 480 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/480G]
+2025-06-21 18:19:05,858 - INFO - Processing URL 8/10: https://www.dns-shop.ru/product/d870c9c7e7a0ed20/240-gb-25-sata-nakopitel-kingston-a400-sa400s37240g/
+2025-06-21 18:19:05,858 - INFO - Processing URL: https://www.dns-shop.ru/product/d870c9c7e7a0ed20/240-gb-25-sata-nakopitel-kingston-a400-sa400s37240g/
+2025-06-21 18:19:22,568 - INFO - Parsed product: 240 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/240G]
+2025-06-21 18:19:22,589 - INFO - Added new product data for https://www.dns-shop.ru/product/d870c9c7e7a0ed20/240-gb-25-sata-nakopitel-kingston-a400-sa400s37240g/
+2025-06-21 18:19:22,668 - INFO - Saved data for product: 240 ГБ 2.5" SATA накопитель Kingston A400 [SA400S37/240G]
+2025-06-21 18:19:22,669 - INFO - Processing URL 9/10: https://www.dns-shop.ru/product/f1f4d783f76bed20/2000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e2t0bw/
+2025-06-21 18:19:22,669 - INFO - Processing URL: https://www.dns-shop.ru/product/f1f4d783f76bed20/2000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e2t0bw/
+2025-06-21 18:19:38,303 - INFO - Parsed product: 2000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E2T0BW]
+2025-06-21 18:19:38,321 - INFO - Added new product data for https://www.dns-shop.ru/product/f1f4d783f76bed20/2000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e2t0bw/
+2025-06-21 18:19:38,389 - INFO - Saved data for product: 2000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E2T0BW]
+2025-06-21 18:19:38,389 - INFO - Processing URL 10/10: https://www.dns-shop.ru/product/fcac32b01dd4ed20/4000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e4t0bw/
+2025-06-21 18:19:38,391 - INFO - Processing URL: https://www.dns-shop.ru/product/fcac32b01dd4ed20/4000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e4t0bw/
+2025-06-21 18:19:50,536 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x983b03+62899]
+	GetHandleVerifier [0x0x983b44+62964]
+	(No symbol) [0x0x7b10f3]
+	(No symbol) [0x0x7f980e]
+	(No symbol) [0x0x7f9bab]
+	(No symbol) [0x0x8425c2]
+	(No symbol) [0x0x81e554]
+	(No symbol) [0x0x83fd81]
+	(No symbol) [0x0x81e306]
+	(No symbol) [0x0x7ed670]
+	(No symbol) [0x0x7ee4e4]
+	GetHandleVerifier [0x0xbe4793+2556483]
+	GetHandleVerifier [0x0xbdfd02+2537394]
+	GetHandleVerifier [0x0x9aa2fa+220586]
+	GetHandleVerifier [0x0x99aae8+157080]
+	GetHandleVerifier [0x0x9a141d+184013]
+	GetHandleVerifier [0x0x98ba68+95512]
+	GetHandleVerifier [0x0x98bc10+95936]
+	GetHandleVerifier [0x0x976b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-21 18:19:50,570 - WARNING - Контейнер с характеристиками не найден в HTML
+2025-06-21 18:20:05,484 - INFO - Parsed product: 4000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E4T0BW]
+2025-06-21 18:20:05,501 - INFO - Added new product data for https://www.dns-shop.ru/product/fcac32b01dd4ed20/4000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e4t0bw/
+2025-06-21 18:20:05,567 - INFO - Saved data for product: 4000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E4T0BW]
+2025-06-21 18:20:05,994 - INFO - Product details parsing complete!
