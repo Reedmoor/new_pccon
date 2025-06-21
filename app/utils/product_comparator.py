@@ -29,6 +29,7 @@ class ProductComparator:
         
         # Инициализация кэша для embeddings
         self.embeddings_cache = {}
+        self.embeddings = None
         
         # Настройка переменных окружения для GigaChat (как в рабочем embedding.py)
         os.environ["GIGACHAT_CREDENTIALS"] = credentials
@@ -36,18 +37,34 @@ class ProductComparator:
         
         if GIGACHAT_AVAILABLE:
             try:
+                logger.info("Инициализация GigaChatEmbeddings...")
                 self.embeddings = GigaChatEmbeddings(
                     credentials=credentials,
                     scope="GIGACHAT_API_PERS", 
                     verify_ssl_certs=False
                 )
-                logger.info("GigaChatEmbeddings инициализирован успешно")
+                
+                # Тестируем подключение небольшим запросом
+                test_result = self.embeddings.embed_documents(["тест"])
+                if test_result is None or len(test_result) == 0:
+                    logger.error("GigaChat API вернул пустой результат при тестировании")
+                    self.embeddings = None
+                else:
+                    logger.info("GigaChatEmbeddings инициализирован и протестирован успешно")
+                    
             except Exception as e:
                 logger.error(f"Ошибка инициализации GigaChatEmbeddings: {e}")
+                logger.warning("Переход в режим без семантического анализа")
                 self.embeddings = None
         else:
             logger.warning("GigaChat недоступен - используется только сравнение характеристик")
             self.embeddings = None
+            
+        # Информируем о режиме работы
+        if self.embeddings:
+            logger.info("🚀 Компаратор инициализирован в полном режиме (семантика + характеристики)")
+        else:
+            logger.info("⚠️ Компаратор инициализирован в базовом режиме (только характеристики)")
     
     def load_json_data(self, file_path: str) -> List[Dict]:
         """
@@ -507,69 +524,62 @@ class ProductComparator:
             массив эмбеддингов
         """
         if not self.embeddings:
+            logger.error("Эмбеддинги не инициализированы")
             raise Exception("Эмбеддинги не инициализированы")
         
         if not texts:
+            logger.warning("Пустой список текстов")
             return np.array([])
         
         try:
-            # ВРЕМЕННО ОТКЛЮЧЕНО КЭШИРОВАНИЕ ДЛЯ ОТЛАДКИ
-            # all_embeddings = []
-            # texts_to_process = []
-            # cached_embeddings = {}
-            
-            # # Проверяем кэш для каждого текста
-            # for i, text in enumerate(texts):
-            #     if text in self.embeddings_cache:
-            #         cached_embeddings[i] = self.embeddings_cache[text]
-            #     else:
-            #         texts_to_process.append((i, text))
-            
-            # logger.info(f"Найдено в кэше: {len(cached_embeddings)} из {len(texts)} текстов")
-            
-            # # Обрабатываем только новые тексты батчами
-            # if texts_to_process:
-            #     new_embeddings = {}
-            #     texts_only = [text for _, text in texts_to_process]
-                
-            #     for i in range(0, len(texts_only), batch_size):
-            #         batch = texts_only[i:i + batch_size]
-            #         batch_indices = [idx for idx, _ in texts_to_process[i:i + batch_size]]
-                    
-            #         logger.info(f"Обработка батча {i//batch_size + 1}: {len(batch)} новых текстов")
-                    
-            #         batch_embeddings = self.embeddings.embed_documents(batch)
-                    
-            #         # Сохраняем в кэш и в результат
-            #         for j, (idx, text) in enumerate(texts_to_process[i:i + batch_size]):
-            #             embedding = batch_embeddings[j]
-            #             self.embeddings_cache[text] = embedding
-            #             new_embeddings[idx] = embedding
-                
-            #     # Объединяем кэшированные и новые embeddings
-            #     for i in range(len(texts)):
-            #         if i in cached_embeddings:
-            #             all_embeddings.append(cached_embeddings[i])
-            #         elif i in new_embeddings:
-            #             all_embeddings.append(new_embeddings[i])
-            # else:
-            #     # Все embeddings найдены в кэше
-            #     for i in range(len(texts)):
-            #         all_embeddings.append(cached_embeddings[i])
-            
-            # logger.info(f"Получено {len(all_embeddings)} эмбеддингов для {len(texts)} текстов")
-            # logger.info(f"Размер кэша: {len(self.embeddings_cache)} текстов")
-            # return np.array(all_embeddings)
-            
             # ПРОСТАЯ ВЕРСИЯ БЕЗ КЭШИРОВАНИЯ
             logger.info(f"Получение эмбеддингов для {len(texts)} текстов (кэширование отключено)")
-            all_embeddings = self.embeddings.embed_documents(texts)
-            logger.info(f"Получено {len(all_embeddings)} эмбеддингов")
-            return np.array(all_embeddings)
+            
+            # Фильтруем пустые тексты
+            valid_texts = [text for text in texts if text and text.strip()]
+            if len(valid_texts) != len(texts):
+                logger.warning(f"Отфильтровано {len(texts) - len(valid_texts)} пустых текстов")
+            
+            if not valid_texts:
+                logger.error("Все тексты пустые после фильтрации")
+                return np.array([])
+            
+            # Получаем эмбеддинги
+            all_embeddings = self.embeddings.embed_documents(valid_texts)
+            
+            # Проверяем результат
+            if all_embeddings is None:
+                logger.error("GigaChat API вернул None вместо эмбеддингов")
+                raise Exception("GigaChat API вернул None")
+            
+            if not isinstance(all_embeddings, (list, np.ndarray)):
+                logger.error(f"Неожиданный тип результата: {type(all_embeddings)}")
+                raise Exception(f"Неожиданный тип результата: {type(all_embeddings)}")
+            
+            if len(all_embeddings) == 0:
+                logger.error("Получен пустой список эмбеддингов")
+                raise Exception("Получен пустой список эмбеддингов")
+            
+            # Проверяем, что все эмбеддинги валидные
+            valid_embeddings = []
+            for i, embedding in enumerate(all_embeddings):
+                if embedding is None:
+                    logger.error(f"Эмбеддинг {i} равен None")
+                    raise Exception(f"Эмбеддинг {i} равен None")
+                if not isinstance(embedding, (list, np.ndarray)):
+                    logger.error(f"Эмбеддинг {i} имеет неожиданный тип: {type(embedding)}")
+                    raise Exception(f"Эмбеддинг {i} имеет неожиданный тип: {type(embedding)}")
+                valid_embeddings.append(embedding)
+            
+            result = np.array(valid_embeddings)
+            logger.info(f"Получено {len(result)} эмбеддингов размером {result.shape}")
+            return result
             
         except Exception as e:
             logger.error(f"Ошибка получения эмбеддингов: {e}")
-            raise
+            # Возвращаем пустой массив вместо исключения для graceful degradation
+            logger.warning("Возвращаю пустой массив эмбеддингов из-за ошибки")
+            return np.array([])
     
     def cosine_similarity(self, vec1: np.ndarray, vec2: np.ndarray) -> float:
         """
@@ -604,12 +614,21 @@ class ProductComparator:
             список кортежей (название1, название2, сходство)
         """
         if not names1 or not names2:
+            logger.warning("Один из списков названий пустой")
             return []
         
         try:
             # Получаем эмбеддинги для обеих групп названий
             embeddings1 = self.get_embeddings(names1)
             embeddings2 = self.get_embeddings(names2)
+            
+            # Проверяем, что эмбеддинги получены
+            if embeddings1.size == 0 or embeddings2.size == 0:
+                logger.warning("Не удалось получить эмбеддинги, используем только сравнение характеристик")
+                use_semantic = False
+            else:
+                use_semantic = True
+                logger.info(f"Получены эмбеддинги: {embeddings1.shape} и {embeddings2.shape}")
             
             matches = []
             
@@ -619,15 +638,23 @@ class ProductComparator:
                 best_match = None
                 
                 for j, name2 in enumerate(names2):
-                    # Семантическое сходство от эмбеддингов
-                    semantic_sim = self.cosine_similarity(embeddings1[i], embeddings2[j])
+                    if use_semantic:
+                        # Семантическое сходство от эмбеддингов
+                        semantic_sim = self.cosine_similarity(embeddings1[i], embeddings2[j])
+                    else:
+                        # Если эмбеддинги недоступны, используем только характеристики
+                        semantic_sim = 0.0
                     
                     if use_enhanced:
                         # Используем гибридный алгоритм: семантика + характеристики
                         similarity = self.enhanced_similarity(name1, name2, semantic_sim)
                     else:
-                        # Используем только семантическое сходство
-                        similarity = semantic_sim
+                        if use_semantic:
+                            # Используем только семантическое сходство
+                            similarity = semantic_sim
+                        else:
+                            # Fallback на n-gram сходство
+                            similarity = self.calculate_ngram_similarity(name1, name2)
                     
                     if similarity > best_similarity:
                         best_similarity = similarity
@@ -636,8 +663,11 @@ class ProductComparator:
                 # Добавляем совпадение, если оно превышает порог
                 if best_match and best_similarity >= threshold:
                     matches.append(best_match)
+                    logger.debug(f"Найдено совпадение: {name1} <-> {name2} (сходство: {best_similarity:.3f})")
             
+            logger.info(f"Найдено {len(matches)} совпадений из {len(names1)} товаров")
             return matches
+            
         except Exception as e:
             logger.error(f"Ошибка при поиске совпадений: {e}")
             return []
