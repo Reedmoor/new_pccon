@@ -340,7 +340,7 @@ def import_products():
         
         print("Начинаем импорт продуктов...")
         
-        # Если есть свежий локальный файл, импортируем из него все категории
+        # Обрабатываем локальный файл DNS
         dns_loaded = False
         if latest_local_file:
             try:
@@ -423,13 +423,17 @@ def import_products():
                     print(f"Обработка категории DNS {category_name}: {len(products)} товаров")
                     
                     for product in products:
-                        # Стандартизируем данные
-                        std_product = standardize_characteristics(product, "dns")
-                        std_product["vendor"] = "dns"
-                        std_product["product_type"] = category_name
-                        all_products.append(std_product)
+                        try:
+                            # Стандартизируем данные
+                            std_product = standardize_characteristics(product, "dns")
+                            std_product["vendor"] = "dns"
+                            std_product["product_type"] = category_name
+                            all_products.append(std_product)
+                        except Exception as e:
+                            print(f"Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
                 
-                print(f"Загружено {len(local_data)} товаров из локального файла DNS")
+                print(f"Загружено {len(products_by_category.get('motherboard', []))} материнских плат из локального файла DNS")
+                print(f"Загружено {sum(len(products) for products in products_by_category.values())} товаров из локального файла DNS")
                 dns_loaded = True
                 
             except Exception as e:
@@ -476,11 +480,11 @@ def import_products():
                             print(f"Ошибка при обработке файла {products_file}: {str(e)}")
                             traceback.print_exc()
         
-        # Обрабатываем данные DNS из old_dns_parser
+        # Обрабатываем данные DNS из old_dns_parser только если не загружены из локального файла
         dns_file = os.path.join('app', 'utils', 'old_dns_parser', 'product_data.json')
-        if os.path.exists(dns_file):
+        if os.path.exists(dns_file) and not dns_loaded:
             try:
-                print(f"Обработка данных DNS из {dns_file}")
+                print(f"Обработка данных DNS из {dns_file} (локальный файл не найден)")
                 
                 with open(dns_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -523,13 +527,15 @@ def import_products():
                             std_product["product_type"] = category_name
                             all_products.append(std_product)
                     
-                    print(f"Загружено {len(data)} товаров из DNS")
+                    print(f"Загружено {len(data)} товаров из DNS (старый парсер)")
                     
                 else:
                     print(f"Ошибка: данные DNS не являются списком")
             except Exception as e:
                 print(f"Ошибка при обработке файла {dns_file}: {str(e)}")
                 traceback.print_exc()
+        elif dns_loaded:
+            print("Данные DNS уже загружены из локального файла, пропускаем старый парсер")
         
         print(f"Всего продуктов для импорта: {len(all_products)}")
         
