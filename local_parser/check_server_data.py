@@ -8,95 +8,91 @@ import json
 from datetime import datetime
 
 def check_docker_server():
-    """Проверка данных на Docker сервере"""
-    server_url = "http://127.0.0.1:5000"
+    """Проверка Docker сервера"""
+    server_url = "https://pcconf.ru"
     
-    print("🔍 Проверка данных на Docker сервере...")
-    print(f"📡 Сервер: {server_url}")
-    print("=" * 50)
+    print("🐳 Проверка Docker сервера...")
+    print(f"   URL: {server_url}")
     
     try:
-        # Проверяем API статуса
-        response = requests.get(f"{server_url}/api/parser-status", timeout=10)
-        
+        # Проверяем health endpoint
+        response = requests.get(f"{server_url}/health", timeout=10)
         if response.status_code == 200:
             data = response.json()
-            uploads = data.get('recent_uploads', [])
+            print("✅ Docker сервер доступен")
+            print(f"   Статус: {data.get('status', 'unknown')}")
+            print(f"   Время сервера: {data.get('timestamp', 'unknown')}")
+            print(f"   Количество продуктов: {data.get('product_count', 'unknown')}")
             
-            print(f"✅ Сервер доступен (статус: {response.status_code})")
-            print(f"📊 Всего загрузок: {len(uploads)}")
+            # Проверяем API endpoint
+            try:
+                api_response = requests.get(f"{server_url}/api/parser-status", timeout=10)
+                if api_response.status_code == 200:
+                    print("✅ API доступен")
+                    api_data = api_response.json()
+                    if 'recent_uploads' in api_data:
+                        uploads = api_data['recent_uploads']
+                        print(f"   Последних загрузок: {len(uploads)}")
+                        if uploads:
+                            latest = uploads[0]
+                            print(f"   Последняя загрузка: {latest.get('filename', 'unknown')}")
+                            print(f"   Товаров: {latest.get('product_count', 'unknown')}")
+                else:
+                    print(f"⚠️ API недоступен (код {api_response.status_code})")
+            except Exception as e:
+                print(f"⚠️ Ошибка API: {e}")
             
-            if uploads:
-                print("\n📋 Последние загрузки:")
-                total_products = 0
-                
-                for i, upload in enumerate(uploads[:10], 1):
-                    filename = upload.get('filename', 'Unknown')
-                    product_count = upload.get('product_count', 0)
-                    upload_time = upload.get('upload_time', '')
-                    file_size = upload.get('file_size', 0)
-                    
-                    total_products += product_count
-                    
-                    # Форматируем время
-                    try:
-                        dt = datetime.fromisoformat(upload_time.replace('Z', '+00:00'))
-                        time_str = dt.strftime('%Y-%m-%d %H:%M:%S')
-                    except:
-                        time_str = upload_time
-                    
-                    size_kb = file_size / 1024 if file_size > 0 else 0
-                    
-                    print(f"  {i:2d}. {filename}")
-                    print(f"      📦 {product_count:,} товаров")
-                    print(f"      🕒 {time_str}")
-                    print(f"      💾 {size_kb:.1f} KB")
-                    print()
-                
-                print(f"🎯 Общее количество товаров во всех загрузках: {total_products:,}")
-                
-                # Показываем самую свежую загрузку
-                latest = uploads[0]
-                print(f"\n🔥 Последняя загрузка:")
-                print(f"   Файл: {latest.get('filename')}")
-                print(f"   Товаров: {latest.get('product_count')} ")
-                print(f"   Время: {latest.get('upload_time')}")
-                
-            else:
-                print("❌ Загрузок не найдено")
-                
+            return True
         else:
-            print(f"❌ Ошибка сервера: {response.status_code}")
-            print(f"   Ответ: {response.text}")
-            
-    except requests.exceptions.ConnectionError:
-        print("❌ Не удается подключиться к серверу")
-        print("   Убедитесь что Docker сервер запущен на порту 5000")
-        
-    except requests.exceptions.Timeout:
-        print("❌ Таймаут подключения к серверу")
-        
-    except Exception as e:
-        print(f"❌ Ошибка: {e}")
+            print(f"❌ Docker сервер вернул код {response.status_code}")
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Ошибка подключения к Docker серверу: {e}")
+        return False
 
 def check_web_interface():
     """Проверка веб-интерфейса"""
-    server_url = "http://127.0.0.1:5000"
-    
-    print("\n" + "=" * 50)
-    print("🌐 Проверка веб-интерфейса...")
+    print("\n🌐 Проверка веб-интерфейса...")
     
     try:
-        response = requests.get(server_url, timeout=10)
-        
+        # Проверяем главную страницу
+        response = requests.get("https://pcconf.ru", timeout=10)
         if response.status_code == 200:
-            print(f"✅ Веб-интерфейс доступен: {server_url}")
-            print("   Откройте ссылку в браузере для просмотра товаров")
+            print("✅ Главная страница доступна")
+            print("   https://pcconf.ru")
+            print("   Админ панель:")
+            print("   https://pcconf.ru/api/parser-status")
+            return True
         else:
-            print(f"❌ Веб-интерфейс недоступен: {response.status_code}")
-            
-    except Exception as e:
+            print(f"❌ Веб-интерфейс недоступен (код {response.status_code})")
+            return False
+    except requests.exceptions.RequestException as e:
         print(f"❌ Ошибка веб-интерфейса: {e}")
+        return False
+
+def check_server_status():
+    """Проверка статуса сервера"""
+    server_url = "https://pcconf.ru"
+    
+    print("🔍 Проверка статуса сервера...")
+    print(f"   URL: {server_url}")
+    
+    try:
+        # Проверяем основную страницу
+        response = requests.get(f"{server_url}/health", timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            print("✅ Сервер доступен")
+            print(f"   Статус: {data.get('status', 'unknown')}")
+            print(f"   Время сервера: {data.get('timestamp', 'unknown')}")
+            print(f"   Количество продуктов: {data.get('product_count', 'unknown')}")
+            return True
+        else:
+            print(f"❌ Сервер вернул код {response.status_code}")
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Ошибка подключения к серверу: {e}")
+        return False
 
 if __name__ == "__main__":
     check_docker_server()

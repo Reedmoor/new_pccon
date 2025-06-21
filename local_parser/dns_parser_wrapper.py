@@ -25,27 +25,37 @@ logging.basicConfig(
 logger = logging.getLogger('dns_wrapper')
 
 class DNSParserWrapper:
-    def __init__(self, server_url="http://127.0.0.1:5000", visible_browser=True):
+    def __init__(self, server_url="https://pcconf.ru", visible_browser=True):
         """
-        Обёртка для old_dns_parser
+        Инициализация обёртки для old_dns_parser
         
         Args:
             server_url: URL сервера для отправки данных
-            visible_browser: Показывать ли браузер (для old_dns_parser всегда видимый)
+            visible_browser: Показывать ли браузер (True) или headless режим (False)
         """
         self.server_url = server_url.rstrip('/')
-        self.session = requests.Session()
         self.visible_browser = visible_browser
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
         
-        # Путь к old_dns_parser
-        current_dir = Path(__file__).parent
-        self.old_parser_dir = current_dir.parent / "app" / "utils" / "old_dns_parser"
+        # Пути к файлам old_dns_parser
+        self.project_root = Path(__file__).parent.parent
+        self.old_parser_dir = self.project_root / 'app' / 'utils' / 'old_dns_parser'
+        self.parser_script = self.old_parser_dir / 'main.py'
         
-        # Логируем настройки
-        logger.info(f"DNS Parser Wrapper initialized")
-        logger.info(f"Server URL: {self.server_url}")
-        logger.info(f"Old parser directory: {self.old_parser_dir}")
-        logger.info(f"Visible browser: {self.visible_browser}")
+        # Проверяем существование файлов
+        if not self.parser_script.exists():
+            raise FileNotFoundError(f"Old DNS parser script not found: {self.parser_script}")
+        
+        self.log_messages = []
+        self.session_start = datetime.now()
+        
+        print(f"🔧 DNS Parser Wrapper initialized")
+        print(f"   Server URL: {self.server_url}")
+        print(f"   Browser mode: {'Visible' if self.visible_browser else 'Headless'}")
+        print(f"   Parser script: {self.parser_script}")
         
     def test_server_connection(self):
         """Тестирование соединения с сервером"""
@@ -224,7 +234,7 @@ def main():
     parser = argparse.ArgumentParser(description='DNS Parser Wrapper')
     parser.add_argument('--category', type=str, help='Category name to parse (e.g., videokarty)')
     parser.add_argument('--limit', type=int, default=5, help='Number of products to parse per category')
-    parser.add_argument('--server-url', type=str, default='http://127.0.0.1:5000', help='Server URL')
+    parser.add_argument('--server-url', type=str, default='https://pcconf.ru', help='Server URL')
     parser.add_argument('--test-only', action='store_true', help='Only test server connection')
     parser.add_argument('--product-url', type=str, help='Parse single product by URL (not supported in old parser)')
     

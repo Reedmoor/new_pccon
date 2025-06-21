@@ -137,49 +137,32 @@ def upload_products():
             
             logger.info(f"Saved products data to {temp_path}")
             
-            # Импортируем товары в базу данных
-            try:
-                # Импортируем товары напрямую из переданных данных
-                from app.utils.standardization.import_products import import_products_from_data
-                
-                # Импортируем напрямую из данных без файлов
-                result = import_products_from_data(products, source=source)
-                
-                # Создаем уведомление о локальном парсинге
-                parse_notification = {
-                    'type': 'local_parsing',
-                    'source': source,
-                    'products_count': len(products),
-                    'timestamp': datetime.now().isoformat(),
-                    'filename': temp_filename,
-                    'status': 'success'
-                }
-                
-                # Добавляем уведомление в хранилище
-                add_notification(parse_notification)
-                
-                logger.info(f"📨 PARSE NOTIFICATION: {parse_notification}")
-                
-                return jsonify({
-                    'success': True,
-                    'message': f'Successfully received and imported {len(products)} products',
-                    'imported_count': len(products),
-                    'filename': temp_filename,
-                    'upload_type': upload_type,
-                    'import_result': result,
-                    'notification': parse_notification,
-                    'files_saved': True  # Файлы сохраняются при локальном парсинге
-                }), 200
-                
-            except Exception as import_error:
-                logger.error(f"Error importing products: {import_error}")
-                return jsonify({
-                    'success': False,
-                    'error': f'Products received but import failed: {str(import_error)}',
-                    'received_count': len(products),
-                    'filename': temp_filename,
-                    'upload_type': upload_type
-                }), 500
+            # Создаем уведомление о локальном парсинге (НЕ импортируем сразу)
+            parse_notification = {
+                'type': 'local_parsing',
+                'source': source,
+                'products_count': len(products),
+                'timestamp': datetime.now().isoformat(),
+                'filename': temp_filename,
+                'status': 'saved',  # Изменили статус на 'saved'
+                'note': 'Data saved to file. Run import_products() to import into database.'
+            }
+            
+            # Добавляем уведомление в хранилище
+            add_notification(parse_notification)
+            
+            logger.info(f"📨 PARSE NOTIFICATION: {parse_notification}")
+            
+            return jsonify({
+                'success': True,
+                'message': f'Successfully received and saved {len(products)} products to file. Use import_products() to import into database.',
+                'received_count': len(products),
+                'filename': temp_filename,
+                'upload_type': upload_type,
+                'notification': parse_notification,
+                'files_saved': True,
+                'imported_to_db': False  # Не импортировано в БД
+            }), 200
     
     except Exception as e:
         logger.error(f"Error in upload_products endpoint: {e}")
@@ -272,7 +255,7 @@ def run_parser():
             return jsonify({'error': f'Unknown mode: {mode}'}), 400
         
         # Добавляем URL сервера
-        cmd.extend(['--server-url', 'http://127.0.0.1:5000'])
+        cmd.extend(['--server-url', 'https://pcconf.ru'])
         
         # Запускаем парсер
         logger.info(f"Starting parser with command: {' '.join(cmd)}")
@@ -437,7 +420,7 @@ def import_to_docker():
             return jsonify({'error': 'Import script not found'}), 404
         
         # Команда для запуска импорта
-        cmd = [sys.executable, str(import_script), '--server-url', 'http://127.0.0.1:5000']
+        cmd = [sys.executable, str(import_script), '--server-url', 'https://pcconf.ru']
         
         logger.info(f"Starting import with command: {' '.join(cmd)}")
         
@@ -560,7 +543,7 @@ def local_data_manager():
             return jsonify({'error': 'Local data manager script not found'}), 404
         
         # Подготавливаем команду
-        cmd = [sys.executable, str(manager_script), '--server-url', 'http://127.0.0.1:5000']
+        cmd = [sys.executable, str(manager_script), '--server-url', 'https://pcconf.ru']
         
         if action == 'stats':
             cmd.append('--stats')
@@ -797,7 +780,7 @@ def export_and_send_to_docker():
         }
         
         # Отправляем на Docker сервер
-        docker_url = 'http://127.0.0.1:5000'
+        docker_url = 'https://pcconf.ru'
         try:
             response = requests.post(
                 f"{docker_url}/api/upload-products",
@@ -844,7 +827,7 @@ def check_docker_status():
     try:
         import requests
         
-        docker_url = 'http://127.0.0.1:5000'
+        docker_url = 'https://pcconf.ru'
         
         try:
             response = requests.get(f"{docker_url}/health", timeout=10)

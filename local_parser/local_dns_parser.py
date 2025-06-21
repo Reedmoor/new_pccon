@@ -54,17 +54,23 @@ detailed_logger.addHandler(detailed_handler)
 detailed_logger.setLevel(logging.DEBUG)
 
 class LocalDNSParser:
-    def __init__(self, server_url="http://127.0.0.1:5000"):
+    def __init__(self, server_url="https://pcconf.ru"):
         """
         Инициализация локального парсера
         
         Args:
             server_url: URL сервера для отправки данных (Docker сервер по умолчанию)
         """
-        self.server_url = server_url.rstrip('/')
+        self.server_url = server_url
         self.session = requests.Session()
-        self.driver = None
-        self.parsed_products = []
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
+        
+        # Настройки для парсинга
+        self.max_retries = 3
+        self.delay_between_requests = 1.0
+        self.products = []
         
         # Настройка локального логирования
         self.session_start = datetime.now()
@@ -106,17 +112,17 @@ class LocalDNSParser:
                 f.write(f"Session End: {datetime.now().isoformat()}\n")
                 f.write(f"Server URL: {self.server_url}\n")
                 f.write(f"Total Messages: {len(self.log_messages)}\n")
-                f.write(f"Parsed Products: {len(self.parsed_products)}\n")
+                f.write(f"Parsed Products: {len(self.products)}\n")
                 f.write("="*50 + "\n\n")
                 
                 for log_entry in self.log_messages:
                     f.write(log_entry + "\n")
                 
-                if self.parsed_products:
+                if self.products:
                     f.write("\n" + "="*50 + "\n")
                     f.write("PARSED PRODUCTS SUMMARY:\n")
                     f.write("="*50 + "\n")
-                    for i, product in enumerate(self.parsed_products, 1):
+                    for i, product in enumerate(self.products, 1):
                         f.write(f"{i}. {product.get('name', 'Unknown Product')}\n")
                         f.write(f"   URL: {product.get('url', 'N/A')}\n")
                         f.write(f"   Price: {product.get('price_discounted', 'N/A')}\n")
@@ -239,7 +245,7 @@ class LocalDNSParser:
             product_data = parse_characteristics_page(self.driver, url)
             
             if product_data:
-                self.parsed_products.append(product_data)
+                self.products.append(product_data)
                 success_msg = f"✅ Successfully parsed: {product_data.get('name', 'Unknown')}"
                 logger.info(success_msg)
                 self.log_detailed(success_msg)
@@ -352,12 +358,12 @@ class LocalDNSParser:
             time.sleep(2)
         
         logger.info(f"Successfully parsed {parsed_count}/{len(collected_urls)} products")
-        return self.parsed_products[-parsed_count:] if parsed_count > 0 else []
+        return self.products[-parsed_count:] if parsed_count > 0 else []
     
     def send_data_to_server(self, products=None):
         """Отправка данных на сервер"""
         if products is None:
-            products = self.parsed_products
+            products = self.products
         
         if not products:
             logger.warning("No products to send")
@@ -394,7 +400,7 @@ class LocalDNSParser:
     
     def save_data_locally(self, filename=None):
         """Сохранение данных локально в папку data для последующей отправки на Docker сервер"""
-        if not self.parsed_products:
+        if not self.products:
             logger.warning("No products to save")
             return False
         
@@ -411,9 +417,9 @@ class LocalDNSParser:
         
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
-                json.dump(self.parsed_products, f, ensure_ascii=False, indent=2)
+                json.dump(self.products, f, ensure_ascii=False, indent=2)
             
-            logger.info(f"✅ Saved {len(self.parsed_products)} products to {filepath}")
+            logger.info(f"✅ Saved {len(self.products)} products to {filepath}")
             self.log_detailed(f"Data saved locally: {filepath}")
             return str(filepath)
             
@@ -427,7 +433,7 @@ class LocalDNSParser:
         """Закрытие драйвера и сохранение логов"""
         # Логируем завершение сессии
         self.log_detailed("Closing parser session")
-        self.log_detailed(f"Total products parsed: {len(self.parsed_products)}")
+        self.log_detailed(f"Total products parsed: {len(self.products)}")
         self.log_detailed(f"Session duration: {datetime.now() - self.session_start}")
         
         # Сохраняем детальный лог сессии
@@ -452,7 +458,7 @@ def main():
     parser.add_argument('--category', type=str, help='Category name to parse (e.g., videokarty)')
     parser.add_argument('--limit', type=int, default=5, help='Number of products to parse per category')
     parser.add_argument('--headless', action='store_true', help='Run browser in headless mode')
-    parser.add_argument('--server-url', type=str, default='http://127.0.0.1:5000', help='Docker Server URL')
+    parser.add_argument('--server-url', type=str, default='https://pcconf.ru', help='Docker Server URL')
     parser.add_argument('--test-only', action='store_true', help='Only test Docker server connection')
     parser.add_argument('--product-url', type=str, help='Parse single product by URL')
     parser.add_argument('--save-only', action='store_true', help='Only save data locally, do not send to server')

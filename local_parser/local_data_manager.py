@@ -22,30 +22,30 @@ logging.basicConfig(
 logger = logging.getLogger('local_data_manager')
 
 class LocalDataManager:
-    def __init__(self, data_dir: Path = None, server_url: str = "http://127.0.0.1:5000"):
+    def __init__(self, data_dir: Path = None, server_url: str = "https://pcconf.ru"):
         """
-        Менеджер локальных данных
+        Инициализация менеджера локальных данных
         
         Args:
-            data_dir: Путь к папке с данными
+            data_dir: Путь к директории с данными (по умолчанию ../data)
             server_url: URL сервера для отправки данных
         """
+        self.project_root = Path(__file__).parent.parent
+        self.data_dir = data_dir or self.project_root / "data"
         self.server_url = server_url.rstrip('/')
         
-        # Пути к директориям
-        current_dir = Path(__file__).parent
-        self.root_dir = current_dir.parent
-        self.data_dir = data_dir or self.root_dir / "data"
-        self.local_data_dir = self.root_dir / "local_data"
-        
-        # Создаем директории если не существуют
+        # Создаем директорию если не существует
         self.data_dir.mkdir(exist_ok=True)
-        self.local_data_dir.mkdir(exist_ok=True)
         
-        logger.info(f"Data Manager initialized")
-        logger.info(f"Data directory: {self.data_dir}")
-        logger.info(f"Local data directory: {self.local_data_dir}")
-        logger.info(f"Server URL: {self.server_url}")
+        # Настройка сессии для запросов
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
+        
+        print(f"🔧 Local Data Manager initialized")
+        print(f"   Data directory: {self.data_dir}")
+        print(f"   Server URL: {self.server_url}")
     
     def detect_category_from_data(self, products: List[Dict]) -> str:
         """
@@ -143,7 +143,7 @@ class LocalDataManager:
                 # Создаем новое имя файла
                 timestamp = datetime.fromtimestamp(file_path.stat().st_mtime)
                 new_filename = f"local_{short_category}_{timestamp.strftime('%Y%m%d_%H%M%S')}.json"
-                new_path = self.local_data_dir / new_filename
+                new_path = self.data_dir / new_filename
                 
                 # Копируем файл с новым именем
                 shutil.copy2(file_path, new_path)
@@ -183,7 +183,7 @@ class LocalDataManager:
         files_info = []
         
         # Ищем все организованные файлы
-        data_files = list(self.local_data_dir.glob("local_*.json"))
+        data_files = list(self.data_dir.glob("local_*.json"))
         data_files = [f for f in data_files if not f.name.endswith('.meta.json')]
         
         for file_path in sorted(data_files, key=lambda x: x.stat().st_mtime, reverse=True):
@@ -339,7 +339,7 @@ class LocalDataManager:
 def main():
     """Основная функция"""
     parser = argparse.ArgumentParser(description='Local data manager')
-    parser.add_argument('--server-url', type=str, default='http://127.0.0.1:5000', help='Server URL')
+    parser.add_argument('--server-url', type=str, default='https://pcconf.ru', help='Server URL')
     parser.add_argument('--organize', action='store_true', help='Organize data files')
     parser.add_argument('--upload', action='store_true', help='Upload organized files to server')
     parser.add_argument('--stats', action='store_true', help='Show statistics')
