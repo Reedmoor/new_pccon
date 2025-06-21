@@ -19,23 +19,30 @@ logging.basicConfig(
 logger = logging.getLogger('upload_data')
 
 class DataUploader:
-    def __init__(self, server_url="http://127.0.0.1:5000"):
+    def __init__(self, server_url="https://pcconf.ru"):
         """
-        Загрузчик данных на сервер
+        Инициализация загрузчика данных
         
         Args:
             server_url: URL сервера для отправки данных
         """
         self.server_url = server_url.rstrip('/')
         self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
         
-        # Путь к готовым данным
-        current_dir = Path(__file__).parent
-        self.data_dir = current_dir.parent / "app" / "utils" / "DNS_parsing" / "categories"
+        # Пути к данным
+        self.project_root = Path(__file__).parent.parent
+        self.data_dir = self.project_root / 'data'
+        self.old_parser_dir = self.project_root / 'app' / 'utils' / 'old_dns_parser'
+        self.citilink_data_dir = self.project_root / 'app' / 'utils' / 'Citi_parser' / 'data'
         
-        logger.info(f"Data Uploader initialized")
-        logger.info(f"Server URL: {self.server_url}")
-        logger.info(f"Data directory: {self.data_dir}")
+        print(f"🔧 Data Uploader initialized")
+        print(f"   Server URL: {self.server_url}")
+        print(f"   Data directory: {self.data_dir}")
+        print(f"   Old parser directory: {self.old_parser_dir}")
+        print(f"   Citilink data directory: {self.citilink_data_dir}")
         
     def test_server_connection(self):
         """Тестирование соединения с сервером"""
@@ -186,7 +193,7 @@ class DataUploader:
 def main():
     """Основная функция"""
     parser = argparse.ArgumentParser(description='Upload existing DNS data to server')
-    parser.add_argument('--server-url', type=str, default='http://127.0.0.1:5000', help='Server URL')
+    parser.add_argument('--server-url', type=str, default='https://pcconf.ru', help='Server URL')
     parser.add_argument('--category', type=str, help='Upload specific category only')
     parser.add_argument('--list-categories', action='store_true', help='List available categories')
     parser.add_argument('--test-only', action='store_true', help='Only test server connection')
