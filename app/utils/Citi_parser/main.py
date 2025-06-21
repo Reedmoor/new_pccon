@@ -2,6 +2,8 @@ import time
 import logging
 import os
 import json
+import signal
+import sys
 from lxml import html
 from dotenv import load_dotenv
 from request_handler import request, ParserStoppedException, check_stop_flag
@@ -9,6 +11,22 @@ from queries import (url, PRODUCTS_QUERY, PRODUCT_VARIABLE)
 from data_processors import product_answer, rating_answer, review_answer
 
 load_dotenv()
+
+# Глобальная переменная для отслеживания остановки
+_parser_stopped = False
+
+def signal_handler(signum, frame):
+    """Обработчик сигналов для главного процесса"""
+    global _parser_stopped
+    _parser_stopped = True
+    logging.info("🛑 ПОЛУЧЕН СИГНАЛ ОСТАНОВКИ В ГЛАВНОМ ПРОЦЕССЕ!")
+    # Создаем файл-флаг для дочерних процессов
+    with open('STOP_PARSER.flag', 'w') as f:
+        f.write('STOP')
+
+# Регистрируем обработчики сигналов
+signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
 
 # Текущая категория для обработки
 category = os.getenv('CATEGORY')
@@ -31,6 +49,7 @@ def ensure_directory_exists(directory):
 
 # Функция для обработки одной категории
 def fetch_products_for_category(category_name):
+    global _parser_stopped
     logging.info(f"Начало парсинга категории: {category_name}")
 
     # Создаем директорию для категории
@@ -62,7 +81,7 @@ def fetch_products_for_category(category_name):
     all_products = []
 
     try:
-        while has_next_page_products:
+        while has_next_page_products and not _parser_stopped:
             # Проверяем флаг остановки перед каждой страницей
             check_stop_flag()
             
@@ -118,18 +137,24 @@ def fetch_products_for_category(category_name):
                     try:
                         # Проверяем флаг остановки перед каждым продуктом
                         check_stop_flag()
+                        if _parser_stopped:
+                            raise ParserStoppedException("Получен сигнал остановки")
                         
-                        # Сохраняем продукт в файл категории
-                        first_product = product_answer(product, first_product, products_file)
+                        # Сохраняем продукт в файл категории (с минимумом дополнительных запросов при остановке)
+                        first_product = product_answer(product, first_product, products_file, fetch_detailed_data=not _parser_stopped)
                         
                         # Сохраняем продукт в списке для совместимости
                         all_products.append(product)
                         
+                        # Закомментированы дополнительные запросы для ускорения парсинга
                         # first_rating = rating_answer(product['id'], first_rating, reviews_file)
                         # first_review = review_answer(product['id'], first_review, articles_file)
                         
                         logging.info(f"Продукт {int(product['id'])} успешно обработан")
-                        time.sleep(2)
+                        
+                        # Уменьшили задержку для ускорения парсинга
+                        if not _parser_stopped:
+                            time.sleep(1)
                     except ParserStoppedException:
                         raise  # Пробрасываем исключение остановки
                     except Exception as product_error:
@@ -170,6 +195,13 @@ def fetch_products_for_category(category_name):
             except Exception as e:
                 logging.error(f"Ошибка при сохранении товаров: {e}")
         
+        # Удаляем файл-флаг остановки
+        try:
+            if os.path.exists('STOP_PARSER.flag'):
+                os.remove('STOP_PARSER.flag')
+        except Exception as e:
+            logging.error(f"Ошибка при удалении файла флага: {e}")
+        
         return all_products
 
     # Закрываем файлы категории
@@ -196,6 +228,8 @@ def fetch_products_for_category(category_name):
 
 # Основная функция
 def main():
+    global _parser_stopped
+    
     if not category:
         logging.error("Ошибка: категория не указана в .env файле")
         return
@@ -224,6 +258,13 @@ def main():
     except Exception as e:
         logging.error(f"Критическая ошибка парсера: {e}")
         return 1
+    finally:
+        # Очищаем файл-флаг при выходе
+        try:
+            if os.path.exists('STOP_PARSER.flag'):
+                os.remove('STOP_PARSER.flag')
+        except:
+            pass
 
 if __name__ == "__main__":
     exit_code = main()

@@ -22,20 +22,22 @@ echo   4. 🌐 Загрузка на удаленный сервер
 echo   5. ⚡ Быстрая загрузка на ВАШ сервер
 echo   6. 🧹 Анализ дублей
 echo   7. 🔍 Тестирование Docker интеграции
+echo   8. 🚀 Загрузка на pcconf.ru
+echo   9. 🔄 Парсинг + загрузка на pcconf.ru
 echo.
 echo 🛠️ Дополнительные операции:
 echo.
-echo   8. 📊 Проверка данных на серверах
-echo   9. 📂 Управление локальными данными
-echo   10. ⬆️ Загрузка существующих данных
-echo   11. 📁 Ручная загрузка из старого парсера
-echo   12. 🐍 Настройка Python окружения
+echo   10. 📊 Проверка данных на серверах
+echo   11. 📂 Управление локальными данными
+echo   12. ⬆️ Загрузка существующих данных
+echo   13. 📁 Ручная загрузка из старого парсера
+echo   14. 🐍 Настройка Python окружения
 echo.
 echo   0. ❌ Выход
 echo.
 echo ====================================================
 
-set /p choice="Выберите операцию (0-12): "
+set /p choice="Выберите операцию (0-14): "
 
 if "%choice%"=="1" goto parse_category
 if "%choice%"=="2" goto import_data
@@ -44,11 +46,13 @@ if "%choice%"=="4" goto upload_remote
 if "%choice%"=="5" goto quick_upload
 if "%choice%"=="6" goto analyze_duplicates
 if "%choice%"=="7" goto test_integration
-if "%choice%"=="8" goto check_data
-if "%choice%"=="9" goto manage_local
-if "%choice%"=="10" goto upload_existing
-if "%choice%"=="11" goto upload_old_parser
-if "%choice%"=="12" goto setup_python
+if "%choice%"=="8" goto upload_pcconf
+if "%choice%"=="9" goto parse_and_upload_pcconf
+if "%choice%"=="10" goto check_data
+if "%choice%"=="11" goto manage_local
+if "%choice%"=="12" goto upload_existing
+if "%choice%"=="13" goto upload_old_parser
+if "%choice%"=="14" goto setup_python
 if "%choice%"=="0" goto exit
 
 echo.
@@ -112,6 +116,18 @@ goto menu
 cls
 echo 🔍 Тестирование Docker интеграции...
 call test_docker_integration.bat
+goto menu
+
+:upload_pcconf
+cls
+echo 🚀 Загрузка данных на pcconf.ru...
+call upload_to_pcconf.bat
+goto menu
+
+:parse_and_upload_pcconf
+cls
+echo 🔄 Парсинг и загрузка на pcconf.ru...
+call parse_and_upload_to_pcconf.bat
 goto menu
 
 :check_data

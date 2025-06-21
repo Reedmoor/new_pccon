@@ -11928,3 +11928,324 @@ Stacktrace:
 2025-06-08 23:00:53,807 - INFO - Updated existing product data for https://www.dns-shop.ru/product/c455f512e73aed20/videokarta-palit-geforce-rtx-4060-infinity-2-ne64060019p1-1070l/
 2025-06-08 23:00:53,957 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 4060 Infinity 2 [NE64060019P1-1070L]
 2025-06-08 23:00:54,467 - INFO - Product details parsing complete!
+2025-06-19 17:47:02,558 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 17:47:55,779 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 17:47:56,990 - INFO - Reading URLs from urls.txt
+2025-06-19 17:47:56,990 - INFO - Found 10 URLs to process
+2025-06-19 17:47:56,990 - INFO - Processing URL 1/10: https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 17:47:56,990 - INFO - Processing URL: https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 17:48:22,098 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG300 [R-AG300-BKNNMN-G]
+2025-06-19 17:48:22,131 - INFO - Added new product data for https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 17:48:22,275 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG300 [R-AG300-BKNNMN-G]
+2025-06-19 17:48:22,276 - INFO - Processing URL 2/10: https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 17:48:22,276 - INFO - Processing URL: https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 17:48:42,272 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-206-XT
+2025-06-19 17:48:42,311 - INFO - Added new product data for https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 17:48:42,476 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-206-XT
+2025-06-19 17:48:42,476 - INFO - Processing URL 3/10: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 17:48:42,476 - INFO - Processing URL: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 17:49:04,862 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 17:49:04,904 - INFO - Added new product data for https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 17:49:05,070 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 17:49:05,070 - INFO - Processing URL 4/10: https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 17:49:05,070 - INFO - Processing URL: https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 17:49:27,114 - INFO - Parsed product: Кулер для процессора DEEPCOOL AK620 [LGA1700] [R-AK620-BKNNMT-G]
+2025-06-19 17:49:27,146 - INFO - Added new product data for https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 17:49:27,332 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AK620 [LGA1700] [R-AK620-BKNNMT-G]
+2025-06-19 17:49:27,332 - INFO - Processing URL 5/10: https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 17:49:27,335 - INFO - Processing URL: https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 17:49:47,479 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG400 [R-AG400-BKNNMN-G-1]
+2025-06-19 17:49:47,517 - INFO - Added new product data for https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 17:49:47,661 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG400 [R-AG400-BKNNMN-G-1]
+2025-06-19 17:49:47,661 - INFO - Processing URL 6/10: https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 17:49:47,662 - INFO - Processing URL: https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 17:50:17,160 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG620 DIGITAL [R-AG620-BKNDMN-G-1]
+2025-06-19 17:50:17,202 - INFO - Added new product data for https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 17:50:17,361 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG620 DIGITAL [R-AG620-BKNDMN-G-1]
+2025-06-19 17:50:17,361 - INFO - Processing URL 7/10: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 17:50:17,361 - INFO - Processing URL: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 17:50:37,275 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 17:50:37,317 - INFO - Added new product data for https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 17:50:37,478 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 17:50:37,478 - INFO - Processing URL 8/10: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 17:50:37,480 - INFO - Processing URL: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 17:57:12,109 - WARNING - Error clicking or finding next button: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=137.0.7151.119)
+Stacktrace:
+	GetHandleVerifier [0x0xea3b03+62899]
+	GetHandleVerifier [0x0xea3b44+62964]
+	(No symbol) [0x0xcd10f3]
+	(No symbol) [0x0xcc08c0]
+	(No symbol) [0x0xcde87f]
+	(No symbol) [0x0xd4514c]
+	(No symbol) [0x0xd5f6a9]
+	(No symbol) [0x0xd3e306]
+	(No symbol) [0x0xd0d670]
+	(No symbol) [0x0xd0e4e4]
+	GetHandleVerifier [0x0x1104793+2556483]
+	GetHandleVerifier [0x0x10ffd02+2537394]
+	GetHandleVerifier [0x0xeca2fa+220586]
+	GetHandleVerifier [0x0xebaae8+157080]
+	GetHandleVerifier [0x0xec141d+184013]
+	GetHandleVerifier [0x0xeaba68+95512]
+	GetHandleVerifier [0x0xeabc10+95936]
+	GetHandleVerifier [0x0xe96b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 17:57:12,118 - ERROR - Error processing URL https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/: Message: invalid session id
+Stacktrace:
+	GetHandleVerifier [0x0xea3b03+62899]
+	GetHandleVerifier [0x0xea3b44+62964]
+	(No symbol) [0x0xcd0f50]
+	(No symbol) [0x0xd0c938]
+	(No symbol) [0x0xd3e3c6]
+	(No symbol) [0x0xd39e72]
+	(No symbol) [0x0xd39406]
+	(No symbol) [0x0xca3a05]
+	(No symbol) [0x0xca3f5e]
+	(No symbol) [0x0xca43fd]
+	GetHandleVerifier [0x0x1104793+2556483]
+	GetHandleVerifier [0x0x10ffd02+2537394]
+	GetHandleVerifier [0x0xeca2fa+220586]
+	GetHandleVerifier [0x0xebaae8+157080]
+	GetHandleVerifier [0x0xec141d+184013]
+	(No symbol) [0x0xca36d0]
+	(No symbol) [0x0xca2f47]
+	GetHandleVerifier [0x0x123aa2c+3826908]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 17:57:12,138 - INFO - Processing URL 9/10: https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/
+2025-06-19 17:57:12,140 - INFO - Processing URL: https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/
+2025-06-19 17:57:12,145 - ERROR - Error processing URL https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/: Message: invalid session id
+Stacktrace:
+	GetHandleVerifier [0x0xea3b03+62899]
+	GetHandleVerifier [0x0xea3b44+62964]
+	(No symbol) [0x0xcd0f50]
+	(No symbol) [0x0xd0c938]
+	(No symbol) [0x0xd3e3c6]
+	(No symbol) [0x0xd39e72]
+	(No symbol) [0x0xd39406]
+	(No symbol) [0x0xca3a05]
+	(No symbol) [0x0xca3f5e]
+	(No symbol) [0x0xca43fd]
+	GetHandleVerifier [0x0x1104793+2556483]
+	GetHandleVerifier [0x0x10ffd02+2537394]
+	GetHandleVerifier [0x0xeca2fa+220586]
+	GetHandleVerifier [0x0xebaae8+157080]
+	GetHandleVerifier [0x0xec141d+184013]
+	(No symbol) [0x0xca36d0]
+	(No symbol) [0x0xca2f47]
+	GetHandleVerifier [0x0x123aa2c+3826908]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 17:57:12,164 - INFO - Processing URL 10/10: https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/
+2025-06-19 17:57:12,170 - INFO - Processing URL: https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/
+2025-06-19 17:57:12,232 - ERROR - Error processing URL https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/: Message: invalid session id
+Stacktrace:
+	GetHandleVerifier [0x0xea3b03+62899]
+	GetHandleVerifier [0x0xea3b44+62964]
+	(No symbol) [0x0xcd0f50]
+	(No symbol) [0x0xd0c938]
+	(No symbol) [0x0xd3e3c6]
+	(No symbol) [0x0xd39e72]
+	(No symbol) [0x0xd39406]
+	(No symbol) [0x0xca3a05]
+	(No symbol) [0x0xca3f5e]
+	(No symbol) [0x0xca43fd]
+	GetHandleVerifier [0x0x1104793+2556483]
+	GetHandleVerifier [0x0x10ffd02+2537394]
+	GetHandleVerifier [0x0xeca2fa+220586]
+	GetHandleVerifier [0x0xebaae8+157080]
+	GetHandleVerifier [0x0xec141d+184013]
+	(No symbol) [0x0xca36d0]
+	(No symbol) [0x0xca2f47]
+	GetHandleVerifier [0x0x123aa2c+3826908]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 17:57:14,978 - INFO - Product details parsing complete!
+2025-06-19 18:10:23,501 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 18:12:22,491 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 18:12:23,717 - INFO - Reading URLs from urls.txt
+2025-06-19 18:12:23,717 - INFO - Found 10 URLs to process
+2025-06-19 18:12:23,717 - INFO - Processing URL 1/10: https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/
+2025-06-19 18:12:23,717 - INFO - Processing URL: https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/
+2025-06-19 18:12:50,895 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-903-XT BLACK [SE-903-XT BLACK]
+2025-06-19 18:12:50,938 - INFO - Added new product data for https://www.dns-shop.ru/product/4202bd74ae7eed20/kuler-dla-processora-id-cooling-se-903-xt-black-se-903-xt-black/
+2025-06-19 18:12:51,099 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-903-XT BLACK [SE-903-XT BLACK]
+2025-06-19 18:12:51,099 - INFO - Processing URL 2/10: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:12:51,099 - INFO - Processing URL: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:13:13,083 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 18:13:13,128 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:13:13,304 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 18:13:13,304 - INFO - Processing URL 3/10: https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 18:13:13,304 - INFO - Processing URL: https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 18:13:35,649 - INFO - Parsed product: Кулер для процессора DEEPCOOL AK620 [LGA1700] [R-AK620-BKNNMT-G]
+2025-06-19 18:13:35,689 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f65523875885ed20/kuler-dla-processora-deepcool-ak620-lga1700-r-ak620-bknnmt-g/
+2025-06-19 18:13:35,851 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AK620 [LGA1700] [R-AK620-BKNNMT-G]
+2025-06-19 18:13:35,851 - INFO - Processing URL 4/10: https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 18:13:35,851 - INFO - Processing URL: https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 18:13:57,273 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-206-XT
+2025-06-19 18:13:57,317 - INFO - Updated existing product data for https://www.dns-shop.ru/product/a6908de1536ced20/kuler-dla-processora-id-cooling-se-206-xt/
+2025-06-19 18:13:57,480 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-206-XT
+2025-06-19 18:13:57,482 - INFO - Processing URL 5/10: https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 18:13:57,482 - INFO - Processing URL: https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 18:14:17,703 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG400 [R-AG400-BKNNMN-G-1]
+2025-06-19 18:14:17,745 - INFO - Updated existing product data for https://www.dns-shop.ru/product/3f6f629ce633ed20/kuler-dla-processora-deepcool-ag400-r-ag400-bknnmn-g-1/
+2025-06-19 18:14:17,899 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG400 [R-AG400-BKNNMN-G-1]
+2025-06-19 18:14:17,899 - INFO - Processing URL 6/10: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:14:17,899 - INFO - Processing URL: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:14:39,283 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-224-XTS ARGB
+2025-06-19 18:14:39,331 - INFO - Added new product data for https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:14:39,502 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS ARGB
+2025-06-19 18:14:39,502 - INFO - Processing URL 7/10: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:14:39,502 - INFO - Processing URL: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:15:03,585 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 18:15:03,627 - INFO - Updated existing product data for https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:15:03,777 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 18:15:03,777 - INFO - Processing URL 8/10: https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/
+2025-06-19 18:15:03,777 - INFO - Processing URL: https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/
+2025-06-19 18:15:23,725 - INFO - Parsed product: Кулер для процессора DEEPCOOL AK620 DIGITAL [R-AK620-BKADMN-G]
+2025-06-19 18:15:23,769 - INFO - Added new product data for https://www.dns-shop.ru/product/e82b1b28efb5ed20/kuler-dla-processora-deepcool-ak620-digital-r-ak620-bkadmn-g/
+2025-06-19 18:15:23,924 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AK620 DIGITAL [R-AK620-BKADMN-G]
+2025-06-19 18:15:23,925 - INFO - Processing URL 9/10: https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 18:15:23,925 - INFO - Processing URL: https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 18:15:38,324 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x603b03+62899]
+	GetHandleVerifier [0x0x603b44+62964]
+	(No symbol) [0x0x4310f3]
+	(No symbol) [0x0x47980e]
+	(No symbol) [0x0x479bab]
+	(No symbol) [0x0x4c25c2]
+	(No symbol) [0x0x49e554]
+	(No symbol) [0x0x4bfd81]
+	(No symbol) [0x0x49e306]
+	(No symbol) [0x0x46d670]
+	(No symbol) [0x0x46e4e4]
+	GetHandleVerifier [0x0x864793+2556483]
+	GetHandleVerifier [0x0x85fd02+2537394]
+	GetHandleVerifier [0x0x62a2fa+220586]
+	GetHandleVerifier [0x0x61aae8+157080]
+	GetHandleVerifier [0x0x62141d+184013]
+	GetHandleVerifier [0x0x60ba68+95512]
+	GetHandleVerifier [0x0x60bc10+95936]
+	GetHandleVerifier [0x0x5f6b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 18:15:38,387 - WARNING - Контейнер с характеристиками не найден в HTML
+2025-06-19 18:15:49,827 - WARNING - Error clicking thumbnail: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x603b03+62899]
+	GetHandleVerifier [0x0x603b44+62964]
+	(No symbol) [0x0x4310f3]
+	(No symbol) [0x0x47980e]
+	(No symbol) [0x0x479bab]
+	(No symbol) [0x0x4c25c2]
+	(No symbol) [0x0x49e554]
+	(No symbol) [0x0x4bfd81]
+	(No symbol) [0x0x49e306]
+	(No symbol) [0x0x46d670]
+	(No symbol) [0x0x46e4e4]
+	GetHandleVerifier [0x0x864793+2556483]
+	GetHandleVerifier [0x0x85fd02+2537394]
+	GetHandleVerifier [0x0x62a2fa+220586]
+	GetHandleVerifier [0x0x61aae8+157080]
+	GetHandleVerifier [0x0x62141d+184013]
+	GetHandleVerifier [0x0x60ba68+95512]
+	GetHandleVerifier [0x0x60bc10+95936]
+	GetHandleVerifier [0x0x5f6b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 18:15:49,912 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG300 [R-AG300-BKNNMN-G]
+2025-06-19 18:15:49,973 - INFO - Updated existing product data for https://www.dns-shop.ru/product/de66fa771d22ed20/kuler-dla-processora-deepcool-ag300-r-ag300-bknnmn-g/
+2025-06-19 18:15:50,125 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG300 [R-AG300-BKNNMN-G]
+2025-06-19 18:15:50,125 - INFO - Processing URL 10/10: https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 18:15:50,129 - INFO - Processing URL: https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 18:16:10,723 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG620 DIGITAL [R-AG620-BKNDMN-G-1]
+2025-06-19 18:16:10,765 - INFO - Updated existing product data for https://www.dns-shop.ru/product/e1b7c2736cb9ed20/kuler-dla-processora-deepcool-ag620-digital-r-ag620-bkndmn-g-1/
+2025-06-19 18:16:10,919 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG620 DIGITAL [R-AG620-BKNDMN-G-1]
+2025-06-19 18:16:11,934 - INFO - Product details parsing complete!
+2025-06-19 18:35:33,025 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 18:37:08,734 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-06-19 18:37:09,966 - INFO - Reading URLs from urls.txt
+2025-06-19 18:37:09,969 - INFO - Found 3 URLs to process
+2025-06-19 18:37:09,969 - INFO - Processing URL 1/3: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:37:09,969 - INFO - Processing URL: https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:37:33,760 - INFO - Parsed product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 18:37:33,796 - INFO - Updated existing product data for https://www.dns-shop.ru/product/f2c7e6bcea8aed20/kuler-dla-processora-deepcool-ag620-r-ag620-bknnmn-g-1/
+2025-06-19 18:37:33,972 - INFO - Saved data for product: Кулер для процессора DEEPCOOL AG620 [R-AG620-BKNNMN-G-1]
+2025-06-19 18:37:33,973 - INFO - Processing URL 2/3: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:37:33,973 - INFO - Processing URL: https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:37:55,287 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 18:37:55,324 - INFO - Updated existing product data for https://www.dns-shop.ru/product/e2949b243404ed20/kuler-dla-processora-id-cooling-se-224-xts-se-224-xts/
+2025-06-19 18:37:55,481 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS [SE-224-XTS]
+2025-06-19 18:37:55,481 - INFO - Processing URL 3/3: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:37:55,481 - INFO - Processing URL: https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:38:09,538 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x493b03+62899]
+	GetHandleVerifier [0x0x493b44+62964]
+	(No symbol) [0x0x2c10f3]
+	(No symbol) [0x0x30980e]
+	(No symbol) [0x0x309bab]
+	(No symbol) [0x0x3525c2]
+	(No symbol) [0x0x32e554]
+	(No symbol) [0x0x34fd81]
+	(No symbol) [0x0x32e306]
+	(No symbol) [0x0x2fd670]
+	(No symbol) [0x0x2fe4e4]
+	GetHandleVerifier [0x0x6f4793+2556483]
+	GetHandleVerifier [0x0x6efd02+2537394]
+	GetHandleVerifier [0x0x4ba2fa+220586]
+	GetHandleVerifier [0x0x4aaae8+157080]
+	GetHandleVerifier [0x0x4b141d+184013]
+	GetHandleVerifier [0x0x49ba68+95512]
+	GetHandleVerifier [0x0x49bc10+95936]
+	GetHandleVerifier [0x0x486b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 18:38:09,605 - WARNING - Контейнер с характеристиками не найден в HTML
+2025-06-19 18:38:20,880 - WARNING - Error clicking thumbnail: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x493b03+62899]
+	GetHandleVerifier [0x0x493b44+62964]
+	(No symbol) [0x0x2c10f3]
+	(No symbol) [0x0x30980e]
+	(No symbol) [0x0x309bab]
+	(No symbol) [0x0x3525c2]
+	(No symbol) [0x0x32e554]
+	(No symbol) [0x0x34fd81]
+	(No symbol) [0x0x32e306]
+	(No symbol) [0x0x2fd670]
+	(No symbol) [0x0x2fe4e4]
+	GetHandleVerifier [0x0x6f4793+2556483]
+	GetHandleVerifier [0x0x6efd02+2537394]
+	GetHandleVerifier [0x0x4ba2fa+220586]
+	GetHandleVerifier [0x0x4aaae8+157080]
+	GetHandleVerifier [0x0x4b141d+184013]
+	GetHandleVerifier [0x0x49ba68+95512]
+	GetHandleVerifier [0x0x49bc10+95936]
+	GetHandleVerifier [0x0x486b5a+9738]
+	BaseThreadInitThunk [0x0x762d5d49+25]
+	RtlInitializeExceptionChain [0x0x7701d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7701d021+561]
+
+2025-06-19 18:38:20,960 - INFO - Parsed product: Кулер для процессора ID-COOLING SE-224-XTS ARGB
+2025-06-19 18:38:20,997 - INFO - Updated existing product data for https://www.dns-shop.ru/product/5e2127f83401ed20/kuler-dla-processora-id-cooling-se-224-xts-argb/
+2025-06-19 18:38:21,161 - INFO - Saved data for product: Кулер для процессора ID-COOLING SE-224-XTS ARGB
+2025-06-19 18:38:22,102 - INFO - Product details parsing complete!

@@ -393,10 +393,10 @@ def scrape():
                             })
                         
                         logger.info(f"Загружены локальные данные DNS: {len(local_data)} товаров из {len(categories_count)} категорий")
-                        
+                                
                 except Exception as e:
                     logger.error(f"Ошибка чтения локального файла DNS {latest_local_file}: {str(e)}")
-            
+                    
             # Также проверяем основной файл product_data.json
             main_file = data_dir / "product_data.json"
             if main_file.exists() and not dns_results:
@@ -407,7 +407,6 @@ def scrape():
                     if isinstance(main_data, list) and main_data:
                         dns_results = main_data
                         logger.info(f"Загружены данные DNS из основного файла: {len(main_data)} товаров")
-                        
                 except Exception as e:
                     logger.error(f"Ошибка чтения основного файла DNS: {str(e)}")
         
@@ -423,63 +422,63 @@ def scrape():
                         with open(cat_file, 'r', encoding='utf-8') as f:
                             cat_products = json.load(f)
                             
-                            # Отображаемое имя категории DNS
-                            display_name = cat_name
-                            if 'videokarty' in cat_name.lower() or 'gpu' in cat_name.lower():
-                                display_name = 'Видеокарты'
-                            elif 'processor' in cat_name.lower() or 'cpu' in cat_name.lower():
-                                display_name = 'Процессоры'
-                            elif 'motherboard' in cat_name.lower() or 'materinskie' in cat_name.lower():
-                                display_name = 'Материнские платы'
-                            elif 'power' in cat_name.lower() or 'pitaniya' in cat_name.lower():
-                                display_name = 'Блоки питания'
-                            elif 'memory' in cat_name.lower() or 'pamyati' in cat_name.lower() or 'ram' in cat_name.lower():
-                                display_name = 'Модули памяти'
-                            elif 'case' in cat_name.lower() or 'korpus' in cat_name.lower():
-                                display_name = 'Корпуса'
-                            elif 'cooler' in cat_name.lower() or 'cooling' in cat_name.lower():
-                                display_name = 'Кулеры для процессора'
-                            elif 'ssd' in cat_name.lower():
-                                display_name = 'SSD накопители'
-                            elif 'hdd' in cat_name.lower() or 'hard' in cat_name.lower():
-                                display_name = 'Жесткие диски'
-                            else:
-                                # Делаем первую букву заглавной
-                                display_name = cat_name.replace('_', ' ').replace('-', ' ').title()
-                            
-                            dns_categories.append({
-                                'name': display_name,
-                                'count': len(cat_products),
-                                'file': cat_file,
-                                'slug': cat_name
-                            })
-                            # Add these products to the overall results
-                            dns_results.extend(cat_products)
+                        # Отображаемое имя категории DNS
+                        display_name = cat_name
+                        if 'videokarty' in cat_name.lower() or 'gpu' in cat_name.lower():
+                            display_name = 'Видеокарты'
+                        elif 'processor' in cat_name.lower() or 'cpu' in cat_name.lower():
+                            display_name = 'Процессоры'
+                        elif 'motherboard' in cat_name.lower() or 'materinskie' in cat_name.lower():
+                            display_name = 'Материнские платы'
+                        elif 'power' in cat_name.lower() or 'pitaniya' in cat_name.lower():
+                            display_name = 'Блоки питания'
+                        elif 'memory' in cat_name.lower() or 'pamyati' in cat_name.lower() or 'ram' in cat_name.lower():
+                            display_name = 'Модули памяти'
+                        elif 'case' in cat_name.lower() or 'korpus' in cat_name.lower():
+                            display_name = 'Корпуса'
+                        elif 'cooler' in cat_name.lower() or 'cooling' in cat_name.lower():
+                            display_name = 'Кулеры для процессора'
+                        elif 'ssd' in cat_name.lower():
+                            display_name = 'SSD накопители'
+                        elif 'hdd' in cat_name.lower() or 'hard' in cat_name.lower():
+                            display_name = 'Жесткие диски'
+                        else:
+                            # Делаем первую букву заглавной
+                            display_name = cat_name.replace('_', ' ').replace('-', ' ').title()
+                        
+                        dns_categories.append({
+                            'name': display_name,
+                            'count': len(cat_products),
+                            'file': cat_file,
+                            'slug': cat_name
+                        })
+                        # Add these products to the overall results
+                        dns_results.extend(cat_products)
                     except Exception as e:
                         logger.error(f'Ошибка чтения категории DNS {cat_name}: {str(e)}')
         
-        # Если все еще нет результатов, пробуем найти основной файл product_data.json из старой структуры
-        if not dns_categories:
-            dns_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'product_data.json')
-            if os.path.exists(dns_file_path):
-                with open(dns_file_path, 'r', encoding='utf-8') as f:
-                    dns_results = json.load(f)
-                    # Проверяем и обрабатываем формат данных
-                    for item in dns_results:
-                        # Добавляем поля, если их нет
-                        if 'price_discounted' not in item and 'price_original' not in item:
-                            if 'price' in item:
-                                item['price_original'] = item['price']
-                                item['price_discounted'] = item['price']
-                        
-                        # Проверяем наличие категории
-                        if 'categories' not in item or not item['categories']:
-                            item['categories'] = []
+            # Если все еще нет результатов, пробуем найти основной файл product_data.json из старой структуры
+            if not dns_categories:
+                dns_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing', 'product_data.json')
+                if os.path.exists(dns_file_path):
+                    with open(dns_file_path, 'r', encoding='utf-8') as f:
+                        dns_results = json.load(f)
+                        # Проверяем и обрабатываем формат данных
+                        for item in dns_results:
+                            # Добавляем поля, если их нет
+                            if 'price_discounted' not in item and 'price_original' not in item:
+                                if 'price' in item:
+                                    item['price_original'] = item['price']
+                                    item['price_discounted'] = item['price']
                             
-                        # Логгируем загруженные данные
-                        logger.info(f"Загружен продукт DNS: {item.get('name')}")
-            else:
-                logger.warning(f"Файл результатов DNS парсера не найден ни в локальных данных, ни в старой структуре")
+                            # Проверяем наличие категории
+                            if 'categories' not in item or not item['categories']:
+                                item['categories'] = []
+                                
+                            # Логгируем загруженные данные
+                            logger.info(f"Загружен продукт DNS: {item.get('name')}")
+                else:
+                    logger.warning(f"Файл результатов DNS парсера не найден ни в локальных данных, ни в старой структуре")
                 
     except Exception as e:
         logger.error(f'Ошибка чтения результатов DNS парсера: {str(e)}')
@@ -703,9 +702,9 @@ def run_citilink_parser():
         # Set environment variable for the current process
         os.environ['CATEGORY'] = category
         
-        # Use the system Python interpreter
+            # Use the system Python interpreter
         python_executable = sys.executable
-        
+            
         flash(f'Парсер Citilink запущен в фоновом режиме для категории "{category}". Страница остается доступной для других пользователей.', 'info')
         
         # Run the script in background WITHOUT blocking the web server
@@ -717,7 +716,7 @@ def run_citilink_parser():
                 
                 current_dir = os.getcwd()
                 os.chdir(citilink_parser_dir)
-                
+        
                 # Удаляем файл-флаг остановки если он есть (новый запуск)
                 stop_flag_file = os.path.join(citilink_parser_dir, 'STOP_PARSER.flag')
                 if os.path.exists(stop_flag_file):
@@ -1103,57 +1102,106 @@ def stop_citilink_parser():
         
         citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
         
-        # Создаем файл-флаг для остановки парсера
+        # 1. Создаем файл-флаг для остановки парсера
         stop_flag_file = os.path.join(citilink_parser_dir, 'STOP_PARSER.flag')
         try:
             with open(stop_flag_file, 'w', encoding='utf-8') as f:
-                f.write(f"STOP_REQUEST_{datetime.now().isoformat()}")
+                f.write(f"WEB_STOP_REQUEST_{datetime.now().isoformat()}")
             logger.info(f"Создан файл-флаг остановки: {stop_flag_file}")
         except Exception as e:
             logger.error(f"Ошибка создания файла-флага: {e}")
         
-        # Попытка остановить процессы через psutil
+        # 2. Используем улучшенную систему остановки через stop_parser.py
         stopped_processes = 0
         try:
-            import psutil
+            import subprocess
             
-            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            # Запускаем наш улучшенный скрипт остановки
+            stop_script_path = os.path.join(citilink_parser_dir, 'stop_parser.py')
+            if os.path.exists(stop_script_path):
+                logger.info("Запускаем улучшенный скрипт остановки парсера...")
+                
+                # Запускаем скрипт в директории парсера
+                result = subprocess.run(
+                    [sys.executable, 'stop_parser.py'],
+                    cwd=citilink_parser_dir,
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                
+                if result.returncode == 0:
+                    logger.info("Скрипт остановки выполнен успешно")
+                    # Пытаемся извлечь количество остановленных процессов из вывода
+                    for line in result.stdout.split('\n'):
+                        if 'Отправлен сигнал остановки' in line and 'процессам' in line:
+                            import re
+                            match = re.search(r'(\d+) процессам', line)
+                            if match:
+                                stopped_processes = int(match.group(1))
+                                break
+                else:
+                    logger.warning(f"Скрипт остановки завершился с кодом {result.returncode}")
+                    
+                if result.stdout:
+                    logger.info(f"Вывод скрипта остановки:\n{result.stdout}")
+                if result.stderr:
+                    logger.warning(f"Предупреждения скрипта остановки:\n{result.stderr}")
+                    
+            else:
+                # Резервный метод через psutil если скрипт не найден
+                logger.warning("Скрипт stop_parser.py не найден, используем резервный метод")
+                
                 try:
-                    cmdline = proc.info['cmdline']
-                    if cmdline:
-                        cmdline_str = ' '.join(str(cmd) for cmd in cmdline)
-                        
-                        # Более точная проверка процессов парсера
-                        if ('Citi_parser' in cmdline_str or 'main.py' in cmdline_str) and 'python' in cmdline_str.lower():
-                            logger.info(f"Найден процесс парсера: PID {proc.info['pid']}, команда: {cmdline_str}")
-                            proc.terminate()  # Мягкая остановка
-                            stopped_processes += 1
-                            
-                            # Ждем завершения процесса
-                            try:
-                                proc.wait(timeout=10)
-                                logger.info(f"Процесс {proc.info['pid']} завершен успешно")
-                            except psutil.TimeoutExpired:
-                                logger.warning(f"Процесс {proc.info['pid']} не завершился, принудительное завершение")
-                                proc.kill()
+                    import psutil
+                    
+                    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                        try:
+                            cmdline = proc.info['cmdline']
+                            if cmdline:
+                                cmdline_str = ' '.join(str(cmd) for cmd in cmdline)
                                 
-                except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                    pass
+                                # Более точная проверка процессов парсера
+                                if (('Citi_parser' in cmdline_str or 'main.py' in cmdline_str) and 
+                                    'python' in cmdline_str.lower()):
+                                    logger.info(f"Найден процесс парсера: PID {proc.info['pid']}, команда: {cmdline_str}")
+                                    proc.terminate()  # Мягкая остановка
+                                    stopped_processes += 1
+                                    
+                                    # Ждем завершения процесса
+                                    try:
+                                        proc.wait(timeout=10)
+                                        logger.info(f"Процесс {proc.info['pid']} завершен успешно")
+                                    except psutil.TimeoutExpired:
+                                        logger.warning(f"Процесс {proc.info['pid']} не завершился, принудительное завершение")
+                                        proc.kill()
+                                        
+                        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                            pass
+                        except Exception as e:
+                            logger.error(f"Ошибка при остановке процесса: {e}")
+                
+                except ImportError:
+                    logger.warning("Библиотека psutil недоступна")
                 except Exception as e:
-                    logger.error(f"Ошибка при остановке процесса: {e}")
-        
-        except ImportError:
-            logger.warning("Библиотека psutil недоступна, пропускаем остановку процессов")
+                    logger.error(f"Ошибка при поиске процессов: {e}")
+                    
+        except subprocess.TimeoutExpired:
+            logger.error("Превышено время ожидания при остановке парсера")
         except Exception as e:
-            logger.error(f"Ошибка при поиске процессов: {e}")
+            logger.error(f"Ошибка при выполнении скрипта остановки: {e}")
         
-        # Обновляем статус парсера
+        # 3. Ждем немного для корректной остановки
+        import time
+        time.sleep(2)
+        
+        # 4. Обновляем статус парсера
         status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
         status_data = {
             'status': 'stopped',
             'category': 'unknown',
             'timestamp': datetime.now().isoformat(),
-            'message': 'Parser stopped by user request',
+            'message': 'Parser stopped by web interface',
             'stopped_processes': stopped_processes
         }
         
@@ -1164,13 +1212,27 @@ def stop_citilink_parser():
         except Exception as e:
             logger.error(f"Ошибка обновления статуса: {e}")
         
-        # ОБЯЗАТЕЛЬНЫЙ импорт всех собранных данных
+        # 5. Импорт всех собранных данных
         imported_count = 0
         total_files_processed = 0
         
         logger.info("Начинаем импорт всех собранных данных Citilink...")
         
         try:
+            # Сначала пытаемся использовать утилиту cleanup для исправления JSON файлов
+            cleanup_script_path = os.path.join(citilink_parser_dir, 'cleanup.py')
+            if os.path.exists(cleanup_script_path):
+                try:
+                    logger.info("Запускаем утилиту очистки и исправления JSON файлов...")
+                    subprocess.run(
+                        [sys.executable, 'cleanup.py'],
+                        cwd=citilink_parser_dir,
+                        timeout=30
+                    )
+                except Exception as cleanup_error:
+                    logger.warning(f"Ошибка при запуске утилиты очистки: {cleanup_error}")
+            
+            # Основной импорт данных
             citilink_data_dir = os.path.join(citilink_parser_dir, 'data')
             
             if os.path.exists(citilink_data_dir):
@@ -1200,17 +1262,8 @@ def stop_citilink_parser():
                                     
                                     if products and len(products) > 0:
                                         logger.info(f"Найдено {len(products)} товаров в категории {category_dir}")
-                                        
-                                        # Импортируем через стандартную функцию
-                                        from app.utils.standardization.import_products import import_products
-                                        import_result = import_products()
-                                        
-                                        if hasattr(import_result, 'get'):
-                                            imported_count += import_result.get('added_count', len(products))
-                                        else:
-                                            imported_count += len(products)
-                                        
-                                        logger.info(f"Импортировано товаров из категории {category_dir}: {len(products)}")
+                                        imported_count += len(products)
+                                        logger.info(f"Учтено товаров из категории {category_dir}: {len(products)}")
                                     else:
                                         logger.warning(f"Файл {cat_products_file} пуст или не содержит товаров")
                                 else:
@@ -1244,16 +1297,21 @@ def stop_citilink_parser():
                         
                         if products and len(products) > 0:
                             logger.info(f"Найдено {len(products)} товаров в основном файле")
-                            
-                            from app.utils.standardization.import_products import import_products
-                            import_result = import_products()
-                            
-                            if hasattr(import_result, 'get'):
-                                imported_count += import_result.get('added_count', len(products))
-                            else:
-                                imported_count += len(products)
-                            
-                            logger.info(f"Импортировано товаров из основного файла: {len(products)}")
+                            # Выполняем реальный импорт для основного файла
+                            try:
+                                from app.utils.standardization.import_products import import_products
+                                import_result = import_products()
+                                
+                                if hasattr(import_result, 'get'):
+                                    actual_imported = import_result.get('added_count', 0)
+                                    imported_count = actual_imported
+                                else:
+                                    imported_count = len(products)
+                                
+                                logger.info(f"Реально импортировано товаров: {imported_count}")
+                            except Exception as import_error:
+                                logger.error(f"Ошибка импорта: {import_error}")
+                                imported_count = len(products)  # Считаем как потенциально импортированные
                         else:
                             logger.warning("Основной файл пуст или не содержит товаров")
                     else:
@@ -1263,23 +1321,23 @@ def stop_citilink_parser():
                     logger.error(f"Ошибка JSON в основном файле: {json_error}")
                 except Exception as file_error:
                     logger.error(f"Ошибка обработки основного файла: {file_error}")
-                    
+                                
         except Exception as import_error:
             logger.error(f"Критическая ошибка при импорте данных: {import_error}")
         
-        # Формируем сообщение для пользователя
+        # 6. Формируем сообщение для пользователя
         if stopped_processes > 0:
             if imported_count > 0:
-                flash(f'✅ Парсер остановлен! Остановлено процессов: {stopped_processes}. Импортировано товаров: {imported_count} из {total_files_processed} файлов.', 'success')
+                flash(f'✅ Парсер остановлен! Остановлено процессов: {stopped_processes}. Найдено товаров для импорта: {imported_count} из {total_files_processed} файлов.', 'success')
             else:
                 flash(f'⚠️ Парсер остановлен (процессов: {stopped_processes}), но данные для импорта не найдены.', 'warning')
         else:
             if imported_count > 0:
-                flash(f'✅ Импорт выполнен! Активные процессы не найдены. Импортировано товаров: {imported_count} из {total_files_processed} файлов.', 'success')
+                flash(f'✅ Процедура остановки выполнена! Активные процессы не найдены. Найдено товаров: {imported_count} из {total_files_processed} файлов.', 'success')
             else:
                 flash('ℹ️ Активные процессы парсера не найдены. Данные для импорта отсутствуют.', 'info')
-        
-        logger.info(f"=== ОСТАНОВКА ЗАВЕРШЕНА === Процессов: {stopped_processes}, Импортировано: {imported_count}")
+            
+        logger.info(f"=== ОСТАНОВКА ЗАВЕРШЕНА === Процессов: {stopped_processes}, Найдено товаров: {imported_count}")
             
     except Exception as e:
         logger.error(f"Критическая ошибка при остановке парсера Citilink: {e}")
@@ -1406,7 +1464,7 @@ def fix_citilink_json():
         logger.error(f"Ошибка при исправлении JSON файлов: {e}")
         flash(f'Ошибка при исправлении файлов: {str(e)}', 'danger')
     
-    return redirect(url_for('admin.scrape'))
+    return redirect(url_for('admin.scrape')) 
 
 @admin_bp.route('/clear-database', methods=['POST'])
 @login_required

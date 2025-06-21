@@ -4,6 +4,7 @@ import json
 import os
 import traceback
 import re
+import time
 
 # Add the project root directory to the Python path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
@@ -37,6 +38,8 @@ def ensure_compatibility_characteristics(product_data):
             characteristics['form_factor'] = ''
         if 'memory_type' not in characteristics:
             characteristics['memory_type'] = ''
+        if 'memory_form_factor' not in characteristics:
+            characteristics['memory_form_factor'] = ''
             
     elif product_type == 'processor':
         if 'socket' not in characteristics:
@@ -61,6 +64,8 @@ def ensure_compatibility_characteristics(product_data):
             characteristics['memory_type'] = ''
         if 'memory_size' not in characteristics:
             characteristics['memory_size'] = 0
+        if 'memory_form_factor' not in characteristics:
+            characteristics['memory_form_factor'] = ''
             
     elif product_type == 'power_supply':
         if 'wattage' not in characteristics:
@@ -264,9 +269,28 @@ def import_products():
             # Ищем файлы с префиксом local_parser_data_
             local_files = list(data_dir.glob("local_parser_data_*.json"))
             if local_files:
-                # Сортируем по времени модификации (самый новый первый)
-                latest_local_file = max(local_files, key=lambda f: f.stat().st_mtime)
-                print(f"Найден самый свежий локальный файл: {latest_local_file}")
+                # Фильтруем файлы по минимальному размеру (исключаем неполные файлы)
+                MIN_FILE_SIZE = 100000  # 100KB минимум
+                valid_files = [f for f in local_files if f.stat().st_size > MIN_FILE_SIZE]
+                
+                if not valid_files:
+                    print("Все найденные файлы local_parser_data слишком малы, возможно повреждены")
+                    valid_files = local_files  # Используем что есть
+                
+                # Сортируем по времени модификации и выбираем файлы за последние 24 часа
+                now = time.time()
+                recent_files = [f for f in valid_files if (now - f.stat().st_mtime) < 86400]  # 24 часа
+                
+                if recent_files:
+                    # Среди недавних файлов выбираем самый большой по размеру (наиболее полный)
+                    latest_local_file = max(recent_files, key=lambda f: f.stat().st_size)
+                    print(f"Выбран файл по размеру среди недавних: {latest_local_file} ({latest_local_file.stat().st_size} байт)")
+                else:
+                    # Если нет недавних файлов, берем самый большой среди всех валидных файлов
+                    latest_local_file = max(valid_files, key=lambda f: f.stat().st_size)
+                    print(f"Выбран самый большой файл среди всех: {latest_local_file} ({latest_local_file.stat().st_size} байт)")
+                
+                print(f"Найден самый подходящий локальный файл: {latest_local_file}")
             else:
                 # Проверяем основной файл product_data.json
                 main_file = data_dir / "product_data.json"
