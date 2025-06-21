@@ -227,7 +227,12 @@ def extract_value(value_str, field_name):
     for pattern, converter in VALUE_MAPPING[field_name].items():
         match = re.match(pattern, str(value_str))
         if match:
-            return converter(match.group(1))
+            # Проверяем, есть ли группы в регулярном выражении
+            if match.groups():
+                return converter(match.group(1))
+            else:
+                # Если групп нет, передаем всю строку
+                return converter(value_str)
     
     return value_str
 

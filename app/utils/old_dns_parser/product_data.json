@@ -43642,5 +43642,1381 @@
         },
         "drivers": [],
         "last_updated": "2025-06-19T18:15:23.725919"
+    },
+    {
+        "id": "5052366",
+        "url": "https://www.dns-shop.ru/product/cd3ad695f76bed20/500-gb-25-sata-nakopitel-samsung-870-evo-mz-77e500bw/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8cdeff621e1b9bf1256fc0e9d5524455/6b19146bd0e09c516231f0d26ef1d8883b39d2bbda0199ca96b11252ad27f365.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/32a42a0cdc2078d6dcaa20fc3248b07f/fb3bd252fa81aa6e18c0818f854ca5a7383fdfaedc21fa9541c9c12aa28db599.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/813987becfc8731202fb30027bc60b0d/60382abc5cdad118b5c6e4663efefc39b09de4075147209f4574a89cbed19a77.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/9218661d8516c7f1ed76fda7524fcd12/31fbef9c7110c90fb33da076eb4b1db45c2ff019614f5679476699ccdf37d199.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/7c123028d711cafeedc8e825b2c08bb0/1e0ae0c6eb7cec3ed560b215e35f15ede5867b62ab125c5136430b1e819dcb22.jpg"
+        ],
+        "name": "500 ГБ 2.5\" SATA накопитель Samsung 870 EVO [MZ-77E500BW]",
+        "price_discounted": 0,
+        "price_original": 4999,
+        "rating": 4.92,
+        "number_of_reviews": 9177,
+        "brand_name": "Samsung",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Корея, Республика"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Samsung 870 EVO"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[MZ-77E500BW]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "500 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Samsung MKX"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит MLC (TLC)"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "есть"
+                },
+                {
+                    "title": "Объем DRAM буфера",
+                    "value": "512 МБ"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "530 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "98000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "88000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "300 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.33"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "3.5 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.8 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:17:23.524208"
+    },
+    {
+        "id": "1628744",
+        "url": "https://www.dns-shop.ru/product/02d939ff43d23332/1000-gb-25-sata-nakopitel-apacer-as350-panther-95db2g0p100c/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/7bb85f7a33022855e5bf65d458af66f5/266ce003850e90361500fecbcd7294b37276f0a52532479ef04f4e89d1e99386.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/d502c7d369112b7a4b3bf263c19b5075/d5b2fecdf281a9eadbd10a8f29a46ee3ac924d326874dc05dccc139855238764.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/a6fbd665337cde1873c34a5b8d6cc40f/63c2459bb2070d53fae7959813c4e0ba3d0f3ee4296ec4f33e23ad76663c47e3.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/5de2eff9f868646bcf41c0ee70e430b8/a0a472a3dfee2f6df5d14600796d976e075f0400bb182f789221535762f8e943.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/694f0781b07c2fe98f53224983aefdaa/258e4a482ba678744dc536994e17f6a2e512fec75e9f48d5d30feafc0e6aedbe.jpeg"
+        ],
+        "name": "1000 ГБ 2.5\" SATA накопитель Apacer AS350 PANTHER [95.DB2G0.P100C]",
+        "price_discounted": 0,
+        "price_original": 5199,
+        "rating": 4.81,
+        "number_of_reviews": 20773,
+        "brand_name": "Apacer",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Тайвань (Китай)"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Apacer AS350 PANTHER"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[95.DB2G0.P100C]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "1000 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Silicon Motion SM2258"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "540 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "75237 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "80896 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "600 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.76"
+                },
+                {
+                    "title": "Максимальная перегрузка (ударостойкость)",
+                    "value": "1500 G"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.9 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:17:42.246634"
+    },
+    {
+        "id": "5097509",
+        "url": "https://www.dns-shop.ru/product/22190260a055ed20/512-gb-25-sata-nakopitel-dexp-c100-c100smym512/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/74db49e5ee34ac891b09181d5c73af43/8811fa70d46f9d9f3147b22e6ce9e7bd60dae6af6658643b91beab2c2879c7c3.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/5019cc4bcbd27e795aff4dc45551379b/7ea0a1031619ad0e40d7e10244845f67d4e1e6058e73ec524e9e3bce71112c45.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5471626c5d11748dcbae3a381b1047aa/bf7476b6d9b0d7e44d6d4dda8074685ed8b1f6a05c1e3e74c9fbaacb02b975f6.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/974ddb84d2b3264ac1869ec53a375ac7/55f01e4a154dad893ed2aa02a70b014fa20c53becd7ef932f50af6fb49373831.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/58623d55f4130b916378e6afa4a42f8b/bfc2ac7167714cd79dd43cfa279f46a83d0fd814a08f88f381a6284ca25c7db5.jpeg"
+        ],
+        "name": "512 ГБ 2.5\" SATA накопитель DEXP C100 [C100SMYM512]",
+        "price_discounted": 0,
+        "price_original": 2199,
+        "rating": 4.68,
+        "number_of_reviews": 8798,
+        "brand_name": "DEXP",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "60 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "DEXP C100"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[C100SMYM512]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "512 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "SMI2259XT2"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "550 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "495 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "60000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "60000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "240 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.26"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.8 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "99.7 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "7 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:17:59.041655"
+    },
+    {
+        "id": "5046284",
+        "url": "https://www.dns-shop.ru/product/b39a8d59e7a1ed20/960-gb-25-sata-nakopitel-kingston-a400-sa400s37960g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5d796845d9b6765d1b86bd9683eaec1e/3d577e14999e842cf71bc2d5632b619c3d916c935e8c558b0ded29f6bda924ed.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/a669f8d8916391b0afe8fc4e33abbcd1/bddaccd48ad3fe65327f73a8fe1882c5ca1993501f5ac27fde8fab9adf9875a1.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/f053e79dbdc394673ebd8b9ba8f3aa45/7dc11a262c03f66c47786add54e65be62f52176cb6ee9b584b25e17568a4776c.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/5d147219ad0f1ab11ab5e9ee3709fb02/a36feaa7aa85ca82154d0a479966cce92af539d29143080cac3b8fd41c608d7a.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/e7c2a7cfdda9e4de08b3c9668261d5ee/2d0782daf75ca6062e00889abec09e06dd8f239a4cda81fd0d556c9e2e0f464b.jpeg"
+        ],
+        "name": "960 ГБ 2.5\" SATA накопитель Kingston A400 [SA400S37/960G]",
+        "price_discounted": 0,
+        "price_original": 5399,
+        "rating": 4.88,
+        "number_of_reviews": 17383,
+        "brand_name": "Kingston",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Тайвань (Китай)"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Kingston A400"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SA400S37/960G]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "960 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Phison PS3111-S11"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "500 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "450 Мбайт/сек"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "300 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.29"
+                },
+                {
+                    "title": "Максимальная перегрузка (ударостойкость)",
+                    "value": "20 G"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "1.53 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.9 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "7 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "41.9 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:18:14.848448"
+    },
+    {
+        "id": "1319615",
+        "url": "https://www.dns-shop.ru/product/778d8c5201153332/512-gb-25-sata-nakopitel-apacer-as350-panther/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/02ccea118a308ddd590c1c9bdfcb96a5/bdc5aa9becc891be8e8b21a0ba17b56de0fdeabad4a99aedcb23f7daad1f6986.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/d502c7d369112b7a4b3bf263c19b5075/d5b2fecdf281a9eadbd10a8f29a46ee3ac924d326874dc05dccc139855238764.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/a6fbd665337cde1873c34a5b8d6cc40f/63c2459bb2070d53fae7959813c4e0ba3d0f3ee4296ec4f33e23ad76663c47e3.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/5de2eff9f868646bcf41c0ee70e430b8/a0a472a3dfee2f6df5d14600796d976e075f0400bb182f789221535762f8e943.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/694f0781b07c2fe98f53224983aefdaa/258e4a482ba678744dc536994e17f6a2e512fec75e9f48d5d30feafc0e6aedbe.jpeg"
+        ],
+        "name": "512 ГБ 2.5\" SATA накопитель Apacer AS350 PANTHER",
+        "price_discounted": 2599,
+        "price_original": null,
+        "rating": 4.81,
+        "number_of_reviews": 20773,
+        "brand_name": "Apacer",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Тайвань (Китай)"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Apacer AS350 PANTHER"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "512 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Silicon Motion SM2258"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "540 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "75000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "68000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "320 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.57"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.9 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "45.5 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:18:33.619013"
+    },
+    {
+        "id": "5068924",
+        "url": "https://www.dns-shop.ru/product/49172afd28f9ed20/1000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e1t0bw/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/c9d0a5ee75c43d457aceaa85f9aca862/2a8dc611d1748befbe216861600a5a3432e0d69b63ab5f43c203573041d59394.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e8c572e4e7c6b1adc54f32ab319708a1/7c6ce88e659b6925b14c04b950f93badb4f8ccb32f0980980af3a2f411af1cf5.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/8b55903c6c70c2e2800ea7a7c4fe8d64/bb27346db36b5573febdd671defc56223659dfcf05128ba3be5480ab3e459dfd.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/873eb1fb142264c342a076e321ab090a/2323fbd29e5ae59c7914ad91684538515038b2f457b10c2d12f69042146e476d.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/18372531462fb57b9107a3c5f16b8689/862379a5f8f94bf8d46daf0e776f1c02e8b51d2131a3753e276aa8d910b6e8e8.jpg"
+        ],
+        "name": "1000 ГБ 2.5\" SATA накопитель Samsung 870 EVO [MZ-77E1T0BW]",
+        "price_discounted": 0,
+        "price_original": 8699,
+        "rating": 4.92,
+        "number_of_reviews": 9177,
+        "brand_name": "Samsung",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Samsung 870 EVO"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[MZ-77E1T0BW]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "1000 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Samsung MKX"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит MLC (TLC)"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "есть"
+                },
+                {
+                    "title": "Объем DRAM буфера",
+                    "value": "1024 МБ"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "530 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "98000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "88000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "600 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.33"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "4 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.8 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "45 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:18:49.483816"
+    },
+    {
+        "id": "5055478",
+        "url": "https://www.dns-shop.ru/product/d74ecd0b00cded20/480-gb-25-sata-nakopitel-kingston-a400-sa400s37480g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4af77c62600c0171676ae4bf445905c5/a09d242a8b52f6f38e497b4846df2262517e2d77e30f85b2a3a8a26c6fee5892.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/a669f8d8916391b0afe8fc4e33abbcd1/bddaccd48ad3fe65327f73a8fe1882c5ca1993501f5ac27fde8fab9adf9875a1.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/f053e79dbdc394673ebd8b9ba8f3aa45/7dc11a262c03f66c47786add54e65be62f52176cb6ee9b584b25e17568a4776c.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/5d147219ad0f1ab11ab5e9ee3709fb02/a36feaa7aa85ca82154d0a479966cce92af539d29143080cac3b8fd41c608d7a.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/e7c2a7cfdda9e4de08b3c9668261d5ee/2d0782daf75ca6062e00889abec09e06dd8f239a4cda81fd0d556c9e2e0f464b.jpeg"
+        ],
+        "name": "480 ГБ 2.5\" SATA накопитель Kingston A400 [SA400S37/480G]",
+        "price_discounted": 0,
+        "price_original": 3699,
+        "rating": 4.88,
+        "number_of_reviews": 17384,
+        "brand_name": "Kingston",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Kingston A400"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SA400S37/480G]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "480 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Phison PS3111-S11"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "500 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "450 Мбайт/сек"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "160 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.3"
+                },
+                {
+                    "title": "Максимальная перегрузка (ударостойкость)",
+                    "value": "20 G"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "1.53 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "69.9 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "7 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "41 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:19:05.771184"
+    },
+    {
+        "id": "5046278",
+        "url": "https://www.dns-shop.ru/product/d870c9c7e7a0ed20/240-gb-25-sata-nakopitel-kingston-a400-sa400s37240g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e04085a94f80f151be7d685f314fd2d0/0cd445a8e7370f681802c78924895f09ad93401b6ba6339c79c79170df4702f0.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/a669f8d8916391b0afe8fc4e33abbcd1/bddaccd48ad3fe65327f73a8fe1882c5ca1993501f5ac27fde8fab9adf9875a1.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/f053e79dbdc394673ebd8b9ba8f3aa45/7dc11a262c03f66c47786add54e65be62f52176cb6ee9b584b25e17568a4776c.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/5d147219ad0f1ab11ab5e9ee3709fb02/a36feaa7aa85ca82154d0a479966cce92af539d29143080cac3b8fd41c608d7a.jpeg",
+            "https://c.dns-shop.ru/thumb/st1/fit/0/0/e7c2a7cfdda9e4de08b3c9668261d5ee/2d0782daf75ca6062e00889abec09e06dd8f239a4cda81fd0d556c9e2e0f464b.jpeg"
+        ],
+        "name": "240 ГБ 2.5\" SATA накопитель Kingston A400 [SA400S37/240G]",
+        "price_discounted": 0,
+        "price_original": 2650,
+        "rating": 4.88,
+        "number_of_reviews": 17384,
+        "brand_name": "Kingston",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Kingston A400"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[SA400S37/240G]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "240 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Phison PS3111-S11"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит TLC"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "нет"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "500 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "350 Мбайт/сек"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "80 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.3"
+                },
+                {
+                    "title": "Максимальная перегрузка (ударостойкость)",
+                    "value": "20 G"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.9 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "7 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "41 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:19:22.568892"
+    },
+    {
+        "id": "5052368",
+        "url": "https://www.dns-shop.ru/product/f1f4d783f76bed20/2000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e2t0bw/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a5a6b981b777e8a1322084cfbf0edd7b/d7617889d1c69f2225521b6b8c8e706c2a3b3ecd6c4950c4b8e021f850a7b0d1.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/e92af833d93ece101812ecaaec93ce2e/81dfad335cd4ceab733617bcf8235a1dfd609f3f3765497a1029f21759ce0fa9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/89a3057255c8b2768bf4a7e8ea4247ab/2d18dcbd7e3a3150a34fba958f45f228dee56d60e306ddfbe61fff7a8af4cc08.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/75ba0d2705353b7ce66c662cd843e179/1732bb464efb6c27c71b45cdeebb541f576a0dcab668aa86eff5aafaf87dc861.jpg"
+        ],
+        "name": "2000 ГБ 2.5\" SATA накопитель Samsung 870 EVO [MZ-77E2T0BW]",
+        "price_discounted": 0,
+        "price_original": 16499,
+        "rating": 4.92,
+        "number_of_reviews": 9177,
+        "brand_name": "Samsung",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца",
+                    "value": "12 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "2.5\" SATA накопитель"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Samsung 870 EVO"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[MZ-77E2T0BW]"
+                }
+            ],
+            "Основные характеристики": [
+                {
+                    "title": "Объем накопителя",
+                    "value": "2000 ГБ"
+                },
+                {
+                    "title": "NVMe",
+                    "value": "нет"
+                },
+                {
+                    "title": "Разъем подключения",
+                    "value": "SATA"
+                }
+            ],
+            "Конфигурация накопителя": [
+                {
+                    "title": "Контроллер",
+                    "value": "Samsung MKX"
+                },
+                {
+                    "title": "Количество бит на ячейку",
+                    "value": "3 бит MLC (TLC)"
+                },
+                {
+                    "title": "Структура памяти",
+                    "value": "3D NAND"
+                },
+                {
+                    "title": "DRAM буфер",
+                    "value": "есть"
+                },
+                {
+                    "title": "Объем DRAM буфера",
+                    "value": "2048 МБ"
+                }
+            ],
+            "Показатели производительности": [
+                {
+                    "title": "Максимальная скорость последовательного чтения",
+                    "value": "560 Мбайт/сек"
+                },
+                {
+                    "title": "Максимальная скорость последовательной записи",
+                    "value": "530 Мбайт/сек"
+                },
+                {
+                    "title": "Скорость произвольного чтения 4 Кб файлов (QD32)",
+                    "value": "98000 IOPS"
+                },
+                {
+                    "title": "Скорость произвольной записи 4 Кб файлов (QD32)",
+                    "value": "88000 IOPS"
+                }
+            ],
+            "Надежность": [
+                {
+                    "title": "Максимальный ресурс записи (TBW)",
+                    "value": "1200 ТБ"
+                },
+                {
+                    "title": "DWPD",
+                    "value": "0.33"
+                },
+                {
+                    "title": "Максимальная перегрузка (ударостойкость)",
+                    "value": "1500 G"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Энергопотребление",
+                    "value": "2.5 Вт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты": [
+                {
+                    "title": "Ширина",
+                    "value": "69.85 мм"
+                },
+                {
+                    "title": "Длина",
+                    "value": "100 мм"
+                },
+                {
+                    "title": "Толщина",
+                    "value": "6.8 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "46 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2025-06-21T18:19:38.303068"
+    },
+    {
+        "id": "5065176",
+        "url": "https://www.dns-shop.ru/product/fcac32b01dd4ed20/4000-gb-25-sata-nakopitel-samsung-870-evo-mz-77e4t0bw/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuyushchie-dlya-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuyushhie-dlya-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/789e55fe3bad7fd7/tverdotelnye-nakopiteli-ssd/",
+                "name": "Твердотельные накопители SSD"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/",
+                "name": "SSD накопители"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/ed27509f3a81b5a6c389eac7acefb8a3/2fddee1d2faa66c91df8f4581d332087c6883cfa2dc69ea5bae6be596acf2fd1.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/c08277413e0a8b0c90b0ec380234f943/af5defea4e3d63a8a034819e9bb5489cded2bc0380663b8aad5cea65e7a64414.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/71c3356996ca7c2725a523fdeecec05b/b0cd72535d39ee4db16b641a5e3775d9af011fa020bc5b5dba27ed3f9de13f03.jpg",
+            "https://c.dns-shop.ru/thumb/st4/fit/wm/0/0/3bf01a36cd9f1c8d1d50a27d8294baea/8305249d04bc0bffef325b41ce72457701ddafe5f5183916faab2ed6de833573.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ff13d790026ce8b9bd9941350cb09ccc/be5e9b781255fc1530a15e06280bf73d7c2844e324a4216e3eaee80b2b61c859.jpg"
+        ],
+        "name": "4000 ГБ 2.5\" SATA накопитель Samsung 870 EVO [MZ-77E4T0BW]",
+        "price_discounted": 0,
+        "price_original": null,
+        "rating": 4.92,
+        "number_of_reviews": 9177,
+        "brand_name": "Samsung",
+        "description": null,
+        "characteristics": {},
+        "drivers": [],
+        "last_updated": "2025-06-21T18:20:05.484148"
     }
 ]

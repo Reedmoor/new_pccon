@@ -189,7 +189,7 @@ def fetch_products_for_category(category_name):
         # Сохраняем собранные до остановки товары
         if all_products:
             try:
-                with open('Товары.json', 'w', encoding='utf-8') as f:
+                with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
                     json.dump(all_products, f, ensure_ascii=False, indent=2)
                 logging.info(f"💾 Сохранено {len(all_products)} товаров до остановки")
             except Exception as e:
@@ -211,8 +211,8 @@ def fetch_products_for_category(category_name):
     
     # Сохраняем собранные товары
     if all_products:
-        # Создаем объединенный файл для совместимости со старым кодом
-        with open('Товары.json', 'w', encoding='utf-8') as f:
+        # Сохраняем только в директорию категории
+        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
             json.dump(all_products, f, ensure_ascii=False, indent=2)
         
         logging.info(f"Обработка категории {category_name} успешно завершена")
@@ -221,7 +221,7 @@ def fetch_products_for_category(category_name):
     else:
         logging.warning(f"Не удалось получить товары для категории {category_name}")
         # Создаем пустой файл
-        with open('Товары.json', 'w', encoding='utf-8') as f:
+        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
             json.dump([], f, ensure_ascii=False, indent=2)
     
     return all_products
@@ -238,8 +238,11 @@ def main():
         # Обрабатываем категорию
         products = fetch_products_for_category(category)
         
-        # Для обратной совместимости, сохраним общий файл в стандартном формате
-        with open('Товары.json', 'w', encoding='utf-8') as f:
+        # Сохраняем данные только в директорию категории
+        category_dir = os.path.join('data', category)
+        ensure_directory_exists(category_dir)
+        
+        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
             f.write('[\n')
             for i, product in enumerate(products):
                 json_str = json.dumps(product, ensure_ascii=False)
