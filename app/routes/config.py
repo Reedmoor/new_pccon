@@ -367,6 +367,7 @@ def search_components():
     # Получаем тип продукта и поисковый запрос
     product_type = data.get('product_type')
     query = data.get('query', '').strip()
+    limit = data.get('limit', 20)  # Ограничиваем количество результатов
     
     # Проверяем наличие обязательных параметров
     if not product_type:
@@ -379,31 +380,166 @@ def search_components():
     if query:
         components_query = components_query.filter(UnifiedProduct.product_name.ilike(f'%{query}%'))
     
-    # Получаем результаты
-    components = components_query.all()
+    # Сортируем по релевантности (сначала точные совпадения, потом по алфавиту)
+    if query:
+        # Точные совпадения в начале названия имеют приоритет
+        components_query = components_query.order_by(
+            UnifiedProduct.product_name.ilike(f'{query}%').desc(),
+            UnifiedProduct.product_name
+        )
+    else:
+        components_query = components_query.order_by(UnifiedProduct.product_name)
+    
+    # Ограничиваем количество результатов
+    components = components_query.limit(limit).all()
     
     # Формируем ответ
     result = []
     for component in components:
         # Определяем цену для отображения
         price = None
+        price_formatted = 'Цена не указана'
         if component.price_discounted is not None and component.price_discounted > 0:
             price = component.price_discounted
+            price_formatted = f"{price:,.0f}".replace(',', ' ') + ' ₽'
         elif component.price_original is not None and component.price_original > 0:
             price = component.price_original
+            price_formatted = f"{price:,.0f}".replace(',', ' ') + ' ₽'
             
-        # Пропускаем компоненты без цены
-        if price is None:
+        # Пропускаем компоненты без цены только если это не живой поиск
+        if price is None and query:
             continue
+        
+        # Получаем характеристики для дополнительной информации
+        characteristics = component.get_characteristics() if hasattr(component, 'get_characteristics') else {}
+        
+        # Формируем краткое описание
+        description_parts = []
+        if product_type == 'processor':
+            if characteristics.get('core_count'):
+                description_parts.append(f"{characteristics['core_count']} ядер")
+            if characteristics.get('base_frequency'):
+                description_parts.append(f"{characteristics['base_frequency']}")
+        elif product_type == 'graphics_card':
+            if characteristics.get('memory_size'):
+                description_parts.append(f"{characteristics['memory_size']} ГБ")
+            if characteristics.get('memory_type'):
+                description_parts.append(characteristics['memory_type'])
+        elif product_type == 'ram':
+            if characteristics.get('memory_size'):
+                description_parts.append(f"{characteristics['memory_size']} ГБ")
+            if characteristics.get('memory_type'):
+                description_parts.append(characteristics['memory_type'])
+            if characteristics.get('frequency'):
+                description_parts.append(f"{characteristics['frequency']} МГц")
+        elif product_type == 'motherboard':
+            if characteristics.get('socket'):
+                description_parts.append(f"Socket {characteristics['socket']}")
+            if characteristics.get('form_factor'):
+                description_parts.append(characteristics['form_factor'])
+        elif product_type == 'power_supply':
+            if characteristics.get('wattage'):
+                description_parts.append(f"{characteristics['wattage']} Вт")
+        elif product_type == 'hard_drive':
+            if characteristics.get('storage_capacity'):
+                description_parts.append(f"{characteristics['storage_capacity']} ГБ")
+            if characteristics.get('interface'):
+                description_parts.append(characteristics['interface'])
+        
+        description = ' • '.join(description_parts[:3])  # Максимум 3 характеристики
+        
+        # Определяем иконку магазина
+        vendor_icon = ''
+        vendor_name = ''
+        if component.vendor == 'dns':
+            vendor_icon = '🟢'
+            vendor_name = 'DNS'
+        elif component.vendor == 'citilink':
+            vendor_icon = '🔵'
+            vendor_name = 'Citilink'
+        else:
+            vendor_icon = '⚪'
+            vendor_name = component.vendor.title()
+        
+        # Получаем реальное изображение из JSON данных
+        images = component.get_images()
+        image_url = None
+        if images and len(images) > 0:
+            # Берем первое изображение из списка
+            image_url = images[0]
+        
+        # Если нет изображения, используем заглушку
+        if not image_url:
+            image_url = f"/static/images/products/{product_type}_placeholder.jpg"
         
         result.append({
             'id': component.id,
             'name': component.product_name,
             'price': price,
+            'price_formatted': price_formatted,
+            'description': description,
             'vendor': component.vendor,
-            'product_url': component.product_url
+            'vendor_name': vendor_name,
+            'vendor_icon': vendor_icon,
+            'product_url': component.product_url,
+            'image_url': image_url
         })
     
     return jsonify({
-        'components': result
-    }) 
+        'components': result,
+        'total': len(result),
+        'query': query
+    })
+
+@config_bp.route('/api/autocomplete-components', methods=['GET'])
+@login_required
+def autocomplete_components():
+    """Endpoint для автодополнения поиска компонентов"""
+    product_type = request.args.get('product_type')
+    query = request.args.get('query', '').strip()
+    limit = int(request.args.get('limit', 10))
+    
+    if not product_type or not query or len(query) < 2:
+        return jsonify({'suggestions': []})
+    
+    # Ищем компоненты с названиями, содержащими запрос
+    components = UnifiedProduct.query.filter(
+        UnifiedProduct.product_type == product_type,
+        UnifiedProduct.product_name.ilike(f'%{query}%')
+    ).order_by(
+        UnifiedProduct.product_name.ilike(f'{query}%').desc(),  # Приоритет для начала строки
+        UnifiedProduct.product_name
+    ).limit(limit).all()
+    
+    suggestions = []
+    for component in components:
+        # Определяем цену
+        price_text = 'Цена не указана'
+        if component.price_discounted and component.price_discounted > 0:
+            price_text = f"{component.price_discounted:,.0f}".replace(',', ' ') + ' ₽'
+        elif component.price_original and component.price_original > 0:
+            price_text = f"{component.price_original:,.0f}".replace(',', ' ') + ' ₽'
+        
+        # Vendor icon
+        vendor_icon = '🟢' if component.vendor == 'dns' else ('🔵' if component.vendor == 'citilink' else '⚪')
+        
+        # Получаем реальное изображение из JSON данных
+        images = component.get_images()
+        image_url = None
+        if images and len(images) > 0:
+            # Берем первое изображение из списка
+            image_url = images[0]
+        
+        # Если нет изображения, используем заглушку
+        if not image_url:
+            image_url = f"/static/images/products/{product_type}_placeholder.jpg"
+        
+        suggestions.append({
+            'id': component.id,
+            'name': component.product_name,
+            'price_text': price_text,
+            'vendor_icon': vendor_icon,
+            'image_url': image_url
+        })
+    
+    return jsonify({'suggestions': suggestions}) 
