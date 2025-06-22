@@ -5,6 +5,8 @@
 
 class EnhancedComponentSearch {
     constructor(inputId, selectId, productType, apiUrl = '/api/autocomplete-components') {
+        console.log(`Creating EnhancedComponentSearch for ${productType}`, { inputId, selectId, apiUrl });
+        
         this.inputElement = document.getElementById(inputId);
         this.selectElement = document.getElementById(selectId);
         this.productType = productType;
@@ -12,6 +14,11 @@ class EnhancedComponentSearch {
         this.searchTimeout = null;
         this.activeIndex = -1;
         this.suggestions = [];
+        
+        console.log(`Elements found:`, { 
+            input: !!this.inputElement, 
+            select: !!this.selectElement 
+        });
         
         this.init();
     }
@@ -122,6 +129,7 @@ class EnhancedComponentSearch {
     
     async fetchSuggestions(query) {
         try {
+            console.log(`Fetching suggestions for ${this.productType} with query: "${query}"`);
             this.showLoading(true);
             
             const url = new URL(this.apiUrl, window.location.origin);
@@ -129,10 +137,17 @@ class EnhancedComponentSearch {
             url.searchParams.append('query', query);
             url.searchParams.append('limit', '10');
             
+            console.log(`API URL: ${url.toString()}`);
+            
             const response = await fetch(url);
+            console.log(`Response status: ${response.status}`);
+            
             const data = await response.json();
+            console.log(`API response:`, data);
             
             this.suggestions = data.suggestions || [];
+            console.log(`Found ${this.suggestions.length} suggestions`);
+            
             this.renderSuggestions();
             
         } catch (error) {
@@ -422,6 +437,8 @@ class EnhancedComponentSearch {
 
 // Инициализация поиска для всех компонентов
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Enhanced search script loaded');
+    
     // Определяем маппинг компонентов
     const searchConfigs = [
         { input: 'motherboardSearch', select: 'motherboard_id', type: 'motherboard' },
@@ -439,10 +456,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputElement = document.getElementById(config.input);
         const selectElement = document.getElementById(config.select);
         
+        console.log(`Checking ${config.input}: input=${!!inputElement}, select=${!!selectElement}`);
+        
         if (inputElement && selectElement) {
+            console.log(`Initializing search for ${config.type}`);
             new EnhancedComponentSearch(config.input, config.select, config.type);
+        } else {
+            console.warn(`Missing elements for ${config.type}: input=${!!inputElement}, select=${!!selectElement}`);
         }
     });
     
-    console.log('Enhanced component search initialized');
+    console.log('Enhanced component search initialization completed');
 }); 
