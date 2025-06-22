@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<form method="POST" action="{{ url_for('config.edit_config', config_id=config.id) }}">
+<form method="POST" action="{{ url_for('config.edit_config', config_id=config.conf_id) }}">
     {{ form.hidden_tag() }}
     
     <div class="row">
