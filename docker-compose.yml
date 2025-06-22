@@ -62,12 +62,10 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./docker/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/sites:/etc/nginx/conf.d
       - pccon_uploads:/var/www/uploads
-      - pccon_ssl:/etc/nginx/ssl
     depends_on:
       - pccon_web
     networks:
@@ -143,10 +141,6 @@ volumes:
   
   # Том для логов парсера
   pccon_parser_logs:
-    driver: local
-  
-  # Том для SSL сертификатов
-  pccon_ssl:
     driver: local
 
 networks:

@@ -264,205 +264,18 @@ def import_products():
         # Инициализируем список всех продуктов СРАЗУ в начале функции
         all_products = []
         
-        print("🔄 Начинаем импорт товаров из всех источников...")
-        
-        # 1. ОБРАБАТЫВАЕМ ДАННЫЕ CITILINK
-        print("\n📦 Обработка данных Citilink...")
-        citilink_data_dir = os.path.join('app', 'utils', 'Citi_parser', 'data')
-        if os.path.exists(citilink_data_dir):
-            # Маппинг категорий Citilink
-            citilink_category_mapping = {
-                'videokarty': 'graphics_card',
-                'processory': 'processor', 
-                'materinskie-platy': 'motherboard',
-                'moduli-pamyati': 'ram',
-                'korpusa': 'case',
-                'bloki-pitaniya': 'power_supply',
-                'sistemy-ohlazhdeniya-processora': 'cooler',
-                'zhestkie-diski': 'hard_drive',
-                'ssd-nakopiteli': 'hard_drive',
-                'ventilyatory-dlya-korpusa': 'cooler'  # Добавляем эту категорию тоже
-            }
-            
-            # Перебираем все директории категорий
-            for category_dir in os.listdir(citilink_data_dir):
-                category_path = os.path.join(citilink_data_dir, category_dir)
-                if os.path.isdir(category_path):
-                    products_file = os.path.join(category_path, 'Товары.json')
-                    if os.path.exists(products_file):
-                        try:
-                            # Определяем тип продукта по имени директории
-                            product_type = citilink_category_mapping.get(category_dir, None)
-                            if not product_type:
-                                print(f"⚠️  Неизвестная категория Citilink: {category_dir}, пропускаем")
-                                continue
-                                
-                            print(f"  📁 Обработка категории Citilink {category_dir} ({product_type})")
-                            
-                            with open(products_file, 'r', encoding='utf-8') as f:
-                                data = json.load(f)
-                            
-                            # Проверяем структуру данных
-                            if isinstance(data, list):
-                                products = data
-                            elif isinstance(data, dict):
-                                products = [data]
-                            else:
-                                print(f"⚠️  Неизвестная структура данных в {products_file}")
-                                continue
-                            
-                            print(f"     Найдено {len(products)} товаров")
-                            
-                            citilink_count = 0
-                            for product in products:
-                                try:
-                                    # Проверяем наличие обязательных полей
-                                    if not product.get('name') and not product.get('title'):
-                                        continue
-                                        
-                                    # Стандартизируем данные
-                                    std_product = standardize_characteristics(product, "citilink")
-                                    std_product["vendor"] = "citilink"
-                                    std_product["product_type"] = product_type
-                                    std_product["source"] = f"citilink_{category_dir}"
-                                    all_products.append(std_product)
-                                    citilink_count += 1
-                                except Exception as e:
-                                    print(f"     ❌ Ошибка при обработке товара Citilink {product.get('name', 'Без имени')}: {str(e)}")
-                            
-                            print(f"     ✅ Добавлено {citilink_count} товаров типа {product_type} от Citilink")
-                            
-                        except Exception as e:
-                            print(f"❌ Ошибка при обработке файла {products_file}: {str(e)}")
-                            traceback.print_exc()
-        else:
-            print("❌ Папка данных Citilink не найдена")
-        
-        # 2. ОБРАБАТЫВАЕМ ДАННЫЕ DNS ИЗ СТАРОГО ПАРСЕРА
-        print("\n📦 Обработка данных DNS (старый парсер)...")
-        dns_file = os.path.join('app', 'utils', 'old_dns_parser', 'product_data.json')
-        if os.path.exists(dns_file):
-            try:
-                print(f"  📁 Обработка файла: {dns_file}")
-                
-                with open(dns_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                
-                if isinstance(data, list):
-                    print(f"     Найдено {len(data)} товаров DNS")
-                    
-                    # Группируем товары по категориям из данных
-                    products_by_category = {}
-                    
-                    for product in data:
-                        # Проверяем, что у продукта есть имя
-                        if not product.get('name'):
-                            continue
-                            
-                        # Определяем категорию по данным товара
-                        category_name = None
-                        categories = product.get('categories', [])
-                        
-                        # Ищем нужную категорию в списке категорий
-                        if categories:
-                            for cat in categories:
-                                if not isinstance(cat, dict):
-                                    continue
-                                    
-                                cat_name = cat.get('name', '').lower()
-                                if 'видеокарт' in cat_name:
-                                    category_name = 'graphics_card'
-                                elif 'процессор' in cat_name:
-                                    category_name = 'processor'
-                                elif 'материнск' in cat_name:
-                                    category_name = 'motherboard'
-                                elif ('памят' in cat_name and 'оперативн' in cat_name) or 'dimm' in cat_name:
-                                    category_name = 'ram'
-                                elif 'корпус' in cat_name:
-                                    category_name = 'case'
-                                elif ('блок' in cat_name and 'питан' in cat_name) or 'бп' in cat_name:
-                                    category_name = 'power_supply'
-                                elif 'кулер' in cat_name or 'охлажден' in cat_name:
-                                    category_name = 'cooler'
-                                elif 'ssd' in cat_name or 'диск' in cat_name or 'накопител' in cat_name:
-                                    category_name = 'hard_drive'
-                                
-                                if category_name:
-                                    break
-                        
-                        # Если категорию не определили, пытаемся по названию товара
-                        if not category_name:
-                            product_name = product.get('name', '').lower()
-                            if 'видеокарт' in product_name or 'graphics card' in product_name:
-                                category_name = 'graphics_card'
-                            elif 'процессор' in product_name or 'cpu' in product_name:
-                                category_name = 'processor'
-                            elif 'материнск' in product_name or 'motherboard' in product_name:
-                                category_name = 'motherboard'
-                            elif ('оперативн' in product_name and 'памят' in product_name) or 'ram' in product_name or 'dimm' in product_name:
-                                category_name = 'ram'
-                            elif 'корпус' in product_name or 'case' in product_name:
-                                category_name = 'case'
-                            elif 'блок питан' in product_name or 'power supply' in product_name:
-                                category_name = 'power_supply'
-                            elif 'кулер' in product_name or 'cooler' in product_name:
-                                category_name = 'cooler'
-                            elif 'ssd' in product_name or 'жесткий диск' in product_name or 'hdd' in product_name or 'накопитель' in product_name:
-                                category_name = 'hard_drive'
-                            else:
-                                # Если не смогли определить категорию, пропускаем товар
-                                continue
-                        
-                        if category_name not in products_by_category:
-                            products_by_category[category_name] = []
-                        products_by_category[category_name].append(product)
-                    
-                    # Обрабатываем каждую категорию
-                    dns_total_count = 0
-                    for category_name, products in products_by_category.items():
-                        print(f"     📂 Категория DNS (старый парсер) {category_name}: {len(products)} товаров")
-                        
-                        dns_category_count = 0
-                        for product in products:
-                            try:
-                                # Стандартизируем данные
-                                std_product = standardize_characteristics(product, "dns")
-                                std_product["vendor"] = "dns"
-                                std_product["product_type"] = category_name
-                                std_product["source"] = "old_dns_parser"
-                                all_products.append(std_product)
-                                dns_category_count += 1
-                            except Exception as e:
-                                print(f"       ❌ Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
-                        
-                        dns_total_count += dns_category_count
-                        print(f"       ✅ Добавлено {dns_category_count} товаров")
-                    
-                    print(f"     ✅ Всего добавлено {dns_total_count} товаров DNS (старый парсер)")
-                    
-                else:
-                    print(f"❌ Ошибка: данные DNS не являются списком")
-            except Exception as e:
-                print(f"❌ Ошибка при обработке файла {dns_file}: {str(e)}")
-                traceback.print_exc()
-        else:
-            print("❌ Файл данных DNS (старый парсер) не найден")
-        
-        # 3. ОБРАБАТЫВАЕМ ДАННЫЕ DNS ИЗ ЛОКАЛЬНЫХ ФАЙЛОВ (НОВЫЕ)
-        print("\n📦 Обработка данных DNS (локальные файлы)...")
+        # Получаем все локальные файлы DNS
         local_files = glob.glob('data/local_parser_data_*.json')
         
         if local_files:
-            # Сортируем файлы по времени модификации (самые новые первые)
+            # Сортируем файлы по времени модификации
             local_files.sort(key=os.path.getmtime, reverse=True)
-            # Берем только последние 3 файла, чтобы избежать дублирования
-            local_files = local_files[:3]
-            print(f"  📁 Найдено {len(glob.glob('data/local_parser_data_*.json'))} локальных файлов DNS, обрабатываем последние {len(local_files)}")
+            print(f"Найдено {len(local_files)} локальных файлов DNS")
             
-            # Обрабатываем выбранные локальные файлы DNS
+            # Обрабатываем все локальные файлы DNS
             for file_idx, local_file in enumerate(local_files):
                 try:
-                    print(f"     📄 Обработка файла {file_idx + 1}/{len(local_files)}: {os.path.basename(local_file)}")
+                    print(f"Обработка локального файла DNS {file_idx + 1}/{len(local_files)}: {local_file}")
                     
                     with open(local_file, 'r', encoding='utf-8') as f:
                         local_data = json.load(f)
@@ -535,53 +348,209 @@ def import_products():
                             products_by_category[category_name].append(product)
                     
                     # Обрабатываем каждую категорию
-                    file_total_count = 0
                     for category_name, products in products_by_category.items():
-                        print(f"       📂 Категория DNS (файл {file_idx + 1}) {category_name}: {len(products)} товаров")
+                        print(f"  - Категория DNS (локальный файл {file_idx + 1}) {category_name}: {len(products)} товаров")
                         
-                        local_category_count = 0
                         for product in products:
                             try:
                                 # Стандартизируем данные
                                 std_product = standardize_characteristics(product, "dns")
                                 std_product["vendor"] = "dns"
                                 std_product["product_type"] = category_name
-                                std_product["source"] = f"local_parser_file_{file_idx + 1}"
+                                std_product["source"] = f"local_parser_file_{file_idx + 1}"  # Добавляем источник с номером файла
                                 all_products.append(std_product)
-                                local_category_count += 1
                             except Exception as e:
-                                print(f"         ❌ Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
-                        
-                        file_total_count += local_category_count
+                                print(f"    Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
                     
-                    print(f"       ✅ Загружено {file_total_count} товаров из файла {os.path.basename(local_file)}")
+                    total_products_in_file = sum(len(products) for products in products_by_category.values())
+                    print(f"  Загружено {total_products_in_file} товаров из файла {os.path.basename(local_file)}")
                     
                 except Exception as e:
-                    print(f"❌ Ошибка при обработке локального файла {local_file}: {str(e)}")
+                    print(f"Ошибка при обработке локального файла {local_file}: {str(e)}")
                     traceback.print_exc()
         else:
-            print("❌ Локальные файлы DNS не найдены")
-
-        print(f"\n🎯 Всего продуктов для импорта: {len(all_products)}")
+            print("Локальные файлы DNS не найдены")
         
-        # 4. СОХРАНЕНИЕ В БАЗУ ДАННЫХ
-        print("\n💾 Сохранение в базу данных...")
+        # Маппинг категорий из парсеров в унифицированные типы продуктов
+        category_mapping = {
+            # DNS категории
+            'Видеокарты': 'graphics_card',
+            'Процессоры': 'processor',
+            'Материнские платы': 'motherboard',
+            'Оперативная память': 'ram',
+            'Корпуса': 'case',
+            'Блоки питания': 'power_supply',
+            'Кулеры': 'cooler',
+            'Жесткие диски': 'hard_drive',
+            'SSD M.2': 'hard_drive',
+            'SSD SATA': 'hard_drive',
+            
+            # Citilink категории (имена директорий)
+            'videokarty': 'graphics_card',
+            'processory': 'processor',
+            'materinskie-platy': 'motherboard',
+            'moduli-pamyati': 'ram',
+            'korpusa': 'case',
+            'bloki-pitaniya': 'power_supply',
+            'sistemy-ohlazhdeniya-processora': 'cooler',
+            'zhestkie-diski': 'hard_drive',
+            'ssd-nakopiteli': 'hard_drive',
+            'ssd-m2': 'hard_drive',
+            'ssd-sata': 'hard_drive'
+        }
+
+        # Ручной маппинг файлов к типам продуктов
+        file_mappings = {
+            # Кулеры
+            "app/utils/old_dns_parser/product_data.json": ("dns", "cooler"),
+            "app/utils/Citi_parser/data/sistemy-ohlazhdeniya-processora/Товары.json": ("citilink", "cooler"),
+            
+            # Корпуса
+            "app/utils/old_dns_parser/product_data.json": ("dns", "case"),
+            "app/utils/Citi_parser/data/korpusa/Товары.json": ("citilink", "case"),
+            
+            # Блоки питания
+            "app/utils/old_dns_parser/product_data.json": ("dns", "power_supply"),
+            "app/utils/Citi_parser/data/bloki-pitaniya/Товары.json": ("citilink", "power_supply"),
+            
+            # Материнские платы
+            "app/utils/old_dns_parser/product_data.json": ("dns", "motherboard"),
+            "app/utils/Citi_parser/data/materinskie-platy/Товары.json": ("citilink", "motherboard"),
+            
+            # Процессоры
+            "app/utils/old_dns_parser/product_data.json": ("dns", "processor"),
+            "app/utils/Citi_parser/data/processory/Товары.json": ("citilink", "processor"),
+            
+            # Видеокарты
+            "app/utils/old_dns_parser/product_data.json": ("dns", "graphics_card"),
+            "app/utils/Citi_parser/data/videokarty/Товары.json": ("citilink", "graphics_card"),
+            
+            # Оперативная память
+            "app/utils/old_dns_parser/product_data.json": ("dns", "ram"),
+            "app/utils/Citi_parser/data/moduli-pamyati/Товары.json": ("citilink", "ram"),
+            
+            # Накопители (все типы объединяем в hard_drive)
+            "app/utils/old_dns_parser/product_data.json": ("dns", "hard_drive"),
+            "app/utils/Citi_parser/data/zhestkie-diski/Товары.json": ("citilink", "hard_drive"),
+            "app/utils/Citi_parser/data/ssd-nakopiteli/Товары.json": ("citilink", "hard_drive")
+        }
+        
+        print("Начинаем импорт продуктов...")
+        
+        # Обрабатываем все доступные файлы Citilink из папки data
+        citilink_data_dir = os.path.join('app', 'utils', 'Citi_parser', 'data')
+        if os.path.exists(citilink_data_dir):
+            # Перебираем все директории категорий
+            for category_dir in os.listdir(citilink_data_dir):
+                category_path = os.path.join(citilink_data_dir, category_dir)
+                if os.path.isdir(category_path):
+                    products_file = os.path.join(category_path, 'Товары.json')
+                    if os.path.exists(products_file):
+                        try:
+                            # Определяем тип продукта по имени директории
+                            product_type = category_mapping.get(category_dir, None)
+                            if not product_type:
+                                print(f"Неизвестная категория Citilink: {category_dir}, пропускаем")
+                                continue
+                                
+                            print(f"Обработка категории Citilink {category_dir} ({product_type})")
+                            
+                            with open(products_file, 'r', encoding='utf-8') as f:
+                                data = json.load(f)
+                            
+                            if isinstance(data, list):
+                                products = data
+                            else:
+                                products = [data]
+                            
+                            print(f"Загружено {len(products)} товаров из {products_file}")
+                            
+                            for product in products:
+                                # Стандартизируем данные
+                                std_product = standardize_characteristics(product, "citilink")
+                                std_product["vendor"] = "citilink"
+                                std_product["product_type"] = product_type
+                                all_products.append(std_product)
+                            
+                            print(f"Добавлено {len(products)} товаров типа {product_type} от citilink")
+                        except Exception as e:
+                            print(f"Ошибка при обработке файла {products_file}: {str(e)}")
+                            traceback.print_exc()
+        
+        # Обрабатываем данные DNS из old_dns_parser
+        dns_file = os.path.join('app', 'utils', 'old_dns_parser', 'product_data.json')
+        if os.path.exists(dns_file):
+            try:
+                print(f"Обработка данных DNS из старого парсера: {dns_file}")
+                
+                with open(dns_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                
+                if isinstance(data, list):
+                    # Группируем товары по категориям из данных
+                    products_by_category = {}
+                    
+                    for product in data:
+                        # Проверяем, что у продукта есть имя
+                        if not product.get('name'):
+                            print(f"Пропускаем товар DNS без имени: {product.get('id', 'ID неизвестен')}")
+                            continue
+                            
+                        # Определяем категорию по данным товара
+                        category_name = None
+                        
+                        # Проверяем категорию товара
+                        if 'category' in product:
+                            category = product.get('category', '')
+                            if isinstance(category, str):
+                                category_name = category_mapping.get(category, None)
+                        
+                        # Если категория не определена, пропускаем товар
+                        if not category_name:
+                            continue
+                        
+                        if category_name not in products_by_category:
+                            products_by_category[category_name] = []
+                        products_by_category[category_name].append(product)
+                    
+                    # Обрабатываем каждую категорию
+                    for category_name, products in products_by_category.items():
+                        print(f"Обработка категории DNS (старый парсер) {category_name}: {len(products)} товаров")
+                        
+                        for product in products:
+                            # Стандартизируем данные
+                            std_product = standardize_characteristics(product, "dns")
+                            std_product["vendor"] = "dns"
+                            std_product["product_type"] = category_name
+                            std_product["source"] = "old_parser_file"  # Добавляем источник
+                            all_products.append(std_product)
+                    
+                    print(f"Загружено {len(data)} товаров из DNS (старый парсер)")
+                    
+                else:
+                    print(f"Ошибка: данные DNS не являются списком")
+            except Exception as e:
+                print(f"Ошибка при обработке файла {dns_file}: {str(e)}")
+                traceback.print_exc()
+        
+        print(f"Всего продуктов для импорта: {len(all_products)}")
+        
+        # Save to database
+        print("Сохранение в базу данных...")
         
         # Clear existing products first
         try:
-            print("🗑️  Удаление существующих продуктов...")
+            print("Удаление существующих продуктов...")
             db.session.query(UnifiedProduct).delete()
             db.session.commit()
-            print("✅ Существующие продукты удалены")
         except Exception as e:
-            print(f"❌ Ошибка при удалении существующих продуктов: {str(e)}")
+            print(f"Ошибка при удалении существующих продуктов: {str(e)}")
             db.session.rollback()
         
-        # Convert to UnifiedProduct instances and save
+        # Convert to UnifiedProduct instances and save one by one
         added_count = 0
         error_count = 0
         
-        print("💾 Начинаем сохранение товаров...")
         for idx, product_data in enumerate(all_products):
             try:
                 # Ensure all required characteristics for compatibility checks are present
@@ -594,16 +563,17 @@ def import_products():
                 db.session.add(unified_product)
                 
                 # Commit every 100 products to avoid memory issues
-                if idx % 100 == 0 and idx > 0:
+                if idx % 100 == 0:
                     db.session.commit()
-                    print(f"💾 Сохранено {idx} продуктов...")
+                    print(f"Сохранено {idx} продуктов...")
                 
                 added_count += 1
-                
             except Exception as e:
                 error_count += 1
-                print(f"❌ Ошибка при сохранении продукта {idx+1}: {str(e)}")
-                print(f"   Проблемные данные: {product_data.get('product_name', 'No name')}")
+                print(f"Ошибка при сохранении продукта {idx}: {str(e)}")
+                # Print the problematic product data for debugging
+                print(f"Проблемные данные: {product_data.get('product_name', 'No name')}")
+                traceback.print_exc()
                 
                 # Rollback and continue
                 db.session.rollback()
@@ -611,27 +581,17 @@ def import_products():
         # Final commit
         try:
             db.session.commit()
-            print(f"\n🎉 Импорт завершен!")
-            print(f"✅ Успешно добавлено: {added_count} продуктов")
-            print(f"❌ Ошибок: {error_count}")
+            print(f"Успешно добавлено {added_count} продуктов в базу данных. Ошибок: {error_count}")
             
             # Статистика по типам продуктов
-            print("\n📊 Статистика по типам продуктов:")
-            for product_type in ["graphics_card", "processor", "motherboard", "ram", "case", "power_supply", "cooler", "hard_drive"]:
+            print("\nСтатистика по типам продуктов:")
+            for product_type in ["cooler", "case", "power_supply", "motherboard", "processor", "graphics_card", "ram", "hard_drive"]:
                 count = db.session.query(UnifiedProduct).filter(UnifiedProduct.product_type == product_type).count()
-                if count > 0:
-                    print(f"   {product_type}: {count} продуктов")
-            
-            # Статистика по поставщикам
-            print("\n🏪 Статистика по поставщикам:")
-            citilink_count = db.session.query(UnifiedProduct).filter(UnifiedProduct.vendor == 'citilink').count()
-            dns_count = db.session.query(UnifiedProduct).filter(UnifiedProduct.vendor == 'dns').count()
-            print(f"   Citilink: {citilink_count} продуктов")
-            print(f"   DNS: {dns_count} продуктов")
+                print(f"{product_type}: {count} продуктов")
                 
         except Exception as e:
             db.session.rollback()
-            print(f"❌ Ошибка финального сохранения в базу данных: {str(e)}")
+            print(f"Ошибка сохранения в базу данных: {str(e)}")
             traceback.print_exc()
 
 if __name__ == "__main__":
