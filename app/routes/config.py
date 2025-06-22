@@ -214,97 +214,52 @@ def get_config_info():
     hdd_id = data.get('hdd_id', 0)
     frame_id = data.get('frame_id', 0)
     
-    # Получаем объекты компонентов напрямую
-    components = {}
-    total_price = 0
+    # Создаем временную конфигурацию для расчета
+    temp_config = Configuration()
     
-    if motherboard_id and motherboard_id != 0:
-        motherboard = UnifiedProduct.query.get(motherboard_id)
-        if motherboard:
-            components['motherboard'] = motherboard
-            if motherboard.price_discounted and motherboard.price_discounted > 0:
-                total_price += motherboard.price_discounted
-            elif motherboard.price_original and motherboard.price_original > 0:
-                total_price += motherboard.price_original
+    # Устанавливаем компоненты, преобразуя 0 в None
+    temp_config.motherboard_id = motherboard_id if motherboard_id != 0 else None
+    temp_config.supply_id = supply_id if supply_id != 0 else None
+    temp_config.cpu_id = cpu_id if cpu_id != 0 else None
+    temp_config.gpu_id = gpu_id if gpu_id != 0 else None
+    temp_config.cooler_id = cooler_id if cooler_id != 0 else None
+    temp_config.ram_id = ram_id if ram_id != 0 else None
+    temp_config.hdd_id = hdd_id if hdd_id != 0 else None
+    temp_config.frame_id = frame_id if frame_id != 0 else None
     
-    if supply_id and supply_id != 0:
-        power_supply = UnifiedProduct.query.get(supply_id)
-        if power_supply:
-            components['power_supply'] = power_supply
-            if power_supply.price_discounted and power_supply.price_discounted > 0:
-                total_price += power_supply.price_discounted
-            elif power_supply.price_original and power_supply.price_original > 0:
-                total_price += power_supply.price_original
+    # Получаем объекты компонентов для установки отношений
+    if temp_config.motherboard_id:
+        temp_config.motherboard = UnifiedProduct.query.get(temp_config.motherboard_id)
+    if temp_config.supply_id:
+        temp_config.power_supply = UnifiedProduct.query.get(temp_config.supply_id)
+    if temp_config.cpu_id:
+        temp_config.processor = UnifiedProduct.query.get(temp_config.cpu_id)
+    if temp_config.gpu_id:
+        temp_config.graphics_card = UnifiedProduct.query.get(temp_config.gpu_id)
+    if temp_config.cooler_id:
+        temp_config.cooler = UnifiedProduct.query.get(temp_config.cooler_id)
+    if temp_config.ram_id:
+        temp_config.ram = UnifiedProduct.query.get(temp_config.ram_id)
+    if temp_config.hdd_id:
+        temp_config.hard_drive = UnifiedProduct.query.get(temp_config.hdd_id)
+    if temp_config.frame_id:
+        temp_config.case = UnifiedProduct.query.get(temp_config.frame_id)
     
-    if cpu_id and cpu_id != 0:
-        processor = UnifiedProduct.query.get(cpu_id)
-        if processor:
-            components['processor'] = processor
-            if processor.price_discounted and processor.price_discounted > 0:
-                total_price += processor.price_discounted
-            elif processor.price_original and processor.price_original > 0:
-                total_price += processor.price_original
+    # Рассчитываем общую стоимость
+    total_price = temp_config.total_price()
     
-    if gpu_id and gpu_id != 0:
-        graphics_card = UnifiedProduct.query.get(gpu_id)
-        if graphics_card:
-            components['graphics_card'] = graphics_card
-            if graphics_card.price_discounted and graphics_card.price_discounted > 0:
-                total_price += graphics_card.price_discounted
-            elif graphics_card.price_original and graphics_card.price_original > 0:
-                total_price += graphics_card.price_original
+    # Убеждаемся, что цена является числом
+    if total_price is None:
+        total_price = 0
     
-    if cooler_id and cooler_id != 0:
-        cooler = UnifiedProduct.query.get(cooler_id)
-        if cooler:
-            components['cooler'] = cooler
-            if cooler.price_discounted and cooler.price_discounted > 0:
-                total_price += cooler.price_discounted
-            elif cooler.price_original and cooler.price_original > 0:
-                total_price += cooler.price_original
-    
-    if ram_id and ram_id != 0:
-        ram = UnifiedProduct.query.get(ram_id)
-        if ram:
-            components['ram'] = ram
-            if ram.price_discounted and ram.price_discounted > 0:
-                total_price += ram.price_discounted
-            elif ram.price_original and ram.price_original > 0:
-                total_price += ram.price_original
-    
-    if hdd_id and hdd_id != 0:
-        hard_drive = UnifiedProduct.query.get(hdd_id)
-        if hard_drive:
-            components['hard_drive'] = hard_drive
-            if hard_drive.price_discounted and hard_drive.price_discounted > 0:
-                total_price += hard_drive.price_discounted
-            elif hard_drive.price_original and hard_drive.price_original > 0:
-                total_price += hard_drive.price_original
-    
-    if frame_id and frame_id != 0:
-        case = UnifiedProduct.query.get(frame_id)
-        if case:
-            components['case'] = case
-            if case.price_discounted and case.price_discounted > 0:
-                total_price += case.price_discounted
-            elif case.price_original and case.price_original > 0:
-                total_price += case.price_original
-    
-    # Проверяем совместимость между всеми компонентами
-    issues = []
-    components_list = list(components.values())
-    
-    for i, comp1 in enumerate(components_list):
-        for comp2 in components_list[i+1:]:
-            compatibility_result = comp1.is_compatible_with(comp2)
-            if compatibility_result is not True:
-                issues.append(compatibility_result)
+    # Проверяем совместимость
+    compatibility_issues = temp_config.check_compatibility()
     
     # Формируем ответ
     return jsonify({
         'total_price': float(total_price),
-        'compatible': len(issues) == 0,
-        'issues': issues
+        'compatible': compatibility_issues is None,
+        'issues': compatibility_issues or []
     })
 
 @config_bp.route('/api/filter-components', methods=['POST'])
@@ -412,7 +367,6 @@ def search_components():
     # Получаем тип продукта и поисковый запрос
     product_type = data.get('product_type')
     query = data.get('query', '').strip()
-    limit = data.get('limit', 20)  # Ограничиваем количество результатов
     
     # Проверяем наличие обязательных параметров
     if not product_type:
@@ -425,166 +379,31 @@ def search_components():
     if query:
         components_query = components_query.filter(UnifiedProduct.product_name.ilike(f'%{query}%'))
     
-    # Сортируем по релевантности (сначала точные совпадения, потом по алфавиту)
-    if query:
-        # Точные совпадения в начале названия имеют приоритет
-        components_query = components_query.order_by(
-            UnifiedProduct.product_name.ilike(f'{query}%').desc(),
-            UnifiedProduct.product_name
-        )
-    else:
-        components_query = components_query.order_by(UnifiedProduct.product_name)
-    
-    # Ограничиваем количество результатов
-    components = components_query.limit(limit).all()
+    # Получаем результаты
+    components = components_query.all()
     
     # Формируем ответ
     result = []
     for component in components:
         # Определяем цену для отображения
         price = None
-        price_formatted = 'Цена не указана'
         if component.price_discounted is not None and component.price_discounted > 0:
             price = component.price_discounted
-            price_formatted = f"{price:,.0f}".replace(',', ' ') + ' ₽'
         elif component.price_original is not None and component.price_original > 0:
             price = component.price_original
-            price_formatted = f"{price:,.0f}".replace(',', ' ') + ' ₽'
             
-        # Пропускаем компоненты без цены только если это не живой поиск
-        if price is None and query:
+        # Пропускаем компоненты без цены
+        if price is None:
             continue
-        
-        # Получаем характеристики для дополнительной информации
-        characteristics = component.get_characteristics() if hasattr(component, 'get_characteristics') else {}
-        
-        # Формируем краткое описание
-        description_parts = []
-        if product_type == 'processor':
-            if characteristics.get('core_count'):
-                description_parts.append(f"{characteristics['core_count']} ядер")
-            if characteristics.get('base_frequency'):
-                description_parts.append(f"{characteristics['base_frequency']}")
-        elif product_type == 'graphics_card':
-            if characteristics.get('memory_size'):
-                description_parts.append(f"{characteristics['memory_size']} ГБ")
-            if characteristics.get('memory_type'):
-                description_parts.append(characteristics['memory_type'])
-        elif product_type == 'ram':
-            if characteristics.get('memory_size'):
-                description_parts.append(f"{characteristics['memory_size']} ГБ")
-            if characteristics.get('memory_type'):
-                description_parts.append(characteristics['memory_type'])
-            if characteristics.get('frequency'):
-                description_parts.append(f"{characteristics['frequency']} МГц")
-        elif product_type == 'motherboard':
-            if characteristics.get('socket'):
-                description_parts.append(f"Socket {characteristics['socket']}")
-            if characteristics.get('form_factor'):
-                description_parts.append(characteristics['form_factor'])
-        elif product_type == 'power_supply':
-            if characteristics.get('wattage'):
-                description_parts.append(f"{characteristics['wattage']} Вт")
-        elif product_type == 'hard_drive':
-            if characteristics.get('storage_capacity'):
-                description_parts.append(f"{characteristics['storage_capacity']} ГБ")
-            if characteristics.get('interface'):
-                description_parts.append(characteristics['interface'])
-        
-        description = ' • '.join(description_parts[:3])  # Максимум 3 характеристики
-        
-        # Определяем иконку магазина
-        vendor_icon = ''
-        vendor_name = ''
-        if component.vendor == 'dns':
-            vendor_icon = '🟢'
-            vendor_name = 'DNS'
-        elif component.vendor == 'citilink':
-            vendor_icon = '🔵'
-            vendor_name = 'Citilink'
-        else:
-            vendor_icon = '⚪'
-            vendor_name = component.vendor.title()
-        
-        # Получаем реальное изображение из JSON данных
-        images = component.get_images()
-        image_url = None
-        if images and len(images) > 0:
-            # Берем первое изображение из списка
-            image_url = images[0]
-        
-        # Если нет изображения, используем заглушку
-        if not image_url:
-            image_url = f"/static/images/products/{product_type}_placeholder.jpg"
         
         result.append({
             'id': component.id,
             'name': component.product_name,
             'price': price,
-            'price_formatted': price_formatted,
-            'description': description,
             'vendor': component.vendor,
-            'vendor_name': vendor_name,
-            'vendor_icon': vendor_icon,
-            'product_url': component.product_url,
-            'image_url': image_url
+            'product_url': component.product_url
         })
     
     return jsonify({
-        'components': result,
-        'total': len(result),
-        'query': query
-    })
-
-@config_bp.route('/api/autocomplete-components', methods=['GET'])
-@login_required
-def autocomplete_components():
-    """Endpoint для автодополнения поиска компонентов"""
-    product_type = request.args.get('product_type')
-    query = request.args.get('query', '').strip()
-    limit = int(request.args.get('limit', 10))
-    
-    if not product_type or not query or len(query) < 2:
-        return jsonify({'suggestions': []})
-    
-    # Ищем компоненты с названиями, содержащими запрос
-    components = UnifiedProduct.query.filter(
-        UnifiedProduct.product_type == product_type,
-        UnifiedProduct.product_name.ilike(f'%{query}%')
-    ).order_by(
-        UnifiedProduct.product_name.ilike(f'{query}%').desc(),  # Приоритет для начала строки
-        UnifiedProduct.product_name
-    ).limit(limit).all()
-    
-    suggestions = []
-    for component in components:
-        # Определяем цену
-        price_text = 'Цена не указана'
-        if component.price_discounted and component.price_discounted > 0:
-            price_text = f"{component.price_discounted:,.0f}".replace(',', ' ') + ' ₽'
-        elif component.price_original and component.price_original > 0:
-            price_text = f"{component.price_original:,.0f}".replace(',', ' ') + ' ₽'
-        
-        # Vendor icon
-        vendor_icon = '🟢' if component.vendor == 'dns' else ('🔵' if component.vendor == 'citilink' else '⚪')
-        
-        # Получаем реальное изображение из JSON данных
-        images = component.get_images()
-        image_url = None
-        if images and len(images) > 0:
-            # Берем первое изображение из списка
-            image_url = images[0]
-        
-        # Если нет изображения, используем заглушку
-        if not image_url:
-            image_url = f"/static/images/products/{product_type}_placeholder.jpg"
-        
-        suggestions.append({
-            'id': component.id,
-            'name': component.product_name,
-            'price_text': price_text,
-            'vendor_icon': vendor_icon,
-            'image_url': image_url
-        })
-    
-    return jsonify({'suggestions': suggestions}) 
+        'components': result
+    }) 
