@@ -566,9 +566,6 @@ class ProductComparator:
             return np.array([])
         
         try:
-            # ПРОСТАЯ ВЕРСИЯ БЕЗ КЭШИРОВАНИЯ
-            logger.info(f"Получение эмбеддингов для {len(texts)} текстов (кэширование отключено)")
-            
             # Фильтруем пустые тексты
             valid_texts = [text for text in texts if text and text.strip()]
             if len(valid_texts) != len(texts):
@@ -578,35 +575,73 @@ class ProductComparator:
                 logger.error("Все тексты пустые после фильтрации")
                 return np.array([])
             
-            # Получаем эмбеддинги
-            all_embeddings = self.embeddings.embed_documents(valid_texts)
+            # КЭШИРОВАНИЕ ВКЛЮЧЕНО
+            logger.info(f"Получение эмбеддингов для {len(valid_texts)} текстов (кэширование включено)")
             
-            # Проверяем результат
-            if all_embeddings is None:
-                logger.error("GigaChat API вернул None вместо эмбеддингов")
-                raise Exception("GigaChat API вернул None")
+            # Проверяем кэш и разделяем тексты на найденные/не найденные
+            cached_embeddings = {}
+            texts_to_process = []
             
-            if not isinstance(all_embeddings, (list, np.ndarray)):
-                logger.error(f"Неожиданный тип результата: {type(all_embeddings)}")
-                raise Exception(f"Неожиданный тип результата: {type(all_embeddings)}")
+            for text in valid_texts:
+                if text in self.embeddings_cache:
+                    cached_embeddings[text] = self.embeddings_cache[text]
+                    logger.debug(f"Найден в кэше: {text[:50]}...")
+                else:
+                    texts_to_process.append(text)
             
-            if len(all_embeddings) == 0:
-                logger.error("Получен пустой список эмбеддингов")
-                raise Exception("Получен пустой список эмбеддингов")
+            logger.info(f"Найдено в кэше: {len(cached_embeddings)}, нужно обработать: {len(texts_to_process)}")
             
-            # Проверяем, что все эмбеддинги валидные
-            valid_embeddings = []
-            for i, embedding in enumerate(all_embeddings):
-                if embedding is None:
-                    logger.error(f"Эмбеддинг {i} равен None")
-                    raise Exception(f"Эмбеддинг {i} равен None")
-                if not isinstance(embedding, (list, np.ndarray)):
-                    logger.error(f"Эмбеддинг {i} имеет неожиданный тип: {type(embedding)}")
-                    raise Exception(f"Эмбеддинг {i} имеет неожиданный тип: {type(embedding)}")
-                valid_embeddings.append(embedding)
+            # Получаем эмбеддинги для новых текстов
+            new_embeddings = {}
+            if texts_to_process:
+                logger.info(f"Запрос к GigaChat API для {len(texts_to_process)} новых текстов")
+                
+                # Обрабатываем батчами для оптимизации
+                for i in range(0, len(texts_to_process), batch_size):
+                    batch_texts = texts_to_process[i:i + batch_size]
+                    logger.info(f"Обработка батча {i//batch_size + 1}: {len(batch_texts)} текстов")
+                    
+                    batch_embeddings = self.embeddings.embed_documents(batch_texts)
+                    
+                    # Проверяем результат батча
+                    if batch_embeddings is None:
+                        logger.error(f"GigaChat API вернул None для батча {i//batch_size + 1}")
+                        continue
+                        
+                    if len(batch_embeddings) != len(batch_texts):
+                        logger.error(f"Несоответствие размеров: получено {len(batch_embeddings)} эмбеддингов для {len(batch_texts)} текстов")
+                        continue
+                    
+                    # Сохраняем в кэш
+                    for j, text in enumerate(batch_texts):
+                        if j < len(batch_embeddings) and batch_embeddings[j] is not None:
+                            embedding = batch_embeddings[j]
+                            new_embeddings[text] = embedding
+                            self.embeddings_cache[text] = embedding
+                            logger.debug(f"Добавлен в кэш: {text[:50]}...")
+                        else:
+                            logger.warning(f"Пропущен некорректный эмбеддинг для текста: {text[:50]}...")
             
-            result = np.array(valid_embeddings)
-            logger.info(f"Получено {len(result)} эмбеддингов размером {result.shape}")
+            # Собираем финальный результат в правильном порядке
+            result_embeddings = []
+            for text in valid_texts:
+                if text in cached_embeddings:
+                    result_embeddings.append(cached_embeddings[text])
+                elif text in new_embeddings:
+                    result_embeddings.append(new_embeddings[text])
+                else:
+                    logger.error(f"Не найден эмбеддинг для текста: {text[:50]}...")
+                    # Добавляем нулевой вектор как fallback
+                    result_embeddings.append([0.0] * 1024)  # Размер эмбеддинга GigaChat
+            
+            if not result_embeddings:
+                logger.error("Не получено ни одного эмбеддинга")
+                return np.array([])
+            
+            result = np.array(result_embeddings)
+            logger.info(f"Итого получено {len(result)} эмбеддингов размером {result.shape}")
+            logger.info(f"Размер кэша: {len(self.embeddings_cache)} записей")
+            
             return result
             
         except Exception as e:
@@ -951,17 +986,14 @@ class ProductComparator:
     
     def clear_embeddings_cache(self):
         """Очистка кэша эмбеддингов"""
-        # cache_size = len(self.embeddings_cache)
-        # self.embeddings_cache.clear()
-        # logger.info(f"Кэш очищен: удалено {cache_size} записей")
-        # return cache_size
-        logger.info("Кэширование отключено - нечего очищать")
-        return 0
+        cache_size = len(self.embeddings_cache)
+        self.embeddings_cache.clear()
+        logger.info(f"Кэш очищен: удалено {cache_size} записей")
+        return cache_size
     
     def get_cache_size(self):
         """Получение размера кэша"""
-        # return len(self.embeddings_cache)
-        return 0
+        return len(self.embeddings_cache)
 
 # Глобальный экземпляр компаратора
 _comparator_instance = None
