@@ -214,52 +214,97 @@ def get_config_info():
     hdd_id = data.get('hdd_id', 0)
     frame_id = data.get('frame_id', 0)
     
-    # Создаем временную конфигурацию для расчета
-    temp_config = Configuration()
+    # Получаем объекты компонентов напрямую
+    components = {}
+    total_price = 0
     
-    # Устанавливаем компоненты, преобразуя 0 в None
-    temp_config.motherboard_id = motherboard_id if motherboard_id != 0 else None
-    temp_config.supply_id = supply_id if supply_id != 0 else None
-    temp_config.cpu_id = cpu_id if cpu_id != 0 else None
-    temp_config.gpu_id = gpu_id if gpu_id != 0 else None
-    temp_config.cooler_id = cooler_id if cooler_id != 0 else None
-    temp_config.ram_id = ram_id if ram_id != 0 else None
-    temp_config.hdd_id = hdd_id if hdd_id != 0 else None
-    temp_config.frame_id = frame_id if frame_id != 0 else None
+    if motherboard_id and motherboard_id != 0:
+        motherboard = UnifiedProduct.query.get(motherboard_id)
+        if motherboard:
+            components['motherboard'] = motherboard
+            if motherboard.price_discounted and motherboard.price_discounted > 0:
+                total_price += motherboard.price_discounted
+            elif motherboard.price_original and motherboard.price_original > 0:
+                total_price += motherboard.price_original
     
-    # Получаем объекты компонентов для установки отношений
-    if temp_config.motherboard_id:
-        temp_config.motherboard = UnifiedProduct.query.get(temp_config.motherboard_id)
-    if temp_config.supply_id:
-        temp_config.power_supply = UnifiedProduct.query.get(temp_config.supply_id)
-    if temp_config.cpu_id:
-        temp_config.processor = UnifiedProduct.query.get(temp_config.cpu_id)
-    if temp_config.gpu_id:
-        temp_config.graphics_card = UnifiedProduct.query.get(temp_config.gpu_id)
-    if temp_config.cooler_id:
-        temp_config.cooler = UnifiedProduct.query.get(temp_config.cooler_id)
-    if temp_config.ram_id:
-        temp_config.ram = UnifiedProduct.query.get(temp_config.ram_id)
-    if temp_config.hdd_id:
-        temp_config.hard_drive = UnifiedProduct.query.get(temp_config.hdd_id)
-    if temp_config.frame_id:
-        temp_config.case = UnifiedProduct.query.get(temp_config.frame_id)
+    if supply_id and supply_id != 0:
+        power_supply = UnifiedProduct.query.get(supply_id)
+        if power_supply:
+            components['power_supply'] = power_supply
+            if power_supply.price_discounted and power_supply.price_discounted > 0:
+                total_price += power_supply.price_discounted
+            elif power_supply.price_original and power_supply.price_original > 0:
+                total_price += power_supply.price_original
     
-    # Рассчитываем общую стоимость
-    total_price = temp_config.total_price()
+    if cpu_id and cpu_id != 0:
+        processor = UnifiedProduct.query.get(cpu_id)
+        if processor:
+            components['processor'] = processor
+            if processor.price_discounted and processor.price_discounted > 0:
+                total_price += processor.price_discounted
+            elif processor.price_original and processor.price_original > 0:
+                total_price += processor.price_original
     
-    # Убеждаемся, что цена является числом
-    if total_price is None:
-        total_price = 0
+    if gpu_id and gpu_id != 0:
+        graphics_card = UnifiedProduct.query.get(gpu_id)
+        if graphics_card:
+            components['graphics_card'] = graphics_card
+            if graphics_card.price_discounted and graphics_card.price_discounted > 0:
+                total_price += graphics_card.price_discounted
+            elif graphics_card.price_original and graphics_card.price_original > 0:
+                total_price += graphics_card.price_original
     
-    # Проверяем совместимость
-    compatibility_issues = temp_config.check_compatibility()
+    if cooler_id and cooler_id != 0:
+        cooler = UnifiedProduct.query.get(cooler_id)
+        if cooler:
+            components['cooler'] = cooler
+            if cooler.price_discounted and cooler.price_discounted > 0:
+                total_price += cooler.price_discounted
+            elif cooler.price_original and cooler.price_original > 0:
+                total_price += cooler.price_original
+    
+    if ram_id and ram_id != 0:
+        ram = UnifiedProduct.query.get(ram_id)
+        if ram:
+            components['ram'] = ram
+            if ram.price_discounted and ram.price_discounted > 0:
+                total_price += ram.price_discounted
+            elif ram.price_original and ram.price_original > 0:
+                total_price += ram.price_original
+    
+    if hdd_id and hdd_id != 0:
+        hard_drive = UnifiedProduct.query.get(hdd_id)
+        if hard_drive:
+            components['hard_drive'] = hard_drive
+            if hard_drive.price_discounted and hard_drive.price_discounted > 0:
+                total_price += hard_drive.price_discounted
+            elif hard_drive.price_original and hard_drive.price_original > 0:
+                total_price += hard_drive.price_original
+    
+    if frame_id and frame_id != 0:
+        case = UnifiedProduct.query.get(frame_id)
+        if case:
+            components['case'] = case
+            if case.price_discounted and case.price_discounted > 0:
+                total_price += case.price_discounted
+            elif case.price_original and case.price_original > 0:
+                total_price += case.price_original
+    
+    # Проверяем совместимость между всеми компонентами
+    issues = []
+    components_list = list(components.values())
+    
+    for i, comp1 in enumerate(components_list):
+        for comp2 in components_list[i+1:]:
+            compatibility_result = comp1.is_compatible_with(comp2)
+            if compatibility_result is not True:
+                issues.append(compatibility_result)
     
     # Формируем ответ
     return jsonify({
         'total_price': float(total_price),
-        'compatible': compatibility_issues is None,
-        'issues': compatibility_issues or []
+        'compatible': len(issues) == 0,
+        'issues': issues
     })
 
 @config_bp.route('/api/filter-components', methods=['POST'])
