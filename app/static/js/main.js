@@ -68,7 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
         components.forEach(component => {
             const option = document.createElement('option');
             option.value = component.id;
-            option.textContent = `${component.name} - ${component.price} руб.`;
+            
+            // Форматируем цену в новом стиле
+            let priceText = 'Цена не указана';
+            if (component.price !== null && component.price > 0) {
+                priceText = new Intl.NumberFormat('ru-RU').format(component.price) + ' ₽';
+            }
+            
+            option.textContent = `${component.name} (${priceText})`;
             selectElement.appendChild(option);
         });
         
@@ -123,14 +130,38 @@ document.addEventListener('DOMContentLoaded', function() {
         selects.forEach(select => {
             if (select.value) {
                 const selectedOption = select.options[select.selectedIndex];
-                const priceMatch = selectedOption.textContent.match(/(\d+) руб/);
-                if (priceMatch && priceMatch[1]) {
-                    total += parseInt(priceMatch[1], 10);
+                const text = selectedOption.textContent;
+                
+                // Поддерживаем разные форматы цен:
+                // 1. Новый формат: "Название (12 345 ₽)"
+                // 2. Старый формат: "Название - 12345 руб"
+                // 3. Формат с точками: "Название (12.345 ₽)"
+                
+                let priceMatch = null;
+                
+                // Ищем цену в новом формате с ₽
+                priceMatch = text.match(/\(([0-9\s,.]+)\s*₽\)/);
+                if (priceMatch) {
+                    // Убираем пробелы, точки и запятые из числа
+                    const priceStr = priceMatch[1].replace(/[\s,.]/g, '');
+                    const price = parseInt(priceStr, 10);
+                    if (!isNaN(price)) {
+                        total += price;
+                    }
+                } else {
+                    // Ищем цену в старом формате с "руб"
+                    priceMatch = text.match(/(\d+)\s*руб/);
+                    if (priceMatch) {
+                        const price = parseInt(priceMatch[1], 10);
+                        if (!isNaN(price)) {
+                            total += price;
+                        }
+                    }
                 }
             }
         });
         
-        priceDisplay.textContent = total.toLocaleString() + ' ₽';
+        priceDisplay.textContent = total.toLocaleString('ru-RU') + ' ₽';
     }
     
     // Инициализация обработчиков событий
