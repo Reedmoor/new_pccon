@@ -10,23 +10,61 @@ logger = logging.getLogger(__name__)
 config_bp = Blueprint('config', __name__)
 
 def format_product_choice(product):
-    """Форматирует опцию товара с названием и ценой"""
+    """Форматирует опцию товара с названием, ценой, рейтингом и источником"""
     if not product:
         return ""
     
     # Определяем цену для отображения
     price = None
+    price_text = ""
     if product.price_discounted is not None and product.price_discounted > 0:
         price = product.price_discounted
+        formatted_price = "{:,.0f}".format(price).replace(",", " ")
+        price_text = f" • {formatted_price} ₽"
     elif product.price_original is not None and product.price_original > 0:
         price = product.price_original
-    
-    # Формируем текст опции
-    if price:
         formatted_price = "{:,.0f}".format(price).replace(",", " ")
-        return f"{product.product_name} ({formatted_price} ₽)"
+        price_text = f" • {formatted_price} ₽"
     else:
-        return f"{product.product_name} (Цена не указана)"
+        price_text = " • Цена не указана"
+    
+    # Определяем источник (магазин)
+    vendor_text = ""
+    if product.vendor:
+        vendor_name = product.vendor.upper()
+        if vendor_name == "CITILINK":
+            vendor_text = " • 🛒 Ситилинк"
+        elif vendor_name == "DNS":
+            vendor_text = " • 🛒 DNS"
+        else:
+            vendor_text = f" • 🛒 {vendor_name}"
+    
+    # Определяем рейтинг и отзывы
+    rating_text = ""
+    if product.rating is not None and product.rating > 0:
+        # Округляем рейтинг до одного знака после запятой
+        rating_formatted = f"{product.rating:.1f}"
+        rating_text = f" • ⭐ {rating_formatted}"
+        
+        # Добавляем количество отзывов если есть
+        if product.number_of_reviews is not None and product.number_of_reviews > 0:
+            if product.number_of_reviews == 1:
+                reviews_word = "отзыв"
+            elif 2 <= product.number_of_reviews <= 4:
+                reviews_word = "отзыва"
+            else:
+                reviews_word = "отзывов"
+            rating_text += f" ({product.number_of_reviews} {reviews_word})"
+    
+    # Собираем итоговую строку
+    # Ограничиваем длину названия продукта для лучшего отображения
+    product_name = product.product_name
+    if len(product_name) > 60:
+        product_name = product_name[:57] + "..."
+    
+    result = f"{product_name}{price_text}{vendor_text}{rating_text}"
+    
+    return result
 
 @config_bp.route('/')
 @login_required
