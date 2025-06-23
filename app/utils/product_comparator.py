@@ -3,6 +3,12 @@ import numpy as np
 import os
 import re
 try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    psutil = None
+    PSUTIL_AVAILABLE = False
+try:
     from langchain_gigachat.embeddings import GigaChatEmbeddings
     GIGACHAT_AVAILABLE = True
 except ImportError:
@@ -546,13 +552,13 @@ class ProductComparator:
         
         return max(0.0, min(1.0, final_score))
     
-    def get_embeddings(self, texts: List[str], batch_size: int = 100) -> np.ndarray:
+    def get_embeddings(self, texts: List[str], batch_size: int = 50) -> np.ndarray:
         """
         Получение эмбеддингов для списка текстов с батчингом и кэшированием
         
         Args:
             texts: список текстов
-            batch_size: размер батча для обработки (по умолчанию 100)
+            batch_size: размер батча для обработки (по умолчанию 50)
             
         Returns:
             массив эмбеддингов
@@ -577,6 +583,11 @@ class ProductComparator:
             
             # КЭШИРОВАНИЕ ВКЛЮЧЕНО
             logger.info(f"Получение эмбеддингов для {len(valid_texts)} текстов (кэширование включено)")
+            
+            # Мониторинг памяти
+            if PSUTIL_AVAILABLE:
+                memory_before = psutil.virtual_memory().percent
+                logger.info(f"Использование памяти перед обработкой: {memory_before:.1f}%")
             
             # Проверяем кэш и разделяем тексты на найденные/не найденные
             cached_embeddings = {}
@@ -641,6 +652,13 @@ class ProductComparator:
             result = np.array(result_embeddings)
             logger.info(f"Итого получено {len(result)} эмбеддингов размером {result.shape}")
             logger.info(f"Размер кэша: {len(self.embeddings_cache)} записей")
+            
+            # Мониторинг памяти после обработки
+            if PSUTIL_AVAILABLE:
+                memory_after = psutil.virtual_memory().percent
+                logger.info(f"Использование памяти после обработки: {memory_after:.1f}%")
+                if memory_after > 80:
+                    logger.warning(f"Высокое потребление памяти: {memory_after:.1f}%")
             
             return result
             
