@@ -69,13 +69,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const option = document.createElement('option');
             option.value = component.id;
             
-            // Форматируем цену в новом стиле
-            let priceText = 'Цена не указана';
-            if (component.price !== null && component.price > 0) {
-                priceText = new Intl.NumberFormat('ru-RU').format(component.price) + ' ₽';
+            // Форматируем в новом стиле с дополнительной информацией
+            let displayText = component.name;
+            
+            // Ограничиваем длину названия
+            if (displayText.length > 60) {
+                displayText = displayText.substring(0, 57) + "...";
             }
             
-            option.textContent = `${component.name} (${priceText})`;
+            // Добавляем цену
+            if (component.price !== null && component.price > 0) {
+                const formattedPrice = new Intl.NumberFormat('ru-RU').format(component.price);
+                displayText += ` • ${formattedPrice} ₽`;
+            } else {
+                displayText += ' • Цена не указана';
+            }
+            
+            // Добавляем магазин если есть
+            if (component.vendor) {
+                const vendorName = component.vendor.toUpperCase();
+                if (vendorName === "CITILINK") {
+                    displayText += " • 🛒 Ситилинк";
+                } else if (vendorName === "DNS") {
+                    displayText += " • 🛒 DNS";
+                } else {
+                    displayText += ` • 🛒 ${vendorName}`;
+                }
+            }
+            
+            option.textContent = displayText;
             selectElement.appendChild(option);
         });
         
@@ -128,33 +150,44 @@ document.addEventListener('DOMContentLoaded', function() {
         let total = 0;
         
         selects.forEach(select => {
-            if (select.value) {
+            if (select.value && select.value !== '0') {
                 const selectedOption = select.options[select.selectedIndex];
                 const text = selectedOption.textContent;
                 
-                // Поддерживаем разные форматы цен:
-                // 1. Новый формат: "Название (12 345 ₽)"
-                // 2. Старый формат: "Название - 12345 руб"
-                // 3. Формат с точками: "Название (12.345 ₽)"
+                // Новый формат: "Название продукта • 12 345 ₽ • 🛒 Ситилинк • ⭐ 4.5 (10 отзывов)"
+                // Ищем цену после символа • и перед символом ₽
                 
                 let priceMatch = null;
                 
-                // Ищем цену в новом формате с ₽
-                priceMatch = text.match(/\(([0-9\s,.]+)\s*₽\)/);
+                // Ищем паттерн "• число ₽" (цена всегда int, пробелы как разделители тысяч)
+                priceMatch = text.match(/•\s*([0-9\s]+)\s*₽/);
                 if (priceMatch) {
-                    // Убираем пробелы, точки и запятые из числа
-                    const priceStr = priceMatch[1].replace(/[\s,.]/g, '');
+                    // Убираем все пробелы из числа
+                    const priceStr = priceMatch[1].replace(/\s/g, '');
                     const price = parseInt(priceStr, 10);
                     if (!isNaN(price)) {
                         total += price;
+                        console.log(`Найдена цена: ${price} для товара: ${text.substring(0, 50)}...`);
                     }
                 } else {
-                    // Ищем цену в старом формате с "руб"
-                    priceMatch = text.match(/(\d+)\s*руб/);
+                    // Поддержка старых форматов для совместимости
+                    
+                    // Формат: "Название (12 345 ₽)"
+                    priceMatch = text.match(/\(([0-9\s,.]+)\s*₽\)/);
                     if (priceMatch) {
-                        const price = parseInt(priceMatch[1], 10);
+                        const priceStr = priceMatch[1].replace(/[\s,.]/g, '');
+                        const price = parseInt(priceStr, 10);
                         if (!isNaN(price)) {
                             total += price;
+                        }
+                    } else {
+                        // Формат: "Название - 12345 руб"
+                        priceMatch = text.match(/(\d+)\s*руб/);
+                        if (priceMatch) {
+                            const price = parseInt(priceMatch[1], 10);
+                            if (!isNaN(price)) {
+                                total += price;
+                            }
                         }
                     }
                 }
@@ -162,6 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         priceDisplay.textContent = total.toLocaleString('ru-RU') + ' ₽';
+        
+        // Логируем для отладки
+        console.log(`Общая стоимость: ${total}`);
     }
     
     // Инициализация обработчиков событий
