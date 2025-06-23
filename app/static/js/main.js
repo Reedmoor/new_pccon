@@ -141,63 +141,93 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Переменная для дебаунсинга
+    let priceCalculationTimeout = null;
+    
     // Расчет итоговой стоимости конфигурации
     function calculateTotalPrice() {
+        // Очищаем предыдущий таймаут
+        if (priceCalculationTimeout) {
+            clearTimeout(priceCalculationTimeout);
+        }
+        
+        // Устанавливаем новый таймаут для дебаунсинга
+        priceCalculationTimeout = setTimeout(() => {
+            calculateTotalPriceImmediate();
+        }, 100); // Задержка 100мс для предотвращения слишком частых вызовов
+    }
+    
+    // Немедленный расчет цены (внутренняя функция)
+    function calculateTotalPriceImmediate() {
         const priceDisplay = document.getElementById('totalPrice');
         if (!priceDisplay) return;
         
         const selects = document.querySelectorAll('form select[id$="_id"]');
         let total = 0;
+        let foundPrices = [];
         
         selects.forEach(select => {
-            if (select.value && select.value !== '0') {
+            if (select.value && select.value !== '0' && select.value !== '') {
                 const selectedOption = select.options[select.selectedIndex];
+                if (!selectedOption) return;
+                
                 const text = selectedOption.textContent;
                 
                 // Новый формат: "Название продукта • 12 345 ₽ • 🛒 Ситилинк • ⭐ 4.5 (10 отзывов)"
                 // Ищем цену после символа • и перед символом ₽
                 
                 let priceMatch = null;
+                let extractedPrice = null;
                 
-                // Ищем паттерн "• число ₽" (цена всегда int, пробелы как разделители тысяч)
+                // Основной паттерн для нового формата: "• число ₽"
                 priceMatch = text.match(/•\s*([0-9\s]+)\s*₽/);
                 if (priceMatch) {
                     // Убираем все пробелы из числа
                     const priceStr = priceMatch[1].replace(/\s/g, '');
-                    const price = parseInt(priceStr, 10);
-                    if (!isNaN(price)) {
-                        total += price;
-                        console.log(`Найдена цена: ${price} для товара: ${text.substring(0, 50)}...`);
-                    }
+                    extractedPrice = parseInt(priceStr, 10);
                 } else {
-                    // Поддержка старых форматов для совместимости
+                    // Поддержка других форматов
                     
                     // Формат: "Название (12 345 ₽)"
                     priceMatch = text.match(/\(([0-9\s,.]+)\s*₽\)/);
                     if (priceMatch) {
                         const priceStr = priceMatch[1].replace(/[\s,.]/g, '');
-                        const price = parseInt(priceStr, 10);
-                        if (!isNaN(price)) {
-                            total += price;
-                        }
+                        extractedPrice = parseInt(priceStr, 10);
                     } else {
                         // Формат: "Название - 12345 руб"
                         priceMatch = text.match(/(\d+)\s*руб/);
                         if (priceMatch) {
-                            const price = parseInt(priceMatch[1], 10);
-                            if (!isNaN(price)) {
-                                total += price;
-                            }
+                            extractedPrice = parseInt(priceMatch[1], 10);
                         }
                     }
+                }
+                
+                // Добавляем цену если она валидна
+                if (extractedPrice && !isNaN(extractedPrice) && extractedPrice > 0) {
+                    total += extractedPrice;
+                    foundPrices.push({
+                        component: select.id,
+                        name: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+                        price: extractedPrice
+                    });
                 }
             }
         });
         
-        priceDisplay.textContent = total.toLocaleString('ru-RU') + ' ₽';
+        // Обновляем отображение цены
+        if (priceDisplay) {
+            priceDisplay.textContent = total.toLocaleString('ru-RU') + ' ₽';
+        }
         
-        // Логируем для отладки
-        console.log(`Общая стоимость: ${total}`);
+        // Логируем для отладки (только если есть цены)
+        if (foundPrices.length > 0) {
+            console.log('📊 Расчет цены:', {
+                total: total,
+                components: foundPrices
+            });
+        } else {
+            console.log('💰 Итоговая цена: 0 ₽ (компоненты не выбраны или без цен)');
+        }
     }
     
     // Инициализация обработчиков событий

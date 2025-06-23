@@ -274,52 +274,79 @@ def get_config_info():
     hdd_id = data.get('hdd_id', 0)
     frame_id = data.get('frame_id', 0)
     
-    # Создаем временную конфигурацию для расчета
-    temp_config = Configuration()
+    # Собираем компоненты для расчета цены
+    component_ids = []
+    if motherboard_id and motherboard_id != 0:
+        component_ids.append(motherboard_id)
+    if supply_id and supply_id != 0:
+        component_ids.append(supply_id)
+    if cpu_id and cpu_id != 0:
+        component_ids.append(cpu_id)
+    if gpu_id and gpu_id != 0:
+        component_ids.append(gpu_id)
+    if cooler_id and cooler_id != 0:
+        component_ids.append(cooler_id)
+    if ram_id and ram_id != 0:
+        component_ids.append(ram_id)
+    if hdd_id and hdd_id != 0:
+        component_ids.append(hdd_id)
+    if frame_id and frame_id != 0:
+        component_ids.append(frame_id)
     
-    # Устанавливаем компоненты, преобразуя 0 в None
-    temp_config.motherboard_id = motherboard_id if motherboard_id != 0 else None
-    temp_config.supply_id = supply_id if supply_id != 0 else None
-    temp_config.cpu_id = cpu_id if cpu_id != 0 else None
-    temp_config.gpu_id = gpu_id if gpu_id != 0 else None
-    temp_config.cooler_id = cooler_id if cooler_id != 0 else None
-    temp_config.ram_id = ram_id if ram_id != 0 else None
-    temp_config.hdd_id = hdd_id if hdd_id != 0 else None
-    temp_config.frame_id = frame_id if frame_id != 0 else None
+    # Рассчитываем общую стоимость напрямую
+    total_price = 0
+    selected_components = []
     
-    # Получаем объекты компонентов для установки отношений
-    if temp_config.motherboard_id:
-        temp_config.motherboard = UnifiedProduct.query.get(temp_config.motherboard_id)
-    if temp_config.supply_id:
-        temp_config.power_supply = UnifiedProduct.query.get(temp_config.supply_id)
-    if temp_config.cpu_id:
-        temp_config.processor = UnifiedProduct.query.get(temp_config.cpu_id)
-    if temp_config.gpu_id:
-        temp_config.graphics_card = UnifiedProduct.query.get(temp_config.gpu_id)
-    if temp_config.cooler_id:
-        temp_config.cooler = UnifiedProduct.query.get(temp_config.cooler_id)
-    if temp_config.ram_id:
-        temp_config.ram = UnifiedProduct.query.get(temp_config.ram_id)
-    if temp_config.hdd_id:
-        temp_config.hard_drive = UnifiedProduct.query.get(temp_config.hdd_id)
-    if temp_config.frame_id:
-        temp_config.case = UnifiedProduct.query.get(temp_config.frame_id)
+    if component_ids:
+        components = UnifiedProduct.query.filter(UnifiedProduct.id.in_(component_ids)).all()
+        for component in components:
+            # Определяем цену компонента
+            price = None
+            if component.price_discounted is not None and component.price_discounted > 0:
+                price = int(component.price_discounted)
+            elif component.price_original is not None and component.price_original > 0:
+                price = int(component.price_original)
+            
+            if price is not None:
+                total_price += price
+                selected_components.append({
+                    'id': component.id,
+                    'name': component.product_name,
+                    'price': price,
+                    'type': component.product_type
+                })
     
-    # Рассчитываем общую стоимость
-    total_price = temp_config.total_price()
+    # Простая проверка совместимости (без создания временной конфигурации)
+    compatibility_issues = []
+    compatible = True
     
-    # Убеждаемся, что цена является числом
-    if total_price is None:
-        total_price = 0
-    
-    # Проверяем совместимость
-    compatibility_issues = temp_config.check_compatibility()
+    # Пока используем простую логику - если выбраны основные компоненты, считаем совместимыми
+    # В будущем можно добавить более сложную логику проверки
+    if motherboard_id and cpu_id:
+        # Получаем материнскую плату и процессор для проверки сокета
+        try:
+            motherboard = UnifiedProduct.query.get(motherboard_id) if motherboard_id != 0 else None
+            processor = UnifiedProduct.query.get(cpu_id) if cpu_id != 0 else None
+            
+            if motherboard and processor:
+                mb_chars = motherboard.get_characteristics()
+                cpu_chars = processor.get_characteristics()
+                
+                mb_socket = mb_chars.get('socket', '').upper()
+                cpu_socket = cpu_chars.get('socket', '').upper()
+                
+                if mb_socket and cpu_socket and mb_socket != cpu_socket:
+                    compatibility_issues.append(f"Несовместимые сокеты: {mb_socket} (материнская плата) и {cpu_socket} (процессор)")
+                    compatible = False
+        except Exception as e:
+            logger.error(f"Ошибка проверки совместимости: {e}")
     
     # Формируем ответ
     return jsonify({
         'total_price': float(total_price),
-        'compatible': compatibility_issues is None,
-        'issues': compatibility_issues or []
+        'compatible': compatible,
+        'issues': compatibility_issues,
+        'components': selected_components  # Добавляем информацию о выбранных компонентах для отладки
     })
 
 @config_bp.route('/api/filter-components', methods=['POST'])
