@@ -3,8 +3,30 @@ from flask_login import login_required, current_user
 from app import db
 from app.models.models import Configuration, UnifiedProduct
 from app.forms.config import ConfigurationForm
+import logging
+
+logger = logging.getLogger(__name__)
 
 config_bp = Blueprint('config', __name__)
+
+def format_product_choice(product):
+    """Форматирует опцию товара с названием и ценой"""
+    if not product:
+        return ""
+    
+    # Определяем цену для отображения
+    price = None
+    if product.price_discounted is not None and product.price_discounted > 0:
+        price = product.price_discounted
+    elif product.price_original is not None and product.price_original > 0:
+        price = product.price_original
+    
+    # Формируем текст опции
+    if price:
+        formatted_price = "{:,.0f}".format(price).replace(",", " ")
+        return f"{product.product_name} ({formatted_price} ₽)"
+    else:
+        return f"{product.product_name} (Цена не указана)"
 
 @config_bp.route('/')
 @login_required
@@ -28,14 +50,14 @@ def new_config():
     cases = UnifiedProduct.query.filter_by(product_type='case').all()
     
     # Set choices for each dropdown
-    form.motherboard_id.choices = [(0, 'Выберите материнскую плату...')] + [(m.id, m.product_name) for m in motherboards]
-    form.supply_id.choices = [(0, 'Выберите блок питания...')] + [(p.id, p.product_name) for p in power_supplies]
-    form.cpu_id.choices = [(0, 'Выберите процессор...')] + [(p.id, p.product_name) for p in processors]
-    form.gpu_id.choices = [(0, 'Выберите видеокарту...')] + [(g.id, g.product_name) for g in graphics_cards]
-    form.cooler_id.choices = [(0, 'Выберите кулер...')] + [(c.id, c.product_name) for c in coolers]
-    form.ram_id.choices = [(0, 'Выберите оперативную память...')] + [(r.id, r.product_name) for r in rams]
-    form.hdd_id.choices = [(0, 'Выберите жёсткий диск...')] + [(h.id, h.product_name) for h in hard_drives]
-    form.frame_id.choices = [(0, 'Выберите корпус...')] + [(c.id, c.product_name) for c in cases]
+    form.motherboard_id.choices = [(0, 'Выберите материнскую плату...')] + [(m.id, format_product_choice(m)) for m in motherboards]
+    form.supply_id.choices = [(0, 'Выберите блок питания...')] + [(p.id, format_product_choice(p)) for p in power_supplies]
+    form.cpu_id.choices = [(0, 'Выберите процессор...')] + [(p.id, format_product_choice(p)) for p in processors]
+    form.gpu_id.choices = [(0, 'Выберите видеокарту...')] + [(g.id, format_product_choice(g)) for g in graphics_cards]
+    form.cooler_id.choices = [(0, 'Выберите кулер...')] + [(c.id, format_product_choice(c)) for c in coolers]
+    form.ram_id.choices = [(0, 'Выберите оперативную память...')] + [(r.id, format_product_choice(r)) for r in rams]
+    form.hdd_id.choices = [(0, 'Выберите жёсткий диск...')] + [(h.id, format_product_choice(h)) for h in hard_drives]
+    form.frame_id.choices = [(0, 'Выберите корпус...')] + [(c.id, format_product_choice(c)) for c in cases]
     
     if form.validate_on_submit():
         config = Configuration(
@@ -102,14 +124,14 @@ def edit_config(config_id):
     cases = UnifiedProduct.query.filter_by(product_type='case').all()
     
     # Set choices for each dropdown
-    form.motherboard_id.choices = [(0, 'Выберите материнскую плату...')] + [(m.id, m.product_name) for m in motherboards]
-    form.supply_id.choices = [(0, 'Выберите блок питания...')] + [(p.id, p.product_name) for p in power_supplies]
-    form.cpu_id.choices = [(0, 'Выберите процессор...')] + [(p.id, p.product_name) for p in processors]
-    form.gpu_id.choices = [(0, 'Выберите видеокарту...')] + [(g.id, g.product_name) for g in graphics_cards]
-    form.cooler_id.choices = [(0, 'Выберите кулер...')] + [(c.id, c.product_name) for c in coolers]
-    form.ram_id.choices = [(0, 'Выберите оперативную память...')] + [(r.id, r.product_name) for r in rams]
-    form.hdd_id.choices = [(0, 'Выберите жёсткий диск...')] + [(h.id, h.product_name) for h in hard_drives]
-    form.frame_id.choices = [(0, 'Выберите корпус...')] + [(c.id, c.product_name) for c in cases]
+    form.motherboard_id.choices = [(0, 'Выберите материнскую плату...')] + [(m.id, format_product_choice(m)) for m in motherboards]
+    form.supply_id.choices = [(0, 'Выберите блок питания...')] + [(p.id, format_product_choice(p)) for p in power_supplies]
+    form.cpu_id.choices = [(0, 'Выберите процессор...')] + [(p.id, format_product_choice(p)) for p in processors]
+    form.gpu_id.choices = [(0, 'Выберите видеокарту...')] + [(g.id, format_product_choice(g)) for g in graphics_cards]
+    form.cooler_id.choices = [(0, 'Выберите кулер...')] + [(c.id, format_product_choice(c)) for c in coolers]
+    form.ram_id.choices = [(0, 'Выберите оперативную память...')] + [(r.id, format_product_choice(r)) for r in rams]
+    form.hdd_id.choices = [(0, 'Выберите жёсткий диск...')] + [(h.id, format_product_choice(h)) for h in hard_drives]
+    form.frame_id.choices = [(0, 'Выберите корпус...')] + [(c.id, format_product_choice(c)) for c in cases]
     
     if form.validate_on_submit():
         config.name = form.name.data

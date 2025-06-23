@@ -548,7 +548,14 @@ class ProductComparator:
         
         # Применяем штрафы за критические различия
         penalty = self.calculate_penalty(features1, features2)
-        final_score *= (1 - penalty)
+        
+        # Добавляем штраф за несовместимые категории товаров
+        category_penalty = self.calculate_category_penalty(name1, name2)
+        
+        # Комбинируем штрафы (берем максимальный)
+        total_penalty = max(penalty, category_penalty)
+        
+        final_score *= (1 - total_penalty)
         
         return max(0.0, min(1.0, final_score))
     
@@ -1012,6 +1019,105 @@ class ProductComparator:
     def get_cache_size(self):
         """Получение размера кэша"""
         return len(self.embeddings_cache)
+
+    def detect_product_category(self, name: str) -> str:
+        """
+        Определение категории товара по названию
+        
+        Args:
+            name: название товара
+            
+        Returns:
+            категория товара
+        """
+        if name is None:
+            return "unknown"
+        
+        name_lower = str(name).lower()
+        
+        # Видеокарты
+        if any(keyword in name_lower for keyword in [
+            'видеокарта', 'graphics', 'geforce', 'radeon', 'rtx', 'gtx', 'rx ', 'arc ', 'gpu'
+        ]):
+            return "graphics_card"
+        
+        # Процессоры
+        if any(keyword in name_lower for keyword in [
+            'процессор', 'processor', 'cpu', 'ryzen', 'intel', 'core i', 'xeon', 'athlon'
+        ]):
+            return "processor"
+        
+        # Оперативная память
+        if any(keyword in name_lower for keyword in [
+            'оперативная память', 'память', 'ram', 'ddr', 'dimm', 'so-dimm'
+        ]):
+            return "memory"
+        
+        # Материнские платы
+        if any(keyword in name_lower for keyword in [
+            'материнская плата', 'motherboard', 'mainboard', 'мат. плата', 'socket'
+        ]):
+            return "motherboard"
+        
+        # Накопители SSD
+        if any(keyword in name_lower for keyword in [
+            'ssd', 'твердотельный', 'накопитель ssd', 'm.2', 'nvme'
+        ]):
+            return "ssd"
+        
+        # Жесткие диски
+        if any(keyword in name_lower for keyword in [
+            'жесткий диск', 'hdd', 'hard drive', 'винчестер', '3.5"', '2.5"'
+        ]):
+            return "hdd"
+        
+        # Блоки питания
+        if any(keyword in name_lower for keyword in [
+            'блок питания', 'power supply', 'psu', 'источник питания', 'ватт', 'вт'
+        ]):
+            return "power_supply"
+        
+        # Кулеры
+        if any(keyword in name_lower for keyword in [
+            'кулер', 'cooler', 'охлаждение', 'вентилятор', 'радиатор'
+        ]):
+            return "cooler"
+        
+        # Корпуса
+        if any(keyword in name_lower for keyword in [
+            'корпус', 'case', 'chassis', 'tower', 'mini-itx', 'micro-atx', 'atx'
+        ]):
+            return "case"
+        
+        return "unknown"
+
+    def calculate_category_penalty(self, name1: str, name2: str) -> float:
+        """
+        Вычисление штрафа за несовместимые категории товаров
+        
+        Args:
+            name1, name2: названия товаров
+            
+        Returns:
+            штраф от 0 до 1 (1 = полная несовместимость)
+        """
+        if name1 is None or name2 is None:
+            return 0.95  # Максимальный штраф за отсутствие данных
+        
+        category1 = self.detect_product_category(name1)
+        category2 = self.detect_product_category(name2)
+        
+        # Если категории полностью разные - максимальный штраф
+        if category1 != category2 and category1 != "unknown" and category2 != "unknown":
+            logger.debug(f"Категории не совпадают: '{name1}' ({category1}) vs '{name2}' ({category2})")
+            return 0.95  # 95% штраф за разные категории
+        
+        # Если одна из категорий неопределена - умеренный штраф
+        if category1 == "unknown" or category2 == "unknown":
+            return 0.3  # 30% штраф за неопределенность
+        
+        # Категории совпадают - без штрафа
+        return 0.0
 
 # Глобальный экземпляр компаратора
 _comparator_instance = None
