@@ -33110,3 +33110,29 @@
 2025-05-31 14:59:00,310 - WARNING - Слишком много запросов. Ожидание перед повторной попыткой...
 2025-05-31 14:59:05,311 - INFO - Отправка запроса к https://www.citilink.ru/graphql/, для получения данных об всех продуктов
 2025-05-31 14:59:05,422 - WARNING - Слишком много запросов. Ожидание перед повторной попыткой...
+2025-10-27 16:09:17,937 - INFO - 🔄 Прокси включены через переменную окружения USE_PROXY=true
+2025-10-27 16:09:17,951 - INFO - 🧪 Тестируем все прокси...
+2025-10-27 16:09:17,952 - INFO - Тестируем прокси 1/3: 194.156.0.61:64604
+2025-10-27 16:09:20,481 - WARNING - ❌ Прокси 194.156.0.61:64604 не работает: HTTPSConnectionPool(host='httpbin.org', port=443): Max retries exceeded with url: /ip (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E14E30>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:20,481 - INFO - Тестируем прокси 2/3: 45.140.64.215:62474
+2025-10-27 16:09:22,952 - WARNING - ❌ Прокси 45.140.64.215:62474 не работает: HTTPSConnectionPool(host='httpbin.org', port=443): Max retries exceeded with url: /ip (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E153D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:22,952 - INFO - Тестируем прокси 3/3: 91.191.184.244:63478
+2025-10-27 16:09:25,427 - WARNING - ❌ Прокси 91.191.184.244:63478 не работает: HTTPSConnectionPool(host='httpbin.org', port=443): Max retries exceeded with url: /ip (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E15940>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:25,427 - INFO - 📊 Результат: 0/3 прокси работают
+2025-10-27 16:09:25,427 - INFO - Начало парсинга категории: zhestkie-diski
+2025-10-27 16:09:25,432 - INFO - Обработка страницы продукта №1
+2025-10-27 16:09:25,432 - INFO - Используем прокси: 194.156.0.61:64604
+2025-10-27 16:09:25,432 - INFO - Отправка запроса к https://www.citilink.ru/graphql/, для получения данных об всех продуктов
+2025-10-27 16:09:27,941 - WARNING - Ошибка соединения: HTTPSConnectionPool(host='www.citilink.ru', port=443): Max retries exceeded with url: /graphql/ (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E14FE0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:27,941 - INFO - 🔄 Переключаемся на следующий прокси
+2025-10-27 16:09:27,941 - INFO - Повторная попытка через 3 секунды... (попытка 1/3)
+2025-10-27 16:09:30,942 - INFO - Отправка запроса к https://www.citilink.ru/graphql/, для получения данных об всех продуктов
+2025-10-27 16:09:33,418 - WARNING - Ошибка соединения: HTTPSConnectionPool(host='www.citilink.ru', port=443): Max retries exceeded with url: /graphql/ (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E15B20>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:33,418 - INFO - 🔄 Переключаемся на следующий прокси
+2025-10-27 16:09:33,418 - INFO - Повторная попытка через 3 секунды... (попытка 2/3)
+2025-10-27 16:09:36,433 - INFO - Отправка запроса к https://www.citilink.ru/graphql/, для получения данных об всех продуктов
+2025-10-27 16:09:38,912 - WARNING - Ошибка соединения: HTTPSConnectionPool(host='www.citilink.ru', port=443): Max retries exceeded with url: /graphql/ (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001C189E16240>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')))
+2025-10-27 16:09:38,912 - INFO - 🔄 Переключаемся на следующий прокси
+2025-10-27 16:09:38,912 - ERROR - Ошибка при обработке страницы 1: Не удалось выполнить запрос после 3 попыток
+2025-10-27 16:09:38,912 - WARNING - Не удалось получить товары для категории zhestkie-diski
+2025-10-27 16:09:38,912 - INFO - Также создан объединенный файл 'Товары.json' для совместимости

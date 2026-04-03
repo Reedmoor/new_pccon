@@ -4,244 +4,185 @@
 
 {% block extra_css %}
 <style>
-    .component-card {
-        transition: all 0.3s ease;
-    }
-    .component-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .price-tag {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(0,0,0,0.7);
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-weight: bold;
-    }
-    .filter-panel {
-        background-color: #f8f9fa;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
+.empty-slot {
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+.empty-slot:hover {
+    border-color: #6c757d;
+    background: #f8f9fa;
+    color: #6c757d;
+}
+.component-preview-img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #f8f9fa;
+    flex-shrink: 0;
+}
+.img-placeholder {
+    width: 88px;
+    height: 88px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    flex-shrink: 0;
+}
+.modal-product-card {
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent !important;
+}
+.modal-product-card:hover {
+    border-color: #0d6efd !important;
+    box-shadow: 0 4px 14px rgba(13,110,253,0.18);
+    transform: translateY(-2px);
+}
+.modal-product-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+.modal-img-placeholder {
+    width: 100%;
+    height: 120px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+}
+.spec-badge {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    white-space: nowrap;
+}
+.sticky-summary {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+.component-name-preview {
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-12 mb-4">
-        <h2><i class="fas fa-cogs me-2"></i>Создание новой конфигурации</h2>
-        <p class="text-muted">Выберите компоненты для вашего ПК</p>
-    </div>
-</div>
-
-<form method="POST" action="{{ url_for('config.new_config') }}">
+<form method="POST" action="{{ url_for('config.new_config') }}" id="configForm">
     {{ form.hidden_tag() }}
-    
-    <div class="row">
-        <div class="col-md-12 mb-4">
-            <div class="card">
-                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Основные настройки</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        {{ form.name.label(class="form-label") }}
-                        {{ form.name(class="form-control") }}
-                        {% if form.name.errors %}
-                        <div class="invalid-feedback d-block">
-                            {% for error in form.name.errors %}
-                                {{ error }}
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+
+    {# Hidden WTForms selects — передаются при сабмите формы #}
+    <div class="d-none">
+        {{ form.motherboard_id() }}
+        {{ form.cpu_id() }}
+        {{ form.gpu_id() }}
+        {{ form.ram_id() }}
+        {{ form.hdd_id() }}
+        {{ form.supply_id() }}
+        {{ form.cooler_id() }}
+        {{ form.frame_id() }}
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <h2><i class="fas fa-cogs me-2"></i>Создание новой конфигурации</h2>
+            <p class="text-muted mb-0">Выберите компоненты для вашего ПК</p>
         </div>
     </div>
-    
+
     <div class="row">
-        <!-- Левая колонка с компонентами -->
+        {# Левая колонка: название + компоненты #}
         <div class="col-lg-8">
-            <!-- Материнская плата -->
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Материнская плата</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="motherboardSearch" placeholder="Поиск материнской платы...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchMotherboard">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.motherboard_id.label(class="form-label") }}
-                        {{ form.motherboard_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Процессор -->
-            <div class="card mb-4">
-                <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Процессор</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="cpuSearch" placeholder="Поиск процессора...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchCpu">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.cpu_id.label(class="form-label") }}
-                        {{ form.cpu_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Остальные компоненты (сокращённый вид для примера) -->
-            <div class="card mb-4">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Видеокарта</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="gpuSearch" placeholder="Поиск видеокарты...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchGpu">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.gpu_id.label(class="form-label") }}
-                        {{ form.gpu_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Оперативная память -->
-            <div class="card mb-4">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0"><i class="fas fa-memory me-2"></i>Оперативная память</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="ramSearch" placeholder="Поиск оперативной памяти...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchRam">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.ram_id.label(class="form-label") }}
-                        {{ form.ram_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Жёсткий диск -->
-            <div class="card mb-4">
-                <div class="card-header bg-warning text-dark">
-                    <h5 class="mb-0"><i class="fas fa-hdd me-2"></i>Жёсткий диск</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="hddSearch" placeholder="Поиск жёсткого диска...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchHdd">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.hdd_id.label(class="form-label") }}
-                        {{ form.hdd_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Блок питания -->
-            <div class="card mb-4">
-                <div class="card-header bg-secondary text-white">
-                    <h5 class="mb-0"><i class="fas fa-plug me-2"></i>Блок питания</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="supplySearch" placeholder="Поиск блока питания...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchSupply">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.supply_id.label(class="form-label") }}
-                        {{ form.supply_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Кулер -->
-            <div class="card mb-4">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0"><i class="fas fa-fan me-2"></i>Кулер</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="coolerSearch" placeholder="Поиск кулера...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchCooler">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        {{ form.cooler_id.label(class="form-label") }}
-                        {{ form.cooler_id(class="form-select") }}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Корпус -->
             <div class="card mb-4">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0"><i class="fas fa-desktop me-2"></i>Корпус</h5>
+                    <h5 class="mb-0">Название конфигурации</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="frameSearch" placeholder="Поиск корпуса...">
-                            <button class="btn btn-outline-secondary" type="button" id="searchFrame">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    {{ form.name(class="form-control form-control-lg", placeholder="Например: Игровой ПК 2024") }}
+                    {% if form.name.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for e in form.name.errors %}{{ e }}{% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% set comp_list = [
+                ('motherboard',   'motherboard_id', 'Материнская плата',   'fa-server',    'primary'),
+                ('processor',     'cpu_id',         'Процессор',           'fa-microchip', 'danger'),
+                ('graphics_card', 'gpu_id',         'Видеокарта',          'fa-tv',        'success'),
+                ('ram',           'ram_id',         'Оперативная память',  'fa-memory',    'info'),
+                ('hard_drive',    'hdd_id',         'Жёсткий диск / SSD',  'fa-hdd',       'warning'),
+                ('power_supply',  'supply_id',      'Блок питания',        'fa-plug',      'secondary'),
+                ('cooler',        'cooler_id',      'Кулер',               'fa-fan',       'info'),
+                ('case',          'frame_id',       'Корпус',              'fa-desktop',   'dark'),
+            ] %}
+
+            {% for ptype, field, label, icon, color in comp_list %}
+            <div class="card mb-3" id="slot-{{ field }}">
+                <div class="card-header bg-{{ color }} {% if color == 'warning' %}text-dark{% else %}text-white{% endif %} d-flex justify-content-between align-items-center py-2">
+                    <span class="fw-semibold"><i class="fas {{ icon }} me-2"></i>{{ label }}</span>
+                    <div class="d-flex gap-1">
+                        <button type="button" class="btn btn-light btn-sm"
+                            onclick="openComponentModal('{{ ptype }}', '{{ field }}', '{{ label }}', '{{ icon }}')">
+                            <i class="fas fa-search me-1"></i>Выбрать
+                        </button>
+                        <button type="button" class="btn btn-outline-light btn-sm d-none" id="clear-{{ field }}"
+                            onclick="clearComponent('{{ field }}', '{{ ptype }}', '{{ label }}', '{{ icon }}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body py-2 px-3">
+                    <div id="preview-{{ field }}">
+                        <div class="empty-slot py-3"
+                            onclick="openComponentModal('{{ ptype }}', '{{ field }}', '{{ label }}', '{{ icon }}')">
+                            <i class="fas {{ icon }} fa-lg mb-1"></i>
+                            <span class="small">Нажмите для выбора</span>
                         </div>
-                        {{ form.frame_id.label(class="form-label") }}
-                        {{ form.frame_id(class="form-select") }}
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        
-        <!-- Правая колонка с конфигурацией и итогами -->
+
+        {# Правая колонка: итог #}
         <div class="col-lg-4">
-            <div class="card mb-4 sticky-top" style="top: 20px; z-index: 999;">
+            <div class="card sticky-summary">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Ваша конфигурация</h5>
+                    <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Итог конфигурации</h5>
                 </div>
                 <div class="card-body">
-                    <h5 class="mb-3">Проверка совместимости</h5>
-                    <div id="compatibilityCheck" class="alert alert-info">
+                    <div id="compatibilityCheck" class="alert alert-info mb-3 py-2">
                         <i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки
                     </div>
-                    
-                    <hr>
-                    
-                    <div class="mb-3">
-                        <h5>Итоговая стоимость</h5>
-                        <div class="text-end">
-                            <h3 id="totalPrice">0 ₽</h3>
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Итого:</span>
+                        <h4 id="totalPrice" class="mb-0 fw-bold text-danger">0 ₽</h4>
                     </div>
-                    
-                    <div class="d-grid gap-2">
+                    <div id="componentsSummary" class="mb-3 small"></div>
+                    <div class="d-grid">
                         {{ form.submit(class="btn btn-primary btn-lg") }}
                     </div>
                 </div>
@@ -249,199 +190,333 @@
         </div>
     </div>
 </form>
+
+{# Модальное окно выбора компонента #}
+<div class="modal fade" id="componentModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h5 class="modal-title" id="componentModalTitle">Выбор компонента</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="modalSearchInput" placeholder="Поиск по названию...">
+                    <button class="btn btn-primary" type="button" id="modalSearchBtn">
+                        <i class="fas fa-search me-1"></i>Найти
+                    </button>
+                    <button class="btn btn-outline-secondary" type="button" id="modalShowAllBtn">
+                        Показать все
+                    </button>
+                </div>
+                <div id="modalLoading" class="text-center py-5 d-none">
+                    <div class="spinner-border text-primary"></div>
+                    <div class="mt-2 text-muted small">Загрузка...</div>
+                </div>
+                <div id="modalProductsGrid" class="row g-3">
+                    <div class="col-12 text-center text-muted py-5">
+                        <i class="fas fa-search fa-3x mb-3 d-block opacity-25"></i>
+                        Введите запрос или нажмите «Показать все»
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    $(document).ready(function() {
-        // Функция поиска компонентов
-        function searchComponents(productType, searchQuery) {
-            // Отправляем AJAX-запрос на сервер
-            $.ajax({
-                url: "{{ url_for('config.search_components') }}",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    product_type: productType,
-                    query: searchQuery
-                }),
-                success: function(response) {
-                    // Находим нужный select элемент
-                    let selectElement;
-                    switch (productType) {
-                        case 'motherboard':
-                            selectElement = $('#motherboard_id');
-                            break;
-                        case 'processor':
-                            selectElement = $('#cpu_id');
-                            break;
-                        case 'graphics_card':
-                            selectElement = $('#gpu_id');
-                            break;
-                        case 'ram':
-                            selectElement = $('#ram_id');
-                            break;
-                        case 'hard_drive':
-                            selectElement = $('#hdd_id');
-                            break;
-                        case 'power_supply':
-                            selectElement = $('#supply_id');
-                            break;
-                        case 'cooler':
-                            selectElement = $('#cooler_id');
-                            break;
-                        case 'case':
-                            selectElement = $('#frame_id');
-                            break;
-                    }
-                    
-                    if (selectElement) {
-                        // Сохраняем первый вариант (Выберите...)
-                        const firstOption = selectElement.find('option:first');
-                        
-                        // Очищаем текущие варианты
-                        selectElement.empty();
-                        
-                        // Возвращаем первый вариант
-                        selectElement.append(firstOption);
-                        
-                        // Добавляем найденные варианты
-                        response.components.forEach(function(component) {
-                            // Форматируем цену с разделителем тысяч
-                            let priceText = 'Цена не указана';
-                            if (component.price !== null && component.price > 0) {
-                                priceText = new Intl.NumberFormat('ru-RU').format(component.price) + ' ₽';
-                            }
-                            
-                            // Создаем опцию с иконкой магазина
-                            const option = $('<option></option>')
-                                .attr('value', component.id)
-                                .text(component.name + ' (' + priceText + ')');
-                            
-                            // Добавляем атрибуты с данными о магазине для использования при отображении
-                            option.attr('data-vendor', component.vendor);
-                            option.attr('data-url', component.product_url);
-                            
-                            selectElement.append(option);
-                        });
-                        
-                        // Обновляем информацию о конфигурации
-                        updateConfigInfo();
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Ошибка при поиске компонентов:", error);
-                    alert("Произошла ошибка при поиске компонентов. Пожалуйста, попробуйте снова.");
-                }
-            });
-        }
-        
-        // Обработчики событий для поиска компонентов
-        $('#searchMotherboard').on('click', function() {
-            searchComponents('motherboard', $('#motherboardSearch').val());
-        });
-        
-        $('#searchCpu').on('click', function() {
-            searchComponents('processor', $('#cpuSearch').val());
-        });
-        
-        $('#searchGpu').on('click', function() {
-            searchComponents('graphics_card', $('#gpuSearch').val());
-        });
-        
-        $('#searchRam').on('click', function() {
-            searchComponents('ram', $('#ramSearch').val());
-        });
-        
-        $('#searchHdd').on('click', function() {
-            searchComponents('hard_drive', $('#hddSearch').val());
-        });
-        
-        $('#searchSupply').on('click', function() {
-            searchComponents('power_supply', $('#supplySearch').val());
-        });
-        
-        $('#searchCooler').on('click', function() {
-            searchComponents('cooler', $('#coolerSearch').val());
-        });
-        
-        $('#searchFrame').on('click', function() {
-            searchComponents('case', $('#frameSearch').val());
-        });
-        
-        // Обработка нажатия Enter в полях поиска
-        $('#motherboardSearch, #cpuSearch, #gpuSearch, #ramSearch, #hddSearch, #supplySearch, #coolerSearch, #frameSearch').keypress(function(e) {
-            if (e.which === 13) { // Код клавиши Enter
-                e.preventDefault();
-                $(this).next().click(); // Нажимаем на кнопку поиска
+const SEARCH_URL = "{{ url_for('config.search_components') }}";
+const CONFIG_INFO_URL = "{{ url_for('config.get_config_info') }}";
+
+let currentModalType = null;
+let currentModalField = null;
+const modalComponentsCache = new Map();
+
+const KEY_SPECS = {
+    'motherboard':    ['socket', 'chipset', 'form_factor', 'memory_type'],
+    'processor':      ['socket', 'cores', 'base_clock', 'boost_clock'],
+    'graphics_card':  ['memory_size', 'memory_type', 'boost_clock', 'tdp'],
+    'ram':            ['memory_type', 'capacity', 'frequency', 'memory_form_factor'],
+    'hard_drive':     ['capacity', 'type', 'interface', 'read_speed'],
+    'power_supply':   ['wattage', 'certification', 'modular'],
+    'cooler':         ['max_tdp', 'socket_compatibility', 'fan_size'],
+    'case':           ['form_factor', 'supported_form_factors', 'max_gpu_length'],
+};
+
+const SPEC_LABELS = {
+    'socket': 'Сокет', 'chipset': 'Чипсет', 'form_factor': 'Форм-фактор',
+    'memory_type': 'Тип памяти', 'cores': 'Ядра', 'base_clock': 'Баз. частота',
+    'boost_clock': 'Буст', 'memory_size': 'Объём VRAM', 'capacity': 'Объём',
+    'frequency': 'Частота', 'type': 'Тип', 'interface': 'Интерфейс',
+    'wattage': 'Мощность', 'certification': 'Сертификат', 'modular': 'Модульный',
+    'max_tdp': 'Макс. TDP', 'socket_compatibility': 'Совм. сокеты', 'fan_size': 'Вент.',
+    'supported_form_factors': 'Форм-факторы', 'max_gpu_length': 'Макс. GPU',
+    'read_speed': 'Скор. чтения', 'tdp': 'TDP', 'memory_form_factor': 'Слот памяти',
+};
+
+const COMP_TYPE_LABELS = {
+    'motherboard': 'Материнская плата', 'processor': 'Процессор',
+    'graphics_card': 'Видеокарта', 'ram': 'ОЗУ',
+    'hard_drive': 'Накопитель', 'power_supply': 'БП',
+    'cooler': 'Кулер', 'case': 'Корпус',
+};
+
+function openComponentModal(type, fieldId, label, icon) {
+    currentModalType = type;
+    currentModalField = fieldId;
+    document.getElementById('componentModalTitle').textContent = 'Выбор: ' + label;
+    document.getElementById('modalSearchInput').value = '';
+    document.getElementById('modalProductsGrid').innerHTML = `
+        <div class="col-12 text-center text-muted py-5">
+            <i class="fas ${icon} fa-3x mb-3 d-block opacity-25"></i>
+            Введите запрос или нажмите «Показать все»
+        </div>`;
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('componentModal')).show();
+}
+
+function loadComponents(type, query) {
+    const grid = document.getElementById('modalProductsGrid');
+    const loading = document.getElementById('modalLoading');
+    grid.innerHTML = '';
+    loading.classList.remove('d-none');
+    modalComponentsCache.clear();
+
+    $.ajax({
+        url: SEARCH_URL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ product_type: type, query: query }),
+        success: function(response) {
+            loading.classList.add('d-none');
+            if (!response.components || response.components.length === 0) {
+                grid.innerHTML = `<div class="col-12 text-center text-muted py-5">
+                    <i class="fas fa-inbox fa-3x mb-3 d-block opacity-25"></i>
+                    Компоненты не найдены</div>`;
+                return;
             }
-        });
-        
-        // Функция обновления информации о конфигурации (цена и совместимость)
-        function updateConfigInfo() {
-            // Собираем данные о выбранных компонентах
-            const configData = {
-                motherboard_id: parseInt($('#motherboard_id').val()) || 0,
-                supply_id: parseInt($('#supply_id').val()) || 0,
-                cpu_id: parseInt($('#cpu_id').val()) || 0,
-                gpu_id: parseInt($('#gpu_id').val()) || 0,
-                cooler_id: parseInt($('#cooler_id').val()) || 0,
-                ram_id: parseInt($('#ram_id').val()) || 0,
-                hdd_id: parseInt($('#hdd_id').val()) || 0,
-                frame_id: parseInt($('#frame_id').val()) || 0
-            };
-            
-            // Отправляем AJAX-запрос на сервер
-            $.ajax({
-                url: "{{ url_for('config.get_config_info') }}",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify(configData),
-                success: function(response) {
-                    // Форматируем общую цену с разделителем тысяч
-                    const formattedPrice = new Intl.NumberFormat('ru-RU').format(response.total_price);
-                    
-                    // Обновляем информацию о цене
-                    $('#totalPrice').text(formattedPrice + ' ₽');
-                    
-                    // Обновляем информацию о совместимости
-                    const compatDiv = $('#compatibilityCheck');
-                    
-                    if (response.compatible) {
-                        compatDiv.removeClass('alert-info alert-danger').addClass('alert-success');
-                        compatDiv.html('<i class="fas fa-check-circle me-2"></i>Все компоненты совместимы');
-                    } else if (response.issues && response.issues.length > 0) {
-                        compatDiv.removeClass('alert-info alert-success').addClass('alert-danger');
-                        
-                        let issuesHtml = '<i class="fas fa-exclamation-triangle me-2"></i><strong>Проблемы совместимости:</strong><ul class="mb-0 mt-2">';
-                        response.issues.forEach(issue => {
-                            issuesHtml += `<li>${issue}</li>`;
-                        });
-                        issuesHtml += '</ul>';
-                        
-                        compatDiv.html(issuesHtml);
-                    } else {
-                        compatDiv.removeClass('alert-success alert-danger').addClass('alert-info');
-                        compatDiv.html('<i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Ошибка при обновлении информации о конфигурации:", error);
-                    $('#compatibilityCheck')
-                        .removeClass('alert-info alert-success')
-                        .addClass('alert-danger')
-                        .html('<i class="fas fa-exclamation-circle me-2"></i>Ошибка при проверке совместимости');
-                }
+            grid.innerHTML = '';
+            response.components.forEach(comp => {
+                modalComponentsCache.set(comp.id, comp);
+                grid.appendChild(renderProductCard(comp, type));
             });
+        },
+        error: function() {
+            loading.classList.add('d-none');
+            grid.innerHTML = `<div class="col-12 text-center text-danger py-5">
+                <i class="fas fa-exclamation-circle fa-2x mb-2 d-block"></i>Ошибка загрузки</div>`;
         }
-        
-        // Обработчики событий для выбора компонентов
-        $('form select').change(function() {
-            updateConfigInfo();
-        });
-        
-        // Инициализация при загрузке страницы
-        updateConfigInfo();
     });
+}
+
+function renderProductCard(comp, type) {
+    const col = document.createElement('div');
+    col.className = 'col-sm-6 col-lg-4';
+
+    const imgHtml = (comp.images && comp.images.length > 0)
+        ? `<img src="${comp.images[0]}" class="modal-product-img" alt=""
+               onerror="this.outerHTML='<div class=modal-img-placeholder><i class=fas fa-box fa-2x></i></div>'">`
+        : `<div class="modal-img-placeholder"><i class="fas fa-box fa-2x text-muted"></i></div>`;
+
+    const specKeys = KEY_SPECS[type] || [];
+    const chars = comp.characteristics || {};
+    let specsHtml = '';
+    let count = 0;
+    for (const key of specKeys) {
+        if (chars[key] !== undefined && chars[key] !== null && chars[key] !== '' && count < 4) {
+            const label = SPEC_LABELS[key] || key;
+            const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
+            specsHtml += `<span class="badge bg-light text-dark spec-badge me-1 mb-1 border">${label}: ${val}</span>`;
+            count++;
+        }
+    }
+
+    const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
+    const ratingHtml = comp.rating
+        ? `<small class="text-warning"><i class="fas fa-star"></i> ${comp.rating.toFixed(1)}</small>`
+        : '';
+    const vendorBadge = comp.vendor
+        ? `<span class="badge bg-secondary ms-1 spec-badge">${comp.vendor}</span>`
+        : '';
+    const reviewsHtml = comp.number_of_reviews
+        ? `<small class="text-muted ms-1">(${comp.number_of_reviews})</small>`
+        : '';
+
+    col.innerHTML = `
+        <div class="modal-product-card card h-100" onclick="selectComponentById(${comp.id})">
+            <div class="card-body p-2">
+                ${imgHtml}
+                <div class="mt-2">
+                    <div class="small fw-semibold mb-1" style="line-height:1.3;">${comp.name}</div>
+                    <div class="mb-1">${specsHtml || '<span class="text-muted small">Характеристики не указаны</span>'}</div>
+                    <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-1">
+                        <span class="fw-bold text-danger small">${price}</span>
+                        <div class="d-flex align-items-center">${ratingHtml}${reviewsHtml}${vendorBadge}</div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    return col;
+}
+
+function selectComponentById(id) {
+    const comp = modalComponentsCache.get(id);
+    if (comp) selectComponent(comp);
+}
+
+function selectComponent(comp) {
+    const fieldId = currentModalField;
+    const type = currentModalType;
+
+    // Обновляем скрытый select WTForms
+    const select = document.getElementById(fieldId);
+    let opt = select.querySelector(`option[value="${comp.id}"]`);
+    if (!opt) {
+        opt = new Option(comp.name, comp.id);
+        select.appendChild(opt);
+    }
+    select.value = comp.id;
+
+    // Показываем превью
+    updatePreview(fieldId, comp, type);
+    document.getElementById('clear-' + fieldId).classList.remove('d-none');
+
+    bootstrap.Modal.getInstance(document.getElementById('componentModal')).hide();
+    updateConfigInfo();
+}
+
+function clearComponent(fieldId, type, label, icon) {
+    const select = document.getElementById(fieldId);
+    select.value = '0';
+    document.getElementById('preview-' + fieldId).innerHTML = `
+        <div class="empty-slot py-3"
+            onclick="openComponentModal('${type}', '${fieldId}', '${label}', '${icon}')">
+            <i class="fas ${icon} fa-lg mb-1"></i>
+            <span class="small">Нажмите для выбора</span>
+        </div>`;
+    document.getElementById('clear-' + fieldId).classList.add('d-none');
+    updateConfigInfo();
+}
+
+function updatePreview(fieldId, comp, type) {
+    const imgHtml = (comp.images && comp.images.length > 0)
+        ? `<img src="${comp.images[0]}" class="component-preview-img" alt=""
+               onerror="this.outerHTML='<div class=img-placeholder><i class=fas fa-box fa-2x></i></div>'">`
+        : `<div class="img-placeholder"><i class="fas fa-box fa-2x"></i></div>`;
+
+    const specKeys = KEY_SPECS[type] || [];
+    const chars = comp.characteristics || {};
+    let specsHtml = '';
+    let count = 0;
+    for (const key of specKeys) {
+        if (chars[key] !== undefined && chars[key] !== null && chars[key] !== '' && count < 3) {
+            const label = SPEC_LABELS[key] || key;
+            const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
+            specsHtml += `<div class="text-muted small"><strong>${label}:</strong> ${val}</div>`;
+            count++;
+        }
+    }
+
+    const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
+    const ratingHtml = comp.rating
+        ? `<span class="text-warning small ms-2"><i class="fas fa-star"></i> ${comp.rating.toFixed(1)}</span>`
+        : '';
+    const extLink = comp.product_url
+        ? `<a href="${comp.product_url}" target="_blank" class="btn btn-outline-secondary btn-sm mt-1" title="Открыть в магазине"><i class="fas fa-external-link-alt"></i></a>`
+        : '';
+
+    document.getElementById('preview-' + fieldId).innerHTML = `
+        <div class="d-flex align-items-start gap-3 py-1">
+            ${imgHtml}
+            <div class="flex-grow-1 overflow-hidden">
+                <div class="component-name-preview mb-1">${comp.name}</div>
+                ${specsHtml}
+            </div>
+            <div class="text-end flex-shrink-0">
+                <div class="fw-bold text-danger">${price}</div>
+                ${ratingHtml}
+                ${extLink}
+            </div>
+        </div>`;
+}
+
+function updateConfigInfo() {
+    const ids = {
+        motherboard_id: parseInt($('#motherboard_id').val()) || 0,
+        supply_id:      parseInt($('#supply_id').val()) || 0,
+        cpu_id:         parseInt($('#cpu_id').val()) || 0,
+        gpu_id:         parseInt($('#gpu_id').val()) || 0,
+        cooler_id:      parseInt($('#cooler_id').val()) || 0,
+        ram_id:         parseInt($('#ram_id').val()) || 0,
+        hdd_id:         parseInt($('#hdd_id').val()) || 0,
+        frame_id:       parseInt($('#frame_id').val()) || 0,
+    };
+
+    const hasAny = Object.values(ids).some(v => v > 0);
+    if (!hasAny) {
+        $('#totalPrice').text('0 ₽');
+        $('#componentsSummary').html('');
+        $('#compatibilityCheck')
+            .removeClass('alert-success alert-danger').addClass('alert-info')
+            .html('<i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки');
+        return;
+    }
+
+    $.ajax({
+        url: CONFIG_INFO_URL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ids),
+        success: function(response) {
+            $('#totalPrice').text(new Intl.NumberFormat('ru-RU').format(response.total_price) + ' ₽');
+
+            const compatDiv = $('#compatibilityCheck');
+            if (response.compatible && response.total_price > 0) {
+                compatDiv.removeClass('alert-info alert-danger').addClass('alert-success')
+                    .html('<i class="fas fa-check-circle me-2"></i>Все компоненты совместимы');
+            } else if (!response.compatible && response.issues && response.issues.length > 0) {
+                let html = '<i class="fas fa-exclamation-triangle me-2"></i><strong>Проблемы совместимости:</strong><ul class="mb-0 mt-1">';
+                response.issues.forEach(i => html += `<li class="small">${i}</li>`);
+                html += '</ul>';
+                compatDiv.removeClass('alert-info alert-success').addClass('alert-danger').html(html);
+            } else {
+                compatDiv.removeClass('alert-success alert-danger').addClass('alert-info')
+                    .html('<i class="fas fa-info-circle me-2"></i>Выберите компоненты для проверки');
+            }
+
+            // Список выбранных компонентов
+            const comps = response.components || [];
+            if (comps.length > 0) {
+                let html = '<ul class="list-unstyled mb-0">';
+                comps.forEach(c => {
+                    const label = COMP_TYPE_LABELS[c.type] || c.type;
+                    const price = new Intl.NumberFormat('ru-RU').format(c.price);
+                    html += `<li class="d-flex justify-content-between py-1 border-bottom">
+                        <span class="text-muted">${label}</span>
+                        <span class="fw-semibold">${price} ₽</span>
+                    </li>`;
+                });
+                html += '</ul>';
+                $('#componentsSummary').html(html);
+            } else {
+                $('#componentsSummary').html('');
+            }
+        }
+    });
+}
+
+$(document).ready(function() {
+    $('#modalSearchBtn').on('click', function() {
+        loadComponents(currentModalType, $('#modalSearchInput').val().trim());
+    });
+    $('#modalSearchInput').on('keypress', function(e) {
+        if (e.which === 13) loadComponents(currentModalType, $(this).val().trim());
+    });
+    $('#modalShowAllBtn').on('click', function() {
+        loadComponents(currentModalType, '');
+    });
+    updateConfigInfo();
+});
 </script>
-{% endblock %} 
+{% endblock %}

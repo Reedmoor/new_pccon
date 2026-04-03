@@ -1,0 +1,242 @@
+version: 1
+project: my-project
+
+nameservers:
+- 8.8.8.8
+- 8.8.4.4
+
+timezone: UTC
+
+# Environments configuration
+environment:
+    configs:
+        nginx.conf: |
+            events {
+                worker_connections 1024;
+            }
+
+            http {
+                # Allow larger request bodies for parser uploads
+                client_max_body_size 10M;
+                
+                upstream web_backend {
+                    server new-pccon:5000;
+                }
+
+                # Default server block for IP access
+                server {
+                    listen 80 default_server;
+                    server_name _;
+                    
+                    location / {
+                        proxy_pass http://web_backend;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                        proxy_connect_timeout 30s;
+                        proxy_send_timeout 30s;
+                        proxy_read_timeout 30s;
+                    }
+                    
+                    location /static/ {
+                        proxy_pass http://web_backend;
+                        expires 1y;
+                        add_header Cache-Control "public, immutable";
+                    }
+                }
+
+                # Named virtual host for pcconf.ru
+                server {
+                    listen 80;
+                    server_name pcconf.ru www.pcconf.ru;
+                    
+                    # Add specific headers for domain routing
+                    add_header X-Served-By "dockhost-pcconf" always;
+                    add_header X-Domain "$host" always;
+                    
+                    location / {
+                        proxy_pass http://web_backend;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                        proxy_set_header X-Original-Host $host;
+                        proxy_connect_timeout 30s;
+                        proxy_send_timeout 30s;
+                        proxy_read_timeout 30s;
+                    }
+                    
+                    location /static/ {
+                        proxy_pass http://web_backend;
+                        expires 1y;
+                        add_header Cache-Control "public, immutable";
+                    }
+                }
+
+                # Basic security headers
+                add_header X-Frame-Options DENY;
+                add_header X-Content-Type-Options nosniff;
+                add_header X-XSS-Protection "1; mode=block";
+                
+                # Compression settings
+                gzip on;
+                gzip_vary on;
+                gzip_min_length 1024;
+                gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+            }
+
+# Volumes configuration
+volumes:
+
+    postgres-data:
+      size: 1Gi
+      type: ssd
+      mode: rwo
+
+    nginx-logs:
+      size: 1Gi
+      type: hdd
+      mode: rwm
+
+    app-data:
+      size: 1Gi
+      type: hdd
+      mode: rwm
+
+    app-logs:
+      size: 1Gi
+      type: hdd
+      mode: rwm
+
+    redis-data:
+      size: 1Gi
+      type: hdd
+      mode: rwm
+
+
+# Repositories configuration
+repositories:
+
+    new-pccon:
+      url: https://github.com/Reedmoor/new_pccon
+      branch: main
+      cpu: 1
+      cpuFraction: 20
+      memory: 256Mi
+      dockerFile: Dockerfile
+      dockerContext: .
+
+
+# Containers configuration
+containers:
+
+    new-pccon:
+      image: dockhost.io/d98e123e-7ffc-469e-96ff-19e09e40b977/build/new-pccon:81a831ae7d0650b14b5a56fadb2f980cb0795352
+      replicas: 1
+      resources:
+        cpu: 1
+        cpuFraction: 5
+        memory: 1024Mi
+      ports:
+        - 5000/TCP
+      variables:
+        GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+        REDIS_URL: redis://:12345@redis:6379
+        DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
+        FLASK_ENV: production
+        DEBUG: "0"
+        SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+        PYTHONPATH: /app
+        ADMIN_CREATE: "true"
+        ADMIN_USERNAME: admin
+        ADMIN_PASSWORD: admin123
+        ADMIN_EMAIL: admin@pcconf.ru
+      volumes:
+        - name: app-data
+          mountPath: /app/data
+        - name: app-logs
+          mountPath: /app/logs
+
+    redis:
+      image: redis:7-alpine
+      replicas: 1
+      resources:
+        cpu: 1
+        cpuFraction: 5
+        memory: 256Mi
+      ports:
+        - 6379/TCP
+      variables:
+        REDIS_PASSWORD: 12345
+      volumes:
+        - name: redis-data
+          mountPath: /data
+
+    postgres:
+      image: postgres:17
+      replicas: 1
+      resources:
+        cpu: 1
+        cpuFraction: 10
+        memory: 256Mi
+      ports:
+        - 5432/TCP
+      variables:
+        POSTGRES_PASSWORD: 12345
+        POSTGRES_DB: uipc
+        POSTGRES_USER: postgres
+        POSTGRES_INITDB_ARGS: --encoding=UTF-8 --lc-collate=C --lc-ctype=C
+      volumes:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+
+    nginx:
+      image: nginx
+      replicas: 1
+      resources:
+        cpu: 1
+        cpuFraction: 5
+        memory: 64Mi
+      ports:
+        - 80/TCP
+      configs:
+        - name: nginx.conf
+          mountPath: /etc/nginx/nginx.conf
+
+
+# Network configuration
+network:
+
+    domains:
+
+      pcconf:
+        host: pcconf.ru
+        
+      www-pcconf:
+        host: www.pcconf.ru
+        
+      nginx: ~
+
+    routes:
+
+      main:
+        domain: pcconf
+        path: /
+        type: internal
+        service: nginx
+        port: 80/TCP
+        
+      www-main:
+        domain: www-pcconf
+        path: /
+        type: internal
+        service: nginx
+        port: 80/TCP
+        
+      direct:
+        domain: nginx
+        path: /
+        type: internal
+        service: nginx
+        port: 80/TCP

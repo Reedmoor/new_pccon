@@ -1,0 +1,302 @@
+version: 1
+project: pcconf
+
+nameservers:
+- 8.8.8.8
+- 8.8.4.4
+
+timezone: UTC
+
+# Environment configuration
+environment:
+  variables:
+    SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+    FLASK_ENV: production
+    DEBUG: "False"
+    DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
+    REDIS_URL: redis://redis:6379
+    PYTHONPATH: /app
+    GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+
+  configs:
+    nginx.conf: |
+      events {
+          worker_connections 1024;
+      }
+      
+      http {
+          client_max_body_size 10M;
+          
+          upstream web_backend {
+              server new-pccon:5000;
+          }
+      
+          # HTTP server - редирект на HTTPS (если нужен)
+          server {
+              listen 80;
+              server_name pcconf.ru www.pcconf.ru;
+              
+              # Проверяем, идет ли запрос через HTTPS проксирование
+              # Если хостинг уже обрабатывает SSL, то просто проксируем
+              location / {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 300s;
+                  proxy_send_timeout 300s;
+                  proxy_read_timeout 300s;
+              }
+              
+              # Special handling for admin operations
+              location ~ ^/(admin|api)/(import|parse|run|upload) {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 600s;
+                  proxy_send_timeout 600s;
+                  proxy_read_timeout 600s;
+                  client_max_body_size 50M;
+              }
+              
+              location /static/ {
+                  proxy_pass http://web_backend;
+                  expires 1y;
+                  add_header Cache-Control "public, immutable";
+              }
+          }
+
+          # HTTPS server (если контейнер должен обрабатывать SSL сам)
+          server {
+              listen 443 ssl http2;
+              server_name pcconf.ru www.pcconf.ru;
+              
+              # SSL settings (будут использоваться, если контейнер обрабатывает SSL)
+              ssl_certificate /etc/ssl/certs/pcconf.ru.crt;
+              ssl_certificate_key /etc/ssl/private/pcconf.ru.key;
+              ssl_protocols TLSv1.2 TLSv1.3;
+              ssl_ciphers HIGH:!aNULL:!MD5;
+              ssl_prefer_server_ciphers on;
+              
+              location / {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto https;
+                  proxy_connect_timeout 300s;
+                  proxy_send_timeout 300s;
+                  proxy_read_timeout 300s;
+              }
+              
+              # Special handling for admin operations
+              location ~ ^/(admin|api)/(import|parse|run|upload) {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto https;
+                  proxy_connect_timeout 600s;
+                  proxy_send_timeout 600s;
+                  proxy_read_timeout 600s;
+                  client_max_body_size 50M;
+              }
+              
+              location /static/ {
+                  proxy_pass http://web_backend;
+                  expires 1y;
+                  add_header Cache-Control "public, immutable";
+              }
+          }
+
+          # Default server block
+          server {
+              listen 80 default_server;
+              listen 443 ssl default_server;
+              server_name _;
+              
+              # Default SSL certificate
+              ssl_certificate /etc/ssl/certs/default.crt;
+              ssl_certificate_key /etc/ssl/private/default.key;
+              
+              location / {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 300s;
+                  proxy_send_timeout 300s;
+                  proxy_read_timeout 300s;
+              }
+          }
+      
+          # Security headers
+          add_header X-Frame-Options DENY;
+          add_header X-Content-Type-Options nosniff;
+          add_header X-XSS-Protection "1; mode=block";
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+          
+          # Compression
+          gzip on;
+          gzip_vary on;
+          gzip_min_length 1024;
+          gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+      }
+
+# Repositories configuration
+repositories:
+  new-pccon:
+    url: https://github.com/Reedmoor/new_pccon
+    branch: main
+    cpu: 1
+    cpuFraction: 5
+    memory: 64MiB
+    dockerFile: Dockerfile
+    dockerContext: .
+
+# Containers configuration
+containers:
+  # Main web application
+  new-pccon:
+    image: dockhost.io/d98e123e-7ffc-469e-96ff-19e09e40b977/build/new-pccon:4b3757477a64ce4d146125978e8fb5773bdf7e19
+    replicas: 2
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 512MiB
+    ports:
+      - 5000/TCP
+    variables:
+      SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+      FLASK_ENV: production
+      DEBUG: "False"
+      DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
+      REDIS_URL: redis://redis:6379
+      PYTHONPATH: /app
+      GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+      ADMIN_CREATE: "true"
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin123
+      ADMIN_EMAIL: admin@pcconf.ru
+    volumes:
+      - name: app-data
+        mountPath: /app/data
+      - name: app-logs
+        mountPath: /app/logs
+
+  # PostgreSQL database
+  postgres:
+    image: postgres:17-alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 64MiB
+    ports:
+      - 5432/TCP
+    variables:
+      POSTGRES_DB: uipc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12345"
+    volumes:
+      - name: postgres-data
+        mountPath: /var/lib/postgresql/data
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 64MiB
+    ports:
+      - 6379/TCP
+    volumes:
+      - name: redis-data
+        mountPath: /data
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 20
+      memory: 64MiB
+    ports:
+      - 80/TCP
+      - 443/TCP
+    configs:
+      - name: nginx.conf
+        mountPath: /etc/nginx/nginx.conf
+    volumes:
+      - name: nginx-logs
+        mountPath: /var/log/nginx
+      - name: ssl-certs
+        mountPath: /etc/ssl/certs
+      - name: ssl-private
+        mountPath: /etc/ssl/private
+
+# Volumes configuration
+volumes:
+  app-data:
+    type: ssd
+    size: 2GiB
+    mode: rwm
+
+  app-logs:
+    type: ssd
+    size: 1GiB
+    mode: rwm
+
+  postgres-data:
+    type: ssd
+    size: 5GiB
+    mode: rwm
+
+  redis-data:
+    type: ssd
+    size: 512MiB
+    mode: rwm
+
+  nginx-logs:
+    type: ssd
+    size: 512MiB
+    mode: rwm
+
+  ssl-certs:
+    type: ssd
+    size: 100MiB
+    mode: rwm
+
+  ssl-private:
+    type: ssd
+    size: 100MiB
+    mode: rwm
+
+# Network configuration
+network:
+  domains:
+    nginx: ~
+    pcconf.ru:
+      host: pcconf.ru
+    www.pcconf.ru:
+      host: www.pcconf.ru
+
+  routes:
+    main_http:
+      domain: pcconf.ru
+      path: /
+      service: nginx
+      port: 80/TCP
+    
+    main_https:
+      domain: pcconf.ru
+      path: /
+      service: nginx
+      port: 443/TCP 

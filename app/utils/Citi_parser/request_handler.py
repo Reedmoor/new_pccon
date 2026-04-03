@@ -4,6 +4,104 @@ import logging
 import os
 import signal
 import sys
+import random
+
+# Список прокси
+PROXY_LIST = [
+    {
+        'host': '194.156.0.61',
+        'http_port': 64604,
+        'socks5_port': 64605,
+        'username': 'iXya3sZg',
+        'password': 'L51Gzyra'
+    },
+    {
+        'host': '45.140.64.215',
+        'http_port': 62474,
+        'socks5_port': 62475,
+        'username': 'iXya3sZg',
+        'password': 'L51Gzyra'
+    },
+    {
+        'host': '91.191.184.244',
+        'http_port': 63478,
+        'socks5_port': 63479,
+        'username': 'iXya3sZg',
+        'password': 'L51Gzyra'
+    }
+]
+
+# Глобальная переменная для отслеживания текущего прокси
+current_proxy_index = 0
+# Прокси включены по умолчанию - автоматически будут включаться при блокировке
+use_proxy = True  # Изменено: всегда включены по умолчанию
+
+def get_next_proxy():
+    """Получает следующий прокси из списка"""
+    global current_proxy_index
+    if not PROXY_LIST:
+        return None
+    
+    proxy = PROXY_LIST[current_proxy_index]
+    current_proxy_index = (current_proxy_index + 1) % len(PROXY_LIST)
+    
+    # Используем HTTP прокси
+    proxy_url = f"http://{proxy['username']}:{proxy['password']}@{proxy['host']}:{proxy['http_port']}"
+    
+    return {
+        'http': proxy_url,
+        'https': proxy_url
+    }
+
+def test_proxy(proxy_dict):
+    """Тестирует работоспособность прокси"""
+    try:
+        # Уменьшенный timeout для быстрого тестирования
+        test_response = requests.get('https://httpbin.org/ip', proxies=proxy_dict, timeout=5)
+        if test_response.status_code == 200:
+            logging.info(f"Прокси работает. IP: {test_response.json().get('origin', 'unknown')}")
+            return True
+    except Exception as e:
+        logging.warning(f"Прокси не работает: {e}")
+    return False
+
+def test_all_proxies():
+    """Тестирует все прокси и выводит результаты"""
+    logging.info("🧪 Тестируем все прокси...")
+    working_count = 0
+    
+    for i, proxy_info in enumerate(PROXY_LIST):
+        proxy_dict = get_next_proxy()
+        proxy_host = f"{proxy_info['host']}:{proxy_info['http_port']}"
+        
+        logging.info(f"Тестируем прокси {i+1}/{len(PROXY_LIST)}: {proxy_host}")
+        
+        # Уменьшенный timeout для быстрого тестирования
+        try:
+            test_response = requests.get('https://httpbin.org/ip', proxies=proxy_dict, timeout=3)
+            if test_response.status_code == 200:
+                working_count += 1
+                ip_info = test_response.json()
+                logging.info(f"✅ Прокси {proxy_host} работает. IP: {ip_info.get('origin', 'unknown')}")
+            else:
+                logging.warning(f"❌ Прокси {proxy_host} вернул код {test_response.status_code}")
+        except Exception as e:
+            logging.warning(f"❌ Прокси {proxy_host} не работает: {str(e)}")
+    
+    logging.info(f"📊 Результат: {working_count}/{len(PROXY_LIST)} прокси работают")
+    return working_count > 0
+
+def enable_proxy():
+    """Принудительно включает использование прокси"""
+    global use_proxy
+    use_proxy = True
+    logging.info("🔄 Прокси принудительно включены")
+
+def disable_proxy():
+    """Отключает использование прокси"""
+    global use_proxy
+    use_proxy = False
+    logging.info("🔄 Прокси отключены")
 
 # Исключение для принудительной остановки парсера
 class ParserStoppedException(Exception):
@@ -37,30 +135,85 @@ def check_stop_flag():
         raise ParserStoppedException("Парсер остановлен пользователем")
 
 def request(url, query, variables, name_request, max_retries=3):
-    """Выполняет запрос с улучшенной обработкой остановки"""
+    """Выполняет запрос с улучшенной обработкой остановки и поддержкой прокси"""
+    global use_proxy
     retries = 0
+    proxy_retries = 0
+    current_proxies = None
     
     while retries < max_retries:
         try:
             # Проверяем флаг остановки перед каждым запросом
             check_stop_flag()
             
+            # Если используем прокси или это первая попытка с прокси
+            if use_proxy and current_proxies is None:
+                current_proxies = get_next_proxy()
+                if current_proxies:
+                    logging.info(f"Используем прокси: {current_proxies['http'].split('@')[1] if '@' in current_proxies['http'] else 'unknown'}")
+            
             logging.info(f"Отправка запроса к {url}, для получения данных об {name_request}")
-            response = requests.post(url=url, json={"query": query, "variables": variables}, timeout=30)
+            
+            # Выполняем запрос с прокси или без
+            if current_proxies:
+                response = requests.post(
+                    url=url, 
+                    json={"query": query, "variables": variables}, 
+                    timeout=30,
+                    proxies=current_proxies
+                )
+            else:
+                response = requests.post(
+                    url=url, 
+                    json={"query": query, "variables": variables}, 
+                    timeout=30
+                )
             
             if response.status_code == 200:
                 logging.info("Запрос успешно выполнен")
                 return response.json()
+                
             elif response.status_code == 429:
                 retries += 1
-                wait_time = min(2 ** retries, 10)  # Экспоненциальное увеличение времени ожидания до максимума 10 сек
+                wait_time = min(2 ** retries, 10)
                 logging.warning(f"Слишком много запросов. Ожидание {wait_time} сек перед повторной попыткой... (попытка {retries}/{max_retries})")
+                
+                # Если не используем прокси, включаем их
+                if not use_proxy:
+                    logging.info("🔄 Включаем прокси из-за блокировки по лимиту запросов")
+                    use_proxy = True
+                    current_proxies = get_next_proxy()
+                elif proxy_retries < len(PROXY_LIST):
+                    # Переключаемся на следующий прокси
+                    logging.info("🔄 Переключаемся на следующий прокси")
+                    current_proxies = get_next_proxy()
+                    proxy_retries += 1
                 
                 # Проверяем флаг остановки каждую секунду во время ожидания
                 for i in range(wait_time):
                     check_stop_flag()
                     time.sleep(1)
                     
+            elif response.status_code in [403, 502, 503, 504]:
+                # Ошибки блокировки - включаем прокси
+                logging.warning(f"Получена ошибка блокировки {response.status_code}")
+                if not use_proxy:
+                    logging.info("🔄 Включаем прокси из-за блокировки")
+                    use_proxy = True
+                    current_proxies = get_next_proxy()
+                    retries += 1
+                elif proxy_retries < len(PROXY_LIST):
+                    logging.info("🔄 Переключаемся на следующий прокси")
+                    current_proxies = get_next_proxy()
+                    proxy_retries += 1
+                    retries += 1
+                else:
+                    logging.error("Все прокси испробованы, но блокировка остается")
+                    retries += 1
+                    
+                if retries < max_retries:
+                    logging.info(f"Повторная попытка через 3 секунды... (попытка {retries}/{max_retries})")
+                    time.sleep(3)
             else:
                 logging.error(f"Ошибка HTTP: {response.status_code}, Ответ: {response.text}")
                 retries += 1
@@ -71,6 +224,24 @@ def request(url, query, variables, name_request, max_retries=3):
         except ParserStoppedException:
             # Пробрасываем исключение остановки дальше
             raise
+        except (requests.exceptions.ProxyError, requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as e:
+            logging.warning(f"Ошибка соединения: {str(e)}")
+            
+            if not use_proxy:
+                # Включаем прокси при ошибках соединения
+                logging.info("🔄 Включаем прокси из-за ошибки соединения")
+                use_proxy = True
+                current_proxies = get_next_proxy()
+            elif proxy_retries < len(PROXY_LIST):
+                # Переключаемся на следующий прокси
+                logging.info("🔄 Переключаемся на следующий прокси")
+                current_proxies = get_next_proxy()
+                proxy_retries += 1
+            
+            retries += 1
+            if retries < max_retries:
+                logging.info(f"Повторная попытка через 3 секунды... (попытка {retries}/{max_retries})")
+                time.sleep(3)
         except requests.exceptions.RequestException as e:
             retries += 1
             logging.error(f"Ошибка сети при выполнении запроса: {str(e)}")

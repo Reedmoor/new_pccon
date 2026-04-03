@@ -1,0 +1,872 @@
+[
+{
+    "id": 1933027,
+    "url": "https://www.citilink.ru/product/zhestkii-disk-wd-purple-wd43purz-4tb-hdd-sata-iii-3-5-1933027/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/",
+            "name": "Жесткие диски"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/WD/",
+            "name": "WD"
+        }
+    ],
+    "name": "Жесткий диск WD Purple WD43PURZ,  4ТБ,  HDD,  SATA III,  3.5\"",
+    "article": "1933027",
+    "price": 8290,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/vjON6AVe7B8cWiBuTHYNoMlJXpExEdQZwW1_EgUaHOA/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/0ef11d34-c6a0-4596-aede-eaa14998c290.jpg",
+        "https://cdn.citilink.ru/upXSLHlxI4cB4tEIquU2WK5_ca1zfLhD4-EbCJhAFYI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/499efe1a-5e93-435a-a53a-acc01a0e8ec5.jpg",
+        "https://cdn.citilink.ru/-Yw4AlMy0sjpOqv2hb4kk9nH-sV-OFp16dLEztRpzg8/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/4cf0cdcc-a002-41f1-918a-b09a1d258494.jpg",
+        "https://cdn.citilink.ru/O7KOBtKk7BIvkbw7fe_VIWCT56DAH-_z9ASYqo0JAZY/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/360da61a-8124-4030-a709-b3963e4d7c6b.jpg",
+        "https://cdn.citilink.ru/_2Wtwg9rjf2z6-ypCpu4wEsrVs5RHPY8PkshM-IE3rE/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/6301d97f-43f9-40e2-8adf-dc71d7f54993.jpg",
+        "https://cdn.citilink.ru/m2A5wlPyjxQ9t3CWQCJu-JtEAHbZgkmxHoA5m5oeLss/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/8f147ba4-e22d-4e4c-bad3-6a339138c0a8.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Модель",
+                    "value": "WD43PURZ"
+                },
+                {
+                    "name": "Тип жесткого диска",
+                    "value": "HDD"
+                },
+                {
+                    "name": "Объем накопителя",
+                    "value": "4"
+                },
+                {
+                    "name": "Буферная память",
+                    "value": "256"
+                },
+                {
+                    "name": "Скорость вращения шпинделя",
+                    "value": "5400"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "3.5"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "SATA III"
+                },
+                {
+                    "name": "Пропускная способность интерфейса",
+                    "value": "6 Гбит/с"
+                },
+                {
+                    "name": "Максимальная скорость передачи данных",
+                    "value": "180"
+                },
+                {
+                    "name": "Время наработки на отказ",
+                    "value": "1000000"
+                },
+                {
+                    "name": "Потребляемая мощность",
+                    "value": "4.6"
+                },
+                {
+                    "name": "Мощность в режиме ожидания",
+                    "value": "0.3"
+                },
+                {
+                    "name": "Технология записи",
+                    "value": "CMR"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Уровень шума работы",
+                    "value": "27"
+                },
+                {
+                    "name": "Уровень шума простоя",
+                    "value": "23"
+                },
+                {
+                    "name": "Рабочая температура",
+                    "value": "65°С"
+                },
+                {
+                    "name": "Ударостойкость при работе",
+                    "value": "30"
+                },
+                {
+                    "name": "Ударостойкость при хранении",
+                    "value": "250"
+                },
+                {
+                    "name": "Назначение",
+                    "value": "для видеонаблюдения"
+                }
+            ]
+        },
+        {
+            "name": "Габариты, вес",
+            "properties": [
+                {
+                    "name": "Длина",
+                    "value": "147"
+                },
+                {
+                    "name": "Ширина",
+                    "value": "101.6"
+                },
+                {
+                    "name": "Высота",
+                    "value": "26.1"
+                },
+                {
+                    "name": "Вес",
+                    "value": "570"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Артикул производителя",
+                    "value": "WD43PURZ"
+                },
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.146x0.1x0.026"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.3"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_060823681_178620056.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_065565235_3531191091.xlsx"
+    ],
+    "rating": 5,
+    "reviews": 53
+},
+{
+    "id": 1933025,
+    "url": "https://www.citilink.ru/product/zhestkii-disk-wd-purple-wd23purz-2tb-hdd-sata-iii-3-5-1933025/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/",
+            "name": "Жесткие диски"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/WD/",
+            "name": "WD"
+        }
+    ],
+    "name": "Жесткий диск WD Purple WD23PURZ,  2ТБ,  HDD,  SATA III,  3.5\"",
+    "article": "1933025",
+    "price": 6190,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/sj5FhjJd82czV9BvbZRIetXQ3PRoVGkXQKTjRz_Keu8/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/cabfecef-3e54-40f3-b2aa-6c8d2f18e409.jpg",
+        "https://cdn.citilink.ru/0ZqkOQf4AZyxDyYx_M4j5xtucfrWpsN29rA4YVJ-MZM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/26b3e3fd-065b-4756-b9bf-075ed5a51e45.jpg",
+        "https://cdn.citilink.ru/DdFCeL6Th8EjI8BTzSiRMu_5j3VEinXFQxzhxDJxQWs/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/c5abd4e5-309b-49d7-9ee0-acc7d27009e7.jpg",
+        "https://cdn.citilink.ru/A_meCPg604s97IxuH_p41r4PmEuHhSEkrtgrXoEmwCc/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/caa41af2-4379-4412-a7a2-3f89243a3da8.jpg",
+        "https://cdn.citilink.ru/wLyVWAg71vtFG0_wo8A06ViBUSLP7wdJo-OV3iYhHEg/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/887baf9a-aae4-48a9-b238-698eeb71aa1e.jpg",
+        "https://cdn.citilink.ru/4MIbbOjtvSfC4J2IZReQkzehWC6w4-DRF9dXqrnxi8U/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/db842f5f-4480-4914-949b-a3c8b4203192.jpg",
+        "https://cdn.citilink.ru/uObk77Ktw4mIyC6VIkDCFWDyMpfw1wv9Mi6EfVA9HDY/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/f784039b-f63f-476b-ac3e-fcffcd12a1ca.jpg",
+        "https://cdn.citilink.ru/lIxA0PuFq-mm7SF31scOn9z1tcx4MIVAbLk3hDAmkqQ/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/004f5f0b-862e-44d6-8f34-bad07ad1c5a8.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Модель",
+                    "value": "WD23PURZ"
+                },
+                {
+                    "name": "Тип жесткого диска",
+                    "value": "HDD"
+                },
+                {
+                    "name": "Объем накопителя",
+                    "value": "2"
+                },
+                {
+                    "name": "Буферная память",
+                    "value": "64"
+                },
+                {
+                    "name": "Скорость вращения шпинделя",
+                    "value": "5400"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "3.5"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "SATA III"
+                },
+                {
+                    "name": "Пропускная способность интерфейса",
+                    "value": "6 Гбит/с"
+                },
+                {
+                    "name": "Максимальная скорость передачи данных",
+                    "value": "180"
+                },
+                {
+                    "name": "Время наработки на отказ",
+                    "value": "1000000"
+                },
+                {
+                    "name": "Потребляемая мощность",
+                    "value": "3.8"
+                },
+                {
+                    "name": "Мощность в режиме ожидания",
+                    "value": "0.3"
+                },
+                {
+                    "name": "Технология записи",
+                    "value": "CMR"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Уровень шума работы",
+                    "value": "26"
+                },
+                {
+                    "name": "Уровень шума простоя",
+                    "value": "21"
+                },
+                {
+                    "name": "Рабочая температура",
+                    "value": "65°С"
+                },
+                {
+                    "name": "Ударостойкость при работе",
+                    "value": "30"
+                },
+                {
+                    "name": "Ударостойкость при хранении",
+                    "value": "250"
+                },
+                {
+                    "name": "Назначение",
+                    "value": "для видеонаблюдения"
+                }
+            ]
+        },
+        {
+            "name": "Габариты, вес",
+            "properties": [
+                {
+                    "name": "Длина",
+                    "value": "147"
+                },
+                {
+                    "name": "Ширина",
+                    "value": "101.6"
+                },
+                {
+                    "name": "Высота",
+                    "value": "26.1"
+                },
+                {
+                    "name": "Вес",
+                    "value": "450"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Артикул производителя",
+                    "value": "WD23PURZ"
+                },
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.146x0.1x0.025"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.25"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_060823681_178620056.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_065565235_3531191091.xlsx"
+    ],
+    "rating": 5,
+    "reviews": 21
+},
+{
+    "id": 2095263,
+    "url": "https://www.citilink.ru/product/zhestkii-disk-seagate-sata-iii-22tb-st22000nt001-ironwolf-pro-512e-720-2095263/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/",
+            "name": "Жесткие диски"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/SEAGATE/",
+            "name": "SEAGATE"
+        }
+    ],
+    "name": "Жесткий диск Seagate Ironwolf Pro ST22000NT001,  22ТБ,  HDD,  SATA III,  3.5\"",
+    "article": "2095263",
+    "price": 85000,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/3s_8X1E0P8kDfAakYz0T1-_lMExO4Hwx26wtzh_z11I/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/f2d8f3c3-ed4f-4680-8768-a18aca04ee20.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Модель",
+                    "value": "ST22000NT001"
+                },
+                {
+                    "name": "Тип жесткого диска",
+                    "value": "HDD"
+                },
+                {
+                    "name": "Объем накопителя",
+                    "value": "22"
+                },
+                {
+                    "name": "Буферная память",
+                    "value": "512"
+                },
+                {
+                    "name": "Скорость вращения шпинделя",
+                    "value": "7200"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "3.5"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "SATA III"
+                },
+                {
+                    "name": "Пропускная способность интерфейса",
+                    "value": "6 Гбит/с"
+                },
+                {
+                    "name": "Максимальная скорость передачи данных",
+                    "value": "285"
+                },
+                {
+                    "name": "Средняя латентность",
+                    "value": "4.16"
+                },
+                {
+                    "name": "Размер сектора",
+                    "value": "512E"
+                },
+                {
+                    "name": "Время наработки на отказ",
+                    "value": "2500000"
+                },
+                {
+                    "name": "Потребляемая мощность",
+                    "value": "7.9"
+                },
+                {
+                    "name": "Мощность в режиме ожидания",
+                    "value": "6"
+                },
+                {
+                    "name": "Технология записи",
+                    "value": "CMR"
+                },
+                {
+                    "name": "Количество пластин",
+                    "value": "10"
+                },
+                {
+                    "name": "Количество головок",
+                    "value": "20"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Уровень шума работы",
+                    "value": "34"
+                },
+                {
+                    "name": "Уровень шума простоя",
+                    "value": "20"
+                },
+                {
+                    "name": "Рабочая температура",
+                    "value": "65°С"
+                },
+                {
+                    "name": "Ударостойкость при работе",
+                    "value": "40"
+                },
+                {
+                    "name": "Ударостойкость при хранении",
+                    "value": "200"
+                },
+                {
+                    "name": "Гелиевое наполнение",
+                    "value": "есть"
+                },
+                {
+                    "name": "Назначение",
+                    "value": "для NAS"
+                }
+            ]
+        },
+        {
+            "name": "Габариты, вес",
+            "properties": [
+                {
+                    "name": "Длина",
+                    "value": "147"
+                },
+                {
+                    "name": "Ширина",
+                    "value": "101.85"
+                },
+                {
+                    "name": "Высота",
+                    "value": "26.11"
+                },
+                {
+                    "name": "Вес",
+                    "value": "690"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Артикул производителя",
+                    "value": "ST22000NT001"
+                },
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.15x0.1x0.025"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.85"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR056034_TS_021744524_3113224239.jpg",
+        "https://items-certificates.s1.citilink.ru/CSR098336_TS_057161830_480381049.pdf"
+    ],
+    "rating": 0,
+    "reviews": 0
+},
+{
+    "id": 2019668,
+    "url": "https://www.citilink.ru/product/zhestkii-disk-wd-sata-iii-8tb-wd85purz-purple-5640rpm-256mb-3-5-2019668/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/",
+            "name": "Жесткие диски"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/WD/",
+            "name": "WD"
+        }
+    ],
+    "name": "Жесткий диск WD Purple WD85PURZ,  8ТБ,  HDD,  SATA III,  3.5\"",
+    "article": "2019668",
+    "price": 16990,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/J4BZFbYH6hi8Dz068Yn96qEI05XaXi1gTJMp1DngfbM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/997f6874-4c23-4857-a779-bbed15434c42.jpg",
+        "https://cdn.citilink.ru/5MYwpAx42XCNazMuJcveh0Otlri_gtlFOBCn86rD8DI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/dc2ee2e7-962f-4b86-8fec-222615a5a100.jpg",
+        "https://cdn.citilink.ru/QXyPW6uvKLNxFEypwjsros7eJJ2ZF3YgjgaDH0cREaQ/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/3ff94c55-ab4c-4bb2-b141-6ecfe0b0b35b.jpg",
+        "https://cdn.citilink.ru/pq5YCy4rx6GVTJiTL2f54jpvM7bSRjXn2x09PfElAwc/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/9005e49f-6766-49ec-a794-641919ff221a.jpg",
+        "https://cdn.citilink.ru/4qsdUEvWEr6r-aEIRJLdT6sHUA617_no7RlJy-AvRg4/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/cf1986f2-d929-4d5a-94dd-1e0b116a340b.jpg",
+        "https://cdn.citilink.ru/oI8yanIF0ZRfzeMHTrrN8qMFdChJ9moFGpVZFRFZ3Pc/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/9d27a8d9-93da-4c61-82ec-2715af493e98.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Модель",
+                    "value": "WD85PURZ"
+                },
+                {
+                    "name": "Тип жесткого диска",
+                    "value": "HDD"
+                },
+                {
+                    "name": "Объем накопителя",
+                    "value": "8"
+                },
+                {
+                    "name": "Буферная память",
+                    "value": "256"
+                },
+                {
+                    "name": "Скорость вращения шпинделя",
+                    "value": "5640"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "3.5"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "SATA III"
+                },
+                {
+                    "name": "Пропускная способность интерфейса",
+                    "value": "6 Гбит/с"
+                },
+                {
+                    "name": "Максимальная скорость передачи данных",
+                    "value": "215"
+                },
+                {
+                    "name": "Время наработки на отказ",
+                    "value": "1000000"
+                },
+                {
+                    "name": "Потребляемая мощность",
+                    "value": "5.3"
+                },
+                {
+                    "name": "Мощность в режиме ожидания",
+                    "value": "0.4"
+                },
+                {
+                    "name": "Технология записи",
+                    "value": "CMR"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Уровень шума работы",
+                    "value": "28"
+                },
+                {
+                    "name": "Уровень шума простоя",
+                    "value": "24"
+                },
+                {
+                    "name": "Рабочая температура",
+                    "value": "65°С"
+                },
+                {
+                    "name": "Ударостойкость при работе",
+                    "value": "70"
+                },
+                {
+                    "name": "Ударостойкость при хранении",
+                    "value": "250"
+                },
+                {
+                    "name": "Назначение",
+                    "value": "для видеонаблюдения"
+                }
+            ]
+        },
+        {
+            "name": "Габариты, вес",
+            "properties": [
+                {
+                    "name": "Длина",
+                    "value": "147"
+                },
+                {
+                    "name": "Ширина",
+                    "value": "101.6"
+                },
+                {
+                    "name": "Высота",
+                    "value": "26.1"
+                },
+                {
+                    "name": "Вес",
+                    "value": "720"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Артикул производителя",
+                    "value": "WD85PURZ"
+                },
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.17x0.1x0.025"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.72"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR096443_TS_056370036_859485654.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_060823681_178620056.pdf",
+        "https://items-certificates.s1.citilink.ru/CSR101370_TS_065565235_3531191091.xlsx"
+    ],
+    "rating": 5,
+    "reviews": 5
+},
+{
+    "id": 774633,
+    "url": "https://www.citilink.ru/product/zhestkii-disk-wd-caviar-blue-wd10ezex-1tb-hdd-sata-iii-3-5-774633/",
+    "categories": [
+        {
+            "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+            "name": "Комплектующие для ПК"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/",
+            "name": "Жесткие диски"
+        },
+        {
+            "url": "https://www.citilink.ru/catalog/zhestkie-diski/WD/",
+            "name": "WD"
+        }
+    ],
+    "name": "Жесткий диск WD Caviar Blue WD10EZEX,  1ТБ,  HDD,  SATA III,  3.5\"",
+    "article": "774633",
+    "price": 5690,
+    "price_old": null,
+    "images": [
+        "https://cdn.citilink.ru/7aJRsS7rDCo72cyCJMRT6wibMlL-Lp_wS7F93cCFhGw/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/54c5201c-6316-44a2-af04-bfcc82515180.jpg",
+        "https://cdn.citilink.ru/_MUtLzAA6Bq7nayajyRHPFfMkN0fvQHMihCQ34ubtmM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/f8d0eeb4-d9fd-4bdb-87bc-38a4e766260d.jpg",
+        "https://cdn.citilink.ru/ltu6gr8ZNiXL3V68iw3agcEI0wsRRbMWNb-XwFCaWFY/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/4e131035-77b6-422a-b5f6-ace78ca43588.jpg",
+        "https://cdn.citilink.ru/BCkBngnygWvLIUrqFSOsGJgRjqmC0zoJv_1sZxwHnLk/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/6ca88834-6d36-4014-8604-1e312134d107.jpg"
+    ],
+    "properties": [
+        {
+            "name": "Основные характеристики",
+            "properties": [
+                {
+                    "name": "Модель",
+                    "value": "WD10EZEX"
+                },
+                {
+                    "name": "Тип жесткого диска",
+                    "value": "HDD"
+                },
+                {
+                    "name": "Объем накопителя",
+                    "value": "1024"
+                },
+                {
+                    "name": "Буферная память",
+                    "value": "64"
+                },
+                {
+                    "name": "Скорость вращения шпинделя",
+                    "value": "7200"
+                },
+                {
+                    "name": "Форм-фактор",
+                    "value": "3.5"
+                },
+                {
+                    "name": "Интерфейс",
+                    "value": "SATA III"
+                },
+                {
+                    "name": "Пропускная способность интерфейса",
+                    "value": "6 Гбит/с"
+                },
+                {
+                    "name": "Максимальная скорость передачи данных",
+                    "value": "150"
+                },
+                {
+                    "name": "Средняя латентность",
+                    "value": "4.2"
+                },
+                {
+                    "name": "Потребляемая мощность",
+                    "value": "6.8"
+                },
+                {
+                    "name": "Мощность в режиме ожидания",
+                    "value": "6.1"
+                },
+                {
+                    "name": "Технология записи",
+                    "value": "CMR"
+                }
+            ]
+        },
+        {
+            "name": "Особенности",
+            "properties": [
+                {
+                    "name": "Уровень шума работы",
+                    "value": "30"
+                },
+                {
+                    "name": "Уровень шума простоя",
+                    "value": "29"
+                },
+                {
+                    "name": "Рабочая температура",
+                    "value": "60°С"
+                },
+                {
+                    "name": "Ударостойкость при работе",
+                    "value": "30"
+                },
+                {
+                    "name": "Ударостойкость при хранении",
+                    "value": "350"
+                },
+                {
+                    "name": "Назначение",
+                    "value": "для ПК"
+                }
+            ]
+        },
+        {
+            "name": "Габариты, вес",
+            "properties": [
+                {
+                    "name": "Длина",
+                    "value": "147"
+                },
+                {
+                    "name": "Ширина",
+                    "value": "101.6"
+                },
+                {
+                    "name": "Высота",
+                    "value": "25.4"
+                },
+                {
+                    "name": "Вес",
+                    "value": "450"
+                }
+            ]
+        },
+        {
+            "name": "Упаковка",
+            "properties": [
+                {
+                    "name": "Артикул производителя",
+                    "value": "WD10EZEX"
+                },
+                {
+                    "name": "Габариты упаковки (ед) ДхШхВ",
+                    "value": "0.146x0.1x0.025"
+                },
+                {
+                    "name": "Вес упаковки (ед)",
+                    "value": "0.49"
+                }
+            ]
+        },
+        {
+            "name": "Дополнительные характеристики",
+            "properties": [
+                {
+                    "name": "Гарантия",
+                    "value": "12 мес."
+                }
+            ]
+        }
+    ],
+    "documents": [
+        "https://items-certificates.s1.citilink.ru/CSR053213_TS_020984170_3492267157.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 46
+}
+]

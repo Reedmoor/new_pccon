@@ -1,0 +1,27 @@
+{
+  "remote_server": {
+    "url": "http://pcconf.ru",
+    "timeout": 180,
+    "headers": {
+      "User-Agent": "LocalParser/1.0"
+    }
+  },
+  "auth": {
+    "enabled": false,
+    "type": "bearer",
+    "token": "",
+    "api_key": ""
+  },
+  "upload": {
+    "auto_detect_category": true,
+    "default_source": "local_parser",
+    "chunk_size": 1000
+  },
+  "endpoints": {
+    "health": "/api/health",
+    "status": "/api/parser-status", 
+    "upload": "/api/upload-products"
+  },
+  "server_url": "http://pcconf.ru",
+  "timeout": 30
+} 

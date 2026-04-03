@@ -6,7 +6,7 @@ import signal
 import sys
 from lxml import html
 from dotenv import load_dotenv
-from request_handler import request, ParserStoppedException, check_stop_flag
+from request_handler import request, ParserStoppedException, check_stop_flag, test_all_proxies, enable_proxy, disable_proxy, use_proxy
 from queries import (url, PRODUCTS_QUERY, PRODUCT_VARIABLE)
 from data_processors import product_answer, rating_answer, review_answer
 
@@ -233,6 +233,14 @@ def main():
     if not category:
         logging.error("Ошибка: категория не указана в .env файле")
         return
+    
+    # Проверяем и тестируем прокси при запуске
+    if use_proxy:
+        logging.info("🔄 Прокси включены через переменную окружения USE_PROXY=true")
+        test_all_proxies()
+    else:
+        logging.info("ℹ️  Прокси отключены. Для включения установите USE_PROXY=true в .env файле")
+        logging.info("ℹ️  Или используйте команду: python -c \"from request_handler import enable_proxy; enable_proxy()\"")
     
     try:
         # Обрабатываем категорию

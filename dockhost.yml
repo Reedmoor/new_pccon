@@ -7,463 +7,249 @@ nameservers:
 
 timezone: UTC
 
-# Environments configuration
+# Environment configuration
 environment:
-    configs:
-        nginx.conf: |
-            events {
-                worker_connections 1024;
-            }
+  variables:
+    SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+    FLASK_ENV: production
+    DEBUG: "False"
+    DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
+    REDIS_URL: redis://redis:6379
+    PYTHONPATH: /app
+    GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
 
-            http {
-                # Allow larger request bodies for parser uploads
-                client_max_body_size 10M;
-                
-                # MIME types and basic settings
-                include /etc/nginx/mime.types;
-                default_type application/octet-stream;
-                
-                # Log format
-                log_format detailed '$remote_addr - $remote_user [$time_local] "$request" '
-                                   '$status $body_bytes_sent "$http_referer" '
-                                   '"$http_user_agent" "$http_x_forwarded_for" '
-                                   '"$upstream_addr" "$upstream_status" "$upstream_response_time" "$request_time"';
-                
-                access_log /var/log/nginx/access.log detailed;
-                error_log /var/log/nginx/error.log debug;
-                
-                # Basic optimizations
-                sendfile on;
-                tcp_nopush on;
-                tcp_nodelay on;
-                keepalive_timeout 65;
-                types_hash_max_size 2048;
-
-                upstream web_backend {
-                    server new-pccon:5000;
-                }
-
-                # Default server block for IP access
-                server {
-                    listen 80 default_server;
-                    server_name _;
-                    
-                    # Special location for parser WITHOUT SSL redirect
-                    location /api/parser/ {
-                        proxy_pass http://web_backend;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto http;  # Force HTTP for parser
-                        
-                        # Special headers for Dockhost
-                        proxy_set_header X-Dockhost-Parser "true";
-                        proxy_set_header X-No-SSL-Redirect "true";
-                        
-                        # Increased timeouts
-                        proxy_connect_timeout 60s;
-                        proxy_send_timeout 60s;
-                        proxy_read_timeout 60s;
-                        
-                        # Disable redirects
-                        proxy_redirect off;
-                    }
-                    
-                    # Health check endpoint
-                    location /nginx-health {
-                        access_log off;
-                        return 200 "nginx is working fine\n";
-                        add_header Content-Type text/plain;
-                    }
-                    
-                    # Backend health check
-                    location /backend-health {
-                        proxy_pass http://web_backend/;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto $scheme;
-                        proxy_connect_timeout 5s;
-                        proxy_send_timeout 5s;
-                        proxy_read_timeout 5s;
-                        
-                        # Add debugging headers
-                        add_header X-Backend-Status "testing" always;
-                    }
-                    
-                    location / {
-                        proxy_pass http://web_backend;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto $scheme;
-                        proxy_connect_timeout 30s;
-                        proxy_send_timeout 30s;
-                        proxy_read_timeout 30s;
-                        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
-                        
-                        # Add error handling for debugging
-                        proxy_intercept_errors on;
-                        error_page 502 503 504 = @backend_error;
-                    }
-                    
-                    # Backend error handler
-                    location @backend_error {
-                        return 503 "Backend service (new-pccon:5000) is unavailable. Please check container status.\n";
-                        add_header Content-Type text/plain;
-                    }
-                    
-                    location /static/ {
-                        proxy_pass http://web_backend;
-                        expires 1y;
-                        add_header Cache-Control "public, immutable";
-                    }
-                }
-
-                # Named virtual host for pcconf.ru
-                server {
-                    listen 80;
-                    server_name pcconf.ru www.pcconf.ru;
-                    
-                    # Special location for parser WITHOUT SSL redirect
-                    location /api/parser/ {
-                        proxy_pass http://web_backend;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto http;  # Force HTTP for parser
-                        
-                        # Special headers for Dockhost
-                        proxy_set_header X-Dockhost-Parser "true";
-                        proxy_set_header X-No-SSL-Redirect "true";
-                        
-                        # Increased timeouts
-                        proxy_connect_timeout 60s;
-                        proxy_send_timeout 60s;
-                        proxy_read_timeout 60s;
-                        
-                        # Disable redirects
-                        proxy_redirect off;
-                    }
-                    
-                    location / {
-                        proxy_pass http://web_backend;
-                        proxy_set_header Host $host;
-                        proxy_set_header X-Real-IP $remote_addr;
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header X-Forwarded-Proto $scheme;
-                        proxy_connect_timeout 30s;
-                        proxy_send_timeout 30s;
-                        proxy_read_timeout 30s;
-                    }
-                    
-                    location /static/ {
-                        proxy_pass http://web_backend;
-                        expires 1y;
-                        add_header Cache-Control "public, immutable";
-                    }
-                }
-
-                # Compression settings
-                gzip on;
-                gzip_vary on;
-                gzip_min_length 1024;
-                gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
-            }
-        
-        # SSL Certificate file
-        pcconf.ru.crt: |
-            -----BEGIN CERTIFICATE-----
-            MIIHgjCCBmqgAwIBAgIMSxeoAw6tkBtYm6inMA0GCSqGSIb3DQEBCwUAMFMxCzAJ
-            BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSkwJwYDVQQDEyBH
-            bG9iYWxTaWduIEdDQyBSMyBEViBUTFMgQ0EgMjAyMDAeFw0yNTA2MjEyMjI1MzVa
-            Fw0yNjAxMjEyMjI1MzVaMBgxFjAUBgNVBAMTDXd3dy5wY2NvbmYucnUwggIiMA0G
-            CSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDaXdIDzsAJnUxt9Fh97U1+SGdnhkNH
-            PENjRJjZQ8ToaJDcOo9XEAVQ9YbA5ekLkW4vk1iPjGoeFBLHMHZM43EjU38YKMer
-            LEna/6QkBZ1Y/FJBiryzxGCP+rZlmChRE3c4Lv6M9dXcBX1efNIKvA7N2AIJ1Y2N
-            2VCh28+p6rlPiCIQ6OyE7EPAr+55MjvqSrc3EiaxnCyZtFkWdQ09+V0ANstSAj8F
-            0sXRK/QDOZWBygnjm3edoK00ro0WipVed+YQ2MXcW+52nVM9f8JaTQ3807E7Xhg4
-            ffavwqbO7jRTcP351xVlg/BDTkOlHykldlHGS/2Jc7xZDFKGoEQ2x13SAahCgTb6
-            Ri6Adwb3gWtJ5UqpxLM8g1thbp+7Mk+wp2JSaINDw0k+t4hkoZ9vJtrBld2FuM6Y
-            84cWl0OXhvJ4NyYG59SYoUHMyPRqanXmurhX1uaxaaKurhDuDX+qA0Pl6ZueGJX/
-            lw4YJGNOD2FVwkyDb0q1WzBqpcm0MgDul+z9y3WCLbTZ5UHGodG02L5imgPLQl3x
-            737xB5P08eZ/Qto2MfAfVfvnCRf6iqAHfa/OnBeKLRdJ9mb0NulxSG6pzhDY39ud
-            5lDANL+jWWmgMpuX3WOo1fRJWMULg8PVrpId/zMRXiYiqhqCYcMYnDeKsyCOfGMA
-            L1Ay6JKVvwkeiwIDAQABo4IDjzCCA4swDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB
-            /wQCMAAwgZMGCCsGAQUFBwEBBIGGMIGDMEYGCCsGAQUFBzAChjpodHRwOi8vc2Vj
-            dXJlLmdsb2JhbHNpZ24uY29tL2NhY2VydC9nc2djY3IzZHZ0bHNjYTIwMjAuY3J0
-            MDkGCCsGAQUFBzABhi1odHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3Iz
-            ZHZ0bHNjYTIwMjAwVgYDVR0gBE8wTTBBBgkrBgEEAaAyAQowNDAyBggrBgEFBQcC
-            ARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCAYGZ4EM
-            AQIBMEEGA1UdHwQ6MDgwNqA0oDKGMGh0dHA6Ly9jcmwuZ2xvYmFsc2lnbi5jb20v
-            Z3NnY2NyM2R2dGxzY2EyMDIwLmNybDBaBgNVHREEUzBRgg13d3cucGNjb25mLnJ1
-            ghZhdXRvZGlzY292ZXIucGNjb25mLnJ1gg5tYWlsLnBjY29uZi5ydYINb3dhLnBj
-            Y29uZi5ydYIJcGNjb25mLnJ1MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcD
-            AjAfBgNVHSMEGDAWgBQNmMBzf6u9vdlHS0mtCkoMrD7HfDAdBgNVHQ4EFgQUC5/c
-            Qcidvu0Pwp1xBZR1BiF0/NUwggF9BgorBgEEAdZ5AgQCBIIBbQSCAWkBZwB1AGQR
-            xGykEuyniRyiAi4AvKtPKAfUHjUnq+r+1QPJfc3wAAABl5SY7TgAAAQDAEYwRAIg
-            A2Sm+TqR7+N0AuC+ze6Ndt92nC26Zi+7urBKM5KJhZUCIFRF1PQBxs/1yqeJbvlb
-            ER6iLq/OyDs8DqGpSL15Q2RmAHYAyzj3FYl8hKFEX1vB3fvJbvKaWc1HCmkFhbDL
-            FMMUWOcAAAGXlJjsVwAABAMARzBFAiEAoWD3Cpj0cq6QymtNjv3Add2Irz1sRfKd
-            ZAB+1EjeQE4CICCFnTXIRpG/h5PTEgsYy5vAr+Bm1FF+2oZP731a95wAAHYASZyb
-            ad4dfOz8Nt7Nh2SmuFuvCoeAGdFVUvvp6ynd+MMAAAGXlJjtsAAABAMARzBFAiA/
-            KEO+xatLfL6G9YdWf2BQPSKReIunRLYma3EVjFhhwQIhALJU9IFGkSjrCYzxUagG
-            xQ2ojg3NF1YbU8Fk26E1+ug0MA0GCSqGSIb3DQEBCwUAA4IBAQB4cFE0eU5SNe0N
-            FfgyhGT6ln/b/e9aSlsw9ac78zPqHGwfAeqCQ55qYQklFH929hQ1fIcg0GWn88sM
-            2YOy0/9jTSW7YGI0kD24PQg8toBpNnPhLASykS4MeIUK2XnQnDskhEHggGua2O3K
-            uqaofZEL9OqwKBZAI+UH2fexr2gHYIsy89qnFnM3uNERCyYjTAs86oEAN9Jd63i7
-            LX/WJ4N+1SdvAHvDyPPXUKTA/fE+j5H2UY+rx3EZ+PPiFCpbl+sQs56L5CVK0reD
-            Uw+yQoTySgZ06K/WrPd9IyfpdWE4oprCKETasRnt0sh4sf9h4QbvwAphnL0/kZKp
-            k90b/YUr
-            -----END CERTIFICATE-----
-            -----BEGIN CERTIFICATE-----
-            MIIDXzCCAkegAwIBAgILBAAAAAABIVhTCKIwDQYJKoZIhvcNAQELBQAwTDEgMB4G
-            A1UECxMXR2xvYmFsU2lnbiBSb290IENBIC0gUjMxEzARBgNVBAoTCkdsb2JhbFNp
-            Z24xEzARBgNVBAMTCkdsb2JhbFNpZ24wHhcNMDkwMzE4MTAwMDAwWhcNMjkwMzE4
-            MTAwMDAwWjBMMSAwHgYDVQQLExdHbG9iYWxTaWduIFJvb3QgQ0EgLSBSMzETMBEG
-            A1UEChMKR2xvYmFsU2lnbjETMBEGA1UEAxMKR2xvYmFsU2lnbjCCASIwDQYJKoZI
-            hvcNAQEBBQADggEPADCCAQoCggEBAMwldpB5BngiFvXAg7aEyiie/QV2EcWtiHL8
-            RgJDx7KKnQRfJMsuS+FggkbhUqsMgUdwbN1k0ev1LKMPgj0MK66X17YUhhB5uzsT
-            gHeMCOFJ0mpiLx9e+pZo34knlTifBtc+ycsmWQ1z3rDI6SYOgxXG71uL0gRgykmm
-            KPZpO/bLyCiR5Z2KYVc3rHQU3HTgOu5yLy6c+9C7v/U9AOEGM+iCK65TpjoWc4zd
-            QQ4gOsC0p6Hpsk+QLjJg6VfLuQSSaGjlOCZgdbKfd/+RFO+uIEn8rUAVSNECMWEZ
-            XriX7613t2Saer9fwRPvm2L7DWzgVGkWqQPabumDk3F2xmmFghcCAwEAAaNCMEAw
-            DgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFI/wS3+o
-            LkUkrk1Q+mOai97i3Ru8MA0GCSqGSIb3DQEBCwUAA4IBAQBLQNvAUKr+yAzv95ZU
-            RUm7lgAJQayzE4aGKAczymvmdLm6AC2upArT9fHxD4q/c2dKg8dEe3jgr25sbwMp
-            jjM5RcOO5LlXbKr8EpbsU8Yt5CRsuZRj+9xTaGdWPoO4zzUhw8lo/s7awlOqzJCK
-            6fBdRoyV3XpYKBovHd7NADdBj+1EbddTKJd+82cEHhXXipa0095MJ6RMG3NzdvQX
-            mcIfeg7jLQitChws/zyrVQ4PkX4268NXSb7hLi18YIvDQVETI53O9zJrlAGomecs
-            Mx86OyXShkDOOyyGeMlhLxS67ttVb9+E7gUJTb0o2HLO02JQZR7rkpeDMdmztcpH
-            WD9f
-            -----END CERTIFICATE-----
-            -----BEGIN CERTIFICATE-----
-            MIIEsDCCA5igAwIBAgIQd70OB0LV2enQSdd00CpvmjANBgkqhkiG9w0BAQsFADBM
-            MSAwHgYDVQQLExdHbG9iYWxTaWduIFJvb3QgQ0EgLSBSMzETMBEGA1UEChMKR2xv
-            YmFsU2lnbjETMBEGA1UEAxMKR2xvYmFsU2lnbjAeFw0yMDA3MjgwMDAwMDBaFw0y
-            OTAzMTgwMDAwMDBaMFMxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWdu
-            IG52LXNhMSkwJwYDVQQDEyBHbG9iYWxTaWduIEdDQyBSMyBEViBUTFMgQ0EgMjAy
-            MDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKxnlJV/de+OpwyvCXAJ
-            IcxPCqkFPh1lttW2oljS3oUqPKq8qX6m7K0OVKaKG3GXi4CJ4fHVUgZYE6HRdjqj
-            hhnuHY6EBCBegcUFgPG0scB12Wi8BHm9zKjWxo3Y2bwhO8Fvr8R42pW0eINc6OTb
-            QXC0VWFCMVzpcqgz6X49KMZowAMFV6XqtItcG0cMS//9dOJs4oBlpuqX9INxMTGp
-            6EASAF9cnlAGy/RXkVS9nOLCCa7pCYV+WgDKLTF+OK2Vxw3RUJ/p8009lQeUARv2
-            UCcNNPCifYX1xIspvarkdjzLwzOdLahDdQbJON58zN4V+lMj0msg+c0KnywPIRp3
-            BMkCAwEAAaOCAYUwggGBMA4GA1UdDwEB/wQEAwIBhjAdBgNVHSUEFjAUBggrBgEF
-            BQcDAQYIKwYBBQUHAwIwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQUDZjA
-            c3+rvb3ZR0tJrQpKDKw+x3wwHwYDVR0jBBgwFoAUj/BLf6guRSSuTVD6Y5qL3uLd
-            G7wwewYIKwYBBQUHAQEEbzBtMC4GCCsGAQUFBzABhiJodHRwOi8vb2NzcDIuZ2xv
-            YmFsc2lnbi5jb20vcm9vdHIzMDsGCCsGAQUFBzAChi9odHRwOi8vc2VjdXJlLmds
-            b2JhbHNpZ24uY29tL2NhY2VydC9yb290LXIzLmNydDA2BgNVHR8ELzAtMCugKaAn
-            hiVodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL3Jvb3QtcjMuY3JsMEcGA1UdIARA
-            MD4wPAYEVR0gADA0MDIGCCsGAQUFBwIBFiZodHRwczovL3d3dy5nbG9iYWxzaWdu
-            LmNvbS9yZXBvc2l0b3J5LzANBgkqhkiG9w0BAQsFAAOCAQEAy8j/c550ea86oCkf
-            r2W+ptTCYe6iVzvo7H0V1vUEADJOWelTv07Obf+YkEatdN1Jg09ctgSNv2h+LMTk
-            KRZdAXmsE3N5ve+z1Oa9kuiu7284LjeS09zHJQB4DJJJkvtIbjL/ylMK1fbMHhAW
-            i0O194TWvH3XWZGXZ6ByxTUIv1+kAIql/Mt29PmKraTT5jrzcVzQ5A9jw16yysuR
-            XRrLODlkS1hyBjsfyTNZrmL1h117IFgntBA5SQNVl9ckedq5r4RSAU85jV8XK5UL
-            REjRZt2I6M9Po9QL7guFLu4sPFJpwR1sPJvubS2THeo7SxYoNDtdyBHs7euaGcMa
-            D/fayQ==
-            -----END CERTIFICATE-----
-        
-        # SSL Private Key file
-        pcconf.ru.key: |
-            -----BEGIN RSA PRIVATE KEY-----
-            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
-            -----END RSA PRIVATE KEY-----
-
-        # Empty default.conf to override the standard one
-        default.conf: |
-            # This file intentionally left empty to override the default nginx configuration
-            # All configuration is handled in /etc/nginx/nginx.conf
-
-# Volumes configuration
-volumes:
-
-    postgres-data:
-      size: 1Gi
-      type: ssd
-      mode: rwo
-
-    nginx-logs:
-      size: 1Gi
-      type: hdd
-      mode: rwm
-
-    app-data:
-      size: 1Gi
-      type: hdd
-      mode: rwm
-
-    app-logs:
-      size: 1Gi
-      type: hdd
-      mode: rwm
-
-    redis-data:
-      size: 1Gi
-      type: hdd
-      mode: rwm
-
+  configs:
+    nginx.conf: |
+      events {
+          worker_connections 1024;
+      }
+      
+      http {
+          client_max_body_size 10M;
+          
+          upstream web_backend {
+              server new-pccon:5000;
+          }
+      
+          # Default server block
+          server {
+              listen 80 default_server;
+              server_name _;
+              
+              # Special handling for admin operations (import, parsing, etc.)
+              location ~ ^/(admin|api)/(import|parse|run|upload) {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 600s;
+                  proxy_send_timeout 600s;
+                  proxy_read_timeout 600s;
+                  client_max_body_size 50M;
+              }
+              
+              location / {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 300s;
+                  proxy_send_timeout 300s;
+                  proxy_read_timeout 300s;
+              }
+              
+              location /static/ {
+                  proxy_pass http://web_backend;
+                  expires 1y;
+                  add_header Cache-Control "public, immutable";
+              }
+          }
+      
+          # Named virtual host for pcconf.ru
+          server {
+              listen 80;
+              server_name pcconf.ru www.pcconf.ru;
+              
+              # Special handling for admin operations (import, parsing, etc.)
+              location ~ ^/(admin|api)/(import|parse|run|upload) {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 600s;
+                  proxy_send_timeout 600s;
+                  proxy_read_timeout 600s;
+                  client_max_body_size 50M;
+              }
+              
+              location / {
+                  proxy_pass http://web_backend;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_connect_timeout 300s;
+                  proxy_send_timeout 300s;
+                  proxy_read_timeout 300s;
+              }
+              
+              location /static/ {
+                  proxy_pass http://web_backend;
+                  expires 1y;
+                  add_header Cache-Control "public, immutable";
+              }
+          }
+      
+          # Security headers
+          add_header X-Frame-Options DENY;
+          add_header X-Content-Type-Options nosniff;
+          add_header X-XSS-Protection "1; mode=block";
+          
+          # Compression
+          gzip on;
+          gzip_vary on;
+          gzip_min_length 1024;
+          gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+      }
 
 # Repositories configuration
 repositories:
-
-    new-pccon:
-      url: https://github.com/Reedmoor/new_pccon
-      branch: main
-      cpu: 1
-      cpuFraction: 20
-      memory: 256Mi
-      dockerFile: Dockerfile
-      dockerContext: .
-
+  new-pccon:
+    url: https://github.com/Reedmoor/new_pccon
+    branch: main
+    cpu: 1
+    cpuFraction: 5
+    memory: 64MiB
+    dockerFile: Dockerfile
+    dockerContext: .
 
 # Containers configuration
 containers:
+  # Main web application
+  new-pccon:
+    image: dockhost.io/d98e123e-7ffc-469e-96ff-19e09e40b977/build/new-pccon:4b3757477a64ce4d146125978e8fb5773bdf7e19
+    replicas: 2
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 512MiB
+    ports:
+      - 5000/TCP
+    variables:
+      SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
+      FLASK_ENV: production
+      DEBUG: "False"
+      DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
+      REDIS_URL: redis://redis:6379
+      PYTHONPATH: /app
+      GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
+      ADMIN_CREATE: "true"
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin123
+      ADMIN_EMAIL: admin@pcconf.ru
+    volumes:
+      - name: app-data
+        mountPath: /app/data
+      - name: app-logs
+        mountPath: /app/logs
 
-    new-pccon:
-      image: dockhost.io/d98e123e-7ffc-469e-96ff-19e09e40b977/build/new-pccon:81a831ae7d0650b14b5a56fadb2f980cb0795352
-      replicas: 1
-      resources:
-        cpu: 1
-        cpuFraction: 5
-        memory: 1024Mi
-      ports:
-        - 5000/TCP
-      variables:
-        GIGACHAT_CREDENTIALS: MjZjYjAwNzUtZTllZS00YjkxLWJlOGEtYjk5N2FjMzA3ZjBmOjQ3ZTVmZmM4LTJiZGQtNDU1OC1iNDdkLTBiZmJmZDNmNWI4Ng==
-        REDIS_URL: redis://:12345@redis:6379
-        DATABASE_URL: postgresql://postgres:12345@postgres:5432/uipc
-        FLASK_ENV: production
-        DEBUG: "0"
-        SECRET_KEY: pcconf_production_secret_key_change_this_very_secure_12345
-        PYTHONPATH: /app
-        ADMIN_CREATE: "true"
-        ADMIN_USERNAME: admin
-        ADMIN_PASSWORD: admin123
-        ADMIN_EMAIL: admin@pcconf.ru
-      volumes:
-        - name: app-data
-          mountPath: /app/data
-        - name: app-logs
-          mountPath: /app/logs
+  # PostgreSQL database
+  postgres:
+    image: postgres:17-alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 64MiB
+    ports:
+      - 5432/TCP
+    variables:
+      POSTGRES_DB: uipc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12345"
+    volumes:
+      - name: postgres-data
+        mountPath: /var/lib/postgresql/data
 
-    redis:
-      image: redis:7-alpine
-      replicas: 1
-      resources:
-        cpu: 1
-        cpuFraction: 5
-        memory: 256Mi
-      ports:
-        - 6379/TCP
-      variables:
-        REDIS_PASSWORD: 12345
-      volumes:
-        - name: redis-data
-          mountPath: /data
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 5
+      memory: 64MiB
+    ports:
+      - 6379/TCP
+    volumes:
+      - name: redis-data
+        mountPath: /data
 
-    postgres:
-      image: postgres:17
-      replicas: 1
-      resources:
-        cpu: 1
-        cpuFraction: 10
-        memory: 256Mi
-      ports:
-        - 5432/TCP
-      variables:
-        POSTGRES_PASSWORD: 12345
-        POSTGRES_DB: uipc
-        POSTGRES_USER: postgres
-        POSTGRES_INITDB_ARGS: --encoding=UTF-8 --lc-collate=C --lc-ctype=C
-      volumes:
-        - name: postgres-data
-          mountPath: /var/lib/postgresql/data
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    replicas: 1
+    resources:
+      cpu: 1
+      cpuFraction: 20
+      memory: 64MiB
+    ports:
+      - 80/TCP
+    configs:
+      - name: nginx.conf
+        mountPath: /etc/nginx/nginx.conf
+    volumes:
+      - name: nginx-logs
+        mountPath: /var/log/nginx
 
-    nginx:
-      image: nginx
-      replicas: 1
-      resources:
-        cpu: 1
-        cpuFraction: 5
-        memory: 64Mi
-      ports:
-        - 80/TCP
-      configs:
-        - name: nginx.conf
-          mountPath: /etc/nginx/nginx.conf
+# Volumes configuration
+volumes:
+  app-data:
+    type: ssd
+    size: 2GiB
+    mode: rwm
+
+  app-logs:
+    type: ssd
+    size: 1GiB
+    mode: rwm
+
+  postgres-data:
+    type: ssd
+    size: 5GiB
+    mode: rwm
+
+  redis-data:
+    type: ssd
+    size: 512MiB
+    mode: rwm
+
+  nginx-logs:
+    type: ssd
+    size: 512MiB
+    mode: rwm
 
 # Network configuration
 network:
+  domains:
+    nginx: ~
+    pcconf.ru:
+      host: pcconf.ru
+    www.pcconf.ru:
+      host: www.pcconf.ru
 
-    domains:
+  routes:
+    main:
+      domain: pcconf.ru
+      path: /
+      service: nginx
+      port: 80/TCP
 
-      pcconf:
-        host: pcconf.ru
-      nginx: ~
-
-    routes:
-
-      main:
-        domain: pcconf
-        path: /
-        type: internal
-        service: nginx
-        port: 80/TCP
-        
-      direct:
-        domain: nginx
-        path: /
-        type: internal
-        service: nginx
-        port: 80/TCP 
+    www:
+      domain: www.pcconf.ru
+      path: /
+      service: nginx
+      port: 80/TCP 

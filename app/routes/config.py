@@ -9,6 +9,24 @@ logger = logging.getLogger(__name__)
 
 config_bp = Blueprint('config', __name__)
 
+
+def build_component_data(component):
+    """Сериализует компонент в dict для передачи в JS (initial state редактора)."""
+    if not component:
+        return None
+    return {
+        'id': component.id,
+        'name': component.product_name,
+        'price': float(component.price_discounted or component.price_original or 0),
+        'images': component.get_images(),
+        'characteristics': component.get_characteristics(),
+        'rating': component.rating,
+        'number_of_reviews': component.number_of_reviews,
+        'product_url': component.product_url or '',
+        'vendor': component.vendor or '',
+    }
+
+
 def format_product_choice(product):
     """Форматирует опцию товара с названием, ценой, рейтингом и источником"""
     if not product:
@@ -200,7 +218,23 @@ def edit_config(config_id):
         form.hdd_id.data = config.hdd_id or 0
         form.frame_id.data = config.frame_id or 0
     
-    return render_template('config/edit_config.html', form=form, config=config)
+    initial_data = {}
+    for field, comp in [
+        ('motherboard_id', config.motherboard),
+        ('cpu_id',         config.processor),
+        ('gpu_id',         config.graphics_card),
+        ('ram_id',         config.ram),
+        ('hdd_id',         config.hard_drive),
+        ('supply_id',      config.power_supply),
+        ('cooler_id',      config.cooler),
+        ('frame_id',       config.case),
+    ]:
+        data = build_component_data(comp)
+        if data:
+            initial_data[field] = data
+
+    return render_template('config/edit_config.html', form=form, config=config,
+                           initial_data=initial_data)
 
 @config_bp.route('/<int:config_id>/delete', methods=['POST'])
 @login_required
@@ -488,7 +522,11 @@ def search_components():
             'name': component.product_name,
             'price': price,
             'vendor': component.vendor,
-            'product_url': component.product_url
+            'product_url': component.product_url,
+            'images': component.get_images(),
+            'characteristics': component.get_characteristics(),
+            'rating': component.rating,
+            'number_of_reviews': component.number_of_reviews,
         })
     
     return jsonify({
