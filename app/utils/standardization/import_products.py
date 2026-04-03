@@ -156,104 +156,120 @@ def detect_product_type(product_name, product_categories=None):
     else:
         return 'other'
 
+def upsert_unified_product(unified_product):
+    """
+    Вставляет новый продукт или обновляет существующий по product_url.
+    Возвращает ('added'|'updated', объект).
+    """
+    existing = UnifiedProduct.query.filter_by(
+        product_url=unified_product.product_url
+    ).first()
+
+    if existing:
+        # Обновляем поля существующего продукта
+        existing.product_name     = unified_product.product_name
+        existing.price_discounted = unified_product.price_discounted
+        existing.price_original   = unified_product.price_original
+        existing.rating           = unified_product.rating
+        existing.number_of_reviews= unified_product.number_of_reviews
+        existing.images           = unified_product.images
+        existing.characteristics  = unified_product.characteristics
+        existing.availability     = unified_product.availability
+        existing.category         = unified_product.category
+        existing.product_type     = unified_product.product_type
+        existing.vendor           = unified_product.vendor
+        return 'updated', existing
+    else:
+        db.session.add(unified_product)
+        return 'added', unified_product
+
+
 def import_products_from_data(products_data, source='local_parser'):
     """
-    Import products from data list (for API usage)
-    
-    Args:
-        products_data (list): List of product dictionaries
-        source (str): Source identifier for logging
-    
-    Returns:
-        dict: Import results
+    Import products from data list (for API usage).
+    Использует upsert по product_url — не создаёт дублей.
     """
     app = create_app()
     with app.app_context():
         print(f"🔄 Начинаем импорт {len(products_data)} товаров из {source}")
-        
+
         added_count = 0
+        updated_count = 0
         error_count = 0
         results = []
-        
+
         for idx, product in enumerate(products_data):
             try:
-                # Detect vendor from URL
                 vendor = detect_vendor_from_url(product.get('url', ''))
-                print(f"📦 Обрабатываем товар {idx+1}: {product.get('name', 'Безымянный товар')} от {vendor}")
-                
-                # Detect product type
+                print(f"📦 [{idx+1}] {product.get('name', 'Безымянный товар')} ({vendor})")
+
                 product_categories = product.get('categories', [])
-                product_type = product.get('detected_product_type') or detect_product_type(product.get('name', ''), product_categories)
-                
-                # Standardize product data
+                product_type = product.get('detected_product_type') or detect_product_type(
+                    product.get('name', ''), product_categories
+                )
+
                 std_product = standardize_characteristics(product, vendor)
                 std_product["vendor"] = vendor
                 std_product["product_type"] = product_type
-                
-                # Ensure compatibility characteristics
                 ensure_compatibility_characteristics(std_product)
-                
-                # Convert to UnifiedProduct
+
                 unified_product = convert_to_unified_product(std_product)
-                
-                # Add to database
-                db.session.add(unified_product)
-                
-                # Commit every 50 products
+
+                action, _ = upsert_unified_product(unified_product)
+                if action == 'added':
+                    added_count += 1
+                else:
+                    updated_count += 1
+
                 if idx % 50 == 0 and idx > 0:
                     db.session.commit()
-                    print(f"✅ Сохранено {idx} товаров...")
-                
-                added_count += 1
+                    print(f"✅ Обработано {idx} товаров (добавлено: {added_count}, обновлено: {updated_count})...")
+
                 results.append({
                     'name': product.get('name', 'Unknown'),
                     'type': product_type,
                     'vendor': vendor,
-                    'status': 'success'
+                    'status': action,
                 })
-                
+
             except Exception as e:
                 error_count += 1
-                error_msg = f"Ошибка при обработке товара {idx+1}: {str(e)}"
-                print(f"❌ {error_msg}")
-                
+                print(f"❌ Ошибка товара {idx+1}: {e}")
                 results.append({
                     'name': product.get('name', 'Unknown'),
                     'status': 'error',
                     'error': str(e)
                 })
-                
-                # Rollback this product and continue
                 db.session.rollback()
-        
-        # Final commit
+
         try:
             db.session.commit()
-            print(f"🎉 Импорт завершен! Добавлено: {added_count}, Ошибок: {error_count}")
-            
-            # Print statistics by product type
+            print(f"🎉 Импорт завершён! Добавлено: {added_count}, Обновлено: {updated_count}, Ошибок: {error_count}")
+
             print("\n📊 Статистика по типам товаров:")
-            for product_type in ["case", "processor", "graphics_card", "motherboard", "power_supply", "ram", "cooler", "hard_drive"]:
-                count = db.session.query(UnifiedProduct).filter(UnifiedProduct.product_type == product_type).count()
+            for pt in ["case", "processor", "graphics_card", "motherboard",
+                       "power_supply", "ram", "cooler", "hard_drive"]:
+                count = UnifiedProduct.query.filter_by(product_type=pt).count()
                 if count > 0:
-                    print(f"   {product_type}: {count} товаров")
-            
+                    print(f"   {pt}: {count} товаров")
+
             return {
                 'success': True,
                 'added_count': added_count,
+                'updated_count': updated_count,
                 'error_count': error_count,
-                'results': results
+                'results': results,
             }
-            
+
         except Exception as e:
             db.session.rollback()
-            error_msg = f"Ошибка при финальном сохранении: {str(e)}"
+            error_msg = f"Ошибка при финальном сохранении: {e}"
             print(f"❌ {error_msg}")
             return {
                 'success': False,
                 'error': error_msg,
                 'added_count': 0,
-                'error_count': len(products_data)
+                'error_count': len(products_data),
             }
 
 def import_products():
@@ -533,62 +549,61 @@ def import_products():
                 print(f"Ошибка при обработке файла {dns_file}: {str(e)}")
                 traceback.print_exc()
         
-        print(f"Всего продуктов для импорта: {len(all_products)}")
-        
-        # Save to database
-        print("Сохранение в базу данных...")
-        
-        # Clear existing products first
-        try:
-            print("Удаление существующих продуктов...")
-            db.session.query(UnifiedProduct).delete()
-            db.session.commit()
-        except Exception as e:
-            print(f"Ошибка при удалении существующих продуктов: {str(e)}")
-            db.session.rollback()
-        
-        # Convert to UnifiedProduct instances and save one by one
+        print(f"Всего продуктов перед дедупликацией: {len(all_products)}")
+
+        # Дедупликация по product_url — оставляем последнюю версию каждого товара
+        seen_urls = {}
+        for p in all_products:
+            url = p.get('product_url') or p.get('url', '')
+            if url:
+                seen_urls[url] = p  # позднейший перезаписывает
+            else:
+                # Если нет URL, дедуплицируем по имени
+                name_key = p.get('product_name', '') or p.get('name', '')
+                if name_key:
+                    seen_urls[f'__nourl__{name_key}'] = p
+
+        unique_products = list(seen_urls.values())
+        duplicates_removed = len(all_products) - len(unique_products)
+        print(f"После дедупликации: {len(unique_products)} товаров (удалено дублей: {duplicates_removed})")
+
+        # Сохранение через upsert (не удаляем существующие — обновляем)
+        print("Сохранение в базу данных (upsert по URL)...")
         added_count = 0
+        updated_count = 0
         error_count = 0
-        
-        for idx, product_data in enumerate(all_products):
+
+        for idx, product_data in enumerate(unique_products):
             try:
-                # Ensure all required characteristics for compatibility checks are present
                 ensure_compatibility_characteristics(product_data)
-                
-                # Convert data to UnifiedProduct
                 unified_product = convert_to_unified_product(product_data)
-                
-                # Add to session
-                db.session.add(unified_product)
-                
-                # Commit every 100 products to avoid memory issues
-                if idx % 100 == 0:
+                action, _ = upsert_unified_product(unified_product)
+                if action == 'added':
+                    added_count += 1
+                else:
+                    updated_count += 1
+
+                if idx % 100 == 0 and idx > 0:
                     db.session.commit()
-                    print(f"Сохранено {idx} продуктов...")
-                
-                added_count += 1
+                    print(f"Обработано {idx} продуктов (добавлено: {added_count}, обновлено: {updated_count})...")
+
             except Exception as e:
                 error_count += 1
                 print(f"Ошибка при сохранении продукта {idx}: {str(e)}")
-                # Print the problematic product data for debugging
                 print(f"Проблемные данные: {product_data.get('product_name', 'No name')}")
                 traceback.print_exc()
-                
-                # Rollback and continue
                 db.session.rollback()
-        
-        # Final commit
+
         try:
             db.session.commit()
-            print(f"Успешно добавлено {added_count} продуктов в базу данных. Ошибок: {error_count}")
-            
-            # Статистика по типам продуктов
+            print(f"Импорт завершён! Добавлено: {added_count}, Обновлено: {updated_count}, Ошибок: {error_count}")
+
             print("\nСтатистика по типам продуктов:")
-            for product_type in ["cooler", "case", "power_supply", "motherboard", "processor", "graphics_card", "ram", "hard_drive"]:
-                count = db.session.query(UnifiedProduct).filter(UnifiedProduct.product_type == product_type).count()
+            for product_type in ["cooler", "case", "power_supply", "motherboard",
+                                  "processor", "graphics_card", "ram", "hard_drive"]:
+                count = UnifiedProduct.query.filter_by(product_type=product_type).count()
                 print(f"{product_type}: {count} продуктов")
-                
+
         except Exception as e:
             db.session.rollback()
             print(f"Ошибка сохранения в базу данных: {str(e)}")

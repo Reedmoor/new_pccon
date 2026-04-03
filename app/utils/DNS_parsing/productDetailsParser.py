@@ -132,23 +132,21 @@ def parse_breadcrumbs(driver):
 
 def parse_characteristics(driver):
     try:
-        # Сначала прокручиваем страницу вниз, чтобы элемент загрузился
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.7);")
-        time.sleep(2)  # Даем время для загрузки элементов
+        time.sleep(1)
 
-        characteristics_element = WebDriverWait(driver, 10).until(
+        characteristics_element = WebDriverWait(driver, 8).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'product-card__characteristics'))
         )
         driver.execute_script("arguments[0].scrollIntoView(true);", characteristics_element)
-        time.sleep(1)  # Даем время для полной загрузки после прокрутки
+        time.sleep(0.5)
 
-        # Нажимаем на кнопку "Развернуть все"
         try:
-            expand_button = WebDriverWait(driver, 5).until(
+            expand_button = WebDriverWait(driver, 3).until(
                 EC.element_to_be_clickable((By.CLASS_NAME, 'product-characteristics__expand'))
             )
             expand_button.click()
-            time.sleep(2)  # Даем время для обновления характеристик
+            time.sleep(1)
         except Exception as e:
             logger.warning(f"Не удалось нажать на кнопку 'Развернуть все': {e}")
     except Exception as e:
@@ -194,60 +192,67 @@ def parse_characteristics(driver):
     return characteristics
 
 def extract_images(driver, max_images=5):
-    """Extract images using Selenium"""
+    """
+    Извлекает изображения товара.
+    Сначала пытается получить их напрямую из HTML (быстро, без открытия лайтбокса).
+    Если не получилось — открывает просмотрщик изображений.
+    """
+    # --- Быстрый путь: берём миниатюры из слайдера без открытия лайтбокса ---
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    slider_imgs = soup.find_all('img', class_=lambda c: c and 'product-images-slider__img' in c)
     images = []
+    for img in slider_imgs:
+        src = img.get('src') or img.get('data-src')
+        if src and src not in images:
+            # Заменяем превью на полный размер (DNS использует суффиксы /w/100 → убираем)
+            src = src.split('?')[0]
+            if not src.endswith('.svg'):
+                images.append(src)
+        if len(images) >= max_images:
+            break
 
+    if images:
+        logger.debug(f"Получено {len(images)} изображений напрямую из слайдера")
+        return images
+
+    # --- Медленный путь: открываем лайтбокс ---
     driver.execute_script("window.scrollTo(0, 0);")
-    time.sleep(1)
+    time.sleep(0.5)
 
-    # Сначала найдем и кликнем на миниатюру
     try:
-        thumbnail = WebDriverWait(driver, 10).until(
+        thumbnail = WebDriverWait(driver, 8).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'product-images-slider__img.tns-complete'))
         )
         thumbnail.click()
-
-        # Ждем появления просмотрщика изображений
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 8).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'media-viewer-image__main'))
         )
     except Exception as e:
-        logger.warning(f"Error clicking thumbnail: {e}")
+        logger.warning(f"Не удалось открыть просмотрщик изображений: {e}")
         return []
 
-    while len(images) < max_images:  # Ограничиваем количество фотографий
-        # Get current page source and parse it
+    while len(images) < max_images:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-        # Проверяем наличие контейнера с классом media-viewer-image__main_with-desc
-        if soup.find('div', class_='media-viewer-image__main.media-viewer-image__main_with-desc'):
-            logger.debug("Found container with description, stopping parsing")
-            break
-
-        # Find the main media viewer container
         media_viewer = soup.find('div', class_='media-viewer-image__main')
-
         if not media_viewer:
             break
 
-        # Find the main image
         main_img = media_viewer.find('img', class_='media-viewer-image__main-img')
-
         if main_img and 'src' in main_img.attrs:
             images.append(main_img['src'])
-            logger.debug(f"Found image {len(images)}/{max_images}")
 
         if len(images) >= max_images:
             break
 
         try:
-            right_control = driver.find_element(By.CSS_SELECTOR,
-                                                'div.media-viewer-image__main > div.media-viewer-image__control_right')
+            right_control = driver.find_element(
+                By.CSS_SELECTOR,
+                'div.media-viewer-image__main > div.media-viewer-image__control_right'
+            )
             right_control.click()
-            time.sleep(0.5)
-
+            time.sleep(0.3)
         except Exception as e:
-            logger.warning(f"Error clicking or finding next button: {e}")
+            logger.warning(f"Ошибка перелистывания изображений: {e}")
             break
 
     return list(dict.fromkeys(images))
@@ -281,7 +286,7 @@ def parse_product_data(driver):
 def parse_characteristics_page(driver, url):
     """Parse product page details."""
     driver.get(url)
-    pause(randint(2, 3))
+    pause(randint(1, 2))
 
     soup = BeautifulSoup(driver.page_source, 'lxml')
     selector = scrapy.Selector(text=driver.page_source)
@@ -365,6 +370,18 @@ def process_single_url(driver, url):
         traceback.print_exc()
 
 
+def load_parsed_urls(filename='product_data.json'):
+    """Возвращает set уже спаршенных URL из существующего файла."""
+    if not os.path.exists(filename):
+        return set()
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return {item.get('url') for item in data if item.get('url')}
+    except Exception:
+        return set()
+
+
 def main():
     """
     Main function to parse product details.
@@ -373,27 +390,32 @@ def main():
     2. Standalone to process URLs from a file
     """
     try:
-        # Проверяем, существует ли файл с результатами, если нет - создаем пустой
         if not os.path.exists('product_data.json'):
             with open('product_data.json', 'w', encoding='utf-8') as f:
                 json.dump([], f, ensure_ascii=False, indent=4)
             logger.info("Создан пустой файл product_data.json")
-        
+
+        # Загружаем уже спаршенные URL — их повторно не парсим
+        already_parsed = load_parsed_urls('product_data.json')
+        logger.info(f"Уже спаршено товаров: {len(already_parsed)} — будут пропущены")
+
         driver = uc.Chrome(version_main=135)
 
-        # Check if urls.txt exists and process from it
         if os.path.exists('urls.txt'):
             logger.info("Reading URLs from urls.txt")
             with open('urls.txt', 'r') as file:
-                urls = [line.strip() for line in file if line.strip()]
-                
+                all_urls = [line.strip() for line in file if line.strip()]
+
+            # Фильтруем уже спаршенные
+            urls = [u for u in all_urls if u not in already_parsed]
+            skipped = len(all_urls) - len(urls)
+            logger.info(f"Всего URL: {len(all_urls)}, пропущено (уже спаршены): {skipped}, к обработке: {len(urls)}")
+
             total_urls = len(urls)
-            logger.info(f"Found {total_urls} URLs to process")
-            
             for i, url in enumerate(urls, 1):
                 logger.info(f"Processing URL {i}/{total_urls}: {url}")
                 process_single_url(driver, url)
-                
+
         else:
             logger.warning("urls.txt not found. No URLs to process.")
             
