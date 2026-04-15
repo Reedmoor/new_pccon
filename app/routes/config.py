@@ -531,4 +531,66 @@ def search_components():
     
     return jsonify({
         'components': result
+    })
+
+
+@config_bp.route('/api/alternatives/<int:product_id>', methods=['GET'])
+@login_required
+def get_alternatives(product_id):
+    """
+    Возвращает до 6 альтернатив для выбранного компонента из той же категории.
+    Сортировка: сначала близкие по цене, затем по рейтингу.
+    Для каждой альтернативы возвращает разницу цен с оригиналом.
+    """
+    source = UnifiedProduct.query.get_or_404(product_id)
+
+    source_price = float(
+        source.price_discounted or source.price_original or 0
+    )
+
+    candidates = (
+        UnifiedProduct.query
+        .filter(
+            UnifiedProduct.product_type == source.product_type,
+            UnifiedProduct.id != product_id,
+        )
+        .all()
+    )
+
+    def _price(p):
+        return float(p.price_discounted or p.price_original or 0)
+
+    # Оставляем только с ценой
+    candidates = [c for c in candidates if _price(c) > 0]
+
+    # Если товар стоит >0 — сортируем по близости цены, потом по рейтингу
+    if source_price > 0:
+        candidates.sort(
+            key=lambda c: (abs(_price(c) - source_price), -(c.rating or 0))
+        )
+    else:
+        candidates.sort(key=lambda c: -(c.rating or 0))
+
+    result = []
+    for comp in candidates[:6]:
+        comp_price = _price(comp)
+        price_diff = round(comp_price - source_price)
+        result.append({
+            'id': comp.id,
+            'name': comp.product_name,
+            'price': comp_price,
+            'price_diff': price_diff,
+            'vendor': comp.vendor or '',
+            'product_url': comp.product_url or '',
+            'images': comp.get_images(),
+            'characteristics': comp.get_characteristics(),
+            'rating': comp.rating,
+            'number_of_reviews': comp.number_of_reviews,
+        })
+
+    return jsonify({
+        'source_id': product_id,
+        'source_price': source_price,
+        'product_type': source.product_type,
+        'alternatives': result,
     }) 

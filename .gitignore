@@ -1,2 +1,5 @@
 /local_parser/venv/
 .venv/
+# Локальные куки/заголовки браузера для DNS (не коммитить)
+dns_*_headers.json
+**/dns_browser_secret.json

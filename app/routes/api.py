@@ -75,9 +75,10 @@ def upload_products():
         
         logger.info(f"Received {len(products)} products from {source} (type: {upload_type})")
         
-        # Для серверной синхронизации НЕ сохраняем файлы локально
-        if upload_type == 'server_sync':
-            logger.info("Server sync detected - importing directly to database without saving files")
+        # Для серверной синхронизации и single-file загрузки
+        # импортируем сразу в БД без промежуточного сохранения.
+        if upload_type in ('server_sync', 'single_file'):
+            logger.info(f"{upload_type} detected - importing directly to database without saving files")
             
             # Создаем временные данные только в памяти для импорта
             try:
@@ -105,8 +106,11 @@ def upload_products():
                 
                 return jsonify({
                     'success': True,
-                    'message': f'Successfully synced {len(products)} products from server',
-                    'imported_count': len(products),
+                    'message': f'Successfully imported {len(products)} products ({upload_type})',
+                    'imported_count': result.get('added_count', 0) + result.get('updated_count', 0),
+                    'added_count': result.get('added_count', 0),
+                    'updated_count': result.get('updated_count', 0),
+                    'error_count': result.get('error_count', 0),
                     'upload_type': upload_type,
                     'source': source,
                     'notification': sync_notification,

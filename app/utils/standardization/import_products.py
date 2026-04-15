@@ -280,112 +280,100 @@ def import_products():
         # Инициализируем список всех продуктов СРАЗУ в начале функции
         all_products = []
         
-        # Получаем все локальные файлы DNS
-        local_files = glob.glob('data/local_parser_data_*.json')
-        
-        if local_files:
-            # Сортируем файлы по времени модификации
-            local_files.sort(key=os.path.getmtime, reverse=True)
-            print(f"Найдено {len(local_files)} локальных файлов DNS")
-            
-            # Обрабатываем все локальные файлы DNS
-            for file_idx, local_file in enumerate(local_files):
-                try:
-                    print(f"Обработка локального файла DNS {file_idx + 1}/{len(local_files)}: {local_file}")
-                    
-                    with open(local_file, 'r', encoding='utf-8') as f:
-                        local_data = json.load(f)
-                    
-                    # Группируем товары по категориям из данных
-                    products_by_category = {}
-                    
-                    if isinstance(local_data, list):
-                        for product in local_data:
-                            # Проверяем, что у продукта есть имя
-                            if not product.get('name'):
-                                continue
-                                
-                            # Определяем категорию по данным товара
-                            categories = product.get('categories', [])
-                            category_name = None
-                            
-                            # Ищем нужную категорию в списке категорий
-                            if categories:
-                                for cat in categories:
-                                    if not isinstance(cat, dict):
-                                        continue
-                                        
-                                    cat_name = cat.get('name', '').lower()
-                                    if 'видеокарт' in cat_name:
-                                        category_name = 'graphics_card'
-                                    elif 'процессор' in cat_name:
-                                        category_name = 'processor'
-                                    elif 'материнск' in cat_name:
-                                        category_name = 'motherboard'
-                                    elif ('памят' in cat_name and 'оперативн' in cat_name) or 'dimm' in cat_name:
-                                        category_name = 'ram'
-                                    elif 'корпус' in cat_name:
-                                        category_name = 'case'
-                                    elif ('блок' in cat_name and 'питан' in cat_name) or 'бп' in cat_name:
-                                        category_name = 'power_supply'
-                                    elif 'кулер' in cat_name or 'охлажден' in cat_name:
-                                        category_name = 'cooler'
-                                    elif 'ssd' in cat_name or 'диск' in cat_name or 'накопител' in cat_name:
-                                        category_name = 'hard_drive'
-                                    
-                                    if category_name:
-                                        break
-                            
-                            # Если категорию не определили, пытаемся по названию товара
-                            if not category_name:
-                                product_name = product.get('name', '').lower()
-                                if 'видеокарт' in product_name or 'graphics card' in product_name:
-                                    category_name = 'graphics_card'
-                                elif 'процессор' in product_name or 'cpu' in product_name:
-                                    category_name = 'processor'
-                                elif 'материнск' in product_name or 'motherboard' in product_name:
-                                    category_name = 'motherboard'
-                                elif ('оперативн' in product_name and 'памят' in product_name) or 'ram' in product_name or 'dimm' in product_name:
-                                    category_name = 'ram'
-                                elif 'корпус' in product_name or 'case' in product_name:
-                                    category_name = 'case'
-                                elif 'блок питан' in product_name or 'power supply' in product_name:
-                                    category_name = 'power_supply'
-                                elif 'кулер' in product_name or 'cooler' in product_name:
-                                    category_name = 'cooler'
-                                elif 'ssd' in product_name or 'жесткий диск' in product_name or 'hdd' in product_name or 'накопитель' in product_name:
-                                    category_name = 'hard_drive'
-                                else:
-                                    # Если не смогли определить категорию, пропускаем товар
+        # По умолчанию НЕ импортируем data/local_parser_data_*.json,
+        # чтобы не подтягивать старые архивные выгрузки.
+        # Если нужно включить старое поведение:
+        #   set IMPORT_LOCAL_DNS_FILES=1
+        use_local_dns_files = os.environ.get("IMPORT_LOCAL_DNS_FILES", "").strip() == "1"
+        if use_local_dns_files:
+            local_files = glob.glob('data/local_parser_data_*.json')
+            if local_files:
+                local_files.sort(key=os.path.getmtime, reverse=True)
+                print(f"Найдено {len(local_files)} локальных файлов DNS")
+
+                for file_idx, local_file in enumerate(local_files):
+                    try:
+                        print(f"Обработка локального файла DNS {file_idx + 1}/{len(local_files)}: {local_file}")
+                        with open(local_file, 'r', encoding='utf-8') as f:
+                            local_data = json.load(f)
+
+                        products_by_category = {}
+                        if isinstance(local_data, list):
+                            for product in local_data:
+                                if not product.get('name'):
                                     continue
-                            
-                            if category_name not in products_by_category:
-                                products_by_category[category_name] = []
-                            products_by_category[category_name].append(product)
-                    
-                    # Обрабатываем каждую категорию
-                    for category_name, products in products_by_category.items():
-                        print(f"  - Категория DNS (локальный файл {file_idx + 1}) {category_name}: {len(products)} товаров")
-                        
-                        for product in products:
-                            try:
-                                # Стандартизируем данные
-                                std_product = standardize_characteristics(product, "dns")
-                                std_product["vendor"] = "dns"
-                                std_product["product_type"] = category_name
-                                std_product["source"] = f"local_parser_file_{file_idx + 1}"  # Добавляем источник с номером файла
-                                all_products.append(std_product)
-                            except Exception as e:
-                                print(f"    Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
-                    
-                    total_products_in_file = sum(len(products) for products in products_by_category.values())
-                    print(f"  Загружено {total_products_in_file} товаров из файла {os.path.basename(local_file)}")
-                    
-                except Exception as e:
-                    print(f"Ошибка при обработке локального файла {local_file}: {str(e)}")
-                    traceback.print_exc()
+
+                                categories = product.get('categories', [])
+                                category_name = None
+                                if categories:
+                                    for cat in categories:
+                                        if not isinstance(cat, dict):
+                                            continue
+                                        cat_name = cat.get('name', '').lower()
+                                        if 'видеокарт' in cat_name:
+                                            category_name = 'graphics_card'
+                                        elif 'процессор' in cat_name:
+                                            category_name = 'processor'
+                                        elif 'материнск' in cat_name:
+                                            category_name = 'motherboard'
+                                        elif ('памят' in cat_name and 'оперативн' in cat_name) or 'dimm' in cat_name:
+                                            category_name = 'ram'
+                                        elif 'корпус' in cat_name:
+                                            category_name = 'case'
+                                        elif ('блок' in cat_name and 'питан' in cat_name) or 'бп' in cat_name:
+                                            category_name = 'power_supply'
+                                        elif 'кулер' in cat_name or 'охлажден' in cat_name:
+                                            category_name = 'cooler'
+                                        elif 'ssd' in cat_name or 'диск' in cat_name or 'накопител' in cat_name:
+                                            category_name = 'hard_drive'
+                                        if category_name:
+                                            break
+
+                                if not category_name:
+                                    product_name = product.get('name', '').lower()
+                                    if 'видеокарт' in product_name or 'graphics card' in product_name:
+                                        category_name = 'graphics_card'
+                                    elif 'процессор' in product_name or 'cpu' in product_name:
+                                        category_name = 'processor'
+                                    elif 'материнск' in product_name or 'motherboard' in product_name:
+                                        category_name = 'motherboard'
+                                    elif ('оперативн' in product_name and 'памят' in product_name) or 'ram' in product_name or 'dimm' in product_name:
+                                        category_name = 'ram'
+                                    elif 'корпус' in product_name or 'case' in product_name:
+                                        category_name = 'case'
+                                    elif 'блок питан' in product_name or 'power supply' in product_name:
+                                        category_name = 'power_supply'
+                                    elif 'кулер' in product_name or 'cooler' in product_name:
+                                        category_name = 'cooler'
+                                    elif 'ssd' in product_name or 'жесткий диск' in product_name or 'hdd' in product_name or 'накопитель' in product_name:
+                                        category_name = 'hard_drive'
+                                    else:
+                                        continue
+
+                                products_by_category.setdefault(category_name, []).append(product)
+
+                        for category_name, products in products_by_category.items():
+                            print(f"  - Категория DNS (локальный файл {file_idx + 1}) {category_name}: {len(products)} товаров")
+                            for product in products:
+                                try:
+                                    std_product = standardize_characteristics(product, "dns")
+                                    std_product["vendor"] = "dns"
+                                    std_product["product_type"] = category_name
+                                    std_product["source"] = f"local_parser_file_{file_idx + 1}"
+                                    all_products.append(std_product)
+                                except Exception as e:
+                                    print(f"    Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
+
+                        total_products_in_file = sum(len(products) for products in products_by_category.values())
+                        print(f"  Загружено {total_products_in_file} товаров из файла {os.path.basename(local_file)}")
+
+                    except Exception as e:
+                        print(f"Ошибка при обработке локального файла {local_file}: {str(e)}")
+                        traceback.print_exc()
+            else:
+                print("Локальные файлы DNS не найдены")
         else:
-            print("Локальные файлы DNS не найдены")
+            print("Импорт локальных файлов DNS (data/local_parser_data_*.json) отключен")
         
         # Маппинг категорий из парсеров в унифицированные типы продуктов
         category_mapping = {
@@ -508,19 +496,26 @@ def import_products():
                     
                     for product in data:
                         # Проверяем, что у продукта есть имя
-                        if not product.get('name'):
+                        product_name = product.get('name', '')
+                        if not product_name:
                             print(f"Пропускаем товар DNS без имени: {product.get('id', 'ID неизвестен')}")
                             continue
-                            
+
                         # Определяем категорию по данным товара
                         category_name = None
-                        
-                        # Проверяем категорию товара
-                        if 'category' in product:
-                            category = product.get('category', '')
-                            if isinstance(category, str):
-                                category_name = category_mapping.get(category, None)
-                        
+
+                        # 1) Сначала пробуем старое поле category
+                        category = product.get('category', '')
+                        if isinstance(category, str) and category:
+                            category_name = category_mapping.get(category, None)
+
+                        # 2) Если не нашли, пробуем определить через categories + name
+                        if not category_name:
+                            product_categories = product.get('categories', [])
+                            detected_type = detect_product_type(product_name, product_categories)
+                            if detected_type and detected_type != 'other':
+                                category_name = detected_type
+
                         # Если категория не определена, пропускаем товар
                         if not category_name:
                             continue

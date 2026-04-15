@@ -85,6 +85,72 @@
     line-height: 1.3;
     word-break: break-word;
 }
+/* ── Alternatives panel ── */
+.alt-toggle-wrap {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.alternatives-panel {
+    display: none;
+    border-top: 1px solid #e9ecef;
+    margin-top: 8px;
+    padding-top: 8px;
+}
+.alternatives-panel.visible {
+    display: block;
+}
+.alt-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+}
+.alt-card {
+    min-width: 170px;
+    max-width: 190px;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    background: #fff;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.18s;
+    flex-shrink: 0;
+}
+.alt-card:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 3px 10px rgba(13,110,253,.18);
+    transform: translateY(-2px);
+}
+.alt-card.is-current {
+    border-color: #198754;
+    background: #f0fdf4;
+}
+.alt-card-img {
+    width: 100%;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+.alt-img-placeholder {
+    width: 100%;
+    height: 72px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+}
+.price-diff-positive { color: #dc3545; font-weight: 600; }
+.price-diff-negative { color: #198754; font-weight: 600; }
+.price-diff-zero     { color: #6c757d; }
 </style>
 {% endblock %}
 
@@ -104,10 +170,21 @@
         {{ form.frame_id() }}
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-3 align-items-center">
         <div class="col">
             <h2><i class="fas fa-cogs me-2"></i>Создание новой конфигурации</h2>
             <p class="text-muted mb-0">Выберите компоненты для вашего ПК</p>
+        </div>
+        <div class="col-auto">
+            <label class="alt-toggle-wrap mb-0">
+                <div class="form-check form-switch mb-0">
+                    <input class="form-check-input" type="checkbox" role="switch"
+                           id="altToggle" style="width:2.5em;height:1.3em;">
+                </div>
+                <span class="text-muted small fw-semibold">
+                    <i class="fas fa-balance-scale me-1 text-primary"></i>Похожие товары
+                </span>
+            </label>
         </div>
     </div>
 
@@ -162,6 +239,8 @@
                             <span class="small">Нажмите для выбора</span>
                         </div>
                     </div>
+                    <div id="alternatives-{{ field }}" class="alternatives-panel"
+                         data-ptype="{{ ptype }}"></div>
                 </div>
             </div>
             {% endfor %}
@@ -227,12 +306,19 @@
 
 {% block extra_js %}
 <script>
-const SEARCH_URL = "{{ url_for('config.search_components') }}";
-const CONFIG_INFO_URL = "{{ url_for('config.get_config_info') }}";
+const SEARCH_URL        = "{{ url_for('config.search_components') }}";
+const CONFIG_INFO_URL   = "{{ url_for('config.get_config_info') }}";
+const ALTERNATIVES_BASE = "{{ url_for('config.get_alternatives', product_id=0) }}".replace('/0', '/');
 
-let currentModalType = null;
+let currentModalType  = null;
 let currentModalField = null;
 const modalComponentsCache = new Map();
+
+/* текущие выбранные компоненты {fieldId -> comp} */
+const selectedComponents = {};
+
+/* состояние переключателя */
+let altModeEnabled = false;
 
 const KEY_SPECS = {
     'motherboard':    ['socket', 'chipset', 'form_factor', 'memory_type'],
@@ -378,9 +464,17 @@ function selectComponent(comp) {
     }
     select.value = comp.id;
 
+    // Сохраняем выбранный компонент
+    selectedComponents[fieldId] = comp;
+
     // Показываем превью
     updatePreview(fieldId, comp, type);
     document.getElementById('clear-' + fieldId).classList.remove('d-none');
+
+    // Загружаем альтернативы если режим включён
+    if (altModeEnabled) {
+        loadAlternatives(fieldId, comp.id, type);
+    }
 
     bootstrap.Modal.getInstance(document.getElementById('componentModal')).hide();
     updateConfigInfo();
@@ -396,6 +490,8 @@ function clearComponent(fieldId, type, label, icon) {
             <span class="small">Нажмите для выбора</span>
         </div>`;
     document.getElementById('clear-' + fieldId).classList.add('d-none');
+    delete selectedComponents[fieldId];
+    hideAlternatives(fieldId);
     updateConfigInfo();
 }
 
@@ -440,6 +536,117 @@ function updatePreview(fieldId, comp, type) {
             </div>
         </div>`;
 }
+
+/* ══ Alternatives ══════════════════════════════════════════════════ */
+
+function loadAlternatives(fieldId, productId, ptype) {
+    const panel = document.getElementById('alternatives-' + fieldId);
+    if (!panel) return;
+    panel.classList.add('visible');
+    panel.innerHTML = `<div class="text-center text-muted py-2 small">
+        <span class="spinner-border spinner-border-sm me-1"></span>Загрузка похожих товаров…</div>`;
+
+    $.getJSON(ALTERNATIVES_BASE + productId, function(data) {
+        renderAlternatives(fieldId, data, ptype || panel.dataset.ptype);
+    }).fail(function() {
+        panel.innerHTML = `<div class="text-muted small py-1">
+            <i class="fas fa-exclamation-circle me-1"></i>Не удалось загрузить альтернативы</div>`;
+    });
+}
+
+function hideAlternatives(fieldId) {
+    const panel = document.getElementById('alternatives-' + fieldId);
+    if (panel) { panel.classList.remove('visible'); panel.innerHTML = ''; }
+}
+
+function renderAlternatives(fieldId, data, ptype) {
+    const panel = document.getElementById('alternatives-' + fieldId);
+    if (!panel) return;
+
+    const alts = data.alternatives || [];
+    if (!alts.length) {
+        panel.innerHTML = `<div class="text-muted small py-1 text-center">
+            <i class="fas fa-info-circle me-1"></i>Похожих товаров не найдено</div>`;
+        return;
+    }
+
+    const currentComp = selectedComponents[fieldId];
+
+    let html = `<div class="d-flex align-items-center justify-content-between mb-2">
+        <span class="small fw-semibold text-secondary">
+            <i class="fas fa-balance-scale me-1"></i>Альтернативы (${alts.length})
+        </span>
+        <span class="small text-muted">Нажмите на карточку для замены</span>
+    </div>
+    <div class="alt-scroll">`;
+
+    alts.forEach(alt => {
+        const isCurrent = currentComp && currentComp.id === alt.id;
+        const imgHtml = (alt.images && alt.images.length > 0)
+            ? `<img src="${alt.images[0]}" class="alt-card-img" alt=""
+                   onerror="this.outerHTML='<div class=alt-img-placeholder><i class=fas fa-box></i></div>'">`
+            : `<div class="alt-img-placeholder"><i class="fas fa-box"></i></div>`;
+
+        let diffHtml = '';
+        if (alt.price_diff === 0) {
+            diffHtml = `<span class="price-diff-zero small">= такая же цена</span>`;
+        } else if (alt.price_diff > 0) {
+            diffHtml = `<span class="price-diff-positive small">+${new Intl.NumberFormat('ru-RU').format(alt.price_diff)} ₽</span>`;
+        } else {
+            diffHtml = `<span class="price-diff-negative small">${new Intl.NumberFormat('ru-RU').format(alt.price_diff)} ₽</span>`;
+        }
+
+        const ratingHtml = alt.rating
+            ? `<span class="text-warning" style="font-size:.7rem">★ ${alt.rating.toFixed(1)}</span>`
+            : '';
+
+        const nameShort = alt.name.length > 55 ? alt.name.slice(0, 55) + '…' : alt.name;
+
+        html += `<div class="alt-card ${isCurrent ? 'is-current' : ''}"
+                      onclick="selectAltComponent(${JSON.stringify(alt).replace(/"/g, '&quot;')}, '${fieldId}', '${ptype}')">
+            ${imgHtml}
+            <div class="small mt-1 lh-sm" style="font-size:.72rem">${nameShort}</div>
+            <div class="d-flex align-items-center justify-content-between mt-1 flex-wrap gap-1">
+                <span class="fw-bold text-danger" style="font-size:.75rem">
+                    ${new Intl.NumberFormat('ru-RU').format(alt.price)} ₽
+                </span>
+                ${ratingHtml}
+            </div>
+            <div class="mt-1">${diffHtml}</div>
+        </div>`;
+    });
+
+    html += '</div>';
+    panel.innerHTML = html;
+    panel.classList.add('visible');
+}
+
+function selectAltComponent(alt, fieldId, ptype) {
+    /* Заменяем текущий компонент на альтернативу */
+    currentModalField = fieldId;
+    currentModalType  = ptype;
+
+    /* Заполняем кэш модального окна чтобы selectComponent мог найти объект */
+    modalComponentsCache.set(alt.id, alt);
+    selectComponent(alt);
+}
+
+function refreshAllAlternatives() {
+    Object.entries(selectedComponents).forEach(([fieldId, comp]) => {
+        const panel = document.getElementById('alternatives-' + fieldId);
+        const ptype = panel ? panel.dataset.ptype : null;
+        loadAlternatives(fieldId, comp.id, ptype);
+    });
+}
+
+function hideAllAlternatives() {
+    document.querySelectorAll('.alternatives-panel').forEach(p => {
+        p.classList.remove('visible');
+        p.innerHTML = '';
+    });
+}
+
+/* ══ End Alternatives ══════════════════════════════════════════════ */
 
 function updateConfigInfo() {
     const ids = {
@@ -516,6 +723,17 @@ $(document).ready(function() {
     $('#modalShowAllBtn').on('click', function() {
         loadComponents(currentModalType, '');
     });
+
+    /* Переключатель «Похожие товары» */
+    $('#altToggle').on('change', function() {
+        altModeEnabled = this.checked;
+        if (altModeEnabled) {
+            refreshAllAlternatives();
+        } else {
+            hideAllAlternatives();
+        }
+    });
+
     updateConfigInfo();
 });
 </script>

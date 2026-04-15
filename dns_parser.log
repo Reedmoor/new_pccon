@@ -12331,3 +12331,720 @@ Stacktrace:
 2025-06-21 18:20:05,567 - INFO - Saved data for product: 4000 ГБ 2.5" SATA накопитель Samsung 870 EVO [MZ-77E4T0BW]
 2025-06-21 18:20:05,994 - INFO - Product details parsing complete!
 2025-10-27 16:07:27,393 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 09:33:09,544 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 09:49:56,995 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:05:39,270 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:10:29,717 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:27:53,620 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:35:02,442 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:37:18,926 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:39:21,926 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 10:39:31,165 - INFO - Reading URLs from urls.txt
+2026-04-15 10:39:31,166 - INFO - Found 18 URLs to process
+2026-04-15 10:39:31,166 - INFO - Processing URL 1/18: https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 10:39:31,166 - INFO - Processing URL: https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 10:40:35,945 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd8cdf3+10b03]
+	undetected_chromedriver!GetHandleVerifier [0xd8cf24+10c34]
+	undetected_chromedriver!(No symbol) [0xb72120]
+	undetected_chromedriver!(No symbol) [0xbbabca]
+	undetected_chromedriver!(No symbol) [0xbbae6b]
+	undetected_chromedriver!(No symbol) [0xbfd0b2]
+	undetected_chromedriver!(No symbol) [0xbddb54]
+	undetected_chromedriver!(No symbol) [0xbfa9a5]
+	undetected_chromedriver!(No symbol) [0xbdd8a6]
+	undetected_chromedriver!(No symbol) [0xbb0229]
+	undetected_chromedriver!(No symbol) [0xbb0fe4]
+	undetected_chromedriver!GetHandleVerifier [0xff48b9+2785c9]
+	undetected_chromedriver!GetHandleVerifier [0xfefeb5+273bc5]
+	undetected_chromedriver!GetHandleVerifier [0x100e06b+291d7b]
+	undetected_chromedriver!GetHandleVerifier [0xda5cc8+299d8]
+	undetected_chromedriver!GetHandleVerifier [0xdad9fd+3170d]
+	undetected_chromedriver!GetHandleVerifier [0xd958c8+195d8]
+	undetected_chromedriver!GetHandleVerifier [0xd95a92+197a2]
+	undetected_chromedriver!GetHandleVerifier [0xd7ee9a+2baa]
+	KERNEL32!BaseThreadInitThunk [0x754d5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x776bd83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x776bd7c1+231]
+
+2026-04-15 10:40:43,591 - INFO - Parsed product: Материнская плата ASRock Phantom Gaming X870E NOVA WIFI
+2026-04-15 10:40:43,638 - INFO - Added new product data for https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 10:40:43,884 - INFO - Saved data for product: Материнская плата ASRock Phantom Gaming X870E NOVA WIFI
+2026-04-15 10:40:43,885 - INFO - Processing URL 2/18: https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 10:40:43,885 - INFO - Processing URL: https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 10:41:10,515 - INFO - Parsed product: Материнская плата MSI B760 GAMING PLUS WIFI
+2026-04-15 10:41:10,554 - INFO - Updated existing product data for https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 10:41:10,740 - INFO - Saved data for product: Материнская плата MSI B760 GAMING PLUS WIFI
+2026-04-15 10:41:10,741 - INFO - Processing URL 3/18: https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 10:41:10,741 - INFO - Processing URL: https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 10:41:59,684 - INFO - Parsed product: Материнская плата GIGABYTE B550M DS3H R2
+2026-04-15 10:41:59,728 - INFO - Added new product data for https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 10:41:59,919 - INFO - Saved data for product: Материнская плата GIGABYTE B550M DS3H R2
+2026-04-15 10:41:59,919 - INFO - Processing URL 4/18: https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 10:41:59,920 - INFO - Processing URL: https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 10:42:22,294 - INFO - Parsed product: Материнская плата MSI MAG B850 TOMAHAWK MAX WIFI
+2026-04-15 10:42:22,336 - INFO - Added new product data for https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 10:42:22,516 - INFO - Saved data for product: Материнская плата MSI MAG B850 TOMAHAWK MAX WIFI
+2026-04-15 10:42:22,517 - INFO - Processing URL 5/18: https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 10:42:22,517 - INFO - Processing URL: https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 10:42:42,444 - INFO - Parsed product: Материнская плата MSI B850 GAMING PLUS WIFI
+2026-04-15 10:42:42,496 - INFO - Added new product data for https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 10:42:42,753 - INFO - Saved data for product: Материнская плата MSI B850 GAMING PLUS WIFI
+2026-04-15 10:42:42,754 - INFO - Processing URL 6/18: https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 10:42:42,754 - INFO - Processing URL: https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 10:43:00,414 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd8cdf3+10b03]
+	undetected_chromedriver!GetHandleVerifier [0xd8cf24+10c34]
+	undetected_chromedriver!(No symbol) [0xb72120]
+	undetected_chromedriver!(No symbol) [0xbbabca]
+	undetected_chromedriver!(No symbol) [0xbbae6b]
+	undetected_chromedriver!(No symbol) [0xbfd0b2]
+	undetected_chromedriver!(No symbol) [0xbddb54]
+	undetected_chromedriver!(No symbol) [0xbfa9a5]
+	undetected_chromedriver!(No symbol) [0xbdd8a6]
+	undetected_chromedriver!(No symbol) [0xbb0229]
+	undetected_chromedriver!(No symbol) [0xbb0fe4]
+	undetected_chromedriver!GetHandleVerifier [0xff48b9+2785c9]
+	undetected_chromedriver!GetHandleVerifier [0xfefeb5+273bc5]
+	undetected_chromedriver!GetHandleVerifier [0x100e06b+291d7b]
+	undetected_chromedriver!GetHandleVerifier [0xda5cc8+299d8]
+	undetected_chromedriver!GetHandleVerifier [0xdad9fd+3170d]
+	undetected_chromedriver!GetHandleVerifier [0xd958c8+195d8]
+	undetected_chromedriver!GetHandleVerifier [0xd95a92+197a2]
+	undetected_chromedriver!GetHandleVerifier [0xd7ee9a+2baa]
+	KERNEL32!BaseThreadInitThunk [0x754d5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x776bd83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x776bd7c1+231]
+
+2026-04-15 10:43:00,508 - WARNING - Контейнер с характеристиками не найден в HTML
+2026-04-15 10:43:15,983 - INFO - Parsed product: Материнская плата GIGABYTE A520M K V2
+2026-04-15 10:43:16,022 - INFO - Added new product data for https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 10:43:16,206 - INFO - Saved data for product: Материнская плата GIGABYTE A520M K V2
+2026-04-15 10:43:16,206 - INFO - Processing URL 7/18: https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 10:43:16,207 - INFO - Processing URL: https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 10:44:00,431 - INFO - Parsed product: Материнская плата MSI A520M-A PRO
+2026-04-15 10:44:00,475 - INFO - Added new product data for https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 10:44:00,671 - INFO - Saved data for product: Материнская плата MSI A520M-A PRO
+2026-04-15 10:44:00,671 - INFO - Processing URL 8/18: https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 10:44:00,672 - INFO - Processing URL: https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 10:44:40,560 - INFO - Parsed product: Материнская плата ASRock B650M Pro RS
+2026-04-15 10:44:40,599 - INFO - Added new product data for https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 10:44:40,804 - INFO - Saved data for product: Материнская плата ASRock B650M Pro RS
+2026-04-15 10:44:40,805 - INFO - Processing URL 9/18: https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 10:44:40,805 - INFO - Processing URL: https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 10:45:19,773 - INFO - Parsed product: Материнская плата GIGABYTE B760M DS3H DDR4
+2026-04-15 10:45:19,822 - INFO - Added new product data for https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 10:45:20,003 - INFO - Saved data for product: Материнская плата GIGABYTE B760M DS3H DDR4
+2026-04-15 10:45:20,004 - INFO - Processing URL 10/18: https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 10:45:20,005 - INFO - Processing URL: https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 10:45:39,901 - INFO - Parsed product: Материнская плата ASRock B760M PG Lightning/D4
+2026-04-15 10:45:39,951 - INFO - Added new product data for https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 10:45:40,157 - INFO - Saved data for product: Материнская плата ASRock B760M PG Lightning/D4
+2026-04-15 10:45:40,157 - INFO - Processing URL 11/18: https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 10:45:40,158 - INFO - Processing URL: https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 10:45:59,222 - INFO - Parsed product: Материнская плата GIGABYTE B550 GAMING X V2
+2026-04-15 10:45:59,387 - INFO - Added new product data for https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 10:45:59,606 - INFO - Saved data for product: Материнская плата GIGABYTE B550 GAMING X V2
+2026-04-15 10:45:59,607 - INFO - Processing URL 12/18: https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 10:45:59,607 - INFO - Processing URL: https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 10:46:21,674 - INFO - Parsed product: Материнская плата MSI PRO B760M-A DDR4 II
+2026-04-15 10:46:21,726 - INFO - Added new product data for https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 10:46:21,957 - INFO - Saved data for product: Материнская плата MSI PRO B760M-A DDR4 II
+2026-04-15 10:46:21,958 - INFO - Processing URL 13/18: https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 10:46:21,958 - INFO - Processing URL: https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 10:47:00,771 - INFO - Parsed product: Материнская плата MSI B550M PRO-VDH
+2026-04-15 10:47:00,814 - INFO - Added new product data for https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 10:47:01,023 - INFO - Saved data for product: Материнская плата MSI B550M PRO-VDH
+2026-04-15 10:47:01,023 - INFO - Processing URL 14/18: https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 10:47:01,024 - INFO - Processing URL: https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 10:47:42,305 - INFO - Parsed product: Материнская плата MSI PRO H610M-E DDR4
+2026-04-15 10:47:42,350 - INFO - Added new product data for https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 10:47:42,575 - INFO - Saved data for product: Материнская плата MSI PRO H610M-E DDR4
+2026-04-15 10:47:42,575 - INFO - Processing URL 15/18: https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 10:47:42,576 - INFO - Processing URL: https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 10:48:06,535 - INFO - Parsed product: Материнская плата GIGABYTE B550 AORUS ELITE V2
+2026-04-15 10:48:06,585 - INFO - Added new product data for https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 10:48:06,819 - INFO - Saved data for product: Материнская плата GIGABYTE B550 AORUS ELITE V2
+2026-04-15 10:48:06,820 - INFO - Processing URL 16/18: https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 10:48:06,820 - INFO - Processing URL: https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 10:48:26,748 - INFO - Parsed product: Материнская плата MSI B550M PRO-VDH WIFI
+2026-04-15 10:48:26,794 - INFO - Added new product data for https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 10:48:26,990 - INFO - Saved data for product: Материнская плата MSI B550M PRO-VDH WIFI
+2026-04-15 10:48:26,991 - INFO - Processing URL 17/18: https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 10:48:26,991 - INFO - Processing URL: https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 10:48:50,116 - INFO - Parsed product: Материнская плата MSI MPG B550 GAMING PLUS
+2026-04-15 10:48:50,165 - INFO - Updated existing product data for https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 10:48:50,354 - INFO - Saved data for product: Материнская плата MSI MPG B550 GAMING PLUS
+2026-04-15 10:48:50,355 - INFO - Processing URL 18/18: https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 10:48:50,355 - INFO - Processing URL: https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 10:49:31,450 - INFO - Parsed product: Материнская плата GIGABYTE B550M AORUS ELITE
+2026-04-15 10:49:31,493 - INFO - Added new product data for https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 10:49:31,705 - INFO - Saved data for product: Материнская плата GIGABYTE B550M AORUS ELITE
+2026-04-15 10:49:33,112 - INFO - Product details parsing complete!
+2026-04-15 11:35:01,843 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 11:36:58,700 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 11:37:07,344 - INFO - Reading URLs from urls.txt
+2026-04-15 11:37:07,345 - INFO - Found 50 URLs to process
+2026-04-15 11:37:07,345 - INFO - Processing URL 1/50: https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 11:37:07,346 - INFO - Processing URL: https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 11:38:23,471 - WARNING - Не удалось нажать на кнопку 'Развернуть все': Message: 
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x9ccdf3+10b03]
+	undetected_chromedriver!GetHandleVerifier [0x9ccf24+10c34]
+	undetected_chromedriver!(No symbol) [0x7b2120]
+	undetected_chromedriver!(No symbol) [0x7fabca]
+	undetected_chromedriver!(No symbol) [0x7fae6b]
+	undetected_chromedriver!(No symbol) [0x83d0b2]
+	undetected_chromedriver!(No symbol) [0x81db54]
+	undetected_chromedriver!(No symbol) [0x83a9a5]
+	undetected_chromedriver!(No symbol) [0x81d8a6]
+	undetected_chromedriver!(No symbol) [0x7f0229]
+	undetected_chromedriver!(No symbol) [0x7f0fe4]
+	undetected_chromedriver!GetHandleVerifier [0xc348b9+2785c9]
+	undetected_chromedriver!GetHandleVerifier [0xc2feb5+273bc5]
+	undetected_chromedriver!GetHandleVerifier [0xc4e06b+291d7b]
+	undetected_chromedriver!GetHandleVerifier [0x9e5cc8+299d8]
+	undetected_chromedriver!GetHandleVerifier [0x9ed9fd+3170d]
+	undetected_chromedriver!GetHandleVerifier [0x9d58c8+195d8]
+	undetected_chromedriver!GetHandleVerifier [0x9d5a92+197a2]
+	undetected_chromedriver!GetHandleVerifier [0x9bee9a+2baa]
+	KERNEL32!BaseThreadInitThunk [0x754d5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x776bd83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x776bd7c1+231]
+
+2026-04-15 11:38:29,380 - INFO - Parsed product: Материнская плата GIGABYTE B550 GAMING X V2
+2026-04-15 11:38:29,383 - INFO - Added new product data for https://www.dns-shop.ru/product/35162b08e5d63332/materinskaa-plata-gigabyte-b550-gaming-x-v2/
+2026-04-15 11:38:29,384 - INFO - Saved data for product: Материнская плата GIGABYTE B550 GAMING X V2
+2026-04-15 11:38:29,385 - INFO - Processing URL 2/50: https://www.dns-shop.ru/product/39126f8d086bd21a/materinskaa-plata-asrock-b850m-pro-rs-wifi/
+2026-04-15 11:38:29,385 - INFO - Processing URL: https://www.dns-shop.ru/product/39126f8d086bd21a/materinskaa-plata-asrock-b850m-pro-rs-wifi/
+2026-04-15 11:38:46,369 - INFO - Parsed product: Материнская плата ASRock B850M Pro RS WiFi
+2026-04-15 11:38:46,370 - INFO - Added new product data for https://www.dns-shop.ru/product/39126f8d086bd21a/materinskaa-plata-asrock-b850m-pro-rs-wifi/
+2026-04-15 11:38:46,373 - INFO - Saved data for product: Материнская плата ASRock B850M Pro RS WiFi
+2026-04-15 11:38:46,374 - INFO - Processing URL 3/50: https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 11:38:46,374 - INFO - Processing URL: https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 11:39:40,903 - INFO - Parsed product: Материнская плата MSI B550M PRO-VDH WIFI
+2026-04-15 11:39:40,905 - INFO - Added new product data for https://www.dns-shop.ru/product/232aa9fcb9a11b80/materinskaa-plata-msi-b550m-pro-vdh-wifi/
+2026-04-15 11:39:40,909 - INFO - Saved data for product: Материнская плата MSI B550M PRO-VDH WIFI
+2026-04-15 11:39:40,909 - INFO - Processing URL 4/50: https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 11:39:40,909 - INFO - Processing URL: https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 11:39:57,743 - INFO - Parsed product: Материнская плата MSI B550M PRO-VDH
+2026-04-15 11:39:57,745 - INFO - Added new product data for https://www.dns-shop.ru/product/abbdff8032e53332/materinskaa-plata-msi-b550m-pro-vdh/
+2026-04-15 11:39:57,748 - INFO - Saved data for product: Материнская плата MSI B550M PRO-VDH
+2026-04-15 11:39:57,749 - INFO - Processing URL 5/50: https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 11:39:57,749 - INFO - Processing URL: https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 11:40:14,198 - INFO - Parsed product: Материнская плата MSI MPG B550 GAMING PLUS
+2026-04-15 11:40:14,199 - INFO - Added new product data for https://www.dns-shop.ru/product/232aa9f9b9a11b80/materinskaa-plata-msi-mpg-b550-gaming-plus/
+2026-04-15 11:40:14,206 - INFO - Saved data for product: Материнская плата MSI MPG B550 GAMING PLUS
+2026-04-15 11:40:14,207 - INFO - Processing URL 6/50: https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 11:40:14,207 - INFO - Processing URL: https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 11:40:32,485 - INFO - Parsed product: Материнская плата ASRock B650M Pro RS
+2026-04-15 11:40:32,488 - INFO - Added new product data for https://www.dns-shop.ru/product/090c477cf389ed20/materinskaa-plata-asrock-b650m-pro-rs/
+2026-04-15 11:40:32,494 - INFO - Saved data for product: Материнская плата ASRock B650M Pro RS
+2026-04-15 11:40:32,494 - INFO - Processing URL 7/50: https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 11:40:32,494 - INFO - Processing URL: https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 11:40:51,716 - INFO - Parsed product: Материнская плата GIGABYTE B550 AORUS ELITE V2
+2026-04-15 11:40:51,719 - INFO - Added new product data for https://www.dns-shop.ru/product/556eadf1e5cf3332/materinskaa-plata-gigabyte-b550-aorus-elite-v2/
+2026-04-15 11:40:51,724 - INFO - Saved data for product: Материнская плата GIGABYTE B550 AORUS ELITE V2
+2026-04-15 11:40:51,724 - INFO - Processing URL 8/50: https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 11:40:51,724 - INFO - Processing URL: https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 11:41:08,843 - INFO - Parsed product: Материнская плата MSI B850 GAMING PLUS WIFI
+2026-04-15 11:41:08,846 - INFO - Added new product data for https://www.dns-shop.ru/product/ec6a873ec35ed582/materinskaa-plata-msi-b850-gaming-plus-wifi/
+2026-04-15 11:41:08,852 - INFO - Saved data for product: Материнская плата MSI B850 GAMING PLUS WIFI
+2026-04-15 11:41:08,853 - INFO - Processing URL 9/50: https://www.dns-shop.ru/product/9051c4d1c360d582/materinskaa-plata-msi-x870-gaming-plus-wifi/
+2026-04-15 11:41:08,853 - INFO - Processing URL: https://www.dns-shop.ru/product/9051c4d1c360d582/materinskaa-plata-msi-x870-gaming-plus-wifi/
+2026-04-15 11:41:25,496 - INFO - Parsed product: Материнская плата MSI X870 GAMING PLUS WIFI
+2026-04-15 11:41:25,501 - INFO - Added new product data for https://www.dns-shop.ru/product/9051c4d1c360d582/materinskaa-plata-msi-x870-gaming-plus-wifi/
+2026-04-15 11:41:25,510 - INFO - Saved data for product: Материнская плата MSI X870 GAMING PLUS WIFI
+2026-04-15 11:41:25,510 - INFO - Processing URL 10/50: https://www.dns-shop.ru/product/b8ca618fc35fd582/materinskaa-plata-msi-pro-b850-p-wifi/
+2026-04-15 11:41:25,510 - INFO - Processing URL: https://www.dns-shop.ru/product/b8ca618fc35fd582/materinskaa-plata-msi-pro-b850-p-wifi/
+2026-04-15 11:41:46,632 - INFO - Parsed product: Материнская плата MSI PRO B850-P WIFI
+2026-04-15 11:41:46,635 - INFO - Added new product data for https://www.dns-shop.ru/product/b8ca618fc35fd582/materinskaa-plata-msi-pro-b850-p-wifi/
+2026-04-15 11:41:46,643 - INFO - Saved data for product: Материнская плата MSI PRO B850-P WIFI
+2026-04-15 11:41:46,643 - INFO - Processing URL 11/50: https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 11:41:46,644 - INFO - Processing URL: https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 11:42:02,360 - INFO - Parsed product: Материнская плата MSI PRO B760M-A DDR4 II
+2026-04-15 11:42:02,362 - INFO - Added new product data for https://www.dns-shop.ru/product/f83aa9e8cedbed20/materinskaa-plata-msi-pro-b760m-a-ddr4-ii/
+2026-04-15 11:42:02,371 - INFO - Saved data for product: Материнская плата MSI PRO B760M-A DDR4 II
+2026-04-15 11:42:02,371 - INFO - Processing URL 12/50: https://www.dns-shop.ru/product/67a76435d147ed20/materinskaa-plata-asrock-b650-steel-legend-wifi/
+2026-04-15 11:42:02,371 - INFO - Processing URL: https://www.dns-shop.ru/product/67a76435d147ed20/materinskaa-plata-asrock-b650-steel-legend-wifi/
+2026-04-15 11:42:19,418 - INFO - Parsed product: Материнская плата ASRock B650 Steel Legend WiFi
+2026-04-15 11:42:19,422 - INFO - Added new product data for https://www.dns-shop.ru/product/67a76435d147ed20/materinskaa-plata-asrock-b650-steel-legend-wifi/
+2026-04-15 11:42:19,433 - INFO - Saved data for product: Материнская плата ASRock B650 Steel Legend WiFi
+2026-04-15 11:42:19,433 - INFO - Processing URL 13/50: https://www.dns-shop.ru/product/235f8bc15682d21a/materinskaa-plata-gigabyte-b760-gaming-x-d4-gen5/
+2026-04-15 11:42:19,434 - INFO - Processing URL: https://www.dns-shop.ru/product/235f8bc15682d21a/materinskaa-plata-gigabyte-b760-gaming-x-d4-gen5/
+2026-04-15 11:42:36,255 - INFO - Parsed product: Материнская плата Gigabyte B760 GAMING X D4 GEN5
+2026-04-15 11:42:36,259 - INFO - Added new product data for https://www.dns-shop.ru/product/235f8bc15682d21a/materinskaa-plata-gigabyte-b760-gaming-x-d4-gen5/
+2026-04-15 11:42:36,268 - INFO - Saved data for product: Материнская плата Gigabyte B760 GAMING X D4 GEN5
+2026-04-15 11:42:36,269 - INFO - Processing URL 14/50: https://www.dns-shop.ru/product/5c934b48f260d0a4/materinskaa-plata-asus-tuf-gaming-b850-plus-wifi/
+2026-04-15 11:42:36,269 - INFO - Processing URL: https://www.dns-shop.ru/product/5c934b48f260d0a4/materinskaa-plata-asus-tuf-gaming-b850-plus-wifi/
+2026-04-15 11:42:52,092 - INFO - Parsed product: Материнская плата ASUS TUF GAMING B850-PLUS WIFI
+2026-04-15 11:42:52,095 - INFO - Added new product data for https://www.dns-shop.ru/product/5c934b48f260d0a4/materinskaa-plata-asus-tuf-gaming-b850-plus-wifi/
+2026-04-15 11:42:52,105 - INFO - Saved data for product: Материнская плата ASUS TUF GAMING B850-PLUS WIFI
+2026-04-15 11:42:52,105 - INFO - Processing URL 15/50: https://www.dns-shop.ru/product/c5f90548f386ed20/materinskaa-plata-asrock-h510m-hdvm2-se/
+2026-04-15 11:42:52,105 - INFO - Processing URL: https://www.dns-shop.ru/product/c5f90548f386ed20/materinskaa-plata-asrock-h510m-hdvm2-se/
+2026-04-15 11:43:06,716 - INFO - Parsed product: Материнская плата ASRock H510M-HDV/M.2 SE
+2026-04-15 11:43:06,722 - INFO - Added new product data for https://www.dns-shop.ru/product/c5f90548f386ed20/materinskaa-plata-asrock-h510m-hdvm2-se/
+2026-04-15 11:43:06,732 - INFO - Saved data for product: Материнская плата ASRock H510M-HDV/M.2 SE
+2026-04-15 11:43:06,732 - INFO - Processing URL 16/50: https://www.dns-shop.ru/product/f2e7433a613b3332/materinskaa-plata-asus-prime-h510m-a/
+2026-04-15 11:43:06,732 - INFO - Processing URL: https://www.dns-shop.ru/product/f2e7433a613b3332/materinskaa-plata-asus-prime-h510m-a/
+2026-04-15 11:43:21,643 - INFO - Parsed product: Материнская плата ASUS PRIME H510M-A
+2026-04-15 11:43:21,648 - INFO - Added new product data for https://www.dns-shop.ru/product/f2e7433a613b3332/materinskaa-plata-asus-prime-h510m-a/
+2026-04-15 11:43:21,660 - INFO - Saved data for product: Материнская плата ASUS PRIME H510M-A
+2026-04-15 11:43:21,660 - INFO - Processing URL 17/50: https://www.dns-shop.ru/product/e21576e981d0ed20/materinskaa-plata-msi-mag-b760-tomahawk-wifi/
+2026-04-15 11:43:21,660 - INFO - Processing URL: https://www.dns-shop.ru/product/e21576e981d0ed20/materinskaa-plata-msi-mag-b760-tomahawk-wifi/
+2026-04-15 11:43:38,413 - INFO - Parsed product: Материнская плата MSI MAG B760 TOMAHAWK WIFI
+2026-04-15 11:43:38,418 - INFO - Added new product data for https://www.dns-shop.ru/product/e21576e981d0ed20/materinskaa-plata-msi-mag-b760-tomahawk-wifi/
+2026-04-15 11:43:38,429 - INFO - Saved data for product: Материнская плата MSI MAG B760 TOMAHAWK WIFI
+2026-04-15 11:43:38,429 - INFO - Processing URL 18/50: https://www.dns-shop.ru/product/77439794ba6ded20/materinskaa-plata-msi-b650m-gaming-plus-wifi/
+2026-04-15 11:43:38,429 - INFO - Processing URL: https://www.dns-shop.ru/product/77439794ba6ded20/materinskaa-plata-msi-b650m-gaming-plus-wifi/
+2026-04-15 11:43:55,462 - INFO - Parsed product: Материнская плата MSI B650M GAMING PLUS WIFI
+2026-04-15 11:43:55,467 - INFO - Added new product data for https://www.dns-shop.ru/product/77439794ba6ded20/materinskaa-plata-msi-b650m-gaming-plus-wifi/
+2026-04-15 11:43:55,478 - INFO - Saved data for product: Материнская плата MSI B650M GAMING PLUS WIFI
+2026-04-15 11:43:55,478 - INFO - Processing URL 19/50: https://www.dns-shop.ru/product/910dd8a19625ed20/materinskaa-plata-gigabyte-h610m-k-ddr4/
+2026-04-15 11:43:55,479 - INFO - Processing URL: https://www.dns-shop.ru/product/910dd8a19625ed20/materinskaa-plata-gigabyte-h610m-k-ddr4/
+2026-04-15 11:44:31,587 - INFO - Parsed product: Материнская плата GIGABYTE H610M K DDR4
+2026-04-15 11:44:31,590 - INFO - Added new product data for https://www.dns-shop.ru/product/910dd8a19625ed20/materinskaa-plata-gigabyte-h610m-k-ddr4/
+2026-04-15 11:44:31,606 - INFO - Saved data for product: Материнская плата GIGABYTE H610M K DDR4
+2026-04-15 11:44:31,606 - INFO - Processing URL 20/50: https://www.dns-shop.ru/product/7de2c9f990ac1b80/materinskaa-plata-asrock-b450m-hdv-r40/
+2026-04-15 11:44:31,606 - INFO - Processing URL: https://www.dns-shop.ru/product/7de2c9f990ac1b80/materinskaa-plata-asrock-b450m-hdv-r40/
+2026-04-15 11:44:48,306 - INFO - Parsed product: Материнская плата ASRock B450M-HDV R4.0
+2026-04-15 11:44:48,311 - INFO - Added new product data for https://www.dns-shop.ru/product/7de2c9f990ac1b80/materinskaa-plata-asrock-b450m-hdv-r40/
+2026-04-15 11:44:48,326 - INFO - Saved data for product: Материнская плата ASRock B450M-HDV R4.0
+2026-04-15 11:44:48,327 - INFO - Processing URL 21/50: https://www.dns-shop.ru/product/87a19b005eafd9cb/materinskaa-plata-msi-pro-b650-a-wifi/
+2026-04-15 11:44:48,327 - INFO - Processing URL: https://www.dns-shop.ru/product/87a19b005eafd9cb/materinskaa-plata-msi-pro-b650-a-wifi/
+2026-04-15 11:45:05,211 - INFO - Parsed product: Материнская плата MSI PRO B650-A WIFI
+2026-04-15 11:45:05,215 - INFO - Added new product data for https://www.dns-shop.ru/product/87a19b005eafd9cb/materinskaa-plata-msi-pro-b650-a-wifi/
+2026-04-15 11:45:05,230 - INFO - Saved data for product: Материнская плата MSI PRO B650-A WIFI
+2026-04-15 11:45:05,230 - INFO - Processing URL 22/50: https://www.dns-shop.ru/product/4eb39d0e5602ed20/materinskaa-plata-msi-mag-b760m-mortar-wifi-ii/
+2026-04-15 11:45:05,231 - INFO - Processing URL: https://www.dns-shop.ru/product/4eb39d0e5602ed20/materinskaa-plata-msi-mag-b760m-mortar-wifi-ii/
+2026-04-15 11:45:22,682 - INFO - Parsed product: Материнская плата MSI MAG B760M MORTAR WIFI II
+2026-04-15 11:45:22,806 - INFO - Added new product data for https://www.dns-shop.ru/product/4eb39d0e5602ed20/materinskaa-plata-msi-mag-b760m-mortar-wifi-ii/
+2026-04-15 11:45:22,823 - INFO - Saved data for product: Материнская плата MSI MAG B760M MORTAR WIFI II
+2026-04-15 11:45:22,823 - INFO - Processing URL 23/50: https://www.dns-shop.ru/product/03c8c7125605ed20/materinskaa-plata-msi-z790-gaming-plus-wifi/
+2026-04-15 11:45:22,824 - INFO - Processing URL: https://www.dns-shop.ru/product/03c8c7125605ed20/materinskaa-plata-msi-z790-gaming-plus-wifi/
+2026-04-15 11:45:39,408 - INFO - Parsed product: Материнская плата MSI Z790 GAMING PLUS WIFI
+2026-04-15 11:45:39,413 - INFO - Added new product data for https://www.dns-shop.ru/product/03c8c7125605ed20/materinskaa-plata-msi-z790-gaming-plus-wifi/
+2026-04-15 11:45:39,429 - INFO - Saved data for product: Материнская плата MSI Z790 GAMING PLUS WIFI
+2026-04-15 11:45:39,429 - INFO - Processing URL 24/50: https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 11:45:39,429 - INFO - Processing URL: https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 11:45:57,807 - INFO - Parsed product: Материнская плата ASRock Phantom Gaming X870E NOVA WIFI
+2026-04-15 11:45:57,811 - INFO - Added new product data for https://www.dns-shop.ru/product/68d9eb08b2aed9cb/materinskaa-plata-asrock-phantom-gaming-x870e-nova-wifi/
+2026-04-15 11:45:57,830 - INFO - Saved data for product: Материнская плата ASRock Phantom Gaming X870E NOVA WIFI
+2026-04-15 11:45:57,831 - INFO - Processing URL 25/50: https://www.dns-shop.ru/product/d22e0c1c0609d582/materinskaa-plata-msi-pro-h610m-s-ddr4/
+2026-04-15 11:45:57,831 - INFO - Processing URL: https://www.dns-shop.ru/product/d22e0c1c0609d582/materinskaa-plata-msi-pro-h610m-s-ddr4/
+2026-04-15 11:46:13,502 - INFO - Parsed product: Материнская плата MSI PRO H610M-S DDR4
+2026-04-15 11:46:13,508 - INFO - Added new product data for https://www.dns-shop.ru/product/d22e0c1c0609d582/materinskaa-plata-msi-pro-h610m-s-ddr4/
+2026-04-15 11:46:13,527 - INFO - Saved data for product: Материнская плата MSI PRO H610M-S DDR4
+2026-04-15 11:46:13,527 - INFO - Processing URL 26/50: https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 11:46:13,527 - INFO - Processing URL: https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 11:46:30,254 - INFO - Parsed product: Материнская плата MSI A520M-A PRO
+2026-04-15 11:46:30,261 - INFO - Added new product data for https://www.dns-shop.ru/product/13bf2d4ecbcf3332/materinskaa-plata-msi-a520m-a-pro/
+2026-04-15 11:46:30,278 - INFO - Saved data for product: Материнская плата MSI A520M-A PRO
+2026-04-15 11:46:30,278 - INFO - Processing URL 27/50: https://www.dns-shop.ru/product/52ff1f19ba132eb1/materinskaa-plata-msi-a520m-pro/
+2026-04-15 11:46:30,278 - INFO - Processing URL: https://www.dns-shop.ru/product/52ff1f19ba132eb1/materinskaa-plata-msi-a520m-pro/
+2026-04-15 11:46:46,146 - INFO - Parsed product: Материнская плата MSI A520M PRO
+2026-04-15 11:46:46,151 - INFO - Added new product data for https://www.dns-shop.ru/product/52ff1f19ba132eb1/materinskaa-plata-msi-a520m-pro/
+2026-04-15 11:46:46,169 - INFO - Saved data for product: Материнская плата MSI A520M PRO
+2026-04-15 11:46:46,169 - INFO - Processing URL 28/50: https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 11:46:46,170 - INFO - Processing URL: https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 11:47:23,364 - INFO - Parsed product: Материнская плата MSI B760 GAMING PLUS WIFI
+2026-04-15 11:47:23,370 - INFO - Added new product data for https://www.dns-shop.ru/product/b53ec787e255ed20/materinskaa-plata-msi-b760-gaming-plus-wifi/
+2026-04-15 11:47:23,388 - INFO - Saved data for product: Материнская плата MSI B760 GAMING PLUS WIFI
+2026-04-15 11:47:23,388 - INFO - Processing URL 29/50: https://www.dns-shop.ru/product/5072ed084e03ed20/materinskaa-plata-msi-mag-z790-tomahawk-wifi/
+2026-04-15 11:47:23,389 - INFO - Processing URL: https://www.dns-shop.ru/product/5072ed084e03ed20/materinskaa-plata-msi-mag-z790-tomahawk-wifi/
+2026-04-15 11:47:39,784 - INFO - Parsed product: Материнская плата MSI MAG Z790 TOMAHAWK WIFI
+2026-04-15 11:47:39,790 - INFO - Added new product data for https://www.dns-shop.ru/product/5072ed084e03ed20/materinskaa-plata-msi-mag-z790-tomahawk-wifi/
+2026-04-15 11:47:39,812 - INFO - Saved data for product: Материнская плата MSI MAG Z790 TOMAHAWK WIFI
+2026-04-15 11:47:39,812 - INFO - Processing URL 30/50: https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 11:47:39,812 - INFO - Processing URL: https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 11:47:55,900 - INFO - Parsed product: Материнская плата GIGABYTE B550M AORUS ELITE
+2026-04-15 11:47:55,905 - INFO - Added new product data for https://www.dns-shop.ru/product/c44cd14acc801b80/materinskaa-plata-gigabyte-b550m-aorus-elite/
+2026-04-15 11:47:55,930 - INFO - Saved data for product: Материнская плата GIGABYTE B550M AORUS ELITE
+2026-04-15 11:47:55,930 - INFO - Processing URL 31/50: https://www.dns-shop.ru/product/8616d3f1ae00d9cb/materinskaa-plata-gigabyte-b850m-aorus-elite-wifi6e-ice/
+2026-04-15 11:47:55,930 - INFO - Processing URL: https://www.dns-shop.ru/product/8616d3f1ae00d9cb/materinskaa-plata-gigabyte-b850m-aorus-elite-wifi6e-ice/
+2026-04-15 11:48:12,975 - INFO - Parsed product: Материнская плата GIGABYTE B850M AORUS ELITE WIFI6E ICE
+2026-04-15 11:48:12,983 - INFO - Added new product data for https://www.dns-shop.ru/product/8616d3f1ae00d9cb/materinskaa-plata-gigabyte-b850m-aorus-elite-wifi6e-ice/
+2026-04-15 11:48:13,006 - INFO - Saved data for product: Материнская плата GIGABYTE B850M AORUS ELITE WIFI6E ICE
+2026-04-15 11:48:13,006 - INFO - Processing URL 32/50: https://www.dns-shop.ru/product/837427c8adffd9cb/materinskaa-plata-gigabyte-b850-gaming-x-wifi6e/
+2026-04-15 11:48:13,006 - INFO - Processing URL: https://www.dns-shop.ru/product/837427c8adffd9cb/materinskaa-plata-gigabyte-b850-gaming-x-wifi6e/
+2026-04-15 11:48:28,833 - INFO - Parsed product: Материнская плата GIGABYTE B850 GAMING X WIFI6E
+2026-04-15 11:48:28,839 - INFO - Added new product data for https://www.dns-shop.ru/product/837427c8adffd9cb/materinskaa-plata-gigabyte-b850-gaming-x-wifi6e/
+2026-04-15 11:48:28,863 - INFO - Saved data for product: Материнская плата GIGABYTE B850 GAMING X WIFI6E
+2026-04-15 11:48:28,863 - INFO - Processing URL 33/50: https://www.dns-shop.ru/product/9b5ef663f9f6ed20/materinskaa-plata-asrock-b650m-pro-rs-wifi/
+2026-04-15 11:48:28,864 - INFO - Processing URL: https://www.dns-shop.ru/product/9b5ef663f9f6ed20/materinskaa-plata-asrock-b650m-pro-rs-wifi/
+2026-04-15 11:48:46,296 - INFO - Parsed product: Материнская плата ASRock B650M Pro RS WiFi
+2026-04-15 11:48:46,303 - INFO - Added new product data for https://www.dns-shop.ru/product/9b5ef663f9f6ed20/materinskaa-plata-asrock-b650m-pro-rs-wifi/
+2026-04-15 11:48:46,331 - INFO - Saved data for product: Материнская плата ASRock B650M Pro RS WiFi
+2026-04-15 11:48:46,331 - INFO - Processing URL 34/50: https://www.dns-shop.ru/product/69e396144e03ed20/materinskaa-plata-msi-mag-b650-tomahawk-wifi/
+2026-04-15 11:48:46,331 - INFO - Processing URL: https://www.dns-shop.ru/product/69e396144e03ed20/materinskaa-plata-msi-mag-b650-tomahawk-wifi/
+2026-04-15 11:49:07,043 - INFO - Parsed product: Материнская плата MSI MAG B650 TOMAHAWK WIFI
+2026-04-15 11:49:07,050 - INFO - Added new product data for https://www.dns-shop.ru/product/69e396144e03ed20/materinskaa-plata-msi-mag-b650-tomahawk-wifi/
+2026-04-15 11:49:07,084 - INFO - Saved data for product: Материнская плата MSI MAG B650 TOMAHAWK WIFI
+2026-04-15 11:49:07,085 - INFO - Processing URL 35/50: https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 11:49:07,085 - INFO - Processing URL: https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 11:50:15,689 - INFO - Parsed product: Материнская плата GIGABYTE A520M K V2
+2026-04-15 11:50:15,801 - INFO - Added new product data for https://www.dns-shop.ru/product/e21ad95a9626ed20/materinskaa-plata-gigabyte-a520m-k-v2/
+2026-04-15 11:50:15,824 - INFO - Saved data for product: Материнская плата GIGABYTE A520M K V2
+2026-04-15 11:50:15,825 - INFO - Processing URL 36/50: https://www.dns-shop.ru/product/f56fc71081d0ed20/materinskaa-plata-msi-pro-b760m-e-ddr4/
+2026-04-15 11:50:15,825 - INFO - Processing URL: https://www.dns-shop.ru/product/f56fc71081d0ed20/materinskaa-plata-msi-pro-b760m-e-ddr4/
+2026-04-15 11:51:11,879 - INFO - Parsed product: Материнская плата MSI PRO B760M-E DDR4
+2026-04-15 11:51:11,886 - INFO - Added new product data for https://www.dns-shop.ru/product/f56fc71081d0ed20/materinskaa-plata-msi-pro-b760m-e-ddr4/
+2026-04-15 11:51:11,912 - INFO - Saved data for product: Материнская плата MSI PRO B760M-E DDR4
+2026-04-15 11:51:11,912 - INFO - Processing URL 37/50: https://www.dns-shop.ru/product/b9f0424977e7d21a/materinskaa-plata-msi-b850-gaming-plus-wifi6e/
+2026-04-15 11:51:11,913 - INFO - Processing URL: https://www.dns-shop.ru/product/b9f0424977e7d21a/materinskaa-plata-msi-b850-gaming-plus-wifi6e/
+2026-04-15 11:51:31,694 - INFO - Parsed product: Материнская плата MSI B850 GAMING PLUS WIFI6E
+2026-04-15 11:51:31,702 - INFO - Added new product data for https://www.dns-shop.ru/product/b9f0424977e7d21a/materinskaa-plata-msi-b850-gaming-plus-wifi6e/
+2026-04-15 11:51:31,725 - INFO - Saved data for product: Материнская плата MSI B850 GAMING PLUS WIFI6E
+2026-04-15 11:51:31,725 - INFO - Processing URL 38/50: https://www.dns-shop.ru/product/7954bcf9b65fed20/materinskaa-plata-gigabyte-b550m-k/
+2026-04-15 11:51:31,725 - INFO - Processing URL: https://www.dns-shop.ru/product/7954bcf9b65fed20/materinskaa-plata-gigabyte-b550m-k/
+2026-04-15 11:51:52,111 - INFO - Parsed product: Материнская плата GIGABYTE B550M K
+2026-04-15 11:51:52,120 - INFO - Added new product data for https://www.dns-shop.ru/product/7954bcf9b65fed20/materinskaa-plata-gigabyte-b550m-k/
+2026-04-15 11:51:52,143 - INFO - Saved data for product: Материнская плата GIGABYTE B550M K
+2026-04-15 11:51:52,144 - INFO - Processing URL 39/50: https://www.dns-shop.ru/product/8b70ff397a15d582/materinskaa-plata-msi-mpg-x870e-carbon-wifi/
+2026-04-15 11:51:52,144 - INFO - Processing URL: https://www.dns-shop.ru/product/8b70ff397a15d582/materinskaa-plata-msi-mpg-x870e-carbon-wifi/
+2026-04-15 11:52:12,647 - INFO - Parsed product: Материнская плата MSI MPG X870E CARBON WIFI
+2026-04-15 11:52:12,654 - INFO - Added new product data for https://www.dns-shop.ru/product/8b70ff397a15d582/materinskaa-plata-msi-mpg-x870e-carbon-wifi/
+2026-04-15 11:52:12,687 - INFO - Saved data for product: Материнская плата MSI MPG X870E CARBON WIFI
+2026-04-15 11:52:12,687 - INFO - Processing URL 40/50: https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 11:52:12,688 - INFO - Processing URL: https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 11:52:33,157 - INFO - Parsed product: Материнская плата MSI MAG B850 TOMAHAWK MAX WIFI
+2026-04-15 11:52:33,165 - INFO - Added new product data for https://www.dns-shop.ru/product/0e99e58235ead582/materinskaa-plata-msi-mag-b850-tomahawk-max-wifi/
+2026-04-15 11:52:33,193 - INFO - Saved data for product: Материнская плата MSI MAG B850 TOMAHAWK MAX WIFI
+2026-04-15 11:52:33,193 - INFO - Processing URL 41/50: https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 11:52:33,193 - INFO - Processing URL: https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 11:52:59,472 - INFO - Parsed product: Материнская плата GIGABYTE B550M DS3H R2
+2026-04-15 11:52:59,481 - INFO - Added new product data for https://www.dns-shop.ru/product/910774492584d0a4/materinskaa-plata-gigabyte-b550m-ds3h-r2/
+2026-04-15 11:52:59,510 - INFO - Saved data for product: Материнская плата GIGABYTE B550M DS3H R2
+2026-04-15 11:52:59,510 - INFO - Processing URL 42/50: https://www.dns-shop.ru/product/f56fc70e81d0ed20/materinskaa-plata-msi-pro-b760m-p-ddr4/
+2026-04-15 11:52:59,511 - INFO - Processing URL: https://www.dns-shop.ru/product/f56fc70e81d0ed20/materinskaa-plata-msi-pro-b760m-p-ddr4/
+2026-04-15 11:53:18,397 - INFO - Parsed product: Материнская плата MSI PRO B760M-P DDR4
+2026-04-15 11:53:18,407 - INFO - Added new product data for https://www.dns-shop.ru/product/f56fc70e81d0ed20/materinskaa-plata-msi-pro-b760m-p-ddr4/
+2026-04-15 11:53:18,437 - INFO - Saved data for product: Материнская плата MSI PRO B760M-P DDR4
+2026-04-15 11:53:18,437 - INFO - Processing URL 43/50: https://www.dns-shop.ru/product/56ba7ffc4e03ed20/materinskaa-plata-msi-pro-z790-p-wifi/
+2026-04-15 11:53:18,438 - INFO - Processing URL: https://www.dns-shop.ru/product/56ba7ffc4e03ed20/materinskaa-plata-msi-pro-z790-p-wifi/
+2026-04-15 11:53:36,505 - INFO - Parsed product: Материнская плата MSI PRO Z790-P WIFI
+2026-04-15 11:53:36,513 - INFO - Added new product data for https://www.dns-shop.ru/product/56ba7ffc4e03ed20/materinskaa-plata-msi-pro-z790-p-wifi/
+2026-04-15 11:53:36,542 - INFO - Saved data for product: Материнская плата MSI PRO Z790-P WIFI
+2026-04-15 11:53:36,542 - INFO - Processing URL 44/50: https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 11:53:36,542 - INFO - Processing URL: https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 11:53:58,683 - INFO - Parsed product: Материнская плата MSI PRO H610M-E DDR4
+2026-04-15 11:53:58,693 - INFO - Added new product data for https://www.dns-shop.ru/product/56027c0307e7ed20/materinskaa-plata-msi-pro-h610m-e-ddr4/
+2026-04-15 11:53:58,725 - INFO - Saved data for product: Материнская плата MSI PRO H610M-E DDR4
+2026-04-15 11:53:58,725 - INFO - Processing URL 45/50: https://www.dns-shop.ru/product/fbde97c45eaed9cb/materinskaa-plata-msi-b760-gaming-plus-wifi-ddr4/
+2026-04-15 11:53:58,725 - INFO - Processing URL: https://www.dns-shop.ru/product/fbde97c45eaed9cb/materinskaa-plata-msi-b760-gaming-plus-wifi-ddr4/
+2026-04-15 11:54:19,708 - INFO - Parsed product: Материнская плата MSI B760 GAMING PLUS WIFI DDR4
+2026-04-15 11:54:19,719 - INFO - Added new product data for https://www.dns-shop.ru/product/fbde97c45eaed9cb/materinskaa-plata-msi-b760-gaming-plus-wifi-ddr4/
+2026-04-15 11:54:19,748 - INFO - Saved data for product: Материнская плата MSI B760 GAMING PLUS WIFI DDR4
+2026-04-15 11:54:19,748 - INFO - Processing URL 46/50: https://www.dns-shop.ru/product/7d98e5645604ed20/materinskaa-plata-msi-pro-b650-s-wifi/
+2026-04-15 11:54:19,749 - INFO - Processing URL: https://www.dns-shop.ru/product/7d98e5645604ed20/materinskaa-plata-msi-pro-b650-s-wifi/
+2026-04-15 11:54:38,985 - INFO - Parsed product: Материнская плата MSI PRO B650-S WIFI
+2026-04-15 11:54:38,993 - INFO - Added new product data for https://www.dns-shop.ru/product/7d98e5645604ed20/materinskaa-plata-msi-pro-b650-s-wifi/
+2026-04-15 11:54:39,025 - INFO - Saved data for product: Материнская плата MSI PRO B650-S WIFI
+2026-04-15 11:54:39,026 - INFO - Processing URL 47/50: https://www.dns-shop.ru/product/232aa9fbb9a11b80/materinskaa-plata-msi-b550-a-pro/
+2026-04-15 11:54:39,026 - INFO - Processing URL: https://www.dns-shop.ru/product/232aa9fbb9a11b80/materinskaa-plata-msi-b550-a-pro/
+2026-04-15 11:55:02,725 - INFO - Parsed product: Материнская плата MSI B550-A PRO
+2026-04-15 11:55:02,734 - INFO - Added new product data for https://www.dns-shop.ru/product/232aa9fbb9a11b80/materinskaa-plata-msi-b550-a-pro/
+2026-04-15 11:55:02,764 - INFO - Saved data for product: Материнская плата MSI B550-A PRO
+2026-04-15 11:55:02,765 - INFO - Processing URL 48/50: https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 11:55:02,765 - INFO - Processing URL: https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 11:55:24,112 - INFO - Parsed product: Материнская плата ASRock B760M PG Lightning/D4
+2026-04-15 11:55:24,120 - INFO - Added new product data for https://www.dns-shop.ru/product/85c62a3c4190ed20/materinskaa-plata-asrock-b760m-pg-lightningd4/
+2026-04-15 11:55:24,150 - INFO - Saved data for product: Материнская плата ASRock B760M PG Lightning/D4
+2026-04-15 11:55:24,151 - INFO - Processing URL 49/50: https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 11:55:24,151 - INFO - Processing URL: https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 11:55:43,200 - INFO - Parsed product: Материнская плата GIGABYTE B760M DS3H DDR4
+2026-04-15 11:55:43,210 - INFO - Added new product data for https://www.dns-shop.ru/product/252455826f1ced20/materinskaa-plata-gigabyte-b760m-ds3h-ddr4/
+2026-04-15 11:55:43,240 - INFO - Saved data for product: Материнская плата GIGABYTE B760M DS3H DDR4
+2026-04-15 11:55:43,240 - INFO - Processing URL 50/50: https://www.dns-shop.ru/product/82dbd5c6f9f7ed20/materinskaa-plata-asrock-b650m-hdvm2/
+2026-04-15 11:55:43,241 - INFO - Processing URL: https://www.dns-shop.ru/product/82dbd5c6f9f7ed20/materinskaa-plata-asrock-b650m-hdvm2/
+2026-04-15 11:56:02,312 - INFO - Parsed product: Материнская плата ASRock B650M-HDV/M.2
+2026-04-15 11:56:02,323 - INFO - Added new product data for https://www.dns-shop.ru/product/82dbd5c6f9f7ed20/materinskaa-plata-asrock-b650m-hdvm2/
+2026-04-15 11:56:02,355 - INFO - Saved data for product: Материнская плата ASRock B650M-HDV/M.2
+2026-04-15 11:56:03,434 - INFO - Product details parsing complete!
+2026-04-15 12:06:40,373 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 12:08:17,774 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-04-15 12:08:22,335 - INFO - Reading URLs from urls.txt
+2026-04-15 12:08:22,335 - INFO - Found 50 URLs to process
+2026-04-15 12:08:22,336 - INFO - Processing URL 1/50: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-04-15 12:08:22,336 - INFO - Processing URL: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-04-15 12:09:22,177 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-04-15 12:09:22,186 - INFO - Added new product data for https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-04-15 12:09:22,220 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-04-15 12:09:22,221 - INFO - Processing URL 2/50: https://www.dns-shop.ru/product/a519285e169fd582/videokarta-msi-geforce-rtx-5060-ventus-3x-oc-rtx-5060-8g-ventus-3x-oc/
+2026-04-15 12:09:22,221 - INFO - Processing URL: https://www.dns-shop.ru/product/a519285e169fd582/videokarta-msi-geforce-rtx-5060-ventus-3x-oc-rtx-5060-8g-ventus-3x-oc/
+2026-04-15 12:09:42,062 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 VENTUS 3X OC [RTX 5060 8G VENTUS 3X OC]
+2026-04-15 12:09:42,072 - INFO - Added new product data for https://www.dns-shop.ru/product/a519285e169fd582/videokarta-msi-geforce-rtx-5060-ventus-3x-oc-rtx-5060-8g-ventus-3x-oc/
+2026-04-15 12:09:42,106 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 VENTUS 3X OC [RTX 5060 8G VENTUS 3X OC]
+2026-04-15 12:09:42,106 - INFO - Processing URL 3/50: https://www.dns-shop.ru/product/f6a696bd3b11ed20/videokarta-msi-geforce-rtx-3050-ventus-2x-xs-oc-rtx-3050-ventus-2x-xs-8g-oc/
+2026-04-15 12:09:42,108 - INFO - Processing URL: https://www.dns-shop.ru/product/f6a696bd3b11ed20/videokarta-msi-geforce-rtx-3050-ventus-2x-xs-oc-rtx-3050-ventus-2x-xs-8g-oc/
+2026-04-15 12:09:59,570 - INFO - Parsed product: Видеокарта MSI GeForce RTX 3050 VENTUS 2X XS OC [RTX 3050 VENTUS 2X XS 8G OC]
+2026-04-15 12:09:59,581 - INFO - Added new product data for https://www.dns-shop.ru/product/f6a696bd3b11ed20/videokarta-msi-geforce-rtx-3050-ventus-2x-xs-oc-rtx-3050-ventus-2x-xs-8g-oc/
+2026-04-15 12:09:59,620 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 3050 VENTUS 2X XS OC [RTX 3050 VENTUS 2X XS 8G OC]
+2026-04-15 12:09:59,621 - INFO - Processing URL 4/50: https://www.dns-shop.ru/product/babf796062ebd9cb/videokarta-gigabyte-geforce-rtx-5060-ti-windforce-max-oc-gv-n506twf2max-oc-16gd/
+2026-04-15 12:09:59,621 - INFO - Processing URL: https://www.dns-shop.ru/product/babf796062ebd9cb/videokarta-gigabyte-geforce-rtx-5060-ti-windforce-max-oc-gv-n506twf2max-oc-16gd/
+2026-04-15 12:10:16,724 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 Ti WINDFORCE MAX OC [GV-N506TWF2MAX OC-16GD]
+2026-04-15 12:10:16,734 - INFO - Added new product data for https://www.dns-shop.ru/product/babf796062ebd9cb/videokarta-gigabyte-geforce-rtx-5060-ti-windforce-max-oc-gv-n506twf2max-oc-16gd/
+2026-04-15 12:10:16,773 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 Ti WINDFORCE MAX OC [GV-N506TWF2MAX OC-16GD]
+2026-04-15 12:10:16,773 - INFO - Processing URL 5/50: https://www.dns-shop.ru/product/37d191a63202d9cb/videokarta-gigabyte-amd-radeon-9060-xt-gaming-oc-gv-r9060xtgaming-oc-16gd/
+2026-04-15 12:10:16,774 - INFO - Processing URL: https://www.dns-shop.ru/product/37d191a63202d9cb/videokarta-gigabyte-amd-radeon-9060-xt-gaming-oc-gv-r9060xtgaming-oc-16gd/
+2026-04-15 12:10:34,059 - INFO - Parsed product: Видеокарта GIGABYTE AMD Radeon 9060 XT GAMING OC [GV-R9060XTGAMING OC-16GD]
+2026-04-15 12:10:34,068 - INFO - Added new product data for https://www.dns-shop.ru/product/37d191a63202d9cb/videokarta-gigabyte-amd-radeon-9060-xt-gaming-oc-gv-r9060xtgaming-oc-16gd/
+2026-04-15 12:10:34,103 - INFO - Saved data for product: Видеокарта GIGABYTE AMD Radeon 9060 XT GAMING OC [GV-R9060XTGAMING OC-16GD]
+2026-04-15 12:10:34,104 - INFO - Processing URL 6/50: https://www.dns-shop.ru/product/b6e863df638dd582/videokarta-powercolor-amd-radeon-rx-9060-xt-reaper-rx9060xt-16g-a/
+2026-04-15 12:10:34,104 - INFO - Processing URL: https://www.dns-shop.ru/product/b6e863df638dd582/videokarta-powercolor-amd-radeon-rx-9060-xt-reaper-rx9060xt-16g-a/
+2026-04-15 12:10:51,605 - INFO - Parsed product: Видеокарта PowerColor AMD Radeon RX 9060 XT Reaper [RX9060XT 16G-A]
+2026-04-15 12:10:51,614 - INFO - Added new product data for https://www.dns-shop.ru/product/b6e863df638dd582/videokarta-powercolor-amd-radeon-rx-9060-xt-reaper-rx9060xt-16g-a/
+2026-04-15 12:10:51,653 - INFO - Saved data for product: Видеокарта PowerColor AMD Radeon RX 9060 XT Reaper [RX9060XT 16G-A]
+2026-04-15 12:10:51,653 - INFO - Processing URL 7/50: https://www.dns-shop.ru/product/b3ea0184cef1d582/videokarta-msi-geforce-rtx-5080-gaming-trio-oc-rtx-5080-16g-gaming-trio-oc/
+2026-04-15 12:10:51,654 - INFO - Processing URL: https://www.dns-shop.ru/product/b3ea0184cef1d582/videokarta-msi-geforce-rtx-5080-gaming-trio-oc-rtx-5080-16g-gaming-trio-oc/
+2026-04-15 12:11:10,585 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5080 GAMING TRIO OC [RTX 5080 16G GAMING TRIO OC]
+2026-04-15 12:11:10,596 - INFO - Added new product data for https://www.dns-shop.ru/product/b3ea0184cef1d582/videokarta-msi-geforce-rtx-5080-gaming-trio-oc-rtx-5080-16g-gaming-trio-oc/
+2026-04-15 12:11:10,633 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5080 GAMING TRIO OC [RTX 5080 16G GAMING TRIO OC]
+2026-04-15 12:11:10,634 - INFO - Processing URL 8/50: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-04-15 12:11:10,634 - INFO - Processing URL: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-04-15 12:11:27,924 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-04-15 12:11:27,935 - INFO - Added new product data for https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-04-15 12:11:27,969 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-04-15 12:11:27,970 - INFO - Processing URL 9/50: https://www.dns-shop.ru/product/cb1f669af7c5d9cb/videokarta-kfa2-geforce-rtx-5070-ti-rockx-oc-3fan-rgb-black-57izn6mdbuek/
+2026-04-15 12:11:27,970 - INFO - Processing URL: https://www.dns-shop.ru/product/cb1f669af7c5d9cb/videokarta-kfa2-geforce-rtx-5070-ti-rockx-oc-3fan-rgb-black-57izn6mdbuek/
+2026-04-15 12:11:43,870 - INFO - Parsed product: Видеокарта KFA2 GeForce RTX 5070 Ti ROCK(X) OC 3FAN RGB Black [57IZN6MDBUEK]
+2026-04-15 12:11:43,879 - INFO - Added new product data for https://www.dns-shop.ru/product/cb1f669af7c5d9cb/videokarta-kfa2-geforce-rtx-5070-ti-rockx-oc-3fan-rgb-black-57izn6mdbuek/
+2026-04-15 12:11:43,919 - INFO - Saved data for product: Видеокарта KFA2 GeForce RTX 5070 Ti ROCK(X) OC 3FAN RGB Black [57IZN6MDBUEK]
+2026-04-15 12:11:43,919 - INFO - Processing URL 10/50: https://www.dns-shop.ruhttps://www.dns-shop.ru/product/analog/55cc9b9165b71b80/videokarta-msi-geforce-rtx-3060-ventus-2x-oc-lhr-rtx-3060-ventus-2x-12g-oc/
+2026-04-15 12:11:43,920 - INFO - Processing URL: https://www.dns-shop.ruhttps://www.dns-shop.ru/product/analog/55cc9b9165b71b80/videokarta-msi-geforce-rtx-3060-ventus-2x-oc-lhr-rtx-3060-ventus-2x-12g-oc/
+2026-04-15 12:11:44,544 - ERROR - Error processing URL https://www.dns-shop.ruhttps://www.dns-shop.ru/product/analog/55cc9b9165b71b80/videokarta-msi-geforce-rtx-3060-ventus-2x-oc-lhr-rtx-3060-ventus-2x-12g-oc/: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=146.0.7680.178)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x82cdf3+10b03]
+	undetected_chromedriver!GetHandleVerifier [0x82cf24+10c34]
+	undetected_chromedriver!(No symbol) [0x612120]
+	undetected_chromedriver!(No symbol) [0x60f62e]
+	undetected_chromedriver!(No symbol) [0x602714]
+	undetected_chromedriver!(No symbol) [0x60417c]
+	undetected_chromedriver!(No symbol) [0x602bb2]
+	undetected_chromedriver!(No symbol) [0x6024e5]
+	undetected_chromedriver!(No symbol) [0x6021e5]
+	undetected_chromedriver!(No symbol) [0x6002f8]
+	undetected_chromedriver!(No symbol) [0x600a0a]
+	undetected_chromedriver!(No symbol) [0x615bbe]
+	undetected_chromedriver!(No symbol) [0x69b3f4]
+	undetected_chromedriver!(No symbol) [0x67db0c]
+	undetected_chromedriver!(No symbol) [0x69a9a5]
+	undetected_chromedriver!(No symbol) [0x67d8a6]
+	undetected_chromedriver!(No symbol) [0x650229]
+	undetected_chromedriver!(No symbol) [0x650fe4]
+	undetected_chromedriver!GetHandleVerifier [0xa948b9+2785c9]
+	undetected_chromedriver!GetHandleVerifier [0xa8feb5+273bc5]
+	undetected_chromedriver!GetHandleVerifier [0xaae06b+291d7b]
+	undetected_chromedriver!GetHandleVerifier [0x845cc8+299d8]
+	undetected_chromedriver!GetHandleVerifier [0x84d9fd+3170d]
+	undetected_chromedriver!GetHandleVerifier [0x8358c8+195d8]
+	undetected_chromedriver!GetHandleVerifier [0x835a92+197a2]
+	undetected_chromedriver!GetHandleVerifier [0x81ee9a+2baa]
+	KERNEL32!BaseThreadInitThunk [0x754d5d49+19]
+	ntdll!RtlInitializeExceptionChain [0x776bd83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x776bd7c1+231]
+
+2026-04-15 12:11:44,552 - INFO - Processing URL 11/50: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-04-15 12:11:44,552 - INFO - Processing URL: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-04-15 12:12:01,848 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-04-15 12:12:01,860 - INFO - Added new product data for https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-04-15 12:12:01,901 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-04-15 12:12:01,901 - INFO - Processing URL 12/50: https://www.dns-shop.ru/product/3de8afb25724d582/videokarta-palit-geforce-rtx-5060-ti-white-oc-ne7506tu19t1-gb2061m/
+2026-04-15 12:12:01,902 - INFO - Processing URL: https://www.dns-shop.ru/product/3de8afb25724d582/videokarta-palit-geforce-rtx-5060-ti-white-oc-ne7506tu19t1-gb2061m/
+2026-04-15 12:12:18,703 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti White OC [NE7506TU19T1-GB2061M]
+2026-04-15 12:12:18,714 - INFO - Added new product data for https://www.dns-shop.ru/product/3de8afb25724d582/videokarta-palit-geforce-rtx-5060-ti-white-oc-ne7506tu19t1-gb2061m/
+2026-04-15 12:12:18,758 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti White OC [NE7506TU19T1-GB2061M]
+2026-04-15 12:12:18,759 - INFO - Processing URL 13/50: https://www.dns-shop.ru/product/a7c2b65e20d6d9cb/videokarta-asus-geforce-rtx-5060-ti-dual-oc-dual-rtx5060ti-o16g/
+2026-04-15 12:12:18,759 - INFO - Processing URL: https://www.dns-shop.ru/product/a7c2b65e20d6d9cb/videokarta-asus-geforce-rtx-5060-ti-dual-oc-dual-rtx5060ti-o16g/
+2026-04-15 12:12:36,985 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5060 Ti DUAL OC [DUAL-RTX5060TI-O16G]
+2026-04-15 12:12:36,997 - INFO - Added new product data for https://www.dns-shop.ru/product/a7c2b65e20d6d9cb/videokarta-asus-geforce-rtx-5060-ti-dual-oc-dual-rtx5060ti-o16g/
+2026-04-15 12:12:37,044 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5060 Ti DUAL OC [DUAL-RTX5060TI-O16G]
+2026-04-15 12:12:37,044 - INFO - Processing URL 14/50: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-04-15 12:12:37,045 - INFO - Processing URL: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-04-15 12:12:53,756 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-04-15 12:12:53,767 - INFO - Added new product data for https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-04-15 12:12:53,806 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-04-15 12:12:53,806 - INFO - Processing URL 15/50: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-04-15 12:12:53,807 - INFO - Processing URL: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-04-15 12:13:11,092 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-04-15 12:13:11,104 - INFO - Added new product data for https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-04-15 12:13:11,153 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-04-15 12:13:11,153 - INFO - Processing URL 16/50: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-04-15 12:13:11,153 - INFO - Processing URL: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-04-15 12:13:28,930 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-04-15 12:13:28,940 - INFO - Added new product data for https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-04-15 12:13:28,979 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-04-15 12:13:28,979 - INFO - Processing URL 17/50: https://www.dns-shop.ru/product/86357c17e448d582/videokarta-msi-geforce-rtx-5070-ti-ventus-3x-oc-rtx-5070-ti-16g-ventus-3x-oc/
+2026-04-15 12:13:28,979 - INFO - Processing URL: https://www.dns-shop.ru/product/86357c17e448d582/videokarta-msi-geforce-rtx-5070-ti-ventus-3x-oc-rtx-5070-ti-16g-ventus-3x-oc/
+2026-04-15 12:13:45,482 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 Ti VENTUS 3X OC [RTX 5070 Ti 16G VENTUS 3X OC]
+2026-04-15 12:13:45,491 - INFO - Added new product data for https://www.dns-shop.ru/product/86357c17e448d582/videokarta-msi-geforce-rtx-5070-ti-ventus-3x-oc-rtx-5070-ti-16g-ventus-3x-oc/
+2026-04-15 12:13:45,530 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 Ti VENTUS 3X OC [RTX 5070 Ti 16G VENTUS 3X OC]
+2026-04-15 12:13:45,531 - INFO - Processing URL 18/50: https://www.dns-shop.ru/product/2a180a821699d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-oc-plus-rtx-5060-ti-16g-ventus-2x-oc-plus/
+2026-04-15 12:13:45,531 - INFO - Processing URL: https://www.dns-shop.ru/product/2a180a821699d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-oc-plus-rtx-5060-ti-16g-ventus-2x-oc-plus/
+2026-04-15 12:14:01,683 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 2X OC PLUS [RTX 5060 Ti 16G VENTUS 2X OC PLUS]
+2026-04-15 12:14:01,694 - INFO - Added new product data for https://www.dns-shop.ru/product/2a180a821699d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-oc-plus-rtx-5060-ti-16g-ventus-2x-oc-plus/
+2026-04-15 12:14:01,742 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 2X OC PLUS [RTX 5060 Ti 16G VENTUS 2X OC PLUS]
+2026-04-15 12:14:01,742 - INFO - Processing URL 19/50: https://www.dns-shop.ru/product/98cba08705f4d9cb/videokarta-palit-geforce-rtx-5060-ti-dual-ne7506t019p1-gb2062d/
+2026-04-15 12:14:01,744 - INFO - Processing URL: https://www.dns-shop.ru/product/98cba08705f4d9cb/videokarta-palit-geforce-rtx-5060-ti-dual-ne7506t019p1-gb2062d/
+2026-04-15 12:14:18,764 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Dual [NE7506T019P1-GB2062D]
+2026-04-15 12:14:18,774 - INFO - Added new product data for https://www.dns-shop.ru/product/98cba08705f4d9cb/videokarta-palit-geforce-rtx-5060-ti-dual-ne7506t019p1-gb2062d/
+2026-04-15 12:14:18,817 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Dual [NE7506T019P1-GB2062D]
+2026-04-15 12:14:18,818 - INFO - Processing URL 20/50: https://www.dns-shop.ru/product/0db333781f27d9cb/videokarta-palit-geforce-rtx-5060-dual-oc-ne75060s19p1-gb2063d/
+2026-04-15 12:14:18,818 - INFO - Processing URL: https://www.dns-shop.ru/product/0db333781f27d9cb/videokarta-palit-geforce-rtx-5060-dual-oc-ne75060s19p1-gb2063d/
+2026-04-15 12:14:35,774 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Dual OC [NE75060S19P1-GB2063D]
+2026-04-15 12:14:35,787 - INFO - Added new product data for https://www.dns-shop.ru/product/0db333781f27d9cb/videokarta-palit-geforce-rtx-5060-dual-oc-ne75060s19p1-gb2063d/
+2026-04-15 12:14:35,834 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Dual OC [NE75060S19P1-GB2063D]
+2026-04-15 12:14:35,835 - INFO - Processing URL 21/50: https://www.dns-shop.ru/product/697abebd5722d582/videokarta-palit-geforce-rtx-5060-infinity-2-oc-ne75060v19p1-gb2063l/
+2026-04-15 12:14:35,835 - INFO - Processing URL: https://www.dns-shop.ru/product/697abebd5722d582/videokarta-palit-geforce-rtx-5060-infinity-2-oc-ne75060v19p1-gb2063l/
+2026-04-15 12:14:52,815 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Infinity 2 OC [NE75060V19P1-GB2063L]
+2026-04-15 12:14:52,829 - INFO - Added new product data for https://www.dns-shop.ru/product/697abebd5722d582/videokarta-palit-geforce-rtx-5060-infinity-2-oc-ne75060v19p1-gb2063l/
+2026-04-15 12:14:52,874 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Infinity 2 OC [NE75060V19P1-GB2063L]
+2026-04-15 12:14:52,874 - INFO - Processing URL 22/50: https://www.dns-shop.ru/product/ffeedbf2d499d9cb/videokarta-palit-geforce-rtx-5080-gamingpro-oc-ne75080s19t2-gb2031a/
+2026-04-15 12:14:52,876 - INFO - Processing URL: https://www.dns-shop.ru/product/ffeedbf2d499d9cb/videokarta-palit-geforce-rtx-5080-gamingpro-oc-ne75080s19t2-gb2031a/
+2026-04-15 12:15:10,139 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5080 GamingPro OC [NE75080S19T2-GB2031A]
+2026-04-15 12:15:10,152 - INFO - Added new product data for https://www.dns-shop.ru/product/ffeedbf2d499d9cb/videokarta-palit-geforce-rtx-5080-gamingpro-oc-ne75080s19t2-gb2031a/
+2026-04-15 12:15:10,198 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5080 GamingPro OC [NE75080S19T2-GB2031A]
+2026-04-15 12:15:10,199 - INFO - Processing URL 23/50: https://www.dns-shop.ru/product/975c271ba7781b80/videokarta-kfa2-geforce-gt-710-71gpf4hi00gk/
+2026-04-15 12:15:10,199 - INFO - Processing URL: https://www.dns-shop.ru/product/975c271ba7781b80/videokarta-kfa2-geforce-gt-710-71gpf4hi00gk/
+2026-04-15 12:15:25,941 - INFO - Parsed product: Видеокарта KFA2 GeForce GT 710 [71GPF4HI00GK]
+2026-04-15 12:15:25,953 - INFO - Added new product data for https://www.dns-shop.ru/product/975c271ba7781b80/videokarta-kfa2-geforce-gt-710-71gpf4hi00gk/
+2026-04-15 12:15:26,005 - INFO - Saved data for product: Видеокарта KFA2 GeForce GT 710 [71GPF4HI00GK]
+2026-04-15 12:15:26,006 - INFO - Processing URL 24/50: https://www.dns-shop.ru/product/72372f3cd49ad9cb/videokarta-palit-geforce-rtx-5080-gamingpro-ne75080019t2-gb2031a/
+2026-04-15 12:15:26,006 - INFO - Processing URL: https://www.dns-shop.ru/product/72372f3cd49ad9cb/videokarta-palit-geforce-rtx-5080-gamingpro-ne75080019t2-gb2031a/
+2026-04-15 12:15:42,138 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5080 GamingPro [NE75080019T2-GB2031A]
+2026-04-15 12:15:42,147 - INFO - Added new product data for https://www.dns-shop.ru/product/72372f3cd49ad9cb/videokarta-palit-geforce-rtx-5080-gamingpro-ne75080019t2-gb2031a/
+2026-04-15 12:15:42,191 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5080 GamingPro [NE75080019T2-GB2031A]
+2026-04-15 12:15:42,191 - INFO - Processing URL 25/50: https://www.dns-shop.ru/product/fe5cfcefe77fd582/videokarta-palit-geforce-rtx-5070-ti-gamingpro-ne7507t019t2-gb2031a/
+2026-04-15 12:15:42,191 - INFO - Processing URL: https://www.dns-shop.ru/product/fe5cfcefe77fd582/videokarta-palit-geforce-rtx-5070-ti-gamingpro-ne7507t019t2-gb2031a/
+2026-04-15 12:16:00,112 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro [NE7507T019T2-GB2031A]
+2026-04-15 12:16:00,126 - INFO - Added new product data for https://www.dns-shop.ru/product/fe5cfcefe77fd582/videokarta-palit-geforce-rtx-5070-ti-gamingpro-ne7507t019t2-gb2031a/
+2026-04-15 12:16:00,179 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro [NE7507T019T2-GB2031A]
+2026-04-15 12:16:00,179 - INFO - Processing URL 26/50: https://www.dns-shop.ru/product/885586f320a8d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-3x-oc-rtx-5060-ti-16g-ventus-3x-oc/
+2026-04-15 12:16:00,180 - INFO - Processing URL: https://www.dns-shop.ru/product/885586f320a8d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-3x-oc-rtx-5060-ti-16g-ventus-3x-oc/
+2026-04-15 12:16:15,846 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 3X OC [RTX 5060 Ti 16G VENTUS 3X OC]
+2026-04-15 12:16:15,859 - INFO - Added new product data for https://www.dns-shop.ru/product/885586f320a8d9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-3x-oc-rtx-5060-ti-16g-ventus-3x-oc/
+2026-04-15 12:16:15,910 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 3X OC [RTX 5060 Ti 16G VENTUS 3X OC]
+2026-04-15 12:16:15,910 - INFO - Processing URL 27/50: https://www.dns-shop.ru/product/5df8cdf8169cd9cb/videokarta-msi-geforce-rtx-5060-gaming-oc-rtx-5060-8g-gaming-oc/
+2026-04-15 12:16:15,910 - INFO - Processing URL: https://www.dns-shop.ru/product/5df8cdf8169cd9cb/videokarta-msi-geforce-rtx-5060-gaming-oc-rtx-5060-8g-gaming-oc/
+2026-04-15 12:16:37,386 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 GAMING OC [RTX 5060 8G GAMING OC]
+2026-04-15 12:16:37,398 - INFO - Added new product data for https://www.dns-shop.ru/product/5df8cdf8169cd9cb/videokarta-msi-geforce-rtx-5060-gaming-oc-rtx-5060-8g-gaming-oc/
+2026-04-15 12:16:37,441 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 GAMING OC [RTX 5060 8G GAMING OC]
+2026-04-15 12:16:37,441 - INFO - Processing URL 28/50: https://www.dns-shop.ru/product/b7fd50231109d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-oc-ne7506ts19t1-gb2061s/
+2026-04-15 12:16:37,441 - INFO - Processing URL: https://www.dns-shop.ru/product/b7fd50231109d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-oc-ne7506ts19t1-gb2061s/
+2026-04-15 12:17:16,362 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 OC [NE7506TS19T1-GB2061S]
+2026-04-15 12:17:16,373 - INFO - Added new product data for https://www.dns-shop.ru/product/b7fd50231109d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-oc-ne7506ts19t1-gb2061s/
+2026-04-15 12:17:16,420 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 OC [NE7506TS19T1-GB2061S]
+2026-04-15 12:17:16,420 - INFO - Processing URL 29/50: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-04-15 12:17:16,421 - INFO - Processing URL: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-04-15 12:17:34,713 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-04-15 12:17:34,724 - INFO - Added new product data for https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-04-15 12:17:34,771 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-04-15 12:17:34,772 - INFO - Processing URL 30/50: https://www.dns-shop.ru/product/4bb4202e5d77ed20/videokarta-asrock-amd-radeon-rx-6600-challenger-d-rx6600-cld-8g/
+2026-04-15 12:17:34,772 - INFO - Processing URL: https://www.dns-shop.ru/product/4bb4202e5d77ed20/videokarta-asrock-amd-radeon-rx-6600-challenger-d-rx6600-cld-8g/
+2026-04-15 12:18:19,993 - INFO - Parsed product: Видеокарта ASRock AMD Radeon RX 6600 Challenger D [RX6600 CLD 8G]
+2026-04-15 12:18:20,004 - INFO - Added new product data for https://www.dns-shop.ru/product/4bb4202e5d77ed20/videokarta-asrock-amd-radeon-rx-6600-challenger-d-rx6600-cld-8g/
+2026-04-15 12:18:20,055 - INFO - Saved data for product: Видеокарта ASRock AMD Radeon RX 6600 Challenger D [RX6600 CLD 8G]
+2026-04-15 12:18:20,055 - INFO - Processing URL 31/50: https://www.dns-shop.ru/product/5a74a34171b1ed20/videokarta-kfa2-geforce-rtx-3050-x-black-35nsl8md6yek/
+2026-04-15 12:18:20,055 - INFO - Processing URL: https://www.dns-shop.ru/product/5a74a34171b1ed20/videokarta-kfa2-geforce-rtx-3050-x-black-35nsl8md6yek/
+2026-04-15 12:18:37,740 - INFO - Parsed product: Видеокарта KFA2 GeForce RTX 3050 X Black [35NSL8MD6YEK]
+2026-04-15 12:18:37,753 - INFO - Added new product data for https://www.dns-shop.ru/product/5a74a34171b1ed20/videokarta-kfa2-geforce-rtx-3050-x-black-35nsl8md6yek/
+2026-04-15 12:18:37,804 - INFO - Saved data for product: Видеокарта KFA2 GeForce RTX 3050 X Black [35NSL8MD6YEK]
+2026-04-15 12:18:37,804 - INFO - Processing URL 32/50: https://www.dns-shop.ru/product/9e97af23169bd9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-plus-oc-rtx-5060-ti-8g-ventus-2x-oc-plus/
+2026-04-15 12:18:37,805 - INFO - Processing URL: https://www.dns-shop.ru/product/9e97af23169bd9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-plus-oc-rtx-5060-ti-8g-ventus-2x-oc-plus/
+2026-04-15 12:19:14,338 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 2X PLUS OC [RTX 5060 Ti 8G VENTUS 2X OC PLUS]
+2026-04-15 12:19:14,354 - INFO - Added new product data for https://www.dns-shop.ru/product/9e97af23169bd9cb/videokarta-msi-geforce-rtx-5060-ti-ventus-2x-plus-oc-rtx-5060-ti-8g-ventus-2x-oc-plus/
+2026-04-15 12:19:14,415 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 Ti VENTUS 2X PLUS OC [RTX 5060 Ti 8G VENTUS 2X OC PLUS]
+2026-04-15 12:19:14,415 - INFO - Processing URL 33/50: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-04-15 12:19:14,416 - INFO - Processing URL: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-04-15 12:19:38,052 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-04-15 12:19:38,065 - INFO - Added new product data for https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-04-15 12:19:38,110 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-04-15 12:19:38,111 - INFO - Processing URL 34/50: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-04-15 12:19:38,111 - INFO - Processing URL: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-04-15 12:20:25,405 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-04-15 12:20:25,418 - INFO - Added new product data for https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-04-15 12:20:25,469 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-04-15 12:20:25,469 - INFO - Processing URL 35/50: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-04-15 12:20:25,470 - INFO - Processing URL: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-04-15 12:20:51,034 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-04-15 12:20:51,044 - INFO - Added new product data for https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-04-15 12:20:51,091 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-04-15 12:20:51,091 - INFO - Processing URL 36/50: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-04-15 12:20:51,091 - INFO - Processing URL: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-04-15 12:21:09,248 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-04-15 12:21:09,260 - INFO - Added new product data for https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-04-15 12:21:09,310 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-04-15 12:21:09,310 - INFO - Processing URL 37/50: https://www.dns-shop.ru/product/1ce0285fd4b4d582/videokarta-gigabyte-geforce-rtx-5070-ti-gaming-oc-gv-n507tgaming-oc-16gd/
+2026-04-15 12:21:09,310 - INFO - Processing URL: https://www.dns-shop.ru/product/1ce0285fd4b4d582/videokarta-gigabyte-geforce-rtx-5070-ti-gaming-oc-gv-n507tgaming-oc-16gd/
+2026-04-15 12:21:30,640 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5070 Ti GAMING OC [GV-N507TGAMING OC-16GD]
+2026-04-15 12:21:30,659 - INFO - Added new product data for https://www.dns-shop.ru/product/1ce0285fd4b4d582/videokarta-gigabyte-geforce-rtx-5070-ti-gaming-oc-gv-n507tgaming-oc-16gd/
+2026-04-15 12:21:30,712 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5070 Ti GAMING OC [GV-N507TGAMING OC-16GD]
+2026-04-15 12:21:30,712 - INFO - Processing URL 38/50: https://www.dns-shop.ru/product/49b77a8077562eb0/videokarta-kfa2-geforce-rtx-3060-core-lhr-36nol7md1vok/
+2026-04-15 12:21:30,713 - INFO - Processing URL: https://www.dns-shop.ru/product/49b77a8077562eb0/videokarta-kfa2-geforce-rtx-3060-core-lhr-36nol7md1vok/
+2026-04-15 12:21:55,658 - INFO - Parsed product: Видеокарта KFA2 GeForce RTX 3060 CORE (LHR) [36NOL7MD1VOK]
+2026-04-15 12:21:55,671 - INFO - Added new product data for https://www.dns-shop.ru/product/49b77a8077562eb0/videokarta-kfa2-geforce-rtx-3060-core-lhr-36nol7md1vok/
+2026-04-15 12:21:55,723 - INFO - Saved data for product: Видеокарта KFA2 GeForce RTX 3060 CORE (LHR) [36NOL7MD1VOK]
+2026-04-15 12:21:55,724 - INFO - Processing URL 39/50: https://www.dns-shop.ru/product/97c26c8d587fd582/videokarta-gigabyte-geforce-rtx-5060-eagle-max-oc-gv-n5060eaglemax-oc-8gd/
+2026-04-15 12:21:55,724 - INFO - Processing URL: https://www.dns-shop.ru/product/97c26c8d587fd582/videokarta-gigabyte-geforce-rtx-5060-eagle-max-oc-gv-n5060eaglemax-oc-8gd/
+2026-04-15 12:22:41,147 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 EAGLE MAX OC [GV-N5060EAGLEMAX OC-8GD]
+2026-04-15 12:22:41,159 - INFO - Added new product data for https://www.dns-shop.ru/product/97c26c8d587fd582/videokarta-gigabyte-geforce-rtx-5060-eagle-max-oc-gv-n5060eaglemax-oc-8gd/
+2026-04-15 12:22:41,207 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 EAGLE MAX OC [GV-N5060EAGLEMAX OC-8GD]
+2026-04-15 12:22:41,207 - INFO - Processing URL 40/50: https://www.dns-shop.ru/product/2bbebbb105f8d9cb/videokarta-gigabyte-geforce-rtx-5060-ti-gaming-oc-gv-n506tgaming-oc-16gd/
+2026-04-15 12:22:41,208 - INFO - Processing URL: https://www.dns-shop.ru/product/2bbebbb105f8d9cb/videokarta-gigabyte-geforce-rtx-5060-ti-gaming-oc-gv-n506tgaming-oc-16gd/
+2026-04-15 12:23:04,594 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 Ti GAMING OC [GV-N506TGAMING OC-16GD]
+2026-04-15 12:23:04,609 - INFO - Added new product data for https://www.dns-shop.ru/product/2bbebbb105f8d9cb/videokarta-gigabyte-geforce-rtx-5060-ti-gaming-oc-gv-n506tgaming-oc-16gd/
+2026-04-15 12:23:04,656 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 Ti GAMING OC [GV-N506TGAMING OC-16GD]
+2026-04-15 12:23:04,656 - INFO - Processing URL 41/50: https://www.dns-shop.ru/product/20b53d47110ad582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019p1-gb2062s/
+2026-04-15 12:23:04,657 - INFO - Processing URL: https://www.dns-shop.ru/product/20b53d47110ad582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019p1-gb2062s/
+2026-04-15 12:23:27,938 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019P1-GB2062S]
+2026-04-15 12:23:27,954 - INFO - Added new product data for https://www.dns-shop.ru/product/20b53d47110ad582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019p1-gb2062s/
+2026-04-15 12:23:28,005 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019P1-GB2062S]
+2026-04-15 12:23:28,006 - INFO - Processing URL 42/50: https://www.dns-shop.ru/product/6aa2cde2060fd582/videokarta-sapphire-amd-radeon-rx-9070-xt-pure-gaming-oc-11348-02-20g/
+2026-04-15 12:23:28,006 - INFO - Processing URL: https://www.dns-shop.ru/product/6aa2cde2060fd582/videokarta-sapphire-amd-radeon-rx-9070-xt-pure-gaming-oc-11348-02-20g/
+2026-04-15 12:23:52,474 - INFO - Parsed product: Видеокарта Sapphire AMD Radeon RX 9070 XT PURE GAMING OC [11348-02-20G]
+2026-04-15 12:23:52,500 - INFO - Added new product data for https://www.dns-shop.ru/product/6aa2cde2060fd582/videokarta-sapphire-amd-radeon-rx-9070-xt-pure-gaming-oc-11348-02-20g/
+2026-04-15 12:23:52,619 - INFO - Saved data for product: Видеокарта Sapphire AMD Radeon RX 9070 XT PURE GAMING OC [11348-02-20G]
+2026-04-15 12:23:52,620 - INFO - Processing URL 43/50: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-04-15 12:23:52,620 - INFO - Processing URL: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-04-15 12:24:17,187 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-04-15 12:24:17,216 - INFO - Added new product data for https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-04-15 12:24:17,356 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-04-15 12:24:17,360 - INFO - Processing URL 44/50: https://www.dns-shop.ru/product/4a37c3abcef2d582/videokarta-msi-geforce-rtx-5080-ventus-3x-oc-plus-rtx-5080-16g-ventus-3x-oc-plus/
+2026-04-15 12:24:17,361 - INFO - Processing URL: https://www.dns-shop.ru/product/4a37c3abcef2d582/videokarta-msi-geforce-rtx-5080-ventus-3x-oc-plus-rtx-5080-16g-ventus-3x-oc-plus/
+2026-04-15 12:24:40,637 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5080 VENTUS 3X OC PLUS [RTX 5080 16G VENTUS 3X OC PLUS]
+2026-04-15 12:24:40,666 - INFO - Added new product data for https://www.dns-shop.ru/product/4a37c3abcef2d582/videokarta-msi-geforce-rtx-5080-ventus-3x-oc-plus-rtx-5080-16g-ventus-3x-oc-plus/
+2026-04-15 12:24:40,810 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5080 VENTUS 3X OC PLUS [RTX 5080 16G VENTUS 3X OC PLUS]
+2026-04-15 12:24:40,811 - INFO - Processing URL 45/50: https://www.dns-shop.ru/product/508738a9bc02d9cb/videokarta-msi-geforce-rtx-3050-ventus-2x-e-oc-rtx-3050-ventus-2x-e-6g-oc/
+2026-04-15 12:24:40,812 - INFO - Processing URL: https://www.dns-shop.ru/product/508738a9bc02d9cb/videokarta-msi-geforce-rtx-3050-ventus-2x-e-oc-rtx-3050-ventus-2x-e-6g-oc/
+2026-04-15 12:25:01,768 - INFO - Parsed product: Видеокарта MSI GeForce RTX 3050 VENTUS 2X E OC [RTX 3050 VENTUS 2X E 6G OC]
+2026-04-15 12:25:01,794 - INFO - Added new product data for https://www.dns-shop.ru/product/508738a9bc02d9cb/videokarta-msi-geforce-rtx-3050-ventus-2x-e-oc-rtx-3050-ventus-2x-e-6g-oc/
+2026-04-15 12:25:01,921 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 3050 VENTUS 2X E OC [RTX 3050 VENTUS 2X E 6G OC]
+2026-04-15 12:25:01,922 - INFO - Processing URL 46/50: https://www.dns-shop.ru/product/7b8c12005713d582/videokarta-palit-geforce-rtx-5060-white-oc-ne75060u19p1-gb2063m/
+2026-04-15 12:25:01,922 - INFO - Processing URL: https://www.dns-shop.ru/product/7b8c12005713d582/videokarta-palit-geforce-rtx-5060-white-oc-ne75060u19p1-gb2063m/
+2026-04-15 12:25:21,409 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 White OC [NE75060U19P1-GB2063M]
+2026-04-15 12:25:21,438 - INFO - Added new product data for https://www.dns-shop.ru/product/7b8c12005713d582/videokarta-palit-geforce-rtx-5060-white-oc-ne75060u19p1-gb2063m/
+2026-04-15 12:25:21,566 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 White OC [NE75060U19P1-GB2063M]
+2026-04-15 12:25:21,566 - INFO - Processing URL 47/50: https://www.dns-shop.ru/product/661daeba7e29ed20/videokarta-gigabyte-geforce-rtx-3050-windforce-oc-v2-gv-n3050wf2ocv2-8gd/
+2026-04-15 12:25:21,567 - INFO - Processing URL: https://www.dns-shop.ru/product/661daeba7e29ed20/videokarta-gigabyte-geforce-rtx-3050-windforce-oc-v2-gv-n3050wf2ocv2-8gd/
+2026-04-15 12:25:40,854 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 3050 WINDFORCE OC V2 [GV-N3050WF2OCV2-8GD]
+2026-04-15 12:25:40,881 - INFO - Added new product data for https://www.dns-shop.ru/product/661daeba7e29ed20/videokarta-gigabyte-geforce-rtx-3050-windforce-oc-v2-gv-n3050wf2ocv2-8gd/
+2026-04-15 12:25:41,004 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 3050 WINDFORCE OC V2 [GV-N3050WF2OCV2-8GD]
+2026-04-15 12:25:41,005 - INFO - Processing URL 48/50: https://www.dns-shop.ru/product/a356cf29eaa7d9cb/videokarta-msi-geforce-rtx-5070-gaming-trio-oc-rtx-5070-12g-gaming-trio-oc/
+2026-04-15 12:25:41,005 - INFO - Processing URL: https://www.dns-shop.ru/product/a356cf29eaa7d9cb/videokarta-msi-geforce-rtx-5070-gaming-trio-oc-rtx-5070-12g-gaming-trio-oc/
+2026-04-15 12:26:01,781 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 GAMING TRIO OC [RTX 5070 12G GAMING TRIO OC]
+2026-04-15 12:26:01,809 - INFO - Added new product data for https://www.dns-shop.ru/product/a356cf29eaa7d9cb/videokarta-msi-geforce-rtx-5070-gaming-trio-oc-rtx-5070-12g-gaming-trio-oc/
+2026-04-15 12:26:01,946 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 GAMING TRIO OC [RTX 5070 12G GAMING TRIO OC]
+2026-04-15 12:26:01,947 - INFO - Processing URL 49/50: https://www.dns-shop.ru/product/9693e6d90b7fd582/videokarta-palit-geforce-rtx-5070-infinity-3-oc-ne75070s19k9-gb2050s/
+2026-04-15 12:26:01,947 - INFO - Processing URL: https://www.dns-shop.ru/product/9693e6d90b7fd582/videokarta-palit-geforce-rtx-5070-infinity-3-oc-ne75070s19k9-gb2050s/
+2026-04-15 12:26:21,872 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Infinity 3 OC [NE75070S19K9-GB2050S]
+2026-04-15 12:26:21,907 - INFO - Added new product data for https://www.dns-shop.ru/product/9693e6d90b7fd582/videokarta-palit-geforce-rtx-5070-infinity-3-oc-ne75070s19k9-gb2050s/
+2026-04-15 12:26:22,047 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Infinity 3 OC [NE75070S19K9-GB2050S]
+2026-04-15 12:26:22,048 - INFO - Processing URL 50/50: https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/
+2026-04-15 12:26:22,048 - INFO - Processing URL: https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/
+2026-04-15 12:26:40,864 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5090 GameRock [NE75090019R5-GB2020G]
+2026-04-15 12:26:40,897 - INFO - Added new product data for https://www.dns-shop.ru/product/dab5d7dedf90d582/videokarta-palit-geforce-rtx-5090-gamerock-ne75090019r5-gb2020g/
+2026-04-15 12:26:41,031 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5090 GameRock [NE75090019R5-GB2020G]
+2026-04-15 12:26:43,900 - INFO - Product details parsing complete!

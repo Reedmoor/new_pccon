@@ -1,0 +1,702 @@
+[
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-12100 OEM",
+    "citi_name": "Процессор Intel Core i3 12100, LGA 1700,  OEM [cm8071504651012 srl62]",
+    "similarity": 0.7594842370274686,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13400F OEM",
+    "citi_name": "Процессор Intel Core i5 13400F, LGA 1700,  OEM [cm8071505093005 srmbn]",
+    "similarity": 0.7616888027953272,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-12700K OEM",
+    "citi_name": "Процессор Intel Core i7 12700K, LGA 1700,  OEM [cm8071504553828 srl4n]",
+    "similarity": 0.7607744642735812,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7400F OEM",
+    "citi_name": "Процессор AMD Ryzen 5 7400F, AM5,  OEM [100-000001845]",
+    "similarity": 0.7795929833667641,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 7950X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 9 7950X, AM5,  OEM [100-000000514]",
+    "similarity": 0.719223971952929,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5500GT OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5500GT, AM4,  OEM [100-000001489]",
+    "similarity": 0.7770014985141107,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7600X3D BOX",
+    "citi_name": "Процессор AMD Ryzen 5 7600x3d, AM5,  OEM [100-000001721]",
+    "similarity": 0.7548022033886643,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-12700 OEM",
+    "citi_name": "Процессор Intel Core i7 12700, LGA 1700,  OEM [cm8071504555019 srl4q]",
+    "similarity": 0.7609479637877383,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-12900KF OEM",
+    "citi_name": "Процессор Intel Core i9 12900KF, LGA 1700,  OEM [cm8071504549231 srl4j]",
+    "similarity": 0.7624015564567628,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-13700K OEM",
+    "citi_name": "Процессор Intel Core i7 13700K, LGA 1700,  OEM [cm8071504820705 srmb8]",
+    "similarity": 0.7601970850735098,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-12400 OEM",
+    "citi_name": "Процессор Intel Core i5 12400, LGA 1700,  OEM [cm8071504650608 srl5y]",
+    "similarity": 0.759711465374064,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5500 OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5500, AM4,  OEM [100-000000457]",
+    "similarity": 0.7761714606413812,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-12600K OEM",
+    "citi_name": "Процессор Intel Core i5 12600K, LGA 1700,  OEM [cm8071504555227 srl4t]",
+    "similarity": 0.760236504557313,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-12100 BOX",
+    "citi_name": "Процессор Intel Core i3 12100, LGA 1700,  OEM [cm8071504651012 srl62]",
+    "similarity": 0.7386581857771857,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 9700X BOX",
+    "citi_name": "Процессор AMD Ryzen 7 9700X, AM5,  OEM [100-000001404]",
+    "similarity": 0.7531450013988428,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7600X OEM",
+    "citi_name": "Процессор AMD Ryzen 5 7600X, AM5,  OEM [100-000000593]",
+    "similarity": 0.7788517970848283,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5600 OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5600, AM4,  OEM [100-000000927]",
+    "similarity": 0.774654641230128,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-14700K OEM",
+    "citi_name": "Процессор Intel Core i7 14700K, LGA 1700,  OEM [cm8071504820721 srn3x]",
+    "similarity": 0.7617857422791574,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 8700F OEM",
+    "citi_name": "Процессор AMD Ryzen 7 8700F, AM5,  OEM [100-000001590]",
+    "similarity": 0.7767376866676967,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14600K OEM",
+    "citi_name": "Процессор Intel Core i5 14600K, LGA 1700,  OEM [cm8071504821015 srn43]",
+    "similarity": 0.7597473061777549,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-13900K OEM",
+    "citi_name": "Процессор Intel Core i9 13900K, LGA 1700,  OEM [cm8071505094011 srmbh]",
+    "similarity": 0.7601656177850453,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 7700 OEM",
+    "citi_name": "Процессор AMD Ryzen 7 7700, AM5,  OEM [100-000000592]",
+    "similarity": 0.7733855645796831,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14600KF OEM",
+    "citi_name": "Процессор Intel Core i5 14600KF, LGA 1700,  OEM [cm8071504821014 srn42]",
+    "similarity": 0.7621694650479265,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Pentium Gold G6405 OEM",
+    "citi_name": "Процессор Intel Pentium Gold G6405, LGA 1200,  OEM [cm8070104291811 srh3z]",
+    "similarity": 0.7639549981780629,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14400F OEM",
+    "citi_name": "Процессор Intel Core i5 14400F, LGA 1700,  OEM [cm8071504821113 srn47]",
+    "similarity": 0.7604951501153034,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 PRO 4655G OEM",
+    "citi_name": "Процессор AMD Ryzen 5 PRO 4655G, AM4,  OEM [100-000001155]",
+    "similarity": 0.806747305641065,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 8600G OEM",
+    "citi_name": "Процессор AMD Ryzen 5 8600G, AM5,  OEM [100-000001237]",
+    "similarity": 0.7765497925360503,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-14700F OEM",
+    "citi_name": "Процессор Intel Core i7 14700F, LGA 1700,  OEM [cm8071504820816 srn3z]",
+    "similarity": 0.7623300269186486,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-14900KF OEM",
+    "citi_name": "Процессор Intel Core i9 14900KF, LGA 1700,  OEM [cm8071505094018 srn49]",
+    "similarity": 0.7629112260123965,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core Ultra 9 285K OEM",
+    "citi_name": "Процессор Intel Core Ultra 9 285K, LGA 1851,  OEM [at8076806419]",
+    "similarity": 0.8029825879493158,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13500 OEM",
+    "citi_name": "Процессор Intel Core i5 13500, LGA 1700,  OEM [cm8071505093101 srmbm]",
+    "similarity": 0.7610333374069815,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-10400 OEM",
+    "citi_name": "Процессор Intel Core i5 10400, LGA 1200,  OEM [cm8070104290715 srh3c]",
+    "similarity": 0.7595014034031395,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14400F OEM",
+    "citi_name": "Процессор Intel Core i5 14400F, LGA 1700,  OEM [cm8071504821113 srn47]",
+    "similarity": 0.7604951501153034,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-10400F OEM",
+    "citi_name": "Процессор Intel Core i5 10400F, LGA 1200,  OEM [cm8070104290716 srh3d]",
+    "similarity": 0.7613233867343558,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-10105 OEM",
+    "citi_name": "Процессор Intel Core i3 10105, LGA 1200,  OEM [cm8070104291321 srh3p]",
+    "similarity": 0.7592887083593955,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5700X3D BOX",
+    "citi_name": "Процессор AMD Ryzen 7 5700X, AM4,  BOX (без кулера) [100-100000926woz]",
+    "similarity": 0.7018657655252701,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-11600KF OEM",
+    "citi_name": "Процессор Intel Core i5 13400, LGA 1700,  OEM [cm8071505093004]",
+    "similarity": 0.709679705478044,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7600X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 5 7600x3d, AM5,  OEM [100-000001721]",
+    "similarity": 0.7776888633521148,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-12100F OEM",
+    "citi_name": "Процессор Intel Core i3 12100F, LGA 1700,  OEM [cm8071504651013 srl63]",
+    "similarity": 0.7604361309419894,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-14900K OEM",
+    "citi_name": "Процессор Intel Core i9 14900K, LGA 1700,  OEM [cm8071505094017 srn48]",
+    "similarity": 0.7604606107484522,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13600KF OEM",
+    "citi_name": "Процессор Intel Core i5 13600KF, LGA 1700,  OEM [cm8071504821006 srmbe]",
+    "similarity": 0.7621143813320266,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-13100 OEM",
+    "citi_name": "Процессор Intel Core i3 13100, LGA 1700,  OEM [cm8071505092202 srmbu]",
+    "similarity": 0.7599341625789606,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 3400G OEM",
+    "citi_name": "Процессор AMD Ryzen 5 3400G, AM4,  OEM [yd3400c5m4mfh]",
+    "similarity": 0.802282862680465,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7500F OEM",
+    "citi_name": "Процессор AMD Ryzen 5 7500F, AM5,  OEM [100-000000597]",
+    "similarity": 0.7792170734246588,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-12400F OEM",
+    "citi_name": "Процессор Intel Core i5 12400F, LGA 1700,  OEM [cm8071504555318 srl4w]",
+    "similarity": 0.7614115639534929,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 9950X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 9950X, AM5,  OEM [100-000001277]",
+    "similarity": 0.7800241004911674,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13600K OEM",
+    "citi_name": "Процессор Intel Core i5 13600K, LGA 1700,  OEM [cm8071504821005 srmbd]",
+    "similarity": 0.7606561000129055,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-12400F OEM",
+    "citi_name": "Процессор Intel Core i5 12400F, LGA 1700,  OEM [cm8071504555318 srl4w]",
+    "similarity": 0.7614115639534929,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5700X OEM",
+    "citi_name": "Процессор AMD Ryzen 7 5700X, AM4,  OEM [100-000000926]",
+    "similarity": 0.7765294676092046,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14400 OEM",
+    "citi_name": "Процессор Intel Core i5 14400, LGA 1700,  OEM [cm8071505093012 srn3q]",
+    "similarity": 0.7603140429582267,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-14600K BOX",
+    "citi_name": "Процессор Intel Core i5 14600K, LGA 1700,  OEM [cm8071504821015 srn43]",
+    "similarity": 0.7381464788903128,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-13700F OEM",
+    "citi_name": "Процессор Intel Core i7 13700F, LGA 1700,  OEM [cm8071504820806 srmbb]",
+    "similarity": 0.7623553669586596,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7600 OEM",
+    "citi_name": "Процессор AMD Ryzen 5 7600, AM5,  OEM [100-000001015]",
+    "similarity": 0.7766457086165158,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-12700F OEM",
+    "citi_name": "Процессор Intel Core i7 12700F, LGA 1700,  OEM [cm8071504555020 srl4r]",
+    "similarity": 0.7623379079969008,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 8500G OEM",
+    "citi_name": "Процессор AMD Ryzen 5 8500G, AM5,  OEM [100-000000931]",
+    "similarity": 0.7792886405364847,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 4500 OEM",
+    "citi_name": "Процессор AMD Ryzen 5 4500, AM4,  OEM [100-000000644]",
+    "similarity": 0.7774125901952043,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-13700KF OEM",
+    "citi_name": "Процессор Intel Core i7 13700KF, LGA 1700,  OEM [cm8071504820706 srmb9]",
+    "similarity": 0.76196259029835,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-14700 OEM",
+    "citi_name": "Процессор Intel Core i7 14700, LGA 1700,  OEM [cm8071504820817 srn40]",
+    "similarity": 0.7607670904617505,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13400F OEM",
+    "citi_name": "Процессор Intel Core i5 13400F, LGA 1700,  OEM [cm8071505093005 srmbn]",
+    "similarity": 0.7616888027953272,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5600G OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5600G, AM4,  OEM [100-000000252]",
+    "similarity": 0.7772194817673697,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-10100 OEM",
+    "citi_name": "Процессор Intel Core i3 10100, LGA 1200,  OEM [cm8070104291317 srh3n]",
+    "similarity": 0.7607763521152549,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 5900X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 5900X, AM4,  OEM [100-000000061]",
+    "similarity": 0.7792179369067659,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-14700KF OEM",
+    "citi_name": "Процессор Intel Core i7 14700KF, LGA 1700,  OEM [cm8071504820722 srn3y]",
+    "similarity": 0.7635687153636177,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 7800X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 7 7800X3D, AM5,  OEM [100-000000910]",
+    "similarity": 0.7793089859894233,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 9900X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 9900X, AM5,  OEM [100-000000662]",
+    "similarity": 0.7771573058471126,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 9800X3D BOX",
+    "citi_name": "Процессор AMD Ryzen 7 9800x3d, AM5,  OEM [100-000001084]",
+    "similarity": 0.7561674471097188,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 7500F BOX",
+    "citi_name": "Процессор AMD Ryzen 5 7500F, AM5,  OEM [100-000000597]",
+    "similarity": 0.7561867473704148,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i7-12700KF OEM",
+    "citi_name": "Процессор Intel Core i7 12700KF, LGA 1700,  OEM [cm8071504553829 srl4p]",
+    "similarity": 0.7615103027527172,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-12600KF OEM",
+    "citi_name": "Процессор Intel Core i5 12600KF, LGA 1700,  OEM [cm8071504555228 srl4u]",
+    "similarity": 0.7609961729593102,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-11400F OEM",
+    "citi_name": "Процессор Intel Core i5 11400F, LGA 1200,  OEM [cm8070804497016 srkp1]",
+    "similarity": 0.7530343565984825,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5800X OEM",
+    "citi_name": "Процессор AMD Ryzen 7 5800X, AM4,  OEM [100-000000063]",
+    "similarity": 0.7790239454756066,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 7700X OEM",
+    "citi_name": "Процессор AMD Ryzen 7 7700X, AM5,  OEM [100-000000591]",
+    "similarity": 0.7774589996263899,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 3 3200G OEM",
+    "citi_name": "Процессор AMD Ryzen 3 3200G, AM4,  OEM [yd3200c5m4mfh]",
+    "similarity": 0.8015250175111677,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core Ultra 7 265K OEM",
+    "citi_name": "Процессор Intel Core Ultra 7 265K, LGA 1851,  OEM [at8076806412]",
+    "similarity": 0.8044182244010285,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Pentium Gold G7400 OEM",
+    "citi_name": "Процессор Intel Pentium Gold G7400, LGA 1700,  OEM [cm8071504651605 srl66]",
+    "similarity": 0.7631164758720956,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 7900 BOX",
+    "citi_name": "Процессор AMD Ryzen 9 7900X, AM5,  OEM [100-000000589]",
+    "similarity": 0.699308528635531,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 3600 OEM",
+    "citi_name": "Процессор AMD Ryzen 5 3600, AM4,  OEM [100-000000031]",
+    "similarity": 0.7779365372504529,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 8400F OEM",
+    "citi_name": "Процессор AMD Ryzen 5 8400F, AM5,  OEM [100-000001591]",
+    "similarity": 0.7786071763525643,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 9700X OEM",
+    "citi_name": "Процессор AMD Ryzen 7 9700X, AM5,  OEM [100-000001404]",
+    "similarity": 0.7767915027306669,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-13400 OEM",
+    "citi_name": "Процессор Intel Core i5 13400, LGA 1700,  OEM [cm8071505093004]",
+    "similarity": 0.7760828025305612,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5600X OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5600X, AM4,  OEM [100-000000065]",
+    "similarity": 0.7786294860307527,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 9600X OEM",
+    "citi_name": "Процессор AMD Ryzen 5 9600X, AM5,  OEM [100-000001405]",
+    "similarity": 0.7780044152910663,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5600GT OEM",
+    "citi_name": "Процессор AMD Ryzen 5 5600GT, AM4,  OEM [100-000001488]",
+    "similarity": 0.7767652338874236,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 5950X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 5950X, AM4,  OEM [100-000000059]",
+    "similarity": 0.7816403264860325,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5800X BOX",
+    "citi_name": "Процессор AMD Ryzen 7 5800X, AM4,  OEM [100-000000063]",
+    "similarity": 0.75585033841598,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 9800X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 7 9800x3d, AM5,  OEM [100-000001084]",
+    "similarity": 0.778020142498027,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core Ultra 7 265KF OEM",
+    "citi_name": "Процессор Intel Core Ultra 7 265KF, LGA 1851,  OEM [at8076806410]",
+    "similarity": 0.8041724536330758,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-12900K OEM",
+    "citi_name": "Процессор Intel Core i9 12900KF, LGA 1700,  OEM [cm8071504549231 srl4j]",
+    "similarity": 0.7103385128054254,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 9950X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 9 9950X3D, AM5,  OEM [100-000000719]",
+    "similarity": 0.7813724391355157,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i5-11400 OEM",
+    "citi_name": "Процессор Intel Core i5 11400, LGA 1200,  OEM [cm8070804497015 srkp0]",
+    "similarity": 0.7512136369523528,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i3-14100 OEM",
+    "citi_name": "Процессор Intel Core i3 14100, LGA 1700,  OEM [cm8071505092206 srmx1]",
+    "similarity": 0.7596299023565001,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 7950X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 7950X, AM5,  OEM [100-000000514]",
+    "similarity": 0.779788386924085,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5700X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 7 5700X, AM4,  OEM [100-000000926]",
+    "similarity": 0.7167154998185893,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 5 5600G BOX",
+    "citi_name": "Процессор AMD Ryzen 5 5600G, AM4,  OEM [100-000000252]",
+    "similarity": 0.7549123512059368,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 9 7900X OEM",
+    "citi_name": "Процессор AMD Ryzen 9 7900X, AM5,  OEM [100-000000589]",
+    "similarity": 0.7783563540709831,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5800X3D OEM",
+    "citi_name": "Процессор AMD Ryzen 7 5800X, AM4,  OEM [100-000000063]",
+    "similarity": 0.7170045409724051,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 5700G OEM",
+    "citi_name": "Процессор AMD Ryzen 7 5700G, AM4,  OEM [100-000000263]",
+    "similarity": 0.7778354839314976,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 8700G OEM",
+    "citi_name": "Процессор AMD Ryzen 7 8700G, AM5,  OEM [100-000001236]",
+    "similarity": 0.7762001699045233,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор AMD Ryzen 7 3700X OEM",
+    "citi_name": "Процессор AMD Ryzen 7 3700X, AM4,  OEM [100-000000071]",
+    "similarity": 0.780241644157265,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  },
+  {
+    "category": "cpu",
+    "dns_name": "Процессор Intel Core i9-14900KS OEM",
+    "citi_name": "Процессор Intel Core i9 14900KS, LGA 1700,  OEM [cm8071504820506 srn7r]",
+    "similarity": 0.7622982321530518,
+    "saved_at": "2026-04-10T08:41:16.237566"
+  }
+]

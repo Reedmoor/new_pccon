@@ -206,7 +206,7 @@ def main(product_callback=None, limit_per_category=5, category_name=None):
     # Фильтруем категории в соответствии с запросом
     filter_categories_by_name(category_name)
     
-    driver = uc.Chrome()
+    driver = uc.Chrome(version_main=146)
     
 
     try:

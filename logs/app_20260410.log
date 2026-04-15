@@ -1,0 +1,18 @@
+2026-04-15 09:20:19,240 - app.routes.admin - INFO - Загружены локальные данные DNS: 273 товаров из 13 категорий
+2026-04-15 09:20:19,596 - app.routes.admin - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:20:21,601 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:20:38,557 - app.routes.admin - INFO - Файл с результатами DNS парсера очищен
+2026-04-15 09:20:38,559 - app.routes.admin - INFO - Файл с URL-адресами DNS парсера очищен
+2026-04-15 09:20:38,619 - app.routes.admin - INFO - Загружены локальные данные DNS: 273 товаров из 13 категорий
+2026-04-15 09:20:38,895 - app.routes.admin - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:20:39,808 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:21:11,833 - app.routes.admin - INFO - Загружены локальные данные DNS: 273 товаров из 13 категорий
+2026-04-15 09:21:12,121 - app.routes.admin - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:21:13,095 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:21:36,752 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:22:27,290 - app.routes.admin - INFO - Загружены локальные данные DNS: 273 товаров из 13 категорий
+2026-04-15 09:22:27,589 - app.routes.admin - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:22:28,190 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:24:03,514 - app.routes.admin - INFO - Загружены локальные данные DNS: 273 товаров из 13 категорий
+2026-04-15 09:24:03,827 - app.routes.admin - ERROR - Ошибка чтения категории Citilink ventilyatory-dlya-korpusa: Expecting value: line 2 column 1 (char 2)
+2026-04-15 09:24:04,726 - app.routes.admin - ERROR - Ошибка чтения файла Citilink C:\Users\lime_\Desktop\DIP\new_pccon\app\utils\Citi_parser\data\ventilyatory-dlya-korpusa\Товары.json: Expecting value: line 2 column 1 (char 2)

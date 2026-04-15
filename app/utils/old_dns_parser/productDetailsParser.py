@@ -379,7 +379,7 @@ def main():
                 json.dump([], f, ensure_ascii=False, indent=4)
             logger.info("Создан пустой файл product_data.json")
         
-        driver = uc.Chrome()
+        driver = uc.Chrome(version_main=146)
 
         # Check if urls.txt exists and process from it
         if os.path.exists('urls.txt'):
