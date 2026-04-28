@@ -10,6 +10,54 @@ logger = logging.getLogger(__name__)
 config_bp = Blueprint('config', __name__)
 
 
+def _is_empty_value(value):
+    return value in (None, '', [], {})
+
+
+def normalize_characteristics(characteristics, product_type):
+    """
+    Нормализует характеристики под ключи UI.
+    Важно: НЕ перезаписывает уже заполненные поля (чтобы не ломать Citilink).
+    """
+    chars = dict(characteristics or {})
+
+    def set_if_missing(target_key, source_keys):
+        if not _is_empty_value(chars.get(target_key)):
+            return
+        for source_key in source_keys:
+            source_value = chars.get(source_key)
+            if not _is_empty_value(source_value):
+                chars[target_key] = source_value
+                return
+
+    # Общие алиасы для уже существующих отображений
+    set_if_missing('cores', ['core_count'])
+    set_if_missing('tdp', ['power_consumption'])
+    set_if_missing('capacity', ['memory_size', 'storage_capacity'])
+    set_if_missing('frequency', ['memory_clock'])
+    set_if_missing('max_tdp', ['power_consumption', 'tdp'])
+
+    # Типовые алиасы — чтобы DNS показывался так же, как Citilink
+    if product_type == 'ram':
+        set_if_missing('capacity', ['memory_size'])
+        set_if_missing('frequency', ['memory_clock'])
+        set_if_missing('memory_form_factor', ['form_factor'])
+    elif product_type == 'hard_drive':
+        set_if_missing('capacity', ['storage_capacity'])
+        set_if_missing('type', ['disk_type', 'storage_type'])
+    elif product_type == 'cooler':
+        set_if_missing('max_tdp', ['power_consumption', 'tdp'])
+        set_if_missing('socket_compatibility', ['socket', 'supported_sockets'])
+        set_if_missing('fan_size', ['fan_diameter'])
+    elif product_type == 'power_supply':
+        set_if_missing('certification', ['efficiency_certificate'])
+        set_if_missing('modular', ['cable_management'])
+    elif product_type == 'case':
+        set_if_missing('form_factor', ['case_size'])
+
+    return chars
+
+
 def build_component_data(component):
     """Сериализует компонент в dict для передачи в JS (initial state редактора)."""
     if not component:
@@ -19,7 +67,10 @@ def build_component_data(component):
         'name': component.product_name,
         'price': float(component.price_discounted or component.price_original or 0),
         'images': component.get_images(),
-        'characteristics': component.get_characteristics(),
+        'characteristics': normalize_characteristics(
+            component.get_characteristics(),
+            component.product_type
+        ),
         'rating': component.rating,
         'number_of_reviews': component.number_of_reviews,
         'product_url': component.product_url or '',
@@ -524,7 +575,10 @@ def search_components():
             'vendor': component.vendor,
             'product_url': component.product_url,
             'images': component.get_images(),
-            'characteristics': component.get_characteristics(),
+            'characteristics': normalize_characteristics(
+                component.get_characteristics(),
+                component.product_type
+            ),
             'rating': component.rating,
             'number_of_reviews': component.number_of_reviews,
         })
@@ -583,7 +637,10 @@ def get_alternatives(product_id):
             'vendor': comp.vendor or '',
             'product_url': comp.product_url or '',
             'images': comp.get_images(),
-            'characteristics': comp.get_characteristics(),
+            'characteristics': normalize_characteristics(
+                comp.get_characteristics(),
+                comp.product_type
+            ),
             'rating': comp.rating,
             'number_of_reviews': comp.number_of_reviews,
         })

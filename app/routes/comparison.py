@@ -10,6 +10,70 @@ from app.models.models import UnifiedProduct
 import json
 
 logger = logging.getLogger(__name__)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+
+def resolve_existing_path(path_value):
+    """Resolve path across docker-like and local workspace styles."""
+    if not path_value:
+        return None
+
+    normalized = str(path_value).replace('/', os.sep).replace('\\', os.sep)
+    stripped = normalized.lstrip(os.sep)
+
+    candidates = [
+        normalized,
+        stripped,
+        os.path.join(PROJECT_ROOT, normalized),
+        os.path.join(PROJECT_ROOT, stripped),
+    ]
+
+    for candidate in candidates:
+        candidate_abs = os.path.abspath(candidate)
+        if os.path.exists(candidate_abs):
+            return candidate_abs
+    return None
+
+
+def category_to_product_type(category):
+    mapping = {
+        'gpu': 'graphics_card',
+        'cpu': 'processor',
+        'ram': 'ram',
+        'storage': 'hard_drive',
+        'motherboard': 'motherboard',
+        'psu': 'power_supply',
+        'cooler': 'cooler',
+        'case': 'case',
+    }
+    return mapping.get(category)
+
+
+def serialize_unified_product(product):
+    return {
+        'name': product.product_name,
+        'url': product.product_url,
+        'price': product.price_discounted,
+        'price_original': product.price_original,
+        'brand': '',
+        'brand_name': '',
+        'categories': product.get_category() if hasattr(product, 'get_category') else [],
+        'images': product.get_images() if hasattr(product, 'get_images') else [],
+        'characteristics': product.get_characteristics() if hasattr(product, 'get_characteristics') else {},
+    }
+
+
+def load_products_from_db(vendor, category):
+    product_type = category_to_product_type(category)
+    if not product_type:
+        return []
+
+    products = (
+        UnifiedProduct.query
+        .filter_by(vendor=vendor, product_type=product_type)
+        .all()
+    )
+    return [serialize_unified_product(product) for product in products]
 
 comparison_bp = Blueprint('comparison', __name__, url_prefix='/comparison')
 
@@ -195,19 +259,7 @@ def compare_products():
             
             logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
             
-            # Маппинг категорий из системы сравнения в типы продуктов из import_products
-            category_to_product_type = {
-                'gpu': 'graphics_card',
-                'cpu': 'processor', 
-                'ram': 'ram',
-                'storage': 'hard_drive',
-                'motherboard': 'motherboard',
-                'psu': 'power_supply',
-                'cooler': 'cooler',
-                'case': 'case'
-            }
-            
-            target_product_type = category_to_product_type.get(category)
+            target_product_type = category_to_product_type(category)
             if not target_product_type:
                 logger.warning(f"Категория {category} не найдена в маппинге")
                 return data
@@ -287,15 +339,15 @@ def compare_products():
             """Возвращает первый существующий файл из списка путей"""
             if isinstance(paths, str):
                 logger.info(f"Проверяем путь: {paths}")
-                exists = os.path.exists(paths)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
-                return paths if exists else None
+                resolved = resolve_existing_path(paths)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
+                return resolved
             for path in paths:
                 logger.info(f"Проверяем путь: {path}")
-                exists = os.path.exists(path)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
-                if exists:
-                    return path
+                resolved = resolve_existing_path(path)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
+                if resolved:
+                    return resolved
             return None
         
         # Функция для поиска существующих файлов для storage (список списков)
@@ -310,10 +362,10 @@ def compare_products():
             logger.info("Storage категория, проверяем наборы путей")
             for i, path_set in enumerate(paths_list):
                 logger.info(f"Проверяем набор {i}: {path_set}")
-                all_exist = all(os.path.exists(path) for path in path_set)
+                all_exist = all(resolve_existing_path(path) for path in path_set)
                 logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
                 if all_exist:
-                    return path_set
+                    return [resolve_existing_path(path) for path in path_set]
             return None
         
         # Проверяем существование категории
@@ -421,6 +473,17 @@ def compare_products():
         
         if not dns_data and not citi_data:
             flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}". DNS: {len(dns_data) if dns_data else 0}, Citilink: {len(citi_data) if citi_data else 0}', 'error')
+            return redirect(url_for('comparison.index'))
+
+        if not dns_data:
+            dns_data = load_products_from_db('dns', category)
+            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
+        if not citi_data:
+            citi_data = load_products_from_db('citilink', category)
+            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
+
+        if not dns_data and not citi_data:
+            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}" после fallback в БД', 'error')
             return redirect(url_for('comparison.index'))
         
         # Извлекаем названия товаров
@@ -628,19 +691,7 @@ def quick_compare(category):
             
             logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
             
-            # Маппинг категорий из системы сравнения в типы продуктов из import_products
-            category_to_product_type = {
-                'gpu': 'graphics_card',
-                'cpu': 'processor', 
-                'ram': 'ram',
-                'storage': 'hard_drive',
-                'motherboard': 'motherboard',
-                'psu': 'power_supply',
-                'cooler': 'cooler',
-                'case': 'case'
-            }
-            
-            target_product_type = category_to_product_type.get(category)
+            target_product_type = category_to_product_type(category)
             if not target_product_type:
                 logger.warning(f"Категория {category} не найдена в маппинге")
                 return data
@@ -797,15 +848,15 @@ def quick_compare(category):
             """Возвращает первый существующий файл из списка путей"""
             if isinstance(paths, str):
                 logger.info(f"Проверяем путь: {paths}")
-                exists = os.path.exists(paths)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
-                return paths if exists else None
+                resolved = resolve_existing_path(paths)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
+                return resolved
             for path in paths:
                 logger.info(f"Проверяем путь: {path}")
-                exists = os.path.exists(path)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
-                if exists:
-                    return path
+                resolved = resolve_existing_path(path)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
+                if resolved:
+                    return resolved
             return None
         
         def find_existing_files(paths_list):
@@ -819,10 +870,10 @@ def quick_compare(category):
             logger.info("Storage категория, проверяем наборы путей")
             for i, path_set in enumerate(paths_list):
                 logger.info(f"Проверяем набор {i}: {path_set}")
-                all_exist = all(os.path.exists(path) for path in path_set)
+                all_exist = all(resolve_existing_path(path) for path in path_set)
                 logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
                 if all_exist:
-                    return path_set
+                    return [resolve_existing_path(path) for path in path_set]
             return None
         
         if category not in category_mapping:
@@ -926,6 +977,17 @@ def quick_compare(category):
         
         if not dns_data and not citi_data:
             flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}". DNS: {len(dns_data) if dns_data else 0}, Citilink: {len(citi_data) if citi_data else 0}', 'error')
+            return redirect(url_for('comparison.index'))
+
+        if not dns_data:
+            dns_data = load_products_from_db('dns', category)
+            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
+        if not citi_data:
+            citi_data = load_products_from_db('citilink', category)
+            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
+
+        if not dns_data and not citi_data:
+            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}" после fallback в БД', 'error')
             return redirect(url_for('comparison.index'))
         
         # Извлекаем названия товаров
@@ -1105,18 +1167,7 @@ def api_compare(category):
             logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
             
             # Маппинг категорий из системы сравнения в типы продуктов из import_products
-            category_to_product_type = {
-                'gpu': 'graphics_card',
-                'cpu': 'processor', 
-                'ram': 'ram',
-                'storage': 'hard_drive',
-                'motherboard': 'motherboard',
-                'psu': 'power_supply',
-                'cooler': 'cooler',
-                'case': 'case'
-            }
-            
-            target_product_type = category_to_product_type.get(category)
+            target_product_type = category_to_product_type(category)
             if not target_product_type:
                 logger.warning(f"Категория {category} не найдена в маппинге")
                 return data
@@ -1202,15 +1253,15 @@ def api_compare(category):
             """Возвращает первый существующий файл из списка путей"""
             if isinstance(paths, str):
                 logger.info(f"Проверяем путь: {paths}")
-                exists = os.path.exists(paths)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {paths}")
-                return paths if exists else None
+                resolved = resolve_existing_path(paths)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
+                return resolved
             for path in paths:
                 logger.info(f"Проверяем путь: {path}")
-                exists = os.path.exists(path)
-                logger.info(f"Файл {'найден' if exists else 'не найден'}: {path}")
-                if exists:
-                    return path
+                resolved = resolve_existing_path(path)
+                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
+                if resolved:
+                    return resolved
             return None
         
         # Загружаем данные DNS
@@ -1240,6 +1291,13 @@ def api_compare(category):
                 logger.info(f"Загружено {len(citi_data)} товаров Citilink из {citi_path}")
             except Exception as e:
                 logger.error(f"Ошибка при загрузке Citilink файла {citi_path}: {e}")
+
+        if not dns_data:
+            dns_data = load_products_from_db('dns', category)
+            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
+        if not citi_data:
+            citi_data = load_products_from_db('citilink', category)
+            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
         
         # Создаем компаратор
         comparator = get_comparator()

@@ -30,6 +30,11 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 # Текущая категория для обработки
 category = os.getenv('CATEGORY')
+max_products_env = os.getenv('MAX_PRODUCTS', '').strip()
+try:
+    max_products_limit = int(max_products_env) if max_products_env else 0
+except ValueError:
+    max_products_limit = 0
 
 # В начале файла добавляем настройку логирования
 logging.basicConfig(
@@ -51,6 +56,10 @@ def ensure_directory_exists(directory):
 def fetch_products_for_category(category_name):
     global _parser_stopped
     logging.info(f"Начало парсинга категории: {category_name}")
+    if max_products_limit > 0:
+        logging.info(f"Лимит товаров: {max_products_limit}")
+    else:
+        logging.info("Лимит товаров не задан (без ограничения)")
 
     # Создаем директорию для категории
     category_dir = os.path.join('data', category_name)
@@ -140,11 +149,21 @@ def fetch_products_for_category(category_name):
                         if _parser_stopped:
                             raise ParserStoppedException("Получен сигнал остановки")
                         
-                        # Сохраняем продукт в файл категории (с минимумом дополнительных запросов при остановке)
-                        first_product = product_answer(product, first_product, products_file, fetch_detailed_data=not _parser_stopped)
+                        # Сохраняем продукт в файл категории и получаем нормализованный объект продукта.
+                        first_product, parsed_product = product_answer(
+                            product,
+                            first_product,
+                            products_file,
+                            fetch_detailed_data=not _parser_stopped,
+                            return_product=True
+                        )
                         
-                        # Сохраняем продукт в списке для совместимости
-                        all_products.append(product)
+                        # Сохраняем именно разобранный продукт (url/categories/properties), а не сырой GraphQL-объект.
+                        all_products.append(parsed_product)
+                        if max_products_limit > 0 and len(all_products) >= max_products_limit:
+                            logging.info(f"Достигнут лимит товаров ({max_products_limit}), останавливаем парсинг")
+                            has_next_page_products = False
+                            break
                         
                         # Закомментированы дополнительные запросы для ускорения парсинга
                         # first_rating = rating_answer(product['id'], first_rating, reviews_file)
@@ -170,7 +189,7 @@ def fetch_products_for_category(category_name):
             current_page_products += 1
             
             # Ограничение на количество страниц для тестирования
-            if current_page_products > 10:
+            if current_page_products > 10 and max_products_limit <= 0:
                 logging.warning("Достигнуто ограничение на количество страниц (10). Завершение парсинга.")
                 break
                 

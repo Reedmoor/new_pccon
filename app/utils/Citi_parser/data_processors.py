@@ -14,7 +14,7 @@ def find_key_by_prefix(data, prefix):
     return None
 
 # Функция для собирание данных об товаре в массив для будущего JSON
-def product_answer(product, first_product, products_file='Товары.json', fetch_detailed_data=True):
+def product_answer(product, first_product, products_file='Товары.json', fetch_detailed_data=True, return_product=False):
     # Проверяем флаг остановки в начале обработки продукта
     check_stop_flag()
 
@@ -156,6 +156,8 @@ def product_answer(product, first_product, products_file='Товары.json', fe
             f.write(',\n')
         json.dump(product_info, f, ensure_ascii=False, indent=4)
         first_product = False
+    if return_product:
+        return first_product, product_info
     return first_product
 
 

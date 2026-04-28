@@ -79,7 +79,7 @@ class SingleFileUploader:
         
         return "unknown"
     
-    def upload_file(self, file_path: str) -> bool:
+    def upload_file(self, file_path: str, source_override: str = None) -> bool:
         """Загружает файл на сервер"""
         try:
             file_path = Path(file_path)
@@ -102,15 +102,28 @@ class SingleFileUploader:
             
             category = self.detect_category(products)
             
+            # Автоопределение источника по URL первого товара
+            if source_override:
+                source_name = source_override
+            else:
+                first_url = products[0].get('url', '') if products else ''
+                if 'citilink.ru' in first_url:
+                    source_name = 'citilink'
+                elif 'dns-shop.ru' in first_url:
+                    source_name = 'dns'
+                else:
+                    source_name = 'single_file_upload'
+            
             logger.info(f"📊 File info:")
             logger.info(f"   Products: {len(products):,}")
             logger.info(f"   Category: {category}")
+            logger.info(f"   Source: {source_name}")
             logger.info(f"   Size: {file_path.stat().st_size / 1024:.1f} KB")
             
             # Подготавливаем payload для API
             payload = {
                 'products': products,
-                'source': 'single_file_upload',
+                'source': source_name,
                 'category': category,
                 'file_name': file_path.name,
                 'timestamp': datetime.now().isoformat(),
@@ -150,6 +163,8 @@ def main():
                        help='Server URL (e.g., http://127.0.0.1:5001 or http://127.0.0.1:5000)')
     parser.add_argument('--data-file', type=str, required=True,
                        help='Path to data file to upload')
+    parser.add_argument('--source', type=str, default=None,
+                       help='Override source name (e.g. citilink, dns)')
     parser.add_argument('--test-connection', action='store_true',
                        help='Test connection to server only')
     
@@ -173,7 +188,7 @@ def main():
             return 1
         
         # Загружаем файл
-        if uploader.upload_file(args.data_file):
+        if uploader.upload_file(args.data_file, source_override=args.source):
             logger.info("✅ File upload completed successfully!")
             return 0
         else:

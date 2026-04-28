@@ -33,8 +33,8 @@ PROXY_LIST = [
 
 # Глобальная переменная для отслеживания текущего прокси
 current_proxy_index = 0
-# Прокси включены по умолчанию - автоматически будут включаться при блокировке
-use_proxy = True  # Изменено: всегда включены по умолчанию
+# Прокси по умолчанию выключены. Включаются только вручную через enable_proxy().
+use_proxy = False
 
 def get_next_proxy():
     """Получает следующий прокси из списка"""
@@ -178,12 +178,8 @@ def request(url, query, variables, name_request, max_retries=3):
                 wait_time = min(2 ** retries, 10)
                 logging.warning(f"Слишком много запросов. Ожидание {wait_time} сек перед повторной попыткой... (попытка {retries}/{max_retries})")
                 
-                # Если не используем прокси, включаем их
-                if not use_proxy:
-                    logging.info("🔄 Включаем прокси из-за блокировки по лимиту запросов")
-                    use_proxy = True
-                    current_proxies = get_next_proxy()
-                elif proxy_retries < len(PROXY_LIST):
+                # Прокси НЕ включаем автоматически.
+                if use_proxy and proxy_retries < len(PROXY_LIST):
                     # Переключаемся на следующий прокси
                     logging.info("🔄 Переключаемся на следующий прокси")
                     current_proxies = get_next_proxy()
@@ -195,20 +191,15 @@ def request(url, query, variables, name_request, max_retries=3):
                     time.sleep(1)
                     
             elif response.status_code in [403, 502, 503, 504]:
-                # Ошибки блокировки - включаем прокси
+                # Ошибки блокировки - автоподключение прокси отключено
                 logging.warning(f"Получена ошибка блокировки {response.status_code}")
-                if not use_proxy:
-                    logging.info("🔄 Включаем прокси из-за блокировки")
-                    use_proxy = True
-                    current_proxies = get_next_proxy()
-                    retries += 1
-                elif proxy_retries < len(PROXY_LIST):
+                if use_proxy and proxy_retries < len(PROXY_LIST):
                     logging.info("🔄 Переключаемся на следующий прокси")
                     current_proxies = get_next_proxy()
                     proxy_retries += 1
                     retries += 1
                 else:
-                    logging.error("Все прокси испробованы, но блокировка остается")
+                    logging.error("Прокси отключены или закончились, блокировка остается")
                     retries += 1
                     
                 if retries < max_retries:
@@ -227,12 +218,7 @@ def request(url, query, variables, name_request, max_retries=3):
         except (requests.exceptions.ProxyError, requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as e:
             logging.warning(f"Ошибка соединения: {str(e)}")
             
-            if not use_proxy:
-                # Включаем прокси при ошибках соединения
-                logging.info("🔄 Включаем прокси из-за ошибки соединения")
-                use_proxy = True
-                current_proxies = get_next_proxy()
-            elif proxy_retries < len(PROXY_LIST):
+            if use_proxy and proxy_retries < len(PROXY_LIST):
                 # Переключаемся на следующий прокси
                 logging.info("🔄 Переключаемся на следующий прокси")
                 current_proxies = get_next_proxy()

@@ -1,0 +1,30 @@
+2026-04-22 10:42:28,486 - app.routes.admin - INFO - Файл с товарами Citilink парсера очищен
+2026-04-22 10:42:28,490 - app.routes.admin - INFO - Файл с отзывами Citilink парсера очищен
+2026-04-22 10:42:28,495 - app.routes.admin - INFO - Файл Товары.json в категории bloki-pitaniya очищен
+2026-04-22 10:42:28,499 - app.routes.admin - INFO - Файл Отзывы.json в категории bloki-pitaniya очищен
+2026-04-22 10:42:28,503 - app.routes.admin - INFO - Файл Обзоры.json в категории bloki-pitaniya очищен
+2026-04-22 10:42:28,507 - app.routes.admin - INFO - Файл Товары.json в категории korpusa очищен
+2026-04-22 10:42:28,516 - app.routes.admin - INFO - Файл Отзывы.json в категории korpusa очищен
+2026-04-22 10:42:28,521 - app.routes.admin - INFO - Файл Обзоры.json в категории korpusa очищен
+2026-04-22 10:42:28,527 - app.routes.admin - INFO - Файл Товары.json в категории materinskie-platy очищен
+2026-04-22 10:42:28,533 - app.routes.admin - INFO - Файл Отзывы.json в категории materinskie-platy очищен
+2026-04-22 10:42:28,536 - app.routes.admin - INFO - Файл Обзоры.json в категории materinskie-platy очищен
+2026-04-22 10:42:28,541 - app.routes.admin - INFO - Файл Товары.json в категории moduli-pamyati очищен
+2026-04-22 10:42:28,546 - app.routes.admin - INFO - Файл Отзывы.json в категории moduli-pamyati очищен
+2026-04-22 10:42:28,550 - app.routes.admin - INFO - Файл Обзоры.json в категории moduli-pamyati очищен
+2026-04-22 10:42:28,553 - app.routes.admin - INFO - Файл Товары.json в категории processory очищен
+2026-04-22 10:42:28,559 - app.routes.admin - INFO - Файл Отзывы.json в категории processory очищен
+2026-04-22 10:42:28,569 - app.routes.admin - INFO - Файл Обзоры.json в категории processory очищен
+2026-04-22 10:42:28,570 - app.routes.admin - INFO - Файл Товары.json в категории ventilyatory-dlya-korpusa очищен
+2026-04-22 10:42:28,576 - app.routes.admin - INFO - Файл Отзывы.json в категории ventilyatory-dlya-korpusa очищен
+2026-04-22 10:42:28,581 - app.routes.admin - INFO - Файл Обзоры.json в категории ventilyatory-dlya-korpusa очищен
+2026-04-22 10:42:28,587 - app.routes.admin - INFO - Файл Товары.json в категории videokarty очищен
+2026-04-22 10:42:28,587 - app.routes.admin - INFO - Файл Отзывы.json в категории videokarty очищен
+2026-04-22 10:42:28,593 - app.routes.admin - INFO - Файл Обзоры.json в категории videokarty очищен
+2026-04-22 10:42:28,599 - app.routes.admin - INFO - Файл Товары.json в категории zhestkie-diski очищен
+2026-04-22 10:42:28,599 - app.routes.admin - INFO - Файл Отзывы.json в категории zhestkie-diski очищен
+2026-04-22 10:42:28,599 - app.routes.admin - INFO - Файл Обзоры.json в категории zhestkie-diski очищен
+2026-04-22 10:42:28,834 - app.routes.admin - INFO - Загружены локальные данные DNS: 99 товаров из 2 категорий
+2026-04-22 10:42:32,244 - app.routes.admin - INFO - Загружены локальные данные DNS: 99 товаров из 2 категорий
+2026-04-24 11:51:27,907 - app.routes.admin - INFO - Загружены локальные данные DNS: 99 товаров из 2 категорий
+2026-04-24 11:51:32,707 - app.routes.admin - INFO - Загружены локальные данные DNS: 99 товаров из 2 категорий

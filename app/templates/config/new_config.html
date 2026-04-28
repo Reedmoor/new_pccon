@@ -151,6 +151,11 @@
 .price-diff-positive { color: #dc3545; font-weight: 600; }
 .price-diff-negative { color: #198754; font-weight: 600; }
 .price-diff-zero     { color: #6c757d; }
+.keyword-chip.active {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+    color: #fff !important;
+}
 </style>
 {% endblock %}
 
@@ -287,7 +292,9 @@
                     <button class="btn btn-outline-secondary" type="button" id="modalShowAllBtn">
                         Показать все
                     </button>
+                    <input type="text" class="form-control" id="modalKeywordInput" placeholder="Ключевые слова (например: ddr5 6000)" style="max-width: 320px;">
                 </div>
+                <div id="modalKeywordChips" class="d-flex flex-wrap gap-2 mb-3"></div>
                 <div id="modalLoading" class="text-center py-5 d-none">
                     <div class="spinner-border text-primary"></div>
                     <div class="mt-2 text-muted small">Загрузка...</div>
@@ -313,6 +320,7 @@ const ALTERNATIVES_BASE = "{{ url_for('config.get_alternatives', product_id=0) }
 let currentModalType  = null;
 let currentModalField = null;
 const modalComponentsCache = new Map();
+let currentModalItems = [];
 
 /* текущие выбранные компоненты {fieldId -> comp} */
 const selectedComponents = {};
@@ -349,9 +357,106 @@ const COMP_TYPE_LABELS = {
     'cooler': 'Кулер', 'case': 'Корпус',
 };
 
+const KEYWORD_CHIPS = {
+    motherboard: ['DDR5', 'DDR4', 'AM5', 'AM4', 'LGA1700', 'ATX', 'mATX'],
+    processor: ['Ryzen', 'Intel', 'AM5', 'AM4', 'LGA1700', 'i5', 'i7'],
+    graphics_card: ['RTX', 'GTX', 'RX', '8GB', '12GB', '16GB', 'GDDR6'],
+    ram: ['DDR5', 'DDR4', '6000', '5600', '32GB', '16GB', 'CL30', 'CL36'],
+    hard_drive: ['M.2', 'NVMe', 'PCIe 4.0', 'PCIe 5.0', 'SATA', '1TB', '2TB'],
+    power_supply: ['650W', '750W', '850W', '80+ Gold', 'ATX 3.0', 'Modular'],
+    cooler: ['AM5', 'LGA1700', 'Башенный', '240мм', '360мм', 'PWM'],
+    case: ['ATX', 'mATX', 'Mini-ITX', 'Mesh', 'ARGB', 'Tempered Glass'],
+};
+
+function renderKeywordChips(type) {
+    const chipsWrap = document.getElementById('modalKeywordChips');
+    if (!chipsWrap) return;
+    const chips = KEYWORD_CHIPS[type] || [];
+    if (!chips.length) {
+        chipsWrap.innerHTML = '';
+        return;
+    }
+    chipsWrap.innerHTML = chips.map(ch =>
+        `<button type="button" class="btn btn-outline-secondary btn-sm py-0 px-2 keyword-chip" data-keyword="${String(ch).toLowerCase()}" onclick="applyKeywordChip('${String(ch).replace(/'/g, "\\'")}')">${ch}</button>`
+    ).join('');
+    syncKeywordChipStates();
+}
+
+function applyKeywordChip(keyword) {
+    const input = document.getElementById('modalKeywordInput');
+    if (!input) return;
+    const kw = String(keyword).toLowerCase();
+    let existing = input.value.trim().split(/\s+/).filter(Boolean);
+    const hasKeyword = existing.some(k => k.toLowerCase() === kw);
+    if (hasKeyword) {
+        existing = existing.filter(k => k.toLowerCase() !== kw);
+    } else {
+        existing.push(keyword);
+    }
+    input.value = existing.join(' ');
+    syncKeywordChipStates();
+    const sorted = applyModalSort(currentModalItems);
+    renderModalItems(sorted, currentModalType);
+}
+
+function syncKeywordChipStates() {
+    const input = document.getElementById('modalKeywordInput');
+    const selected = new Set((input?.value || '').toLowerCase().split(/\s+/).filter(Boolean));
+    document.querySelectorAll('#modalKeywordChips .keyword-chip').forEach(btn => {
+        const kw = (btn.dataset.keyword || '').toLowerCase();
+        btn.classList.toggle('active', selected.has(kw));
+    });
+}
+
+function asSortableValue(value) {
+    if (Array.isArray(value)) value = value[0];
+    if (value === null || value === undefined) return null;
+    if (typeof value === 'number') return value;
+    const str = String(value).trim();
+    const normalized = str.replace(',', '.').replace(/\s+/g, '');
+    const num = parseFloat(normalized.match(/-?\d+(\.\d+)?/)?.[0] || '');
+    if (!Number.isNaN(num)) return num;
+    return str.toLowerCase();
+}
+
+function applyModalSort(items) {
+    const sorted = [...items];
+    const keywordInput = (document.getElementById('modalKeywordInput')?.value || '').trim().toLowerCase();
+    const keywords = keywordInput.split(/\s+/).filter(Boolean);
+    const scoreByKeywords = (item) => {
+        if (!keywords.length) return 0;
+        const name = (item.name || '').toLowerCase();
+        const chars = item.characteristics || {};
+        const values = Object.values(chars).map(v => Array.isArray(v) ? v.join(' ') : String(v || '')).join(' ').toLowerCase();
+        let score = 0;
+        keywords.forEach(kw => {
+            if (name.includes(kw)) score += 3;
+            if (values.includes(kw)) score += 1;
+        });
+        return score;
+    };
+    sorted.sort((a, b) => {
+        const sdiff = scoreByKeywords(b) - scoreByKeywords(a);
+        if (sdiff !== 0) return sdiff;
+        return (a.price || 0) - (b.price || 0);
+    });
+
+    return sorted;
+}
+
+function renderModalItems(items, type) {
+    const grid = document.getElementById('modalProductsGrid');
+    grid.innerHTML = '';
+    items.forEach(comp => {
+        modalComponentsCache.set(comp.id, comp);
+        grid.appendChild(renderProductCard(comp, type));
+    });
+}
+
 function openComponentModal(type, fieldId, label, icon) {
     currentModalType = type;
     currentModalField = fieldId;
+    renderKeywordChips(type);
     document.getElementById('componentModalTitle').textContent = 'Выбор: ' + label;
     document.getElementById('modalSearchInput').value = '';
     document.getElementById('modalProductsGrid').innerHTML = `
@@ -382,11 +487,8 @@ function loadComponents(type, query) {
                     Компоненты не найдены</div>`;
                 return;
             }
-            grid.innerHTML = '';
-            response.components.forEach(comp => {
-                modalComponentsCache.set(comp.id, comp);
-                grid.appendChild(renderProductCard(comp, type));
-            });
+            currentModalItems = response.components;
+            renderModalItems(applyModalSort(currentModalItems), type);
         },
         error: function() {
             loading.classList.add('d-none');
@@ -415,6 +517,17 @@ function renderProductCard(comp, type) {
             const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
             specsHtml += `<span class="badge bg-light text-dark spec-badge me-1 mb-1 border">${label}: ${val}</span>`;
             count++;
+        }
+    }
+    // Fallback: если ключевые не найдены, показываем первые непустые характеристики
+    if (count === 0) {
+        for (const [k, v] of Object.entries(chars)) {
+            if (v === undefined || v === null || v === '') continue;
+            const label = SPEC_LABELS[k] || k;
+            const val = Array.isArray(v) ? v.join(', ') : v;
+            specsHtml += `<span class="badge bg-light text-dark spec-badge me-1 mb-1 border">${label}: ${val}</span>`;
+            count++;
+            if (count >= 4) break;
         }
     }
 
@@ -511,6 +624,16 @@ function updatePreview(fieldId, comp, type) {
             const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
             specsHtml += `<div class="text-muted small"><strong>${label}:</strong> ${val}</div>`;
             count++;
+        }
+    }
+    if (count === 0) {
+        for (const [k, v] of Object.entries(chars)) {
+            if (v === undefined || v === null || v === '') continue;
+            const label = SPEC_LABELS[k] || k;
+            const val = Array.isArray(v) ? v.join(', ') : v;
+            specsHtml += `<div class="text-muted small"><strong>${label}:</strong> ${val}</div>`;
+            count++;
+            if (count >= 3) break;
         }
     }
 
@@ -722,6 +845,11 @@ $(document).ready(function() {
     });
     $('#modalShowAllBtn').on('click', function() {
         loadComponents(currentModalType, '');
+    });
+    $('#modalKeywordInput').on('input', function() {
+        syncKeywordChipStates();
+        const sorted = applyModalSort(currentModalItems);
+        renderModalItems(sorted, currentModalType);
     });
 
     /* Переключатель «Похожие товары» */

@@ -113,6 +113,25 @@ def get_urls_from_page(driver):
     ))
 
 
+def scroll_page_for_products(driver, steps=5):
+    """
+    Прокручивает страницу вниз, чтобы подгрузились товары (lazy-load/infinite scroll).
+    Делает несколько шагов и останавливается раньше, если высота страницы не меняется.
+    """
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    for _ in range(steps):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        pause(randint(1, 2))
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
+
+    # Возвращаемся вверх, чтобы не мешать дальнейшим действиям
+    driver.execute_script("window.scrollTo(0, 0);")
+    pause(1)
+
+
 def get_all_category_page_urls(driver, url_to_parse, limit=None, callback=None):
     """ Get category URL and parse links from it with a limit. 
     If callback is provided, it will be called with each URL one by one. """
@@ -124,6 +143,7 @@ def get_all_category_page_urls(driver, url_to_parse, limit=None, callback=None):
         url = url_to_parse.format(page=page)
         driver.get(url)
         pause(randint(2, 4))
+        scroll_page_for_products(driver)
 
         soup = BeautifulSoup(driver.page_source, 'lxml')
 
