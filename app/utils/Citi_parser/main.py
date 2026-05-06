@@ -52,6 +52,17 @@ def ensure_directory_exists(directory):
         os.makedirs(directory)
         logging.info(f"Создана директория: {directory}")
 
+def load_existing_products(products_file):
+    try:
+        if os.path.exists(products_file):
+            with open(products_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            if isinstance(data, list) and data:
+                return data
+    except Exception as e:
+        logging.warning(f"Не удалось прочитать предыдущие товары {products_file}: {e}")
+    return []
+
 # Функция для обработки одной категории
 def fetch_products_for_category(category_name):
     global _parser_stopped
@@ -69,6 +80,7 @@ def fetch_products_for_category(category_name):
     products_file = os.path.join(category_dir, 'Товары.json')
     reviews_file = os.path.join(category_dir, 'Отзывы.json')
     articles_file = os.path.join(category_dir, 'Обзоры.json')
+    previous_products = load_existing_products(products_file)
     
     # Также создадим копию в корневой директории для совместимости
     ensure_directory_exists('data')
@@ -239,9 +251,14 @@ def fetch_products_for_category(category_name):
         logging.info(f"Общее количество товаров: {len(all_products)}")
     else:
         logging.warning(f"Не удалось получить товары для категории {category_name}")
-        # Создаем пустой файл
-        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
-            json.dump([], f, ensure_ascii=False, indent=2)
+        if previous_products:
+            with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
+                json.dump(previous_products, f, ensure_ascii=False, indent=2)
+            logging.warning(f"Сохранен предыдущий непустой файл: {len(previous_products)} товаров")
+        else:
+            # Создаем пустой файл только если раньше не было валидных данных
+            with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
     
     return all_products
 
@@ -264,6 +281,9 @@ def main():
     try:
         # Обрабатываем категорию
         products = fetch_products_for_category(category)
+        if not products:
+            logging.warning("Новые товары не получены, не перезаписываем итоговый файл пустым списком")
+            return 0
         
         # Сохраняем данные только в директорию категории
         category_dir = os.path.join('data', category)

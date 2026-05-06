@@ -41,7 +41,8 @@ for /d %%D in ("%citi_data_dir%\*") do (
 
         "%FULL_PYTHON_PATH%" upload_single_file.py ^
             --server-url %server_url% ^
-            --data-file "%%D\Товары.json"
+            --data-file "%%D\Товары.json" ^
+            --source citilink
 
         if !errorlevel! equ 0 (
             echo ✅ Загружено: %%~nxD

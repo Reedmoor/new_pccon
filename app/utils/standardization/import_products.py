@@ -104,6 +104,54 @@ def detect_vendor_from_url(url):
     else:
         return 'unknown'
 
+def normalize_source_vendor(source):
+    source_lower = str(source or '').lower()
+    if 'citilink' in source_lower or 'citi' in source_lower:
+        return 'citilink'
+    if 'dns' in source_lower:
+        return 'dns'
+    return 'unknown'
+
+def infer_vendor(product, source='unknown'):
+    vendor = detect_vendor_from_url(product.get('url', '') or product.get('product_url', ''))
+    if vendor != 'unknown':
+        return vendor
+
+    vendor = normalize_source_vendor(source)
+    if vendor != 'unknown':
+        return vendor
+
+    # Raw Citilink GraphQL snippets have slug, price/current and citilink images.
+    images = product.get('images')
+    if product.get('slug') and isinstance(images, dict) and 'citilink' in images:
+        return 'citilink'
+    return 'unknown'
+
+def ensure_import_identity(std_product, raw_product, vendor):
+    """
+    Prevent different products from collapsing into a single DB row when parser data
+    has no URL. Prefer real URLs; otherwise create a stable synthetic identity.
+    """
+    if (std_product.get("product_url") or "").strip():
+        return
+
+    product_id = std_product.get("id") or raw_product.get("id") or raw_product.get("article")
+    product_name = std_product.get("product_name") or raw_product.get("name") or "unknown"
+    product_type = std_product.get("product_type") or "other"
+
+    if product_id:
+        std_product["product_url"] = f"import://{vendor}/{product_type}/{product_id}"
+    else:
+        safe_name = re.sub(r"\s+", "-", product_name.strip().lower())[:180]
+        std_product["product_url"] = f"import://{vendor}/{product_type}/{safe_name}"
+
+def normalize_categories(raw_categories):
+    if isinstance(raw_categories, list):
+        return raw_categories
+    if raw_categories:
+        return [raw_categories]
+    return []
+
 def detect_product_type(product_name, product_categories=None):
     """Detect product type from product name and categories"""
     if not product_name:
@@ -161,9 +209,17 @@ def upsert_unified_product(unified_product):
     Вставляет новый продукт или обновляет существующий по product_url.
     Возвращает ('added'|'updated', объект).
     """
-    existing = UnifiedProduct.query.filter_by(
-        product_url=unified_product.product_url
-    ).first()
+    existing = None
+    product_url = (unified_product.product_url or '').strip()
+    if product_url:
+        existing = UnifiedProduct.query.filter_by(product_url=product_url).first()
+
+    if not existing:
+        existing = UnifiedProduct.query.filter_by(
+            vendor=unified_product.vendor,
+            product_type=unified_product.product_type,
+            product_name=unified_product.product_name,
+        ).first()
 
     if existing:
         # Обновляем поля существующего продукта
@@ -200,29 +256,34 @@ def import_products_from_data(products_data, source='local_parser'):
 
         for idx, product in enumerate(products_data):
             try:
-                vendor = detect_vendor_from_url(product.get('url', ''))
+                if not isinstance(product, dict):
+                    raise ValueError("Product must be an object")
+
+                vendor = infer_vendor(product, source)
                 print(f"📦 [{idx+1}] {product.get('name', 'Безымянный товар')} ({vendor})")
 
-                product_categories = product.get('categories', [])
+                product_categories = normalize_categories(product.get('categories') or product.get('category'))
                 product_type = product.get('detected_product_type') or detect_product_type(
                     product.get('name', ''), product_categories
                 )
 
                 std_product = standardize_characteristics(product, vendor)
                 std_product["vendor"] = vendor
-                std_product["product_type"] = product_type
+                if product_type and product_type != 'other':
+                    std_product["product_type"] = product_type
                 ensure_compatibility_characteristics(std_product)
+                ensure_import_identity(std_product, product, vendor)
 
                 unified_product = convert_to_unified_product(std_product)
 
                 action, _ = upsert_unified_product(unified_product)
+                db.session.commit()
                 if action == 'added':
                     added_count += 1
                 else:
                     updated_count += 1
 
                 if idx % 50 == 0 and idx > 0:
-                    db.session.commit()
                     print(f"✅ Обработано {idx} товаров (добавлено: {added_count}, обновлено: {updated_count})...")
 
                 results.append({
@@ -254,7 +315,7 @@ def import_products_from_data(products_data, source='local_parser'):
                     print(f"   {pt}: {count} товаров")
 
             return {
-                'success': True,
+                'success': error_count < len(products_data),
                 'added_count': added_count,
                 'updated_count': updated_count,
                 'error_count': error_count,
@@ -360,6 +421,7 @@ def import_products():
                                     std_product["vendor"] = "dns"
                                     std_product["product_type"] = category_name
                                     std_product["source"] = f"local_parser_file_{file_idx + 1}"
+                                    ensure_import_identity(std_product, product, "dns")
                                     all_products.append(std_product)
                                 except Exception as e:
                                     print(f"    Ошибка при обработке товара {product.get('name', 'Без имени')}: {str(e)}")
@@ -474,6 +536,7 @@ def import_products():
                                 std_product = standardize_characteristics(product, "citilink")
                                 std_product["vendor"] = "citilink"
                                 std_product["product_type"] = product_type
+                                ensure_import_identity(std_product, product, "citilink")
                                 all_products.append(std_product)
                             
                             print(f"Добавлено {len(products)} товаров типа {product_type} от citilink")
@@ -534,6 +597,7 @@ def import_products():
                             std_product["vendor"] = "dns"
                             std_product["product_type"] = category_name
                             std_product["source"] = "old_parser_file"  # Добавляем источник
+                            ensure_import_identity(std_product, product, "dns")
                             all_products.append(std_product)
                     
                     print(f"Загружено {len(data)} товаров из DNS (старый парсер)")
@@ -573,13 +637,13 @@ def import_products():
                 ensure_compatibility_characteristics(product_data)
                 unified_product = convert_to_unified_product(product_data)
                 action, _ = upsert_unified_product(unified_product)
+                db.session.commit()
                 if action == 'added':
                     added_count += 1
                 else:
                     updated_count += 1
 
                 if idx % 100 == 0 and idx > 0:
-                    db.session.commit()
                     print(f"Обработано {idx} продуктов (добавлено: {added_count}, обновлено: {updated_count})...")
 
             except Exception as e:

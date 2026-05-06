@@ -82,6 +82,7 @@ CHARACTERISTIC_MAPPING = {
     
     # RAM specific mappings
     "Объем оперативной памяти": "memory_size",
+    "Суммарный объем памяти всего комплекта": "memory_size",
     "Тип оперативной памяти": "memory_type",
     "Частота памяти": "memory_clock",
     "Количество модулей в комплекте": "module_count",
@@ -236,6 +237,91 @@ def extract_value(value_str, field_name):
     
     return value_str
 
+def _category_names(source_data):
+    """Extract category names from parser formats used by DNS and Citilink."""
+    names = []
+
+    def add_category(value):
+        if not value:
+            return
+        if isinstance(value, dict):
+            name = value.get("name") or value.get("title") or value.get("slug")
+            if name:
+                names.append(str(name))
+        elif isinstance(value, str):
+            names.append(value)
+
+    categories = source_data.get("categories", [])
+    if isinstance(categories, list):
+        for category in categories:
+            add_category(category)
+    else:
+        add_category(categories)
+
+    category = source_data.get("category")
+    if isinstance(category, list):
+        for item in category:
+            add_category(item)
+    else:
+        add_category(category)
+
+    return [name for name in names if name]
+
+def _citilink_url(source_data):
+    url = source_data.get("url") or source_data.get("product_url")
+    if url:
+        return url
+
+    slug = source_data.get("slug")
+    product_id = source_data.get("id")
+    if slug and product_id:
+        return f"https://www.citilink.ru/product/{slug}-{product_id}/"
+    return ""
+
+def _iter_citilink_properties(source_data):
+    """Yield (name, value) pairs from full parser data and raw GraphQL snippets."""
+    for prop_group in source_data.get("properties", []) or []:
+        if not isinstance(prop_group, dict):
+            continue
+        for prop in prop_group.get("properties", []) or []:
+            if isinstance(prop, dict):
+                yield prop.get("name"), prop.get("value")
+
+    for prop in source_data.get("propertiesShort", []) or []:
+        if isinstance(prop, dict):
+            yield prop.get("name"), prop.get("value")
+
+def _iter_dns_properties(source_data):
+    characteristics = source_data.get("characteristics", {})
+    if isinstance(characteristics, dict):
+        for _, props in characteristics.items():
+            if isinstance(props, list):
+                for prop in props:
+                    if isinstance(prop, dict):
+                        yield prop.get("title") or prop.get("name"), prop.get("value")
+            elif isinstance(props, dict):
+                yield props.get("title") or props.get("name"), props.get("value")
+    elif isinstance(characteristics, list):
+        for prop in characteristics:
+            if isinstance(prop, dict):
+                yield prop.get("title") or prop.get("name"), prop.get("value")
+
+def _to_float_price(price):
+    if price in (None, ''):
+        return None
+    if isinstance(price, dict):
+        for key in ("current", "old", "value", "amount"):
+            if price.get(key) not in (None, ''):
+                return _to_float_price(price.get(key))
+        return None
+    if isinstance(price, (int, float)):
+        return float(price)
+    if isinstance(price, str):
+        cleaned = ''.join(ch for ch in price if ch.isdigit() or ch in '.,')
+        cleaned = cleaned.replace(',', '.')
+        return float(cleaned) if cleaned else None
+    return None
+
 def standardize_characteristics(source_data, vendor):
     """
     Standardize characteristics from different vendors into a unified format
@@ -261,13 +347,13 @@ def standardize_characteristics(source_data, vendor):
         standardized["price_discounted"] = source_data.get("price")
         standardized["price_original"] = source_data.get("price_old")
         standardized["rating"] = source_data.get("rating")
-        standardized["number_of_reviews"] = source_data.get("reviews")
+        counters = source_data.get("counters", {}) if isinstance(source_data.get("counters"), dict) else {}
+        standardized["number_of_reviews"] = source_data.get("reviews", counters.get("reviews") or counters.get("opinions"))
         standardized["images"] = source_data.get("images", [])
-        standardized["product_url"] = source_data.get("url")
+        standardized["product_url"] = _citilink_url(source_data)
         
-        # Безопасное извлечение категорий
-        categories = source_data.get("categories", []) or []
-        standardized["category"] = [cat.get("name") for cat in categories if isinstance(cat, dict)]
+        # Безопасное извлечение категорий: поддерживаем полный parser JSON и raw GraphQL snippet.
+        standardized["category"] = _category_names(source_data)
         
         # Determine product type based on category
         product_type = determine_product_type(standardized["category"])
@@ -275,34 +361,30 @@ def standardize_characteristics(source_data, vendor):
         
         # Process characteristics - store ALL characteristics
         characteristics = {}
-        for prop_group in source_data.get("properties", []):
-            group_name = prop_group.get("name")
-            for prop in prop_group.get("properties", []):
-                prop_name = prop.get("name")
-                prop_value = prop.get("value")
-                
-                # Check if there's a standard mapping for this property
-                std_field = CHARACTERISTIC_MAPPING.get(prop_name)
-                if std_field:
-                    # Use the standardized field name instead of the original
-                    characteristics[std_field] = extract_value(prop_value, std_field)
-                else:
-                    # Only store properties without standard mapping with original names
-                    characteristics[prop_name] = prop_value
+        for prop_name, prop_value in _iter_citilink_properties(source_data):
+            if not prop_name:
+                continue
+            # Check if there's a standard mapping for this property
+            std_field = CHARACTERISTIC_MAPPING.get(prop_name)
+            if std_field:
+                # Use the standardized field name instead of the original
+                characteristics[std_field] = extract_value(prop_value, std_field)
+            else:
+                # Only store properties without standard mapping with original names
+                characteristics[prop_name] = prop_value
         
     elif vendor.lower() == 'dns':
         standardized["id"] = source_data.get("id")
         standardized["product_name"] = source_data.get("name")
-        standardized["price_discounted"] = source_data.get("price_discounted")
-        standardized["price_original"] = source_data.get("price_original")
+        standardized["price_discounted"] = source_data.get("price_discounted", source_data.get("price"))
+        standardized["price_original"] = source_data.get("price_original", source_data.get("price_old"))
         standardized["rating"] = source_data.get("rating")
         standardized["number_of_reviews"] = source_data.get("number_of_reviews")
         standardized["images"] = source_data.get("images", [])
         standardized["product_url"] = source_data.get("url")
         
         # Безопасное извлечение категорий
-        categories = source_data.get("categories", []) or []
-        standardized["category"] = [cat.get("name") for cat in categories if isinstance(cat, dict)]
+        standardized["category"] = _category_names(source_data)
         
         # Determine product type based on category
         product_type = determine_product_type(standardized["category"])
@@ -310,19 +392,17 @@ def standardize_characteristics(source_data, vendor):
         
         # Process characteristics - store ALL characteristics
         characteristics = {}
-        for group_name, props in source_data.get("characteristics", {}).items():
-            for prop in props:
-                prop_title = prop.get("title")
-                prop_value = prop.get("value")
-                
-                # Check if there's a standard mapping for this property
-                std_field = CHARACTERISTIC_MAPPING.get(prop_title)
-                if std_field:
-                    # Use the standardized field name instead of the original
-                    characteristics[std_field] = extract_value(prop_value, std_field)
-                else:
-                    # Only store properties without standard mapping with original names
-                    characteristics[prop_title] = prop_value
+        for prop_title, prop_value in _iter_dns_properties(source_data):
+            if not prop_title:
+                continue
+            # Check if there's a standard mapping for this property
+            std_field = CHARACTERISTIC_MAPPING.get(prop_title)
+            if std_field:
+                # Use the standardized field name instead of the original
+                characteristics[std_field] = extract_value(prop_value, std_field)
+            else:
+                # Only store properties without standard mapping with original names
+                characteristics[prop_title] = prop_value
     
     else:
         # Handle unknown vendors or generic data format
@@ -406,14 +486,9 @@ def convert_to_unified_product(standardized_data):
     Returns:
         UnifiedProduct: Model instance
     """
-    # Handle dictionary values by converting them to JSON strings
-    price_discounted = standardized_data.get("price_discounted")
-    if isinstance(price_discounted, dict) and 'current' in price_discounted:
-        price_discounted = float(price_discounted['current']) if price_discounted['current'] else None
-    
-    price_original = standardized_data.get("price_original")
-    if isinstance(price_original, dict) and 'old' in price_original:
-        price_original = float(price_original['old']) if price_original['old'] else None
+    # Handle parser-specific price formats.
+    price_discounted = _to_float_price(standardized_data.get("price_discounted"))
+    price_original = _to_float_price(standardized_data.get("price_original"))
     
     # Handle images field
     images = standardized_data.get("images", [])
@@ -457,7 +532,7 @@ def convert_to_unified_product(standardized_data):
         images=images,
         characteristics=characteristics_json,
         availability=True,  # Default to available
-        product_url=standardized_data.get("product_url", ""),
+        product_url=standardized_data.get("product_url") or "",
         category=category,
         product_type=standardized_data.get("product_type", "other")
     )

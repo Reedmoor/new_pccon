@@ -68,6 +68,8 @@ def upload_products():
         products = data['products']
         if not isinstance(products, list):
             return jsonify({'error': 'Products must be a list'}), 400
+        if not products:
+            return jsonify({'error': 'Products list is empty'}), 400
         
         # Определяем тип загрузки
         upload_type = data.get('upload_type', 'local_parser')
@@ -87,6 +89,16 @@ def upload_products():
                 
                 # Импортируем напрямую из данных без сохранения файла
                 result = import_products_from_data(products, source=source)
+                if not result.get('success', False):
+                    return jsonify({
+                        'success': False,
+                        'error': result.get('error', 'Import failed'),
+                        'added_count': result.get('added_count', 0),
+                        'updated_count': result.get('updated_count', 0),
+                        'error_count': result.get('error_count', len(products)),
+                        'upload_type': upload_type,
+                        'source': source
+                    }), 500
                 
                 # Создаем уведомление о синхронизации
                 sync_notification = {
