@@ -21,8 +21,8 @@ services:
       - pccon_redis
     networks:
       - pccon_network
-    ports:
-      - "5000:5000"
+    expose:
+      - "5000"
 
   # База данных PostgreSQL
   pccon_db:
