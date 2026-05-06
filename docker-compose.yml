@@ -64,7 +64,7 @@ services:
       - "80:80"
     volumes:
       - ./docker/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker/nginx/sites:/etc/nginx/conf.d
+      - ./docker/nginx/sites/pccon.conf:/etc/nginx/conf.d/default.conf
       - pccon_uploads:/var/www/uploads
     depends_on:
       - pccon_web
