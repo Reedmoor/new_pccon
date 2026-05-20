@@ -341,11 +341,10 @@ def import_products():
         # Инициализируем список всех продуктов СРАЗУ в начале функции
         all_products = []
         
-        # По умолчанию НЕ импортируем data/local_parser_data_*.json,
-        # чтобы не подтягивать старые архивные выгрузки.
-        # Если нужно включить старое поведение:
-        #   set IMPORT_LOCAL_DNS_FILES=1
-        use_local_dns_files = os.environ.get("IMPORT_LOCAL_DNS_FILES", "").strip() == "1"
+        # По умолчанию импортируем data/local_parser_data_*.json
+        # Если нужно отключить импорт локальных файлов парсера:
+        #   set IMPORT_LOCAL_DNS_FILES=0
+        use_local_dns_files = os.environ.get("IMPORT_LOCAL_DNS_FILES", "1").strip() != "0"
         if use_local_dns_files:
             local_files = glob.glob('data/local_parser_data_*.json')
             if local_files:
@@ -504,45 +503,58 @@ def import_products():
         print("Начинаем импорт продуктов...")
         
         # Обрабатываем все доступные файлы Citilink из папки data
-        citilink_data_dir = os.path.join('app', 'utils', 'Citi_parser', 'data')
-        if os.path.exists(citilink_data_dir):
-            # Перебираем все директории категорий
-            for category_dir in os.listdir(citilink_data_dir):
-                category_path = os.path.join(citilink_data_dir, category_dir)
-                if os.path.isdir(category_path):
-                    products_file = os.path.join(category_path, 'Товары.json')
-                    if os.path.exists(products_file):
-                        try:
-                            # Определяем тип продукта по имени директории
-                            product_type = category_mapping.get(category_dir, None)
-                            if not product_type:
-                                print(f"Неизвестная категория Citilink: {category_dir}, пропускаем")
-                                continue
+        citilink_roots = []
+        primary_citilink_data_dir = os.path.join('app', 'utils', 'Citi_parser', 'data')
+        if os.path.exists(primary_citilink_data_dir):
+            citilink_roots.append(primary_citilink_data_dir)
+
+        backup_citilink_roots = sorted(
+            glob.glob(os.path.join('data', 'parser_backups', '*', 'citilink', 'data')),
+            key=os.path.getmtime,
+            reverse=True
+        )
+        citilink_roots.extend(backup_citilink_roots)
+
+        if citilink_roots:
+            for citilink_data_dir in citilink_roots:
+                print(f"Используем Citilink данные из: {citilink_data_dir}")
+                # Перебираем все директории категорий
+                for category_dir in os.listdir(citilink_data_dir):
+                    category_path = os.path.join(citilink_data_dir, category_dir)
+                    if os.path.isdir(category_path):
+                        products_file = os.path.join(category_path, 'Товары.json')
+                        if os.path.exists(products_file):
+                            try:
+                                # Определяем тип продукта по имени директории
+                                product_type = category_mapping.get(category_dir, None)
+                                if not product_type:
+                                    print(f"Неизвестная категория Citilink: {category_dir}, пропускаем")
+                                    continue
                                 
-                            print(f"Обработка категории Citilink {category_dir} ({product_type})")
-                            
-                            with open(products_file, 'r', encoding='utf-8') as f:
-                                data = json.load(f)
-                            
-                            if isinstance(data, list):
-                                products = data
-                            else:
-                                products = [data]
-                            
-                            print(f"Загружено {len(products)} товаров из {products_file}")
-                            
-                            for product in products:
-                                # Стандартизируем данные
-                                std_product = standardize_characteristics(product, "citilink")
-                                std_product["vendor"] = "citilink"
-                                std_product["product_type"] = product_type
-                                ensure_import_identity(std_product, product, "citilink")
-                                all_products.append(std_product)
-                            
-                            print(f"Добавлено {len(products)} товаров типа {product_type} от citilink")
-                        except Exception as e:
-                            print(f"Ошибка при обработке файла {products_file}: {str(e)}")
-                            traceback.print_exc()
+                                print(f"Обработка категории Citilink {category_dir} ({product_type})")
+                                
+                                with open(products_file, 'r', encoding='utf-8') as f:
+                                    data = json.load(f)
+                                
+                                if isinstance(data, list):
+                                    products = data
+                                else:
+                                    products = [data]
+                                
+                                print(f"Загружено {len(products)} товаров из {products_file}")
+                                
+                                for product in products:
+                                    # Стандартизируем данные
+                                    std_product = standardize_characteristics(product, "citilink")
+                                    std_product["vendor"] = "citilink"
+                                    std_product["product_type"] = product_type
+                                    ensure_import_identity(std_product, product, "citilink")
+                                    all_products.append(std_product)
+                                
+                                print(f"Добавлено {len(products)} товаров типа {product_type} от citilink")
+                            except Exception as e:
+                                print(f"Ошибка при обработке файла {products_file}: {str(e)}")
+                                traceback.print_exc()
         
         # Обрабатываем данные DNS из old_dns_parser
         dns_file = os.path.join('app', 'utils', 'old_dns_parser', 'product_data.json')
@@ -663,10 +675,26 @@ def import_products():
                 count = UnifiedProduct.query.filter_by(product_type=product_type).count()
                 print(f"{product_type}: {count} продуктов")
 
+            return {
+                'success': error_count < len(unique_products),
+                'added_count': added_count,
+                'updated_count': updated_count,
+                'error_count': error_count,
+                'total_products': len(unique_products)
+            }
+
         except Exception as e:
             db.session.rollback()
             print(f"Ошибка сохранения в базу данных: {str(e)}")
             traceback.print_exc()
+            return {
+                'success': False,
+                'error': str(e),
+                'added_count': added_count,
+                'updated_count': updated_count,
+                'error_count': error_count,
+                'total_products': len(unique_products)
+            }
 
 if __name__ == "__main__":
     import_products() 
