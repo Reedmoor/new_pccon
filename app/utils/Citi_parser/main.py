@@ -6,9 +6,10 @@ import signal
 import sys
 from lxml import html
 from dotenv import load_dotenv
+from datetime import datetime
 from request_handler import request, ParserStoppedException, check_stop_flag, test_all_proxies, enable_proxy, disable_proxy, use_proxy
 from queries import (url, PRODUCTS_QUERY, PRODUCT_VARIABLE)
-from data_processors import product_answer, rating_answer, review_answer
+from data_processors import product_answer
 
 load_dotenv()
 
@@ -72,28 +73,18 @@ def fetch_products_for_category(category_name):
     else:
         logging.info("Лимит товаров не задан (без ограничения)")
 
-    # Создаем директорию для категории
-    category_dir = os.path.join('data', category_name)
-    ensure_directory_exists(category_dir)
-    
-    # Пути к файлам для данной категории
-    products_file = os.path.join(category_dir, 'Товары.json')
-    reviews_file = os.path.join(category_dir, 'Отзывы.json')
-    articles_file = os.path.join(category_dir, 'Обзоры.json')
-    previous_products = load_existing_products(products_file)
-    
-    # Также создадим копию в корневой директории для совместимости
+    # Создаем директорию для всех Citilink данных
     ensure_directory_exists('data')
-
-    # Очищаем файлы перед записью
-    for filename in [products_file, reviews_file, articles_file]:
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write('[\n')
+    data_dir = os.path.join('data', 'citilink')
+    ensure_directory_exists(data_dir)
     
-    # Счетчики для отслеживания первых элементов
+    # Единый файл для всех товаров
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    products_file = os.path.join(data_dir, f'citilink_{timestamp}.json')
+    previous_products = []
+    
+    # Счетчик для отслеживания первых элементов
     first_product = True
-    first_rating = True
-    first_review = True
 
     current_page_products = 1
     has_next_page_products = True
@@ -209,20 +200,12 @@ def fetch_products_for_category(category_name):
         logging.info("🛑 ПАРСЕР ОСТАНОВЛЕН ПОЛЬЗОВАТЕЛЕМ!")
         logging.info(f"✅ На момент остановки обработано {len(all_products)} товаров")
         
-        # Закрываем файлы даже при остановке
-        for filename in [products_file, reviews_file, articles_file]:
-            try:
-                with open(filename, 'a', encoding='utf-8') as f:
-                    f.write('\n]')
-            except Exception as e:
-                logging.error(f"Ошибка при закрытии файла {filename}: {e}")
-        
         # Сохраняем собранные до остановки товары
         if all_products:
             try:
-                with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
+                with open(products_file, 'w', encoding='utf-8') as f:
                     json.dump(all_products, f, ensure_ascii=False, indent=2)
-                logging.info(f"💾 Сохранено {len(all_products)} товаров до остановки")
+                logging.info(f"💾 Сохранено {len(all_products)} товаров до остановки в {products_file}")
             except Exception as e:
                 logging.error(f"Ошибка при сохранении товаров: {e}")
         
@@ -234,31 +217,17 @@ def fetch_products_for_category(category_name):
             logging.error(f"Ошибка при удалении файла флага: {e}")
         
         return all_products
-
-    # Закрываем файлы категории
-    for filename in [products_file, reviews_file, articles_file]:
-        with open(filename, 'a', encoding='utf-8') as f:
-            f.write('\n]')
     
     # Сохраняем собранные товары
     if all_products:
-        # Сохраняем только в директорию категории
-        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
+        with open(products_file, 'w', encoding='utf-8') as f:
             json.dump(all_products, f, ensure_ascii=False, indent=2)
         
         logging.info(f"Обработка категории {category_name} успешно завершена")
-        logging.info(f"Данные сохранены в директории: {category_dir}")
+        logging.info(f"Данные сохранены в файл: {products_file}")
         logging.info(f"Общее количество товаров: {len(all_products)}")
     else:
         logging.warning(f"Не удалось получить товары для категории {category_name}")
-        if previous_products:
-            with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
-                json.dump(previous_products, f, ensure_ascii=False, indent=2)
-            logging.warning(f"Сохранен предыдущий непустой файл: {len(previous_products)} товаров")
-        else:
-            # Создаем пустой файл только если раньше не было валидных данных
-            with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
-                json.dump([], f, ensure_ascii=False, indent=2)
     
     return all_products
 
@@ -282,24 +251,11 @@ def main():
         # Обрабатываем категорию
         products = fetch_products_for_category(category)
         if not products:
-            logging.warning("Новые товары не получены, не перезаписываем итоговый файл пустым списком")
+            logging.warning("Новые товары не получены")
             return 0
         
-        # Сохраняем данные только в директорию категории
-        category_dir = os.path.join('data', category)
-        ensure_directory_exists(category_dir)
-        
-        with open(os.path.join(category_dir, 'Товары.json'), 'w', encoding='utf-8') as f:
-            f.write('[\n')
-            for i, product in enumerate(products):
-                json_str = json.dumps(product, ensure_ascii=False)
-                if i < len(products) - 1:
-                    f.write(json_str + ',\n')
-                else:
-                    f.write(json_str + '\n')
-            f.write(']')
-        
-        logging.info(f"Также создан объединенный файл 'Товары.json' для совместимости")
+        logging.info(f"Успешно получено {len(products)} товаров из категории {category}")
+        logging.info(f"Данные сохранены в формат: data/citilink/citilink_{{timestamp}}.json")
         
     except ParserStoppedException:
         logging.info("🏁 ПАРСИНГ ЗАВЕРШЕН ПО ТРЕБОВАНИЮ ПОЛЬЗОВАТЕЛЯ")

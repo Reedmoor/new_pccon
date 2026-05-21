@@ -399,19 +399,19 @@ class LocalDNSParser:
             return False
     
     def save_data_locally(self, filename=None):
-        """Сохранение данных локально в папку data для последующей отправки на Docker сервер"""
+        """Сохранение данных локально в папку data/dns для последующей отправки на Docker сервер"""
         if not self.products:
             logger.warning("No products to save")
             return False
         
-        # Создаем папку data если не существует
+        # Создаем папку data/dns если не существует
         current_dir = Path(__file__).parent
-        data_dir = current_dir.parent / "data"
-        data_dir.mkdir(exist_ok=True)
+        data_dir = current_dir.parent / "data" / "dns"
+        data_dir.mkdir(parents=True, exist_ok=True)
         
         if filename is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"local_parser_data_{timestamp}.json"
+            filename = f"dns_{timestamp}.json"
         
         filepath = data_dir / filename
         

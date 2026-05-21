@@ -502,7 +502,73 @@ def import_products():
         
         print("Начинаем импорт продуктов...")
         
-        # Обрабатываем все доступные файлы Citilink из папки data
+        # Функция для определения product_type по категориям (из breadcrumbs)
+        def get_product_type_from_categories(categories):
+            if not categories:
+                return None
+            # Используем последнюю категорию в breadcrumbs для определения типа
+            if isinstance(categories, list) and len(categories) > 0:
+                last_category = categories[-1]['name'].lower() if isinstance(categories[-1], dict) else str(categories[-1]).lower()
+            else:
+                return None
+            
+            # Определяем тип по названию категории
+            category_keywords = {
+                'motherboard': ['материнск', 'плата', 'платк'],
+                'processor': ['процессор', 'cpu', ' intel ', ' amd '],
+                'ram': ['память', 'модуль памяти', 'оперативн'],
+                'graphics_card': ['видео', 'графика', 'gpu', 'nvidia', 'amd radeon'],
+                'cooler': ['кулер', 'охлаждение', 'вентилятор'],
+                'case': ['корпус', 'корпусы'],
+                'power_supply': ['блок питания', 'psu'],
+                'hard_drive': ['диск', 'накопител', 'ssd', 'hdd', 'жесткий', 'винчестер']
+            }
+            
+            for prod_type, keywords in category_keywords.items():
+                for keyword in keywords:
+                    if keyword in last_category:
+                        return prod_type
+            return None
+        
+        # 1. Обрабатываем текущие Citilink файлы (новый формат)
+        citilink_files = sorted(glob.glob(os.path.join('data', 'citilink', 'citilink_*.json')), reverse=True)
+        for citilink_file in citilink_files:
+            print(f"Обработка текущих Citilink данных: {citilink_file}")
+            try:
+                with open(citilink_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                
+                if isinstance(data, list):
+                    products = data
+                else:
+                    products = [data]
+                
+                print(f"Загружено {len(products)} товаров из {citilink_file}")
+                type_counts = {}
+                
+                for product in products:
+                    # Определяем тип по категориям товара
+                    product_type = get_product_type_from_categories(product.get('categories', []))
+                    if not product_type:
+                        print(f"Не удалось определить тип для товара: {product.get('name', 'unknown')}")
+                        continue
+                    
+                    # Стандартизируем данные
+                    std_product = standardize_characteristics(product, "citilink")
+                    std_product["vendor"] = "citilink"
+                    std_product["product_type"] = product_type
+                    ensure_import_identity(std_product, product, "citilink")
+                    all_products.append(std_product)
+                    
+                    type_counts[product_type] = type_counts.get(product_type, 0) + 1
+                
+                for prod_type, count in type_counts.items():
+                    print(f"  Добавлено {count} товаров типа {prod_type}")
+            except Exception as e:
+                print(f"Ошибка при обработке файла {citilink_file}: {str(e)}")
+                traceback.print_exc()
+        
+        # 2. Обрабатываем Citilink бэкапы (старый формат с категориями)
         citilink_roots = []
         primary_citilink_data_dir = os.path.join('app', 'utils', 'Citi_parser', 'data')
         if os.path.exists(primary_citilink_data_dir):
@@ -517,7 +583,7 @@ def import_products():
 
         if citilink_roots:
             for citilink_data_dir in citilink_roots:
-                print(f"Используем Citilink данные из: {citilink_data_dir}")
+                print(f"Обработка Citilink бэкапов из: {citilink_data_dir}")
                 # Перебираем все директории категорий
                 for category_dir in os.listdir(citilink_data_dir):
                     category_path = os.path.join(citilink_data_dir, category_dir)
@@ -556,9 +622,8 @@ def import_products():
                                 print(f"Ошибка при обработке файла {products_file}: {str(e)}")
                                 traceback.print_exc()
         
-        # Обрабатываем данные DNS из old_dns_parser
-        dns_file = os.path.join('app', 'utils', 'old_dns_parser', 'product_data.json')
-        if os.path.exists(dns_file):
+        # 3. Обрабатываем текущие DNS файлы (новый формат)
+        dns_files = sorted(glob.glob(os.path.join('data', 'dns', 'dns_*.json')), reverse=True)
             try:
                 print(f"Обработка данных DNS из старого парсера: {dns_file}")
                 
