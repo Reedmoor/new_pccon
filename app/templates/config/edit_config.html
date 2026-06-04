@@ -293,16 +293,20 @@
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="modalSearchInput" placeholder="Поиск по названию...">
+                    <input type="text" class="form-control" id="modalSearchInput" placeholder="Поиск по названию..." aria-label="Поиск по названию">
                     <button class="btn btn-primary" type="button" id="modalSearchBtn">
-                        <i class="fas fa-search me-1"></i>Найти
+                        <i class="fas fa-search me-1"></i>Поиск
                     </button>
                     <button class="btn btn-outline-secondary" type="button" id="modalShowAllBtn">
                         Показать все
                     </button>
-                    <input type="text" class="form-control" id="modalKeywordInput" placeholder="Ключевые слова (например: ddr5 6000)" style="max-width: 320px;">
                 </div>
-                <div id="modalKeywordChips" class="d-flex flex-wrap gap-2 mb-3"></div>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn active" data-vendor="all" id="vendorAllBtn">Все магазины</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn" data-vendor="dns" id="vendorDnsBtn">DNS</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn" data-vendor="citilink" id="vendorCitilinkBtn">Citilink</button>
+                </div>
+                <div id="modalVendorHint" class="mb-3 small text-muted">Показываются товары из всех магазинов</div>
                 <div id="modalLoading" class="text-center py-5 d-none">
                     <div class="spinner-border text-primary"></div>
                     <div class="mt-2 text-muted small">Загрузка...</div>
@@ -351,6 +355,7 @@ let currentModalType  = null;
 let currentModalField = null;
 const modalComponentsCache = new Map();
 let currentModalItems = [];
+let currentModalVendor = 'all';
 
 /* текущие выбранные компоненты {fieldId -> comp} */
 const selectedComponents = {};
@@ -387,93 +392,6 @@ const COMP_TYPE_LABELS = {
     'cooler': 'Кулер', 'case': 'Корпус',
 };
 
-const KEYWORD_CHIPS = {
-    motherboard: ['DDR5', 'DDR4', 'AM5', 'AM4', 'LGA1700', 'ATX', 'mATX'],
-    processor: ['Ryzen', 'Intel', 'AM5', 'AM4', 'LGA1700', 'i5', 'i7'],
-    graphics_card: ['RTX', 'GTX', 'RX', '8GB', '12GB', '16GB', 'GDDR6'],
-    ram: ['DDR5', 'DDR4', '6000', '5600', '32GB', '16GB', 'CL30', 'CL36'],
-    hard_drive: ['M.2', 'NVMe', 'PCIe 4.0', 'PCIe 5.0', 'SATA', '1TB', '2TB'],
-    power_supply: ['650W', '750W', '850W', '80+ Gold', 'ATX 3.0', 'Modular'],
-    cooler: ['AM5', 'LGA1700', 'Башенный', '240мм', '360мм', 'PWM'],
-    case: ['ATX', 'mATX', 'Mini-ITX', 'Mesh', 'ARGB', 'Tempered Glass'],
-};
-
-function renderKeywordChips(type) {
-    const chipsWrap = document.getElementById('modalKeywordChips');
-    if (!chipsWrap) return;
-    const chips = KEYWORD_CHIPS[type] || [];
-    if (!chips.length) {
-        chipsWrap.innerHTML = '';
-        return;
-    }
-    chipsWrap.innerHTML = chips.map(ch =>
-        `<button type="button" class="btn btn-outline-secondary btn-sm py-0 px-2 keyword-chip" data-keyword="${String(ch).toLowerCase()}" onclick="applyKeywordChip('${String(ch).replace(/'/g, "\\'")}')">${ch}</button>`
-    ).join('');
-    syncKeywordChipStates();
-}
-
-function applyKeywordChip(keyword) {
-    const input = document.getElementById('modalKeywordInput');
-    if (!input) return;
-    const kw = String(keyword).toLowerCase();
-    let existing = input.value.trim().split(/\s+/).filter(Boolean);
-    const hasKeyword = existing.some(k => k.toLowerCase() === kw);
-    if (hasKeyword) {
-        existing = existing.filter(k => k.toLowerCase() !== kw);
-    } else {
-        existing.push(keyword);
-    }
-    input.value = existing.join(' ');
-    syncKeywordChipStates();
-    const sorted = applyModalSort(currentModalItems);
-    renderModalItems(sorted, currentModalType);
-}
-
-function syncKeywordChipStates() {
-    const input = document.getElementById('modalKeywordInput');
-    const selected = new Set((input?.value || '').toLowerCase().split(/\s+/).filter(Boolean));
-    document.querySelectorAll('#modalKeywordChips .keyword-chip').forEach(btn => {
-        const kw = (btn.dataset.keyword || '').toLowerCase();
-        btn.classList.toggle('active', selected.has(kw));
-    });
-}
-
-function asSortableValue(value) {
-    if (Array.isArray(value)) value = value[0];
-    if (value === null || value === undefined) return null;
-    if (typeof value === 'number') return value;
-    const str = String(value).trim();
-    const normalized = str.replace(',', '.').replace(/\s+/g, '');
-    const num = parseFloat(normalized.match(/-?\d+(\.\d+)?/)?.[0] || '');
-    if (!Number.isNaN(num)) return num;
-    return str.toLowerCase();
-}
-
-function applyModalSort(items) {
-    const sorted = [...items];
-    const keywordInput = (document.getElementById('modalKeywordInput')?.value || '').trim().toLowerCase();
-    const keywords = keywordInput.split(/\s+/).filter(Boolean);
-    const scoreByKeywords = (item) => {
-        if (!keywords.length) return 0;
-        const name = (item.name || '').toLowerCase();
-        const chars = item.characteristics || {};
-        const values = Object.values(chars).map(v => Array.isArray(v) ? v.join(' ') : String(v || '')).join(' ').toLowerCase();
-        let score = 0;
-        keywords.forEach(kw => {
-            if (name.includes(kw)) score += 3;
-            if (values.includes(kw)) score += 1;
-        });
-        return score;
-    };
-    sorted.sort((a, b) => {
-        const sdiff = scoreByKeywords(b) - scoreByKeywords(a);
-        if (sdiff !== 0) return sdiff;
-        return (a.price || 0) - (b.price || 0);
-    });
-
-    return sorted;
-}
-
 function renderModalItems(items, type) {
     const grid = document.getElementById('modalProductsGrid');
     grid.innerHTML = '';
@@ -481,6 +399,28 @@ function renderModalItems(items, type) {
         modalComponentsCache.set(comp.id, comp);
         grid.appendChild(renderProductCard(comp, type));
     });
+}
+
+function updateVendorButtons() {
+    document.querySelectorAll('.vendor-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.vendor === currentModalVendor);
+    });
+    const hint = document.getElementById('modalVendorHint');
+    if (!hint) return;
+    if (currentModalVendor === 'dns') {
+        hint.textContent = 'Показываются товары только из DNS';
+    } else if (currentModalVendor === 'citilink') {
+        hint.textContent = 'Показываются товары только из Citilink';
+    } else {
+        hint.textContent = 'Показываются товары из всех магазинов';
+    }
+}
+
+function setVendorFilter(vendor) {
+    currentModalVendor = vendor || 'all';
+    updateVendorButtons();
+    const query = document.getElementById('modalSearchInput')?.value.trim() || '';
+    loadComponents(currentModalType, query);
 }
 
 const FIELD_TYPE_MAP = {
@@ -500,14 +440,16 @@ const INITIAL_DATA = {{ initial_data | tojson }};
 function openComponentModal(type, fieldId, label, icon) {
     currentModalType = type;
     currentModalField = fieldId;
-    renderKeywordChips(type);
+    currentModalVendor = 'all';
+    updateVendorButtons();
     document.getElementById('componentModalTitle').textContent = 'Выбор: ' + label;
     document.getElementById('modalSearchInput').value = '';
     document.getElementById('modalProductsGrid').innerHTML = `
         <div class="col-12 text-center text-muted py-5">
             <i class="fas ${icon} fa-3x mb-3 d-block opacity-25"></i>
-            Введите запрос или нажмите «Показать все»
+            Выберите компонент из списка ниже
         </div>`;
+    loadComponents(type, '');
     bootstrap.Modal.getOrCreateInstance(document.getElementById('componentModal')).show();
 }
 
@@ -522,7 +464,11 @@ function loadComponents(type, query) {
         url: SEARCH_URL,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({ product_type: type, query: query }),
+        data: JSON.stringify({
+            product_type: type,
+            query: query,
+            vendor: currentModalVendor
+        }),
         success: function(response) {
             loading.classList.add('d-none');
             if (!response.components || response.components.length === 0) {
@@ -532,7 +478,7 @@ function loadComponents(type, query) {
                 return;
             }
             currentModalItems = response.components;
-            renderModalItems(applyModalSort(currentModalItems), type);
+            renderModalItems(currentModalItems, type);
         },
         error: function() {
             loading.classList.add('d-none');
@@ -540,6 +486,44 @@ function loadComponents(type, query) {
                 <i class="fas fa-exclamation-circle fa-2x mb-2 d-block"></i>Ошибка загрузки</div>`;
         }
     });
+}
+
+function formatCharacteristicValue(value) {
+    if (value === null || value === undefined || value === '') {
+        return '';
+    }
+    if (Array.isArray(value)) {
+        return value.map(item => formatCharacteristicValue(item)).filter(Boolean).join(', ');
+    }
+    if (typeof value === 'object') {
+        const parts = Object.entries(value)
+            .map(([subKey, subValue]) => {
+                const formatted = formatCharacteristicValue(subValue);
+                return formatted ? `${subKey}: ${formatted}` : '';
+            })
+            .filter(Boolean);
+        return parts.length ? parts.join('; ') : '';
+    }
+    return String(value);
+}
+
+function renderComponentCharacteristics(chars, limit) {
+    if (!chars || Object.keys(chars).length === 0) {
+        return '<div class="text-muted small">Характеристики отсутствуют</div>';
+    }
+    let html = '';
+    const entries = Object.entries(chars)
+        .filter(([_, value]) => value !== undefined && value !== null && value !== '');
+    if (limit) {
+        entries.splice(limit);
+    }
+    entries.forEach(([key, value]) => {
+        const label = SPEC_LABELS[key] || key;
+        const formatted = formatCharacteristicValue(value);
+        if (!formatted) return;
+        html += `<div class="text-muted small"><strong>${label}:</strong> ${formatted}</div>`;
+    });
+    return html || '<div class="text-muted small">Характеристики отсутствуют</div>';
 }
 
 function renderProductCard(comp, type) {
@@ -551,28 +535,8 @@ function renderProductCard(comp, type) {
                onerror="this.outerHTML='<div class=modal-img-placeholder><i class=fas fa-box fa-2x></i></div>'">`
         : `<div class="modal-img-placeholder"><i class="fas fa-box fa-2x text-muted"></i></div>`;
 
-    const specKeys = KEY_SPECS[type] || [];
     const chars = comp.characteristics || {};
-    let specsHtml = '';
-    let count = 0;
-    for (const key of specKeys) {
-        if (chars[key] !== undefined && chars[key] !== null && chars[key] !== '' && count < 4) {
-            const label = SPEC_LABELS[key] || key;
-            const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
-            specsHtml += `<span class="badge bg-light text-dark spec-badge me-1 mb-1 border">${label}: ${val}</span>`;
-            count++;
-        }
-    }
-    if (count === 0) {
-        for (const [k, v] of Object.entries(chars)) {
-            if (v === undefined || v === null || v === '') continue;
-            const label = SPEC_LABELS[k] || k;
-            const val = Array.isArray(v) ? v.join(', ') : v;
-            specsHtml += `<span class="badge bg-light text-dark spec-badge me-1 mb-1 border">${label}: ${val}</span>`;
-            count++;
-            if (count >= 4) break;
-        }
-    }
+    const specsHtml = renderComponentCharacteristics(chars, 6);
 
     const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
     const ratingHtml = comp.rating
@@ -653,28 +617,8 @@ function updatePreview(fieldId, comp, type) {
                onerror="this.outerHTML='<div class=img-placeholder><i class=fas fa-box fa-2x></i></div>'">`
         : `<div class="img-placeholder"><i class="fas fa-box fa-2x"></i></div>`;
 
-    const specKeys = KEY_SPECS[type] || [];
     const chars = comp.characteristics || {};
-    let specsHtml = '';
-    let count = 0;
-    for (const key of specKeys) {
-        if (chars[key] !== undefined && chars[key] !== null && chars[key] !== '' && count < 3) {
-            const label = SPEC_LABELS[key] || key;
-            const val = Array.isArray(chars[key]) ? chars[key].join(', ') : chars[key];
-            specsHtml += `<div class="text-muted small"><strong>${label}:</strong> ${val}</div>`;
-            count++;
-        }
-    }
-    if (count === 0) {
-        for (const [k, v] of Object.entries(chars)) {
-            if (v === undefined || v === null || v === '') continue;
-            const label = SPEC_LABELS[k] || k;
-            const val = Array.isArray(v) ? v.join(', ') : v;
-            specsHtml += `<div class="text-muted small"><strong>${label}:</strong> ${val}</div>`;
-            count++;
-            if (count >= 3) break;
-        }
-    }
+    const specsHtml = renderComponentCharacteristics(chars);
 
     const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
     const ratingHtml = comp.rating
@@ -886,15 +830,17 @@ $(document).ready(function() {
         loadComponents(currentModalType, $('#modalSearchInput').val().trim());
     });
     $('#modalSearchInput').on('keypress', function(e) {
-        if (e.which === 13) loadComponents(currentModalType, $(this).val().trim());
+        if (e.which === 13) {
+            e.preventDefault();
+            loadComponents(currentModalType, $(this).val().trim());
+        }
     });
     $('#modalShowAllBtn').on('click', function() {
+        $('#modalSearchInput').val('');
         loadComponents(currentModalType, '');
     });
-    $('#modalKeywordInput').on('input', function() {
-        syncKeywordChipStates();
-        const sorted = applyModalSort(currentModalItems);
-        renderModalItems(sorted, currentModalType);
+    $('.vendor-filter-btn').on('click', function() {
+        setVendorFilter($(this).data('vendor'));
     });
 
     /* Переключатель «Похожие товары» */

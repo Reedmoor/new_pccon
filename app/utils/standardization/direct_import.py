@@ -17,75 +17,7 @@ except ImportError:
     print("Error importing app modules. Make sure you're running this script from the project root.")
     sys.exit(1)
 
-def ensure_compatibility_characteristics(product_data):
-    """
-    Ensure all required characteristics for compatibility checks are present
-    
-    Args:
-        product_data (dict): Standardized product data
-    """
-    characteristics = product_data.get("characteristics", {})
-    product_type = product_data.get("product_type", "other")
-    
-    # Define default values based on product type
-    if product_type == 'motherboard':
-        if 'socket' not in characteristics:
-            characteristics['socket'] = ''
-        if 'form_factor' not in characteristics:
-            characteristics['form_factor'] = ''
-        if 'memory_type' not in characteristics:
-            characteristics['memory_type'] = ''
-        if 'memory_form_factor' not in characteristics:
-            characteristics['memory_form_factor'] = ''
-            
-    elif product_type == 'processor':
-        if 'socket' not in characteristics:
-            characteristics['socket'] = ''
-        if 'power_consumption' not in characteristics:
-            characteristics['power_consumption'] = 0
-        if 'core_count' not in characteristics:
-            characteristics['core_count'] = 0
-        if 'thread_count' not in characteristics:
-            characteristics['thread_count'] = 0
-            
-    elif product_type == 'graphics_card':
-        if 'power_consumption' not in characteristics:
-            characteristics['power_consumption'] = 0
-        if 'length' not in characteristics:
-            characteristics['length'] = 0
-        if 'memory_size' not in characteristics:
-            characteristics['memory_size'] = 0
-            
-    elif product_type == 'ram':
-        if 'memory_type' not in characteristics:
-            characteristics['memory_type'] = ''
-        if 'memory_size' not in characteristics:
-            characteristics['memory_size'] = 0
-        if 'memory_form_factor' not in characteristics:
-            characteristics['memory_form_factor'] = ''
-            
-    elif product_type == 'power_supply':
-        if 'wattage' not in characteristics:
-            characteristics['wattage'] = 0
-            
-    elif product_type == 'cooler':
-        if 'cooler_height' not in characteristics:
-            characteristics['cooler_height'] = 0
-            
-    elif product_type == 'case':
-        if 'supported_form_factors' not in characteristics:
-            characteristics['supported_form_factors'] = []
-        if 'max_gpu_length' not in characteristics:
-            characteristics['max_gpu_length'] = 0
-        if 'max_cooler_height' not in characteristics:
-            characteristics['max_cooler_height'] = 0
-            
-    elif product_type == 'hard_drive':
-        if 'storage_capacity' not in characteristics:
-            characteristics['storage_capacity'] = 0
-            
-    # Update the product data with the ensured characteristics
-    product_data["characteristics"] = characteristics
+from app.utils.standardization.import_helpers import ensure_compatibility_characteristics
 
 def direct_import_products():
     """Direct import products from specific JSON files with predefined categories"""

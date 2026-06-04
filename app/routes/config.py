@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app import db
 from app.models.models import Configuration, UnifiedProduct
 from app.forms.config import ConfigurationForm
+from app.utils.product_comparator import get_comparator
+from sqlalchemy.orm import joinedload
 import logging
 
 logger = logging.getLogger(__name__)
@@ -138,7 +140,16 @@ def format_product_choice(product):
 @config_bp.route('/')
 @login_required
 def my_configs():
-    configs = Configuration.query.filter_by(user_id=current_user.id).all()
+    configs = Configuration.query.filter_by(user_id=current_user.id).options(
+        joinedload(Configuration.motherboard),
+        joinedload(Configuration.power_supply),
+        joinedload(Configuration.processor),
+        joinedload(Configuration.graphics_card),
+        joinedload(Configuration.cooler),
+        joinedload(Configuration.ram),
+        joinedload(Configuration.hard_drive),
+        joinedload(Configuration.case)
+    ).all()
     return render_template('config/my_configs.html', configs=configs)
 
 @config_bp.route('/new', methods=['GET', 'POST'])
@@ -193,7 +204,17 @@ def new_config():
 @config_bp.route('/<int:config_id>')
 @login_required
 def view_config(config_id):
-    config = Configuration.query.get_or_404(config_id)
+    # Используем eager loading для загрузки всех компонентов
+    config = Configuration.query.options(
+        joinedload(Configuration.motherboard),
+        joinedload(Configuration.power_supply),
+        joinedload(Configuration.processor),
+        joinedload(Configuration.graphics_card),
+        joinedload(Configuration.cooler),
+        joinedload(Configuration.ram),
+        joinedload(Configuration.hard_drive),
+        joinedload(Configuration.case)
+    ).get_or_404(config_id)
     
     # Check if the config belongs to the current user
     if config.user_id != current_user.id and not current_user.is_admin():
@@ -205,6 +226,10 @@ def view_config(config_id):
     
     # Calculate total price
     total_price = config.total_price()
+    
+    # Логирование для отладки
+    logger.info(f"View config {config_id}: total_price={total_price}")
+    logger.info(f"Components: motherboard={config.motherboard}, cpu={config.processor}, gpu={config.graphics_card}, ram={config.ram}, psu={config.power_supply}, cooler={config.cooler}, hdd={config.hard_drive}, case={config.case}")
     
     return render_template('config/view_config.html', config=config, issues=compatibility_issues, total_price=total_price)
 
@@ -388,10 +413,10 @@ def get_config_info():
             # Определяем цену компонента
             price = None
             if component.price_discounted is not None and component.price_discounted > 0:
-                price = int(component.price_discounted)
+                price = float(component.price_discounted)
             elif component.price_original is not None and component.price_original > 0:
-                price = int(component.price_original)
-            
+                price = float(component.price_original)
+
             if price is not None:
                 total_price += price
                 selected_components.append({
@@ -536,9 +561,10 @@ def search_components():
     """Endpoint для поиска компонентов по запросу"""
     data = request.json
     
-    # Получаем тип продукта и поисковый запрос
+    # Получаем тип продукта, поисковый запрос и фильтр по магазину
     product_type = data.get('product_type')
     query = data.get('query', '').strip()
+    vendor = (data.get('vendor') or '').strip()
     
     # Проверяем наличие обязательных параметров
     if not product_type:
@@ -546,6 +572,10 @@ def search_components():
     
     # Выполняем поиск компонентов
     components_query = UnifiedProduct.query.filter_by(product_type=product_type)
+    
+    # Фильтр по магазину
+    if vendor and vendor.lower() != 'all':
+        components_query = components_query.filter(UnifiedProduct.vendor.ilike(vendor))
     
     # Если есть поисковый запрос, фильтруем по нему
     if query:
@@ -601,6 +631,9 @@ def get_alternatives(product_id):
     source_price = float(
         source.price_discounted or source.price_original or 0
     )
+    source_name = source.product_name or ''
+    source_vendor = (source.vendor or '').strip().lower()
+    comparator = get_comparator()
 
     candidates = (
         UnifiedProduct.query
@@ -617,16 +650,26 @@ def get_alternatives(product_id):
     # Оставляем только с ценой
     candidates = [c for c in candidates if _price(c) > 0]
 
-    # Если товар стоит >0 — сортируем по близости цены, потом по рейтингу
-    if source_price > 0:
-        candidates.sort(
-            key=lambda c: (abs(_price(c) - source_price), -(c.rating or 0))
-        )
-    else:
-        candidates.sort(key=lambda c: -(c.rating or 0))
+    scored_candidates = []
+    for comp in candidates:
+        comp_name = comp.product_name or ''
+        comp_vendor = (comp.vendor or '').strip().lower()
+        is_cross_vendor = bool(source_vendor and comp_vendor and source_vendor != comp_vendor)
+        similarity = 0.0
+        try:
+            similarity = comparator.enhanced_similarity(source_name, comp_name, 0.0)
+        except Exception as e:
+            logger.warning('Ошибка расчёта похожести между %s и %s: %s', source_name, comp_name, e)
+
+        price_score = abs(_price(comp) - source_price)
+        cross_vendor_bonus = 1 if is_cross_vendor and similarity >= 0.30 else 0
+        score = (cross_vendor_bonus, similarity, -(comp.rating or 0), -price_score)
+        scored_candidates.append((score, comp, similarity))
+
+    scored_candidates.sort(key=lambda item: item[0], reverse=True)
 
     result = []
-    for comp in candidates[:6]:
+    for _, comp, similarity in scored_candidates[:8]:
         comp_price = _price(comp)
         price_diff = round(comp_price - source_price)
         result.append({
@@ -643,6 +686,7 @@ def get_alternatives(product_id):
             ),
             'rating': comp.rating,
             'number_of_reviews': comp.number_of_reviews,
+            'similarity': round(similarity, 3),
         })
 
     return jsonify({

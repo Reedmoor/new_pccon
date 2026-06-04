@@ -2,7 +2,10 @@ from flask import Blueprint, render_template, request, flash, jsonify, redirect,
 from flask_login import login_required
 from app.forms.comparison import ProductComparisonForm
 from app.utils.product_comparator import ProductComparator, get_comparator
-from app.utils.standardization.import_products import detect_product_type
+from app.utils.standardization.import_helpers import (
+    compare_category_to_product_type,
+    filter_products_by_compare_category,
+)
 import logging
 import os
 import glob
@@ -36,17 +39,75 @@ def resolve_existing_path(path_value):
 
 
 def category_to_product_type(category):
-    mapping = {
-        'gpu': 'graphics_card',
-        'cpu': 'processor',
-        'ram': 'ram',
-        'storage': 'hard_drive',
-        'motherboard': 'motherboard',
-        'psu': 'power_supply',
-        'cooler': 'cooler',
-        'case': 'case',
-    }
-    return mapping.get(category)
+    return compare_category_to_product_type(category)
+
+
+def find_existing_file(paths):
+    if isinstance(paths, str):
+        return resolve_existing_path(paths)
+    for path in paths:
+        resolved = resolve_existing_path(path)
+        if resolved:
+            return resolved
+    return None
+
+
+def _load_json_product_list(path):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    if isinstance(data, dict) and "products" in data:
+        return data["products"]
+    if isinstance(data, list):
+        return data
+    return [data] if data else []
+
+
+def find_existing_files(paths_list):
+    """Для storage — набор путей; иначе один файл."""
+    if not paths_list:
+        return None
+    if not isinstance(paths_list[0], list):
+        return find_existing_file(paths_list)
+    for path_set in paths_list:
+        if all(resolve_existing_path(path) for path in path_set):
+            return [resolve_existing_path(path) for path in path_set]
+    return None
+
+
+def load_vendor_products_for_compare(vendor, category, file_paths):
+    """Сначала БД (product_type), иначе JSON с обязательной фильтрацией по категории."""
+    db_products = load_products_from_db(vendor, category)
+    if db_products:
+        logger.info("%s для %s: %s товаров из БД", vendor, category, len(db_products))
+        return db_products
+
+    path = find_existing_file(file_paths)
+    if not path:
+        return []
+
+    raw = _load_json_product_list(path)
+    filtered = filter_products_by_compare_category(raw, category)
+    logger.info(
+        "%s для %s: %s товаров из %s (в файле было %s)",
+        vendor, category, len(filtered), path, len(raw),
+    )
+    return filtered
+
+
+def load_storage_products_for_compare(vendor, category, paths_list):
+    """Несколько JSON-файлов (накопители), с фильтрацией по категории."""
+    db_products = load_products_from_db(vendor, category)
+    if db_products:
+        return db_products
+    resolved_paths = find_existing_files(paths_list)
+    if not resolved_paths:
+        return []
+    if isinstance(resolved_paths, str):
+        resolved_paths = [resolved_paths]
+    combined = []
+    for path in resolved_paths:
+        combined.extend(filter_products_by_compare_category(_load_json_product_list(path), category))
+    return combined
 
 
 def serialize_unified_product(product):
@@ -251,123 +312,6 @@ def compare_products():
             }
         }
         
-        # Функция для фильтрации DNS данных по категории
-        def filter_dns_by_category(data, category):
-            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
-            if not data:
-                return []
-            
-            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
-            
-            target_product_type = category_to_product_type(category)
-            if not target_product_type:
-                logger.warning(f"Категория {category} не найдена в маппинге")
-                return data
-            
-            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
-            filtered_data = []
-            
-            for item in data:
-                if not item.get('name'):
-                    continue
-                
-                # Используем ту же функцию определения типа продукта что и при импорте
-                try:
-                    # Извлекаем категории товара для передачи в detect_product_type
-                    product_categories = []
-                    if 'categories' in item:
-                        categories = item.get('categories', [])
-                        if isinstance(categories, list):
-                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
-                        elif isinstance(categories, str):
-                            product_categories = [categories]
-                    
-                    # Определяем тип продукта используя ту же логику что и при импорте
-                    detected_type = detect_product_type(item['name'], product_categories)
-                    
-                    if detected_type == target_product_type:
-                        filtered_data.append(item)
-                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
-                    
-                except Exception as e:
-                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
-                    continue
-            
-            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
-            
-            return filtered_data
-        
-        # Функция для фильтрации Citilink данных по категории
-        def filter_citilink_by_category(data, category):
-            """Фильтрует данные Citilink по категории"""
-            if not data:
-                return []
-            
-            # Фильтруем всегда, если получили общий файл
-            logger.info(f"Фильтрация Citilink для категории {category}, исходных товаров: {len(data)}")
-            
-            category_filters = {
-                'gpu': ['видеокарт', 'videocard', 'graphics'],
-                'cpu': ['процессор', 'processor', 'cpu'],
-                'ram': ['память', 'memory', 'dimm', 'оперативн'],
-                'storage': ['ssd', 'диск', 'накопител', 'hdd', 'жесткий'],
-                'motherboard': ['материнск', 'motherboard'],
-                'psu': ['блок питания', 'power supply', 'бп'],
-                'cooler': ['кулер', 'cooler', 'охлажден'],
-                'case': ['корпус', 'case']
-            }
-            
-            if category not in category_filters:
-                logger.warning(f"Нет фильтров для категории {category}")
-                return []
-            
-            filters = category_filters[category]
-            filtered_data = []
-            
-            for item in data:
-                name = item.get('name', '').lower()
-                
-                # Проверяем наличие ключевых слов в названии
-                if any(keyword in name for keyword in filters):
-                    filtered_data.append(item)
-            
-            logger.info(f"Отфильтровано {len(filtered_data)} товаров Citilink для категории {category}")
-            return filtered_data
-        
-        # Функция для поиска существующего файла из списка путей
-        def find_existing_file(paths):
-            """Возвращает первый существующий файл из списка путей"""
-            if isinstance(paths, str):
-                logger.info(f"Проверяем путь: {paths}")
-                resolved = resolve_existing_path(paths)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
-                return resolved
-            for path in paths:
-                logger.info(f"Проверяем путь: {path}")
-                resolved = resolve_existing_path(path)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
-                if resolved:
-                    return resolved
-            return None
-        
-        # Функция для поиска существующих файлов для storage (список списков)
-        def find_existing_files(paths_list):
-            """Для storage - возвращает первый набор путей где все файлы существуют"""
-            logger.info(f"find_existing_files вызвана с: {paths_list}")
-            if not isinstance(paths_list[0], list):
-                # Обычная категория, не storage
-                logger.info("Обычная категория, используем find_existing_file")
-                return find_existing_file(paths_list)
-            
-            logger.info("Storage категория, проверяем наборы путей")
-            for i, path_set in enumerate(paths_list):
-                logger.info(f"Проверяем набор {i}: {path_set}")
-                all_exist = all(resolve_existing_path(path) for path in path_set)
-                logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
-                if all_exist:
-                    return [resolve_existing_path(path) for path in path_set]
-            return None
-        
         # Проверяем существование категории
         if category not in category_mapping:
             flash(f'Категория "{category}" не поддерживается', 'error')
@@ -381,109 +325,19 @@ def compare_products():
         # Создаем компаратор
         comparator = get_comparator()
         
-        # Загружаем данные из JSON файлов (специальная обработка для storage)
         if category == 'storage':
-            # Объединяем данные из нескольких файлов
-            dns_data = []
-            citi_data = []
-            
-            # Находим существующие DNS файлы
-            dns_paths = find_existing_files(cat_info['dns'])
-            if dns_paths:
-                if len(dns_paths) == 1 and 'local_parser_data' in dns_paths[0]:
-                    # Общий файл DNS - загружаем и фильтруем
-                    logger.info("Загружаем общий файл DNS для storage")
-                    dns_file = find_existing_file(dns_paths)
-                    if dns_file:
-                        with open(dns_file, 'r', encoding='utf-8') as f:
-                            if 'local_parser_data_' in dns_file:
-                                general_data = json.load(f)
-                                dns_data = filter_dns_by_category(general_data, category)
-                            else:
-                                dns_data = json.load(f)
-                    logger.info(f"После фильтрации storage: {len(dns_data)} товаров из {len(dns_data) if dns_data else 0}")
-                else:
-                    # Отдельные файлы по категориям
-                    for dns_path in dns_paths:
-                        dns_file = find_existing_file(dns_path)
-                        if dns_file:
-                            with open(dns_file, 'r', encoding='utf-8') as f:
-                                if 'local_parser_data_' in dns_file:
-                                    general_data = json.load(f)
-                                    dns_data.extend(filter_dns_by_category(general_data, category))
-                                else:
-                                    dns_data.extend(json.load(f))
-            
-            # Находим существующие Citilink файлы  
-            citi_paths = find_existing_files(cat_info['citi'])
-            if citi_paths:
-                for citi_path in citi_paths:
-                    citi_file = find_existing_file(citi_path)
-                    if citi_file:
-                        with open(citi_file, 'r', encoding='utf-8') as f:
-                            if 'citilink_data_' in citi_file:
-                                logger.info(f"Загружаем общий файл Citilink для {category}")
-                                general_data = json.load(f)
-                                citi_data.extend(filter_citilink_by_category(general_data, category))
-                                logger.info(f"После фильтрации Citilink {category}: {len(citi_data)} товаров из {len(general_data)}")
-                            else:
-                                citi_data.extend(json.load(f))
+            dns_data = load_storage_products_for_compare('dns', category, cat_info['dns'])
+            citi_data = load_storage_products_for_compare('citilink', category, cat_info['citi'])
         else:
-            # Находим существующие файлы для обычных категорий
-            dns_path = find_existing_file(cat_info['dns'])
-            citi_path = find_existing_file(cat_info['citi'])
-            
-            # Проверяем существование файлов
-            if not dns_path and not citi_path:
-                flash(f'Файлы данных для категории "{category}" не найдены', 'error')
-                return redirect(url_for('comparison.index'))
-            
-            # Загружаем данные
-            dns_file = dns_path
-            citi_file = citi_path
-            
-            dns_data = []
-            citi_data = []
-            
-            if dns_file:
-                try:
-                    with open(dns_file, 'r', encoding='utf-8') as f:
-                        if 'local_parser_data_' in dns_file:
-                            general_data = json.load(f)
-                            dns_data = filter_dns_by_category(general_data, category)
-                        else:
-                            dns_data = json.load(f)
-                    logger.info(f"Загружено {len(dns_data)} товаров DNS из {dns_file}")
-                except Exception as e:
-                    logger.error(f"Ошибка при загрузке DNS файла {dns_file}: {e}")
-            
-            if citi_file:
-                try:
-                    with open(citi_file, 'r', encoding='utf-8') as f:
-                        if 'citilink_data_' in citi_file:
-                            logger.info(f"Загружаем общий файл Citilink для {category}")
-                            general_data = json.load(f)
-                            citi_data = filter_citilink_by_category(general_data, category)
-                            logger.info(f"После фильтрации Citilink {category}: {len(citi_data)} товаров из {len(general_data)}")
-                        else:
-                            citi_data = json.load(f)
-                            logger.info(f"Загружено {len(citi_data)} товаров Citilink из {citi_file}")
-                except Exception as e:
-                    logger.error(f"Ошибка при загрузке Citilink файла {citi_file}: {e}")
-        
-        if not dns_data and not citi_data:
-            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}". DNS: {len(dns_data) if dns_data else 0}, Citilink: {len(citi_data) if citi_data else 0}', 'error')
-            return redirect(url_for('comparison.index'))
-
-        if not dns_data:
-            dns_data = load_products_from_db('dns', category)
-            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
-        if not citi_data:
-            citi_data = load_products_from_db('citilink', category)
-            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
+            dns_data = load_vendor_products_for_compare('dns', category, cat_info['dns'])
+            citi_data = load_vendor_products_for_compare('citilink', category, cat_info['citi'])
 
         if not dns_data and not citi_data:
-            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}" после fallback в БД', 'error')
+            flash(
+                f'Нет данных для сравнения «{cat_info["dns_label"]}». '
+                f'Запустите импорт или проверьте файлы парсера.',
+                'error',
+            )
             return redirect(url_for('comparison.index'))
         
         # Извлекаем названия товаров
@@ -683,89 +537,6 @@ def quick_compare(category):
         latest_dns_file = get_latest_dns_data_file()
         latest_citilink_file = get_latest_citilink_data_file()
         
-        # Функции фильтрации (копии из основной функции)
-        def filter_dns_by_category(data, category):
-            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
-            if not data:
-                return []
-            
-            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
-            
-            target_product_type = category_to_product_type(category)
-            if not target_product_type:
-                logger.warning(f"Категория {category} не найдена в маппинге")
-                return data
-            
-            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
-            filtered_data = []
-            
-            for item in data:
-                if not item.get('name'):
-                    continue
-                
-                # Используем ту же функцию определения типа продукта что и при импорте
-                try:
-                    # Извлекаем категории товара для передачи в detect_product_type
-                    product_categories = []
-                    if 'categories' in item:
-                        categories = item.get('categories', [])
-                        if isinstance(categories, list):
-                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
-                        elif isinstance(categories, str):
-                            product_categories = [categories]
-                    
-                    # Определяем тип продукта используя ту же логику что и при импорте
-                    detected_type = detect_product_type(item['name'], product_categories)
-                    
-                    if detected_type == target_product_type:
-                        filtered_data.append(item)
-                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
-                    
-                except Exception as e:
-                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
-                    continue
-            
-            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
-            
-            return filtered_data
-
-        def filter_citilink_by_category(data, category):
-            """Фильтрует данные Citilink по категории"""
-            if not data:
-                return []
-            
-            # Фильтруем всегда, если получили общий файл
-            logger.info(f"Фильтрация Citilink для категории {category}, исходных товаров: {len(data)}")
-            
-            category_filters = {
-                'gpu': ['видеокарт', 'videocard', 'graphics'],
-                'cpu': ['процессор', 'processor', 'cpu'],
-                'ram': ['память', 'memory', 'dimm', 'оперативн'],
-                'storage': ['ssd', 'диск', 'накопител', 'hdd', 'жесткий'],
-                'motherboard': ['материнск', 'motherboard'],
-                'psu': ['блок питания', 'power supply', 'бп'],
-                'cooler': ['кулер', 'cooler', 'охлажден'],
-                'case': ['корпус', 'case']
-            }
-            
-            if category not in category_filters:
-                logger.warning(f"Нет фильтров для категории {category}")
-                return []
-            
-            filters = category_filters[category]
-            filtered_data = []
-            
-            for item in data:
-                name = item.get('name', '').lower()
-                
-                # Проверяем наличие ключевых слов в названии
-                if any(keyword in name for keyword in filters):
-                    filtered_data.append(item)
-            
-            logger.info(f"Отфильтровано {len(filtered_data)} товаров Citilink для категории {category}")
-            return filtered_data
-        
-        # Используем ту же карта категорий что и в основной функции
         category_mapping = {
             'ram': {
                 'dns': ['/app/utils/old_dns_parser/product_data.json',
@@ -843,154 +614,24 @@ def quick_compare(category):
             }
         }
         
-        # Функция для поиска существующего файла из списка путей
-        def find_existing_file(paths):
-            """Возвращает первый существующий файл из списка путей"""
-            if isinstance(paths, str):
-                logger.info(f"Проверяем путь: {paths}")
-                resolved = resolve_existing_path(paths)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
-                return resolved
-            for path in paths:
-                logger.info(f"Проверяем путь: {path}")
-                resolved = resolve_existing_path(path)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
-                if resolved:
-                    return resolved
-            return None
-        
-        def find_existing_files(paths_list):
-            """Для storage - возвращает первый набор путей где все файлы существуют"""
-            logger.info(f"find_existing_files вызвана с: {paths_list}")
-            if not isinstance(paths_list[0], list):
-                # Обычная категория, не storage
-                logger.info("Обычная категория, используем find_existing_file")
-                return find_existing_file(paths_list)
-            
-            logger.info("Storage категория, проверяем наборы путей")
-            for i, path_set in enumerate(paths_list):
-                logger.info(f"Проверяем набор {i}: {path_set}")
-                all_exist = all(resolve_existing_path(path) for path in path_set)
-                logger.info(f"Все файлы в наборе {i} {'найдены' if all_exist else 'не найдены'}")
-                if all_exist:
-                    return [resolve_existing_path(path) for path in path_set]
-            return None
-        
         if category not in category_mapping:
             flash(f'Категория "{category}" не поддерживается', 'error')
             return redirect(url_for('comparison.index'))
         
         cat_info = category_mapping[category]
-        
-        # Создаем компаратор
         comparator = get_comparator()
-        
-        # Загружаем данные (специальная обработка для storage)
+
         if category == 'storage':
-            # Объединяем данные из нескольких файлов
-            dns_data = []
-            citi_data = []
-            
-            # Находим существующие DNS файлы
-            dns_paths = find_existing_files(cat_info['dns'])
-            if dns_paths:
-                if len(dns_paths) == 1 and 'local_parser_data' in dns_paths[0]:
-                    # Общий файл DNS - загружаем и фильтруем
-                    logger.info("Загружаем общий файл DNS для storage")
-                    dns_file = find_existing_file(dns_paths)
-                    if dns_file:
-                        with open(dns_file, 'r', encoding='utf-8') as f:
-                            if 'local_parser_data_' in dns_file:
-                                general_data = json.load(f)
-                                dns_data = filter_dns_by_category(general_data, category)
-                            else:
-                                dns_data = json.load(f)
-                    logger.info(f"После фильтрации storage: {len(dns_data)} товаров из {len(dns_data) if dns_data else 0}")
-                else:
-                    # Отдельные файлы по категориям
-                    for dns_path in dns_paths:
-                        dns_file = find_existing_file(dns_path)
-                        if dns_file:
-                            with open(dns_file, 'r', encoding='utf-8') as f:
-                                if 'local_parser_data_' in dns_file:
-                                    general_data = json.load(f)
-                                    dns_data.extend(filter_dns_by_category(general_data, category))
-                                else:
-                                    dns_data.extend(json.load(f))
-            
-            # Находим существующие Citilink файлы  
-            citi_paths = find_existing_files(cat_info['citi'])
-            if citi_paths:
-                for citi_path in citi_paths:
-                    citi_file = find_existing_file(citi_path)
-                    if citi_file:
-                        with open(citi_file, 'r', encoding='utf-8') as f:
-                            if 'citilink_data_' in citi_file:
-                                logger.info(f"Загружаем общий файл Citilink для {category}")
-                                general_data = json.load(f)
-                                citi_data.extend(filter_citilink_by_category(general_data, category))
-                                logger.info(f"После фильтрации Citilink {category}: {len(citi_data)} товаров из {len(general_data)}")
-                            else:
-                                citi_data.extend(json.load(f))
+            dns_data = load_storage_products_for_compare('dns', category, cat_info['dns'])
+            citi_data = load_storage_products_for_compare('citilink', category, cat_info['citi'])
         else:
-            # Находим существующие файлы для обычных категорий
-            dns_path = find_existing_file(cat_info['dns'])
-            citi_path = find_existing_file(cat_info['citi'])
-            
-            # Проверяем существование файлов
-            if not dns_path and not citi_path:
-                flash(f'Файлы данных для категории "{category}" не найдены', 'error')
-                return redirect(url_for('comparison.index'))
-            
-            # Загружаем данные
-            dns_file = dns_path
-            citi_file = citi_path
-            
-            dns_data = []
-            citi_data = []
-            
-            if dns_file:
-                try:
-                    with open(dns_file, 'r', encoding='utf-8') as f:
-                        if 'local_parser_data_' in dns_file:
-                            general_data = json.load(f)
-                            dns_data = filter_dns_by_category(general_data, category)
-                        else:
-                            dns_data = json.load(f)
-                    logger.info(f"Загружено {len(dns_data)} товаров DNS из {dns_file}")
-                except Exception as e:
-                    logger.error(f"Ошибка при загрузке DNS файла {dns_file}: {e}")
-            
-            if citi_file:
-                try:
-                    with open(citi_file, 'r', encoding='utf-8') as f:
-                        if 'citilink_data_' in citi_file:
-                            logger.info(f"Загружаем общий файл Citilink для {category}")
-                            general_data = json.load(f)
-                            citi_data = filter_citilink_by_category(general_data, category)
-                            logger.info(f"После фильтрации Citilink {category}: {len(citi_data)} товаров из {len(general_data)}")
-                        else:
-                            citi_data = json.load(f)
-                            logger.info(f"Загружено {len(citi_data)} товаров Citilink из {citi_file}")
-                except Exception as e:
-                    logger.error(f"Ошибка при загрузке Citilink файла {citi_file}: {e}")
-        
-        if not dns_data and not citi_data:
-            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}". DNS: {len(dns_data) if dns_data else 0}, Citilink: {len(citi_data) if citi_data else 0}', 'error')
-            return redirect(url_for('comparison.index'))
-
-        if not dns_data:
-            dns_data = load_products_from_db('dns', category)
-            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
-        if not citi_data:
-            citi_data = load_products_from_db('citilink', category)
-            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
+            dns_data = load_vendor_products_for_compare('dns', category, cat_info['dns'])
+            citi_data = load_vendor_products_for_compare('citilink', category, cat_info['citi'])
 
         if not dns_data and not citi_data:
-            flash(f'Недостаточно данных для сравнения категории "{cat_info["dns_label"]}" после fallback в БД', 'error')
+            flash(f'Нет данных для сравнения «{cat_info["dns_label"]}».', 'error')
             return redirect(url_for('comparison.index'))
         
-        # Извлекаем названия товаров
         dns_names = comparator.extract_names(dns_data, "name")
         citi_names = comparator.extract_names(citi_data, "name")
         
@@ -1157,53 +798,6 @@ def api_compare(category):
             return latest_file
 
         latest_dns_file = get_latest_dns_data_file()
-        
-        # Функция для фильтрации DNS данных по категории
-        def filter_dns_by_category(data, category):
-            """Фильтрует данные DNS по категории используя ту же логику что и при импорте"""
-            if not data:
-                return []
-            
-            logger.info(f"Фильтрация DNS для категории {category}, исходных товаров: {len(data)}")
-            
-            # Маппинг категорий из системы сравнения в типы продуктов из import_products
-            target_product_type = category_to_product_type(category)
-            if not target_product_type:
-                logger.warning(f"Категория {category} не найдена в маппинге")
-                return data
-            
-            logger.info(f"Ищем товары типа {target_product_type} для категории {category}")
-            filtered_data = []
-            
-            for item in data:
-                if not item.get('name'):
-                    continue
-                
-                # Используем ту же функцию определения типа продукта что и при импорте
-                try:
-                    # Извлекаем категории товара для передачи в detect_product_type
-                    product_categories = []
-                    if 'categories' in item:
-                        categories = item.get('categories', [])
-                        if isinstance(categories, list):
-                            product_categories = [cat.get('name', '') if isinstance(cat, dict) else str(cat) for cat in categories]
-                        elif isinstance(categories, str):
-                            product_categories = [categories]
-                    
-                    # Определяем тип продукта используя ту же логику что и при импорте
-                    detected_type = detect_product_type(item['name'], product_categories)
-                    
-                    if detected_type == target_product_type:
-                        filtered_data.append(item)
-                        logger.debug(f"Товар '{item['name'][:50]}...' определен как {detected_type}")
-                    
-                except Exception as e:
-                    logger.error(f"Ошибка при определении типа товара '{item.get('name', 'Unknown')}': {e}")
-                    continue
-            
-            logger.info(f"После фильтрации DNS {category}: {len(filtered_data)} товаров из {len(data)}")
-            
-            return filtered_data
 
         # Маппинг категорий
         category_mapping = {
@@ -1248,57 +842,9 @@ def api_compare(category):
         logger.info(f"DNS пути: {cat_info['dns']}")
         logger.info(f"Citi пути: {cat_info['citi']}")
         
-        # Функция для поиска существующего файла
-        def find_existing_file(paths):
-            """Возвращает первый существующий файл из списка путей"""
-            if isinstance(paths, str):
-                logger.info(f"Проверяем путь: {paths}")
-                resolved = resolve_existing_path(paths)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {paths}")
-                return resolved
-            for path in paths:
-                logger.info(f"Проверяем путь: {path}")
-                resolved = resolve_existing_path(path)
-                logger.info(f"Файл {'найден' if resolved else 'не найден'}: {path}")
-                if resolved:
-                    return resolved
-            return None
-        
-        # Загружаем данные DNS
-        dns_path = find_existing_file(cat_info['dns'])
-        dns_data = []
-        
-        if dns_path:
-            try:
-                with open(dns_path, 'r', encoding='utf-8') as f:
-                    if 'local_parser_data_' in dns_path:
-                        general_data = json.load(f)
-                        dns_data = filter_dns_by_category(general_data, category)
-                    else:
-                        dns_data = json.load(f)
-                logger.info(f"Загружено {len(dns_data)} товаров DNS из {dns_path}")
-            except Exception as e:
-                logger.error(f"Ошибка при загрузке DNS файла {dns_path}: {e}")
-        
-        # Загружаем данные Citilink
-        citi_path = find_existing_file(cat_info['citi'])
-        citi_data = []
-        
-        if citi_path:
-            try:
-                with open(citi_path, 'r', encoding='utf-8') as f:
-                    citi_data = json.load(f)
-                logger.info(f"Загружено {len(citi_data)} товаров Citilink из {citi_path}")
-            except Exception as e:
-                logger.error(f"Ошибка при загрузке Citilink файла {citi_path}: {e}")
+        dns_data = load_vendor_products_for_compare('dns', category, cat_info['dns'])
+        citi_data = load_vendor_products_for_compare('citilink', category, cat_info['citi'])
 
-        if not dns_data:
-            dns_data = load_products_from_db('dns', category)
-            logger.info(f"DNS fallback из БД для {category}: {len(dns_data)} товаров")
-        if not citi_data:
-            citi_data = load_products_from_db('citilink', category)
-            logger.info(f"Citilink fallback из БД для {category}: {len(citi_data)} товаров")
-        
         # Создаем компаратор
         comparator = get_comparator()
         

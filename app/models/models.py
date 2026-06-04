@@ -371,7 +371,8 @@ class Configuration(db.Model):
             if component:
                 # Используем discounted цену, если доступна, иначе original
                 price = component.price_discounted if component.price_discounted is not None else component.price_original
-                if price is not None:
+                # Только добавляем цену если она больше нуля
+                if price is not None and price > 0:
                     total += price
         return round(total, 2)
     

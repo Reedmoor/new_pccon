@@ -31,7 +31,7 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">{{ config.name }}</h5>
-                            <span class="badge bg-success">{{ config.total_price() }} ₽</span>
+                            <span class="badge bg-success">{{ "{:,.0f}".format(config.total_price()).replace(",", " ") }} ₽</span>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
