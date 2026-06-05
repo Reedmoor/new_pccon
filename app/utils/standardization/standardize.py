@@ -10,9 +10,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
 try:
     from app import db
     from app.models.models import UnifiedProduct
-except ImportError:
-    print("Error importing app modules. Make sure you're running this script from the project root.")
-    sys.exit(1)
+    from app.utils.standardization.characteristic_filters import apply_filter, get_required_characteristics
+except ImportError as e:
+    print(f"Error importing app modules: {e}")
+    print("Make sure you're running this script from the project root.")
+    # Try to continue without filters if import fails
+    apply_filter = lambda product_type, characteristics: characteristics
+    get_required_characteristics = lambda product_type: set()
 
 # Mapping dictionaries to standardize characteristics from different vendors
 # These mappings will grow as more products are added
@@ -434,6 +438,15 @@ def standardize_characteristics(source_data, vendor):
     # Ensure characteristics is always set
     if not isinstance(characteristics, dict):
         characteristics = {}
+    
+    # Apply product-type-specific filters and normalization
+    product_type = standardized.get("product_type", "other")
+    if product_type != "other":
+        try:
+            characteristics = apply_filter(product_type, characteristics)
+        except Exception as e:
+            print(f"Warning: Error applying filter for {product_type}: {e}")
+            # Continue with unfiltered characteristics if filter fails
     
     standardized["characteristics"] = characteristics
     return standardized

@@ -75,6 +75,23 @@
     padding: 2px 7px;
     white-space: nowrap;
 }
+.vendor-filter-btn.active,
+.char-filter-btn.active {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.char-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+}
+.char-filter-label {
+    min-width: 6.5rem;
+    flex-shrink: 0;
+    font-weight: 500;
+}
 .sticky-summary {
     position: sticky;
     top: 20px;
@@ -306,7 +323,9 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn" data-vendor="dns" id="vendorDnsBtn">DNS</button>
                     <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn" data-vendor="citilink" id="vendorCitilinkBtn">Citilink</button>
                 </div>
-                <div id="modalVendorHint" class="mb-3 small text-muted">Показываются товары из всех магазинов</div>
+                <div id="modalVendorHint" class="mb-2 small text-muted">Показываются товары из всех магазинов</div>
+                <div id="modalCharFilters" class="mb-2 d-none"></div>
+                <div id="modalCharFilterHint" class="mb-3 small text-muted d-none"></div>
                 <div id="modalLoading" class="text-center py-5 d-none">
                     <div class="spinner-border text-primary"></div>
                     <div class="mt-2 text-muted small">Загрузка...</div>
@@ -355,7 +374,9 @@ let currentModalType  = null;
 let currentModalField = null;
 const modalComponentsCache = new Map();
 let currentModalItems = [];
+let currentModalItemsAll = [];
 let currentModalVendor = 'all';
+let currentCharFilters = {};
 
 /* текущие выбранные компоненты {fieldId -> comp} */
 const selectedComponents = {};
@@ -391,6 +412,232 @@ const COMP_TYPE_LABELS = {
     'hard_drive': 'Накопитель', 'power_supply': 'БП',
     'cooler': 'Кулер', 'case': 'Корпус',
 };
+
+const MODAL_CHAR_FILTERS = {
+    'motherboard':    [{ key: 'socket', label: 'Сокет' }, { key: 'form_factor', label: 'Форм-фактор' }, { key: 'memory_type', label: 'Тип памяти' }],
+    'processor':      [{ key: 'socket', label: 'Сокет' }],
+    'graphics_card':  [{ key: 'memory_type', label: 'VRAM' }, { key: 'memory_size', label: 'Объём VRAM' }],
+    'ram':            [{ key: 'memory_type', label: 'Тип' }, { key: 'memory_form_factor', label: 'Слот' }, { key: 'capacity', label: 'Объём' }],
+    'hard_drive':     [{ key: 'interface', label: 'SATA / M.2' }, { key: 'capacity', label: 'Объём' }],
+    'power_supply':   [{ key: 'wattage', label: 'Мощность' }, { key: 'certification', label: '80+' }],
+    'cooler':         [{ key: 'cooling_type', label: 'Тип охлаждения' }, { key: 'length', label: 'Длина' }],
+    'case':           [{ key: 'form_factor', label: 'Размер' }],
+};
+
+const CHAR_VALUE_ALIASES = {
+    capacity: ['memory_size', 'storage_capacity'],
+    form_factor: ['case_size'],
+    type: ['disk_type', 'storage_type', 'interface'],
+    interface: ['type', 'disk_type', 'storage_type', 'connection_interface'],
+    certification: ['efficiency_rating'],
+    cooling_type: ['type'],
+    length: ['cooler_height', 'height', 'radiator_length', 'max_length'],
+};
+
+function getCharValue(chars, key) {
+    if (!chars) return null;
+    const keys = [key, ...(CHAR_VALUE_ALIASES[key] || [])];
+    for (const k of keys) {
+        const value = chars[k];
+        if (value !== undefined && value !== null && value !== '') {
+            return String(value);
+        }
+    }
+    return null;
+}
+
+function normalizeDriveInterface(value) {
+    if (!value) return null;
+    const v = value.toUpperCase();
+    if (v.includes('SATA')) return 'SATA';
+    if (v.includes('M.2') || v.includes('M2') || v.includes('NVME') || v.includes('PCI-E') || v.includes('PCIE')) {
+        return 'M.2';
+    }
+    return value;
+}
+
+function normalizeDriveCapacity(value) {
+    if (!value) return null;
+    const num = parseInt(String(value).replace(/[^\d]/g, ''), 10);
+    if (isNaN(num)) return value;
+    if (num >= 1000) {
+        const tb = num / 1000;
+        return (tb % 1 === 0 ? `${tb} ТБ` : `${tb.toFixed(1)} ТБ`);
+    }
+    return `${num} ГБ`;
+}
+
+function normalizeCoolerLength(value) {
+    if (!value) return null;
+    const num = parseInt(String(value).replace(/[^\d]/g, ''), 10);
+    if (isNaN(num)) return value;
+    return `${num} мм`;
+}
+
+function getFilterCharValue(chars, key, productType) {
+    const raw = getCharValue(chars, key);
+    if (!raw) return null;
+
+    if (productType === 'hard_drive') {
+        if (key === 'interface' || key === 'type') {
+            return normalizeDriveInterface(raw);
+        }
+        if (key === 'capacity') {
+            return normalizeDriveCapacity(raw);
+        }
+    }
+
+    if (productType === 'cooler' && key === 'length') {
+        return normalizeCoolerLength(raw);
+    }
+
+    return raw;
+}
+
+function resetCharFilters() {
+    currentCharFilters = {};
+    const container = document.getElementById('modalCharFilters');
+    const hint = document.getElementById('modalCharFilterHint');
+    if (container) {
+        container.innerHTML = '';
+        container.classList.add('d-none');
+    }
+    if (hint) {
+        hint.textContent = '';
+        hint.classList.add('d-none');
+    }
+}
+
+function buildCharFilterButtons(items, type) {
+    const container = document.getElementById('modalCharFilters');
+    if (!container) return;
+
+    const filterDefs = MODAL_CHAR_FILTERS[type];
+    if (!filterDefs || !items.length) {
+        container.classList.add('d-none');
+        return;
+    }
+
+    let html = '';
+    let hasAnyFilter = false;
+
+    filterDefs.forEach(def => {
+        const values = new Set();
+        items.forEach(comp => {
+            const value = getFilterCharValue(comp.characteristics, def.key, type);
+            if (value) values.add(value);
+        });
+
+        let sorted = Array.from(values);
+        if (def.key === 'capacity') {
+            const parseCapacity = (s) => {
+                const m = String(s).match(/([\d.]+)\s*(ГБ|ТБ|GB|TB)/i);
+                if (!m) return parseFloat(s) || 0;
+                let n = parseFloat(m[1]);
+                if (/тб|tb/i.test(m[2])) n *= 1000;
+                return n;
+            };
+            sorted.sort((a, b) => parseCapacity(a) - parseCapacity(b));
+        } else if (def.key === 'length') {
+            sorted.sort((a, b) => (parseInt(a, 10) || 0) - (parseInt(b, 10) || 0));
+        } else {
+            sorted.sort((a, b) => {
+                const na = parseFloat(a);
+                const nb = parseFloat(b);
+                if (!isNaN(na) && !isNaN(nb)) return na - nb;
+                return a.localeCompare(b, 'ru');
+            });
+        }
+
+        if (sorted.length < 2) return;
+
+        hasAnyFilter = true;
+        const activeVal = currentCharFilters[def.key] || '';
+
+        html += `<div class="char-filter-group mb-2">
+            <span class="char-filter-label small text-muted">${def.label}:</span>
+            <div class="d-inline-flex flex-wrap gap-1">
+                <button type="button" class="btn btn-outline-primary btn-sm char-filter-btn${activeVal === '' ? ' active' : ''}"
+                    data-filter-key="${def.key}" data-filter-value="">Все</button>`;
+
+        sorted.forEach(val => {
+            const safeVal = val.replace(/"/g, '&quot;');
+            html += `<button type="button" class="btn btn-outline-primary btn-sm char-filter-btn${activeVal === val ? ' active' : ''}"
+                data-filter-key="${def.key}" data-filter-value="${safeVal}">${val}</button>`;
+        });
+
+        html += '</div></div>';
+    });
+
+    if (!hasAnyFilter) {
+        container.classList.add('d-none');
+        return;
+    }
+
+    container.innerHTML = html;
+    container.classList.remove('d-none');
+
+    container.querySelectorAll('.char-filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            setCharFilter(this.dataset.filterKey, this.dataset.filterValue);
+        });
+    });
+}
+
+function setCharFilter(key, value) {
+    if (!value) {
+        delete currentCharFilters[key];
+    } else {
+        currentCharFilters[key] = value;
+    }
+
+    document.querySelectorAll(`.char-filter-btn[data-filter-key="${key}"]`).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filterValue === (value || ''));
+    });
+
+    applyCharFiltersAndRender();
+}
+
+function applyCharFilters(items) {
+    const activeFilters = Object.entries(currentCharFilters).filter(([, v]) => v);
+    if (!activeFilters.length) return items;
+
+    return items.filter(comp => activeFilters.every(([key, expected]) => {
+        const actual = getFilterCharValue(comp.characteristics, key, currentModalType);
+        return actual && actual.toUpperCase() === expected.toUpperCase();
+    }));
+}
+
+function updateCharFilterHint() {
+    const hint = document.getElementById('modalCharFilterHint');
+    if (!hint) return;
+
+    const activeCount = Object.keys(currentCharFilters).length;
+    if (!activeCount) {
+        hint.textContent = '';
+        hint.classList.add('d-none');
+        return;
+    }
+
+    hint.textContent = `Фильтры: ${activeCount}. Показано ${currentModalItems.length} из ${currentModalItemsAll.length}`;
+    hint.classList.remove('d-none');
+}
+
+function applyCharFiltersAndRender() {
+    const grid = document.getElementById('modalProductsGrid');
+    currentModalItems = applyCharFilters(currentModalItemsAll);
+
+    if (!currentModalItems.length) {
+        grid.innerHTML = `<div class="col-12 text-center text-muted py-5">
+            <i class="fas fa-filter fa-3x mb-3 d-block opacity-25"></i>
+            Нет товаров по выбранным фильтрам</div>`;
+        updateCharFilterHint();
+        return;
+    }
+
+    renderModalItems(currentModalItems, currentModalType);
+    updateCharFilterHint();
+}
 
 function renderModalItems(items, type) {
     const grid = document.getElementById('modalProductsGrid');
@@ -441,6 +688,7 @@ function openComponentModal(type, fieldId, label, icon) {
     currentModalType = type;
     currentModalField = fieldId;
     currentModalVendor = 'all';
+    resetCharFilters();
     updateVendorButtons();
     document.getElementById('componentModalTitle').textContent = 'Выбор: ' + label;
     document.getElementById('modalSearchInput').value = '';
@@ -453,7 +701,21 @@ function openComponentModal(type, fieldId, label, icon) {
     bootstrap.Modal.getOrCreateInstance(document.getElementById('componentModal')).show();
 }
 
+function getSelectionContext() {
+    return {
+        motherboard_id: parseInt($('#motherboard_id').val()) || 0,
+        supply_id:      parseInt($('#supply_id').val()) || 0,
+        cpu_id:         parseInt($('#cpu_id').val()) || 0,
+        gpu_id:         parseInt($('#gpu_id').val()) || 0,
+        cooler_id:      parseInt($('#cooler_id').val()) || 0,
+        ram_id:         parseInt($('#ram_id').val()) || 0,
+        hdd_id:         parseInt($('#hdd_id').val()) || 0,
+        frame_id:       parseInt($('#frame_id').val()) || 0,
+    };
+}
+
 function loadComponents(type, query) {
+    resetCharFilters();
     const grid = document.getElementById('modalProductsGrid');
     const loading = document.getElementById('modalLoading');
     grid.innerHTML = '';
@@ -467,18 +729,25 @@ function loadComponents(type, query) {
         data: JSON.stringify({
             product_type: type,
             query: query,
-            vendor: currentModalVendor
+            vendor: currentModalVendor,
+            context: getSelectionContext()
         }),
         success: function(response) {
             loading.classList.add('d-none');
             if (!response.components || response.components.length === 0) {
+                currentModalItemsAll = [];
+                currentModalItems = [];
+                resetCharFilters();
                 grid.innerHTML = `<div class="col-12 text-center text-muted py-5">
                     <i class="fas fa-inbox fa-3x mb-3 d-block opacity-25"></i>
                     Компоненты не найдены</div>`;
                 return;
             }
-            currentModalItems = response.components;
+            currentModalItemsAll = response.components;
+            buildCharFilterButtons(currentModalItemsAll, type);
+            currentModalItems = applyCharFilters(currentModalItemsAll);
             renderModalItems(currentModalItems, type);
+            updateCharFilterHint();
         },
         error: function() {
             loading.classList.add('d-none');

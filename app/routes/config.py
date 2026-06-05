@@ -4,6 +4,11 @@ from app import db
 from app.models.models import Configuration, UnifiedProduct
 from app.forms.config import ConfigurationForm
 from app.utils.product_comparator import get_comparator
+from app.utils.configuration_validator import (
+    ConfigurationValidator,
+    ConfigurationComponentFilter
+)
+from app.utils.standardization.characteristic_filters import normalize_for_display
 from sqlalchemy.orm import joinedload
 import logging
 
@@ -12,52 +17,69 @@ logger = logging.getLogger(__name__)
 config_bp = Blueprint('config', __name__)
 
 
-def _is_empty_value(value):
-    return value in (None, '', [], {})
-
-
 def normalize_characteristics(characteristics, product_type):
-    """
-    Нормализует характеристики под ключи UI.
-    Важно: НЕ перезаписывает уже заполненные поля (чтобы не ломать Citilink).
-    """
-    chars = dict(characteristics or {})
+    """Нормализует характеристики для UI с учётом фильтров и алиасов вендоров."""
+    return normalize_for_display(characteristics, product_type)
 
-    def set_if_missing(target_key, source_keys):
-        if not _is_empty_value(chars.get(target_key)):
-            return
-        for source_key in source_keys:
-            source_value = chars.get(source_key)
-            if not _is_empty_value(source_value):
-                chars[target_key] = source_value
-                return
 
-    # Общие алиасы для уже существующих отображений
-    set_if_missing('cores', ['core_count'])
-    set_if_missing('tdp', ['power_consumption'])
-    set_if_missing('capacity', ['memory_size', 'storage_capacity'])
-    set_if_missing('frequency', ['memory_clock'])
-    set_if_missing('max_tdp', ['power_consumption', 'tdp'])
+def _component_id(value):
+    return value if value and value != 0 else None
 
-    # Типовые алиасы — чтобы DNS показывался так же, как Citilink
-    if product_type == 'ram':
-        set_if_missing('capacity', ['memory_size'])
-        set_if_missing('frequency', ['memory_clock'])
-        set_if_missing('memory_form_factor', ['form_factor'])
-    elif product_type == 'hard_drive':
-        set_if_missing('capacity', ['storage_capacity'])
-        set_if_missing('type', ['disk_type', 'storage_type'])
-    elif product_type == 'cooler':
-        set_if_missing('max_tdp', ['power_consumption', 'tdp'])
-        set_if_missing('socket_compatibility', ['socket', 'supported_sockets'])
-        set_if_missing('fan_size', ['fan_diameter'])
-    elif product_type == 'power_supply':
-        set_if_missing('certification', ['efficiency_certificate'])
-        set_if_missing('modular', ['cable_management'])
-    elif product_type == 'case':
-        set_if_missing('form_factor', ['case_size'])
 
-    return chars
+def _build_temp_configuration(data):
+    """Собирает временный объект Configuration из ID компонентов для проверки совместимости."""
+    config = Configuration(name='__temp__', user_id=0)
+    config.motherboard_id = _component_id(data.get('motherboard_id'))
+    config.supply_id = _component_id(data.get('supply_id'))
+    config.cpu_id = _component_id(data.get('cpu_id'))
+    config.gpu_id = _component_id(data.get('gpu_id'))
+    config.cooler_id = _component_id(data.get('cooler_id'))
+    config.ram_id = _component_id(data.get('ram_id'))
+    config.hdd_id = _component_id(data.get('hdd_id'))
+    config.frame_id = _component_id(data.get('frame_id'))
+
+    if config.motherboard_id:
+        config.motherboard = UnifiedProduct.query.get(config.motherboard_id)
+    if config.supply_id:
+        config.power_supply = UnifiedProduct.query.get(config.supply_id)
+    if config.cpu_id:
+        config.processor = UnifiedProduct.query.get(config.cpu_id)
+    if config.gpu_id:
+        config.graphics_card = UnifiedProduct.query.get(config.gpu_id)
+    if config.cooler_id:
+        config.cooler = UnifiedProduct.query.get(config.cooler_id)
+    if config.ram_id:
+        config.ram = UnifiedProduct.query.get(config.ram_id)
+    if config.hdd_id:
+        config.hard_drive = UnifiedProduct.query.get(config.hdd_id)
+    if config.frame_id:
+        config.case = UnifiedProduct.query.get(config.frame_id)
+
+    return config
+
+
+def _serialize_component(component):
+    """Сериализует компонент для API-ответов."""
+    price = None
+    if component.price_discounted is not None and component.price_discounted > 0:
+        price = component.price_discounted
+    elif component.price_original is not None and component.price_original > 0:
+        price = component.price_original
+
+    return {
+        'id': component.id,
+        'name': component.product_name,
+        'price': price,
+        'vendor': component.vendor,
+        'product_url': component.product_url,
+        'images': component.get_images(),
+        'characteristics': normalize_characteristics(
+            component.get_characteristics(),
+            component.product_type
+        ),
+        'rating': component.rating,
+        'number_of_reviews': component.number_of_reviews,
+    }
 
 
 def build_component_data(component):
@@ -426,37 +448,25 @@ def get_config_info():
                     'type': component.product_type
                 })
     
-    # Простая проверка совместимости (без создания временной конфигурации)
     compatibility_issues = []
+    warnings = []
     compatible = True
-    
-    # Пока используем простую логику - если выбраны основные компоненты, считаем совместимыми
-    # В будущем можно добавить более сложную логику проверки
-    if motherboard_id and cpu_id:
-        # Получаем материнскую плату и процессор для проверки сокета
-        try:
-            motherboard = UnifiedProduct.query.get(motherboard_id) if motherboard_id != 0 else None
-            processor = UnifiedProduct.query.get(cpu_id) if cpu_id != 0 else None
-            
-            if motherboard and processor:
-                mb_chars = motherboard.get_characteristics()
-                cpu_chars = processor.get_characteristics()
-                
-                mb_socket = mb_chars.get('socket', '').upper()
-                cpu_socket = cpu_chars.get('socket', '').upper()
-                
-                if mb_socket and cpu_socket and mb_socket != cpu_socket:
-                    compatibility_issues.append(f"Несовместимые сокеты: {mb_socket} (материнская плата) и {cpu_socket} (процессор)")
-                    compatible = False
-        except Exception as e:
-            logger.error(f"Ошибка проверки совместимости: {e}")
-    
-    # Формируем ответ
+
+    try:
+        temp_config = _build_temp_configuration(data)
+        validation = ConfigurationValidator.validate_configuration(temp_config)
+        compatibility_issues = validation.get('compatibility_issues', [])
+        warnings = validation.get('warnings', [])
+        compatible = len(compatibility_issues) == 0
+    except Exception as e:
+        logger.error(f"Ошибка проверки совместимости: {e}")
+
     return jsonify({
         'total_price': float(total_price),
         'compatible': compatible,
         'issues': compatibility_issues,
-        'components': selected_components  # Добавляем информацию о выбранных компонентах для отладки
+        'warnings': warnings,
+        'components': selected_components
     })
 
 @config_bp.route('/api/filter-components', methods=['POST'])
@@ -494,62 +504,42 @@ def filter_components():
     # Получаем результаты
     results = query.all()
     
-    # Фильтруем по характеристикам, которые хранятся в JSON
+    context = data.get('context') or {}
+    results = ConfigurationComponentFilter.filter_products_for_context(
+        product_type, results, context
+    )
+
     filtered_results = []
     for product in results:
-        chars = product.get_characteristics()
+        chars = ConfigurationValidator.get_filtered_characteristics(product)
         
-        # Фильтр по форм-фактору (для материнских плат)
         if form_factor and product_type == 'motherboard':
             if chars.get('form_factor') != form_factor:
                 continue
         
-        # Фильтр по сокету
         if socket:
-            if product_type == 'motherboard' or product_type == 'processor':
+            if product_type in ('motherboard', 'processor'):
                 if chars.get('socket') != socket:
                     continue
         
-        # Фильтр по типу памяти
         if memory_type:
-            if product_type == 'motherboard' or product_type == 'ram':
+            if product_type in ('motherboard', 'ram'):
                 if chars.get('memory_type') != memory_type:
                     continue
         
-        # Фильтр по частоте (для процессоров)
         if min_frequency and product_type == 'processor':
-            # Проверяем наличие значения частоты и конвертируем в числовые значения
             base_clock = chars.get('base_clock')
             if not base_clock:
                 continue
-                
             try:
-                # Преобразуем строковые значения в числовые при необходимости
-                base_clock_val = float(base_clock) if isinstance(base_clock, str) else float(base_clock)
-                min_freq_val = float(min_frequency) * 1000  # переводим ГГц в МГц
-                
+                base_clock_val = float(base_clock)
+                min_freq_val = float(min_frequency) * 1000
                 if base_clock_val < min_freq_val:
                     continue
             except (ValueError, TypeError):
-                # В случае ошибки преобразования пропускаем этот компонент
                 continue
         
-        # Определяем цену для отображения
-        price = None
-        if product.price_discounted is not None and product.price_discounted > 0:
-            price = product.price_discounted
-        elif product.price_original is not None and product.price_original > 0:
-            price = product.price_original
-        
-        # Добавляем продукт в результаты
-        filtered_results.append({
-            'id': product.id,
-            'name': product.product_name,
-            'price': price,
-            'characteristics': chars,
-            'vendor': product.vendor,
-            'product_url': product.product_url
-        })
+        filtered_results.append(_serialize_component(product))
     
     return jsonify({
         'components': filtered_results
@@ -561,10 +551,10 @@ def search_components():
     """Endpoint для поиска компонентов по запросу"""
     data = request.json
     
-    # Получаем тип продукта, поисковый запрос и фильтр по магазину
     product_type = data.get('product_type')
     query = data.get('query', '').strip()
     vendor = (data.get('vendor') or '').strip()
+    context = data.get('context') or {}
     
     # Проверяем наличие обязательных параметров
     if not product_type:
@@ -581,40 +571,21 @@ def search_components():
     if query:
         components_query = components_query.filter(UnifiedProduct.product_name.ilike(f'%{query}%'))
     
-    # Получаем результаты
     components = components_query.all()
-    
-    # Формируем ответ
+    components = ConfigurationComponentFilter.filter_products_for_context(
+        product_type, components, context
+    )
+
     result = []
     for component in components:
-        # Определяем цену для отображения
-        price = None
-        if component.price_discounted is not None and component.price_discounted > 0:
-            price = component.price_discounted
-        elif component.price_original is not None and component.price_original > 0:
-            price = component.price_original
-            
-        # Пропускаем компоненты без цены
-        if price is None:
+        serialized = _serialize_component(component)
+        if serialized['price'] is None:
             continue
-        
-        result.append({
-            'id': component.id,
-            'name': component.product_name,
-            'price': price,
-            'vendor': component.vendor,
-            'product_url': component.product_url,
-            'images': component.get_images(),
-            'characteristics': normalize_characteristics(
-                component.get_characteristics(),
-                component.product_type
-            ),
-            'rating': component.rating,
-            'number_of_reviews': component.number_of_reviews,
-        })
-    
+        result.append(serialized)
+
     return jsonify({
-        'components': result
+        'components': result,
+        'filtered_by_context': bool(context),
     })
 
 
