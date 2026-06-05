@@ -60,7 +60,7 @@ _COMPAT_DEFAULTS = {
     "power_supply": {"wattage": 0},
     "cooler": {"cooler_height": 0},
     "case": {"supported_form_factors": [], "max_gpu_length": 0, "max_cooler_height": 0},
-    "hard_drive": {"storage_capacity": 0},
+    "hard_drive": {},
 }
 
 CATEGORY_MAPPING = {

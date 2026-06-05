@@ -101,6 +101,7 @@ CHARACTERISTIC_MAPPING = {
     
     # Storage specific mappings
     "Объем накопителя": "storage_capacity",
+    "Объём накопителя": "storage_capacity",
     "Интерфейс подключения": "interface",
     "Скорость чтения": "read_speed",
     "Скорость записи": "write_speed",
@@ -439,14 +440,15 @@ def standardize_characteristics(source_data, vendor):
     if not isinstance(characteristics, dict):
         characteristics = {}
     
-    # Apply product-type-specific filters and normalization
+    # Нормализуем ключевые поля, но сохраняем все исходные характеристики для просмотра
     product_type = standardized.get("product_type", "other")
     if product_type != "other":
         try:
-            characteristics = apply_filter(product_type, characteristics)
+            filtered = apply_filter(product_type, characteristics)
+            characteristics = dict(characteristics)
+            characteristics.update(filtered)
         except Exception as e:
             print(f"Warning: Error applying filter for {product_type}: {e}")
-            # Continue with unfiltered characteristics if filter fails
     
     standardized["characteristics"] = characteristics
     return standardized

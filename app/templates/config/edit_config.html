@@ -434,12 +434,16 @@ const CHAR_VALUE_ALIASES = {
     length: ['cooler_height', 'height', 'radiator_length', 'max_length'],
 };
 
+function isMeaningfulValue(value) {
+    return value !== undefined && value !== null && value !== '' && value !== 0 && value !== '0';
+}
+
 function getCharValue(chars, key) {
     if (!chars) return null;
     const keys = [key, ...(CHAR_VALUE_ALIASES[key] || [])];
     for (const k of keys) {
         const value = chars[k];
-        if (value !== undefined && value !== null && value !== '') {
+        if (isMeaningfulValue(value)) {
             return String(value);
         }
     }
@@ -457,9 +461,23 @@ function normalizeDriveInterface(value) {
 }
 
 function normalizeDriveCapacity(value) {
-    if (!value) return null;
-    const num = parseInt(String(value).replace(/[^\d]/g, ''), 10);
-    if (isNaN(num)) return value;
+    if (!isMeaningfulValue(value)) return null;
+    const raw = String(value).trim();
+    const tbMatch = raw.match(/([\d.]+)\s*(ТБ|TB)/i);
+    if (tbMatch) {
+        const tb = parseFloat(tbMatch[1]);
+        return (tb % 1 === 0 ? `${tb} ТБ` : `${tb.toFixed(1)} ТБ`);
+    }
+    const gbMatch = raw.match(/([\d.]+)\s*(ГБ|GB)/i);
+    if (gbMatch) {
+        const gb = parseFloat(gbMatch[1]);
+        return (gb % 1 === 0 ? `${gb} ГБ` : `${gb.toFixed(1)} ГБ`);
+    }
+    const num = parseInt(raw.replace(/[^\d]/g, ''), 10);
+    if (isNaN(num) || num <= 0) return null;
+    if (num < 100) {
+        return `${num} ТБ`;
+    }
     if (num >= 1000) {
         const tb = num / 1000;
         return (tb % 1 === 0 ? `${tb} ТБ` : `${tb.toFixed(1)} ТБ`);
@@ -757,9 +775,12 @@ function loadComponents(type, query) {
     });
 }
 
-function formatCharacteristicValue(value) {
-    if (value === null || value === undefined || value === '') {
+function formatCharacteristicValue(value, key, productType) {
+    if (!isMeaningfulValue(value)) {
         return '';
+    }
+    if (productType === 'hard_drive' && (key === 'capacity' || key === 'storage_capacity')) {
+        return normalizeDriveCapacity(value) || '';
     }
     if (Array.isArray(value)) {
         return value.map(item => formatCharacteristicValue(item)).filter(Boolean).join(', ');
@@ -776,19 +797,26 @@ function formatCharacteristicValue(value) {
     return String(value);
 }
 
-function renderComponentCharacteristics(chars, limit) {
+function renderComponentCharacteristics(chars, limit, productType, compactOnly) {
     if (!chars || Object.keys(chars).length === 0) {
         return '<div class="text-muted small">Характеристики отсутствуют</div>';
     }
     let html = '';
-    const entries = Object.entries(chars)
-        .filter(([_, value]) => value !== undefined && value !== null && value !== '');
+    let entries;
+    if (compactOnly && productType && KEY_SPECS[productType]) {
+        entries = KEY_SPECS[productType]
+            .map(key => [key, getCharValue(chars, key)])
+            .filter(([, value]) => isMeaningfulValue(value));
+    } else {
+        entries = Object.entries(chars)
+            .filter(([_, value]) => value !== undefined && value !== null && value !== '');
+    }
     if (limit) {
         entries.splice(limit);
     }
     entries.forEach(([key, value]) => {
         const label = SPEC_LABELS[key] || key;
-        const formatted = formatCharacteristicValue(value);
+        const formatted = formatCharacteristicValue(value, key, productType);
         if (!formatted) return;
         html += `<div class="text-muted small"><strong>${label}:</strong> ${formatted}</div>`;
     });
@@ -805,7 +833,7 @@ function renderProductCard(comp, type) {
         : `<div class="modal-img-placeholder"><i class="fas fa-box fa-2x text-muted"></i></div>`;
 
     const chars = comp.characteristics || {};
-    const specsHtml = renderComponentCharacteristics(chars, 6);
+    const specsHtml = renderComponentCharacteristics(chars, 6, type, true);
 
     const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
     const ratingHtml = comp.rating
@@ -887,7 +915,7 @@ function updatePreview(fieldId, comp, type) {
         : `<div class="img-placeholder"><i class="fas fa-box fa-2x"></i></div>`;
 
     const chars = comp.characteristics || {};
-    const specsHtml = renderComponentCharacteristics(chars);
+    const specsHtml = renderComponentCharacteristics(chars, null, type, false);
 
     const price = comp.price ? new Intl.NumberFormat('ru-RU').format(comp.price) + ' ₽' : 'Цена не указана';
     const ratingHtml = comp.rating

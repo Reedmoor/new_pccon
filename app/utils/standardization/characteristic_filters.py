@@ -44,6 +44,17 @@ def _is_empty(value):
     return value in (None, '', [], {})
 
 
+def _is_meaningful(value):
+    """False for empty values and numeric zero placeholders."""
+    if _is_empty(value):
+        return False
+    if value == 0 or value == 0.0:
+        return False
+    if isinstance(value, str) and value.strip() in ('0', '0.0'):
+        return False
+    return True
+
+
 PRODUCT_TYPE_ALIASES = {
     'motherboard': {'form_factor': ['Форм-фактор']},
     'ram': {'memory_form_factor': ['form_factor', 'Тип модуля памяти']},
@@ -63,20 +74,20 @@ def prepare_characteristics(characteristics, product_type=None):
 
     if product_type and product_type in PRODUCT_TYPE_ALIASES:
         for canonical, aliases in PRODUCT_TYPE_ALIASES[product_type].items():
-            if not _is_empty(prepared.get(canonical)):
+            if _is_meaningful(prepared.get(canonical)):
                 continue
             for alias in aliases:
                 alias_value = prepared.get(alias)
-                if not _is_empty(alias_value):
+                if _is_meaningful(alias_value):
                     prepared[canonical] = alias_value
                     break
 
     for canonical, aliases in FIELD_ALIASES.items():
-        if not _is_empty(prepared.get(canonical)):
+        if _is_meaningful(prepared.get(canonical)):
             continue
         for alias in aliases:
             alias_value = prepared.get(alias)
-            if not _is_empty(alias_value):
+            if _is_meaningful(alias_value):
                 prepared[canonical] = alias_value
                 break
     return prepared
@@ -94,11 +105,11 @@ def normalize_for_display(characteristics, product_type):
     result.update(filtered)
 
     def set_if_missing(target_key, source_keys):
-        if not _is_empty(result.get(target_key)):
+        if _is_meaningful(result.get(target_key)):
             return
         for source_key in source_keys:
             source_value = result.get(source_key)
-            if not _is_empty(source_value):
+            if _is_meaningful(source_value):
                 result[target_key] = source_value
                 return
 
@@ -521,7 +532,7 @@ class HardDriveFilter(CharacteristicFilter):
     @staticmethod
     def normalize_storage_capacity(capacity):
         """Normalize storage capacity to GB"""
-        if not capacity:
+        if not _is_meaningful(capacity):
             return None
         
         capacity_str = str(capacity).strip()
