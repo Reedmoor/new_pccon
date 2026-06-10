@@ -92,6 +92,68 @@
     flex-shrink: 0;
     font-weight: 500;
 }
+.price-range-filter {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+.price-range-track {
+    position: relative;
+    height: 28px;
+    margin-top: 6px;
+}
+.price-range-rail {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    margin-top: -3px;
+    background: #dee2e6;
+    border-radius: 3px;
+}
+.price-range-fill {
+    position: absolute;
+    top: 50%;
+    height: 6px;
+    margin-top: -3px;
+    background: #0d6efd;
+    border-radius: 3px;
+}
+.price-range-track input[type=range] {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    pointer-events: none;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 28px;
+}
+.price-range-track input[type=range]::-webkit-slider-thumb {
+    pointer-events: auto;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.price-range-track input[type=range]::-moz-range-thumb {
+    pointer-events: auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
 .sticky-summary {
     position: sticky;
     top: 20px;
@@ -324,6 +386,18 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm vendor-filter-btn" data-vendor="citilink" id="vendorCitilinkBtn">Citilink</button>
                 </div>
                 <div id="modalVendorHint" class="mb-2 small text-muted">Показываются товары из всех магазинов</div>
+                <div id="modalPriceFilter" class="price-range-filter mb-3 d-none">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-1">
+                        <span class="small fw-semibold text-muted"><i class="fas fa-ruble-sign me-1"></i>Цена</span>
+                        <span id="modalPriceRangeLabel" class="small text-muted"></span>
+                    </div>
+                    <div class="price-range-track">
+                        <div class="price-range-rail"></div>
+                        <div class="price-range-fill" id="modalPriceRangeFill"></div>
+                        <input type="range" class="price-range-input" id="modalPriceMin" min="0" max="100000" step="100" value="0">
+                        <input type="range" class="price-range-input" id="modalPriceMax" min="0" max="100000" step="100" value="100000">
+                    </div>
+                </div>
                 <div id="modalCharFilters" class="mb-2 d-none"></div>
                 <div id="modalCharFilterHint" class="mb-3 small text-muted d-none"></div>
                 <div id="modalLoading" class="text-center py-5 d-none">
@@ -377,6 +451,10 @@ let currentModalItems = [];
 let currentModalItemsAll = [];
 let currentModalVendor = 'all';
 let currentCharFilters = {};
+let priceRangeAbsMin = 0;
+let priceRangeAbsMax = 0;
+let priceFilterMin = 0;
+let priceFilterMax = 0;
 
 /* текущие выбранные компоненты {fieldId -> comp} */
 const selectedComponents = {};
@@ -512,18 +590,131 @@ function getFilterCharValue(chars, key, productType) {
     return raw;
 }
 
+function formatPriceRub(value) {
+    return new Intl.NumberFormat('ru-RU').format(Math.round(value)) + ' ₽';
+}
+
+function getComponentPrice(comp) {
+    const price = comp && comp.price;
+    return (price !== null && price !== undefined && price > 0) ? Number(price) : null;
+}
+
 function resetCharFilters() {
     currentCharFilters = {};
     const container = document.getElementById('modalCharFilters');
-    const hint = document.getElementById('modalCharFilterHint');
     if (container) {
         container.innerHTML = '';
         container.classList.add('d-none');
     }
-    if (hint) {
-        hint.textContent = '';
-        hint.classList.add('d-none');
+}
+
+function resetPriceFilter() {
+    priceRangeAbsMin = 0;
+    priceRangeAbsMax = 0;
+    priceFilterMin = 0;
+    priceFilterMax = 0;
+    const block = document.getElementById('modalPriceFilter');
+    if (block) block.classList.add('d-none');
+}
+
+function computePriceStep(minVal, maxVal) {
+    const span = maxVal - minVal;
+    if (span <= 5000) return 100;
+    if (span <= 20000) return 500;
+    if (span <= 100000) return 1000;
+    return 5000;
+}
+
+function roundPriceDown(value, step) {
+    return Math.floor(value / step) * step;
+}
+
+function roundPriceUp(value, step) {
+    return Math.ceil(value / step) * step;
+}
+
+function updatePriceRangeUI() {
+    const minInput = document.getElementById('modalPriceMin');
+    const maxInput = document.getElementById('modalPriceMax');
+    const fill = document.getElementById('modalPriceRangeFill');
+    const label = document.getElementById('modalPriceRangeLabel');
+    if (!minInput || !maxInput) return;
+
+    let minVal = parseInt(minInput.value, 10);
+    let maxVal = parseInt(maxInput.value, 10);
+    if (minVal > maxVal) {
+        if (document.activeElement === minInput) {
+            maxVal = minVal;
+            maxInput.value = maxVal;
+        } else {
+            minVal = maxVal;
+            minInput.value = minVal;
+        }
     }
+
+    priceFilterMin = minVal;
+    priceFilterMax = maxVal;
+
+    const span = priceRangeAbsMax - priceRangeAbsMin || 1;
+    const left = ((minVal - priceRangeAbsMin) / span) * 100;
+    const width = ((maxVal - minVal) / span) * 100;
+    if (fill) {
+        fill.style.left = left + '%';
+        fill.style.width = width + '%';
+    }
+    if (label) {
+        label.textContent = formatPriceRub(minVal) + ' — ' + formatPriceRub(maxVal);
+    }
+}
+
+function initPriceRangeSlider(items) {
+    const block = document.getElementById('modalPriceFilter');
+    const minInput = document.getElementById('modalPriceMin');
+    const maxInput = document.getElementById('modalPriceMax');
+    if (!block || !minInput || !maxInput) return;
+
+    const prices = items.map(getComponentPrice).filter(p => p !== null);
+    if (prices.length < 2) {
+        block.classList.add('d-none');
+        return;
+    }
+
+    const rawMin = Math.min(...prices);
+    const rawMax = Math.max(...prices);
+    if (rawMin === rawMax) {
+        block.classList.add('d-none');
+        return;
+    }
+
+    const step = computePriceStep(rawMin, rawMax);
+    priceRangeAbsMin = roundPriceDown(rawMin, step);
+    priceRangeAbsMax = roundPriceUp(rawMax, step);
+    priceFilterMin = priceRangeAbsMin;
+    priceFilterMax = priceRangeAbsMax;
+
+    minInput.min = priceRangeAbsMin;
+    minInput.max = priceRangeAbsMax;
+    minInput.step = step;
+    minInput.value = priceFilterMin;
+    maxInput.min = priceRangeAbsMin;
+    maxInput.max = priceRangeAbsMax;
+    maxInput.step = step;
+    maxInput.value = priceFilterMax;
+
+    block.classList.remove('d-none');
+    updatePriceRangeUI();
+}
+
+function applyPriceFilter(items) {
+    if (!document.getElementById('modalPriceFilter') ||
+        document.getElementById('modalPriceFilter').classList.contains('d-none')) {
+        return items;
+    }
+    return items.filter(comp => {
+        const price = getComponentPrice(comp);
+        if (price === null) return false;
+        return price >= priceFilterMin && price <= priceFilterMax;
+    });
 }
 
 function buildCharFilterButtons(items, type) {
@@ -613,7 +804,7 @@ function setCharFilter(key, value) {
         btn.classList.toggle('active', btn.dataset.filterValue === (value || ''));
     });
 
-    applyCharFiltersAndRender();
+    applyModalFiltersAndRender();
 }
 
 function applyCharFilters(items) {
@@ -626,35 +817,49 @@ function applyCharFilters(items) {
     }));
 }
 
-function updateCharFilterHint() {
+function applyModalFilters(items) {
+    return applyPriceFilter(applyCharFilters(items));
+}
+
+function isPriceFilterActive() {
+    const block = document.getElementById('modalPriceFilter');
+    if (!block || block.classList.contains('d-none')) return false;
+    return priceFilterMin > priceRangeAbsMin || priceFilterMax < priceRangeAbsMax;
+}
+
+function updateModalFilterHint() {
     const hint = document.getElementById('modalCharFilterHint');
     if (!hint) return;
 
-    const activeCount = Object.keys(currentCharFilters).length;
-    if (!activeCount) {
+    const charCount = Object.keys(currentCharFilters).length;
+    const priceActive = isPriceFilterActive();
+    if (!charCount && !priceActive) {
         hint.textContent = '';
         hint.classList.add('d-none');
         return;
     }
 
-    hint.textContent = `Фильтры: ${activeCount}. Показано ${currentModalItems.length} из ${currentModalItemsAll.length}`;
+    const parts = [];
+    if (charCount) parts.push(`характеристики: ${charCount}`);
+    if (priceActive) parts.push('цена');
+    hint.textContent = `Фильтры (${parts.join(', ')}). Показано ${currentModalItems.length} из ${currentModalItemsAll.length}`;
     hint.classList.remove('d-none');
 }
 
-function applyCharFiltersAndRender() {
+function applyModalFiltersAndRender() {
     const grid = document.getElementById('modalProductsGrid');
-    currentModalItems = applyCharFilters(currentModalItemsAll);
+    currentModalItems = applyModalFilters(currentModalItemsAll);
 
     if (!currentModalItems.length) {
         grid.innerHTML = `<div class="col-12 text-center text-muted py-5">
             <i class="fas fa-filter fa-3x mb-3 d-block opacity-25"></i>
             Нет товаров по выбранным фильтрам</div>`;
-        updateCharFilterHint();
+        updateModalFilterHint();
         return;
     }
 
     renderModalItems(currentModalItems, currentModalType);
-    updateCharFilterHint();
+    updateModalFilterHint();
 }
 
 function renderModalItems(items, type) {
@@ -707,6 +912,7 @@ function openComponentModal(type, fieldId, label, icon) {
     currentModalField = fieldId;
     currentModalVendor = 'all';
     resetCharFilters();
+    resetPriceFilter();
     updateVendorButtons();
     document.getElementById('componentModalTitle').textContent = 'Выбор: ' + label;
     document.getElementById('modalSearchInput').value = '';
@@ -734,6 +940,7 @@ function getSelectionContext() {
 
 function loadComponents(type, query) {
     resetCharFilters();
+    resetPriceFilter();
     const grid = document.getElementById('modalProductsGrid');
     const loading = document.getElementById('modalLoading');
     grid.innerHTML = '';
@@ -756,16 +963,18 @@ function loadComponents(type, query) {
                 currentModalItemsAll = [];
                 currentModalItems = [];
                 resetCharFilters();
+                resetPriceFilter();
                 grid.innerHTML = `<div class="col-12 text-center text-muted py-5">
                     <i class="fas fa-inbox fa-3x mb-3 d-block opacity-25"></i>
                     Компоненты не найдены</div>`;
                 return;
             }
             currentModalItemsAll = response.components;
+            initPriceRangeSlider(currentModalItemsAll);
             buildCharFilterButtons(currentModalItemsAll, type);
-            currentModalItems = applyCharFilters(currentModalItemsAll);
+            currentModalItems = applyModalFilters(currentModalItemsAll);
             renderModalItems(currentModalItems, type);
-            updateCharFilterHint();
+            updateModalFilterHint();
         },
         error: function() {
             loading.classList.add('d-none');
@@ -1138,6 +1347,10 @@ $(document).ready(function() {
     });
     $('.vendor-filter-btn').on('click', function() {
         setVendorFilter($(this).data('vendor'));
+    });
+    $('#modalPriceMin, #modalPriceMax').on('input', function() {
+        updatePriceRangeUI();
+        applyModalFiltersAndRender();
     });
 
     /* Переключатель «Похожие товары» */
