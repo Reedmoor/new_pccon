@@ -60,6 +60,14 @@ class UnifiedProduct(db.Model):
         
     def get_images(self):
         return json.loads(self.images) if self.images else []
+
+    def get_effective_price(self):
+        """Актуальная цена: скидочная, если > 0, иначе оригинальная."""
+        if self.price_discounted is not None and self.price_discounted > 0:
+            return float(self.price_discounted)
+        if self.price_original is not None and self.price_original > 0:
+            return float(self.price_original)
+        return None
     
     def set_characteristics(self, characteristics_dict):
         self.characteristics = json.dumps(characteristics_dict)
@@ -369,10 +377,8 @@ class Configuration(db.Model):
         ]
         for component in components:
             if component:
-                # Используем discounted цену, если доступна, иначе original
-                price = component.price_discounted if component.price_discounted is not None else component.price_original
-                # Только добавляем цену если она больше нуля
-                if price is not None and price > 0:
+                price = component.get_effective_price()
+                if price is not None:
                     total += price
         return round(total, 2)
     
