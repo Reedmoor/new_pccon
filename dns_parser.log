@@ -15314,3 +15314,836 @@ Stacktrace:
 2026-04-20 12:16:57,046 - INFO - Added new product data for https://www.dns-shop.ru/product/19b642e37ce9ed20/1000-gb-m2-nvme-nakopitel-msi-spatium-m371-s78-440l870-p83/
 2026-04-20 12:16:57,365 - INFO - Saved data for product: 1000 ГБ M.2 NVMe накопитель MSI SPATIUM M371 [S78-440L870-P83]
 2026-04-20 12:16:58,983 - INFO - Product details parsing complete!
+2026-06-15 15:42:31,195 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 15:48:54,831 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 15:58:58,617 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 15:58:58,617 - INFO - ChromeDriver version_main=148
+2026-06-15 15:59:36,398 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:05:10,803 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:05:10,806 - INFO - ChromeDriver version_main=148
+2026-06-15 16:08:29,368 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:09:30,557 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:09:30,557 - INFO - ChromeDriver version_main=148
+2026-06-15 16:10:55,840 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:11:36,241 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:11:36,242 - INFO - ChromeDriver version_main=148
+2026-06-15 16:11:49,198 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:12:55,508 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:12:55,508 - INFO - ChromeDriver version_main=148
+2026-06-15 16:13:04,106 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:13:10,970 - INFO - Reading URLs from urls.txt
+2026-06-15 16:13:10,972 - INFO - Found 12 URLs to process
+2026-06-15 16:13:10,972 - INFO - Processing URL 1/12: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:13:10,972 - INFO - Processing URL: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:13:59,596 - ERROR - Error processing URL https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:13:59,605 - INFO - Processing URL 2/12: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:13:59,605 - INFO - Processing URL: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:13:59,901 - ERROR - Error processing URL https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:13:59,907 - INFO - Processing URL 3/12: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:13:59,908 - INFO - Processing URL: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:14:20,751 - ERROR - Error processing URL https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:14:20,756 - INFO - Processing URL 4/12: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:14:20,757 - INFO - Processing URL: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:14:21,053 - ERROR - Error processing URL https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:14:21,059 - INFO - Processing URL 5/12: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:14:21,059 - INFO - Processing URL: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:14:41,890 - ERROR - Error processing URL https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:14:41,896 - INFO - Processing URL 6/12: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:14:41,896 - INFO - Processing URL: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:14:42,178 - ERROR - Error processing URL https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:14:42,182 - INFO - Processing URL 7/12: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:14:42,182 - INFO - Processing URL: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:15:03,053 - ERROR - Error processing URL https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:03,059 - INFO - Processing URL 8/12: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:15:03,059 - INFO - Processing URL: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:15:03,300 - ERROR - Error processing URL https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/: Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb6f3ae]
+	undetected_chromedriver!(No symbol) [0xb62444]
+	undetected_chromedriver!(No symbol) [0xb63e9c]
+	undetected_chromedriver!(No symbol) [0xb628cf]
+	undetected_chromedriver!(No symbol) [0xb62215]
+	undetected_chromedriver!(No symbol) [0xb61f15]
+	undetected_chromedriver!(No symbol) [0xb60028]
+	undetected_chromedriver!(No symbol) [0xb6073a]
+	undetected_chromedriver!(No symbol) [0xb7593e]
+	undetected_chromedriver!(No symbol) [0xbfb394]
+	undetected_chromedriver!(No symbol) [0xbdd77c]
+	undetected_chromedriver!(No symbol) [0xbfa936]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:03,306 - INFO - Processing URL 9/12: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:15:03,306 - INFO - Processing URL: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:15:38,992 - ERROR - Error processing URL https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb50933]
+	undetected_chromedriver!(No symbol) [0xbe3aeb]
+	undetected_chromedriver!(No symbol) [0xbfa2a9]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:38,997 - INFO - Processing URL 10/12: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:15:38,997 - INFO - Processing URL: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:15:39,003 - ERROR - Error processing URL https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb50933]
+	undetected_chromedriver!(No symbol) [0xbe3aeb]
+	undetected_chromedriver!(No symbol) [0xbfa2a9]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:39,006 - INFO - Processing URL 11/12: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:15:39,006 - INFO - Processing URL: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:15:39,011 - ERROR - Error processing URL https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb50933]
+	undetected_chromedriver!(No symbol) [0xbe3aeb]
+	undetected_chromedriver!(No symbol) [0xbfa2a9]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:39,011 - INFO - Processing URL 12/12: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:15:39,011 - INFO - Processing URL: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:15:39,011 - ERROR - Error processing URL https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0xd6b593+105d3]
+	undetected_chromedriver!GetHandleVerifier [0xd6b6c4+10704]
+	undetected_chromedriver!(No symbol) [0xb71ea0]
+	undetected_chromedriver!(No symbol) [0xb50933]
+	undetected_chromedriver!(No symbol) [0xbe3aeb]
+	undetected_chromedriver!(No symbol) [0xbfa2a9]
+	undetected_chromedriver!(No symbol) [0xbdd516]
+	undetected_chromedriver!(No symbol) [0xbb08e9]
+	undetected_chromedriver!(No symbol) [0xbb16a4]
+	undetected_chromedriver!GetHandleVerifier [0xff3014+298054]
+	undetected_chromedriver!GetHandleVerifier [0xfee603+293643]
+	undetected_chromedriver!GetHandleVerifier [0x100ea05+2b3a45]
+	undetected_chromedriver!GetHandleVerifier [0xd854e8+2a528]
+	undetected_chromedriver!GetHandleVerifier [0xd8cd1d+31d5d]
+	undetected_chromedriver!GetHandleVerifier [0xd73e68+18ea8]
+	undetected_chromedriver!GetHandleVerifier [0xd74015+19055]
+	undetected_chromedriver!GetHandleVerifier [0xd5d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76215d49+19]
+	ntdll!RtlInitializeExceptionChain [0x778ad83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x778ad7c1+231]
+
+2026-06-15 16:15:39,695 - INFO - Product details parsing complete!
+2026-06-15 16:17:48,232 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:17:48,239 - INFO - ChromeDriver version_main=148
+2026-06-15 16:18:12,448 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:19:19,675 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:19:19,675 - INFO - ChromeDriver version_main=148
+2026-06-15 16:19:32,385 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:19:39,114 - INFO - Reading URLs from urls.txt
+2026-06-15 16:19:39,114 - INFO - Found 12 URLs to process
+2026-06-15 16:19:39,114 - INFO - Processing URL 1/12: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:19:39,117 - INFO - Processing URL: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:20:09,589 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-06-15 16:20:09,698 - INFO - Updated existing product data for https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:20:10,120 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-06-15 16:20:10,120 - INFO - Processing URL 2/12: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:20:10,120 - INFO - Processing URL: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:20:35,268 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-06-15 16:20:35,360 - INFO - Updated existing product data for https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:20:35,808 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-06-15 16:20:35,808 - INFO - Processing URL 3/12: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:20:35,808 - INFO - Processing URL: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:21:09,316 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-06-15 16:21:09,405 - INFO - Updated existing product data for https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:21:09,908 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-06-15 16:21:09,910 - INFO - Processing URL 4/12: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:21:09,910 - INFO - Processing URL: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:21:34,148 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-06-15 16:21:34,233 - INFO - Updated existing product data for https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:21:34,739 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-06-15 16:21:34,739 - INFO - Processing URL 5/12: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:21:34,740 - INFO - Processing URL: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:21:59,341 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-06-15 16:21:59,436 - INFO - Updated existing product data for https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:21:59,902 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-06-15 16:21:59,902 - INFO - Processing URL 6/12: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:21:59,902 - INFO - Processing URL: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:22:28,969 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-06-15 16:22:29,054 - INFO - Updated existing product data for https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:22:29,486 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-06-15 16:22:29,486 - INFO - Processing URL 7/12: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:22:29,486 - INFO - Processing URL: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:22:55,350 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-06-15 16:22:55,447 - INFO - Updated existing product data for https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:22:55,892 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-06-15 16:22:55,892 - INFO - Processing URL 8/12: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:22:55,892 - INFO - Processing URL: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:23:19,822 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-06-15 16:23:19,937 - INFO - Updated existing product data for https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:23:20,376 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-06-15 16:23:20,376 - INFO - Processing URL 9/12: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:23:20,376 - INFO - Processing URL: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:23:45,755 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-06-15 16:23:45,850 - INFO - Updated existing product data for https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:23:46,294 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-06-15 16:23:46,294 - INFO - Processing URL 10/12: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:23:46,294 - INFO - Processing URL: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:24:11,763 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-06-15 16:24:11,861 - INFO - Updated existing product data for https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:24:12,328 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-06-15 16:24:12,328 - INFO - Processing URL 11/12: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:24:12,328 - INFO - Processing URL: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:24:35,854 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-06-15 16:24:35,956 - INFO - Updated existing product data for https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:24:36,370 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-06-15 16:24:36,370 - INFO - Processing URL 12/12: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:24:36,370 - INFO - Processing URL: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:25:01,523 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-06-15 16:25:01,615 - INFO - Updated existing product data for https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:25:02,083 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-06-15 16:25:03,929 - INFO - Product details parsing complete!
+2026-06-15 16:37:29,462 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:37:29,462 - INFO - ChromeDriver version_main=148
+2026-06-15 16:37:48,614 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:40:16,617 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:40:16,617 - INFO - ChromeDriver version_main=148
+2026-06-15 16:42:16,492 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:43:08,990 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:43:08,990 - INFO - ChromeDriver version_main=148
+2026-06-15 16:43:41,881 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:43:44,452 - INFO - Reading URLs from urls.txt
+2026-06-15 16:43:44,452 - INFO - Found 12 URLs to process
+2026-06-15 16:43:44,458 - INFO - Processing URL 1/12: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:43:44,458 - INFO - Processing URL: https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:44:04,871 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-06-15 16:44:04,874 - INFO - Added new product data for https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/
+2026-06-15 16:44:04,875 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]
+2026-06-15 16:44:04,875 - INFO - Processing URL 2/12: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:44:04,876 - INFO - Processing URL: https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:44:21,004 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-06-15 16:44:21,006 - INFO - Added new product data for https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/
+2026-06-15 16:44:21,008 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]
+2026-06-15 16:44:21,008 - INFO - Processing URL 3/12: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:44:21,008 - INFO - Processing URL: https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:44:39,193 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-06-15 16:44:39,196 - INFO - Added new product data for https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/
+2026-06-15 16:44:39,198 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]
+2026-06-15 16:44:39,199 - INFO - Processing URL 4/12: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:44:39,199 - INFO - Processing URL: https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:44:56,236 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-06-15 16:44:56,249 - INFO - Added new product data for https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/
+2026-06-15 16:44:56,250 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]
+2026-06-15 16:44:56,250 - INFO - Processing URL 5/12: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:44:56,250 - INFO - Processing URL: https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:45:13,726 - INFO - Parsed product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-06-15 16:45:13,744 - INFO - Added new product data for https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/
+2026-06-15 16:45:13,750 - INFO - Saved data for product: Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]
+2026-06-15 16:45:13,750 - INFO - Processing URL 6/12: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:45:13,750 - INFO - Processing URL: https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:45:29,762 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-06-15 16:45:29,768 - INFO - Added new product data for https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/
+2026-06-15 16:45:29,772 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]
+2026-06-15 16:45:29,772 - INFO - Processing URL 7/12: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:45:29,772 - INFO - Processing URL: https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:45:45,747 - INFO - Parsed product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-06-15 16:45:45,752 - INFO - Added new product data for https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/
+2026-06-15 16:45:45,760 - INFO - Saved data for product: Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]
+2026-06-15 16:45:45,761 - INFO - Processing URL 8/12: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:45:45,761 - INFO - Processing URL: https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:46:01,934 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-06-15 16:46:01,937 - INFO - Added new product data for https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/
+2026-06-15 16:46:01,942 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]
+2026-06-15 16:46:01,942 - INFO - Processing URL 9/12: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:46:01,942 - INFO - Processing URL: https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:46:17,457 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-06-15 16:46:17,460 - INFO - Added new product data for https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/
+2026-06-15 16:46:17,465 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]
+2026-06-15 16:46:17,466 - INFO - Processing URL 10/12: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:46:17,466 - INFO - Processing URL: https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:46:34,270 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-06-15 16:46:34,272 - INFO - Added new product data for https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/
+2026-06-15 16:46:34,278 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]
+2026-06-15 16:46:34,279 - INFO - Processing URL 11/12: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:46:34,279 - INFO - Processing URL: https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:46:52,003 - INFO - Parsed product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-06-15 16:46:52,018 - INFO - Added new product data for https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/
+2026-06-15 16:46:52,026 - INFO - Saved data for product: Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]
+2026-06-15 16:46:52,026 - INFO - Processing URL 12/12: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:46:52,026 - INFO - Processing URL: https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:47:07,443 - INFO - Parsed product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-06-15 16:47:07,446 - INFO - Added new product data for https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/
+2026-06-15 16:47:07,452 - INFO - Saved data for product: Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]
+2026-06-15 16:47:08,005 - INFO - Product details parsing complete!
+2026-06-15 16:50:01,504 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:50:01,504 - INFO - ChromeDriver version_main=148
+2026-06-15 16:50:51,269 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:52:02,709 - INFO - Chrome 148.0.7778.179 (major 148) from registry
+2026-06-15 16:52:02,709 - INFO - ChromeDriver version_main=148
+2026-06-15 16:53:06,897 - INFO - patching driver executable C:\Users\lime_\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-06-15 16:53:09,532 - INFO - Reading URLs from urls.txt
+2026-06-15 16:53:09,532 - INFO - Found 55 URLs to process
+2026-06-15 16:53:09,532 - INFO - Processing URL 1/55: https://www.dns-shop.ru/product/527b9176ed8bd21a/blok-pitania-cougar-gex-pro-850-cernyj/
+2026-06-15 16:53:09,532 - INFO - Processing URL: https://www.dns-shop.ru/product/527b9176ed8bd21a/blok-pitania-cougar-gex-pro-850-cernyj/
+2026-06-15 16:53:27,985 - INFO - Parsed product: Блок питания Cougar GEX PRO 850  черный
+2026-06-15 16:53:27,988 - INFO - Added new product data for https://www.dns-shop.ru/product/527b9176ed8bd21a/blok-pitania-cougar-gex-pro-850-cernyj/
+2026-06-15 16:53:27,990 - INFO - Saved data for product: Блок питания Cougar GEX PRO 850  черный
+2026-06-15 16:53:27,991 - INFO - Processing URL 2/55: https://www.dns-shop.ru/product/e37fe0d55d47d9cb/blok-pitania-deepcool-gamerstorm-pq750g-wh-r-pq750g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:53:27,991 - INFO - Processing URL: https://www.dns-shop.ru/product/e37fe0d55d47d9cb/blok-pitania-deepcool-gamerstorm-pq750g-wh-r-pq750g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:53:44,438 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ750G WH [R-PQ750G-FD0W-WGEU-V1] белый
+2026-06-15 16:53:44,441 - INFO - Added new product data for https://www.dns-shop.ru/product/e37fe0d55d47d9cb/blok-pitania-deepcool-gamerstorm-pq750g-wh-r-pq750g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:53:44,444 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ750G WH [R-PQ750G-FD0W-WGEU-V1] белый
+2026-06-15 16:53:44,444 - INFO - Processing URL 3/55: https://www.dns-shop.ru/product/1930b08d6992ed20/blok-pitania-montech-titan-gold-1200-tis0126-cernyj/
+2026-06-15 16:53:44,444 - INFO - Processing URL: https://www.dns-shop.ru/product/1930b08d6992ed20/blok-pitania-montech-titan-gold-1200-tis0126-cernyj/
+2026-06-15 16:54:02,627 - INFO - Parsed product: Блок питания MONTECH TITAN GOLD 1200 [TIS0126] черный
+2026-06-15 16:54:02,629 - INFO - Added new product data for https://www.dns-shop.ru/product/1930b08d6992ed20/blok-pitania-montech-titan-gold-1200-tis0126-cernyj/
+2026-06-15 16:54:02,634 - INFO - Saved data for product: Блок питания MONTECH TITAN GOLD 1200 [TIS0126] черный
+2026-06-15 16:54:02,635 - INFO - Processing URL 4/55: https://www.dns-shop.ru/product/1fea06b16950ed20/blok-pitania-cougar-stc500-500w-cgr-sc-500-cernyj/
+2026-06-15 16:54:02,635 - INFO - Processing URL: https://www.dns-shop.ru/product/1fea06b16950ed20/blok-pitania-cougar-stc500-500w-cgr-sc-500-cernyj/
+2026-06-15 16:54:17,667 - INFO - Parsed product: Блок питания Cougar STC500 500W [CGR SC-500] черный
+2026-06-15 16:54:17,670 - INFO - Added new product data for https://www.dns-shop.ru/product/1fea06b16950ed20/blok-pitania-cougar-stc500-500w-cgr-sc-500-cernyj/
+2026-06-15 16:54:17,673 - INFO - Saved data for product: Блок питания Cougar STC500 500W [CGR SC-500] черный
+2026-06-15 16:54:17,674 - INFO - Processing URL 5/55: https://www.dns-shop.ru/product/12c9ac3a5d46d9cb/blok-pitania-deepcool-gamerstorm-pq750g-r-pq750g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:54:17,674 - INFO - Processing URL: https://www.dns-shop.ru/product/12c9ac3a5d46d9cb/blok-pitania-deepcool-gamerstorm-pq750g-r-pq750g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:54:33,923 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ750G [R-PQ750G-FD0B-WGEU-V1] черный
+2026-06-15 16:54:33,929 - INFO - Added new product data for https://www.dns-shop.ru/product/12c9ac3a5d46d9cb/blok-pitania-deepcool-gamerstorm-pq750g-r-pq750g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:54:33,931 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ750G [R-PQ750G-FD0B-WGEU-V1] черный
+2026-06-15 16:54:33,931 - INFO - Processing URL 6/55: https://www.dns-shop.ru/product/e5707b6791ffd9cb/blok-pitania-lian-li-edge-gold-850w-g9peg0850gw000ru-belyj/
+2026-06-15 16:54:33,931 - INFO - Processing URL: https://www.dns-shop.ru/product/e5707b6791ffd9cb/blok-pitania-lian-li-edge-gold-850w-g9peg0850gw000ru-belyj/
+2026-06-15 16:54:49,883 - INFO - Parsed product: Блок питания LIAN LI EDGE GOLD 850W [G9P.EG0850G.W000.RU] белый
+2026-06-15 16:54:49,890 - INFO - Added new product data for https://www.dns-shop.ru/product/e5707b6791ffd9cb/blok-pitania-lian-li-edge-gold-850w-g9peg0850gw000ru-belyj/
+2026-06-15 16:54:49,892 - INFO - Saved data for product: Блок питания LIAN LI EDGE GOLD 850W [G9P.EG0850G.W000.RU] белый
+2026-06-15 16:54:49,892 - INFO - Processing URL 7/55: https://www.dns-shop.ru/product/555e8a30ed8bd21a/blok-pitania-cougar-sc-650-31sa0656433p-cernyj/
+2026-06-15 16:54:49,892 - INFO - Processing URL: https://www.dns-shop.ru/product/555e8a30ed8bd21a/blok-pitania-cougar-sc-650-31sa0656433p-cernyj/
+2026-06-15 16:55:04,248 - INFO - Parsed product: Блок питания Cougar SC 650 [31SA065.6433P] черный
+2026-06-15 16:55:04,254 - INFO - Added new product data for https://www.dns-shop.ru/product/555e8a30ed8bd21a/blok-pitania-cougar-sc-650-31sa0656433p-cernyj/
+2026-06-15 16:55:04,259 - INFO - Saved data for product: Блок питания Cougar SC 650 [31SA065.6433P] черный
+2026-06-15 16:55:04,259 - INFO - Processing URL 8/55: https://www.dns-shop.ru/product/5117a7c5fa5fd763/blok-pitania-deepcool-pf750-r-pf750d-ha0b-eu-cernyj/
+2026-06-15 16:55:04,259 - INFO - Processing URL: https://www.dns-shop.ru/product/5117a7c5fa5fd763/blok-pitania-deepcool-pf750-r-pf750d-ha0b-eu-cernyj/
+2026-06-15 16:55:22,031 - INFO - Parsed product: Блок питания DEEPCOOL PF750 [R-PF750D-HA0B-EU] черный
+2026-06-15 16:55:22,034 - INFO - Added new product data for https://www.dns-shop.ru/product/5117a7c5fa5fd763/blok-pitania-deepcool-pf750-r-pf750d-ha0b-eu-cernyj/
+2026-06-15 16:55:22,039 - INFO - Saved data for product: Блок питания DEEPCOOL PF750 [R-PF750D-HA0B-EU] черный
+2026-06-15 16:55:22,040 - INFO - Processing URL 9/55: https://www.dns-shop.ru/product/78f2c2318febed20/blok-pitania-msi-mpg-a850g-pcie5-306-7zp7b11-ce0-cernyj/
+2026-06-15 16:55:22,040 - INFO - Processing URL: https://www.dns-shop.ru/product/78f2c2318febed20/blok-pitania-msi-mpg-a850g-pcie5-306-7zp7b11-ce0-cernyj/
+2026-06-15 16:55:38,237 - INFO - Parsed product: Блок питания MSI MPG A850G PCIE5 [306-7ZP7B11-CE0] черный
+2026-06-15 16:55:38,240 - INFO - Added new product data for https://www.dns-shop.ru/product/78f2c2318febed20/blok-pitania-msi-mpg-a850g-pcie5-306-7zp7b11-ce0-cernyj/
+2026-06-15 16:55:38,245 - INFO - Saved data for product: Блок питания MSI MPG A850G PCIE5 [306-7ZP7B11-CE0] черный
+2026-06-15 16:55:38,247 - INFO - Processing URL 10/55: https://www.dns-shop.ru/product/13ff67e71dd4ed20/blok-pitania-cougar-atlas-750-cgr-ba-750-cernyj/
+2026-06-15 16:55:38,247 - INFO - Processing URL: https://www.dns-shop.ru/product/13ff67e71dd4ed20/blok-pitania-cougar-atlas-750-cgr-ba-750-cernyj/
+2026-06-15 16:55:54,965 - INFO - Parsed product: Блок питания Cougar Atlas 750 [CGR BA-750] черный
+2026-06-15 16:55:54,968 - INFO - Added new product data for https://www.dns-shop.ru/product/13ff67e71dd4ed20/blok-pitania-cougar-atlas-750-cgr-ba-750-cernyj/
+2026-06-15 16:55:54,974 - INFO - Saved data for product: Блок питания Cougar Atlas 750 [CGR BA-750] черный
+2026-06-15 16:55:54,974 - INFO - Processing URL 11/55: https://www.dns-shop.ru/product/604b63cbed8bd21a/blok-pitania-cougar-gr-750-31gr0756433p-cernyj/
+2026-06-15 16:55:54,974 - INFO - Processing URL: https://www.dns-shop.ru/product/604b63cbed8bd21a/blok-pitania-cougar-gr-750-31gr0756433p-cernyj/
+2026-06-15 16:56:11,751 - INFO - Parsed product: Блок питания Cougar GR 750 [31GR075.6433P] черный
+2026-06-15 16:56:11,762 - INFO - Added new product data for https://www.dns-shop.ru/product/604b63cbed8bd21a/blok-pitania-cougar-gr-750-31gr0756433p-cernyj/
+2026-06-15 16:56:11,766 - INFO - Saved data for product: Блок питания Cougar GR 750 [31GR075.6433P] черный
+2026-06-15 16:56:11,766 - INFO - Processing URL 12/55: https://www.dns-shop.ru/product/5f4108a9ed8bd21a/blok-pitania-cougar-ges-850-31gk0856433p-cernyj/
+2026-06-15 16:56:11,766 - INFO - Processing URL: https://www.dns-shop.ru/product/5f4108a9ed8bd21a/blok-pitania-cougar-ges-850-31gk0856433p-cernyj/
+2026-06-15 16:56:26,866 - INFO - Parsed product: Блок питания Cougar GES 850 [31GK085.6433P] черный
+2026-06-15 16:56:26,866 - INFO - Added new product data for https://www.dns-shop.ru/product/5f4108a9ed8bd21a/blok-pitania-cougar-ges-850-31gk0856433p-cernyj/
+2026-06-15 16:56:26,881 - INFO - Saved data for product: Блок питания Cougar GES 850 [31GK085.6433P] черный
+2026-06-15 16:56:26,881 - INFO - Processing URL 13/55: https://www.dns-shop.ru/product/61fda40aed8bd21a/blok-pitania-cougar-gr-850-31gr0856433p-cernyj/
+2026-06-15 16:56:26,881 - INFO - Processing URL: https://www.dns-shop.ru/product/61fda40aed8bd21a/blok-pitania-cougar-gr-850-31gr0856433p-cernyj/
+2026-06-15 16:56:43,473 - INFO - Parsed product: Блок питания Cougar GR 850 [31GR085.6433P] черный
+2026-06-15 16:56:43,478 - INFO - Added new product data for https://www.dns-shop.ru/product/61fda40aed8bd21a/blok-pitania-cougar-gr-850-31gr0856433p-cernyj/
+2026-06-15 16:56:43,485 - INFO - Saved data for product: Блок питания Cougar GR 850 [31GR085.6433P] черный
+2026-06-15 16:56:43,485 - INFO - Processing URL 14/55: https://www.dns-shop.ru/product/5f80250b5d45d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-r-pqa00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:56:43,485 - INFO - Processing URL: https://www.dns-shop.ru/product/5f80250b5d45d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-r-pqa00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:56:58,469 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ1000G [R-PQA00G-FD0B-WGEU-V1] черный
+2026-06-15 16:56:58,469 - INFO - Added new product data for https://www.dns-shop.ru/product/5f80250b5d45d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-r-pqa00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:56:58,488 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ1000G [R-PQA00G-FD0B-WGEU-V1] черный
+2026-06-15 16:56:58,488 - INFO - Processing URL 15/55: https://www.dns-shop.ru/product/13b1d2275d47d9cb/blok-pitania-deepcool-gamerstorm-pq650g-r-pq650g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:56:58,489 - INFO - Processing URL: https://www.dns-shop.ru/product/13b1d2275d47d9cb/blok-pitania-deepcool-gamerstorm-pq650g-r-pq650g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:57:14,201 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ650G [R-PQ650G-FD0B-WGEU-V1] черный
+2026-06-15 16:57:14,201 - INFO - Added new product data for https://www.dns-shop.ru/product/13b1d2275d47d9cb/blok-pitania-deepcool-gamerstorm-pq650g-r-pq650g-fd0b-wgeu-v1-cernyj/
+2026-06-15 16:57:14,201 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ650G [R-PQ650G-FD0B-WGEU-V1] черный
+2026-06-15 16:57:14,201 - INFO - Processing URL 16/55: https://www.dns-shop.ru/product/10c2d18bfa5ad763/blok-pitania-deepcool-pf450-r-pf450d-ha0b-eu-cernyj/
+2026-06-15 16:57:14,201 - INFO - Processing URL: https://www.dns-shop.ru/product/10c2d18bfa5ad763/blok-pitania-deepcool-pf450-r-pf450d-ha0b-eu-cernyj/
+2026-06-15 16:57:31,495 - INFO - Parsed product: Блок питания DEEPCOOL PF450 [R-PF450D-HA0B-EU] черный
+2026-06-15 16:57:31,499 - INFO - Added new product data for https://www.dns-shop.ru/product/10c2d18bfa5ad763/blok-pitania-deepcool-pf450-r-pf450d-ha0b-eu-cernyj/
+2026-06-15 16:57:31,508 - INFO - Saved data for product: Блок питания DEEPCOOL PF450 [R-PF450D-HA0B-EU] черный
+2026-06-15 16:57:31,508 - INFO - Processing URL 17/55: https://www.dns-shop.ru/product/c394ca6eee812ff2/blok-pitania-msi-mag-a650bn-306-7zp2b19-ce0-cernyj/
+2026-06-15 16:57:31,508 - INFO - Processing URL: https://www.dns-shop.ru/product/c394ca6eee812ff2/blok-pitania-msi-mag-a650bn-306-7zp2b19-ce0-cernyj/
+2026-06-15 16:57:46,000 - INFO - Parsed product: Блок питания MSI MAG A650BN [306-7ZP2B19-CE0] черный
+2026-06-15 16:57:46,005 - INFO - Added new product data for https://www.dns-shop.ru/product/c394ca6eee812ff2/blok-pitania-msi-mag-a650bn-306-7zp2b19-ce0-cernyj/
+2026-06-15 16:57:46,012 - INFO - Saved data for product: Блок питания MSI MAG A650BN [306-7ZP2B19-CE0] черный
+2026-06-15 16:57:46,013 - INFO - Processing URL 18/55: https://www.dns-shop.ru/product/02532c81690a5b07/blok-pitania-1stplayer-ngdp-gold-850w-white-ha-850ba4-wh-belyj/
+2026-06-15 16:57:46,013 - INFO - Processing URL: https://www.dns-shop.ru/product/02532c81690a5b07/blok-pitania-1stplayer-ngdp-gold-850w-white-ha-850ba4-wh-belyj/
+2026-06-15 16:58:02,637 - INFO - Parsed product: Блок питания 1STPLAYER NGDP GOLD 850W White [HA-850BA4-WH] белый
+2026-06-15 16:58:02,641 - INFO - Added new product data for https://www.dns-shop.ru/product/02532c81690a5b07/blok-pitania-1stplayer-ngdp-gold-850w-white-ha-850ba4-wh-belyj/
+2026-06-15 16:58:02,650 - INFO - Saved data for product: Блок питания 1STPLAYER NGDP GOLD 850W White [HA-850BA4-WH] белый
+2026-06-15 16:58:02,650 - INFO - Processing URL 19/55: https://www.dns-shop.ru/product/41a63a0c5d48d9cb/blok-pitania-deepcool-gamerstorm-pq650g-wh-r-pq650g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:58:02,651 - INFO - Processing URL: https://www.dns-shop.ru/product/41a63a0c5d48d9cb/blok-pitania-deepcool-gamerstorm-pq650g-wh-r-pq650g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:58:21,625 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ650G WH [R-PQ650G-FD0W-WGEU-V1] белый
+2026-06-15 16:58:21,625 - INFO - Added new product data for https://www.dns-shop.ru/product/41a63a0c5d48d9cb/blok-pitania-deepcool-gamerstorm-pq650g-wh-r-pq650g-fd0w-wgeu-v1-belyj/
+2026-06-15 16:58:21,643 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ650G WH [R-PQ650G-FD0W-WGEU-V1] белый
+2026-06-15 16:58:21,644 - INFO - Processing URL 20/55: https://www.dns-shop.ru/product/6939e8001dd0ed20/blok-pitania-cougar-gec-850-cgr-gc-850-cernyj/
+2026-06-15 16:58:21,644 - INFO - Processing URL: https://www.dns-shop.ru/product/6939e8001dd0ed20/blok-pitania-cougar-gec-850-cgr-gc-850-cernyj/
+2026-06-15 16:58:37,219 - INFO - Parsed product: Блок питания Cougar GEC 850 [CGR GC-850] черный
+2026-06-15 16:58:37,223 - INFO - Added new product data for https://www.dns-shop.ru/product/6939e8001dd0ed20/blok-pitania-cougar-gec-850-cgr-gc-850-cernyj/
+2026-06-15 16:58:37,232 - INFO - Saved data for product: Блок питания Cougar GEC 850 [CGR GC-850] черный
+2026-06-15 16:58:37,232 - INFO - Processing URL 21/55: https://www.dns-shop.ru/product/d09be119f4d1c823/blok-pitania-cougar-gec-750-31gc0750001p-cernyj/
+2026-06-15 16:58:37,232 - INFO - Processing URL: https://www.dns-shop.ru/product/d09be119f4d1c823/blok-pitania-cougar-gec-750-31gc0750001p-cernyj/
+2026-06-15 16:58:54,437 - INFO - Parsed product: Блок питания Cougar GEC 750 [31GC075.0001P] черный
+2026-06-15 16:58:54,441 - INFO - Added new product data for https://www.dns-shop.ru/product/d09be119f4d1c823/blok-pitania-cougar-gec-750-31gc0750001p-cernyj/
+2026-06-15 16:58:54,450 - INFO - Saved data for product: Блок питания Cougar GEC 750 [31GC075.0001P] черный
+2026-06-15 16:58:54,451 - INFO - Processing URL 22/55: https://www.dns-shop.ru/product/2040d2b4f99f4a46/blok-pitania-deepcool-gamerstorm-pn1000m-cernyj/
+2026-06-15 16:58:54,451 - INFO - Processing URL: https://www.dns-shop.ru/product/2040d2b4f99f4a46/blok-pitania-deepcool-gamerstorm-pn1000m-cernyj/
+2026-06-15 16:59:10,822 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PN1000M  черный
+2026-06-15 16:59:10,822 - INFO - Added new product data for https://www.dns-shop.ru/product/2040d2b4f99f4a46/blok-pitania-deepcool-gamerstorm-pn1000m-cernyj/
+2026-06-15 16:59:10,841 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PN1000M  черный
+2026-06-15 16:59:10,841 - INFO - Processing URL 23/55: https://www.dns-shop.ru/product/5b1ba468ed8bd21a/blok-pitania-cougar-gst-750w-gms750-cernyj/
+2026-06-15 16:59:10,842 - INFO - Processing URL: https://www.dns-shop.ru/product/5b1ba468ed8bd21a/blok-pitania-cougar-gst-750w-gms750-cernyj/
+2026-06-15 16:59:26,965 - INFO - Parsed product: Блок питания Cougar GST 750W [GMS750] черный
+2026-06-15 16:59:26,970 - INFO - Added new product data for https://www.dns-shop.ru/product/5b1ba468ed8bd21a/blok-pitania-cougar-gst-750w-gms750-cernyj/
+2026-06-15 16:59:26,980 - INFO - Saved data for product: Блок питания Cougar GST 750W [GMS750] черный
+2026-06-15 16:59:26,981 - INFO - Processing URL 24/55: https://www.dns-shop.ru/product/7bc4b99f45d1d9cb/blok-pitania-deepcool-gamerstorm-pn850m-r-pn850m-fc0b-wgeu-cernyj/
+2026-06-15 16:59:26,981 - INFO - Processing URL: https://www.dns-shop.ru/product/7bc4b99f45d1d9cb/blok-pitania-deepcool-gamerstorm-pn850m-r-pn850m-fc0b-wgeu-cernyj/
+2026-06-15 16:59:42,838 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PN850M [R-PN850M-FC0B-WGEU] черный
+2026-06-15 16:59:42,841 - INFO - Added new product data for https://www.dns-shop.ru/product/7bc4b99f45d1d9cb/blok-pitania-deepcool-gamerstorm-pn850m-r-pn850m-fc0b-wgeu-cernyj/
+2026-06-15 16:59:42,851 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PN850M [R-PN850M-FC0B-WGEU] черный
+2026-06-15 16:59:42,852 - INFO - Processing URL 25/55: https://www.dns-shop.ru/product/9fb8de7efa5cd763/blok-pitania-deepcool-pf550-r-pf550d-ha0b-eu-cernyj/
+2026-06-15 16:59:42,852 - INFO - Processing URL: https://www.dns-shop.ru/product/9fb8de7efa5cd763/blok-pitania-deepcool-pf550-r-pf550d-ha0b-eu-cernyj/
+2026-06-15 17:00:01,406 - INFO - Parsed product: Блок питания DEEPCOOL PF550 [R-PF550D-HA0B-EU] черный
+2026-06-15 17:00:01,424 - INFO - Added new product data for https://www.dns-shop.ru/product/9fb8de7efa5cd763/blok-pitania-deepcool-pf550-r-pf550d-ha0b-eu-cernyj/
+2026-06-15 17:00:01,435 - INFO - Saved data for product: Блок питания DEEPCOOL PF550 [R-PF550D-HA0B-EU] черный
+2026-06-15 17:00:01,436 - INFO - Processing URL 26/55: https://www.dns-shop.ru/product/15ef9f9ed482ed20/blok-pitania-msi-mag-a850gl-pcie5-cernyj/
+2026-06-15 17:00:01,436 - INFO - Processing URL: https://www.dns-shop.ru/product/15ef9f9ed482ed20/blok-pitania-msi-mag-a850gl-pcie5-cernyj/
+2026-06-15 17:00:16,105 - INFO - Parsed product: Блок питания MSI MAG A850GL PCIE5  черный
+2026-06-15 17:00:16,122 - INFO - Added new product data for https://www.dns-shop.ru/product/15ef9f9ed482ed20/blok-pitania-msi-mag-a850gl-pcie5-cernyj/
+2026-06-15 17:00:16,125 - INFO - Saved data for product: Блок питания MSI MAG A850GL PCIE5  черный
+2026-06-15 17:00:16,125 - INFO - Processing URL 27/55: https://www.dns-shop.ru/product/384c84601dd4ed20/blok-pitania-cougar-atlas-650-cgr-ba-650-cernyj/
+2026-06-15 17:00:16,125 - INFO - Processing URL: https://www.dns-shop.ru/product/384c84601dd4ed20/blok-pitania-cougar-atlas-650-cgr-ba-650-cernyj/
+2026-06-15 17:00:31,758 - INFO - Parsed product: Блок питания Cougar Atlas 650 [	CGR BA-650] черный
+2026-06-15 17:00:31,763 - INFO - Added new product data for https://www.dns-shop.ru/product/384c84601dd4ed20/blok-pitania-cougar-atlas-650-cgr-ba-650-cernyj/
+2026-06-15 17:00:31,775 - INFO - Saved data for product: Блок питания Cougar Atlas 650 [	CGR BA-650] черный
+2026-06-15 17:00:31,776 - INFO - Processing URL 28/55: https://www.dns-shop.ru/product/281b8e5b8675787a/blok-pitania-1stplayer-ngdp-gold-850w-ha-850ba4-cernyj/
+2026-06-15 17:00:31,776 - INFO - Processing URL: https://www.dns-shop.ru/product/281b8e5b8675787a/blok-pitania-1stplayer-ngdp-gold-850w-ha-850ba4-cernyj/
+2026-06-15 17:00:47,240 - INFO - Parsed product: Блок питания 1STPLAYER NGDP Gold 850W [HA-850BA4] черный
+2026-06-15 17:00:47,247 - INFO - Added new product data for https://www.dns-shop.ru/product/281b8e5b8675787a/blok-pitania-1stplayer-ngdp-gold-850w-ha-850ba4-cernyj/
+2026-06-15 17:00:47,261 - INFO - Saved data for product: Блок питания 1STPLAYER NGDP Gold 850W [HA-850BA4] черный
+2026-06-15 17:00:47,261 - INFO - Processing URL 29/55: https://www.dns-shop.ru/product/031ceb37fa59d763/blok-pitania-deepcool-pf400-r-pf400d-ha0b-eu-cernyj/
+2026-06-15 17:00:47,261 - INFO - Processing URL: https://www.dns-shop.ru/product/031ceb37fa59d763/blok-pitania-deepcool-pf400-r-pf400d-ha0b-eu-cernyj/
+2026-06-15 17:01:06,500 - INFO - Parsed product: Блок питания DEEPCOOL PF400 [R-PF400D-HA0B-EU] черный
+2026-06-15 17:01:06,504 - INFO - Added new product data for https://www.dns-shop.ru/product/031ceb37fa59d763/blok-pitania-deepcool-pf400-r-pf400d-ha0b-eu-cernyj/
+2026-06-15 17:01:06,515 - INFO - Saved data for product: Блок питания DEEPCOOL PF400 [R-PF400D-HA0B-EU] черный
+2026-06-15 17:01:06,517 - INFO - Processing URL 30/55: https://www.dns-shop.ru/product/768e7371fa58d763/blok-pitania-deepcool-pf350-r-pf350d-ha0b-eu-cernyj/
+2026-06-15 17:01:06,517 - INFO - Processing URL: https://www.dns-shop.ru/product/768e7371fa58d763/blok-pitania-deepcool-pf350-r-pf350d-ha0b-eu-cernyj/
+2026-06-15 17:01:25,130 - INFO - Parsed product: Блок питания DEEPCOOL PF350 [R-PF350D-HA0B-EU] черный
+2026-06-15 17:01:25,130 - INFO - Added new product data for https://www.dns-shop.ru/product/768e7371fa58d763/blok-pitania-deepcool-pf350-r-pf350d-ha0b-eu-cernyj/
+2026-06-15 17:01:25,141 - INFO - Saved data for product: Блок питания DEEPCOOL PF350 [R-PF350D-HA0B-EU] черный
+2026-06-15 17:01:25,141 - INFO - Processing URL 31/55: https://www.dns-shop.ru/product/79305a198131d582/blok-pitania-deepcool-pl650d-r-pl650d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:01:25,141 - INFO - Processing URL: https://www.dns-shop.ru/product/79305a198131d582/blok-pitania-deepcool-pl650d-r-pl650d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:01:40,928 - INFO - Parsed product: Блок питания DEEPCOOL PL650D [R-PL650D-FC0B-WDEU-V2] черный
+2026-06-15 17:01:40,933 - INFO - Added new product data for https://www.dns-shop.ru/product/79305a198131d582/blok-pitania-deepcool-pl650d-r-pl650d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:01:40,945 - INFO - Saved data for product: Блок питания DEEPCOOL PL650D [R-PL650D-FC0B-WDEU-V2] черный
+2026-06-15 17:01:40,945 - INFO - Processing URL 32/55: https://www.dns-shop.ru/product/b2e39d8a5d45d9cb/blok-pitania-deepcool-gamerstorm-pq850g-r-pq850g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:01:40,945 - INFO - Processing URL: https://www.dns-shop.ru/product/b2e39d8a5d45d9cb/blok-pitania-deepcool-gamerstorm-pq850g-r-pq850g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:01:56,991 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ850G [R-PQ850G-FD0B-WGEU-V1] черный
+2026-06-15 17:01:56,991 - INFO - Added new product data for https://www.dns-shop.ru/product/b2e39d8a5d45d9cb/blok-pitania-deepcool-gamerstorm-pq850g-r-pq850g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:01:57,021 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ850G [R-PQ850G-FD0B-WGEU-V1] черный
+2026-06-15 17:01:57,021 - INFO - Processing URL 33/55: https://www.dns-shop.ru/product/0f0f2483fa5fd763/blok-pitania-deepcool-pf700-r-pf700d-ha0b-eu-cernyj/
+2026-06-15 17:01:57,021 - INFO - Processing URL: https://www.dns-shop.ru/product/0f0f2483fa5fd763/blok-pitania-deepcool-pf700-r-pf700d-ha0b-eu-cernyj/
+2026-06-15 17:02:16,927 - INFO - Parsed product: Блок питания DEEPCOOL PF700 [R-PF700D-HA0B-EU] черный
+2026-06-15 17:02:16,942 - INFO - Added new product data for https://www.dns-shop.ru/product/0f0f2483fa5fd763/blok-pitania-deepcool-pf700-r-pf700d-ha0b-eu-cernyj/
+2026-06-15 17:02:16,960 - INFO - Saved data for product: Блок питания DEEPCOOL PF700 [R-PF700D-HA0B-EU] черный
+2026-06-15 17:02:16,960 - INFO - Processing URL 34/55: https://www.dns-shop.ru/product/e7ac2f97324385d6/blok-pitania-deepcool-pl800d-r-pl800d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:02:16,960 - INFO - Processing URL: https://www.dns-shop.ru/product/e7ac2f97324385d6/blok-pitania-deepcool-pl800d-r-pl800d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:02:33,058 - INFO - Parsed product: Блок питания DEEPCOOL PL800D [R-PL800D-FC0B-WDEU-V2] черный
+2026-06-15 17:02:33,064 - INFO - Added new product data for https://www.dns-shop.ru/product/e7ac2f97324385d6/blok-pitania-deepcool-pl800d-r-pl800d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:02:33,079 - INFO - Saved data for product: Блок питания DEEPCOOL PL800D [R-PL800D-FC0B-WDEU-V2] черный
+2026-06-15 17:02:33,079 - INFO - Processing URL 35/55: https://www.dns-shop.ru/product/4a21e89df4d1c823/blok-pitania-cougar-gec-650-31gc0650001p-cernyj/
+2026-06-15 17:02:33,079 - INFO - Processing URL: https://www.dns-shop.ru/product/4a21e89df4d1c823/blok-pitania-cougar-gec-650-31gc0650001p-cernyj/
+2026-06-15 17:02:50,921 - INFO - Parsed product: Блок питания Cougar GEC 650 [31GC065.0001P] черный
+2026-06-15 17:02:50,926 - INFO - Added new product data for https://www.dns-shop.ru/product/4a21e89df4d1c823/blok-pitania-cougar-gec-650-31gc0650001p-cernyj/
+2026-06-15 17:02:50,934 - INFO - Saved data for product: Блок питания Cougar GEC 650 [31GC065.0001P] черный
+2026-06-15 17:02:50,934 - INFO - Processing URL 36/55: https://www.dns-shop.ru/product/7947216d3bb9ed20/blok-pitania-montech-gamma-ii-750-gamma-ii-750-cernyj/
+2026-06-15 17:02:50,934 - INFO - Processing URL: https://www.dns-shop.ru/product/7947216d3bb9ed20/blok-pitania-montech-gamma-ii-750-gamma-ii-750-cernyj/
+2026-06-15 17:03:06,317 - INFO - Parsed product: Блок питания MONTECH GAMMA II 750 [GAMMA II 750] черный
+2026-06-15 17:03:06,322 - INFO - Added new product data for https://www.dns-shop.ru/product/7947216d3bb9ed20/blok-pitania-montech-gamma-ii-750-gamma-ii-750-cernyj/
+2026-06-15 17:03:06,338 - INFO - Saved data for product: Блок питания MONTECH GAMMA II 750 [GAMMA II 750] черный
+2026-06-15 17:03:06,338 - INFO - Processing URL 37/55: https://www.dns-shop.ru/product/5af90f62ee812ff2/blok-pitania-msi-mag-a550bn-306-7zp2a19-ce0-cernyj/
+2026-06-15 17:03:06,339 - INFO - Processing URL: https://www.dns-shop.ru/product/5af90f62ee812ff2/blok-pitania-msi-mag-a550bn-306-7zp2a19-ce0-cernyj/
+2026-06-15 17:03:22,404 - INFO - Parsed product: Блок питания MSI MAG A550BN [306-7ZP2A19-CE0] черный
+2026-06-15 17:03:22,410 - INFO - Added new product data for https://www.dns-shop.ru/product/5af90f62ee812ff2/blok-pitania-msi-mag-a550bn-306-7zp2a19-ce0-cernyj/
+2026-06-15 17:03:22,426 - INFO - Saved data for product: Блок питания MSI MAG A550BN [306-7ZP2A19-CE0] черный
+2026-06-15 17:03:22,426 - INFO - Processing URL 38/55: https://www.dns-shop.ru/product/759476c1fa5ed763/blok-pitania-deepcool-pf650-r-pf650d-ha0b-eu-cernyj/
+2026-06-15 17:03:22,427 - INFO - Processing URL: https://www.dns-shop.ru/product/759476c1fa5ed763/blok-pitania-deepcool-pf650-r-pf650d-ha0b-eu-cernyj/
+2026-06-15 17:03:39,229 - INFO - Parsed product: Блок питания DEEPCOOL PF650 [R-PF650D-HA0B-EU] черный
+2026-06-15 17:03:39,234 - INFO - Added new product data for https://www.dns-shop.ru/product/759476c1fa5ed763/blok-pitania-deepcool-pf650-r-pf650d-ha0b-eu-cernyj/
+2026-06-15 17:03:39,249 - INFO - Saved data for product: Блок питания DEEPCOOL PF650 [R-PF650D-HA0B-EU] черный
+2026-06-15 17:03:39,250 - INFO - Processing URL 39/55: https://www.dns-shop.ru/product/80ed92d05d47d9cb/blok-pitania-deepcool-gamerstorm-pq850g-wh-r-pq850g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:03:39,250 - INFO - Processing URL: https://www.dns-shop.ru/product/80ed92d05d47d9cb/blok-pitania-deepcool-gamerstorm-pq850g-wh-r-pq850g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:03:55,005 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ850G WH [R-PQ850G-FD0W-WGEU-V1] белый
+2026-06-15 17:03:55,011 - INFO - Added new product data for https://www.dns-shop.ru/product/80ed92d05d47d9cb/blok-pitania-deepcool-gamerstorm-pq850g-wh-r-pq850g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:03:55,027 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ850G WH [R-PQ850G-FD0W-WGEU-V1] белый
+2026-06-15 17:03:55,027 - INFO - Processing URL 40/55: https://www.dns-shop.ru/product/fa588d8cfa5bd763/blok-pitania-deepcool-pf500-r-pf500d-ha0b-eu-cernyj/
+2026-06-15 17:03:55,027 - INFO - Processing URL: https://www.dns-shop.ru/product/fa588d8cfa5bd763/blok-pitania-deepcool-pf500-r-pf500d-ha0b-eu-cernyj/
+2026-06-15 17:04:12,618 - INFO - Parsed product: Блок питания DEEPCOOL PF500 [R-PF500D-HA0B-EU] черный
+2026-06-15 17:04:12,623 - INFO - Added new product data for https://www.dns-shop.ru/product/fa588d8cfa5bd763/blok-pitania-deepcool-pf500-r-pf500d-ha0b-eu-cernyj/
+2026-06-15 17:04:12,638 - INFO - Saved data for product: Блок питания DEEPCOOL PF500 [R-PF500D-HA0B-EU] черный
+2026-06-15 17:04:12,638 - INFO - Processing URL 41/55: https://www.dns-shop.ru/product/3afea3be698fed20/blok-pitania-montech-titan-gold-850-tis0124-cernyj/
+2026-06-15 17:04:12,638 - INFO - Processing URL: https://www.dns-shop.ru/product/3afea3be698fed20/blok-pitania-montech-titan-gold-850-tis0124-cernyj/
+2026-06-15 17:04:27,840 - INFO - Parsed product: Блок питания MONTECH TITAN GOLD 850 [TIS0124] черный
+2026-06-15 17:04:27,845 - INFO - Added new product data for https://www.dns-shop.ru/product/3afea3be698fed20/blok-pitania-montech-titan-gold-850-tis0124-cernyj/
+2026-06-15 17:04:27,860 - INFO - Saved data for product: Блок питания MONTECH TITAN GOLD 850 [TIS0124] черный
+2026-06-15 17:04:27,861 - INFO - Processing URL 42/55: https://www.dns-shop.ru/product/c92789e28131d582/blok-pitania-deepcool-pl750d-r-pl750d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:04:27,861 - INFO - Processing URL: https://www.dns-shop.ru/product/c92789e28131d582/blok-pitania-deepcool-pl750d-r-pl750d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:04:43,181 - INFO - Parsed product: Блок питания DEEPCOOL PL750D [R-PL750D-FC0B-WDEU-V2] черный
+2026-06-15 17:04:43,186 - INFO - Added new product data for https://www.dns-shop.ru/product/c92789e28131d582/blok-pitania-deepcool-pl750d-r-pl750d-fc0b-wdeu-v2-cernyj/
+2026-06-15 17:04:43,203 - INFO - Saved data for product: Блок питания DEEPCOOL PL750D [R-PL750D-FC0B-WDEU-V2] черный
+2026-06-15 17:04:43,204 - INFO - Processing URL 43/55: https://www.dns-shop.ru/product/3796e0e8e8570c08/blok-pitania-deepcool-gamerstorm-pn750m-wh-r-pn750m-fc0w-wgeu-belyj/
+2026-06-15 17:04:43,204 - INFO - Processing URL: https://www.dns-shop.ru/product/3796e0e8e8570c08/blok-pitania-deepcool-gamerstorm-pn750m-wh-r-pn750m-fc0w-wgeu-belyj/
+2026-06-15 17:05:00,233 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PN750M WH [R-PN750M-FC0W-WGEU] белый
+2026-06-15 17:05:00,239 - INFO - Added new product data for https://www.dns-shop.ru/product/3796e0e8e8570c08/blok-pitania-deepcool-gamerstorm-pn750m-wh-r-pn750m-fc0w-wgeu-belyj/
+2026-06-15 17:05:00,256 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PN750M WH [R-PN750M-FC0W-WGEU] белый
+2026-06-15 17:05:00,257 - INFO - Processing URL 44/55: https://www.dns-shop.ru/product/4df3e1bcf4021b80/blok-pitania-zalman-wattbit-ii-500w-zm500-xe-ii-cernyj/
+2026-06-15 17:05:00,257 - INFO - Processing URL: https://www.dns-shop.ru/product/4df3e1bcf4021b80/blok-pitania-zalman-wattbit-ii-500w-zm500-xe-ii-cernyj/
+2026-06-15 17:05:18,483 - INFO - Parsed product: Блок питания ZALMAN Wattbit II 500W [ZM500-XE II] черный
+2026-06-15 17:05:18,489 - INFO - Added new product data for https://www.dns-shop.ru/product/4df3e1bcf4021b80/blok-pitania-zalman-wattbit-ii-500w-zm500-xe-ii-cernyj/
+2026-06-15 17:05:18,507 - INFO - Saved data for product: Блок питания ZALMAN Wattbit II 500W [ZM500-XE II] черный
+2026-06-15 17:05:18,508 - INFO - Processing URL 45/55: https://www.dns-shop.ru/product/706a4e7e1dd4ed20/blok-pitania-cougar-atlas-600-cgr-ba-600-cernyj/
+2026-06-15 17:05:18,508 - INFO - Processing URL: https://www.dns-shop.ru/product/706a4e7e1dd4ed20/blok-pitania-cougar-atlas-600-cgr-ba-600-cernyj/
+2026-06-15 17:05:35,025 - INFO - Parsed product: Блок питания Cougar Atlas 600 [CGR BA-600] черный
+2026-06-15 17:05:35,031 - INFO - Added new product data for https://www.dns-shop.ru/product/706a4e7e1dd4ed20/blok-pitania-cougar-atlas-600-cgr-ba-600-cernyj/
+2026-06-15 17:05:35,047 - INFO - Saved data for product: Блок питания Cougar Atlas 600 [CGR BA-600] черный
+2026-06-15 17:05:35,047 - INFO - Processing URL 46/55: https://www.dns-shop.ru/product/b97eadac5d46d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-wh-r-pqa00g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:05:35,047 - INFO - Processing URL: https://www.dns-shop.ru/product/b97eadac5d46d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-wh-r-pqa00g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:05:52,036 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ1000G WH [R-PQA00G-FD0W-WGEU-V1] белый
+2026-06-15 17:05:52,042 - INFO - Added new product data for https://www.dns-shop.ru/product/b97eadac5d46d9cb/blok-pitania-deepcool-gamerstorm-pq1000g-wh-r-pqa00g-fd0w-wgeu-v1-belyj/
+2026-06-15 17:05:52,066 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ1000G WH [R-PQA00G-FD0W-WGEU-V1] белый
+2026-06-15 17:05:52,066 - INFO - Processing URL 47/55: https://www.dns-shop.ru/product/fe6e02a371f1ed20/blok-pitania-cougar-gex-850-snow-31ge085002r01-belyj/
+2026-06-15 17:05:52,067 - INFO - Processing URL: https://www.dns-shop.ru/product/fe6e02a371f1ed20/blok-pitania-cougar-gex-850-snow-31ge085002r01-belyj/
+2026-06-15 17:06:09,582 - INFO - Parsed product: Блок питания Cougar GEX 850 SNOW [31GE085002R01] белый
+2026-06-15 17:06:09,596 - INFO - Added new product data for https://www.dns-shop.ru/product/fe6e02a371f1ed20/blok-pitania-cougar-gex-850-snow-31ge085002r01-belyj/
+2026-06-15 17:06:09,614 - INFO - Saved data for product: Блок питания Cougar GEX 850 SNOW [31GE085002R01] белый
+2026-06-15 17:06:09,614 - INFO - Processing URL 48/55: https://www.dns-shop.ru/product/80cdce8b5d44d9cb/blok-pitania-deepcool-gamerstorm-pq1200g-r-pqc00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:06:09,614 - INFO - Processing URL: https://www.dns-shop.ru/product/80cdce8b5d44d9cb/blok-pitania-deepcool-gamerstorm-pq1200g-r-pqc00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:06:25,227 - INFO - Parsed product: Блок питания DEEPCOOL GamerStorm PQ1200G [R-PQC00G-FD0B-WGEU-V1] черный
+2026-06-15 17:06:25,233 - INFO - Added new product data for https://www.dns-shop.ru/product/80cdce8b5d44d9cb/blok-pitania-deepcool-gamerstorm-pq1200g-r-pqc00g-fd0b-wgeu-v1-cernyj/
+2026-06-15 17:06:25,248 - INFO - Saved data for product: Блок питания DEEPCOOL GamerStorm PQ1200G [R-PQC00G-FD0B-WGEU-V1] черный
+2026-06-15 17:06:25,248 - INFO - Processing URL 49/55: https://www.dns-shop.ru/product/02e6894ad0bc3332/blok-pitania-cougar-gex750-31ge075003p01-cernyj/
+2026-06-15 17:06:25,248 - INFO - Processing URL: https://www.dns-shop.ru/product/02e6894ad0bc3332/blok-pitania-cougar-gex750-31ge075003p01-cernyj/
+2026-06-15 17:06:41,748 - INFO - Parsed product: Блок питания Cougar GEX750 [31GE075003P01] черный
+2026-06-15 17:06:41,748 - INFO - Added new product data for https://www.dns-shop.ru/product/02e6894ad0bc3332/blok-pitania-cougar-gex750-31ge075003p01-cernyj/
+2026-06-15 17:06:41,771 - INFO - Saved data for product: Блок питания Cougar GEX750 [31GE075003P01] черный
+2026-06-15 17:06:41,771 - INFO - Processing URL 50/55: https://www.dns-shop.ru/product/5ecfdc74d0ba3332/blok-pitania-cougar-xtc500-31xc0500001p-cernyj/
+2026-06-15 17:06:41,771 - INFO - Processing URL: https://www.dns-shop.ru/product/5ecfdc74d0ba3332/blok-pitania-cougar-xtc500-31xc0500001p-cernyj/
+2026-06-15 17:06:57,155 - INFO - Parsed product: Блок питания Cougar XTC500 [31XC050.0001P] черный
+2026-06-15 17:06:57,162 - INFO - Added new product data for https://www.dns-shop.ru/product/5ecfdc74d0ba3332/blok-pitania-cougar-xtc500-31xc0500001p-cernyj/
+2026-06-15 17:06:57,189 - INFO - Saved data for product: Блок питания Cougar XTC500 [31XC050.0001P] черный
+2026-06-15 17:06:57,189 - INFO - Processing URL 51/55: https://www.dns-shop.ru/product/5448f3e6ed8bd21a/blok-pitania-cougar-sc-550-31sa0556433p-cernyj/
+2026-06-15 17:06:57,190 - INFO - Processing URL: https://www.dns-shop.ru/product/5448f3e6ed8bd21a/blok-pitania-cougar-sc-550-31sa0556433p-cernyj/
+2026-06-15 17:07:12,713 - INFO - Parsed product: Блок питания Cougar SC 550 [31SA055.6433P] черный
+2026-06-15 17:07:12,719 - INFO - Added new product data for https://www.dns-shop.ru/product/5448f3e6ed8bd21a/blok-pitania-cougar-sc-550-31sa0556433p-cernyj/
+2026-06-15 17:07:12,738 - INFO - Saved data for product: Блок питания Cougar SC 550 [31SA055.6433P] черный
+2026-06-15 17:07:12,738 - INFO - Processing URL 52/55: https://www.dns-shop.ru/product/2cc61ff0d0bc3332/blok-pitania-cougar-gex850-31ge085001p01-cernyj/
+2026-06-15 17:07:12,739 - INFO - Processing URL: https://www.dns-shop.ru/product/2cc61ff0d0bc3332/blok-pitania-cougar-gex850-31ge085001p01-cernyj/
+2026-06-15 17:07:29,567 - INFO - Parsed product: Блок питания Cougar GEX850 [31GE085001P01] черный
+2026-06-15 17:07:29,571 - INFO - Added new product data for https://www.dns-shop.ru/product/2cc61ff0d0bc3332/blok-pitania-cougar-gex850-31ge085001p01-cernyj/
+2026-06-15 17:07:29,592 - INFO - Saved data for product: Блок питания Cougar GEX850 [31GE085001P01] черный
+2026-06-15 17:07:29,592 - INFO - Processing URL 53/55: https://www.dns-shop.ru/product/16ed5812fa5ed763/blok-pitania-deepcool-pf600-r-pf600d-ha0b-eu-cernyj/
+2026-06-15 17:07:29,593 - INFO - Processing URL: https://www.dns-shop.ru/product/16ed5812fa5ed763/blok-pitania-deepcool-pf600-r-pf600d-ha0b-eu-cernyj/
+2026-06-15 17:07:47,344 - INFO - Parsed product: Блок питания DEEPCOOL PF600 [R-PF600D-HA0B-EU] черный
+2026-06-15 17:07:47,351 - INFO - Added new product data for https://www.dns-shop.ru/product/16ed5812fa5ed763/blok-pitania-deepcool-pf600-r-pf600d-ha0b-eu-cernyj/
+2026-06-15 17:07:47,386 - INFO - Saved data for product: Блок питания DEEPCOOL PF600 [R-PF600D-HA0B-EU] черный
+2026-06-15 17:07:47,386 - INFO - Processing URL 54/55: https://www.dns-shop.ru/product/dcd8a45671f8ed20/blok-pitania-cougar-gec-850-snow-cgr-gcs-850-belyj/
+2026-06-15 17:07:47,386 - INFO - Processing URL: https://www.dns-shop.ru/product/dcd8a45671f8ed20/blok-pitania-cougar-gec-850-snow-cgr-gcs-850-belyj/
+2026-06-15 17:08:03,267 - INFO - Parsed product: Блок питания Cougar GEC 850 SNOW [CGR GCS-850] белый
+2026-06-15 17:08:03,276 - INFO - Added new product data for https://www.dns-shop.ru/product/dcd8a45671f8ed20/blok-pitania-cougar-gec-850-snow-cgr-gcs-850-belyj/
+2026-06-15 17:08:03,300 - INFO - Saved data for product: Блок питания Cougar GEC 850 SNOW [CGR GCS-850] белый
+2026-06-15 17:08:03,300 - INFO - Processing URL 55/55: https://www.dns-shop.ru/product/723b7c9e1deded20/blok-pitania-cougar-stc-600-cgr-sc-600-cernyj/
+2026-06-15 17:08:03,302 - INFO - Processing URL: https://www.dns-shop.ru/product/723b7c9e1deded20/blok-pitania-cougar-stc-600-cgr-sc-600-cernyj/
+2026-06-15 17:08:19,534 - INFO - Parsed product: Блок питания Cougar STC 600 [CGR SC-600] черный
+2026-06-15 17:08:19,541 - INFO - Added new product data for https://www.dns-shop.ru/product/723b7c9e1deded20/blok-pitania-cougar-stc-600-cgr-sc-600-cernyj/
+2026-06-15 17:08:19,556 - INFO - Saved data for product: Блок питания Cougar STC 600 [CGR SC-600] черный
+2026-06-15 17:08:20,421 - INFO - Product details parsing complete!

@@ -16,7 +16,21 @@ from pathlib import Path
 from datetime import datetime
 import argparse
 
-# Отключаем предупреждения
+_LIB_DIR = Path(__file__).resolve().parent / "lib"
+if str(_LIB_DIR) not in sys.path:
+    sys.path.insert(0, str(_LIB_DIR))
+
+try:
+    from server_config import get_server_url as default_server_url
+except ImportError:
+    def default_server_url():
+        return "https://pcconf.ru"
+
+# URL сервера по умолчанию
+PCCONF_URL = default_server_url()
+TIMEOUT = 180  # увеличенный таймаут для больших файлов
+
+# Отключаем предупреждения SSL (для самоподписанных сертификатов при отладке)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Настройка логирования
@@ -30,10 +44,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger('upload_to_pcconf')
 
-# URL сервера - используем HTTP
-PCCONF_URL = "http://pcconf.ru"
-TIMEOUT = 180  # увеличенный таймаут для больших файлов
-
 class PCConfUploader:
     def __init__(self, server_url=None):
         """
@@ -42,23 +52,17 @@ class PCConfUploader:
         Args:
             server_url: URL сервера (по умолчанию: PCCONF_URL)
         """
-        # Используем HTTP версию URL
         if server_url:
-            if server_url.startswith("https://"):
-                self.server_url = server_url.replace("https://", "http://")
-                logger.info(f"[HTTP-ONLY] Converted HTTPS to HTTP: {self.server_url}")
-            else:
-                self.server_url = server_url.rstrip('/')
+            self.server_url = server_url.rstrip('/')
         else:
             self.server_url = PCCONF_URL
             
         # Создаем простую сессию
         self.session = requests.Session()
-        self.session.verify = False
+        self.session.verify = True
         
         logger.info(f"PCConf Uploader initialized")
         logger.info(f"Target server: {self.server_url}")
-        logger.info(f"Protocol: HTTP only")
     
     def test_connection(self) -> bool:
         """Тестирование соединения с сервером"""

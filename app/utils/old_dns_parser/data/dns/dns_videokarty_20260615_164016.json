@@ -1,0 +1,3038 @@
+[
+    {
+        "id": "5624321",
+        "url": "https://www.dns-shop.ru/product/433f0e661367d582/videokarta-msi-geforce-rtx-5070-ti-gaming-trio-oc-rtx-5070-ti-16g-gaming-trio-oc/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f5fb0a2b640fcb6db765c84022e2f96a/7ee0c75b11a702f3a97c067e844638e5bfa7033633aa0c7d6d84992160ae0086.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/86fadd1957f5195b7f89ba5ada5d2489/a1f6ee2cd61ad5ce7dd7b0e22508994d0a33eb67b24df3bca01b2f9cfb2c3962.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f114fbb204ec8662eb41e9988d2a4aeb/61abf365848a26ea6f5cb284b9faea2681d3d168cda339ec6876c43e1392a8dd.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/3812f08c8c31f859342d8064bc242f0d/87e47e926d92c2b9e8645091831cec06480d4217c39f3676c1bd78292484a27c.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/3d2751e2d2683a74c3356bb0d8a4bbc7/0c683b1002a43a22af721e0186524fa839ca642e4c7a65cceb889ef8368ce6e7.jpg"
+        ],
+        "name": "Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]",
+        "price_discounted": 0,
+        "price_original": 109999,
+        "rating": 4.91,
+        "number_of_reviews": 430,
+        "brand_name": "MSI",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "MSI GeForce RTX 5070 Ti GAMING TRIO OC"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[RTX 5070 Ti 16G GAMING TRIO OC]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "серый"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070 Ti"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2300 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2580 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "8960"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "280"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "96"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "70"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "280"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "16 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "256 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "896 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "750 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "300 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "есть"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "MSI Mystic Light"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "есть"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "L2 кэш - 48 Мб, металлический бэкплейт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, кронштейн для поддержки карты, переходник 16 pin на 3 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "338 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "140 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "50 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1296 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:44:04.871077"
+    },
+    {
+        "id": "5637556",
+        "url": "https://www.dns-shop.ru/product/9f2c15f17978d582/videokarta-palit-geforce-rtx-5060-ti-infinity-3-v1-ne7506t019t1-gb2061y/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/97e82085147fb1eb291781036c2cb78f/3056563d62233982e38c672d2c92584455ca6cac69ca3c1f286dbd10a2ab11ad.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ed47a80373566d190827e4967a85b7fd/d858c3eedd1657320897908712be2c633c9b2ce1b51bc57243dbf53f83c0fb4f.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d57b5b63a310ea51221c2e914c9b12c7/69fe9bd3082ce680cddbca90122994b3ac8fc5cc9d1ffd27407b562a45dbefa6.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/071b4810002e934b7d6ab59253580c07/a29530773c4f56272c5de46b697018151985c86ca23fb57027b2411c17385edb.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a532275db0fe9f47a91cef80a8cf71e7/e4bcad19fc62c2fd594099e79bea5693b6262b2c6bc54a28808f18c642a972ea.jpg"
+        ],
+        "name": "Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]",
+        "price_discounted": 0,
+        "price_original": 51999,
+        "rating": 4.89,
+        "number_of_reviews": 340,
+        "brand_name": "Palit",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Palit GeForce RTX 5060 Ti Infinity 3 V1"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[NE7506T019T1-GB2061Y]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060 Ti"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2407 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2572 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "4608"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "144"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "36"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "144"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "16 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "600 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "180 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "292 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "117 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "41.3 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:44:21.004214"
+    },
+    {
+        "id": "5633565",
+        "url": "https://www.dns-shop.ru/product/e8a9342d587fd582/videokarta-gigabyte-geforce-rtx-5060-windforce-max-oc-gv-n5060wf2max-oc-8gd/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5e95925a2950999af94d4cbd29027cd5/3df2314a56f990f1945307eb7ff9457c5e8c987425baa53b89ad374eda868f66.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8b9541e60015698d63d3c5c6c0d4834c/282a25cf9f1b3cb9488979e2113b9547c0b43f8573a93e869043237bc35130aa.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a21fecdc212aa7daaa5dee6a3ed9e1b6/a9e815e2884ea1b5539b5bab73c4849db2a9b96cbbdcce59e01f2d91f9b4f183.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/fa62040d73c5cb7e0fac9f21047350d1/79a7f43a76312e54bfab7a4808b5a0074da690ded658432157398a3dc83d1260.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/417dc934fc3531ee6133067faef3d5d4/9fc4cc5184af75a86cbf4265e4865164386eac9557ca513fc50433d7db930fa9.jpg"
+        ],
+        "name": "Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]",
+        "price_discounted": 0,
+        "price_original": 31999,
+        "rating": 4.85,
+        "number_of_reviews": 502,
+        "brand_name": "GIGABYTE",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[GV-N5060WF2MAX OC-8GD]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2280 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2512 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "3840"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "120"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "30"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "120"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "8 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "550 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "2 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "вентиляторы WINDFORCE"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "199 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "116 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "40 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:44:39.193198"
+    },
+    {
+        "id": "5631273",
+        "url": "https://www.dns-shop.ru/product/ec521346410ed9cb/videokarta-asus-geforce-rtx-5060-dual-oc-edition-dual-rtx5060-o8g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/de6bb1ffd1ee1d9820682414668e77fd/190df3c59a1fdf79e691c82e4bae417e3e7599f580587035dd80dc737765324c.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d5dd361388b1f2bf22b52ba2c319491f/c57f3d3f7e1d1f941e6211dadd99f2be9ce81343d912c09a474efa2d70290e49.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/2bbe8fdb0416a2b41eec2ffad511a479/179f69e5c0af5b2994c5f736c95bb6343621427dd7142b4fb95d4e2546177eab.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/86e5325a713f3d735d0d9cbbb7f87737/02468287e93999ab90ba7fea9904900f049f340af82f21ede9165dfa8012773f.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e0a28e59bee14ae0c76408efd32d486c/916fa1c94544d07a499261c8f2bd7919cf9109361665a8a132fe52259a5e0d01.jpg"
+        ],
+        "name": "Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]",
+        "price_discounted": 0,
+        "price_original": 32999,
+        "rating": 4.92,
+        "number_of_reviews": 251,
+        "brand_name": "ASUS",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ASUS GeForce RTX 5060 Dual OC Edition"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[DUAL-RTX5060-O8G]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2280 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2565 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "3840"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "120"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "30"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "120"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "8 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "550 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "2 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "есть"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "AI производительность - 623 TOPs, L2 кэш - 32 Мб, поддержка HDCP 2.3"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "228 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "123 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "50 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:44:56.236879"
+    },
+    {
+        "id": "5620386",
+        "url": "https://www.dns-shop.ru/product/3dd353dcfb37d582/videokarta-asus-geforce-rtx-5070-prime-oc-edition-prime-rtx5070-o12g/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a9de11b074ca6dd9513dea5d4210405a/9eaff4e9fd176371c1d694821dd16c5fe6a3ddf0e63bf3e0ccfba5bd231ff8b8.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7f4ccfdf36dc1282e79702711f510e43/50f3cd8c84064096b144d2a87ec6a6346c56050b60e52f300ea9b9b805612079.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4d030e612bddb098284a39ae6b395724/cd88890f031052b4727673f9003ac43f0d8f94489d16c64e74f5038cacbf2283.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a9da07f24628ac5cd9ecd0e2cc3da3f7/268118ebc62ac016826fbdc02f8398e54235df580e1b40f5e2b1617f987257ad.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/9612440fd490c70bee33dba199a93502/c57927fa98d063c455b57f55d5a29e92cb781b11eabb7aad0d5cabb12210de4b.jpg"
+        ],
+        "name": "Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]",
+        "price_discounted": 0,
+        "price_original": 71999,
+        "rating": 4.9,
+        "number_of_reviews": 404,
+        "brand_name": "ASUS",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "ASUS GeForce RTX 5070 PRIME OC Edition"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[PRIME-RTX5070-O12G]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2330 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2587 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "6144"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "192"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "80"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "48"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "192"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "12 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "192 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "672 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "750 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "есть"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "AI производительность - 1005 TOPs"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, переходник 16 pin на 2 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "304 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "126 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "50 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:45:13.726831"
+    },
+    {
+        "id": "5621412",
+        "url": "https://www.dns-shop.ru/product/b58aaa7e00a9d582/videokarta-palit-geforce-rtx-5070-infinity-3-ne75070019k9-gb2050s/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d82a8ac754c5a4d8196943fd971e385a/81546ac0664ed3916559fa7108de4b37d09c080fe4f498ab24c02aeca3040d26.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f5d2f9844f114a3b9798ed4067c03b44/a95d3abaf3d129547558d18ab6a3ffff13b6de3f20a2ac2c09c848ae483f93d9.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/46a9e30c2c6c04d0f7a5facb0237c126/415b55476961a208460197e4a9821a99fe52236a5b97b640fe89e0ee9aaaf6b4.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e1d347f07c6f508cda9dee68e2f8a902/9dbc0d078b6a52c4d90d3d34712f27b24e836a34fea82b7bc1251b42acd07abe.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/cfe5edbebbd0a3a5aea0ec80f5864fe7/f1ff50b5e586adf13180987c42e6c9b06051c01496eaa579812ae368717045cf.jpg"
+        ],
+        "name": "Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]",
+        "price_discounted": 0,
+        "price_original": 59999,
+        "rating": 4.85,
+        "number_of_reviews": 1274,
+        "brand_name": "Palit",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Palit GeForce RTX 5070 Infinity 3"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[NE75070019K9-GB2050S]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2325 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2512 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "6144"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "192"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "80"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "48"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "192"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "12 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "192 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "672 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "650 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "250 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "L2 кэш - 48 Мб, технология «0 децибел»"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, переходник 16 pin на 2 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "292 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "117 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "41.3 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:45:29.762223"
+    },
+    {
+        "id": "5613399",
+        "url": "https://www.dns-shop.ru/product/3e9973b9d4b9d582/videokarta-gigabyte-geforce-rtx-5070-windforce-oc-sff-gv-n5070wf3oc-12gd/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/6486ce13bce95cf0e451548d714912e0/d7f26a2ee399902df4f934aec861cc63c0c50c20d515077ac1cb4ce0754bf64d.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/604449ffcd4ac116aebd81fe608c2b53/ef3a71f1d4f84ac0deab8426fc7bca7e4486f07662967d6d64df0351d1b9d471.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4ad034c3a4860da253a0a2318f420e9e/8434645219f35c48a4fa3a270be0d3472092720a165062d503c2c00e2ba47b23.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/2bb634b18b3b1786a13ea0a73b4a577a/f305ca49e7e660193d47b5d8cae4cb70759a73b1146a60b21b0bb1c07939e4c7.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/956dc22fedb313dd5d7eabda02959e2b/a65462466b8648b07a86e3b6e6b14a34af49810330b0dd3e439022e5cb232b6e.jpg"
+        ],
+        "name": "Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]",
+        "price_discounted": 0,
+        "price_original": 61999,
+        "rating": 4.92,
+        "number_of_reviews": 646,
+        "brand_name": "GIGABYTE",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[GV-N5070WF3OC-12GD]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2330 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2542 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "6144"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "192"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "80"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "48"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "192"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "12 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "192 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "672 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "750 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "металлический бэкплейт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, переходник 16 pin на 2 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "282 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "110 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "50 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:45:45.747807"
+    },
+    {
+        "id": "5625910",
+        "url": "https://www.dns-shop.ru/product/701949711f27d9cb/videokarta-palit-geforce-rtx-5060-dual-ne75060019p1-gb2063d/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/36aab99eaefa230f1a9d35acd4640706/56e3b994b7e601c556344ba68856a23c663117b933a1a5c6155166ca28841c05.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e0b014d67fecfb907110ac2d5a7c09b3/f7392b717320c55d5a92c07bb32564e1e832ea7bb73ce04081e5c9f1e7d85168.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1c6871883f339d0f15e13813ea2cfe5b/74c217658899944d4758f93e1efcc91508abfd7e7f7e30bc49e9dbd1b74e3912.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ca5f2835cedd609e891261d0271daf1b/c4ede4c6447c75d522c6ddefd2c403039494ae6792869d17f8de809147124bad.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/46cd6e3021db38c4244367643e85b45d/6523179f74d5c5f3632e362cf7501dfa65ae2d0e43fcad461146349493d2ad45.jpg"
+        ],
+        "name": "Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]",
+        "price_discounted": 0,
+        "price_original": 31999,
+        "rating": 4.86,
+        "number_of_reviews": 1649,
+        "brand_name": "Palit",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Palit GeForce RTX 5060 Dual"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[NE75060019P1-GB2063D]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2280 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2497 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "3840"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "120"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "30"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "120"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "8 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "550 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "145 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "2 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "есть"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "технология «0 децибел»"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "262 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "126 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "40.1 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:46:01.934747"
+    },
+    {
+        "id": "5628031",
+        "url": "https://www.dns-shop.ru/product/22c5e41f2afbd9cb/videokarta-palit-geforce-rtx-5070-ti-gamingpro-s-ne7507t019t2-gb2031u/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/067b521f89174f56bccb2fb7b3ac0a3e/c13b8882ff3651e8a726f362c252ad57a6c6f373e77edb4f1c598471f8bad4ea.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/6dcb9ca10c585aa3e3094b3f569059c9/435844ec6174249ac6bf7d7d7b1d2b8d088e51e512000fc0d4388000e60cc92b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7313580a7a756bac472fca7eff3b0226/76eca538bbf7ad0cf6ae5ac8a9b0e051895bbba498c2e36432a6875098168d8f.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8bc06c2951b87734fb5c02adfb8381e4/e72f99b3d99ea3cece9dae3663c258ef1c06b6b485d92583492d888a41f515b7.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/902b9f6d41847e0b25dabd3d532eb8ef/7fbb0ae55e05e9321d1bc9dd5339b1de8525bedc8e38fb35a50389d34984d850.jpg"
+        ],
+        "name": "Видеокарта Palit GeForce RTX 5070 Ti GamingPro-S [NE7507T019T2-GB2031U]",
+        "price_discounted": 0,
+        "price_original": 89999,
+        "rating": 4.86,
+        "number_of_reviews": 496,
+        "brand_name": "Palit",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Palit GeForce RTX 5070 Ti GamingPro-S"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[NE7507T019T2-GB2031U]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070 Ti"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2295 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2452 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "8960"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "280"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "96"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "70"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "280"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "16 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "256 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "896 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "750 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "300 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "есть"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "есть"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, переходник 16 pin на 2 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "332 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "127 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "50 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:46:17.457226"
+    },
+    {
+        "id": "5624891",
+        "url": "https://www.dns-shop.ru/product/1ae78cdd169ed9cb/videokarta-msi-geforce-rtx-5060-ventus-2x-oc-rtx-5060-8g-ventus-2x-oc/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b2dc4cdf9947ed825359c94832025b9c/868aa73a62379b95f9a1592a132c40667e97ee8734d97b0414bed5454425c94b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/079b894f4d3eb949e90081b6443254f2/f74e5dc1299ede9cf6abe86b30e3e1d8bc7ccccadda54f726b3a0ea2c3600776.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7e13ba460cd2ac5acf467d5a3cb97dc5/dd1d3cf2588697f6c90b48c405fd65efc4ca921840cdf848d95414bb0c5981b4.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1eba7552f9481ddcd6f84ac4b3f9a12e/e5ecf29d2acb6b3ecafc8c0db98642214a39af7147ce7d46538328cdfbd6a413.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5e7ca0a0d01b9f9a094d1375ad80f5fc/a52f0675679bfa97322758b19f8772fa9b6c20d9b1917fd1dc647cfc912d11da.jpg"
+        ],
+        "name": "Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]",
+        "price_discounted": 0,
+        "price_original": 32999,
+        "rating": 4.85,
+        "number_of_reviews": 1015,
+        "brand_name": "MSI",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "MSI GeForce RTX 5060 VENTUS 2X OC"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[RTX 5060 8G VENTUS 2X OC]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2280 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2535 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "3840"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "120"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "30"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "120"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "8 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "550 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "145 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "2 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "197 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "120 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "41 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "511 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:46:34.269234"
+    },
+    {
+        "id": "5617114",
+        "url": "https://www.dns-shop.ru/product/8f0eced0eaa9d582/videokarta-msi-geforce-rtx-5070-ventus-3x-oc-rtx-5070-12g-ventus-3x-oc/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/65c530d9d92b81393efa953dd21e28d4/9baa9906fd9a55fc62514ee9f180b80ac98ecb2e3d59243c3a05d8c53f5db98f.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4ea8b734c7e6c63ea515cb2987fe8640/24701478fb811a92770f7d19238614a346156ad95e8a3ecefcf2a9dddb973958.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/141821a3892d07fdc5c23952b2ff52c8/db9e1b7c6da2c5f6596560f372ac1ba0335b2fdb9820259b473af6bbbaa2ed88.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/060c842a8f0557be3ab15ffb9856377c/1d268541b5d48675ba03499e44f08cd25881f2e6ccda5da86c0034e5b7327ed0.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b73591193b2b265416181307ddb113c7/5e86a27eca38ec273560c2e961bd4482bc87719f69a32f2e0d5105d8fa31a0b6.jpg"
+        ],
+        "name": "Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]",
+        "price_discounted": 0,
+        "price_original": 60999,
+        "rating": 4.88,
+        "number_of_reviews": 968,
+        "brand_name": "MSI",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Срок эксплуатации",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "MSI GeForce RTX 5070 VENTUS 3X OC"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[RTX 5070 12G VENTUS 3X OC]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5070"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2330 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2557 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "6144"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "192"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "80"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "48"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "192"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "12 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "192 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "672 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "16"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "16 pin (12V-2x6)"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "650 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "250 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Особенности, дополнительно",
+                    "value": "металлический бэкплейт"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация, переходник 16 pin на 2 x 8 pin"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2.5"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "302 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "121 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "49 мм"
+                },
+                {
+                    "title": "Вес",
+                    "value": "1002 г"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:46:52.003276"
+    },
+    {
+        "id": "5622525",
+        "url": "https://www.dns-shop.ru/product/5a2b972405f4d9cb/videokarta-palit-geforce-rtx-5060-ti-infinity-3-ne7506t019t1-gb2061s/",
+        "categories": [
+            {
+                "url": "https://www.dns-shop.ru/catalog/17aa522a16404e77/komplektuusie-dla-pk/",
+                "name": "Комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/88f4ff1d39dee00e/osnovnye-komplektuusie-dla-pk/",
+                "name": "Основные комплектующие для ПК"
+            },
+            {
+                "url": "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/",
+                "name": "Видеокарты"
+            }
+        ],
+        "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/c9a858f2c35542d27fd39bd560e25595/9b59a0a1cf5f7707d4377fc6f7c4e3ca16ec2aa4edea12e4d49c251d7426327e.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/bae138da9d71c0a4aa80686f6136cbfe/1428546d7f9d4664c0d726740b5cb9350854bddc94812f41b2fa8145c13a750b.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/53741b1efdadc38497efb63f344c1b2b/e215373e2294c49620e8124f77ab002c5520bbf7b8d1e72738d2c1952a95b496.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/841acb752f7182c46ff6ca88e326f8b0/9137af7103c5fdba6c447b51ce47869e8b96a552b3600218fba980e5481fa2aa.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/45fb2ce7b981c7c4ee0443e9fb309f55/980e9265abf449c8c02aa0110443ab38e0188a6a30964d1bf26f3407fd142415.jpg"
+        ],
+        "name": "Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]",
+        "price_discounted": 0,
+        "price_original": 51799,
+        "rating": 4.89,
+        "number_of_reviews": 1397,
+        "brand_name": "Palit",
+        "description": null,
+        "characteristics": {
+            "Заводские данные": [
+                {
+                    "title": "Гарантия продавца / производителя",
+                    "value": "36 мес."
+                },
+                {
+                    "title": "Страна-производитель",
+                    "value": "Китай"
+                }
+            ],
+            "Общие параметры": [
+                {
+                    "title": "Тип",
+                    "value": "видеокарта"
+                },
+                {
+                    "title": "Модель",
+                    "value": "Palit GeForce RTX 5060 Ti Infinity 3"
+                },
+                {
+                    "title": "Код производителя",
+                    "value": "[NE7506T019T1-GB2061S]"
+                },
+                {
+                    "title": "Цвет",
+                    "value": "черный"
+                },
+                {
+                    "title": "Предназначена для майнинга (добыча криптовалют)",
+                    "value": "нет"
+                },
+                {
+                    "title": "LHR",
+                    "value": "нет"
+                }
+            ],
+            "Основные параметры": [
+                {
+                    "title": "Графический процессор",
+                    "value": "GeForce RTX 5060 Ti"
+                },
+                {
+                    "title": "Микроархитектура",
+                    "value": "NVIDIA Blackwell"
+                },
+                {
+                    "title": "Техпроцесс",
+                    "value": "5 нм"
+                }
+            ],
+            "Спецификации видеопроцессора": [
+                {
+                    "title": "Штатная частота работы видеочипа",
+                    "value": "2407 МГц"
+                },
+                {
+                    "title": "Турбочастота",
+                    "value": "2572 МГц"
+                },
+                {
+                    "title": "Количество универсальных процессоров (ALU)",
+                    "value": "4608"
+                },
+                {
+                    "title": "Число текстурных блоков",
+                    "value": "144"
+                },
+                {
+                    "title": "Число блоков растеризации",
+                    "value": "48"
+                },
+                {
+                    "title": "Поддержка трассировки лучей",
+                    "value": "есть"
+                },
+                {
+                    "title": "Аппаратное ускорение трассировки лучей (RT-ядра)",
+                    "value": "36"
+                },
+                {
+                    "title": "Тензорные ядра",
+                    "value": "144"
+                }
+            ],
+            "Спецификации видеопамяти": [
+                {
+                    "title": "Объем видеопамяти",
+                    "value": "16 ГБ"
+                },
+                {
+                    "title": "Тип памяти",
+                    "value": "GDDR7"
+                },
+                {
+                    "title": "Разрядность шины памяти",
+                    "value": "128 бит"
+                },
+                {
+                    "title": "Максимальная пропускная способность памяти",
+                    "value": "448 Гбайт/сек"
+                },
+                {
+                    "title": "Эффективная частота памяти",
+                    "value": "28000 МГц"
+                }
+            ],
+            "Вывод изображения": [
+                {
+                    "title": "Тип и количество видеоразъемов",
+                    "value": "3 x DisplayPort, HDMI"
+                },
+                {
+                    "title": "Версия HDMI",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Версия DisplayPort",
+                    "value": "2.1b"
+                },
+                {
+                    "title": "Количество подключаемых одновременно мониторов",
+                    "value": "4"
+                },
+                {
+                    "title": "Максимальное разрешение",
+                    "value": "7680x4320 (8K Ultra HD)"
+                }
+            ],
+            "Подключение": [
+                {
+                    "title": "Интерфейс подключения",
+                    "value": "PCIe 5.0"
+                },
+                {
+                    "title": "Форм-фактор разъема подключения",
+                    "value": "PCIe x16"
+                },
+                {
+                    "title": "Количество линий PCI Express",
+                    "value": "8"
+                },
+                {
+                    "title": "Разъемы дополнительного питания",
+                    "value": "8 pin"
+                },
+                {
+                    "title": "Рекомендуемый блок питания",
+                    "value": "600 Вт"
+                },
+                {
+                    "title": "Потребляемая мощность",
+                    "value": "180 Вт"
+                }
+            ],
+            "Система охлаждения": [
+                {
+                    "title": "Тип охлаждения",
+                    "value": "активное воздушное"
+                },
+                {
+                    "title": "Тип и количество установленных вентиляторов",
+                    "value": "3 осевых"
+                },
+                {
+                    "title": "Радиатор жидкостного охлаждения",
+                    "value": "нет"
+                }
+            ],
+            "Дополнительная информация": [
+                {
+                    "title": "Подсветка элементов видеокарты",
+                    "value": "нет"
+                },
+                {
+                    "title": "Синхронизация RGB подсветки",
+                    "value": "нет"
+                },
+                {
+                    "title": "LCD дисплей",
+                    "value": "нет"
+                },
+                {
+                    "title": "Переключатель BIOS",
+                    "value": "нет"
+                },
+                {
+                    "title": "Комплектация",
+                    "value": "документация"
+                }
+            ],
+            "Габариты и вес": [
+                {
+                    "title": "Низкопрофильная карта (Low Profile)",
+                    "value": "нет"
+                },
+                {
+                    "title": "Количество занимаемых слотов расширения",
+                    "value": "2"
+                },
+                {
+                    "title": "Длина видеокарты",
+                    "value": "292 мм"
+                },
+                {
+                    "title": "Ширина видеокарты",
+                    "value": "117 мм"
+                },
+                {
+                    "title": "Толщина видеокарты",
+                    "value": "41.3 мм"
+                }
+            ]
+        },
+        "drivers": [],
+        "last_updated": "2026-06-15T16:47:07.443331"
+    }
+]

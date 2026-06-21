@@ -17805,9 +17805,9 @@
         ],
         "name": "Видеокарта ASUS GeForce RTX 5070 PRIME OC Edition [PRIME-RTX5070-O12G]",
         "price_discounted": 0,
-        "price_original": 70499,
+        "price_original": 71999,
         "rating": 4.9,
-        "number_of_reviews": 304,
+        "number_of_reviews": 404,
         "brand_name": "ASUS",
         "description": null,
         "characteristics": {
@@ -18029,7 +18029,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:09:22.177146"
+        "last_updated": "2026-06-15T16:22:28.969137"
     },
     {
         "id": "5624895",
@@ -19549,17 +19549,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5a08269aaad0ce817f359484b51a16dc/620fdbce740c626e41078b85ba9695649c4b133f78bbadbaf18658e09b374a2b.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/c9a858f2c35542d27fd39bd560e25595/9b59a0a1cf5f7707d4377fc6f7c4e3ca16ec2aa4edea12e4d49c251d7426327e.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/bae138da9d71c0a4aa80686f6136cbfe/1428546d7f9d4664c0d726740b5cb9350854bddc94812f41b2fa8145c13a750b.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/53741b1efdadc38497efb63f344c1b2b/e215373e2294c49620e8124f77ab002c5520bbf7b8d1e72738d2c1952a95b496.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/841acb752f7182c46ff6ca88e326f8b0/9137af7103c5fdba6c447b51ce47869e8b96a552b3600218fba980e5481fa2aa.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/45fb2ce7b981c7c4ee0443e9fb309f55/980e9265abf449c8c02aa0110443ab38e0188a6a30964d1bf26f3407fd142415.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/841acb752f7182c46ff6ca88e326f8b0/9137af7103c5fdba6c447b51ce47869e8b96a552b3600218fba980e5481fa2aa.jpg"
         ],
         "name": "Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 [NE7506T019T1-GB2061S]",
         "price_discounted": 0,
-        "price_original": 52999,
-        "rating": 4.88,
-        "number_of_reviews": 1201,
+        "price_original": 51799,
+        "rating": 4.89,
+        "number_of_reviews": 1397,
         "brand_name": "Palit",
         "description": null,
         "characteristics": {
@@ -19777,7 +19777,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:11:27.924461"
+        "last_updated": "2026-06-15T16:21:34.148222"
     },
     {
         "id": "5619422",
@@ -20045,17 +20045,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/6486ce13bce95cf0e451548d714912e0/d7f26a2ee399902df4f934aec861cc63c0c50c20d515077ac1cb4ce0754bf64d.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/604449ffcd4ac116aebd81fe608c2b53/ef3a71f1d4f84ac0deab8426fc7bca7e4486f07662967d6d64df0351d1b9d471.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/4ad034c3a4860da253a0a2318f420e9e/8434645219f35c48a4fa3a270be0d3472092720a165062d503c2c00e2ba47b23.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/2bb634b18b3b1786a13ea0a73b4a577a/f305ca49e7e660193d47b5d8cae4cb70759a73b1146a60b21b0bb1c07939e4c7.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/956dc22fedb313dd5d7eabda02959e2b/a65462466b8648b07a86e3b6e6b14a34af49810330b0dd3e439022e5cb232b6e.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/883da9c09eef9b15bfc9219686410361/7f7795307837e725e75316d66e4b141bd3b2cba05c1fc093b0b215f78c9656cd.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/956dc22fedb313dd5d7eabda02959e2b/a65462466b8648b07a86e3b6e6b14a34af49810330b0dd3e439022e5cb232b6e.jpg"
         ],
         "name": "Видеокарта GIGABYTE GeForce RTX 5070 WINDFORCE OC SFF [GV-N5070WF3OC-12GD]",
         "price_discounted": 0,
-        "price_original": 65499,
+        "price_original": 61999,
         "rating": 4.92,
-        "number_of_reviews": 528,
+        "number_of_reviews": 646,
         "brand_name": "GIGABYTE",
         "description": null,
         "characteristics": {
@@ -20273,7 +20273,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:12:01.848905"
+        "last_updated": "2026-06-15T16:21:09.316447"
     },
     {
         "id": "5633412",
@@ -20805,9 +20805,9 @@
         ],
         "name": "Видеокарта ASUS GeForce RTX 5060 Dual OC Edition [DUAL-RTX5060-O8G]",
         "price_discounted": 0,
-        "price_original": 34999,
-        "rating": 4.91,
-        "number_of_reviews": 156,
+        "price_original": 32999,
+        "rating": 4.92,
+        "number_of_reviews": 251,
         "brand_name": "ASUS",
         "description": null,
         "characteristics": {
@@ -21029,7 +21029,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:12:53.756963"
+        "last_updated": "2026-06-15T16:23:19.822791"
     },
     {
         "id": "5625910",
@@ -21049,17 +21049,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/3632ac38c6bc41c2a08518b3c2e54c62/0783077cf860895ce4d2d105c675df02a8e49ca2e3787a2c2cba6899ee131331.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/36aab99eaefa230f1a9d35acd4640706/56e3b994b7e601c556344ba68856a23c663117b933a1a5c6155166ca28841c05.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e0b014d67fecfb907110ac2d5a7c09b3/f7392b717320c55d5a92c07bb32564e1e832ea7bb73ce04081e5c9f1e7d85168.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1c6871883f339d0f15e13813ea2cfe5b/74c217658899944d4758f93e1efcc91508abfd7e7f7e30bc49e9dbd1b74e3912.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ca5f2835cedd609e891261d0271daf1b/c4ede4c6447c75d522c6ddefd2c403039494ae6792869d17f8de809147124bad.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/46cd6e3021db38c4244367643e85b45d/6523179f74d5c5f3632e362cf7501dfa65ae2d0e43fcad461146349493d2ad45.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ca5f2835cedd609e891261d0271daf1b/c4ede4c6447c75d522c6ddefd2c403039494ae6792869d17f8de809147124bad.jpg"
         ],
         "name": "Видеокарта Palit GeForce RTX 5060 Dual [NE75060019P1-GB2063D]",
         "price_discounted": 0,
         "price_original": 31999,
-        "rating": 4.83,
-        "number_of_reviews": 1213,
+        "rating": 4.86,
+        "number_of_reviews": 1649,
         "brand_name": "Palit",
         "description": null,
         "characteristics": {
@@ -21281,7 +21281,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:13:11.092835"
+        "last_updated": "2026-06-15T16:21:59.341251"
     },
     {
         "id": "5624321",
@@ -21309,9 +21309,9 @@
         ],
         "name": "Видеокарта MSI GeForce RTX 5070 Ti GAMING TRIO OC [RTX 5070 Ti 16G GAMING TRIO OC]",
         "price_discounted": 0,
-        "price_original": 107499,
-        "rating": 4.89,
-        "number_of_reviews": 324,
+        "price_original": 109999,
+        "rating": 4.91,
+        "number_of_reviews": 430,
         "brand_name": "MSI",
         "description": null,
         "characteristics": {
@@ -21541,7 +21541,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:13:28.930403"
+        "last_updated": "2026-06-15T16:24:11.763693"
     },
     {
         "id": "5616295",
@@ -24601,17 +24601,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/15d11f7de6605df549eb1edfb2b4e6ad/fa075840f3b14f836eccd5741cb41b5a75a1a4a6780ed0ac2d67437ddfd42a45.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/b2dc4cdf9947ed825359c94832025b9c/868aa73a62379b95f9a1592a132c40667e97ee8734d97b0414bed5454425c94b.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/079b894f4d3eb949e90081b6443254f2/f74e5dc1299ede9cf6abe86b30e3e1d8bc7ccccadda54f726b3a0ea2c3600776.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7e13ba460cd2ac5acf467d5a3cb97dc5/dd1d3cf2588697f6c90b48c405fd65efc4ca921840cdf848d95414bb0c5981b4.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1eba7552f9481ddcd6f84ac4b3f9a12e/e5ecf29d2acb6b3ecafc8c0db98642214a39af7147ce7d46538328cdfbd6a413.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5e7ca0a0d01b9f9a094d1375ad80f5fc/a52f0675679bfa97322758b19f8772fa9b6c20d9b1917fd1dc647cfc912d11da.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/1eba7552f9481ddcd6f84ac4b3f9a12e/e5ecf29d2acb6b3ecafc8c0db98642214a39af7147ce7d46538328cdfbd6a413.jpg"
         ],
         "name": "Видеокарта MSI GeForce RTX 5060 VENTUS 2X OC [RTX 5060 8G VENTUS 2X OC]",
         "price_discounted": 0,
-        "price_original": 33999,
+        "price_original": 32999,
         "rating": 4.85,
-        "number_of_reviews": 800,
+        "number_of_reviews": 1015,
         "brand_name": "MSI",
         "description": null,
         "characteristics": {
@@ -24837,7 +24837,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:17:34.713591"
+        "last_updated": "2026-06-15T16:23:45.755366"
     },
     {
         "id": "4899952",
@@ -25621,17 +25621,17 @@
             }
         ],
         "images": [
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8b80fe86a7b03e234b9159a081050217/fc6c298f894ea5b5a72111cd43199066559d7796becaec9472843d42acb09576.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/5e95925a2950999af94d4cbd29027cd5/3df2314a56f990f1945307eb7ff9457c5e8c987425baa53b89ad374eda868f66.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/8b9541e60015698d63d3c5c6c0d4834c/282a25cf9f1b3cb9488979e2113b9547c0b43f8573a93e869043237bc35130aa.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a21fecdc212aa7daaa5dee6a3ed9e1b6/a9e815e2884ea1b5539b5bab73c4849db2a9b96cbbdcce59e01f2d91f9b4f183.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/fa62040d73c5cb7e0fac9f21047350d1/79a7f43a76312e54bfab7a4808b5a0074da690ded658432157398a3dc83d1260.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/fa62040d73c5cb7e0fac9f21047350d1/79a7f43a76312e54bfab7a4808b5a0074da690ded658432157398a3dc83d1260.jpg",
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/417dc934fc3531ee6133067faef3d5d4/9fc4cc5184af75a86cbf4265e4865164386eac9557ca513fc50433d7db930fa9.jpg"
         ],
         "name": "Видеокарта GIGABYTE GeForce RTX 5060 WINDFORCE MAX OC [GV-N5060WF2MAX OC-8GD]",
         "price_discounted": 0,
-        "price_original": 33499,
+        "price_original": 31999,
         "rating": 4.85,
-        "number_of_reviews": 394,
+        "number_of_reviews": 502,
         "brand_name": "GIGABYTE",
         "description": null,
         "characteristics": {
@@ -25853,7 +25853,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:19:38.052966"
+        "last_updated": "2026-06-15T16:22:55.350444"
     },
     {
         "id": "5617114",
@@ -25882,8 +25882,8 @@
         "name": "Видеокарта MSI GeForce RTX 5070 VENTUS 3X OC [RTX 5070 12G VENTUS 3X OC]",
         "price_discounted": 0,
         "price_original": 60999,
-        "rating": 4.87,
-        "number_of_reviews": 802,
+        "rating": 4.88,
+        "number_of_reviews": 968,
         "brand_name": "MSI",
         "description": null,
         "characteristics": {
@@ -26113,7 +26113,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:20:25.405392"
+        "last_updated": "2026-06-15T16:25:01.523370"
     },
     {
         "id": "5637556",
@@ -26133,17 +26133,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/7f4204c66d5d40a78110b308ad289f6f/ce51f59ac4338d4eaf6c2f772bacdac1c60b865ca899bb465def1ece79cd6644.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/97e82085147fb1eb291781036c2cb78f/3056563d62233982e38c672d2c92584455ca6cac69ca3c1f286dbd10a2ab11ad.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/ed47a80373566d190827e4967a85b7fd/d858c3eedd1657320897908712be2c633c9b2ce1b51bc57243dbf53f83c0fb4f.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d57b5b63a310ea51221c2e914c9b12c7/69fe9bd3082ce680cddbca90122994b3ac8fc5cc9d1ffd27407b562a45dbefa6.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/071b4810002e934b7d6ab59253580c07/a29530773c4f56272c5de46b697018151985c86ca23fb57027b2411c17385edb.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/a532275db0fe9f47a91cef80a8cf71e7/e4bcad19fc62c2fd594099e79bea5693b6262b2c6bc54a28808f18c642a972ea.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/071b4810002e934b7d6ab59253580c07/a29530773c4f56272c5de46b697018151985c86ca23fb57027b2411c17385edb.jpg"
         ],
         "name": "Видеокарта Palit GeForce RTX 5060 Ti Infinity 3 V1 [NE7506T019T1-GB2061Y]",
         "price_discounted": 0,
-        "price_original": 49999,
-        "rating": 4.84,
-        "number_of_reviews": 251,
+        "price_original": 51999,
+        "rating": 4.89,
+        "number_of_reviews": 340,
         "brand_name": "Palit",
         "description": null,
         "characteristics": {
@@ -26365,7 +26365,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:20:51.034017"
+        "last_updated": "2026-06-15T16:20:09.589177"
     },
     {
         "id": "5628031",
@@ -26395,7 +26395,7 @@
         "price_discounted": 0,
         "price_original": 89999,
         "rating": 4.86,
-        "number_of_reviews": 399,
+        "number_of_reviews": 496,
         "brand_name": "Palit",
         "description": null,
         "characteristics": {
@@ -26613,7 +26613,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:21:09.248383"
+        "last_updated": "2026-06-15T16:20:35.268984"
     },
     {
         "id": "5613389",
@@ -28129,17 +28129,17 @@
             }
         ],
         "images": [
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d9029ca1a2b2cdb682cd622090a23860/a55767791fb51d47eb182ebcd4af6c9337b5dcf64ade4f28d4a293c07471120f.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/d82a8ac754c5a4d8196943fd971e385a/81546ac0664ed3916559fa7108de4b37d09c080fe4f498ab24c02aeca3040d26.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/f5d2f9844f114a3b9798ed4067c03b44/a95d3abaf3d129547558d18ab6a3ffff13b6de3f20a2ac2c09c848ae483f93d9.jpg",
             "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/46a9e30c2c6c04d0f7a5facb0237c126/415b55476961a208460197e4a9821a99fe52236a5b97b640fe89e0ee9aaaf6b4.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e1d347f07c6f508cda9dee68e2f8a902/9dbc0d078b6a52c4d90d3d34712f27b24e836a34fea82b7bc1251b42acd07abe.jpg",
-            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/cfe5edbebbd0a3a5aea0ec80f5864fe7/f1ff50b5e586adf13180987c42e6c9b06051c01496eaa579812ae368717045cf.jpg"
+            "https://c.dns-shop.ru/thumb/st1/fit/wm/0/0/e1d347f07c6f508cda9dee68e2f8a902/9dbc0d078b6a52c4d90d3d34712f27b24e836a34fea82b7bc1251b42acd07abe.jpg"
         ],
         "name": "Видеокарта Palit GeForce RTX 5070 Infinity 3 [NE75070019K9-GB2050S]",
         "price_discounted": 0,
-        "price_original": 57999,
-        "rating": 4.83,
-        "number_of_reviews": 1058,
+        "price_original": 59999,
+        "rating": 4.85,
+        "number_of_reviews": 1274,
         "brand_name": "Palit",
         "description": null,
         "characteristics": {
@@ -28365,7 +28365,7 @@
             ]
         },
         "drivers": [],
-        "last_updated": "2026-04-15T12:24:17.187856"
+        "last_updated": "2026-06-15T16:24:35.854694"
     },
     {
         "id": "5612410",

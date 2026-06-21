@@ -2,8 +2,9 @@
 chcp 1251 >nul
 title Sistema upravleniya dannymi PK
 
-REM Opredelyaem komandu Python
+cd /d "%~dp0"
 call get_python.bat
+call config\load_server.bat
 
 :menu
 cls
@@ -12,14 +13,15 @@ echo         SISTEMA UPRAVLENIYA DANNYMI PK
 echo ====================================================
 echo.
 echo Python: %PYTHON_CMD%
+echo Server: %SERVER_URL%
 echo.
 echo [DNS] Osnovnye operatsii:
 echo.
 echo   1. Parsing + avtozagruzka (rekomenduetsya)
 echo   2. Import dannykh na server
-echo   3. Sinhronizatsiya serverov (5001-^>5000)
-echo   4. Zagruzka na udalennyy server
-echo   5. Bystraya zagruzka na VASH server
+echo   3. Sinhronizatsiya serverov (5001-^>5000, lokalnyy Docker)
+echo   4. Zagruzka na udalennyy server (pcconf.ru)
+echo   5. Bystraya zagruzka na pcconf.ru
 echo   6. Analiz dubley
 echo   7. Testirovanie Docker integratsii
 echo   8. Zagruzka na pcconf.ru
@@ -29,7 +31,7 @@ echo [Dop] Dopolnitelno:
 echo.
 echo  10. Proverka dannykh na serverakh
 echo  11. Upravlenie lokalnymi dannymi
-echo  12. Zagruzka sushchestvuyushchikh dannykh
+echo  12. Zagruzka sushchestvuyushchikh dannykh (Docker)
 echo  13. Ruchnaya zagruzka iz starogo parsera
 echo  14. Nastroyka Python okruzheniya
 echo.
@@ -70,31 +72,32 @@ goto menu
 :parse_category
 cls
 echo Zapusk parsinga s avtozagruzkoy...
-call parse_category.bat
+call menu\parse_category.bat
+if errorlevel 1 pause
 goto menu
 
 :import_data
 cls
 echo Zapusk importa dannykh...
-call import_data.bat
+call menu\import_data.bat
 goto menu
 
 :sync_servers
 cls
 echo Zapusk sinhronizatsii serverov...
-call sync_5001_to_5000_docker.bat
+call menu\sync_5001_to_5000_docker.bat
 goto menu
 
 :upload_remote
 cls
 echo Zagruzka dannykh na udalennyy server...
-call upload_to_remote.bat
+call menu\upload_to_remote.bat
 goto menu
 
 :quick_upload
 cls
-echo Bystraya zagruzka na vash server...
-call quick_upload.bat
+echo Bystraya zagruzka na pcconf.ru...
+call menu\quick_upload.bat
 goto menu
 
 :analyze_duplicates
@@ -122,19 +125,19 @@ goto menu
 :test_integration
 cls
 echo Testirovanie Docker integratsii...
-call test_docker_integration.bat
+call menu\test_docker_integration.bat
 goto menu
 
 :upload_pcconf
 cls
 echo Zagruzka dannykh na pcconf.ru...
-call upload_to_pcconf.bat
+call menu\upload_to_pcconf.bat
 goto menu
 
 :parse_and_upload_pcconf
 cls
 echo Parsing i zagruzka na pcconf.ru...
-call parse_and_upload_to_pcconf.bat
+call menu\parse_and_upload_to_pcconf.bat
 goto menu
 
 :check_data
@@ -156,13 +159,13 @@ goto menu
 :upload_existing
 cls
 echo Zagruzka sushchestvuyushchikh dannykh...
-call upload_existing_to_docker.bat
+call menu\upload_existing_to_docker.bat
 goto menu
 
 :upload_old_parser
 cls
 echo Ruchnaya zagruzka dannykh iz starogo parsera...
-call upload_from_old_parser.bat
+call menu\upload_from_old_parser.bat
 goto menu
 
 :setup_python
@@ -175,13 +178,14 @@ goto menu
 :parse_citilink
 cls
 echo [CITILINK] Zapusk parsinga...
-call parse_citilink.bat
+call menu\parse_citilink.bat
+if errorlevel 1 pause
 goto menu
 
 :upload_citilink
 cls
 echo [CITILINK] Zagruzka dannykh na server...
-call upload_citilink_auto.bat
+call menu\upload_citilink_auto.bat
 goto menu
 
 :exit

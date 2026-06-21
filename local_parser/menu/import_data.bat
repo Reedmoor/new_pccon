@@ -5,11 +5,9 @@ echo        ИМПОРТ ДАННЫХ НА СЕРВЕР
 echo ====================================================
 echo.
 
-cd /d "%~dp0"
-
-REM Определяем команду Python
-call get_python.bat
+call "%~dp0_paths.bat"
 echo 🐍 Используется Python: %PYTHON_CMD%
+echo 🌐 Продакшн-сервер: %SERVER_URL%
 echo.
 
 echo Выберите режим импорта:
@@ -46,7 +44,7 @@ echo 🔍 Проверка наличия файлов данных...
 echo.
 
 REM Импортируем локальные данные напрямую на веб-сервер
-"%PYTHON_CMD%" upload_to_docker.py --server-url http://127.0.0.1:5000
+"%PYTHON_CMD%" "%LP_ROOT%\upload_to_docker.py" --server-url http://127.0.0.1:5000
 
 if %errorlevel% neq 0 (
     echo ❌ Ошибка импорта!
@@ -74,7 +72,7 @@ echo 📤 Экспорт данных для хостинга...
 echo ====================================================
 echo.
 
-"%PYTHON_CMD%" upload_existing_data.py --export-only
+"%PYTHON_CMD%" "%LP_ROOT%\upload_existing_data.py" --export-only
 
 echo.
 echo ✅ Экспорт завершен!
@@ -125,7 +123,7 @@ echo 🚀 Запуск парсера...
 echo.
 
 REM Запускаем локальный парсер с загрузкой на веб-сервер
-"%PYTHON_CMD%" local_dns_parser.py --category %cat_choice% --limit %limit_choice% --server-url http://127.0.0.1:5000
+"%PYTHON_CMD%" "%LP_ROOT%\local_dns_parser.py" --category %cat_choice% --limit %limit_choice% --server-url "%SERVER_URL%"
 
 if %errorlevel% neq 0 (
     echo ❌ Ошибка парсинга!
@@ -135,7 +133,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 📤 Загрузка данных на сервер...
-"%PYTHON_CMD%" upload_to_docker.py --server-url http://127.0.0.1:5000
+"%PYTHON_CMD%" "%LP_ROOT%\upload_to_docker.py" --server-url http://127.0.0.1:5000
 
 if %errorlevel% neq 0 (
     echo ❌ Ошибка загрузки!

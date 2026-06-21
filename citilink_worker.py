@@ -90,35 +90,40 @@ def run_citilink_parsing_task(category, server_url="http://pcconf.ru"):
         )
         
         if result.returncode == 0:
-            # Парсинг успешен, подсчитываем товары
-            products_file = citi_parser_dir / 'Товары.json'
+            # Парсинг успешен, читаем последний дамп citilink_*.json
             products_count = 0
-            
-            if products_file.exists():
+            products_data = []
+            products_file = None
+            citilink_flat = citi_parser_dir / 'data' / 'citilink'
+
+            if citilink_flat.is_dir():
+                dumps = sorted(citilink_flat.glob('citilink_*.json'), key=lambda p: p.stat().st_mtime, reverse=True)
+                if dumps:
+                    products_file = dumps[0]
+
+            if products_file and products_file.exists():
                 try:
                     with open(products_file, 'r', encoding='utf-8') as f:
                         products_data = json.load(f)
                     products_count = len(products_data)
-                    
-                    # Копируем файл в общую папку данных
                     target_file = Path('/app/data') / f'citilink_{category}_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
                     with open(target_file, 'w', encoding='utf-8') as f:
                         json.dump(products_data, f, ensure_ascii=False, indent=2)
-                    
                     logger.info(f"Citilink data saved to: {target_file}")
-                    
                 except Exception as e:
                     logger.error(f"Error reading Citilink results: {e}")
             
             update_status('running', 'Sending data to server', products_count, None, 90, category)
             
-            # Отправляем данные на сервер через API
+            # Отправляем данные на сервер через API (сразу в БД)
             try:
                 upload_url = f"{server_url.rstrip('/')}/api/upload-products"
                 response = requests.post(upload_url, json={
                     'products': products_data,
-                    'source': f'citilink-container-{category}'
-                }, timeout=30)
+                    'source': 'citilink',
+                    'upload_type': 'single_file',
+                    'category': category,
+                }, timeout=180)
                 
                 if response.status_code == 200:
                     logger.info("Data successfully sent to main server")
@@ -326,7 +331,8 @@ def send_data_to_main_server():
                 upload_url = f"{server_url.rstrip('/')}/api/upload-products"
                 response = requests.post(upload_url, json={
                     'products': products_data,
-                    'source': f'citilink-container-{file_path.stem}'
+                    'source': 'citilink',
+                    'upload_type': 'single_file',
                 })
                 
                 if response.status_code == 200:

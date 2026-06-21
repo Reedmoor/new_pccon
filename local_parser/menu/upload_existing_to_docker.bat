@@ -4,10 +4,10 @@ echo        ОТПРАВКА ЛОКАЛЬНЫХ ДАННЫХ НА DOCKER СЕР�
 echo ====================================================
 echo.
 
-cd /d "%~dp0"
+call "%~dp0_paths.bat"
 
 echo 🔍 Проверка соединения с Docker сервером...
-python upload_to_docker.py --test-connection
+"%PYTHON_CMD%" "%LP_ROOT%\upload_to_docker.py" --test-connection
 if errorlevel 1 (
     echo.
     echo ❌ Docker сервер недоступен!
@@ -19,12 +19,12 @@ if errorlevel 1 (
 
 echo.
 echo 📁 Проверка локальных данных...
-python upload_to_docker.py --status
+"%PYTHON_CMD%" "%LP_ROOT%\upload_to_docker.py" --status
 echo.
 
 echo 📤 Отправка всех локальных данных на Docker сервер...
 echo ====================================================
-python upload_to_docker.py --upload
+"%PYTHON_CMD%" "%LP_ROOT%\upload_to_docker.py" --upload
 
 if errorlevel 1 (
     echo.
@@ -37,8 +37,6 @@ echo.
 echo ✅ Данные успешно отправлены на Docker сервер!
 echo.
 echo 📊 Проверка данных на сервере...
-python check_server_data.py
+"%PYTHON_CMD%" "%LP_ROOT%\check_server_data.py"
 
-echo.
-echo 🎉 Готово!
-pause 
+pause

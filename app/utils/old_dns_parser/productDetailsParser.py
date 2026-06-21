@@ -12,7 +12,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from random import randint
 from time import sleep as pause
-import undetected_chromedriver as uc
+try:
+    from .chrome_utils import create_uc_driver
+except ImportError:
+    from chrome_utils import create_uc_driver
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 try:
@@ -42,48 +45,51 @@ TEST_URL = "https://www.dns-shop.ru/product/a67afeaff7bbd9cb/robot-pylesos-dream
 def save_product_data(data, filename="product_data.json"):
     """
     Save or update product data in a JSON file.
-    
-    If the URL already exists in the file, update the data.
-    Otherwise, append the new data.
+    При активной сессии (DNS_SESSION_FILE) пишет только в дамп текущего запуска.
     """
+    session_file = os.environ.get("DNS_SESSION_FILE", "").strip()
+    target_files = [session_file] if session_file else [filename]
+
+    for target in target_files:
+        if not target:
+            continue
+        _upsert_product_json(target, data)
+
+
+def _upsert_product_json(filename, data):
     try:
-        # Check if the file exists
         if not os.path.exists(filename):
-            # Create a new file with just this item
+            dir_name = os.path.dirname(filename)
+            if dir_name:
+                os.makedirs(dir_name, exist_ok=True)
             with open(filename, "w", encoding="utf-8") as f:
                 json.dump([data], f, ensure_ascii=False, indent=4)
             logger.info(f"Created new file {filename} with first product data")
             return
-            
-        # Read the existing data
+
         with open(filename, "r", encoding="utf-8") as f:
             try:
                 existing_data = json.load(f)
             except json.JSONDecodeError:
-                # If file exists but is not valid JSON, create it new
                 existing_data = []
-                
-        # Check if the product already exists in the data
+
         found = False
         for i, item in enumerate(existing_data):
-            if item.get('url') == data.get('url'):
-                # Update the existing item with new data
+            if item.get("url") == data.get("url"):
                 existing_data[i] = data
                 found = True
                 logger.info(f"Updated existing product data for {data.get('url')}")
                 break
-                
-        # If product not found, append it
+
         if not found:
             existing_data.append(data)
             logger.info(f"Added new product data for {data.get('url')}")
-            
-        # Write back the updated data
+
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(existing_data, f, ensure_ascii=False, indent=4)
-            
+
     except Exception as e:
-        logger.error(f"Error saving product data to JSON: {e}")
+        logger.error(f"Error saving product data to {filename}: {e}")
         import traceback
         traceback.print_exc()
 
@@ -373,13 +379,17 @@ def main():
     2. Standalone to process URLs from a file
     """
     try:
-        # Проверяем, существует ли файл с результатами, если нет - создаем пустой
-        if not os.path.exists('product_data.json'):
-            with open('product_data.json', 'w', encoding='utf-8') as f:
+        session_file = os.environ.get("DNS_SESSION_FILE", "").strip()
+        if session_file and not os.path.exists(session_file):
+            with open(session_file, "w", encoding="utf-8") as f:
                 json.dump([], f, ensure_ascii=False, indent=4)
-            logger.info("Создан пустой файл product_data.json")
-        
-        driver = uc.Chrome(version_main=146)
+            logger.info(f"Initialized session file {session_file}")
+        elif not session_file and not os.path.exists("product_data.json"):
+            with open("product_data.json", "w", encoding="utf-8") as f:
+                json.dump([], f, ensure_ascii=False, indent=4)
+            logger.info("Created empty file product_data.json")
+
+        driver = create_uc_driver()
 
         # Check if urls.txt exists and process from it
         if os.path.exists('urls.txt'):

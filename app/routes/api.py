@@ -77,108 +77,56 @@ def upload_products():
         
         logger.info(f"Received {len(products)} products from {source} (type: {upload_type})")
         
-        # Для серверной синхронизации и single-file загрузки
-        # импортируем сразу в БД без промежуточного сохранения.
-        if upload_type in ('server_sync', 'single_file'):
-            logger.info(f"{upload_type} detected - importing directly to database without saving files")
-            
-            # Создаем временные данные только в памяти для импорта
-            try:
-                # Импортируем товары напрямую в базу данных
-                from app.utils.standardization.import_products import import_products_from_data
-                
-                # Импортируем напрямую из данных без сохранения файла
-                result = import_products_from_data(products, source=source)
-                if not result.get('success', False):
-                    return jsonify({
-                        'success': False,
-                        'error': result.get('error', 'Import failed'),
-                        'added_count': result.get('added_count', 0),
-                        'updated_count': result.get('updated_count', 0),
-                        'error_count': result.get('error_count', len(products)),
-                        'upload_type': upload_type,
-                        'source': source
-                    }), 500
-                
-                # Создаем уведомление о синхронизации
-                sync_notification = {
-                    'type': 'server_sync',
-                    'source': source,
-                    'products_count': len(products),
-                    'timestamp': datetime.now().isoformat(),
-                    'sync_id': data.get('sync_id', 'unknown'),
-                    'status': 'success'
-                }
-                
-                # Добавляем уведомление в хранилище
-                add_notification(sync_notification)
-                
-                # Сохраняем уведомление (в будущем можно отправлять через WebSocket)
-                logger.info(f"📨 SYNC NOTIFICATION: {sync_notification}")
-                
-                return jsonify({
-                    'success': True,
-                    'message': f'Successfully imported {len(products)} products ({upload_type})',
-                    'imported_count': result.get('added_count', 0) + result.get('updated_count', 0),
-                    'added_count': result.get('added_count', 0),
-                    'updated_count': result.get('updated_count', 0),
-                    'error_count': result.get('error_count', 0),
-                    'upload_type': upload_type,
-                    'source': source,
-                    'notification': sync_notification,
-                    'files_saved': False  # Файлы НЕ сохраняются при синхронизации
-                }), 200
-                
-            except Exception as import_error:
-                logger.error(f"Error importing synced products: {import_error}")
+        # Импортируем сразу в БД (без ручного шага «Импортировать продукты»)
+        try:
+            from app.utils.standardization.import_products import import_products_from_data
+
+            result = import_products_from_data(products, source=source)
+            if not result.get('success', False):
                 return jsonify({
                     'success': False,
-                    'error': f'Server sync failed: {str(import_error)}',
-                    'received_count': len(products),
-                    'upload_type': upload_type
+                    'error': result.get('error', 'Import failed'),
+                    'added_count': result.get('added_count', 0),
+                    'updated_count': result.get('updated_count', 0),
+                    'error_count': result.get('error_count', len(products)),
+                    'upload_type': upload_type,
+                    'source': source
                 }), 500
-        
-        # Для локального парсера сохраняем файлы как обычно
-        else:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            temp_filename = f"local_parser_data_{timestamp}.json"
-            temp_path = f"data/{temp_filename}"
-            
-            # Создаем директорию если не существует
-            os.makedirs('data', exist_ok=True)
-            
-            # Сохраняем данные в том же формате, что ожидает import_products
-            with open(temp_path, 'w', encoding='utf-8') as f:
-                json.dump(products, f, ensure_ascii=False, indent=2)
-            
-            logger.info(f"Saved products data to {temp_path}")
-            
-            # Создаем уведомление о локальном парсинге (НЕ импортируем сразу)
-            parse_notification = {
-                'type': 'local_parsing',
+
+            notification = {
+                'type': upload_type or 'local_parser',
                 'source': source,
                 'products_count': len(products),
                 'timestamp': datetime.now().isoformat(),
-                'filename': temp_filename,
-                'status': 'saved',  # Изменили статус на 'saved'
-                'note': 'Data saved to file. Run import_products() to import into database.'
+                'sync_id': data.get('sync_id', 'unknown'),
+                'status': 'success',
+                'imported_to_db': True,
             }
-            
-            # Добавляем уведомление в хранилище
-            add_notification(parse_notification)
-            
-            logger.info(f"📨 PARSE NOTIFICATION: {parse_notification}")
-            
+            add_notification(notification)
+            logger.info(f"📨 IMPORT NOTIFICATION: {notification}")
+
             return jsonify({
                 'success': True,
-                'message': f'Successfully received and saved {len(products)} products to file. Use import_products() to import into database.',
-                'received_count': len(products),
-                'filename': temp_filename,
+                'message': f'Successfully imported {len(products)} products ({upload_type or "upload"})',
+                'imported_count': result.get('added_count', 0) + result.get('updated_count', 0),
+                'added_count': result.get('added_count', 0),
+                'updated_count': result.get('updated_count', 0),
+                'error_count': result.get('error_count', 0),
                 'upload_type': upload_type,
-                'notification': parse_notification,
-                'files_saved': True,
-                'imported_to_db': False  # Не импортировано в БД
+                'source': source,
+                'notification': notification,
+                'files_saved': False,
+                'imported_to_db': True,
             }), 200
+
+        except Exception as import_error:
+            logger.error(f"Error importing products: {import_error}")
+            return jsonify({
+                'success': False,
+                'error': f'Import failed: {str(import_error)}',
+                'received_count': len(products),
+                'upload_type': upload_type
+            }), 500
     
     except Exception as e:
         logger.error(f"Error in upload_products endpoint: {e}")

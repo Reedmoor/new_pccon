@@ -1,7 +1,11 @@
 import json
 import os
 import sys
-import undetected_chromedriver as uc
+
+_OLD_DNS = os.path.join(os.path.dirname(__file__), "..", "old_dns_parser")
+if _OLD_DNS not in sys.path:
+    sys.path.insert(0, _OLD_DNS)
+from chrome_utils import create_uc_driver
 from bs4 import BeautifulSoup
 from random import randint
 from time import sleep as pause
@@ -206,7 +210,7 @@ def main(product_callback=None, limit_per_category=5, category_name=None):
     # Фильтруем категории в соответствии с запросом
     filter_categories_by_name(category_name)
     
-    driver = uc.Chrome(version_main=135)
+    driver = create_uc_driver()
     
 
     try:

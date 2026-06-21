@@ -366,8 +366,10 @@ def discover_import_paths(project_root=None):
         patterns.append((str(root / "data/local_parser_data_*.json"), "dns", True, True))
 
     patterns.extend([
+        (str(root / "app/utils/old_dns_parser/data/dns/dns_*.json"), "dns", True, False),
+        (str(root / "app/utils/Citi_parser/data/citilink/citilink_*.json"), "citilink", True, False),
         (str(root / "data/citilink/citilink_*.json"), "citilink", True, False),
-        (str(root / "data/dns/dns_*.json"), "dns", False, False),
+        (str(root / "data/dns/dns_*.json"), "dns", True, False),
         (str(root / "data/parser_backups/*/dns/product_data.json"), "dns", False, False),
         (str(root / "app/utils/old_dns_parser/product_data.json"), "dns", False, False),
     ])
@@ -379,3 +381,64 @@ def discover_import_paths(project_root=None):
     backup_glob = str(root / "data/parser_backups/*/citilink/data")
     citilink_roots.extend(sorted(glob.glob(backup_glob), key=os.path.getmtime, reverse=True))
     return patterns, citilink_roots
+
+
+def find_latest_dns_dump(project_root=None):
+    """Последний дамп DNS: app/utils/old_dns_parser/data/dns/dns_*.json"""
+    root = Path(project_root or os.getcwd())
+    last_session = root / "app/utils/old_dns_parser/data/dns/last_session.txt"
+    if last_session.is_file():
+        try:
+            path = last_session.read_text(encoding="utf-8").strip()
+            if path and os.path.isfile(path):
+                return path
+        except OSError:
+            pass
+
+    patterns = [
+        root / "app/utils/old_dns_parser/data/dns/dns_*.json",
+        root / "data/dns/dns_*.json",
+    ]
+    candidates = []
+    for pattern in patterns:
+        candidates.extend(glob.glob(str(pattern)))
+    if not candidates:
+        return None
+    return max(candidates, key=os.path.getmtime)
+
+
+def find_latest_citilink_dump(project_root=None):
+    """Последний дамп Citilink: app/utils/Citi_parser/data/citilink/citilink_*.json"""
+    root = Path(project_root or os.getcwd())
+    patterns = [
+        root / "app/utils/Citi_parser/data/citilink/citilink_*.json",
+        root / "data/citilink/citilink_*.json",
+    ]
+    candidates = []
+    for pattern in patterns:
+        candidates.extend(glob.glob(str(pattern)))
+    if not candidates:
+        return None
+    return max(candidates, key=os.path.getmtime)
+
+
+def load_citilink_flat_dumps(citilink_data_dir):
+    """Загружает товары из data/citilink/citilink_*.json для превью в админке."""
+    flat_dir = os.path.join(citilink_data_dir, "citilink")
+    if not os.path.isdir(flat_dir):
+        return []
+    entries = []
+    for path in sorted(glob.glob(os.path.join(flat_dir, "citilink_*.json")), key=os.path.getmtime, reverse=True):
+        try:
+            products = load_products_from_json(path)
+            if not products:
+                continue
+            entries.append({
+                "name": f"Дамп {os.path.basename(path)}",
+                "count": len(products),
+                "file": path,
+                "slug": "citilink",
+            })
+        except Exception as e:
+            print(f"    ошибка чтения {path}: {e}")
+    return entries

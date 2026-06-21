@@ -12,7 +12,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from random import randint
 from time import sleep as pause
-import undetected_chromedriver as uc
+
+_OLD_DNS = os.path.join(os.path.dirname(__file__), "..", "old_dns_parser")
+if _OLD_DNS not in sys.path:
+    sys.path.insert(0, _OLD_DNS)
+from chrome_utils import create_uc_driver
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 try:
@@ -399,7 +403,7 @@ def main():
         already_parsed = load_parsed_urls('product_data.json')
         logger.info(f"Уже спаршено товаров: {len(already_parsed)} — будут пропущены")
 
-        driver = uc.Chrome(version_main=135)
+        driver = create_uc_driver()
 
         if os.path.exists('urls.txt'):
             logger.info("Reading URLs from urls.txt")

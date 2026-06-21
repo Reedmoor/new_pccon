@@ -5,6 +5,10 @@ from datetime import datetime
 import re
 
 import undetected_chromedriver as uc
+try:
+    from .chrome_utils import create_uc_driver
+except ImportError:
+    from chrome_utils import create_uc_driver
 from random import randint
 from time import sleep as pause
 
@@ -336,7 +340,7 @@ def main():
         urls = [line.strip() for line in text.readlines() if line.strip()]
         for url in tqdm(urls, ncols=70, unit='товар', colour='blue', file=sys.stdout):
             try:
-                driver = uc.Chrome(options=options)
+                driver = create_uc_driver(options=options)
                 driver.get(url)
                 pause(randint(1, 2))  # Random pause to simulate human behavior
 

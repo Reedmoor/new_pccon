@@ -14,6 +14,23 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List
 
+# Конфигурация сервера по умолчанию (https://pcconf.ru)
+_LIB_DIR = Path(__file__).resolve().parent / "lib"
+if str(_LIB_DIR) not in sys.path:
+    sys.path.insert(0, str(_LIB_DIR))
+
+try:
+    from server_config import get_server_url, get_upload_endpoint, get_health_endpoint
+except ImportError:
+    def get_server_url():
+        return "https://pcconf.ru"
+
+    def get_upload_endpoint():
+        return "/api/upload-products"
+
+    def get_health_endpoint():
+        return "/api/health"
+
 # Настройка логирования
 logging.basicConfig(
     level=logging.INFO,
@@ -39,24 +56,20 @@ class SingleFileUploader:
         """Тестирование соединения с сервером"""
         try:
             logger.info(f"Testing connection to server: {self.server_url}")
-            
-            # Используем разные endpoints для разных серверов
-            if ":5000" in self.server_url:
-                # Docker сервер - пропускаем health check, так как главное что API работает
-                logger.info("✅ Skipping health check for Docker server (5000) - will test upload directly")
-                return True
-            else:
-                # Локальный сервер - используем главную страницу
-                test_url = f"{self.server_url}/"
-                response = self.session.get(test_url, timeout=10)
-                
-                if response.status_code == 200:
-                    logger.info("✅ Server connection successful")
-                    return True
-                else:
-                    logger.error(f"❌ Server returned status {response.status_code}")
-                    return False
-                
+
+            for endpoint in (get_health_endpoint(), "/api/parser-status", "/"):
+                test_url = f"{self.server_url}{endpoint}"
+                try:
+                    response = self.session.get(test_url, timeout=15)
+                    if response.status_code in (200, 204):
+                        logger.info(f"✅ Server connection successful via {endpoint}")
+                        return True
+                except requests.exceptions.RequestException:
+                    continue
+
+            logger.error("❌ Server not responding on known endpoints")
+            return False
+
         except requests.exceptions.RequestException as e:
             logger.error(f"❌ Failed to connect to server: {e}")
             return False
@@ -135,7 +148,7 @@ class SingleFileUploader:
             
             # Отправляем на сервер
             response = self.session.post(
-                f"{self.server_url}/api/upload-products",
+                f"{self.server_url}{get_upload_endpoint()}",
                 json=payload,
                 headers={'Content-Type': 'application/json'},
                 timeout=120
@@ -159,8 +172,8 @@ class SingleFileUploader:
 def main():
     """Основная функция"""
     parser = argparse.ArgumentParser(description='Upload single file to server')
-    parser.add_argument('--server-url', type=str, required=True,
-                       help='Server URL (e.g., http://127.0.0.1:5001 or http://127.0.0.1:5000)')
+    parser.add_argument('--server-url', type=str, default=None,
+                       help='Server URL (default: from config/server.json, https://pcconf.ru)')
     parser.add_argument('--data-file', type=str, required=True,
                        help='Path to data file to upload')
     parser.add_argument('--source', type=str, default=None,
@@ -169,9 +182,11 @@ def main():
                        help='Test connection to server only')
     
     args = parser.parse_args()
+
+    server_url = args.server_url or get_server_url()
     
     # Инициализация загрузчика
-    uploader = SingleFileUploader(server_url=args.server_url)
+    uploader = SingleFileUploader(server_url=server_url)
     
     try:
         if args.test_connection:

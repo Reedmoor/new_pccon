@@ -15,27 +15,23 @@
                 <h5 class="mb-0"><i class="fas fa-robot me-2"></i>DNS Parser</h5>
             </div>
             <div class="card-body">
-                <p>Для парсинга DNS используйте локальные BAT файлы.</p>
+                <p>Парсинг выполняется <strong>локально</strong> через главное меню.</p>
                 
-                <!-- Описание с батниками -->
                 <div class="alert alert-info">
-                    <h6><i class="fas fa-info-circle me-2"></i>Инструкция по DNS парсингу:</h6>
-                    <p class="mb-2">DNS товары парсятся <strong>локально</strong> и автоматически отправляются на сервер:</p>
-                    <ul class="mb-2">
-                        <li><code>parse_category.bat</code> - парсинг конкретной категории DNS</li>
-                        <li><code>run_local_parse_and_upload.bat</code> - парсинг + автозагрузка в Docker</li>
-                        <li><code>upload_from_old_parser.bat</code> - загрузка готовых данных</li>
-                        <li><code>main_menu.bat</code> - главное меню всех операций</li>
-                    </ul>
+                    <h6><i class="fas fa-info-circle me-2"></i>Инструкция (DNS):</h6>
+                    <p class="mb-2">Запустите на своём ПК:</p>
+                    <p class="mb-2"><code>local_parser/main_menu.bat</code> <span class="text-muted">(можно ярлык с рабочего стола)</span></p>
+                    <p class="mb-2">В меню выберите пункт:</p>
+                    <p class="mb-2"><strong>1</strong> — парсинг DNS + автозагрузка на сервер <span class="badge bg-danger">основной</span></p>
+                    <p class="mb-2 text-muted small">Пункты 2–14 — дополнительные и отладочные (импорт, синхронизация, тесты Docker и т.д.). Для обычной работы они не нужны.</p>
                     <p class="mb-2"><strong>Как это работает:</strong></p>
                     <ol class="mb-2">
-                        <li>Запускаете bat-файл локально на вашем ПК</li>
-                        <li>Парсер собирает данные с DNS сайта</li>
-                        <li>Данные автоматически отправляются на этот Docker сервер</li>
+                        <li>Открываете <code>main_menu.bat</code> → вводите <strong>1</strong></li>
+                        <li>Выбираете категорию DNS и количество товаров</li>
+                        <li>Парсер собирает данные и отправляет их на этот сервер</li>
                         <li>Товары появляются в базе данных сайта</li>
                     </ol>
-                    <p class="mb-0"><strong>Расположение:</strong> Bat-файлы находятся в папке <code>local_parser/</code></p>
-                    <p class="mb-0"><strong>API endpoint:</strong> Данные загружаются на <code>/api/upload-products</code></p>
+                    <p class="mb-0"><strong>API:</strong> <code>/api/upload-products</code></p>
                 </div>
                 
                 {% if dns_results %}
@@ -56,81 +52,32 @@
                 <h5 class="mb-0"><i class="fas fa-robot me-2"></i>Citilink Parser</h5>
             </div>
             <div class="card-body">
-                <p>Запуск парсера Citilink для сбора информации о комплектующих.</p>
-                
-                <!-- Статус парсера -->
-                <div id="parser-status" class="mb-3" style="display: none;">
-                    <div class="alert alert-info">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-info-circle me-2"></i>
-                                <span id="status-text">Проверка статуса...</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline-secondary" onclick="clearParserStatus()">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div id="status-details" class="mt-2" style="display: none;">
-                            <small class="text-muted">
-                                <div id="status-category"></div>
-                                <div id="status-timestamp"></div>
-                            </small>
-                        </div>
-                    </div>
+                <p>Парсинг выполняется <strong>локально</strong> через главное меню.</p>
+
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle me-2"></i>Инструкция (Citilink):</h6>
+                    <p class="mb-2">Запустите на своём ПК:</p>
+                    <p class="mb-2"><code>local_parser/main_menu.bat</code> <span class="text-muted">(можно ярлык с рабочего стола)</span></p>
+                    <p class="mb-2">В меню выберите пункт:</p>
+                    <p class="mb-2"><strong>15</strong> — парсинг Citilink (категория + автозагрузка) <span class="badge bg-primary">основной</span></p>
+                    <p class="mb-2 text-muted small">Пункт 16 — только загрузка уже собранного дампа. Пункты 1–14 — DNS и отладочные операции.</p>
+                    <p class="mb-2"><strong>Как это работает:</strong></p>
+                    <ol class="mb-2">
+                        <li>Открываете <code>main_menu.bat</code> → вводите <strong>15</strong></li>
+                        <li>Выбираете категорию Citilink (видеокарты, процессоры и т.д.)</li>
+                        <li>Парсер (<code>app/utils/Citi_parser/</code>) сохраняет дамп в <code>data/citilink/citilink_*.json</code></li>
+                        <li>Данные автоматически отправляются на сервер и импортируются в БД</li>
+                    </ol>
+                    <p class="mb-0"><strong>API:</strong> <code>/api/upload-products</code></p>
                 </div>
-                
-                <form method="POST" action="{{ url_for('admin.run_citilink_parser') }}">
-                    <div class="mb-3">
-                        <label for="citilink_category" class="form-label">Категория товаров</label>
-                        <select class="form-select" id="citilink_category" name="citilink_category">
-                            <option value="" selected disabled>Выберите категорию</option>
-                            <option value="videokarty" {% if env_citilink_category == "videokarty" %}selected{% endif %}>Видеокарты</option>
-                            <option value="processory" {% if env_citilink_category == "processory" %}selected{% endif %}>Процессоры</option>
-                            <option value="materinskie-platy" {% if env_citilink_category == "materinskie-platy" %}selected{% endif %}>Материнские платы</option>
-                            <option value="bloki-pitaniya" {% if env_citilink_category == "bloki-pitaniya" %}selected{% endif %}>Блоки питания</option>
-                            <option value="moduli-pamyati" {% if env_citilink_category == "moduli-pamyati" %}selected{% endif %}>Модули памяти</option>
-                            <option value="korpusa" {% if env_citilink_category == "korpusa" %}selected{% endif %}>Корпуса</option>
-                            <option value="sistemy-ohlazhdeniya-processora" {% if env_citilink_category == "sistemy-ohlazhdeniya-processora" %}selected{% endif %}>Кулеры для процессора</option>
-                            <option value="ssd-nakopiteli" {% if env_citilink_category == "ssd-nakopiteli" %}selected{% endif %}>SSD накопители</option>
-                            <option value="zhestkie-diski" {% if env_citilink_category == "zhestkie-diski" %}selected{% endif %}>Жесткие диски</option>
-                        </select>
-                    </div>
-                    
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary" id="start-parser-btn">
-                            <i class="fas fa-play me-2"></i>Запустить Citilink Parser
-                        </button>
-                        
-                        <!-- Улучшенная остановка -->
-                        <div class="btn-group" role="group">
-                            <form method="POST" action="{{ url_for('admin.stop_citilink_parser') }}" class="d-inline" style="flex: 1;" onsubmit="return handleStopParser(this)">
-                                <button type="submit" class="btn btn-warning w-100" id="stop-parser-btn">
-                                    <i class="fas fa-stop me-2"></i>Остановить с сохранением
-                                </button>
-                            </form>
-                            
-                            <button type="button" class="btn btn-info" onclick="showParserLogs()">
-                                <i class="fas fa-file-alt me-2"></i>Логи парсера
-                            </button>
-                            
-                            {% if citilink_results %}
-                            <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты парсера Citilink?');">
-                                <i class="fas fa-trash me-2"></i>Очистить результаты
-                            </a>
-                            {% endif %}
-                            
-                            <form method="POST" action="{{ url_for('admin.fix_citilink_json') }}" class="d-inline">
-                                <button type="submit" class="btn btn-outline-info" onclick="return confirm('Исправить проблемные JSON файлы Citilink?');">
-                                    <i class="fas fa-wrench me-2"></i>Исправить JSON
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </form>
-                
-                <div class="alert alert-secondary mt-3">
-                    <i class="fas fa-info-circle me-2"></i>Парсер работает в фоновом режиме и не блокирует сайт. Парсер Citilink использует GraphQL API для получения данных о товарах. При остановке все собранные данные автоматически импортируются в базу данных.
+
+                {% if citilink_results %}
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('admin.clear_citilink_parser_results') }}" class="btn btn-outline-secondary" onclick="return confirm('Вы уверены, что хотите очистить все результаты Citilink парсера?');">
+                        <i class="fas fa-trash me-2"></i>Очистить результаты
+                    </a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -311,47 +258,6 @@
     </div>
 </div>
 
-<!-- Модальное окно для логов парсера -->
-<div class="modal fade" id="logsModal" tabindex="-1" aria-labelledby="logsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logsModalLabel">
-                    <i class="fas fa-file-alt me-2"></i>Логи парсера Citilink
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="logs-loading" class="text-center py-4">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Загрузка логов...</span>
-                    </div>
-                    <p class="mt-2">Загрузка логов...</p>
-                </div>
-                <div id="logs-content" style="display: none;">
-                    <div class="mb-3">
-                        <small class="text-muted">
-                            <i class="fas fa-info-circle me-1"></i>
-                            Показаны последние логи парсера. Обновляется автоматически каждые 30 секунд.
-                        </small>
-                    </div>
-                    <pre id="logs-text" class="bg-dark text-light p-3 rounded" style="max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.2;"></pre>
-                </div>
-                <div id="logs-error" class="alert alert-danger" style="display: none;">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    <span id="logs-error-text">Ошибка загрузки логов</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="refreshLogs()">
-                    <i class="fas fa-refresh me-2"></i>Обновить
-                </button>
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- JavaScript для подтверждения удаления и статистики -->
 <script>
 function confirmClearDatabase() {
@@ -482,236 +388,9 @@ function showErrorState() {
     document.getElementById('recentProducts').innerHTML = '<div class="text-danger">Ошибка загрузки</div>';
 }
 
-// Загружаем информацию о поступлениях при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     loadProductStats();
-    checkParserStatus(); // Проверяем статус парсера при загрузке
-    
-    // Проверяем статус каждые 10 секунд
-    setInterval(checkParserStatus, 10000);
 });
-
-// Функции для мониторинга статуса парсера
-function checkParserStatus() {
-    fetch('/admin/api/citilink-parser-status')
-    .then(response => response.json())
-    .then(data => {
-        if (data.success && data.status && data.status.status !== 'idle') {
-            showParserStatus(data.status);
-        } else {
-            hideParserStatus();
-        }
-    })
-    .catch(error => {
-        console.error('Ошибка проверки статуса парсера:', error);
-    });
-}
-
-function showParserStatus(status) {
-    const statusDiv = document.getElementById('parser-status');
-    const statusText = document.getElementById('status-text');
-    const statusDetails = document.getElementById('status-details');
-    const categorySpan = document.getElementById('status-category');
-    const timestampSpan = document.getElementById('status-timestamp');
-    const alertDiv = statusDiv.querySelector('.alert');
-    const startBtn = document.getElementById('start-parser-btn');
-    
-    // Показываем блок статуса
-    statusDiv.style.display = 'block';
-    
-    // Обновляем текст статуса
-    let statusMessage = '';
-    let alertClass = 'alert-info';
-    
-    switch(status.status) {
-        case 'running':
-            statusMessage = 'Парсер работает в фоновом режиме...';
-            alertClass = 'alert-primary';
-            startBtn.disabled = true;
-            break;
-        case 'completed':
-            statusMessage = 'Парсинг завершен успешно!';
-            alertClass = 'alert-success';
-            startBtn.disabled = false;
-            break;
-        case 'stopped':
-            statusMessage = 'Парсер остановлен пользователем';
-            alertClass = 'alert-warning';
-            startBtn.disabled = false;
-            break;
-        case 'failed':
-            statusMessage = 'Парсинг завершился с ошибкой';
-            alertClass = 'alert-danger';
-            startBtn.disabled = false;
-            break;
-        case 'timeout':
-            statusMessage = 'Парсинг превысил время ожидания';
-            alertClass = 'alert-warning';
-            startBtn.disabled = false;
-            break;
-        case 'error':
-            statusMessage = 'Ошибка при выполнении парсинга';
-            alertClass = 'alert-danger';
-            startBtn.disabled = false;
-            break;
-        default:
-            statusMessage = 'Неизвестный статус: ' + status.status;
-            alertClass = 'alert-secondary';
-            startBtn.disabled = false;
-    }
-    
-    statusText.textContent = statusMessage;
-    
-    // Обновляем класс alert
-    alertDiv.className = 'alert ' + alertClass;
-    
-    // Показываем детали если есть
-    if (status.category || status.timestamp) {
-        statusDetails.style.display = 'block';
-        
-        if (status.category) {
-            categorySpan.textContent = 'Категория: ' + status.category;
-        }
-        
-        if (status.timestamp) {
-            const date = new Date(status.timestamp);
-            timestampSpan.textContent = 'Время: ' + date.toLocaleString();
-        }
-    } else {
-        statusDetails.style.display = 'none';
-    }
-}
-
-function hideParserStatus() {
-    document.getElementById('parser-status').style.display = 'none';
-    document.getElementById('start-parser-btn').disabled = false;
-}
-
-function clearParserStatus() {
-    fetch('/admin/api/clear-parser-status', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            hideParserStatus();
-        } else {
-            alert('Ошибка очистки статуса: ' + data.message);
-        }
-    })
-    .catch(error => {
-        alert('Ошибка: ' + error);
-    });
-}
-
-function showParserLogs() {
-    // Показываем модальное окно
-    const modal = new bootstrap.Modal(document.getElementById('logsModal'));
-    modal.show();
-    
-    // Загружаем логи
-    loadLogs();
-    
-    // Автообновление каждые 30 секунд при открытом модальном окне
-    const logsModal = document.getElementById('logsModal');
-    let autoRefreshInterval;
-    
-    logsModal.addEventListener('shown.bs.modal', function () {
-        autoRefreshInterval = setInterval(loadLogs, 30000);
-    });
-    
-    logsModal.addEventListener('hidden.bs.modal', function () {
-        if (autoRefreshInterval) {
-            clearInterval(autoRefreshInterval);
-        }
-    });
-}
-
-function loadLogs() {
-    const loadingDiv = document.getElementById('logs-loading');
-    const contentDiv = document.getElementById('logs-content');
-    const errorDiv = document.getElementById('logs-error');
-    const logsText = document.getElementById('logs-text');
-    
-    // Показываем индикатор загрузки
-    loadingDiv.style.display = 'block';
-    contentDiv.style.display = 'none';
-    errorDiv.style.display = 'none';
-    
-    fetch('/admin/api/citilink-parser-logs')
-    .then(response => response.json())
-    .then(data => {
-        loadingDiv.style.display = 'none';
-        
-        if (data.success) {
-            contentDiv.style.display = 'block';
-            
-            // Добавляем информацию о найденных файлах
-            let logsContent = data.logs;
-            if (data.log_files_found > 0) {
-                logsContent = `[Найдено файлов логов: ${data.log_files_found}]\n\n` + logsContent;
-            }
-            
-            logsText.textContent = logsContent;
-            
-            // Прокручиваем вниз, чтобы показать последние логи
-            logsText.scrollTop = logsText.scrollHeight;
-        } else {
-            errorDiv.style.display = 'block';
-            document.getElementById('logs-error-text').textContent = 'Ошибка загрузки логов: ' + data.message;
-        }
-    })
-    .catch(error => {
-        loadingDiv.style.display = 'none';
-        errorDiv.style.display = 'block';
-        document.getElementById('logs-error-text').textContent = 'Ошибка сети: ' + error.message;
-        console.error('Ошибка загрузки логов:', error);
-    });
-}
-
-function refreshLogs() {
-    loadLogs();
-}
-
-function handleStopParser(form) {
-    // Подтверждение остановки
-    if (!confirm('Остановить парсер Citilink? Все собранные данные будут сохранены и импортированы в БД.')) {
-        return false;
-    }
-    
-    // Блокируем кнопку и показываем процесс
-    const stopBtn = document.getElementById('stop-parser-btn');
-    const originalContent = stopBtn.innerHTML;
-    
-    stopBtn.disabled = true;
-    stopBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Остановка парсера...';
-    
-    // Показываем уведомление об отправке запроса
-    const alertDiv = document.createElement('div');
-    alertDiv.className = 'alert alert-info mt-2';
-    alertDiv.innerHTML = '<i class="fas fa-info-circle me-2"></i>Запрос на остановку отправлен. Парсер остановится в течение нескольких секунд...';
-    form.parentNode.appendChild(alertDiv);
-    
-    // Убираем уведомление через 10 секунд
-    setTimeout(() => {
-        if (alertDiv.parentNode) {
-            alertDiv.parentNode.removeChild(alertDiv);
-        }
-        // Восстанавливаем кнопку, если страница не обновилась
-        if (stopBtn.disabled) {
-            stopBtn.disabled = false;
-            stopBtn.innerHTML = originalContent;
-        }
-    }, 10000);
-    
-    console.log('Отправляется запрос на остановку парсера Citilink');
-    
-    // Возвращаем true для отправки формы
-    return true;
-}
 </script>
 
 {% endblock %} 

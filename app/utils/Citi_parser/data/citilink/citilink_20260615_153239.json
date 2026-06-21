@@ -1,0 +1,1498 @@
+[
+  {
+    "id": 2110470,
+    "url": "https://www.citilink.ru/product/ustroistvo-ohlazhdeniya-kuler-bloody-ac-12-soc-am5-am4-1200-1700-1851-2110470/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/BLOODY/",
+        "name": "BLOODY"
+      }
+    ],
+    "name": "Устройство охлаждения (кулер) BLOODY AC-12,  4-pin,  ARGB,  120мм,  черный,  retail [ac-12-argb230-bk]",
+    "article": "2110470",
+    "price": 2190,
+    "price_old": null,
+    "images": [
+      "https://cdn.citilink.ru/9q04zFDwz11WtVvgvj3OWhKpjr9NTYeQ2U64sj42Rfw/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/005ea087-cd76-44d8-9d87-b5ce96465968.jpg",
+      "https://cdn.citilink.ru/8XIXSUuM1x9E6QM5nXcF5JGwz7O6f29Xe-TtyJbc7Pw/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/1fe9aaa6-0f30-4a29-b079-5c7cb54ccd0e.jpg",
+      "https://cdn.citilink.ru/Ymo70LGGpmpKtnBWnd4r8Lgxt5UUHxl5kQBb3_2G47I/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d255cc9e-e301-434d-9ba7-59ace5f35d9d.jpg",
+      "https://cdn.citilink.ru/bgzPsvPA2QcvABWVZDj6eA9sjcSpunVylnqqgfozPqc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/9cc3dd85-0762-4d10-aa1a-6c76f61a4afc.jpg",
+      "https://cdn.citilink.ru/wHoRsvTwB_a7i-rmGvwGf-AAx0BVF66MnVXfc0OIQGI/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/729e97f5-f2ea-4dfa-ba92-53db81288567.jpg",
+      "https://cdn.citilink.ru/76HN2VjlxgYhiLWkrElYFt6UXUeqtgYgxN_xqPFw7A4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ec01b616-0860-4e21-b53c-00f983f04a91.jpg",
+      "https://cdn.citilink.ru/CHdsQ1ez0Zgnx0XbILOUVpDnStCvEYWQz_25ET6furE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/e420d1aa-066a-40eb-9ca8-b10b2a4af133.jpg",
+      "https://cdn.citilink.ru/1lKSnShvQseNxpUB_7NFd1ILMA8JQ_eDd2wZa1QIQrc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/9b788fb9-10fc-43b7-bdbd-d0810c1adbfd.jpg",
+      "https://cdn.citilink.ru/1mI9226n6FKJFiRV4a0qDjD1rTmpvqYgeekrfU52zcQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/e7fe8b3c-eeda-4077-b183-e3878a938c06.jpg",
+      "https://cdn.citilink.ru/MomaI6rlso5ImhaF7NtK94Ycg_Jd28mOWbRMtnRyung/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/6ec58ed5-6216-4688-a8f2-3062b9c07eaa.jpg",
+      "https://cdn.citilink.ru/jdDtWdiYa0Xb8C7xRrWrkszetmkH2JcyIqdttVTGUKk/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/7e8a0b45-c9f7-4df2-b51c-9e787976ba0d.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "BLOODY"
+          },
+          {
+            "name": "Модель",
+            "value": "AC-12"
+          },
+          {
+            "name": "Socket",
+            "value": "AM2, AM2+, AM3, AM3+, AM4, AM5, FM1, FM2, FM2+, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1366, LGA 1700, LGA 1851, LGA 2011, LGA 2011-v3, LGA 2066"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "230"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "алюминий"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "1"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "120"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "50 - 75 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "14 - 26 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "800 - 1900 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydraulic Bearing"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "черный"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          }
+        ]
+      },
+      {
+        "name": "Тепловые трубки",
+        "properties": [
+          {
+            "name": "Тепловые трубки",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, автоматический термоконтроль, подсветка"
+          },
+          {
+            "name": "Тип подсветки",
+            "value": "ARGB"
+          },
+          {
+            "name": "Цвет подсветки",
+            "value": "многоцветная"
+          },
+          {
+            "name": "Термопаста в комплекте",
+            "value": "есть"
+          },
+          {
+            "name": "Дополнительные особенности",
+            "value": "цельное основание"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "черный"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "2.6"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "154"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "76"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "124"
+          },
+          {
+            "name": "Вес",
+            "value": "582"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.16x0.11x0.21"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "0.79"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 5,
+    "reviews": 2
+  },
+  {
+    "id": 2006260,
+    "url": "https://www.citilink.ru/product/ustroistvo-ohlazhdeniya-kuler-id-cooling-se-214-xt-basic-120mm-ret-2006260/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/IDA5COOLING/",
+        "name": "ID-COOLING"
+      }
+    ],
+    "name": "Устройство охлаждения (кулер) ID-COOLING SE-214-XT Basic,  4-pin,  120мм,  черный,  retail",
+    "article": "2006260",
+    "price": 1050,
+    "price_old": 1170,
+    "images": [
+      "https://cdn.citilink.ru/_NvJpVq4vvwZBCkERbbtNoaCDR7vpS04HggduHdVTEI/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/e2144b3e-a537-4ad0-88c9-26eea0c043dc.jpg",
+      "https://cdn.citilink.ru/s9nA7amyW7joBTsvxuilV-5b-4gWFWnPI10XyqZT_G8/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/81e3600d-926a-44a0-9273-342b6a2395b3.jpg",
+      "https://cdn.citilink.ru/xpd8y5gj7kt1IPJJEL3WzUXvGMQKR14xDcFnhEKuiyc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/893fbdf5-8979-4c9f-853c-0fcd8d4f234b.jpg",
+      "https://cdn.citilink.ru/jqV7Avn72nwDDUHs-SVhYWxvqZ9MNYkXEYf9pHeEeV8/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/71667144-3109-4849-a490-369bc9144db6.jpg",
+      "https://cdn.citilink.ru/0pTN6BdaEzMr9D18sWQhn7gV17Enm_2omGBtHTzC1ZE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/163291aa-fb67-49be-a9a8-6e59f31a5c3c.jpg",
+      "https://cdn.citilink.ru/e0GODOlMJCjszJEPH2uYvCw8j-tWvL7DmUPnvZvtBIM/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/047a24b7-90b4-48be-a03d-d9cea788a78b.jpg",
+      "https://cdn.citilink.ru/cnS7TLYPrI0AjFHe_XgQ8xhswjSy4UpHzoE_PDz4tjU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/14a8c228-acd0-4207-9861-5e3176a7fcb2.jpg",
+      "https://cdn.citilink.ru/tpwozXNoc_sGqk-y7A_j3UD6f1szjEdTnSB0SNwtzvs/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/b25a5e44-8649-4328-ae12-c0a6577c88d8.jpg",
+      "https://cdn.citilink.ru/NWzv34j7YLOzDphsrPmSgTa7UywSi7OqekTST_fjsk0/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ac88c7f1-9fcd-4307-8418-47c6acb3baed.jpg",
+      "https://cdn.citilink.ru/6SrEmq0GS2esmjI5biNClp_cnZ-qdLZN81ZvbukcONY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ab1c591f-5e71-48fb-a42e-58f864c69542.jpg",
+      "https://cdn.citilink.ru/f45GO-2VP5gmhXmxKUoHXTwn-BGGQ9yCv28cEIXQDdk/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/5f607aab-2568-4618-add0-a4bdcbf76f48.jpg",
+      "https://cdn.citilink.ru/dhA6VDfQebrplESFFoHm2c06Igqq8evQgxWW-GNs9Gs/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/8066cc82-78c0-4375-8b1a-7531469b7afd.jpg",
+      "https://cdn.citilink.ru/oCIQJTh0Dmj0clMf6lIiJVDxYYW-GvMvKlj8c6R6gRg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/06e996ec-48d6-4060-8b47-57252d64fee5.jpg",
+      "https://cdn.citilink.ru/xzkZ3JMvsS57Tgu_XKlv1Sxu9CqJdRG2u6ahO5oVRBQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d43be69f-5f56-41d1-a51d-a73ae84523f5.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "ID-COOLING"
+          },
+          {
+            "name": "Модель",
+            "value": "SE-214-XT Basic"
+          },
+          {
+            "name": "Назначение кулера для бренда",
+            "value": "AMD, Intel"
+          },
+          {
+            "name": "Тип конструкции",
+            "value": "башенный"
+          },
+          {
+            "name": "Socket",
+            "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "180"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "алюминий/медь"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах, скоба"
+          },
+          {
+            "name": "Разборное крепление",
+            "value": "да"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "1"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "120"
+          },
+          {
+            "name": "Направление выдува",
+            "value": "параллельно МП"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "76.16 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "16 - 27 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "700 - 1800 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydraulic Bearing"
+          },
+          {
+            "name": "Максимальное статическое давление",
+            "value": "21.2"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "черный"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          }
+        ]
+      },
+      {
+        "name": "Тепловые трубки",
+        "properties": [
+          {
+            "name": "Тепловые трубки",
+            "value": "4 шт с диаметром по 6 мм"
+          },
+          {
+            "name": "Материал тепловых трубок",
+            "value": "медь"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, место для дополнительного вентилятора, технология прямого контакта"
+          },
+          {
+            "name": "ЖК дисплей",
+            "value": "нет"
+          },
+          {
+            "name": "Термопаста в комплекте",
+            "value": "есть"
+          },
+          {
+            "name": "Дополнительные особенности",
+            "value": "основание с открытыми тепловыми трубками"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "черный"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "2.4"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "150"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "72"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "124"
+          },
+          {
+            "name": "Вес",
+            "value": "500"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.13x0.105x0.17"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "0.76"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 4.9,
+    "reviews": 101
+  },
+  {
+    "id": 1736876,
+    "url": "https://www.citilink.ru/product/ustroistvo-ohlazhdeniya-kuler-id-cooling-se-214-xt-120mm-ret-1736876/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/IDA5COOLING/",
+        "name": "ID-COOLING"
+      }
+    ],
+    "name": "Устройство охлаждения (кулер) ID-COOLING SE-214-XT,  4-pin,  RGB,  120мм,  черный,  retail",
+    "article": "1736876",
+    "price": 1190,
+    "price_old": 1440,
+    "images": [
+      "https://cdn.citilink.ru/L_27oL_4AelFOSmCgd9--2laB8PxIsF_Ayumhg-ATSo/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/748c35c4-ea0d-4dda-a7b8-0a29f67862fc.jpg",
+      "https://cdn.citilink.ru/uf6Axu3qgOCwDn2Mh78rctmiGR_HM8-LagcX1JcXlHE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/3f3e509c-1b43-4b33-9f4e-3fa4f8e1c1b7.jpg",
+      "https://cdn.citilink.ru/_wKKuKbM2GTV0FS3AZYI42cn8pXmTUOw5L3hwVIu-J4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/165acbb1-4186-43d9-a668-3e8401971d46.jpg",
+      "https://cdn.citilink.ru/-Z-kWpDn-48jHcL8RMgeT2A6w2deYCGyH0dE5tXqrh4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ceb0e82a-69c5-4acd-9677-35d24909707b.jpg",
+      "https://cdn.citilink.ru/YwSWKWBYqDWl6M6nZ0xomXFbfcLNq2dHA09s0RqXqlU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d0af3d73-ad19-4b0b-9cb0-20504bcbc501.jpg",
+      "https://cdn.citilink.ru/jsLC89t6U07Qkh7T9YkZJpORPQ3AOxWw21Wklq7N9ws/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/0c95bb68-f6d6-4767-a444-3bc969736139.jpg",
+      "https://cdn.citilink.ru/5i5aTYG785jzV-f7A3UhP2lUnZQqekoRwTzGvpUSoXI/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/c2a090b3-8931-4558-87c3-e02abdd63ada.jpg",
+      "https://cdn.citilink.ru/uZ8kerKtcPf20qpfMwc8LeRqMF6kY-_aiZzIlQ13jq8/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/967581a0-d242-47a3-800f-3f6c6e2618e1.jpg",
+      "https://cdn.citilink.ru/9Y1Xbza0K3NUFXzRQ-W9IspFBNphFBs-PPxY3FwJXNE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/14379d79-7190-446c-aef3-726df9e064de.jpg",
+      "https://cdn.citilink.ru/wy_PRicsXW2DFfhwD22wYVOqrmmv8Iclh-AfFM1I8Xw/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/6de69e08-ae17-468a-b7cd-d38b56dc29de.jpg",
+      "https://cdn.citilink.ru/NRF82pYWx01sFZ-Wzj3u0chxNV5duQPVM0kSkgzbdH4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/832bc346-2e3e-4ca6-9995-355d3c921ac3.jpg",
+      "https://cdn.citilink.ru/d-KZldSCLT9o3mmYiW6X_24Mf6h0BI04AORJO3aOubg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/54b341c8-7447-4546-b41c-4f935283e045.jpg",
+      "https://cdn.citilink.ru/M8YsaMy7xZZ_S-LAu2NKoso41CHh40bvGuQaY0OIO88/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/0e7b8af1-b774-4ce8-9135-63a295517dee.jpg",
+      "https://cdn.citilink.ru/dD2WSA4OllobIRq0FglZ4I2VaYUvFhsEfq1J4f6nJ9o/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/caa0675d-1b05-446e-98f6-49e0672e6c55.jpg",
+      "https://cdn.citilink.ru/oriPgZrYSW4mQykAYwYdFsydUvXQeAU2-k3L0kFBsyU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/a2953d2b-de70-4cf9-8894-f5877bd7fe07.jpg",
+      "https://cdn.citilink.ru/zxQ0s8s-wjWFudvo-rn4Yulj1iClxOmXMFFeeNvO5kM/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/c08dab7d-bb94-4318-9d2b-b0c61b4b0f13.jpg",
+      "https://cdn.citilink.ru/xg4usC8eUxpF1DW3ESpIALcSv_ID2ZPgyPYDKqShASg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d2e88487-47f0-4c5e-b4b4-604f0d6ec34a.jpg",
+      "https://cdn.citilink.ru/dGAQWd16cQwUmIIWrVvB9QRvodqTOMeXq3I3I2XtrhY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/e725f14b-9429-494d-b845-608a5fa6ca90.jpg",
+      "https://cdn.citilink.ru/ytYiBhmDT_ytkdRGg3OZpA90XmhFBvhKFZTHLC79NaA/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/8b45a1c7-5e40-458d-99a3-46b355ca942c.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "ID-COOLING"
+          },
+          {
+            "name": "Модель",
+            "value": "SE-214-XT"
+          },
+          {
+            "name": "Назначение кулера для бренда",
+            "value": "AMD, Intel"
+          },
+          {
+            "name": "Тип конструкции",
+            "value": "башенный"
+          },
+          {
+            "name": "Socket",
+            "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "180"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "алюминий/медь"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах"
+          },
+          {
+            "name": "Разборное крепление",
+            "value": "да"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "1"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "120"
+          },
+          {
+            "name": "Направление выдува",
+            "value": "параллельно МП"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "64.8 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "16 - 27 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "500 - 1500 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydraulic Bearing"
+          },
+          {
+            "name": "Максимальное статическое давление",
+            "value": "18.3"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "черный"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          }
+        ]
+      },
+      {
+        "name": "Тепловые трубки",
+        "properties": [
+          {
+            "name": "Тепловые трубки",
+            "value": "4 шт с диаметром по 6 мм"
+          },
+          {
+            "name": "Материал тепловых трубок",
+            "value": "медь"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, место для дополнительного вентилятора, подсветка, технология прямого контакта"
+          },
+          {
+            "name": "ЖК дисплей",
+            "value": "нет"
+          },
+          {
+            "name": "Источник подсветки",
+            "value": "вентилятор"
+          },
+          {
+            "name": "Тип подсветки",
+            "value": "RGB"
+          },
+          {
+            "name": "Цвет подсветки",
+            "value": "многоцветная"
+          },
+          {
+            "name": "Коннектор подключения подсветки",
+            "value": "3-pin"
+          },
+          {
+            "name": "Особенности",
+            "value": "Dynamic Multi-Color LED, 4 тепл.трубки прямого контакта"
+          },
+          {
+            "name": "Дополнительные особенности",
+            "value": "основание с открытыми тепловыми трубками"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "черный/белый"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемая сила тока вентилятора",
+            "value": "0.28"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "3.36"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "150"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "72"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "124"
+          },
+          {
+            "name": "Вес",
+            "value": "810"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.13x0.11x0.175"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "0.74"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 4.9,
+    "reviews": 133
+  },
+  {
+    "id": 2077250,
+    "url": "https://www.citilink.ru/product/ustroistvo-ohlazhdeniya-kuler-digma-d-cpc150-pwm1-soc-am5-am4-1200-170-2077250/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/DIGMA/",
+        "name": "DIGMA"
+      }
+    ],
+    "name": "Устройство охлаждения (кулер) Digma D-CPC150-PWM1,  4-pin,  90мм,  черный,  retail",
+    "article": "2077250",
+    "price": 1190,
+    "price_old": null,
+    "images": [
+      "https://cdn.citilink.ru/Fd9n-DGSNzDevM-WKrsXe4ACyFAbXF6f66VKgocQUbQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/9eac2d4d-5baf-4346-9729-58f249d97d7f.jpg",
+      "https://cdn.citilink.ru/f9RnG2WgPXBTRYH95vqkhu3dIXqAQw-axQDTcToor8g/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/fece6fae-0cba-429b-b81b-43f0b4b51f7e.jpg",
+      "https://cdn.citilink.ru/N0D-9Rktc8K6ewMkI3CDXBFSX63AJKevFg2pprUyd2o/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/8330b9f2-dece-4ba3-9448-b27a93b7df42.jpg",
+      "https://cdn.citilink.ru/iZLGKD_CUG78ppIDNKPaPSVoiNZh286IG7o2FgUG1GQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/c73f596b-d463-4160-a614-57d4f735af11.jpg",
+      "https://cdn.citilink.ru/TVmw9wAQ8JshDabVC5Yo_wiBDYNyZoCB4NkupdW9DRE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ee437550-1784-47f1-a7c5-24f34c581476.jpg",
+      "https://cdn.citilink.ru/2HLHKO08Mj3HZ-e8SQj_eQxXUrP-iqYjmLjucVLUIsg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/a9ac0b53-7727-4f96-9fef-d6bc36aa506d.jpg",
+      "https://cdn.citilink.ru/HVgrVUVueFqEbZUtCLHx3-puXkqocQsC5vyUwXro7kg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/246e33b8-0697-44eb-8b88-c9b8a874dc9d.jpg",
+      "https://cdn.citilink.ru/T3Ihka4OATvnxrHI2xhKjpWEEdDJcx0JJq8pgO0A9Hw/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/3d15cb2f-7339-45b9-953b-b98a3bb670eb.jpg",
+      "https://cdn.citilink.ru/pLTaP17PHlc7AKR2yRJMUaztjw2PV0j-V4GaLKtvlN0/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/535bda75-0484-4b55-be55-ef582c1beaed.jpg",
+      "https://cdn.citilink.ru/-2I2RqXCX9XhW-tyJa2sDvYfJWXT_lcf0BEomuuqPM4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/2d19ebb3-8c76-49c6-9588-f52ad4850cca.jpg",
+      "https://cdn.citilink.ru/5Y7oBio-epQ7RI1uChyN8996ZZAn9zNK5MAvmx_Rmkg/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/81beaae1-f541-488e-abc4-13133d1b33e3.jpg",
+      "https://cdn.citilink.ru/zllqIfQj2Du7t8FqaV9PhXh-EckZxemxMTHjy-bXOtQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/57f732a3-f3e2-4b3a-8ad7-12d78a0cfe94.jpg",
+      "https://cdn.citilink.ru/qGXBPkcwqbeq7NHNsFWY1vX_Zix1ZmnOwfZSQUCmZRc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/b958a087-7f2e-4684-83c3-260dea5dd566.jpg",
+      "https://cdn.citilink.ru/OFDNk6THwpnHWor-mk10jJPgOIBw8ExKqaTPoZ74p9Y/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ac23d552-64fc-46ee-921f-bc43cfe62be1.jpg",
+      "https://cdn.citilink.ru/5Dky5uL2IZJAa9G3iWvceo65YqRuqxAQ4msZ1wYYeik/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/319c04a7-b468-43ff-ae7d-8032a170c3b8.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "DIGMA"
+          },
+          {
+            "name": "Модель",
+            "value": "D-CPC150-PWM1"
+          },
+          {
+            "name": "Тип конструкции",
+            "value": "башенный"
+          },
+          {
+            "name": "Socket",
+            "value": "AM2, AM2+, AM3, AM3+, AM4, AM5, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "150"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "медь"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах"
+          },
+          {
+            "name": "Разборное крепление",
+            "value": "да"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "1"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "90"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "25 - 45 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "14 - 26 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "1000 - 2500 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydro Dynamic"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "черный"
+          },
+          {
+            "name": "Срок службы вентилятора",
+            "value": "50000"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          }
+        ]
+      },
+      {
+        "name": "Тепловые трубки",
+        "properties": [
+          {
+            "name": "Тепловые трубки",
+            "value": "4"
+          },
+          {
+            "name": "Материал тепловых трубок",
+            "value": "медь"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, автоматический термоконтроль"
+          },
+          {
+            "name": "Термопаста в комплекте",
+            "value": "есть"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "черный"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемая сила тока вентилятора",
+            "value": "0.28"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "3.4"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "126"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "75"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "97"
+          },
+          {
+            "name": "Вес",
+            "value": "360"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.125x0.113x0.16"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "0.58"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 4.9,
+    "reviews": 17
+  },
+  {
+    "id": 1896511,
+    "url": "https://www.citilink.ru/product/ustroistvo-ohlazhdeniya-kuler-id-cooling-se-224-xts-120mm-ret-1896511/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/IDA5COOLING/",
+        "name": "ID-COOLING"
+      }
+    ],
+    "name": "Устройство охлаждения (кулер) ID-COOLING SE-224-XTS,  4-pin,  120мм,  черный,  retail",
+    "article": "1896511",
+    "price": 1570,
+    "price_old": null,
+    "images": [
+      "https://cdn.citilink.ru/gFCfuNcJoa90qghXehbmxE3fO86XfkO_x20vu1iEvpc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/2af03ddc-c615-4502-81bb-89a6656b5c0c.jpg",
+      "https://cdn.citilink.ru/uRxmy0bvYQOG-qeoIXyr1MWrOKCT797kGeyWnb8-uIw/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/97df07e4-f686-49dc-9916-0aade04a7b96.jpg",
+      "https://cdn.citilink.ru/sjfJA6UDC07ef7rxMASsI9IovWnmisc6yrs2clbS_Gs/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/3d9a1421-da9f-40c6-9cf8-d4b121012fff.jpg",
+      "https://cdn.citilink.ru/l1g_BYsGg4GqvuWK28ksidwD1Hhvhbytapf9RPPnnB0/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/f29b0384-9c02-440f-9abc-90d2f7285b53.jpg",
+      "https://cdn.citilink.ru/bScX9FQmd5oJNvUMGm2w_DyEKIJxV_R82aFHRUJgN-8/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/3fccddc4-12c4-4054-b154-99fb6bab6a15.jpg",
+      "https://cdn.citilink.ru/tzyYDgMrKinSNcU5Do75GmPRRK74fFC9Thhgn8YR174/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/1d9cd50d-413c-4878-8f6a-39cfd2010386.jpg",
+      "https://cdn.citilink.ru/_4BSqI8RRUWXH5otU9xO_vQmLMfywVqsZiuVzLB8DMA/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/54f2bb9e-2296-4599-8cf2-c7304121ed68.jpg",
+      "https://cdn.citilink.ru/QDTzNccXdQpz4p0Fpn2vt1HOmqpZ9g6QOkxMVSxPafQ/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/db7d1e18-3b2c-4c86-bb75-75b93eadf390.jpg",
+      "https://cdn.citilink.ru/JIitGFCVaiMk6C5mt9iWNqHKmrS_NQvL_Nh1eJ2rv6w/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/1ba8fcfa-6593-470d-9208-ff67c60d78c2.jpg",
+      "https://cdn.citilink.ru/X2EQ_TUxDA_l9zOB_9owbikSnMRPObvn-esc8AblcjA/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d8ad7c4e-d2b6-4da8-bd3c-ff8f5d073ba7.jpg",
+      "https://cdn.citilink.ru/jmW_l10N0btPv080ppypHrb0yzTLDLug9i8zXOzaAek/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/68d72444-5bdf-4419-855d-cbf2de3dfc69.jpg",
+      "https://cdn.citilink.ru/1gNmnuIF6Bw6H0c78U_mJ_G5sxlN4MFs9G7nhyjZV18/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/ba9bb9b8-4ff3-4bd9-a329-b95d5fc2b6c6.jpg",
+      "https://cdn.citilink.ru/ExyvHWnSqLRp_LLibjwsqcvk1rRIoiMSgi1UlKIf2qY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/92bb76ad-88ee-4ea1-8336-b8589dc03c7d.jpg",
+      "https://cdn.citilink.ru/yDv8V6uwNLq6Np0ai-y_a4gUEQ2bCwToGO6uQpcGOfY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/2187046a-dd96-4a3f-ac31-c622ce005264.jpg",
+      "https://cdn.citilink.ru/C1oBgVO6SatiCWoUT6WbUQQOUX77SMol4-tEDGTmF4A/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/bc37475a-56b6-4532-b643-f6cd5dd866f9.jpg",
+      "https://cdn.citilink.ru/Au-WLqgjT57tujWpDW_cFmRM3Y4aDx3fegk5sANEzMo/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/5dbefd5a-2fac-4628-97ab-0813b69d75c3.jpg",
+      "https://cdn.citilink.ru/6rdAWw1QOp4rMPaRH3wMgOh-uuoGHQyC5scO6Z0HGIk/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/814f8f23-53f6-416a-8d7c-10424af61f0d.jpg",
+      "https://cdn.citilink.ru/NL0ah18VIwU_4MbbC11Rca2fnB6D85429fGMMUQIYP4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/75688b77-b04f-4ace-b62b-c4bc32ec74f8.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "ID-COOLING"
+          },
+          {
+            "name": "Модель",
+            "value": "SE-224-XTS"
+          },
+          {
+            "name": "Назначение кулера для бренда",
+            "value": "AMD, Intel"
+          },
+          {
+            "name": "Тип конструкции",
+            "value": "башенный"
+          },
+          {
+            "name": "Socket",
+            "value": "AM4, AM5, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1700, LGA 1851"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "220"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "алюминий/медь"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах, скоба"
+          },
+          {
+            "name": "Разборное крепление",
+            "value": "да"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "1"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "120"
+          },
+          {
+            "name": "Направление выдува",
+            "value": "параллельно МП"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "70 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "16 - 29 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "600 - 1500 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydraulic Bearing"
+          },
+          {
+            "name": "Максимальное статическое давление",
+            "value": "21.1"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "черный"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          }
+        ]
+      },
+      {
+        "name": "Тепловые трубки",
+        "properties": [
+          {
+            "name": "Тепловые трубки",
+            "value": "4 шт с диаметром по 6 мм"
+          },
+          {
+            "name": "Материал тепловых трубок",
+            "value": "медь"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, место для дополнительного вентилятора, технология прямого контакта"
+          },
+          {
+            "name": "ЖК дисплей",
+            "value": "нет"
+          },
+          {
+            "name": "Термопаста в комплекте",
+            "value": "есть"
+          },
+          {
+            "name": "Дополнительные особенности",
+            "value": "основание с открытыми тепловыми трубками"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "серебристый/черный"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемая сила тока вентилятора",
+            "value": "0.15"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "1.8"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "151"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "75"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "120"
+          },
+          {
+            "name": "Вес",
+            "value": "650"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.155x0.114x0.177"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "1.04"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 4.9,
+    "reviews": 77
+  },
+  {
+    "id": 2121331,
+    "url": "https://www.citilink.ru/product/sistema-vodyanogo-ohlazhdeniya-bloody-lc-10-soc-am5-am4-1200-1700-1851-2121331/",
+    "categories": [
+      {
+        "url": "https://www.citilink.ru/catalog/komplektuyuschie-dlya-pk/",
+        "name": "Комплектующие для ПК"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-kompyutera/",
+        "name": "Системы охлаждения компьютера"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/",
+        "name": "Системы охлаждения процессора"
+      },
+      {
+        "url": "https://www.citilink.ru/catalog/sistemy-ohlazhdeniya-processora/BLOODY/",
+        "name": "BLOODY"
+      }
+    ],
+    "name": "Система водяного охлаждения BLOODY LC-10,  4-pin,  ARGB,  120мм,  белый,  retail [lc-10-argb240-wh]",
+    "article": "2121331",
+    "price": 4490,
+    "price_old": null,
+    "images": [
+      "https://cdn.citilink.ru/qlympQYEEjBdPc25GOp9rSk50SNDvuJuiKgQuvkUMxE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d7f85dea-ae9d-4fc7-88b6-2fc6ec64b82f.jpg",
+      "https://cdn.citilink.ru/St70Cy7zhllJpl_aeyimeqd6p8p74p_uOO65NVisLm8/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/aa4a4318-5bd1-41ef-b229-f178c853d218.jpg",
+      "https://cdn.citilink.ru/xtoZdvibpmAxDvgHo4VsKDNXAQ2_7eRWC4iFR1Q5LQ4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/fe03d65c-adf2-4298-a566-40ca86adcc81.jpg",
+      "https://cdn.citilink.ru/NDXB9WzmGTmuqs0IEZk7NpY2bfSO8EPC3ILdvRCEfvE/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/6974724a-9a82-4cd2-bebb-d4b59b32bd96.jpg",
+      "https://cdn.citilink.ru/ybQmeMRj60VW4LCXNSD9oXEzoTuw--WtBzso8PAm2lU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/2ee9ce7e-b7ca-4fc1-8d06-bbc4fcfd7acc.jpg",
+      "https://cdn.citilink.ru/RyAblpFc4C176M0peDXq0zgMxx-aCXv_xWWY0g-rTRU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/bb4ae12d-50c0-4ea1-8e9b-9cd1cff7c021.jpg",
+      "https://cdn.citilink.ru/CW6UtuP85qHMYhC_hEXqp902ErtLxYbbwolBc0XycP4/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/cc10b31b-f981-44d7-9341-8281ac84f4f4.jpg",
+      "https://cdn.citilink.ru/rLtt0Bg1OssIklVruMZIodMAAfHs2mvTNB0twLfkvaU/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/aef73b63-503b-477d-a970-fe59e233ae6a.jpg",
+      "https://cdn.citilink.ru/Dno7bsMYYliDD7alm5FPJpTl498FFX3-lR3-4nz0H78/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d0d39b01-749a-43b9-9755-69fab09d5d2e.jpg",
+      "https://cdn.citilink.ru/SafFrhwzv61mQnkv2W8Rm8YhaW6u-X3kVAWXylJpRdY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/d54fe129-f1ec-4124-8c14-f1abdbc51647.jpg",
+      "https://cdn.citilink.ru/3577MJu5KEfez1zPSMWhBuBOme5JQPptdevHq67ORTc/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/6ac05608-3b98-45d1-aa54-2524356c6a48.jpg",
+      "https://cdn.citilink.ru/NO6zE9T1lOREtALE8e90hVJse1Jq-QOXPrFjlxu1__0/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/8fe4cc30-17aa-4d9e-a2a8-c869f98eb723.jpg",
+      "https://cdn.citilink.ru/_KyzIBgGNuLX6gLBfGISai8ntg-fJvXHDrdsMbXTqwY/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/0992c4ef-8a50-4939-9509-6f22692fc29d.jpg",
+      "https://cdn.citilink.ru/ruVf8gkaNw2fNyWMREXU0PmXEvpNPkyWfZrawRimVUk/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/1fa064e2-66e9-4e09-97d3-cf3a095a68d1.jpg",
+      "https://cdn.citilink.ru/-MIiS-mKs9ArRf1auom-rTRZ5jj8kxaUGg_tHIe4_7Y/resizing_type:fit/gravity:sm/width:1200/height:750/plain/product-images/6dcab6ad-1eea-4109-b289-e33ddb884435.jpg"
+    ],
+    "properties": [
+      {
+        "name": "Основные параметры",
+        "properties": [
+          {
+            "name": "Бренд",
+            "value": "BLOODY"
+          },
+          {
+            "name": "Модель",
+            "value": "LC-10"
+          },
+          {
+            "name": "Назначение кулера для бренда",
+            "value": "AMD, Intel"
+          },
+          {
+            "name": "Тип компонента",
+            "value": "помпа"
+          },
+          {
+            "name": "Socket",
+            "value": "AM2, AM2+, AM3, AM3+, AM4, AM5, FM1, FM2, FM2+, LGA 1150, LGA 1151, LGA 1155, LGA 1156, LGA 1200, LGA 1366, LGA 1700, LGA 1851, LGA 2011, LGA 2011-v3"
+          },
+          {
+            "name": "Макс, рассеиваемая мощность (TDP, Вт)",
+            "value": "260"
+          },
+          {
+            "name": "Материал основания прилегающего к охлаждаемому устройству",
+            "value": "медь"
+          },
+          {
+            "name": "Тип крепления",
+            "value": "на винтах"
+          },
+          {
+            "name": "Разборное крепление",
+            "value": "да"
+          },
+          {
+            "name": "Скорость вращения помпы",
+            "value": "2500 - 2700 об/мин"
+          },
+          {
+            "name": "Срок службы помпы",
+            "value": "50000"
+          }
+        ]
+      },
+      {
+        "name": "Вентиляторы",
+        "properties": [
+          {
+            "name": "Количество вентиляторов",
+            "value": "2"
+          },
+          {
+            "name": "Размер вентилятора",
+            "value": "120"
+          },
+          {
+            "name": "Воздушный поток вентилятора",
+            "value": "35 - 75 cfm"
+          },
+          {
+            "name": "Уровень шума вентилятора",
+            "value": "20 - 35 дБ"
+          },
+          {
+            "name": "Скорость вращения вентилятора",
+            "value": "800 - 1800 об/мин"
+          },
+          {
+            "name": "Тип подшипника",
+            "value": "Hydraulic Bearing"
+          },
+          {
+            "name": "Цвет вентилятора",
+            "value": "белый"
+          },
+          {
+            "name": "Срок службы вентилятора",
+            "value": "50000"
+          },
+          {
+            "name": "Описание дополнительных вентиляторов",
+            "value": "Диаметр второго вентилятора 120 мм"
+          },
+          {
+            "name": "Питание вентилятора от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Радиатор",
+        "properties": [
+          {
+            "name": "Материал радиатора",
+            "value": "алюминий+медь"
+          },
+          {
+            "name": "Длина радиатора",
+            "value": "272"
+          },
+          {
+            "name": "Ширина радиатора",
+            "value": "120"
+          },
+          {
+            "name": "Толщина радиатора",
+            "value": "27"
+          }
+        ]
+      },
+      {
+        "name": "Помпа и водоблок",
+        "properties": [
+          {
+            "name": "Материал помпы",
+            "value": "медь"
+          },
+          {
+            "name": "Цвет водоблока",
+            "value": "белый"
+          },
+          {
+            "name": "Питание помпы от материнской платы",
+            "value": "4-pin"
+          }
+        ]
+      },
+      {
+        "name": "Особенности",
+        "properties": [
+          {
+            "name": "Особенности системы охлаждения",
+            "value": "PWM, автоматический термоконтроль, защита от протечек, никелированное покрытие, подсветка, технология прямого контакта"
+          },
+          {
+            "name": "ЖК дисплей",
+            "value": "нет"
+          },
+          {
+            "name": "Источник подсветки",
+            "value": "вентилятор, помпа"
+          },
+          {
+            "name": "Тип подсветки",
+            "value": "ARGB"
+          },
+          {
+            "name": "Цвет подсветки",
+            "value": "многоцветная"
+          },
+          {
+            "name": "Коннектор подключения подсветки",
+            "value": "3-pin"
+          },
+          {
+            "name": "Поддержка синхронизации подсветки",
+            "value": "ASRock Polychrome Sync, ASRock RGB LED, Asus Aura Sync, Asus Aura Sync RGB, Biostar RGB Sync, Gigabyte RGB Fusion, MSI Mystic Light, MSI Mystic Light Sync"
+          },
+          {
+            "name": "Термопаста в комплекте",
+            "value": "есть"
+          },
+          {
+            "name": "Особенности",
+            "value": "ARGB подсветка вентилятора и помпы"
+          },
+          {
+            "name": "Дополнительные особенности",
+            "value": "цельное основание"
+          },
+          {
+            "name": "Цвет товара",
+            "value": "белый"
+          }
+        ]
+      },
+      {
+        "name": "Электропитание",
+        "properties": [
+          {
+            "name": "Потребляемое напряжение вентилятора",
+            "value": "12"
+          },
+          {
+            "name": "Потребляемое напряжение помпы",
+            "value": "12 В"
+          },
+          {
+            "name": "Потребляемая сила тока вентилятора",
+            "value": "0.27"
+          },
+          {
+            "name": "Потребляемая мощность вентилятора",
+            "value": "3.3"
+          },
+          {
+            "name": "Потребляемая мощность помпы",
+            "value": "4.2"
+          }
+        ]
+      },
+      {
+        "name": "Размеры, вес",
+        "properties": [
+          {
+            "name": "Высота кулера",
+            "value": "27"
+          },
+          {
+            "name": "Ширина кулера",
+            "value": "120"
+          },
+          {
+            "name": "Длина кулера",
+            "value": "272"
+          },
+          {
+            "name": "Тип поставки",
+            "value": "Ret"
+          }
+        ]
+      },
+      {
+        "name": "Упаковка",
+        "properties": [
+          {
+            "name": "Габариты упаковки (ед) ДхШхВ",
+            "value": "0.35x0.2x0.13"
+          },
+          {
+            "name": "Вес упаковки (ед)",
+            "value": "1.78"
+          }
+        ]
+      },
+      {
+        "name": "Дополнительные характеристики",
+        "properties": [
+          {
+            "name": "Гарантия",
+            "value": "24 мес."
+          }
+        ]
+      }
+    ],
+    "documents": [],
+    "rating": 0,
+    "reviews": 0
+  }
+]

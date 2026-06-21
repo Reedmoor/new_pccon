@@ -351,7 +351,6 @@ def scrape():
     # Get existing parser results if available
     dns_results = []
     citilink_results = []
-    env_citilink_category = os.environ.get('CATEGORY', '')
     dns_categories = []
     citilink_categories = []
     
@@ -488,46 +487,56 @@ def scrape():
         # Проверяем сначала категории Citilink
         citilink_data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser', 'data')
         if os.path.exists(citilink_data_dir):
-            # Получаем список категорий
+            from app.utils.standardization.import_helpers import load_citilink_flat_dumps
+
+            for entry in load_citilink_flat_dumps(citilink_data_dir):
+                try:
+                    with open(entry['file'], 'r', encoding='utf-8') as f:
+                        cat_products = json.load(f)
+                    citilink_categories.append(entry)
+                    citilink_results.extend(cat_products)
+                except Exception as e:
+                    logger.error(f'Ошибка чтения дампа Citilink {entry.get("file")}: {e}')
+
+            # Категории в старом формате: data/{категория}/Товары.json
             for category_dir in os.listdir(citilink_data_dir):
                 cat_dir_path = os.path.join(citilink_data_dir, category_dir)
-                if os.path.isdir(cat_dir_path):
-                    cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
-                    if os.path.exists(cat_products_file):
-                        try:
-                            with open(cat_products_file, 'r', encoding='utf-8') as f:
-                                cat_products = json.load(f)
-                                # Отображаемое имя категории
-                                display_name = category_dir
-                                if category_dir == 'videokarty':
-                                    display_name = 'Видеокарты'
-                                elif category_dir == 'processory':
-                                    display_name = 'Процессоры'
-                                elif category_dir == 'materinskie-platy':
-                                    display_name = 'Материнские платы'
-                                elif category_dir == 'bloki-pitaniya':
-                                    display_name = 'Блоки питания'
-                                elif category_dir == 'moduli-pamyati':
-                                    display_name = 'Модули памяти'
-                                elif category_dir == 'korpusa':
-                                    display_name = 'Корпуса'
-                                elif category_dir == 'sistemy-ohlazhdeniya-processora':
-                                    display_name = 'Кулеры для процессора'
-                                elif category_dir == 'ssd-nakopiteli':
-                                    display_name = 'SSD накопители'
-                                elif category_dir == 'zhestkie-diski':
-                                    display_name = 'Жесткие диски'
-                                
-                                citilink_categories.append({
-                                    'name': display_name,
-                                    'count': len(cat_products),
-                                    'file': cat_products_file,
-                                    'slug': category_dir
-                                })
-                                # Добавляем продукты в общий список
-                                citilink_results.extend(cat_products)
-                        except Exception as e:
-                            logger.error(f'Ошибка чтения категории Citilink {category_dir}: {str(e)}')
+                if category_dir == 'citilink' or not os.path.isdir(cat_dir_path):
+                    continue
+                cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
+                if os.path.exists(cat_products_file):
+                    try:
+                        with open(cat_products_file, 'r', encoding='utf-8') as f:
+                            cat_products = json.load(f)
+                        display_name = category_dir
+                        if category_dir == 'videokarty':
+                            display_name = 'Видеокарты'
+                        elif category_dir == 'processory':
+                            display_name = 'Процессоры'
+                        elif category_dir == 'materinskie-platy':
+                            display_name = 'Материнские платы'
+                        elif category_dir == 'bloki-pitaniya':
+                            display_name = 'Блоки питания'
+                        elif category_dir == 'moduli-pamyati':
+                            display_name = 'Модули памяти'
+                        elif category_dir == 'korpusa':
+                            display_name = 'Корпуса'
+                        elif category_dir == 'sistemy-ohlazhdeniya-processora':
+                            display_name = 'Кулеры для процессора'
+                        elif category_dir == 'ssd-nakopiteli':
+                            display_name = 'SSD накопители'
+                        elif category_dir == 'zhestkie-diski':
+                            display_name = 'Жесткие диски'
+
+                        citilink_categories.append({
+                            'name': display_name,
+                            'count': len(cat_products),
+                            'file': cat_products_file,
+                            'slug': category_dir
+                        })
+                        citilink_results.extend(cat_products)
+                    except Exception as e:
+                        logger.error(f'Ошибка чтения категории Citilink {category_dir}: {str(e)}')
         
         # Если категории не найдены, пробуем найти основной файл Товары.json
         if not citilink_categories:
@@ -561,24 +570,9 @@ def scrape():
         logger.error(f'Ошибка чтения результатов Citilink парсера: {str(e)}')
         flash(f'Ошибка чтения результатов Citilink парсера: {str(e)}', 'warning')
     
-    # Try to read category from .env file if not in environment
-    if not env_citilink_category:
-        try:
-            env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
-            if os.path.exists(env_path):
-                with open(env_path, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        if line.startswith('CATEGORY='):
-                            env_citilink_category = line.strip().split('=', 1)[1]
-                            break
-        except Exception as e:
-            logger.error(f"Error reading .env file: {e}")
-            print(f"Error reading .env file: {e}")
-    
     return render_template('admin/scrape.html', 
                            dns_results=dns_results, 
                            citilink_results=citilink_results,
-                           env_citilink_category=env_citilink_category,
                            dns_categories=dns_categories,
                            citilink_categories=citilink_categories)
 
@@ -675,159 +669,7 @@ def run_dns_parser():
 @login_required
 @admin_required
 def run_citilink_parser():
-    category = request.form.get('citilink_category', '')
-    
-    if not category:
-        flash('Необходимо выбрать категорию для парсинга Citilink', 'warning')
-        return redirect(url_for('admin.scrape'))
-    
-    try:
-        # Get path to Citilink parser directory
-        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
-        
-        # Create the .env file with only the selected category (cross-platform way)
-        env_file_path = os.path.join(citilink_parser_dir, ".env")
-        env_content = f"CATEGORY={category}"
-        
-        # Write .env file using Python (cross-platform)
-        try:
-            with open(env_file_path, 'w', encoding='utf-8') as env_file:
-                env_file.write(env_content)
-            logger.info(f"Created .env file with category: {category}")
-        except Exception as env_error:
-            logger.error(f"Failed to create .env file: {env_error}")
-            flash(f'Ошибка создания .env файла: {str(env_error)}', 'danger')
-            return redirect(url_for('admin.scrape'))
-        
-        # Set environment variable for the current process
-        os.environ['CATEGORY'] = category
-        
-            # Use the system Python interpreter
-        python_executable = sys.executable
-            
-        flash(f'Парсер Citilink запущен в фоновом режиме для категории "{category}". Страница остается доступной для других пользователей.', 'info')
-        
-        # Run the script in background WITHOUT blocking the web server
-        def run_parser_async():
-            try:
-                logger.info(f"=== ЗАПУСК ПАРСЕРА CITILINK ===")
-                logger.info(f"Категория: {category}")
-                logger.info(f"Время запуска: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-                
-                current_dir = os.getcwd()
-                os.chdir(citilink_parser_dir)
-        
-                # Удаляем файл-флаг остановки если он есть (новый запуск)
-                stop_flag_file = os.path.join(citilink_parser_dir, 'STOP_PARSER.flag')
-                if os.path.exists(stop_flag_file):
-                    try:
-                        os.remove(stop_flag_file)
-                        logger.info("Удален старый файл-флаг остановки")
-                    except Exception as e:
-                        logger.warning(f"Не удалось удалить файл-флаг: {e}")
-                
-                # Run parser in background
-                logger.info("Запуск процесса парсинга...")
-                result = subprocess.run(
-                    [python_executable, 'main.py'], 
-                    cwd=citilink_parser_dir,
-                    capture_output=True,
-                    text=True,
-                    timeout=1800  # 30 minutes timeout
-                )
-                
-                logger.info(f"Парсер завершился с кодом: {result.returncode}")
-                if result.stdout:
-                    logger.info(f"Вывод парсера:\n{result.stdout}")
-                if result.stderr:
-                    logger.error(f"Ошибки парсера:\n{result.stderr}")
-                
-                os.chdir(current_dir)
-                
-                # Проверяем, был ли парсер остановлен принудительно
-                stopped_by_user = os.path.exists(stop_flag_file)
-                if stopped_by_user:
-                    logger.info("Парсер был остановлен пользователем")
-                    # Не обновляем статус, так как функция остановки уже это сделала
-                    return
-                
-                # Store the result status in a temp file for checking later
-                status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
-                status_data = {
-                    'category': category,
-                    'status': 'completed' if result.returncode == 0 else 'failed',
-                    'timestamp': datetime.now().isoformat(),
-                    'returncode': result.returncode,
-                    'stdout': result.stdout[-1000:] if result.stdout else '',  # Last 1000 chars
-                    'stderr': result.stderr[-1000:] if result.stderr else ''   # Last 1000 chars
-                }
-                
-                with open(status_file, 'w', encoding='utf-8') as f:
-                    json.dump(status_data, f, ensure_ascii=False, indent=2)
-                    
-                # Auto-import if successful
-                if result.returncode == 0:
-                    try:
-                        items_file = os.path.join(citilink_parser_dir, 'data', category, 'Товары.json')
-                        if os.path.exists(items_file):
-                            logger.info("Начинаем автоматический импорт товаров...")
-                            from app.utils.standardization.import_products import import_products
-                            import_products()
-                            logger.info("Автоматический импорт товаров завершен успешно")
-                        else:
-                            logger.warning(f"Файл с товарами не найден: {items_file}")
-                    except Exception as import_error:
-                        logger.error(f"Ошибка автоматического импорта: {import_error}")
-                else:
-                    logger.error(f"Парсер завершился с ошибкой, код: {result.returncode}")
-                        
-            except subprocess.TimeoutExpired:
-                error_msg = f"Парсер Citilink превысил время ожидания (30 минут) для категории {category}"
-                logger.error(error_msg)
-                status_data = {
-                    'category': category,
-                    'status': 'timeout',
-                    'timestamp': datetime.now().isoformat(),
-                    'error': 'Parser timed out after 30 minutes'
-                }
-                status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
-                with open(status_file, 'w', encoding='utf-8') as f:
-                    json.dump(status_data, f, ensure_ascii=False, indent=2)
-            except Exception as e:
-                error_msg = f"Критическая ошибка в асинхронном парсере: {str(e)}"
-                logger.error(error_msg)
-                status_data = {
-                    'category': category,
-                    'status': 'error',
-                    'timestamp': datetime.now().isoformat(),
-                    'error': str(e)
-                }
-                status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
-                with open(status_file, 'w', encoding='utf-8') as f:
-                    json.dump(status_data, f, ensure_ascii=False, indent=2)
-        
-        # Start parser in a separate thread
-        import threading
-        parser_thread = threading.Thread(target=run_parser_async, daemon=True)
-        parser_thread.start()
-        
-        # Set initial status
-        status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
-        initial_status = {
-            'category': category,
-            'status': 'running',
-            'timestamp': datetime.now().isoformat(),
-            'message': f'Parser started for category {category}'
-        }
-        with open(status_file, 'w', encoding='utf-8') as f:
-            json.dump(initial_status, f, ensure_ascii=False, indent=2)
-        
-        logger.info(f"Citilink parser started in background for category: {category}")
-        
-    except Exception as e:
-        logger.error(f"Error starting Citilink parser: {e}")
-        flash(f'Ошибка при запуске парсера Citilink: {str(e)}', 'danger')
-    
+    flash('Парсер Citilink запускается только локально. Используйте local_parser/menu/parse_citilink.bat', 'info')
     return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/view-logs')
@@ -955,67 +797,7 @@ def clear_citilink_parser_results():
 @login_required
 @admin_required
 def run_all_parsers():
-    """Запустить оба парсера последовательно"""
-    try:
-        # Сначала запускаем парсер DNS
-        dns_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'DNS_parsing')
-        python_executable = sys.executable
-        
-        # Создаем директорию для категорий DNS, если её нет
-        dns_categories_dir = os.path.join(dns_parser_dir, "categories")
-        if not os.path.exists(dns_categories_dir):
-            os.makedirs(dns_categories_dir)
-            logger.info(f"Создана директория для категорий DNS: {dns_categories_dir}")
-        
-        # Устанавливаем переменные окружения
-        os.environ['MAX_ITEMS'] = '20'  # По умолчанию парсим 20 товаров
-        
-        # Запускаем DNS парсер
-        logger.info("Запуск DNS парсера")
-        current_dir = os.getcwd()
-        os.chdir(dns_parser_dir)
-        
-        subprocess.run([python_executable, 'main.py'], check=True, cwd=dns_parser_dir)
-        
-        os.chdir(current_dir)
-        
-        # Затем запускаем парсер Citilink
-        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
-        
-        # Получаем список категорий для парсинга Citilink
-        categories = ["videokarty", "processory", "materinskie-platy", "operativnaya-pamyat", "bloki-pitaniya"]
-        
-        for category in categories:
-            # Создаем .env файл с категорией для Citilink парсера
-            env_setup_cmd = f'Set-Content -Path "{os.path.join(citilink_parser_dir, ".env")}" -Value "CATEGORY={category}"'
-            subprocess.run(['powershell', '-Command', env_setup_cmd], check=True)
-            
-            # Устанавливаем переменную окружения
-            os.environ['CATEGORY'] = category
-            
-            logger.info(f"Запуск Citilink парсера для категории: {category}")
-            os.chdir(citilink_parser_dir)
-            
-            # Запускаем парсер
-            subprocess.run([python_executable, 'main.py'], check=True, cwd=citilink_parser_dir)
-            
-            # Возвращаемся в исходную директорию между запусками
-            os.chdir(current_dir)
-        
-        # Убедимся, что товары импортированы после завершения всех парсеров
-        try:
-            logger.info("Запуск импорта товаров после завершения всех парсеров")
-            from app.utils.standardization.import_products import import_products
-            import_products()
-            logger.info("Импорт товаров успешно завершен")
-            flash('Все парсеры успешно выполнены и товары импортированы в базу данных', 'success')
-        except Exception as import_error:
-            logger.error(f"Ошибка при импорте товаров: {import_error}")
-            flash(f'Парсеры выполнены, но возникла ошибка при импорте товаров: {str(import_error)}', 'warning')
-    except Exception as e:
-        logger.error(f"Ошибка при запуске парсеров: {e}")
-        flash(f'Ошибка при запуске парсеров: {str(e)}', 'danger')
-        
+    flash('Парсеры запускаются только локально. Используйте bat-файлы в папке local_parser/.', 'info')
     return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/api/citilink-category-data')
@@ -1030,33 +812,28 @@ def get_citilink_category_data():
         citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
         
         # Если указана категория, пытаемся загрузить данные из категории
+        from app.utils.standardization.import_helpers import find_latest_citilink_dump, load_products_from_json
+
         if category:
             category_file = os.path.join(citilink_parser_dir, 'data', category, 'Товары.json')
-            
-            if os.path.exists(category_file):
-                with open(category_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    # Обработка потенциальных проблем с форматом JSON
-                    if content.endswith(',\n]'):
-                        content = content.replace(',\n]', '\n]')
-                    products = json.loads(content)
-                    return jsonify({"success": True, "products": products, "category": category})
-            else:
-                # Если файл категории не найден, сообщаем об ошибке
-                return jsonify({"success": False, "error": f"Файл с данными для категории {category} не найден"}), 404
-        
-        # Если категория не указана, загружаем данные из основного файла
+            dump_path = find_latest_citilink_dump()
+            target_file = category_file if os.path.exists(category_file) else dump_path
+            if target_file and os.path.exists(target_file):
+                products = load_products_from_json(target_file)
+                return jsonify({"success": True, "products": products, "category": category, "file": target_file})
+            return jsonify({"success": False, "error": f"Файл с данными для категории {category} не найден"}), 404
+
+        dump_path = find_latest_citilink_dump()
+        if dump_path:
+            products = load_products_from_json(dump_path)
+            return jsonify({"success": True, "products": products, "category": "all", "file": dump_path})
+
         main_file = os.path.join(citilink_parser_dir, 'Товары.json')
         if os.path.exists(main_file):
-            with open(main_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-                if content.endswith(',\n]'):
-                    content = content.replace(',\n]', '\n]')
-                products = json.loads(content)
-                return jsonify({"success": True, "products": products, "category": "all"})
-        else:
-            # Если основной файл не найден, сообщаем об ошибке
-            return jsonify({"success": False, "error": "Файл с общими данными не найден"}), 404
+            products = load_products_from_json(main_file)
+            return jsonify({"success": True, "products": products, "category": "all", "file": main_file})
+
+        return jsonify({"success": False, "error": "Файл с общими данными не найден"}), 404
     
     except Exception as e:
         logger.error(f"Ошибка при получении данных категории: {e}")
@@ -1096,253 +873,7 @@ def download_parser_results(parser):
 @login_required
 @admin_required
 def stop_citilink_parser():
-    """Остановка парсера Citilink с сохранением данных"""
-    try:
-        logger.info("=== ОСТАНОВКА ПАРСЕРА CITILINK ===")
-        
-        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
-        
-        # 1. Создаем файл-флаг для остановки парсера
-        stop_flag_file = os.path.join(citilink_parser_dir, 'STOP_PARSER.flag')
-        try:
-            with open(stop_flag_file, 'w', encoding='utf-8') as f:
-                f.write(f"WEB_STOP_REQUEST_{datetime.now().isoformat()}")
-            logger.info(f"Создан файл-флаг остановки: {stop_flag_file}")
-        except Exception as e:
-            logger.error(f"Ошибка создания файла-флага: {e}")
-        
-        # 2. Используем улучшенную систему остановки через stop_parser.py
-        stopped_processes = 0
-        try:
-            import subprocess
-            
-            # Запускаем наш улучшенный скрипт остановки
-            stop_script_path = os.path.join(citilink_parser_dir, 'stop_parser.py')
-            if os.path.exists(stop_script_path):
-                logger.info("Запускаем улучшенный скрипт остановки парсера...")
-                
-                # Запускаем скрипт в директории парсера
-                result = subprocess.run(
-                    [sys.executable, 'stop_parser.py'],
-                    cwd=citilink_parser_dir,
-                    capture_output=True,
-                    text=True,
-                    timeout=30
-                )
-                
-                if result.returncode == 0:
-                    logger.info("Скрипт остановки выполнен успешно")
-                    # Пытаемся извлечь количество остановленных процессов из вывода
-                    for line in result.stdout.split('\n'):
-                        if 'Отправлен сигнал остановки' in line and 'процессам' in line:
-                            import re
-                            match = re.search(r'(\d+) процессам', line)
-                            if match:
-                                stopped_processes = int(match.group(1))
-                                break
-                else:
-                    logger.warning(f"Скрипт остановки завершился с кодом {result.returncode}")
-                    
-                if result.stdout:
-                    logger.info(f"Вывод скрипта остановки:\n{result.stdout}")
-                if result.stderr:
-                    logger.warning(f"Предупреждения скрипта остановки:\n{result.stderr}")
-                    
-            else:
-                # Резервный метод через psutil если скрипт не найден
-                logger.warning("Скрипт stop_parser.py не найден, используем резервный метод")
-                
-                try:
-                    import psutil
-                    
-                    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
-                        try:
-                            cmdline = proc.info['cmdline']
-                            if cmdline:
-                                cmdline_str = ' '.join(str(cmd) for cmd in cmdline)
-                                
-                                # Более точная проверка процессов парсера
-                                if (('Citi_parser' in cmdline_str or 'main.py' in cmdline_str) and 
-                                    'python' in cmdline_str.lower()):
-                                    logger.info(f"Найден процесс парсера: PID {proc.info['pid']}, команда: {cmdline_str}")
-                                    proc.terminate()  # Мягкая остановка
-                                    stopped_processes += 1
-                                    
-                                    # Ждем завершения процесса
-                                    try:
-                                        proc.wait(timeout=10)
-                                        logger.info(f"Процесс {proc.info['pid']} завершен успешно")
-                                    except psutil.TimeoutExpired:
-                                        logger.warning(f"Процесс {proc.info['pid']} не завершился, принудительное завершение")
-                                        proc.kill()
-                                        
-                        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                            pass
-                        except Exception as e:
-                            logger.error(f"Ошибка при остановке процесса: {e}")
-                
-                except ImportError:
-                    logger.warning("Библиотека psutil недоступна")
-                except Exception as e:
-                    logger.error(f"Ошибка при поиске процессов: {e}")
-                    
-        except subprocess.TimeoutExpired:
-            logger.error("Превышено время ожидания при остановке парсера")
-        except Exception as e:
-            logger.error(f"Ошибка при выполнении скрипта остановки: {e}")
-        
-        # 3. Ждем немного для корректной остановки
-        import time
-        time.sleep(2)
-        
-        # 4. Обновляем статус парсера
-        status_file = os.path.join(citilink_parser_dir, 'parser_status.json')
-        status_data = {
-            'status': 'stopped',
-            'category': 'unknown',
-            'timestamp': datetime.now().isoformat(),
-            'message': 'Parser stopped by web interface',
-            'stopped_processes': stopped_processes
-        }
-        
-        try:
-            with open(status_file, 'w', encoding='utf-8') as f:
-                json.dump(status_data, f, ensure_ascii=False, indent=2)
-            logger.info("Статус парсера обновлен на 'stopped'")
-        except Exception as e:
-            logger.error(f"Ошибка обновления статуса: {e}")
-        
-        # 5. Импорт всех собранных данных
-        imported_count = 0
-        total_files_processed = 0
-        
-        logger.info("Начинаем импорт всех собранных данных Citilink...")
-        
-        try:
-            # Сначала пытаемся использовать утилиту cleanup для исправления JSON файлов
-            cleanup_script_path = os.path.join(citilink_parser_dir, 'cleanup.py')
-            if os.path.exists(cleanup_script_path):
-                try:
-                    logger.info("Запускаем утилиту очистки и исправления JSON файлов...")
-                    subprocess.run(
-                        [sys.executable, 'cleanup.py'],
-                        cwd=citilink_parser_dir,
-                        timeout=30
-                    )
-                except Exception as cleanup_error:
-                    logger.warning(f"Ошибка при запуске утилиты очистки: {cleanup_error}")
-            
-            # Основной импорт данных
-            citilink_data_dir = os.path.join(citilink_parser_dir, 'data')
-            
-            if os.path.exists(citilink_data_dir):
-                # Импортируем данные из всех категорий
-                for category_dir in os.listdir(citilink_data_dir):
-                    cat_dir_path = os.path.join(citilink_data_dir, category_dir)
-                    if os.path.isdir(cat_dir_path):
-                        cat_products_file = os.path.join(cat_dir_path, 'Товары.json')
-                        if os.path.exists(cat_products_file):
-                            try:
-                                total_files_processed += 1
-                                logger.info(f"Обрабатываем файл: {cat_products_file}")
-                                
-                                with open(cat_products_file, 'r', encoding='utf-8') as f:
-                                    content = f.read().strip()
-                                
-                                if content:
-                                    # Исправляем возможные проблемы с JSON
-                                    if content.endswith(','):
-                                        content = content[:-1]
-                                    if content.endswith(',\n]'):
-                                        content = content.replace(',\n]', '\n]')
-                                    if content.endswith(',]'):
-                                        content = content.replace(',]', ']')
-                                    
-                                    products = json.loads(content)
-                                    
-                                    if products and len(products) > 0:
-                                        logger.info(f"Найдено {len(products)} товаров в категории {category_dir}")
-                                        imported_count += len(products)
-                                        logger.info(f"Учтено товаров из категории {category_dir}: {len(products)}")
-                                    else:
-                                        logger.warning(f"Файл {cat_products_file} пуст или не содержит товаров")
-                                else:
-                                    logger.warning(f"Файл {cat_products_file} пуст")
-                                    
-                            except json.JSONDecodeError as json_error:
-                                logger.error(f"Ошибка JSON в файле {cat_products_file}: {json_error}")
-                            except Exception as file_error:
-                                logger.error(f"Ошибка обработки файла {cat_products_file}: {file_error}")
-            
-            # Также проверяем основной файл Товары.json
-            main_products_file = os.path.join(citilink_parser_dir, 'Товары.json')
-            if os.path.exists(main_products_file):
-                try:
-                    total_files_processed += 1
-                    logger.info(f"Обрабатываем основной файл: {main_products_file}")
-                    
-                    with open(main_products_file, 'r', encoding='utf-8') as f:
-                        content = f.read().strip()
-                    
-                    if content:
-                        # Исправляем JSON
-                        if content.endswith(','):
-                            content = content[:-1]
-                        if content.endswith(',\n]'):
-                            content = content.replace(',\n]', '\n]')
-                        if content.endswith(',]'):
-                            content = content.replace(',]', ']')
-                        
-                        products = json.loads(content)
-                        
-                        if products and len(products) > 0:
-                            logger.info(f"Найдено {len(products)} товаров в основном файле")
-                            # Выполняем реальный импорт для основного файла
-                            try:
-                                from app.utils.standardization.import_products import import_products
-                                import_result = import_products()
-                                
-                                if hasattr(import_result, 'get'):
-                                    actual_imported = import_result.get('added_count', 0)
-                                    imported_count = actual_imported
-                                else:
-                                    imported_count = len(products)
-                                
-                                logger.info(f"Реально импортировано товаров: {imported_count}")
-                            except Exception as import_error:
-                                logger.error(f"Ошибка импорта: {import_error}")
-                                imported_count = len(products)  # Считаем как потенциально импортированные
-                        else:
-                            logger.warning("Основной файл пуст или не содержит товаров")
-                    else:
-                        logger.warning("Основной файл пуст")
-                        
-                except json.JSONDecodeError as json_error:
-                    logger.error(f"Ошибка JSON в основном файле: {json_error}")
-                except Exception as file_error:
-                    logger.error(f"Ошибка обработки основного файла: {file_error}")
-                                
-        except Exception as import_error:
-            logger.error(f"Критическая ошибка при импорте данных: {import_error}")
-        
-        # 6. Формируем сообщение для пользователя
-        if stopped_processes > 0:
-            if imported_count > 0:
-                flash(f'✅ Парсер остановлен! Остановлено процессов: {stopped_processes}. Найдено товаров для импорта: {imported_count} из {total_files_processed} файлов.', 'success')
-            else:
-                flash(f'⚠️ Парсер остановлен (процессов: {stopped_processes}), но данные для импорта не найдены.', 'warning')
-        else:
-            if imported_count > 0:
-                flash(f'✅ Процедура остановки выполнена! Активные процессы не найдены. Найдено товаров: {imported_count} из {total_files_processed} файлов.', 'success')
-            else:
-                flash('ℹ️ Активные процессы парсера не найдены. Данные для импорта отсутствуют.', 'info')
-            
-        logger.info(f"=== ОСТАНОВКА ЗАВЕРШЕНА === Процессов: {stopped_processes}, Найдено товаров: {imported_count}")
-            
-    except Exception as e:
-        logger.error(f"Критическая ошибка при остановке парсера Citilink: {e}")
-        flash(f'❌ Ошибка при остановке парсера: {str(e)}', 'danger')
-        
+    flash('Парсер Citilink управляется только локально.', 'info')
     return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/stop-dns-parser', methods=['POST'])
@@ -1389,82 +920,8 @@ def stop_dns_parser():
 @login_required
 @admin_required
 def fix_citilink_json():
-    """Исправление проблемных JSON файлов Citilink"""
-    try:
-        import glob
-        
-        citilink_parser_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'utils', 'Citi_parser')
-        data_dir = os.path.join(citilink_parser_dir, 'data')
-        
-        if not os.path.exists(data_dir):
-            flash('Папка с данными Citilink не найдена', 'warning')
-            return redirect(url_for('admin.scrape'))
-        
-        fixed_files = 0
-        removed_files = 0
-        
-        # Найти все JSON файлы
-        json_pattern = os.path.join(data_dir, '**', '*.json')
-        json_files = glob.glob(json_pattern, recursive=True)
-        
-        for json_file in json_files:
-            try:
-                with open(json_file, 'r', encoding='utf-8') as f:
-                    content = f.read().strip()
-                
-                # Если файл пустой или содержит только пробелы
-                if not content or content.isspace():
-                    logger.info(f"Удаляю пустой файл: {json_file}")
-                    os.remove(json_file)
-                    removed_files += 1
-                    continue
-                
-                # Попытка парсинга JSON
-                try:
-                    json.loads(content)
-                    # Файл корректный, пропускаем
-                    continue
-                except json.JSONDecodeError:
-                    # Файл некорректный, пытаемся исправить
-                    logger.info(f"Исправляю файл: {json_file}")
-                    
-                    # Убираем висячие запятые
-                    if content.endswith(','):
-                        content = content[:-1]
-                    
-                    if content.endswith(',\n]'):
-                        content = content.replace(',\n]', '\n]')
-                    
-                    if content.endswith(',]'):
-                        content = content.replace(',]', ']')
-                    
-                    # Пытаемся снова распарсить
-                    try:
-                        json.loads(content)
-                        # Записываем исправленный файл
-                        with open(json_file, 'w', encoding='utf-8') as f:
-                            f.write(content)
-                        fixed_files += 1
-                        logger.info(f"Файл исправлен: {json_file}")
-                    except json.JSONDecodeError:
-                        # Если всё ещё не удается, удаляем файл
-                        logger.warning(f"Не удалось исправить файл, удаляю: {json_file}")
-                        os.remove(json_file)
-                        removed_files += 1
-                        
-            except Exception as file_error:
-                logger.error(f"Ошибка обработки файла {json_file}: {file_error}")
-        
-        if fixed_files > 0 or removed_files > 0:
-            flash(f'Обработка завершена: исправлено {fixed_files} файлов, удалено {removed_files} файлов', 'success')
-        else:
-            flash('Проблемные файлы не найдены', 'info')
-            
-    except Exception as e:
-        logger.error(f"Ошибка при исправлении JSON файлов: {e}")
-        flash(f'Ошибка при исправлении файлов: {str(e)}', 'danger')
-    
-    return redirect(url_for('admin.scrape')) 
+    flash('Исправление JSON выполняется локально при парсинге.', 'info')
+    return redirect(url_for('admin.scrape'))
 
 @admin_bp.route('/clear-database', methods=['POST'])
 @login_required

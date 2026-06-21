@@ -28,7 +28,7 @@ except ImportError:
     sys.exit(1)
 
 # Обратная совместимость для comparison.py и др.
-__all__ = ["detect_product_type", "resolve_product_type", "import_products", "import_products_from_data"]
+__all__ = ["detect_product_type", "resolve_product_type", "import_products", "import_products_from_data", "import_latest_citilink_dump", "import_latest_dns_dump"]
 
 
 def import_products_from_data(products_data, source="local_parser"):
@@ -81,6 +81,50 @@ def import_products_from_data(products_data, source="local_parser"):
             "error_count": error_count,
             "results": results,
         }
+
+
+def import_latest_dns_dump(project_root=None):
+    """Импорт последнего дампа DNS в БД."""
+    from app.utils.standardization.import_helpers import find_latest_dns_dump, load_products_from_json
+
+    dump_path = find_latest_dns_dump(project_root)
+    if not dump_path:
+        return import_products()
+
+    products = load_products_from_json(dump_path)
+    if not products:
+        return {
+            "success": False,
+            "error": "DNS dump is empty",
+            "added_count": 0,
+            "updated_count": 0,
+            "error_count": 0,
+        }
+
+    print(f"Импорт последнего дампа DNS: {dump_path} ({len(products)} товаров)")
+    return import_products_from_data(products, source="dns")
+
+
+def import_latest_citilink_dump(project_root=None):
+    """Импорт последнего дампа Citilink (data/citilink/citilink_*.json) в БД."""
+    from app.utils.standardization.import_helpers import find_latest_citilink_dump, load_products_from_json
+
+    dump_path = find_latest_citilink_dump(project_root)
+    if not dump_path:
+        return import_products()
+
+    products = load_products_from_json(dump_path)
+    if not products:
+        return {
+            "success": False,
+            "error": "Citilink dump is empty",
+            "added_count": 0,
+            "updated_count": 0,
+            "error_count": 0,
+        }
+
+    print(f"Импорт последнего дампа Citilink: {dump_path} ({len(products)} товаров)")
+    return import_products_from_data(products, source="citilink")
 
 
 def import_products():

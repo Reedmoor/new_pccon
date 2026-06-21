@@ -5,7 +5,8 @@ echo        СИНХРОНИЗАЦИЯ СЕРВЕРОВ 5001 -> DOCKER
 echo ====================================================
 echo.
 
-cd /d "%~dp0"
+call "%~dp0_paths.bat"
+set "PROJECT_ROOT=%LP_ROOT%\.."
 
 echo 🔍 Проверка Docker контейнеров...
 docker ps | findstr pccon_web >nul
@@ -14,7 +15,7 @@ if errorlevel 1 (
     echo ❌ Docker контейнер pccon_web не запущен!
     echo.
     echo 🚀 Запускаем Docker контейнеры...
-    cd ..
+    cd /d "%PROJECT_ROOT%"
     docker-compose up -d
     if errorlevel 1 (
         echo ❌ Ошибка запуска Docker!
@@ -24,7 +25,7 @@ if errorlevel 1 (
     echo ✅ Docker контейнеры запущены
     echo ⏳ Ждем 10 секунд для инициализации...
     timeout /t 10 /nobreak >nul
-    cd local_parser
+    cd /d "%LP_ROOT%"
 ) else (
     echo ✅ Docker контейнер pccon_web запущен
 )
@@ -34,7 +35,7 @@ echo 🔍 Определение правильных URL серверов...
 
 :: Проверяем локальный сервер 5001
 echo   • Проверка сервера 5001...
-python sync_servers.py --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --test-only
+"%PYTHON_CMD%" "%LP_ROOT%\sync_servers.py" --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --test-only
 if errorlevel 1 (
     echo.
     echo ❌ Проблема с серверами!
@@ -52,7 +53,7 @@ echo ✅ Серверы доступны!
 echo.
 
 echo 📊 Получение информации о данных...
-python sync_servers.py --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --info
+"%PYTHON_CMD%" "%LP_ROOT%\sync_servers.py" --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --info
 echo.
 
 echo 🔄 Начинаем синхронизацию данных...
@@ -60,7 +61,7 @@ echo    ИЗ: 127.0.0.1:5001 (локальный сервер)
 echo    В:  127.0.0.1:5000 (Docker контейнер pccon_web)
 echo ====================================================
 
-python sync_servers.py --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --sync
+"%PYTHON_CMD%" "%LP_ROOT%\sync_servers.py" --source-url http://127.0.0.1:5001 --target-url http://127.0.0.1:5000 --sync
 
 if errorlevel 1 (
     echo.
@@ -76,7 +77,7 @@ echo.
 
 echo 📊 Проверка результатов...
 echo ====================================================
-python check_server_data.py
+"%PYTHON_CMD%" "%LP_ROOT%\check_server_data.py"
 
 echo.
 echo 🌐 Веб-интерфейс Docker сервера: http://127.0.0.1:5000
